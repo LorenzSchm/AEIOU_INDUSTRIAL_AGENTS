@@ -12,6 +12,7 @@ from arena_kit.docs import standard_terms
 from arena_kit.play import latest, live_threads, moves_left
 
 from .agent import Negotiator, log
+from .competitive_anchor import competitive_packages
 from .concessions import preserve_progress
 from .economic_beliefs import infer_economics, total_cost
 from .grounding import (
@@ -125,6 +126,7 @@ class StrategicNegotiator(Negotiator):
             raw[sid], strategy = adaptive_packages(
                 case, threads[sid], sid, self.intelligence, state, belief, self.features
             )
+            raw[sid] = competitive_packages(case, threads, sid, raw[sid], self.intelligence)
             self.support[sid]["strategy"] = strategy
         safe = [r["cost"] for r in evaluate(case, threads, self.intelligence) if r["acceptable"]]
         ceiling = min(alternative_cost(case), min(safe, default=math.inf) * 1.005)
@@ -147,7 +149,9 @@ class StrategicNegotiator(Negotiator):
                 for p in plan["packages"]
                 if p["cost"]
                 <= (
-                    min(ceiling, p["standing_cost"] - 0.01)
+                    min(ceiling, p["point_cost_limit"])
+                    if p.get("bounded_uncertainty_probe")
+                    else min(ceiling, p["standing_cost"] - 0.01)
                     if p.get("closing_probe") or p.get("uncertainty_probe") or p.get("portfolio_probe")
                     else budget
                 )

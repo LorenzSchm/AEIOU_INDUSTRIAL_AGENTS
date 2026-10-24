@@ -201,7 +201,8 @@ def test_opponent_belief_intervention_changes_executable_planner_choice():
         hypothesis = {**next(h for h in hypotheses if h["name"] == name), "weight": 1}
         portfolio, trace = admit_proposals(case, threads, sid, candidates, {}, data, {"hypotheses": [hypothesis]})
         assert len(trace["accepted"]) == 2
-        choices.append(portfolio[-1]["id"])
+        choices.append(trace["selected"])
+        assert portfolio[-1]["id"] == trace["executed_id"]
     assert choices == ["L1", "L2"]
 
 

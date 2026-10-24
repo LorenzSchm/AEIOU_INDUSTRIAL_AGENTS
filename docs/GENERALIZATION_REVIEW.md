@@ -506,3 +506,39 @@ use `--agent-source` for a frozen baseline checkout. Paired rows, historical
 evidence, limitations and source hashes are in
 `evaluation/practice-score-repair.json`; the local dashboard has a matching
 **Score repair — observed causes and offline validation** experiment entry.
+
+## Follow-up after P02/P05 on `4d88195`
+
+One real attempt each produced P02 **19.59** and P05 **50.63**, compared with
+2.01/16.39 in the preceding batch. P02 admitted eight model amendments and selected
+five, but several messages offered different prices for identical commercial
+terms. No indexed alternative was sent. P05 contacted all three suppliers and
+closed with the initially most expensive one at 31.04; its initial counter still
+derived from that supplier's 38.50 opening despite a cheaper executable rival.
+These are observations, not an estimate of a repeatable causal score improvement.
+
+The follow-up preserves three distinctions:
+
+- A price amendment replaces the same structure in the outgoing portfolio,
+  retaining its executable ID. Other structures remain distinct. The decision
+  trace records both the proposed and executed IDs.
+- First contact with a supplier may anchor to a cheaper **valid current rival's
+  total cost**. Its own terms are repriced, with a bounded search neighborhood.
+  Closed or noncompliant rivals are excluded. Previously sent concessions are
+  never retracted by this rule.
+- When supplier-cost uncertainty blocks every indexed exchange, one explicitly
+  marked experimental option may be generated. It must save direct contractual
+  costs even against the anchor, improve the weighted cost sensitivities relative
+  to the standing quote, and remain within 0.5% of that quote under the point
+  model. The global alternative guard still applies. This intentionally accepts
+  limited model disagreement; the economic weights are not calibrated
+  probabilities, and real score downside remains possible. Selection preserves
+  a generated risk alternative alongside an admitted planner amendment.
+
+All terms and references come from the current case and observed messages. No
+winning price or hidden benchmark is used. A prefix replay now generates an
+indexed alternative in P02 and a materially lower initial offer for the third
+supplier in P05. This does not predict the suppliers' responses. Generalization
+and multi-issue regressions remain 91.59 and 75.59 on their reused 96/54 conditions.
+The subsequent hosted validation is restricted to exactly one new P02 attempt
+and one new P05 attempt, with session creation retries disabled.

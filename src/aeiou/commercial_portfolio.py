@@ -4,10 +4,11 @@ import itertools
 import math
 
 from arena_kit.cost import closing_terms, complete_offer
+from arena_kit.cost import total_cost as direct_cost
 from arena_kit.docs import standard_terms
 
 from .optimizer import valid_terms
-from .uncertainty import robust_quote_improvement
+from .uncertainty import robust_quote_improvement, weighted_quote_improvement
 
 
 def structure(terms):
@@ -51,13 +52,13 @@ def commercial_shapes(case, base, current):
                         yield "delivery", terms
 
 
-def portfolio_probes(case, events, base, cost, supplier, confidence, compensate):
+def portfolio_probes(case, events, base, cost, supplier, confidence, compensate, sensitivities=None):
     """Preserve A; add cost-compensated quality, risk and service alternatives.
 
     A bounded concession envelope is available only for structures not represented
     by A. It retains at least 75% of A's modeled improvement over the best
-    current quote. Every proposal must also beat that quote across available cost
-    estimate stresses. This is a policy budget, not an acceptance prediction.
+    current quote. Proposals must improve weighted economic sensitivities when
+    available, otherwise all legacy cost stress points. Not an acceptance prediction.
     """
     if not events or events[-1].get("from") == "buyer" or events[-1].get("status") != "open":
         return []
@@ -109,7 +110,11 @@ def portfolio_probes(case, events, base, cost, supplier, confidence, compensate)
             continue
         stresses = None
         if supplier and case["buyer"].get("category_goal") in {"stabilise", "secure_supply"}:
-            stresses = robust_quote_improvement(case, probe, current, std, supplier, confidence)
+            stresses = (
+                weighted_quote_improvement(case, probe, current, std, sensitivities)
+                if sensitivities
+                else robust_quote_improvement(case, probe, current, std, supplier, confidence)
+            )
             if stresses is None:
                 continue
         grouped.setdefault(issue, []).append(
@@ -150,6 +155,49 @@ def portfolio_probes(case, events, base, cost, supplier, confidence, compensate)
             result.extend(probes[:2])
         else:
             result.append(min(probes, key=lambda p: p["cost"]))
+    if sensitivities and "index_clause" in case["negotiable"] and not any(p["issue"] == "index" for p in result):
+        # A noisy supplier-cost estimate may rule out every indexed exchange.
+        # Reserve one experimental option: direct contractual cost must improve
+        # even over A, expected sensitivity cost must beat the real quote, and
+        # point-estimate downside is capped at the existing 0.5% guard tolerance.
+        options = []
+        quote_expected = sum(s["weight"] * direct_cost(case, current, std, s) for s in sensitivities)
+        for issue, shape in commercial_shapes(case, base, current):
+            if issue != "index" or shape.get("index_clause") == base.get("index_clause"):
+                continue
+            upper = min(base["unit_price"], current["unit_price"])
+            for step in range(129):
+                probe = {**shape, "unit_price": round(upper * (0.85 + 0.15 * step / 128), 2)}
+                if any(probe["unit_price"] < p["unit_price"] for p in prior if structure(p) == structure(probe)):
+                    continue
+                value = cost(probe)
+                if not valid_terms(case, probe) or value > standing_cost * 1.005:
+                    continue
+                if (
+                    direct_cost(case, probe, std)
+                    > min(direct_cost(case, base, std), direct_cost(case, current, std)) - 0.01
+                ):
+                    continue
+                expected = sum(s["weight"] * direct_cost(case, probe, std, s) for s in sensitivities)
+                if expected >= quote_expected - 0.01:
+                    continue
+                options.append(
+                    {
+                        "label": "Cost-compensated risk exchange",
+                        "terms": probe,
+                        "cost": value,
+                        "portfolio_probe": True,
+                        "issue": "index",
+                        "standing_cost": standing_cost,
+                        "bounded_uncertainty_probe": True,
+                        "expected_cost": expected,
+                        "expected_quote_cost": quote_expected,
+                        "point_cost_limit": standing_cost * 1.005,
+                        "limitation": "Uncalibrated sensitivities; point-cost downside limited to 0.5% of quote.",
+                    }
+                )
+        if options:
+            result.append(min(options, key=lambda p: p["expected_cost"]))
     return result
 
 

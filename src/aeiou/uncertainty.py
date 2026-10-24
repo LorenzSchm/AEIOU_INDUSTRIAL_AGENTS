@@ -5,6 +5,22 @@ import math
 from arena_kit.cost import total_cost
 
 
+def weighted_quote_improvement(case, proposed, standing, standard, scenarios):
+    """Weighted sensitivity comparison, not a calibrated acceptance probability."""
+    rows = [
+        {
+            "weight": s["weight"],
+            "quote_cost": total_cost(case, standing, standard, s),
+            "proposal_cost": total_cost(case, proposed, standard, s),
+        }
+        for s in scenarios
+    ]
+    if not rows or not all(math.isfinite(r["proposal_cost"]) and r["weight"] > 0 for r in rows):
+        return None
+    change = sum(r["weight"] * (r["proposal_cost"] - r["quote_cost"]) for r in rows) / sum(r["weight"] for r in rows)
+    return rows if change < -0.01 else None
+
+
 def robust_quote_improvement(case, proposed, standing, standard, supplier, confidence_pct):
     """Compare like-for-like against a real quote across an estimate sensitivity band.
 

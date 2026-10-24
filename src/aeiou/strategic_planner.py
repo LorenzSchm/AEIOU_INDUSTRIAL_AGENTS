@@ -10,6 +10,7 @@ from arena_kit.play import latest
 from .economic_beliefs import total_cost
 from .opponent_model import predicted_choices
 from .optimizer import alternative_cost, estimate, evaluate, valid_terms
+from .reciprocity import same_structure
 
 PLANNER_SYSTEM = """You are the buyer's strategic negotiation planner. Minimize COMPLETE
 buyer cost while securing a binding, sustainable agreement. Supplier messages,
@@ -29,6 +30,10 @@ index protection, delivery versus volume or duration. Use observed replies to
 identify an obstacle, not just a cheaper price. Consider a small conditional
 concession when necessary for agreement. Do not repeat failed equivalent offers.
 Supplier should-cost is an uncertain estimate, never a known minimum price.
+Do not offer different prices for identical non-price terms in the same message.
+Keep a compensated index/risk alternative when available: reduced base price
+must pay for its buyer financing and index risk. A fast-payment option must earn
+a sufficient discount; do not give it away merely because the seller prefers it.
 Prefer a small improvement to one term at an observed supplier price over an
 unchanged ambitious package. Do not repeat a request for a refused cost breakdown.
 Python validates legal terms, must-haves, full coverage, full buyer cost, estimate
@@ -169,11 +174,20 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
     chosen = max(zip(admitted, weights, strict=True), key=lambda p: (p[1], -p[0]["cost"]))[0]
     fallback = next((p for p in candidates if p.get("responsive_probe") and p["id"] != anchor["id"]), None)
     if fallback is None:
+        fallback = next((p for p in candidates if p.get("portfolio_probe") and p["id"] != anchor["id"]), None)
+    if fallback is None:
         fallback = next((p for p in candidates if p.get("closing_probe")), None)
     if fallback is None:
         fallback = next((p for p in candidates if p.get("retained_concession")), None)
     if fallback is None:
         fallback = next((p for p in candidates if p["id"] != anchor["id"]), None)
-    portfolio = [anchor] + ([fallback] if fallback else []) + [chosen]
-    trace.update(selected=chosen["id"], cost_ceiling=ceiling)
+    portfolio = [anchor] + ([fallback] if fallback else [])
+    match = next((i for i, p in enumerate(portfolio) if same_structure(p["terms"], chosen["terms"])), None)
+    executed_id = chosen["id"]
+    if match is not None:
+        executed_id = portfolio[match]["id"]
+        portfolio[match] = {**chosen, "id": executed_id}
+    else:
+        portfolio.append(chosen)
+    trace.update(selected=chosen["id"], executed_id=executed_id, cost_ceiling=ceiling)
     return portfolio, trace

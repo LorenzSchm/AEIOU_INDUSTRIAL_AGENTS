@@ -289,6 +289,7 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
             supplier,
             intelligence.get("estimates", {}).get(sid, {}).get("confidence_pct"),
             equivalent_package,
+            sensitivities=intelligence.get("economic_sensitivities", {}).get(sid, {}).get("scenarios"),
         )
         packages = merge_portfolio(packages, probes)
     packages = distinct_packages(packages)
