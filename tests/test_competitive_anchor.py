@@ -65,3 +65,35 @@ def test_price_amendment_replaces_same_structure_instead_of_sending_two_prices()
     revised, trace = admit_proposals(case, threads, "seller", packages, {}, data, learn_beliefs(case, []))
     assert trace["selected"] == "L1" and trace["executed_id"] == "A"
     assert len(revised) == 1 and revised[0]["terms"]["unit_price"] == 33
+
+
+def test_followup_uses_sent_bid_not_the_sellers_original_anchor():
+    case, threads, packages = fixture()
+    previous = {**packages[0]["terms"], "unit_price": 25}
+    quote = {**previous, "unit_price": 30}
+    threads["seller"].extend(
+        [
+            {"from": "buyer", "term_sheets": [{"terms": previous}]},
+            {"from": "seller", "status": "open", "term_sheets": [{"term_sheet_id": "counter", "terms": quote}]},
+        ]
+    )
+    before = copy.deepcopy((threads, packages))
+    revised = competitive_packages(case, threads, "seller", packages, {})
+    assert (threads, packages) == before
+    assert 25 < revised[0]["terms"]["unit_price"] <= 26.01
+    assert revised[0]["concession_progress"]["prior_price"] == 25
+    # Late closure and binding agreement must not be reopened or slowed down.
+    threads["seller"][-1]["status"] = "agreed"
+    assert competitive_packages(case, threads, "seller", packages, {}) == packages
+    threads["seller"][-1]["status"] = "open"
+    case["round_limit"] = 3
+    assert competitive_packages(case, threads, "seller", packages, {}) == packages
+
+
+def test_single_supplier_policy_is_unchanged_by_rfq_continuation():
+    case, threads, packages = fixture()
+    del threads["rival"]
+    threads["seller"].insert(
+        0, {"from": "buyer", "term_sheets": [{"terms": {**packages[0]["terms"], "unit_price": 25}}]}
+    )
+    assert competitive_packages(case, threads, "seller", packages, {}) == packages

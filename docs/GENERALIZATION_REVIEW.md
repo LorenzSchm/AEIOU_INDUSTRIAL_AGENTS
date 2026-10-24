@@ -542,3 +542,26 @@ supplier in P05. This does not predict the suppliers' responses. Generalization
 and multi-issue regressions remain 91.59 and 75.59 on their reused 96/54 conditions.
 The subsequent hosted validation is restricted to exactly one new P02 attempt
 and one new P05 attempt, with session creation retries disabled.
+
+## Follow-up after `9b124d3`: retain the competitive bidding position
+
+The hosted runs reached P02 60.51 and P05 56.42. P02 accepted the indexed package
+immediately; its result includes EUR 32,503.30 of relationship cost, so further
+price reductions cannot be assumed to improve its score. P05's second buyer
+message jumped from 25.53 to 30.48 on identical cash/delivery terms: competitive
+anchoring applied only to first contact and the next portfolio regenerated from
+the expensive supplier opening.
+
+The narrow correction applies to multi-supplier RFQs with remaining negotiation
+time. A comparable prior buyer offer defines the price floor. Ordinary portfolio
+regeneration may move 20% of the remaining gap to an economically equivalent
+current counter (35% with four or fewer turns left). It cannot retract prior
+concessions or worsen modeled cost. Existing closing behavior remains for terminal
+quotes and the final two turns. The planner retains its independently bounded
+amendment authority. Single-supplier behavior is unchanged.
+
+Historical-prefix replay produces 26.62 for the previously 30.48 cash package.
+That is a proposed counter, not a predicted agreement or score. Validation is
+restricted to 57 relevant regression tests and the small discovery clock stress;
+the broader unchanged suites are not rerun. The next hosted batch again contains
+exactly one P02 and one P05 attempt; P02 is a repeatability/control observation.
