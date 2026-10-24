@@ -1,12 +1,90 @@
 """Keep observed, still-safe concessions when candidate portfolios are rebuilt."""
 
 import copy
+import math
 
 from arena_kit.cost import closing_terms
 from arena_kit.docs import standard_terms
-from arena_kit.play import latest
+from arena_kit.play import latest, moves_left
 
-from .optimizer import valid_terms
+from .optimizer import alternative_cost, valid_terms
+
+
+def match_material_progress(case, events, packages, cost):
+    """Bounded reciprocity after an observable discount in a routine purchase.
+
+    A material cumulative discount activates the rule; only the latest supplier
+    price step is reciprocated. Payment/duration improvements may accompany it,
+    but reduced service, quantity, duration or payment time must not masquerade
+    as a like-for-like discount. No supplier floor or acceptance is inferred.
+    """
+    if (
+        case["buyer"].get("category_goal") != "routine"
+        or not packages
+        or latest(events).get("status") != "open"
+        or moves_left(case, events) <= 2
+    ):
+        return packages
+    quotes = []
+    for index, message in enumerate(events):
+        if message.get("from") == "buyer" or message.get("status") != "open":
+            continue
+        std = standard_terms(events[: index + 1])
+        full = [closing_terms(case, s.get("terms", {}), std) for s in message.get("term_sheets", [])]
+        full = [t for t in full if valid_terms(case, {f: t.get(f) for f in case["negotiable"]})]
+        if full:
+            quotes.append(min(full, key=cost))
+    if len(quotes) < 2:
+        return packages
+    opening, previous, current = quotes[0], quotes[-2], quotes[-1]
+    step = previous["unit_price"] - current["unit_price"]
+    cumulative = (opening["unit_price"] - current["unit_price"]) / opening["unit_price"]
+
+    def shape(t):
+        return {k: v for k, v in t.items() if k not in {"unit_price", "payment_days", "contract_months"}}
+
+    if (
+        step <= 0.001
+        or cumulative < 0.01
+        or shape(opening) != shape(current)
+        or shape(previous) != shape(current)
+        or any(current[f] < max(opening[f], previous[f]) for f in ("payment_days", "contract_months"))
+        or cost(current) >= cost(previous) - 0.01
+    ):
+        return packages
+    history = [s.get("terms", {}) for m in events if m.get("from") == "buyer" for s in m.get("term_sheets", [])]
+    result = copy.deepcopy(packages)
+    ceiling = min(alternative_cost(case), cost(current) - 0.01)
+    for package in result:
+        terms = package["terms"]
+        prior = [
+            t["unit_price"]
+            for t in history
+            if valid_terms(case, t) and all(t.get(f) == terms.get(f) for f in case["negotiable"] if f != "unit_price")
+        ]
+        if not prior:
+            continue
+        last = max(prior)
+        gap = max(0, current["unit_price"] - last)
+        # Never jump more than the supplier's observed step or a quarter of the
+        # remaining gap. Existing stronger policy concessions are not withdrawn.
+        bounded = math.floor((last + min(step, gap * 0.25)) * 100 + 1e-7) / 100
+        price = max(terms["unit_price"], bounded)
+        proposed = {**terms, "unit_price": price}
+        if price <= terms["unit_price"] or not valid_terms(case, proposed) or cost(proposed) > ceiling:
+            continue
+        package.update(
+            terms=proposed,
+            cost=cost(proposed),
+            reciprocal_progress={
+                "supplier_price_step": step,
+                "cumulative_discount": cumulative,
+                "prior_buyer_price": last,
+                "buyer_step_limit": min(step, gap * 0.25),
+                "standing_cost": cost(current),
+            },
+        )
+    return result
 
 
 def preserve_progress(case, events, packages, cost, ceiling):

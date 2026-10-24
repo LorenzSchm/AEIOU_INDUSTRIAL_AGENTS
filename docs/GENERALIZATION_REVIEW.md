@@ -809,3 +809,38 @@ No new hosted runs or LLM calls were used. Reused histories establish behavior,
 not an actual score increase or how a supplier will respond. The previously
 documented S02 scripted comparison failure remains outside this focused suite
 and unresolved. Runtime rules contain no challenge IDs or benchmark prices.
+
+## Routine supplier reciprocity after the frozen P07 check
+
+Frozen `dac4543` scored P07 63.66 against a prior best of 70.15. The supplier
+reduced its main price from 5.74 to 5.60 and extended payment/duration. Our next
+counter moved only 4.71 to 4.73; proposed model amendments to 4.85 and 4.80 were
+blocked by the fixed early-price guard. The supplier requested more substantial
+movement and finalized at 5.58. This is evidence of a rigidity risk, not proof
+that a particular alternative counter would have achieved a better score.
+
+The controller now recognizes material price movement in routine purchasing.
+Activation requires a cumulative discount of at least 1% on the best complete
+supplier quote, a positive latest price step and lower total cost. The public
+service/volume terms must be unchanged, and payment/duration cannot deteriorate
+against either the opening or preceding quote. The buyer can reciprocate at most
+the latest supplier price reduction or one quarter of the remaining price gap,
+whichever is smaller, rounded down to cents. The offer must remain below both
+the standing quote cost and outside-option ceiling. No new model pricing freedom
+is introduced; terminal offers and the final two moves keep existing behavior.
+The materiality threshold is a policy heuristic, not a learned supplier floor.
+
+This rule uses public category/contract/price observations, not P07 identifiers.
+The failed P07 prefix now produces 4.85 / 90 days / 24 months, a compensated cash
+option at 4.76 and a longer-duration alternative. Replaying the old excessive
+5.48 model concession still rejects it. Repeated unchanged supplier quotes do
+not repeatedly reward the same discount.
+
+Validation: 69 distinct focused tests passed across two targeted runs (29 and 52,
+with 12 overlapping tests). All **57** recorded P01-P05 decision points are
+identical to frozen `dac4543`, including message bodies and portfolios. The
+comparison covers three recent P01/P03/P04 rounds and the successful P02/P05
+round. This protects observed behavior; future stochastic outcomes remain
+unproven. Local artifacts are `data/local/material-progress-review.json` and
+`material-progress-before.json` / `material-progress-after.json`. The user
+authorized one subsequent P07 hosted attempt after these checks.

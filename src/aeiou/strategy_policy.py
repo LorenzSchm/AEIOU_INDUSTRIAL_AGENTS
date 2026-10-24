@@ -9,6 +9,7 @@ from arena_kit.cost import complete_offer
 from arena_kit.docs import standard_terms
 from arena_kit.play import latest, moves_left, standing
 
+from .concessions import match_material_progress
 from .economic_beliefs import total_cost
 from .opponent_model import equivalent_response_price, supplier_utility
 from .optimizer import candidate_packages, estimate, valid_terms
@@ -109,6 +110,7 @@ def adaptive_packages(case, events, sid, intelligence, state, belief, features):
             gap = max(0, current["unit_price"] - terms["unit_price"])
             terms["unit_price"] = round(terms["unit_price"] + gap * 0.20, 2)
         package["cost"] = total_cost(case, terms, std, supplier)
+    packages = match_material_progress(case, events, packages, lambda t: total_cost(case, t, std, supplier))
     # Resolve a complete package before a last price-only counter resets its terms.
     # A stagnant quote alone never justifies matching an opening ask immediately.
     if rounds >= 3 and (remaining <= 2 or state["identical_price_replies"] >= 3):
