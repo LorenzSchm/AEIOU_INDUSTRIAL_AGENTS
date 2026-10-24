@@ -883,3 +883,25 @@ the experiment. Its communication code and tests were restored exactly to
 `data/local/evaluations/practice-p07-5909c98/report.json`. The earlier protection
 checks established compatibility, not confidence in beating the record. No
 second hosted attempt was run.
+
+
+## Bounded gap-closing reciprocity
+
+The next experiment changes the economic counter rather than its wording. Recent
+P07 transcripts terminate after the second buyer counter while the parties remain
+far apart. Literal one-for-one matching of a supplier price step can preserve a
+large gap created by asymmetric opening anchors. For the existing routine-buying,
+material-progress gate, the buyer may now close at most one quarter of the gap,
+capped at twice the latest supplier price step. This multiplier is a policy
+hypothesis, not an estimate of willingness to accept or a fitted supplier floor.
+Unchanged quotes, worse non-price terms, terminal offers and buyer alternative
+cost limits retain their existing protections. No case or supplier IDs are used.
+
+The saved P07 prefix produces 4.93 / 90 days / 24 months instead of 4.85, with a
+compensated 4.84 / 14 days alternative. The opener and communication policy remain
+unchanged. All 57 protected P01-P05 historical decisions exactly match frozen
+f5b46b4 (local bundle-before.json); 71 focused tests pass, plus Ruff and formatting.
+This establishes historical compatibility, not future scores. It does not resolve
+the previously documented unrelated S02 controller regression. One P07 hosted
+attempt is authorized; no automatic new-session retries. Local artifacts:
+accelerated-progress-after.json and accelerated-progress-p07.json.

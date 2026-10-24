@@ -14,7 +14,7 @@ def match_material_progress(case, events, packages, cost):
     """Bounded reciprocity after an observable discount in a routine purchase.
 
     A material cumulative discount activates the rule; only the latest supplier
-    price step is reciprocated. Payment/duration improvements may accompany it,
+    price step bounds the response. Payment/duration improvements may accompany it,
     but reduced service, quantity, duration or payment time must not masquerade
     as a like-for-like discount. No supplier floor or acceptance is inferred.
     """
@@ -66,9 +66,13 @@ def match_material_progress(case, events, packages, cost):
             continue
         last = max(prior)
         gap = max(0, current["unit_price"] - last)
-        # Never jump more than the supplier's observed step or a quarter of the
-        # remaining gap. Existing stronger policy concessions are not withdrawn.
-        bounded = math.floor((last + min(step, gap * 0.25)) * 100 + 1e-7) / 100
+        # Asymmetric opening anchors make literal one-for-one reciprocity too
+        # slow when the remaining gap is large. Close at most a quarter of that
+        # gap, capped at twice the latest observed supplier movement. This is an
+        # explicit policy heuristic, not an inferred acceptance price; unchanged
+        # quotes cannot activate it. Never withdraw an existing concession.
+        step_limit = min(2 * step, gap * 0.25)
+        bounded = math.floor((last + step_limit) * 100 + 1e-7) / 100
         price = max(terms["unit_price"], bounded)
         proposed = {**terms, "unit_price": price}
         if price <= terms["unit_price"] or not valid_terms(case, proposed) or cost(proposed) > ceiling:
@@ -80,7 +84,7 @@ def match_material_progress(case, events, packages, cost):
                 "supplier_price_step": step,
                 "cumulative_discount": cumulative,
                 "prior_buyer_price": last,
-                "buyer_step_limit": min(step, gap * 0.25),
+                "buyer_step_limit": step_limit,
                 "standing_cost": cost(current),
             },
         )

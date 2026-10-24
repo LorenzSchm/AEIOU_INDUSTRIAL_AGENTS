@@ -25,9 +25,24 @@ def test_reciprocates_material_supplier_step_within_buyer_cost_limit():
     case, events, packages = setup()
     original = copy.deepcopy((case, events, packages))
     result = match_material_progress(case, events, packages, lambda t: total_cost(case, t))
-    assert result[0]["terms"]["unit_price"] == 8.3
+    assert result[0]["terms"]["unit_price"] == 8.42
     assert result[0]["cost"] < total_cost(case, events[-1]["term_sheets"][0]["terms"])
     assert (case, events, packages) == original
+
+
+def test_large_anchor_gap_does_not_allow_unbounded_acceleration():
+    case, events, packages = setup()
+    events[-1]["term_sheets"][0]["terms"]["unit_price"] = 9.88
+    result = match_material_progress(case, events, packages, lambda t: total_cost(case, t))
+    assert result[0]["terms"]["unit_price"] == 8.24
+    assert result[0]["terms"]["payment_days"] == packages[0]["terms"]["payment_days"]
+
+
+def test_accelerated_step_cannot_cross_buyer_alternative():
+    case, events, packages = setup()
+    counter = events[-1]["term_sheets"][0]["terms"]
+    case["buyer"]["alternative"] = {"kind": "current_contract", "terms": {**counter, "unit_price": 8.35}}
+    assert match_material_progress(case, events, packages, lambda t: total_cost(case, t)) == packages
 
 
 @pytest.mark.parametrize(
