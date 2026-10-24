@@ -66,10 +66,16 @@ class RecordingTable(RemoteTable):
 def make_agent(name, pkg=None, tactic="prepared"):
     if name == "baseline":
         return NaiveAgent()
+    if name in {"strategic", "strategic-policy"}:
+        from .strategic import StrategicNegotiator
+
+        return StrategicNegotiator(pkg or package(), ClaudeBackend() if name == "strategic" else None, tactic=tactic)
     return Negotiator(pkg or package(), ClaudeBackend() if name == "claude" else None, variant=name, tactic=tactic)
 
 
 def finish_run(run, agent, result, started):
+    from .handoff import procurement_handoff
+
     run.update(status="completed", result=result, decisions=getattr(agent, "decisions", []))
     backend = getattr(agent, "backend", None)
     run["metrics"] = {
@@ -77,6 +83,7 @@ def finish_run(run, agent, result, started):
         "fallbacks": getattr(agent, "fallbacks", 0),
         **{k: getattr(backend, k, 0) for k in ("calls", "errors", "input_tokens", "output_tokens")},
     }
+    run["handoff"] = procurement_handoff(run)
     save_run(run)
     return run
 

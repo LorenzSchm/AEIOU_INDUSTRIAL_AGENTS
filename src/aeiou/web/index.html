@@ -4,7 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#142b2a"><title>AEIOU — Negotiation intelligence</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23142b2a'/%3E%3Cpath d='M7 24L16 7l9 17h-5l-4-9-4 9z' fill='%23c7eed7'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="/assets/style.css"><script src="/assets/app.js" defer></script>
+  <link rel="stylesheet" href="/assets/style.css"><script src="/assets/decision-support.js" defer></script><script src="/assets/app.js" defer></script>
 </head>
 <body>
   <aside class="sidebar">
@@ -31,7 +31,7 @@
     <h2>Put your agent to work.</h2><p class="muted">Choose a case and a test environment.</p>
     <label>Environment<select name="mode" id="launch-mode"><option value="hosted">Hosted practice · uses arena quota</option><option value="local">Local simulator · no arena quota</option></select></label>
     <label>Negotiation case<select name="case_id" id="launch-case" required></select></label>
-    <label>Buyer agent<select name="agent"><option value="claude">AEIOU · Claude + economic guards</option><option value="adaptive">AEIOU · deterministic adaptive policy</option><option value="baseline">Upstream naive baseline</option></select></label>
+      <label>Buyer agent<select name="agent"><option value="claude">AEIOU · Claude + economic guards</option><option value="strategic">AEIOU Strategic · Claude + supplier learning</option><option value="strategic-policy">AEIOU Strategic · local policy without model calls</option><option value="adaptive">AEIOU · deterministic adaptive policy</option><option value="baseline">Upstream naive baseline</option></select></label>
     <label id="opponent-label" hidden>Local opponent<select name="opponent" id="launch-opponent"></select></label>
     <div class="form-note" id="launch-note">Claude calls use your configured Anthropic account. Hosted sessions count against your practice quota.</div>
     <p class="form-error" id="launch-error" role="alert"></p><button type="submit" class="button primary full" id="launch-submit">Launch negotiation <span>↗</span></button>

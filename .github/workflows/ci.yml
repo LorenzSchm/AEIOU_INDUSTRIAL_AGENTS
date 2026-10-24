@@ -8,7 +8,11 @@ jobs:
       - uses: astral-sh/setup-uv@v6
         with:
           python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - run: uv sync --frozen --dev
       - run: uv run ruff check src tests
       - run: uv run ruff format --check src tests
       - run: uv run pytest -q
+      - run: node --test tests/web_decision_support.test.mjs

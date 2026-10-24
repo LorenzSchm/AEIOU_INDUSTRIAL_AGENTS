@@ -90,7 +90,7 @@ class PromptSpec:
 
 def prompt_specs():
     return {
-        "original": PromptSpec("original", (ROOT / "SYSTEM_PROMPT.md").read_text(encoding="utf-8")),
+        "original": PromptSpec("original", (ROOT / "SYSTEM_PROMPT.md").read_bytes().decode("utf-8")),
         "adapted": PromptSpec("adapted", SYSTEM),
     }
 

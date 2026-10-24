@@ -15,7 +15,8 @@ def main():
     serve = sub.add_parser("serve")
     serve.add_argument("--port", type=int, default=8765)
     bench = sub.add_parser("benchmark")
-    bench.add_argument("--agent", choices=["adaptive", "guarded", "claude"], default="adaptive")
+    agents = ["baseline", "guarded", "adaptive", "claude", "strategic", "strategic-policy"]
+    bench.add_argument("--agent", choices=agents[1:], default="adaptive")
     bench.add_argument("--seeds", type=int, default=3)
     bench.add_argument("--label", default="local")
     bench.add_argument("--seed-start", type=int, default=0)
@@ -30,13 +31,14 @@ def main():
     play = sub.add_parser("play")
     play.add_argument("case_id")
     play.add_argument("--mode", choices=["local", "hosted"], default="hosted")
-    play.add_argument("--agent", choices=["baseline", "guarded", "adaptive", "claude"], default="claude")
+    play.add_argument("--agent", choices=agents, default="claude")
     play.add_argument("--opponent", default="scripted")
     play.add_argument("--tactic", choices=["prepared", "voss"], default="prepared")
     practice = sub.add_parser("practice")
     practice.add_argument("--parallel", type=int, default=3)
-    practice.add_argument("--agent", choices=["baseline", "adaptive", "claude"], default="claude")
+    practice.add_argument("--agent", choices=agents, default="claude")
     final = sub.add_parser("final")
+    final.add_argument("--agent", choices=agents[1:], default="claude")
     final.add_argument("--parallel", type=int, default=10)
     final.add_argument("--waves", type=int, default=5)
     sub.add_parser("doctor")
@@ -129,13 +131,13 @@ def main():
         # Wrap tables for durable replay without adding prohibited live-feed endpoints.
         class FinalTable(RecordingTable):
             def __init__(self, client, case=None):
-                super().__init__(client, new_run(case["case_id"], "final", "claude"), case)
+                super().__init__(client, new_run(case["case_id"], "final", a.agent), case)
 
         # The kit owns polling / resume; the wrapper only adds local audit persistence.
         started = time.monotonic()
         results = play_waves(
             ArenaClient(),
-            lambda: make_agent("claude"),
+            lambda: make_agent(a.agent),
             table_factory=FinalTable,
             waves=a.waves,
             parallel=min(10, max(1, a.parallel)),

@@ -62,6 +62,18 @@ class Negotiator:
             self.prepare(case)
         return safe_close(case, threads, self.intelligence)
 
+    def packages(self, case, threads):
+        return {
+            sid: candidate_packages(
+                case, events, sid, self.intelligence, anchor=0.10 if self.variant == "guarded" else 0.18
+            )
+            for sid, events in threads.items()
+            if sid in live_threads(threads) and standing(events)[1].get("unit_price")
+        }
+
+    def system_prompt(self):
+        return SYSTEM + (VOSS if self.tactic == "voss" else "")
+
     def decide(self, case, threads):
         if case["case_id"] != self.case_id:
             self.prepare(case)
@@ -85,20 +97,12 @@ class Negotiator:
         if terminal and explored:
             move, source = safe_close(case, threads, self.intelligence), "economic close"
         else:
-            offers = {
-                s: candidate_packages(
-                    case, threads[s], s, self.intelligence, anchor=0.10 if self.variant == "guarded" else 0.18
-                )
-                for s in live
-                if standing(threads[s])[1].get("unit_price")
-            }
+            offers = self.packages(case, threads)
             move = None
             source = "deterministic"
             if self.backend:
                 try:
-                    raw = self.backend.complete(
-                        SYSTEM + (VOSS if self.tactic == "voss" else ""), self.render(case, threads, offers, best)
-                    )
+                    raw = self.backend.complete(self.system_prompt(), self.render(case, threads, offers, best))
                     move = self.guard(case, threads, parse(raw), offers)
                     source = "claude" if move else "guard fallback"
                 except Exception as exc:

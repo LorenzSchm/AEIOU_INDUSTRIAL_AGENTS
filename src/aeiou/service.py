@@ -85,6 +85,19 @@ def run(run_id: str):
         raise HTTPException(404, "Run not found") from e
 
 
+@app.get("/api/runs/{run_id}/handoff")
+def handoff(run_id: str):
+    from .handoff import procurement_handoff
+
+    try:
+        recorded = get_run(run_id)
+    except FileNotFoundError as e:
+        raise HTTPException(404, "Run not found") from e
+    if recorded.get("status") != "completed":
+        raise HTTPException(409, "Wait for the completed negotiation before reviewing a handoff")
+    return procurement_handoff(recorded)
+
+
 @app.get("/api/research/{case_id}")
 def dossier(case_id: str):
     case = next((c for c in [*local_cases().values(), *hosted_cases()] if c["case_id"] == case_id), None)
@@ -131,7 +144,7 @@ def prompt_comparisons():
 class PlayRequest(BaseModel):
     case_id: str = Field(max_length=100)
     mode: str = Field(pattern="^(local|hosted)$")
-    agent: str = Field(default="claude", pattern="^(baseline|guarded|adaptive|claude)$")
+    agent: str = Field(default="claude", pattern="^(baseline|guarded|adaptive|claude|strategic|strategic-policy)$")
     opponent: str = Field(default="scripted", max_length=50)
 
 
@@ -145,7 +158,7 @@ def dispatch(job_id, fn):
 
 @app.post("/api/play", status_code=202)
 def launch(body: PlayRequest):
-    if body.agent == "claude" and not os.environ.get("ANTHROPIC_API_KEY"):
+    if body.agent in {"claude", "strategic"} and not os.environ.get("ANTHROPIC_API_KEY"):
         raise HTTPException(409, "Set ANTHROPIC_API_KEY in .env")
     if body.mode == "hosted" and not os.environ.get("ARENA_API_KEY"):
         raise HTTPException(409, "Set ARENA_API_KEY in .env")

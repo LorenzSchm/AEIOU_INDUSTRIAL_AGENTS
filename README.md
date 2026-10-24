@@ -51,6 +51,44 @@ uv run aeiou play case:T02 --mode local --agent claude --opponent cashflow
 tactics; it is retained as the comparison baseline. `--tactic voss` is another experimental
 variant. Neither should be described as a faithful implementation of the original.
 
+## Strategic agent: supplier learning and cost scenarios
+
+The opt-in `strategic` agent adds an evidence-linked supplier state, comparable exploratory
+packages and buyer-cost scenario planning. The original `claude` and `adaptive` agents remain
+available unchanged for comparisons. Select **AEIOU Strategic** in the dashboard or run:
+
+```bash
+# Local policy, no model calls and no hosted arena sessions:
+uv run aeiou play case:S03 --mode local --agent strategic-policy
+uv run aeiou benchmark --agent strategic-policy --seeds 2 --seed-start 99 --label strategic
+# Claude writes the negotiation; Python controls the executable packages (API credits):
+uv run aeiou play case:S03 --mode local --agent strategic
+# Opt in explicitly for the final runner; does not change its default agent:
+uv run aeiou final --agent strategic --parallel 10 --waves 5
+```
+
+Supplier state is reconstructed from the conversation, including resumed sessions. It records
+which offered package a reply followed and links each tentative preference to the actual message
+and offer ID. A repeated standard quote or several counteroffers does not establish a preference.
+Price and multiple terms can confound a package choice; the UI explicitly shows that uncertainty.
+
+Where legal and economically comparable, the planner preserves the buyer-value and early-payment
+packages and uses a third slot to probe freight or duration. It calculates the published case cost
+plus explicit stresses: freight +25%, buyer financing +4 percentage points, and fallback price
++10% with fallback risk +3 percentage points. The robust-cost recommendation minimizes worst
+regret **among the offered packages**. These are cost sensitivities, not forecasts or calibrated
+supplier-acceptance probabilities. The original case and scoring rates are never changed.
+
+Claude selects current package IDs and must retain the buyer-value package. It cannot invent
+contracts or independently increase the optimizer's concession schedule. Python adds the exact
+offer terms to the outgoing message. Invalid selections and certain unsupported acknowledgements
+trigger an audited fallback. These controls do not prove every sentence factually correct.
+
+The replay displays preferences, source messages, scenario costs and guard rejections. Completed
+runs expose `GET /api/runs/{run_id}/handoff`: a procurement-review JSON draft containing the
+accepted terms, recorded cost comparison and source offer. Local runs are labeled simulations.
+This creates no purchase order, legal approval or ERP write; operational approval remains required.
+
 ## Local prompt and model comparison
 
 Open **http://127.0.0.1:8765/#prompts** to inspect both full prompt texts, the shared transport

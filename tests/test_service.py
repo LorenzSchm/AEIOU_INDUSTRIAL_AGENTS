@@ -21,7 +21,9 @@ def test_prompt_api_returns_the_exact_original_source():
 
     response = client.get("/api/prompts")
     assert response.status_code == 200
-    assert response.json()["variants"]["original"]["strategy"] == (ROOT / "SYSTEM_PROMPT.md").read_text()
+    assert response.json()["variants"]["original"]["strategy"] == (ROOT / "SYSTEM_PROMPT.md").read_bytes().decode(
+        "utf-8"
+    )
     assert client.get("/api/prompt-comparisons").status_code == 200
 
 
