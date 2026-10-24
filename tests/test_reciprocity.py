@@ -3,7 +3,10 @@ import copy
 import pytest
 from arena_kit.cost import complete_offer, total_cost
 
+from aeiou.commercial_portfolio import index_risk_menu
+from aeiou.grounding import package_rationale
 from aeiou.reciprocity import responsive_packages, same_structure
+from aeiou.scenario_planner import equivalent_package
 from aeiou.simulation import local_cases
 
 
@@ -166,3 +169,63 @@ def test_index_reciprocity_requires_observed_structure_and_safe_movement(change)
         packages[2] = {**packages[2], "terms": {**packages[2]["terms"], "unit_price": 21}}
         packages[2]["cost"] = total_cost(case, packages[2]["terms"])
     assert responsive_packages(case, events, packages, {}, lambda t: total_cost(case, t), ceiling) == packages
+
+
+def risk_scenario():
+    case, events, packages = indexed_scenario()
+    clause = packages[2]["terms"]["index_clause"]
+    case["term_options"]["index_clause"].append({**clause, "deadband_pct": 0})
+    packages[2].update(index_reciprocity=True, standing_cost=total_cost(case, events[-1]["term_sheets"][0]["terms"]))
+    return case, events, packages
+
+
+@pytest.mark.parametrize("path", [0.08, -0.08])
+@pytest.mark.parametrize("reverse", [False, True])
+def test_risk_alternative_compensates_cost_and_preserves_other_terms(path, reverse):
+    case, events, packages = risk_scenario()
+    case["buyer"]["index_paths"]["UNSEEN"] = path
+    if reverse:
+        case["term_options"]["index_clause"].reverse()
+    cost = lambda t: total_cost(case, t)  # noqa: E731
+    before = copy.deepcopy(packages)
+    result = index_risk_menu(case, events, packages, cost, equivalent_package, float("inf"))
+    assert packages == before
+    assert result[0] == packages[0] and result[2] == packages[2]
+    b, c = result[1]["terms"], result[2]["terms"]
+    assert b["index_clause"]["deadband_pct"] == 0
+    assert b["payment_days"] == c["payment_days"] and b["contract_months"] == c["contract_months"]
+    assert cost(b) <= cost(c) + 0.001
+    assert (b["unit_price"] < c["unit_price"]) == (path > 0)
+    explanation = package_rationale([b, c])
+    assert ("lower-deadband" in explanation) == (path > 0)
+
+
+@pytest.mark.parametrize(
+    "change", ["no_reciprocity", "terminal", "stabilise", "different_series", "ceiling", "prior_higher"]
+)
+def test_risk_exchange_respects_scope_ceilings_and_prior_concessions(change):
+    case, events, packages = risk_scenario()
+    ceiling = float("inf")
+    if change == "no_reciprocity":
+        packages[2].pop("index_reciprocity")
+    elif change == "terminal":
+        events[-1]["status"] = "final_offer"
+    elif change == "stabilise":
+        case["buyer"]["category_goal"] = "stabilise"
+    elif change == "different_series":
+        case["term_options"]["index_clause"][-1]["series"] = "OTHER"
+    elif change == "ceiling":
+        ceiling = 1
+    elif change == "prior_higher":
+        events[0]["term_sheets"].append(
+            {
+                "terms": {
+                    **packages[2]["terms"],
+                    "unit_price": 100,
+                    "index_clause": case["term_options"]["index_clause"][-1],
+                }
+            }
+        )
+    assert (
+        index_risk_menu(case, events, packages, lambda t: total_cost(case, t), equivalent_package, ceiling) == packages
+    )

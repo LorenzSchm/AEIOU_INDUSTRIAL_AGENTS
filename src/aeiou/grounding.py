@@ -230,6 +230,23 @@ def responsive_act(
 def package_rationale(terms):
     """Explain only trades actually present in the outgoing executable packages."""
     explanations = []
+    indexed = [t for t in terms if isinstance(t.get("index_clause"), dict)]
+    for a in indexed:
+        for b in indexed:
+            ac, bc = a["index_clause"], b["index_clause"]
+            if (
+                ac.get("deadband_pct", 0) < bc.get("deadband_pct", 0)
+                and a["unit_price"] < b["unit_price"]
+                and {k: v for k, v in ac.items() if k != "deadband_pct"}
+                == {k: v for k, v in bc.items() if k != "deadband_pct"}
+                and {k: v for k, v in a.items() if k not in {"unit_price", "index_clause"}}
+                == {k: v for k, v in b.items() if k not in {"unit_price", "index_clause"}}
+            ):
+                explanations.append(
+                    "The lower-deadband alternative passes through more index movement "
+                    "in exchange for a lower base price, with the same payment and contract duration. "
+                    "Please price that risk transfer as a complete exchange."
+                )
     for cheap in terms:
         for dear in terms:
             if cheap["unit_price"] >= dear["unit_price"]:

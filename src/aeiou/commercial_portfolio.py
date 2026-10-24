@@ -15,6 +15,80 @@ def structure(terms):
     return {k: v for k, v in terms.items() if k != "unit_price"}
 
 
+def index_risk_menu(case, events, packages, cost, compensate, ceiling):
+    """Price a contrasting deadband beside a supplier-confirmed reciprocal offer.
+
+    Replace only a redundant fixed-price alternative. Keep payment, duration,
+    index series and material share unchanged, so the counter tests the price
+    of risk transfer rather than bundling an unpriced cash concession.
+    """
+    if (
+        case["buyer"].get("category_goal") != "leverage"
+        or "index_clause" not in case["negotiable"]
+        or not events
+        or events[-1].get("from") == "buyer"
+        or events[-1].get("status") != "open"
+    ):
+        return packages
+    reference = next((p for p in packages if p.get("index_reciprocity")), None)
+    slot = next(
+        (
+            i
+            for i, p in enumerate(packages)
+            if i and p["terms"].get("index_clause") is None and not p.get("responsive_probe")
+        ),
+        None,
+    )
+    if reference is None or slot is None:
+        return packages
+    base = reference["terms"]
+    clause = base.get("index_clause")
+    if not isinstance(clause, dict):
+        return packages
+    clauses = [
+        c
+        for c in case.get("term_options", {}).get("index_clause", [])
+        if isinstance(c, dict)
+        and c != clause
+        and {k: v for k, v in c.items() if k != "deadband_pct"}
+        == {k: v for k, v in clause.items() if k != "deadband_pct"}
+    ]
+    prior = [s["terms"] for e in events if e.get("from") == "buyer" for s in e.get("term_sheets", [])]
+    # A clear contrast makes the supplier's choice informative; enum order is
+    # immaterial. Rank by cost at a common price, before compensating the risk.
+    alternatives = sorted(clauses, key=lambda c: abs(cost({**base, "index_clause": c}) - cost(base)), reverse=True)
+    for alternative in alternatives:
+        probe = compensate(case, base, {**base, "index_clause": alternative}, cost)
+        if probe is None:
+            continue
+        probe["unit_price"] = max(
+            [probe["unit_price"], *(p["unit_price"] for p in prior if structure(p) == structure(probe))]
+        )
+        value = cost(probe)
+        if (
+            not valid_terms(case, probe)
+            or not math.isfinite(value)
+            or value > min(cost(base), ceiling) + 0.001
+            or abs(probe["unit_price"] - base["unit_price"]) < 0.009
+            or any(p["terms"] == probe for p in packages)
+        ):
+            continue
+        result = list(packages)
+        result[slot] = {
+            "id": packages[slot]["id"],
+            "label": "Compensated index-risk alternative",
+            "terms": probe,
+            "cost": value,
+            "responsive_probe": True,
+            "index_risk_exchange": True,
+            "standing_cost": reference["standing_cost"],
+            "point_cost_limit": cost(base),
+            "limitation": "Equal cost at case index assumptions; supplier acceptance and future index path unknown.",
+        }
+        return result
+    return packages
+
+
 def combine_cash_continuity(case, events, packages, cost, compensate):
     """Combine a quoted cash incentive with an already-proposed longer contract.
 

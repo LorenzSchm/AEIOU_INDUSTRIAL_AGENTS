@@ -1322,3 +1322,27 @@ Own creation marker/request/session count is one. Shared quota 142 -> 144 includ
 concurrent team P18 session 78bbf2ceff456d95, opened after our P08 session; no
 interaction with that session. Best map unchanged. Audit in the run folder.
 Report: data/local/evaluations/practice-p08-94ca4a3/report.json.
+
+
+## Price the index-risk transfer instead of insisting on one deadband
+
+Different angle after the tied duration experiment: offer two index deadbands,
+with identical payment/duration/series/share/base month, and compensate their
+price using the published case cost function. The record's lower deadband is
+analysis motivation only; no record price, case ID, or hidden score normalization
+enters runtime. The algorithm selects the largest modeled contrast among legal
+same-series clauses, independent of enum order. It works in either direction
+when the assumed index path changes.
+
+Activate only beside verified indexed reciprocity in leverage cases. Keep A
+and the established reciprocal package, replace a redundant fixed-price option.
+Never increase modeled buyer cost or exceed external ceilings, withdraw a prior
+same-structure price concession, use an unrelated index, or reopen a terminal
+quote. Explain the risk-price exchange only when both complete packages actually
+contain it. Supplier acceptance and realized future index costs are unknown.
+
+142 focused tests pass, including ten risk-menu checks; Ruff clean. All 57
+protected P01-P05 archived decisions unchanged. P08 replay leaves the opening
+and terminal acceptance unchanged. First response offers 4.96/deadband0 beside
+5.08/deadband5, both payment90/duration24, with no higher modeled buyer cost.
+One further hosted P08 attempt is authorized, without session-creation retries.
