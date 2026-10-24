@@ -112,6 +112,26 @@ def counteroffer_probe(case, events, base, std, cost):
     return max(probes, key=lambda p: p["unit_price"], default=None)
 
 
+def distinct_packages(packages):
+    """Never let a supplier choose a higher price for the same commercial terms.
+
+    A is the protected anchor. Other candidates must differ in a non-price term;
+    settlement concessions on an identical structure belong in a later turn.
+    """
+    result = []
+    for package in packages:
+        structure = {k: v for k, v in package["terms"].items() if k != "unit_price"}
+        duplicate = next(
+            (p for p in result if {k: v for k, v in p["terms"].items() if k != "unit_price"} == structure),
+            None,
+        )
+        if duplicate is None:
+            result.append(package)
+        elif duplicate["id"] != "A" and package["cost"] < duplicate["cost"]:
+            result[result.index(duplicate)] = package
+    return result
+
+
 def plan_packages(case, events, sid, intelligence, candidates, state, use_counteroffers=True):
     std, supplier = standard_terms(events), estimate(case, sid, standard_terms(events), intelligence)
 
@@ -127,7 +147,8 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
     # slot for a genuinely different question while time remains for its answer.
     if state["moves_left"] > 2:
         fields = sorted(
-            ("effective_date", "lead_time_days", "incoterm", "contract_months"), key=lambda f: f in observed
+            ("effective_date", "lead_time_days", "incoterm", "index_clause", "contract_months", "ppm_commitment"),
+            key=lambda f: f in observed,
         )
         for field in fields:
             if field not in case["negotiable"]:
@@ -223,6 +244,7 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
                             "limitation": "Observed structure, acceptance unverified.",
                         }
                     ]
+    packages = distinct_packages(packages)
     scenario_cases = [(s, stressed_case(case, s)) for s in SCENARIOS]
     for package in packages:
         package["cost"] = cost(package["terms"])

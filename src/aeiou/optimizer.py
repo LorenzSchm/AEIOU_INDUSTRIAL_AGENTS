@@ -127,6 +127,11 @@ def candidate_packages(case, events, sid, intelligence, anchor=0.18):
         except (TypeError, ValueError, KeyError, ZeroDivisionError):
             return math.inf
 
+    def rank(t):
+        # At identical buyer cost, do not demand stricter quality than needed.
+        # All explicit must-haves still apply before selecting a final package.
+        return (cost(t), -(t.get("ppm_commitment") or 0), t.get("chargeback_eur_per_complaint") or 0)
+
     seeds = [complete_offer(case, {**std, **current, "unit_price": round(price, 2)})]
     # Include neutral buyer-plan defaults, especially full horizon and volume coverage.
     seeds.append(complete_offer(case, {"unit_price": round(price, 2)}))
@@ -140,11 +145,11 @@ def candidate_packages(case, events, sid, intelligence, anchor=0.18):
         expanded = [dict(t, **{field: v}) for t in beam for v in values]
         # Intermediate candidates may violate another must-have that a later coordinate fixes.
         unique = {str(t): t for t in expanded}
-        beam = sorted(unique.values(), key=cost)[:32]
+        beam = sorted(unique.values(), key=rank)[:32]
         # Preserve an early-payment path to discover cash-constrained suppliers.
         if field == "payment_days" and values:
             beam += [dict(t, payment_days=min(v for v in values if v is not None)) for t in seeds]
-    legal = sorted((t for t in beam if valid_terms(case, t)), key=cost)
+    legal = sorted((t for t in beam if valid_terms(case, t)), key=rank)
     if supplier and case["buyer"].get("category_goal") in {"stabilise", "secure_supply"}:
         # A strategic supplier's health can make a higher cash price the cheaper total deal.
         revised = []
@@ -157,7 +162,7 @@ def candidate_packages(case, events, sid, intelligence, anchor=0.18):
                 else:
                     lo = a
             revised.append(dict(t, unit_price=round((lo + hi) / 2, 2)))
-        legal = sorted(revised, key=cost)
+        legal = sorted(revised, key=rank)
     if not legal:
         return []
     best, target = legal[0], cost(legal[0])

@@ -65,6 +65,10 @@ question='priorities|cash|continuity|authority|costs|delivery|quality|tradeoff|e
 evidence_ids=[].
 Select at most two current shareable evidence cards for THIS supplier. The composer
 quotes complete approved excerpts verbatim and adds exact contract terms.
+Copy evidence_ids only from available_evidence_ids (the card id, not source_id).
+An empty list is valid. Do not recite rising indices merely to support a price cut:
+they may support the supplier's price increase. Use a specific diagnostic question
+when the evidence does not support a buyer-side argument.
 Do not add term_sheets or free-form factual claims. Do not change the planned action.
 """
             if self.features.grounded_language
@@ -146,6 +150,12 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
             }
         payload["decision_support"] = self.support
         payload["planned_action"] = self.controller
+        if self.features.grounded_language:
+            sid = self.controller.get("supplier_id")
+            cards = [c for c in self._cards if c.get("shareable") and c.get("supplier_id") in {None, sid}]
+            # The writer chooses approved wording, not internal research or economics.
+            payload["research"] = {"evidence_cards": cards}
+            payload["available_evidence_ids"] = [c["id"] for c in cards]
         for sid, packages in payload["candidate_packages"].items():
             if sid == self.controller.get("supplier_id"):
                 ids = self.controller.get("candidate_ids", [p["id"] for p in packages])
@@ -194,7 +204,7 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
         if action == "send" and self.features.grounded_language:
             try:
                 strategy = self.support.get(sid, {}).get("strategy", {}).get("name", "balanced")
-                if not data.get("evidence_ids"):
+                if "evidence_ids" not in data:
                     data = {**data, "evidence_ids": next_evidence_ids(self._cards, threads, sid)}
                 data = responsive_act(
                     data,

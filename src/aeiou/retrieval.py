@@ -194,6 +194,7 @@ def evidence_cards(hits, intelligence):
                 "text": index["claim"],
                 "shareable": True,
                 "kind": "computed_index",
+                "change_pct": index.get("change_pct"),
                 "supplier_id": None,
             }
         )

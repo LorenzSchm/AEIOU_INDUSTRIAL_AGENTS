@@ -237,3 +237,62 @@ readable recovery snapshot when Windows locks the primary run file. A regression
 also prevents generic delivery probes from reintroducing unnecessarily fast terms.
 These two follow-ups have local validation only; no additional paid runs were made.
 Final validation: 129 Python tests passed, 2 skipped; all 6 JavaScript tests passed.
+
+### Ten-case hosted practice audit and follow-up fixes
+
+Agent `43e7857` played exactly one session per hosted practice case. Scores out of
+100: P01 56.29, P02 15.70, P03 83.03, P04 86.04, P05 0.00, P07 70.15,
+P08 49.31, P10 64.73, P11 21.24, P18 40.62. The unweighted mean including
+the failure is **48.71**. Nine deals met the must-haves. The shared quota changed
+from 38 to 48 used; the start audit confirms ten distinct cases and sessions.
+There were 56 Claude calls, zero provider errors and three guard fallbacks.
+These single runs do not measure LLM variance or establish an upgrade over a
+previous version. P18 also scored below its earlier 52.00 result; D02 gains did
+not generalize uniformly. Summary evidence: `docs/evaluation/practice-ten.json`.
+
+Observed failures and corresponding implementation changes:
+
+- **P05, stale acceptance:** supplier timeouts advanced offer IDs while the buyer
+  negotiated elsewhere. The client attempted an obsolete ID and received HTTP
+  422. The original session subsequently timed out with score zero; it was not
+  replaced. Hosted tables now reconcile server state before decisions and before
+  terminal actions, reload changed threads, and re-evaluate the complete fresh
+  offer against must-haves and alternatives. A narrowly matched stale-offer 422
+  can trigger at most two further decisions in the same session. Other errors
+  remain visible. Failed sends are transport events, not fictitious concessions.
+- **RFQ deadlines:** protect an existing acceptable deal when its remaining
+  clock cannot accommodate the slowest observed supplier reply plus a 12-second
+  reserve (at least 15 seconds). This is deliberately conservative: it can reduce
+  exploration, and it cannot guarantee immunity to unpredictable network delays.
+- **Duplicate commercial structures:** P11 offered prices 42.51 and 48.51 for the
+  same other conditions. Packages now retain one price per non-price structure;
+  protected package A remains. A settlement price with unchanged conditions cannot
+  be offered alongside the cheaper anchor in the same turn.
+- **Over-specified quality:** P11 demanded 300 ppm although the case requires
+  at most 1500 ppm. With the selected compensation, both have identical published
+  buyer quality cost. Ties now favor the less burdensome legal quality promise.
+  Quality/compensation exchanges explore lower compensation only with a price
+  adjustment preserving buyer cost. This follows the competition's cost model;
+  it is not evidence that a real-world quality deterioration is harmless.
+- **Missing index exploration:** legally permitted index clauses can be proposed
+  proactively at compensated buyer cost, instead of waiting for the supplier to
+  introduce them. The fixed-price A package stays available. Acceptance and a
+  better hosted score remain unverified.
+- **Evidence selection:** P01 had three rejected evidence selections. The writer
+  now receives only shareable cards for its recipient and an explicit allowed-ID
+  list. An explicit empty selection is respected. The hard citation guard remains.
+  Automatic wording no longer cites rising indices as discount arguments; P02's
+  supplier explicitly said those figures supported its price increase. Such data
+  remain available for explicit, contextual use. Document excerpts exclude
+  address/salutation paragraphs and do not assume the supplier authored them.
+
+No hidden supplier floors, post-run `c_best` values or case-specific score targets
+enter these policies. New fixtures contain public openings only. No additional
+hosted sessions or paid model calls were made to validate these changes.
+
+Validation: **145 Python tests passed, 2 skipped**; Ruff and whitespace checks
+passed. Coverage includes changed offer IDs before acceptance, a second race
+between refresh and send, bounded retries, a worsened fresh offer, closed threads,
+deadline protection, already-ended sessions, quality compensation, feasible and
+infeasible index probes, and explicit empty evidence selection. Actual hosted
+score improvement remains unmeasured for this follow-up version.

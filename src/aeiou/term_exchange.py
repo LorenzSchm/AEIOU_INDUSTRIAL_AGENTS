@@ -48,7 +48,14 @@ def exchange_history(case, events):
 def ranked_exchanges(case, base, observations):
     """Prefer observed reciprocal moves; retire twice-unrewarded term values."""
     options = []
-    for field in ("payment_days", "contract_months", "effective_date", "incoterm"):
+    for field in (
+        "payment_days",
+        "contract_months",
+        "effective_date",
+        "incoterm",
+        "chargeback_eur_per_complaint",
+        "ppm_commitment",
+    ):
         if field not in case["negotiable"]:
             continue
         for value in case.get("term_options", {}).get(field, []):

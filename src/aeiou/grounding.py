@@ -88,6 +88,12 @@ def next_evidence_ids(cards, threads, sid):
     # public price movement stalls or reverses, rather than unloading all evidence
     # in the opening or repeating a claim the supplier has already addressed.
     improving = len(prices) >= 2 and prices[-1] < prices[-2]
+    reply = next((m.get("body", "") for m in reversed(events) if m.get("from") != "buyer"), "")
+    requested_evidence = re.search(
+        r"(?:support|substantiate|verify|back up|provide|share|cite).{0,80}(?:data|evidence|sources|indices)",
+        reply,
+        re.I,
+    )
     used = {
         ref
         for events in threads.values()
@@ -96,6 +102,10 @@ def next_evidence_ids(cards, threads, sid):
         for ref in ID_RE.findall(message.get("body", ""))
     }
     for card in cards:
+        if card.get("kind") == "computed_index" and (card.get("change_pct") or 0) > 0 and not requested_evidence:
+            # Accurate inflation data may support the seller, not a discount.
+            # Retain it for analysis/explicit writer selection, not automatic citation.
+            continue
         if improving and card.get("kind") not in {"rival_quote", "contract_notice"}:
             continue
         refs = card.get("source_ids") or [card.get("source_id")]
@@ -156,7 +166,7 @@ def compose_email(data, cards, sid, strategy="balanced"):
                 "Please reconcile it with the other cost movements."
             )
         else:
-            body.append(f"Your supplied document states: {card['text']} ({', '.join(refs)}).")
+            body.append(f"The referenced document states: {card['text']} ({', '.join(refs)}).")
     body.extend([QUESTIONS[question], "Any movement is conditional on the executable terms below."])
     return "\n\n".join(body)
 
@@ -198,6 +208,7 @@ def safe_excerpt(text):
             for p in paragraphs
             if 30 <= len(p.strip()) <= 450
             and not p.lstrip().startswith("#")
+            and not re.match(r"(?:to|from|subject|dear|hello|hallo)\b", p.strip(), re.I)
             and " - " not in p[:80]
             and p.strip()[-1] in '.!?"”'
         ),
