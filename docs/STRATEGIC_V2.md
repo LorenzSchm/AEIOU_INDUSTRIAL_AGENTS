@@ -154,3 +154,26 @@ was replay-tested separately and does not affect D02's non-indexed schema.
 The Python suite passed 117 tests (2 skipped); the subsequent index-retention
 check passed all 5 feedback tests. All 5 JavaScript tests passed.
 Results and run identifiers are in `docs/evaluation/sandbox-feedback.json`.
+
+### Conditional single-term exchanges
+
+The planner now reserves package B for a single non-price change paired with a
+compensating price reduction, while preserving protected package A and the optional
+bundled counteroffer C. It considers payment, duration, effective date and Incoterm
+options only when legal and economically compensable. Total modeled buyer cost must
+not exceed A; the buyer's existing concession schedule and terminal acceptance
+policy remain separate from these additional experiments.
+
+Public replies matching exactly one proposed structure update an exchange history.
+Only contrasts differing in one non-price term count; ambiguous or bundled replies
+are excluded. Observed price improvement ranks future experiments. A value with two
+consecutive matched responses without price improvement is retired from this
+single-term experiment selector. Observations are reconstructed per supplier from
+history and include message indices; no hidden floors or post-run scores are used.
+The association is not a causal estimate or calibrated acceptance probability.
+
+Grounded messages make both changes conditional on the complete package. Local
+regression tests cover D01 opening decisions, compensated costs, selection, ambiguous
+responses, learning and retirement, alongside the existing P18/D02 replays. No new
+hosted evaluation has been run for this change; the earlier 68.89 D01 and 47.05 D02
+scores describe the previous version, not measured performance of this addition.

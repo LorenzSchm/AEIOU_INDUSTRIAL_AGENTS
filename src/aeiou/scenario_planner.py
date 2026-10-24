@@ -7,6 +7,7 @@ from arena_kit.cost import complete_offer, total_cost
 from arena_kit.docs import standard_terms
 
 from .optimizer import estimate, valid_terms
+from .term_exchange import exchange_history, ranked_exchanges
 
 SCENARIOS = (
     {"id": "base", "label": "Published case rates"},
@@ -140,6 +141,29 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
                     "feedback_probe": True,
                 }
             ]
+    exchanges = exchange_history(case, events) if use_counteroffers else []
+    # A single-term experiment makes the next reply interpretable. Reserve B
+    # for this exchange and keep C available for bundled supplier counteroffers.
+    if use_counteroffers and state["moves_left"] > 2:
+        for exchange in ranked_exchanges(case, base, exchanges):
+            probe = equivalent_probe(case, base, exchange["field"], exchange["value"], cost)
+            if probe is None or probe["unit_price"] >= base["unit_price"]:
+                continue
+            if any(probe == p["terms"] for p in packages if p["id"] != "B"):
+                continue
+            swap = {
+                "id": "B",
+                "label": f"Conditional {exchange['field']} exchange",
+                "terms": probe,
+                "cost": cost(probe),
+                "exchange_probe": True,
+                "exchange": {
+                    **exchange,
+                    "required_price_reduction": round(base["unit_price"] - probe["unit_price"], 2),
+                },
+            }
+            packages = [packages[0], swap] + [p for p in packages[1:] if p["id"] != "B"][:1]
+            break
     scenario_cases = [(s, stressed_case(case, s)) for s in SCENARIOS]
     for package in packages:
         package["cost"] = cost(package["terms"])
@@ -161,6 +185,7 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
         "packages": packages,
         "recommendation": recommendation["id"],
         "scenarios": list(SCENARIOS),
+        "exchange_observations": exchanges,
         "limitation": (
             "Buyer-cost sensitivity only. Assumptions are illustrative stresses, not forecasts of supplier behavior."
         ),

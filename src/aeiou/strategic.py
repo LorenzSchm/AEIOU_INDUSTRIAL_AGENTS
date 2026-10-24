@@ -57,7 +57,7 @@ class StrategicNegotiator(Negotiator):
 The economic controller already selected the action and executable package IDs.
 You select a communication act only. Return JSON with the planned supplier_id,
 action='send', the supplied candidate_ids, opening='warm|concise|firm',
-question='priorities|cash|continuity|authority|costs|delivery|quality|tradeoff', evidence_ids=[].
+question='priorities|cash|continuity|authority|costs|delivery|quality|tradeoff|exchange', evidence_ids=[].
 Select at most two current shareable evidence cards for THIS supplier. The composer
 quotes complete approved excerpts verbatim and adds exact contract terms.
 Do not add term_sheets or free-form factual claims. Do not change the planned action.
@@ -113,7 +113,8 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
                 controller["candidate_ids"] = list(dict.fromkeys([plan["packages"][0]["id"], chosen["id"]]))
                 controller["candidate_ids"] = list(
                     dict.fromkeys(
-                        controller["candidate_ids"] + [p["id"] for p in plan["packages"] if p.get("feedback_probe")]
+                        controller["candidate_ids"]
+                        + [p["id"] for p in plan["packages"] if p.get("feedback_probe") or p.get("exchange_probe")]
                     )
                 )[:3]
             self.support[sid]["controller"] = controller
@@ -182,7 +183,10 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
                 if not data.get("evidence_ids"):
                     data = {**data, "evidence_ids": next_evidence_ids(self._cards, threads, sid)}
                 data = responsive_act(
-                    data, threads[sid], any(p.get("feedback_probe") and p["id"] in ids for p in candidates.get(sid, []))
+                    data,
+                    threads[sid],
+                    any(p.get("feedback_probe") and p["id"] in ids for p in candidates.get(sid, [])),
+                    any(p.get("exchange_probe") and p["id"] in ids for p in candidates.get(sid, [])),
                 )
                 data = {**data, "body": compose_email(data, self._cards, sid, strategy)}
             except ValueError as exc:
@@ -286,7 +290,10 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
                 )
                 body = compose_email(
                     responsive_act(
-                        {"evidence_ids": selected_evidence}, threads[sid], any(p.get("feedback_probe") for p in chosen)
+                        {"evidence_ids": selected_evidence},
+                        threads[sid],
+                        any(p.get("feedback_probe") for p in chosen),
+                        any(p.get("exchange_probe") for p in chosen),
                     ),
                     self._cards,
                     sid,

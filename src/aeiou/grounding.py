@@ -19,6 +19,11 @@ QUESTIONS = {
         "One option follows your counteroffer's commercial terms. "
         "What reciprocal price improvement can you authorize for that package?"
     ),
+    "exchange": (
+        "The alternative changes one commercial term in exchange for the quoted price reduction. "
+        "Both changes are conditional on accepting the complete package. "
+        "Which package can you authorize?"
+    ),
 }
 
 
@@ -36,10 +41,12 @@ def fresh_evidence_cards(cards, threads):
     return [c for c in cards if not used.intersection(c.get("source_ids") or [c.get("source_id")])]
 
 
-def responsive_act(data, events, feedback_probe=False):
+def responsive_act(data, events, feedback_probe=False, exchange_probe=False):
     """Do not ask repeatedly for a breakdown; ask for the next actionable trade."""
     data = dict(data)
-    if feedback_probe:
+    if exchange_probe and not feedback_probe:
+        data["question"] = "exchange"
+    elif feedback_probe:
         data["question"] = "tradeoff"
     elif data.get("question", "costs") == "costs":
         prior = " ".join(m.get("body", "").lower() for m in events if m.get("from") == "buyer")
