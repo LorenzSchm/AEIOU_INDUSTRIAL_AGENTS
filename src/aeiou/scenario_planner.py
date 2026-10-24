@@ -7,6 +7,7 @@ from arena_kit.cost import complete_offer, total_cost
 from arena_kit.docs import standard_terms
 
 from .optimizer import estimate, valid_terms
+from .supplier_signals import recent_kinds
 from .term_exchange import exchange_history, ranked_exchanges
 
 SCENARIOS = (
@@ -47,25 +48,43 @@ def equivalent_package(case, base, terms, cost):
     terms = {**terms, "unit_price": base["unit_price"]}
     if not valid_terms(case, terms):
         return None
-    target = cost(base)
-    lo, hi = 0.01, base["unit_price"]
-    # Restrict probes to a lower cash price in exchange for a less favorable buyer term.
-    if cost({**terms, "unit_price": lo}) > target or cost(terms) < target:
+    if (
+        terms.get("contract_months", 0) < base.get("contract_months", 0)
+        and terms.get("contract_months", 0) < case["buyer"]["horizon_years"] * 12
+    ):
         return None
-    for _ in range(40):
+    target = cost(base)
+    # Search a bounded plausible neighborhood in both directions. The relationship
+    # penalty can make cost U-shaped; locate its minimum before the upper root.
+    lower, upper = max(0.01, base["unit_price"] * 0.80), base["unit_price"] * 1.20
+    lo, hi = lower, upper
+    for _ in range(32):
+        a, b = lo + (hi - lo) / 3, hi - (hi - lo) / 3
+        if cost({**terms, "unit_price": a}) < cost({**terms, "unit_price": b}):
+            hi = b
+        else:
+            lo = a
+    minimum = (lo + hi) / 2
+    feasible = [v for v in (lower, minimum, base["unit_price"], upper) if cost({**terms, "unit_price": v}) <= target]
+    if not feasible:
+        return None
+    lo, hi = max(feasible), upper
+    for _ in range(36):
         mid = (lo + hi) / 2
         if cost({**terms, "unit_price": mid}) > target:
             hi = mid
         else:
             lo = mid
-    # Whole-cent contracts cannot always hit a fractional-cent equal-cost root.
-    # Round toward the buyer and allow at most one price tick of compensation.
-    terms["unit_price"] = max(0.01, math.floor(lo * 100 + 1e-7) / 100)
-    priced = cost(terms)
-    tick = abs(cost({**terms, "unit_price": round(terms["unit_price"] + 0.01, 2)}) - priced)
-    if valid_terms(case, terms) and priced <= target + 0.001 and target - priced <= max(1, tick + 0.01):
-        return terms
-    return None
+    # Check neighboring cents, including the case where the feasible minimum is
+    # above the lower cent. Never round across the cost ceiling.
+    prices = {math.floor(lo * 100 + 1e-7) / 100, math.ceil(lo * 100 - 1e-7) / 100}
+    options = [
+        {**terms, "unit_price": price}
+        for price in prices
+        if lower <= price <= upper and cost({**terms, "unit_price": price}) <= target + 0.001
+    ]
+    options = [t for t in options if valid_terms(case, t)]
+    return max(options, key=lambda t: t["unit_price"], default=None)
 
 
 def counteroffer_probe(case, events, base, std, cost):
@@ -107,7 +126,9 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
     # Preserve the best-cost package and early-payment alternative. Use the remaining
     # slot for a genuinely different question while time remains for its answer.
     if state["moves_left"] > 2:
-        fields = sorted(("incoterm", "contract_months"), key=lambda f: f in observed)
+        fields = sorted(
+            ("effective_date", "lead_time_days", "incoterm", "contract_months"), key=lambda f: f in observed
+        )
         for field in fields:
             if field not in case["negotiable"]:
                 continue
@@ -147,7 +168,7 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
     if use_counteroffers and state["moves_left"] > 2:
         for exchange in ranked_exchanges(case, base, exchanges):
             probe = equivalent_probe(case, base, exchange["field"], exchange["value"], cost)
-            if probe is None or probe["unit_price"] >= base["unit_price"]:
+            if probe is None or probe == base:
                 continue
             if any(probe == p["terms"] for p in packages if p["id"] != "B"):
                 continue
@@ -164,6 +185,43 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
             }
             packages = [packages[0], swap] + [p for p in packages[1:] if p["id"] != "B"][:1]
             break
+    rounds = sum(m.get("from") == "buyer" for m in events)
+    if (
+        use_counteroffers
+        and rounds >= 2
+        and recent_kinds(state) & {"price_resistance", "closing_warning"}
+        and not any(p.get("feedback_probe") for p in packages)
+    ):
+        # A separate settlement candidate may cost more than an ambitious anchor,
+        # but must improve the actual standing quote. No acceptance is assumed.
+        replies = events[-1].get("term_sheets", [])
+        if replies:
+            current = complete_offer(case, {**std, **replies[0].get("terms", {})})
+            quote_cost = cost(current)
+            step = min(
+                current["unit_price"] * 0.01, max(0.01, abs(state.get("supplier_price_change") or 0) / max(1, rounds))
+            )
+            closing = {**current, "unit_price": round(max(0.01, current["unit_price"] - step), 2)}
+            choices = [closing]
+            if "effective_date" in case["negotiable"]:
+                choices += [
+                    {**closing, "effective_date": d} for d in case.get("term_options", {}).get("effective_date", [])
+                ]
+            choices = [t for t in choices if valid_terms(case, t) and cost(t) < quote_cost - 0.01]
+            if choices:
+                terms = min(choices, key=cost)
+                if terms not in [p["terms"] for p in packages]:
+                    packages = packages[:2] + [
+                        {
+                            "id": "C",
+                            "label": "Observed quote with reciprocal improvement",
+                            "terms": terms,
+                            "cost": cost(terms),
+                            "closing_probe": True,
+                            "standing_cost": quote_cost,
+                            "limitation": "Observed structure, acceptance unverified.",
+                        }
+                    ]
     scenario_cases = [(s, stressed_case(case, s)) for s in SCENARIOS]
     for package in packages:
         package["cost"] = cost(package["terms"])

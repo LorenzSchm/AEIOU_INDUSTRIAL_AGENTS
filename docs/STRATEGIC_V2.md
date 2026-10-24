@@ -177,3 +177,37 @@ regression tests cover D01 opening decisions, compensated costs, selection, ambi
 responses, learning and retirement, alongside the existing P18/D02 replays. No new
 hosted evaluation has been run for this change; the earlier 68.89 D01 and 47.05 D02
 scores describe the previous version, not measured performance of this addition.
+
+### Research-driven controller revision
+
+Comparable offers now preserve previous price concessions across portfolio changes.
+Explicit price resistance prompts a bounded 20% move across the remaining gap to
+the public standing price. This is a heuristic, not a learned supplier floor.
+Package compensation searches both price directions and accounts for the U-shaped
+relationship penalty. Exploration stays within 80–120% of the base price and does
+not shorten coverage below the buyer's horizon. These bounds are plausibility
+heuristics, not estimates of supplier acceptance.
+
+After two rounds, observed resistance can enable a settlement alternative based on
+the supplier's current terms. It must improve the standing quote and respect the
+global cost ceiling; it need not equal the ambitious base package's cost. Later
+effective dates are considered. Index-counter alternatives remain protected.
+
+Public language signals are recorded with exact evidence spans. Claude can add
+bounded interpretations before planning (at most two per supplier, one per turn,
+12-second timeout); unknown kinds and invented quotations are discarded. These
+remain interpretations, never confirmed costs or executable actions. Local rules
+remain available on provider failure. Liquidity affects strategy selection and
+resistance affects bidding. Messages address resistance, authority and settlement.
+
+RFQ conversations keep open suppliers in play before closing terminal threads,
+use standing cost to break scheduling ties and can cite real competitive standing
+offers with their conditions. Rival references are used once per recipient.
+Important rival/contract evidence is not withheld just because prices are falling.
+Missing supplier-cost estimates prompt one initial breakdown request in strategic
+categories. The lookahead now uses the same supplier estimate as package pricing;
+its response probabilities remain explicitly uncalibrated assumptions.
+
+Validation before hosted evaluation: 125 tests passed, 2 skipped; all five targeted
+revision tests passed after adding the interpretation-cache regression. No hidden
+floors or post-run reference scores are inputs to the agent.

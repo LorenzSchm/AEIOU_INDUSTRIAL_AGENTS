@@ -5,12 +5,13 @@ import math
 import time
 from dataclasses import asdict, dataclass
 
-from arena_kit.cost import total_cost
+from arena_kit.cost import complete_offer, total_cost
 from arena_kit.docs import standard_terms
 from arena_kit.play import latest, moves_left, standing
 
 from .opponent_model import supplier_utility
 from .optimizer import candidate_packages, estimate, valid_terms
+from .supplier_signals import recent_kinds
 
 
 @dataclass(frozen=True)
@@ -31,6 +32,13 @@ def select_strategy(case, events, state, belief, enabled=True):
         return {"name": "balanced", "reason": "Portfolio disabled for ablation", "anchor": 0.18}
     if moves_left(case, events) <= 2:
         return {"name": "closing", "reason": "Few executable turns remain", "anchor": 0.12}
+    signals = recent_kinds(state)
+    if "liquidity" in signals:
+        return {
+            "name": "cash_exchange",
+            "reason": "Public supplier statement prioritizes liquidity; unverified preference",
+            "anchor": 0.14 if case["buyer"].get("category_goal") in {"stabilise", "secure_supply"} else 0.18,
+        }
     if state["identical_price_replies"] >= 3:
         return {"name": "trade_terms", "reason": "Repeated price suggests exploring compensated terms", "anchor": 0.18}
     probable = max(belief["hypotheses"], key=lambda h: h["weight"])
@@ -69,6 +77,30 @@ def adaptive_packages(case, events, sid, intelligence, state, belief, features):
     _, current = standing(events)
     rounds = sum(m.get("from") == "buyer" for m in events)
     remaining = moves_left(case, events)
+    std = standard_terms(events)
+    supplier = estimate(case, sid, std, intelligence)
+    previous = [
+        complete_offer(case, {**std, **sheet.get("terms", {})})
+        for message in events
+        if message.get("from") == "buyer"
+        for sheet in message.get("term_sheets", [])
+    ]
+    signals = recent_kinds(state)
+    for package in packages:
+        terms = package["terms"]
+        comparable = [
+            p["unit_price"]
+            for p in previous
+            if all(p.get(f) == terms.get(f) for f in case["negotiable"] if f != "unit_price")
+        ]
+        if comparable:
+            # Switching tactics cannot silently withdraw our previous concession.
+            terms["unit_price"] = max(terms["unit_price"], max(comparable))
+        if rounds and "price_resistance" in signals:
+            # Measured movement toward an observed quote, not a guessed floor.
+            gap = max(0, current["unit_price"] - terms["unit_price"])
+            terms["unit_price"] = round(terms["unit_price"] + gap * 0.20, 2)
+        package["cost"] = total_cost(case, terms, std, supplier)
     # Resolve a complete package before a last price-only counter resets its terms.
     # A stagnant quote alone never justifies matching an opening ask immediately.
     if rounds >= 3 and (remaining <= 2 or state["identical_price_replies"] >= 3):
@@ -87,7 +119,7 @@ def adaptive_packages(case, events, sid, intelligence, state, belief, features):
     return packages, strategy
 
 
-def plan_next_action(case, events, packages, standing_rows, belief, enabled=True, budget_ms=100):
+def plan_next_action(case, events, packages, standing_rows, belief, enabled=True, budget_ms=100, supplier=None):
     """Compare actual acceptance with hypothetical send continuations.
 
     Public price movement provides a range, not a private floor. Hypothesis weights
@@ -126,7 +158,7 @@ def plan_next_action(case, events, packages, standing_rows, belief, enabled=True
                     "unit_price": max(0.01, current["unit_price"] - factor * belief["observed_price_step"]),
                 }
                 accepts = utility >= threshold - 1e-6
-                response_cost = package["cost"] if accepts else total_cost(case, predicted, std)
+                response_cost = package["cost"] if accepts else total_cost(case, predicted, std, supplier)
                 # If rejected, one more controlled attempt may obtain the predicted package.
                 final_cost = response_cost if remaining > 1 else min(current_cost, response_cost)
                 if not math.isfinite(final_cost):

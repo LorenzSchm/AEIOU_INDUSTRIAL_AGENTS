@@ -8,16 +8,18 @@ import re
 import time
 
 from arena_kit.agents.llm import parse
+from arena_kit.docs import standard_terms
 from arena_kit.play import latest, live_threads, moves_left
 
 from .agent import Negotiator, log
-from .grounding import compose_email, fresh_evidence_cards, next_evidence_ids, responsive_act
+from .grounding import compose_email, fresh_evidence_cards, next_evidence_ids, responsive_act, rival_quote_cards
 from .negotiation_state import supplier_state
 from .opponent_model import learn_beliefs, predicted_choices
-from .optimizer import alternative_cost, evaluate, safe_close
+from .optimizer import alternative_cost, estimate, evaluate, safe_close
 from .retrieval import evidence_cards, evidence_cutoff
 from .scenario_planner import plan_packages
 from .strategy_policy import StrategicFeatures, adaptive_packages, plan_next_action
+from .supplier_signals import observed_signals, validated_interpretation
 
 STRATEGIC_SYSTEM = """
 Strategic controller: use decision_support to interpret public supplier behavior.
@@ -44,10 +46,12 @@ class StrategicNegotiator(Negotiator):
             writer_instruction = load_writer_instruction(os.environ["AEIOU_WRITER_INSTRUCTION_FILE"])
         self.writer_instruction = writer_instruction or ""
         self.controller = {}
+        self._interpretations = {}
 
     def prepare(self, case):
         super().prepare(case)
         self._cards = []
+        self._interpretations = {}
         if self.features.retrieval:
             self._index = self.pkg.evidence_index()
 
@@ -57,7 +61,8 @@ class StrategicNegotiator(Negotiator):
 The economic controller already selected the action and executable package IDs.
 You select a communication act only. Return JSON with the planned supplier_id,
 action='send', the supplied candidate_ids, opening='warm|concise|firm',
-question='priorities|cash|continuity|authority|costs|delivery|quality|tradeoff|exchange', evidence_ids=[].
+question='priorities|cash|continuity|authority|costs|delivery|quality|tradeoff|exchange|settlement|price_response',
+evidence_ids=[].
 Select at most two current shareable evidence cards for THIS supplier. The composer
 quotes complete approved excerpts verbatim and adds exact contract terms.
 Do not add term_sheets or free-form factual claims. Do not change the planned action.
@@ -93,7 +98,11 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
             )
             # No exploration package may cost more than the current optimizer's envelope.
             budget = min(ceiling, max((p["cost"] for p in candidates), default=0) * 1.0025)
-            plan["packages"] = [p for p in plan["packages"] if p["cost"] <= budget]
+            plan["packages"] = [
+                p
+                for p in plan["packages"]
+                if p["cost"] <= (min(ceiling, p["standing_cost"] - 0.01) if p.get("closing_probe") else budget)
+            ]
             if plan["recommendation"] not in {p["id"] for p in plan["packages"]}:
                 plan["recommendation"] = next((p["id"] for p in plan["packages"]), None)
             plan["economic_ceiling"] = budget if math.isfinite(budget) else None
@@ -105,6 +114,7 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
                 evaluate(case, threads, self.intelligence),
                 self.support[sid]["belief"],
                 self.features.lookahead,
+                supplier=estimate(case, sid, standard_terms(threads[sid]), self.intelligence),
             )
             # Initially retain diverse questions. Once evidence accumulates, exploit
             # the preferred compensated package while preserving buyer-value A.
@@ -114,7 +124,11 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
                 controller["candidate_ids"] = list(
                     dict.fromkeys(
                         controller["candidate_ids"]
-                        + [p["id"] for p in plan["packages"] if p.get("feedback_probe") or p.get("exchange_probe")]
+                        + [
+                            p["id"]
+                            for p in plan["packages"]
+                            if p.get("feedback_probe") or p.get("exchange_probe") or p.get("closing_probe")
+                        ]
                     )
                 )[:3]
             self.support[sid]["controller"] = controller
@@ -187,6 +201,8 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
                     threads[sid],
                     any(p.get("feedback_probe") and p["id"] in ids for p in candidates.get(sid, [])),
                     any(p.get("exchange_probe") and p["id"] in ids for p in candidates.get(sid, [])),
+                    any(p.get("closing_probe") and p["id"] in ids for p in candidates.get(sid, [])),
+                    self.support[sid]["state"].get("signals", []),
                 )
                 data = {**data, "body": compose_email(data, self._cards, sid, strategy)}
             except ValueError as exc:
@@ -207,13 +223,51 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
             }
             for sid, events in threads.items()
         }
+        interpreted_this_turn = False
+        for sid, events in threads.items():
+            state = self.support[sid]["state"]
+            state["signals"] = observed_signals(events) if self.features.opponent_learning else []
+            # Analyze at most two fresh, nonterminal replies per supplier. Exact
+            # quotes are validated; failures leave deterministic rules available.
+            replies = [i for i, m in enumerate(events) if m.get("from") != "buyer"]
+            key = (sid, replies[-1]) if replies else None
+            interpret = getattr(self.backend, "interpret_supplier", None)
+            used = sum(k[0] == sid for k in self._interpretations)
+            if (
+                self.features.opponent_learning
+                and interpret
+                and not interpreted_this_turn
+                and key
+                and key not in self._interpretations
+                and used < 2
+                and len(replies) > 1
+                and events[-1].get("status") == "open"
+            ):
+                self._interpretations[key] = []
+                interpreted_this_turn = True
+                try:
+                    body = events[key[1]].get("body", "")
+                    self._interpretations[key] = validated_interpretation(interpret(body), body, key[1])
+                except Exception as exc:
+                    log.warning("Supplier interpretation failed: %s", type(exc).__name__)
+            state["signals"] += [
+                signal for k, values in self._interpretations.items() if k[0] == sid for signal in values
+            ]
         self.rejections = []
         live = live_threads(threads)
         if not live:
             raise ValueError("No live supplier")
         offers = self.packages(case, threads)
         unexplored = [sid for sid in live if not any(m.get("from") == "buyer" for m in threads[sid])]
-        sid = min(unexplored or live, key=lambda s: sum(m.get("from") == "buyer" for m in threads[s]))
+        open_suppliers = [s for s in live if latest(threads[s]).get("status") == "open"]
+        standing_rows = evaluate(case, threads, self.intelligence)
+        quote_costs = {
+            s: min((r["cost"] for r in standing_rows if r["supplier_id"] == s), default=math.inf) for s in live
+        }
+        sid = min(
+            unexplored or open_suppliers or live,
+            key=lambda s: (sum(m.get("from") == "buyer" for m in threads[s]), quote_costs[s]),
+        )
         controller = self.support[sid]["controller"]
         self.controller = {**controller, "supplier_id": sid}
         if unexplored and controller["action"] == "accept":
@@ -259,6 +313,8 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
                             self.intelligence["facts"][ref] = fact
         if self.features.grounded_language:
             self._cards = fresh_evidence_cards(self._cards, threads)
+        self._cards = rival_quote_cards(case, threads, self.intelligence, sid) + self._cards
+        self.support[sid]["evidence_available"] = any(c.get("shareable") for c in self._cards)
         move, source = None, "controller policy"
         if self.controller["action"] in {"accept", "walk_away"} or not offers.get(sid):
             move, source = safe_close(case, threads, self.intelligence), "controller close"
@@ -294,6 +350,8 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
                         threads[sid],
                         any(p.get("feedback_probe") for p in chosen),
                         any(p.get("exchange_probe") for p in chosen),
+                        any(p.get("closing_probe") for p in chosen),
+                        self.support[sid]["state"].get("signals", []),
                     ),
                     self._cards,
                     sid,
@@ -309,6 +367,17 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
                 }
         sheets = move["message"].get("term_sheets", [])
         if sheets:
+            if (
+                case["buyer"].get("category_goal") in {"stabilise", "secure_supply"}
+                and not self.intelligence.get("estimates", {}).get(sid)
+                and not any(
+                    "cost breakdown" in m.get("body", "").lower() for m in threads[sid] if m.get("from") == "buyer"
+                )
+                and not any(m.get("from") == "buyer" for m in threads[sid])
+            ):
+                move["message"]["body"] += (
+                    "\n\nCould you share a cost breakdown so we can assess a sustainable complete agreement?"
+                )
             summaries = []
             labels = {
                 "unit_price": "Unit price (EUR)",

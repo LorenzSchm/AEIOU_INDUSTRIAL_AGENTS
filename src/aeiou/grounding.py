@@ -20,9 +20,17 @@ QUESTIONS = {
         "What reciprocal price improvement can you authorize for that package?"
     ),
     "exchange": (
-        "The alternative changes one commercial term in exchange for the quoted price reduction. "
+        "The alternative trades a commercial term against its quoted price. "
         "Both changes are conditional on accepting the complete package. "
         "Which package can you authorize?"
+    ),
+    "settlement": (
+        "One option builds on your quoted conditions with a reciprocal improvement. "
+        "Could you approve that complete package?"
+    ),
+    "price_response": (
+        "We understand that our earlier price was not workable for you. "
+        "We have revised the complete options; what reciprocal movement can you authorize?"
     ),
 }
 
@@ -41,10 +49,19 @@ def fresh_evidence_cards(cards, threads):
     return [c for c in cards if not used.intersection(c.get("source_ids") or [c.get("source_id")])]
 
 
-def responsive_act(data, events, feedback_probe=False, exchange_probe=False):
+def responsive_act(data, events, feedback_probe=False, exchange_probe=False, closing_probe=False, interpretations=()):
     """Do not ask repeatedly for a breakdown; ask for the next actionable trade."""
     data = dict(data)
-    if exchange_probe and not feedback_probe:
+    from .supplier_signals import observed_signals, recent_kinds
+
+    signals = recent_kinds({"signals": observed_signals(events) + list(interpretations)})
+    if "closing_warning" in signals or "approval_required" in signals:
+        data["question"] = "authority"
+    elif closing_probe:
+        data["question"] = "settlement"
+    elif "price_resistance" in signals and not feedback_probe:
+        data["question"] = "price_response"
+    elif exchange_probe and not feedback_probe:
         data["question"] = "exchange"
     elif feedback_probe:
         data["question"] = "tradeoff"
@@ -70,8 +87,7 @@ def next_evidence_ids(cards, threads, sid):
     # Let a productive concession continue. Introduce a fresh cost driver when
     # public price movement stalls or reverses, rather than unloading all evidence
     # in the opening or repeating a claim the supplier has already addressed.
-    if len(prices) >= 2 and prices[-1] < prices[-2]:
-        return []
+    improving = len(prices) >= 2 and prices[-1] < prices[-2]
     used = {
         ref
         for events in threads.values()
@@ -80,12 +96,14 @@ def next_evidence_ids(cards, threads, sid):
         for ref in ID_RE.findall(message.get("body", ""))
     }
     for card in cards:
+        if improving and card.get("kind") not in {"rival_quote", "contract_notice"}:
+            continue
         refs = card.get("source_ids") or [card.get("source_id")]
         if (
             card.get("shareable")
             and card.get("supplier_id") in {sid, None}
             and refs
-            and all(ref and ref not in used for ref in refs)
+            and all(ref and (ref not in used or card.get("kind") == "rival_quote") for ref in refs)
         ):
             return [card["id"]]
     return []
@@ -129,7 +147,9 @@ def compose_email(data, cards, sid, strategy="balanced"):
     body = [OPENINGS[opening]]
     for card in approved:
         refs = card.get("source_ids") or [card["source_id"]]
-        if card["kind"] == "computed_index":
+        if card["kind"] == "rival_quote":
+            body.append(card["text"])
+        elif card["kind"] == "computed_index":
             body.append(card["text"])
             body.append(
                 "This driver alone does not establish your total cost. "
@@ -139,6 +159,35 @@ def compose_email(data, cards, sid, strategy="balanced"):
             body.append(f"Your supplied document states: {card['text']} ({', '.join(refs)}).")
     body.extend([QUESTIONS[question], "Any movement is conditional on the executable terms below."])
     return "\n\n".join(body)
+
+
+def rival_quote_cards(case, threads, intelligence, sid):
+    """Only real, currently executable competitor offers from this case/session."""
+    from .agent import ID_RE
+    from .optimizer import evaluate
+
+    rows = evaluate(case, threads, intelligence)
+    own = min((r["cost"] for r in rows if r["supplier_id"] == sid), default=float("inf"))
+    used = {ref for m in threads[sid] if m.get("from") == "buyer" for ref in ID_RE.findall(m.get("body", ""))}
+    for row in rows:
+        ref, t = row["sheet_id"], row["terms"]
+        if row["supplier_id"] == sid or not row["acceptable"] or row["cost"] >= own or ref in used:
+            continue
+        return [
+            {
+                "id": "rival:" + ref,
+                "source_id": ref,
+                "supplier_id": sid,
+                "shareable": True,
+                "kind": "rival_quote",
+                "text": (
+                    f"Another supplier's current offer ({ref}) is EUR {t['unit_price']:.2f} per unit, "
+                    f"payment {t['payment_days']} days, delivery {t['lead_time_days']} days, {t['incoterm']}. "
+                    "These are its quoted conditions; can you improve your complete package competitively?"
+                ),
+            }
+        ]
+    return []
 
 
 def safe_excerpt(text):
