@@ -954,3 +954,28 @@ to c6c2019; all runtime code/tests match that version. The experiment remains in
 Git history and data/local/evaluations/practice-p07-9aaa548/report.json. Further
 bid-increment tuning has weak support; investigate executable package tradeoffs
 or defensible valuation evidence before another hosted test.
+
+
+## Observed cash incentive plus continuity
+
+After the unsuccessful stronger-third-bid experiment, keep the 72.75 concession
+path and change the package trade instead. P07 repeatedly quotes a lower price
+for earlier payment, while our longer-duration option retains long payment.
+The new portfolio rule combines an observed like-for-like cash incentive with
+an already-proposed longer contract, replacing only the generic duration option.
+It activates only when the existing material reciprocity guard records genuine
+progress, not on openings, plateaus or final offers. A/B stay intact. The combined
+proposal must be legal, preserve any prior same-structure concession and cost no
+more than A under the current buyer cost model. No additional duration benefit
+is assumed; acceptance and the supplier's valuation remain unknown. Longer
+commitment is explicitly in the terms, not represented as a costless promise.
+No supplier IDs, scenario IDs or historical scoring targets enter the rule.
+
+Validation: 96 focused tests passed, including synthetic unseen payment and
+contract lengths, unmatched quote structures, protected probes and prior-price
+constraints. All 57 protected P01-P05 historical decisions are identical. A P07
+replay preserves its opener, A/B, price path and terminal acceptance; the second
+C becomes 4.84 / 14 / 36 and third C 4.98 / 14 / 36. Local files:
+cash-continuity-protected.json and cash-continuity-p07.json. This is a policy
+experiment, not proof of improved expected scores. Exactly one hosted P07 test
+is planned, without session-creation retries. The 72.75 runtime is the fallback.

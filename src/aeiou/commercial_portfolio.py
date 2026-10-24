@@ -15,6 +15,69 @@ def structure(terms):
     return {k: v for k, v in terms.items() if k != "unit_price"}
 
 
+def combine_cash_continuity(case, events, packages, cost, compensate):
+    """Combine a quoted cash incentive with an already-proposed longer contract.
+
+    Preserve A/B and replace only a generic duration experiment. Activation needs
+    genuine reciprocal price progress and a live like-for-like cash discount.
+    The longer commitment is explicit, not an assumed free supplier benefit.
+    """
+    if (
+        len(packages) != 3
+        or not packages[0].get("reciprocal_progress")
+        or not {"payment_days", "contract_months"} <= set(case["negotiable"])
+        or not events
+        or events[-1].get("from") == "buyer"
+        or events[-1].get("status") != "open"
+        or packages[2].get("label") != "Explore contract_months"
+    ):
+        return packages
+    base, cash, longer = (p["terms"] for p in packages)
+    if cash["payment_days"] >= base["payment_days"] or longer["contract_months"] <= base["contract_months"]:
+        return packages
+    std = standard_terms(events)
+    quotes = [closing_terms(case, s.get("terms", {}), std) for s in events[-1].get("term_sheets", [])]
+
+    def comparable(a, b):
+        return all(a.get(f) == b.get(f) for f in a.keys() | b.keys() if f not in {"unit_price", "payment_days"})
+
+    incentive = any(
+        q["payment_days"] == cash["payment_days"]
+        and other["payment_days"] == base["payment_days"]
+        and q["unit_price"] < other["unit_price"]
+        and comparable(q, other)
+        for q in quotes
+        for other in quotes
+    )
+    if not incentive:
+        return packages
+    terms = compensate(case, base, {**cash, "contract_months": longer["contract_months"]}, cost)
+    if terms is None:
+        return packages
+    for message in events:
+        if message.get("from") != "buyer":
+            continue
+        for sheet in message.get("term_sheets", []):
+            prior = sheet.get("terms", {})
+            if structure(prior) == structure(terms):
+                terms["unit_price"] = max(terms["unit_price"], prior["unit_price"])
+    if not valid_terms(case, terms) or cost(terms) > cost(base) + 0.001:
+        return packages
+    return packages[:2] + [
+        {
+            "id": packages[2]["id"],
+            "label": "Combined cash and continuity exchange",
+            "terms": terms,
+            "cost": cost(terms),
+            "portfolio_probe": True,
+            "issue": "cash_continuity",
+            "standing_cost": min(cost(q) for q in quotes),
+            "portfolio_ceiling": cost(base),
+            "limitation": "Cash discount observed; additional duration benefit and acceptance unverified.",
+        }
+    ]
+
+
 def commercial_shapes(case, base, current):
     """Explore coupled issues that a one-coordinate optimizer cannot price jointly."""
     options, fields = case.get("term_options", {}), case["negotiable"]
