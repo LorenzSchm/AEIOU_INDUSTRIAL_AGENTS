@@ -979,3 +979,21 @@ C becomes 4.84 / 14 / 36 and third C 4.98 / 14 / 36. Local files:
 cash-continuity-protected.json and cash-continuity-p07.json. This is a policy
 experiment, not proof of improved expected scores. Exactly one hosted P07 test
 is planned, without session-creation retries. The 72.75 runtime is the fallback.
+
+
+Outcome (`3587083`): exactly one hosted session `1630c98eea2f26ce` tied the
+**72.75** record, with the same 5.44 / 90 / 24 deal and 324252.80 total cost.
+The supplier's second response quoted 5.49 / 90 / 24 and 5.40 / 14 / 36, explicitly
+acknowledging the combined alternative. However, the third buyer message advanced
+A/B to 5.07 / 4.98 while retaining the earlier combined 4.84 / 14 / 36 bid. The
+new supplier menu no longer contained a like-for-like cash-only pair, and the
+portfolio/progress pipeline retained the earlier combined bid instead of advancing
+it. The old-history replay could not expose this changed-response path. This is
+a follow-up lifecycle limitation, not evidence of a supplier floor; inspect it
+before further testing the combined-trade hypothesis.
+
+Three model calls used 16110 input / 273 output tokens, no API errors/fallbacks.
+Quota increased 128 -> 129 and best scores were unchanged. No second session was
+started. A tie does not justify claiming an improvement: restore runtime/tests
+exactly to fd10d6d (the 72.75 baseline), preserving experiment code in Git history.
+Report: data/local/evaluations/practice-p07-3587083/report.json.

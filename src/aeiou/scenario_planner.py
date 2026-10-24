@@ -6,7 +6,7 @@ import math
 from arena_kit.cost import complete_offer
 from arena_kit.docs import standard_terms
 
-from .commercial_portfolio import combine_cash_continuity, merge_portfolio, portfolio_probes
+from .commercial_portfolio import merge_portfolio, portfolio_probes
 from .economic_beliefs import total_cost
 from .optimizer import estimate, valid_terms
 from .portfolio_value import bounded_anchor, risk_exchange_ceiling, sensitivity_cost
@@ -301,7 +301,6 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
             sensitivities=intelligence.get("economic_sensitivities", {}).get(sid, {}).get("scenarios"),
         )
         packages = merge_portfolio(packages, probes)
-        packages = combine_cash_continuity(case, events, packages, cost, equivalent_package)
     packages = distinct_packages(packages)
     anchor_expected = packages[0].get("uncertainty_anchor", {}).get("expected_cost")
     if anchor_expected is not None:
