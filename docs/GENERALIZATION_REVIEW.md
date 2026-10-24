@@ -1229,3 +1229,21 @@ Final validation: 125 focused tests pass; 57 protected P01-P05 decisions are
 exactly identical; Ruff clean. The final runtime is not hosted-tested: no second
 attempt was opened under this follow-up. One cannot claim a score improvement.
 Report: data/local/evaluations/practice-p08-12e75ba/report.json.
+
+
+## P08 final communication revision: single requested retry
+
+Runtime a5b7a16, sole session 4d8ca1ef3d382235: **50.55**, +2.35 points versus
+48.20, but 8.60 below the 59.15 record. Agreement 5.51/payment90/duration36,
+AS-14404 share45%/deadband5%, total buyer cost 1047133.62. One model-proposed
+36-month extension was admitted at the same price/payment structure; positive
+index figures were not volunteered after the generic request for price support.
+The supplier reciprocated duration, then ended at 5.51. This does not establish
+a causal effect or a new record. No runtime changes after this attempt.
+
+Three calls, 19950 input / 271 output tokens, no errors/fallbacks, 64.61 seconds.
+Exactly one creation marker/request and one P08 session. Shared quota changed
+136 -> 138 because a concurrent P18 session 0878e87ccf1628cb opened after our
+P08 session; we did not create or interact with that P18 session. Session list
+metadata is saved in practice-p08-a5b7a16/quota-audit.json. Best map unchanged
+at completion. Dashboard: data/local/evaluations/practice-p08-a5b7a16/report.json.
