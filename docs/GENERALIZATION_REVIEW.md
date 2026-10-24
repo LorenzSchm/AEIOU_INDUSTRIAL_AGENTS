@@ -1283,3 +1283,21 @@ Three calls, 19708 input / 273 output tokens, zero errors/fallbacks, 68.89 secon
 Exactly one session-creation marker/request; quota 141 -> 142. P08 best unchanged.
 The best-map change was an independent team P18 result (64.27 -> 67.27), not ours.
 Dashboard: data/local/evaluations/practice-p08-80410b4/report.json.
+
+
+## Add duration to verified indexed reciprocity without giving away cash
+
+The 57.04 policy retained 90-day payment but did not explore a longer term in
+that run. Pair a verified indexed reciprocal package with the next legal duration,
+at the same price/payment/index structure and no higher modeled buyer cost.
+Replace only a redundant non-anchor fixed-price option; preserve A and the
+reciprocal package. No new supplier preference is inferred. Prior same-structure
+concessions, external ceilings, finite costs and terminal states remain guarded.
+If duration increases modeled cost or has no legal successor, leave the menu alone.
+The earlier failed cash14/duration36 heuristic remains removed.
+
+139 focused tests pass, Ruff clean, 57 protected P01-P05 archived decisions
+unchanged. Replay of 80410b4 leaves the opening and terminal acceptance unchanged;
+after the first counter, 5.08/index5%/pay90 is offered for both 24 and 36 months.
+The duration is a requested contract trade, not an assumed supplier acceptance.
+One further P08 hosted attempt is authorized, no session-creation retries.

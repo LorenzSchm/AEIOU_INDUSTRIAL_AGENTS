@@ -3,7 +3,7 @@ import copy
 import pytest
 from arena_kit.cost import complete_offer, total_cost
 
-from aeiou.reciprocity import responsive_packages, same_structure
+from aeiou.reciprocity import extend_indexed_commitment, responsive_packages, same_structure
 from aeiou.simulation import local_cases
 
 
@@ -166,3 +166,41 @@ def test_index_reciprocity_requires_observed_structure_and_safe_movement(change)
         packages[2] = {**packages[2], "terms": {**packages[2]["terms"], "unit_price": 21}}
         packages[2]["cost"] = total_cost(case, packages[2]["terms"])
     assert responsive_packages(case, events, packages, {}, lambda t: total_cost(case, t), ceiling) == packages
+
+
+def test_longer_indexed_commitment_preserves_cash_anchor_and_live_reciprocity():
+    case, events, packages = indexed_scenario()
+    cost = lambda t: total_cost(case, t)  # noqa: E731
+    reciprocal = responsive_packages(case, events, packages, {}, cost, float("inf"))
+    before = copy.deepcopy(reciprocal)
+    result = extend_indexed_commitment(case, events, reciprocal, cost, float("inf"))
+    assert reciprocal == before
+    assert result[0] == reciprocal[0] and result[2] == reciprocal[2]
+    assert result[1]["indexed_continuity"]
+    assert result[1]["terms"]["contract_months"] == 30
+    assert result[1]["terms"]["payment_days"] == 75
+    assert result[1]["terms"]["unit_price"] == result[2]["terms"]["unit_price"]
+    assert result[1]["cost"] <= result[2]["cost"]
+
+
+@pytest.mark.parametrize(
+    "change", ["no_reciprocity", "terminal", "no_duration", "ceiling", "prior_higher", "duration_cost"]
+)
+def test_longer_indexed_commitment_respects_preconditions_and_cost(change):
+    case, events, packages = indexed_scenario()
+    cost = lambda t: total_cost(case, t)  # noqa: E731
+    reciprocal = responsive_packages(case, events, packages, {}, cost, float("inf"))
+    ceiling = float("inf")
+    if change == "no_reciprocity":
+        reciprocal[2].pop("index_reciprocity")
+    elif change == "terminal":
+        events[-1]["status"] = "final_offer"
+    elif change == "no_duration":
+        case["term_options"]["contract_months"] = [24]
+    elif change == "ceiling":
+        ceiling = reciprocal[2]["cost"] - 1
+    elif change == "prior_higher":
+        events[0]["term_sheets"].append({"terms": {**reciprocal[2]["terms"], "contract_months": 30, "unit_price": 100}})
+    elif change == "duration_cost":
+        cost = lambda t: total_cost(case, t) + (1000 if t["contract_months"] > 24 else 0)  # noqa: E731
+    assert extend_indexed_commitment(case, events, reciprocal, cost, ceiling) == reciprocal

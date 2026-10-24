@@ -30,7 +30,7 @@ from .grounding import (
 from .negotiation_state import supplier_state
 from .opponent_model import learn_beliefs, predicted_choices
 from .optimizer import alternative_cost, estimate, evaluate, safe_close
-from .reciprocity import responsive_packages
+from .reciprocity import extend_indexed_commitment, responsive_packages
 from .retrieval import evidence_cards, evidence_cutoff
 from .scenario_planner import plan_packages
 from .strategic_planner import admit_proposals, proposal_limits
@@ -173,6 +173,13 @@ class StrategicNegotiator(Negotiator):
                 threads[sid],
                 plan["packages"],
                 standard,
+                lambda terms, std=standard, model=supplier: total_cost(case, terms, std, model),
+                ceiling,
+            )
+            plan["packages"] = extend_indexed_commitment(
+                case,
+                threads[sid],
+                plan["packages"],
                 lambda terms, std=standard, model=supplier: total_cost(case, terms, std, model),
                 ceiling,
             )
@@ -342,7 +349,7 @@ class StrategicNegotiator(Negotiator):
                 data = {**data, "body": compose_email(data, self._cards, sid, strategy)}
                 if any(p.get("index_reciprocity") and p["id"] in ids for p in candidates.get(sid, [])):
                     data["body"] += (
-                        "\n\nThe indexed option makes a further price movement on the terms you quoted. "
+                        "\n\nThe option retaining your quoted contract terms makes a further price movement. "
                         "In return, please review your price on that complete package."
                     )
                 if cover:
