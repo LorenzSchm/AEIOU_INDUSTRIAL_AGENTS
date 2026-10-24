@@ -1154,3 +1154,20 @@ and enum order; rising indices favor larger deadbands, falling indices favor
 smaller ones, always within the protected buyer budget. All 57 archived P01-P05
 decisions and portfolios remain exactly identical. One hosted P08 attempt is
 planned, with exclusive creation markers and no session-creation retries.
+
+
+P08 outcome (6daa3e5): exactly one session ada3a253fb544573, score **49.47**,
+9.68 points below the prior 59.15 best. Agreement 5.52/payment90/duration24,
+AS-14404 share45%/deadband5%; total buyer cost 1049034.05 versus 1032035.14.
+Quota 133 -> 134, entire best map unchanged. Three model calls, 19782 input /
+304 output tokens, no errors or fallbacks, 102.97 seconds. No repeat attempted.
+
+The supplier adopted the index protection, but higher base price outweighed
+payment and index savings. The live model cited the trigger letter instead of
+the available fixed-alloy hedge evidence. Two fixed-price menu slots persisted
+through repeated demands for indexation; no 36-month exchange was tested.
+These are concrete next targets, not proof they will improve scores. Retain the
+small cost-ranking correction as enum-order-independent economic behavior,
+not as a proven score improvement; all protected P01-P05 replays are unchanged.
+Further strategy changes require separate validation. Dashboard report:
+data/local/evaluations/practice-p08-6daa3e5/report.json.
