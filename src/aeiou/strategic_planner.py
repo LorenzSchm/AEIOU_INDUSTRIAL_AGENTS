@@ -19,6 +19,10 @@ Return one JSON object:
  "proposals":[{"base_id":"existing candidate ID", "changes":{"legal_field":value}}]}
 Propose zero to two complete-package amendments. Use ONLY negotiable fields and
 the supplied term_options; each amendment inherits all other fields from base_id.
+proposal_contract is your executable schema: copy a base_id from base_ids, put
+ONLY editable_fields in changes and omit every fixed term, even if unchanged.
+Check previous_buyer_packages: never lower a price you already offered on the
+same complete terms. Prefer extending an observed concession to starting over.
 Seek trades the existing candidates missed: quality versus liability, cash versus
 index protection, delivery versus volume or duration. Use observed replies to
 identify an obstacle, not just a cheaper price. Consider a small conditional
@@ -43,7 +47,7 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
     across all supplier-economics scenarios when an acceptable quote exists.
     This envelope is a policy limit, not a claimed acceptance probability.
     """
-    trace = {"accepted": [], "rejected": [], "selected": None}
+    trace = {"accepted": [], "rejected": [], "selected": None, "submitted": []}
     if not isinstance(data, dict) or data.get("supplier_id") != sid or data.get("action") != "send":
         trace["rejected"].append("Invalid planner action or supplier")
         return candidates, trace
@@ -76,8 +80,23 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
                 raise ValueError("Invalid base reference")
             base = by_id.get(proposal["base_id"])
             changes = proposal.get("changes")
-            if not base or not isinstance(changes, dict) or not changes or set(changes) - set(case["negotiable"]):
-                raise ValueError("Unknown base or non-negotiable changes")
+            trace["submitted"].append(
+                {
+                    "base_id": proposal["base_id"][:80],
+                    "fields": sorted(str(k)[:80] for k in changes)[:20] if isinstance(changes, dict) else [],
+                }
+            )
+            if not base:
+                raise ValueError("Unknown base ID; use a current candidate ID")
+            if not isinstance(changes, dict) or not changes:
+                raise ValueError("Changes must be a nonempty object")
+            fixed = case.get("fixed_terms", {})
+            unknown = set(changes) - set(case["negotiable"])
+            if any(f not in fixed or changes[f] != fixed[f] for f in unknown):
+                raise ValueError("Changes include unknown or modified fixed fields")
+            # Harmless repetitions of identical fixed fields do not invalidate an
+            # otherwise legal proposal. They cannot enter the executable sheet.
+            changes = {f: v for f, v in changes.items() if f in case["negotiable"]}
             terms = {**base["terms"], **changes}
             if type(terms.get("unit_price")) in (int, float):
                 terms["unit_price"] = round(terms["unit_price"], 2)
@@ -125,6 +144,8 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
     weights = predicted_choices(case, admitted, belief, std)
     chosen = max(zip(admitted, weights, strict=True), key=lambda p: (p[1], -p[0]["cost"]))[0]
     fallback = next((p for p in candidates if p.get("closing_probe")), None)
+    if fallback is None:
+        fallback = next((p for p in candidates if p.get("retained_concession")), None)
     if fallback is None:
         fallback = next((p for p in candidates if p["id"] != anchor["id"]), None)
     portfolio = [anchor] + ([fallback] if fallback else []) + [chosen]

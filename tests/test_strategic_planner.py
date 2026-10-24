@@ -207,3 +207,37 @@ def test_evaluation_routes_strategy_instructions_and_experimental_flags():
     assert not planner.writer_instruction
     assert writer.writer_instruction == "Ask once."
     assert not writer.planner_instruction
+
+
+def test_identical_fixed_terms_are_ignored_but_fixed_changes_rejected():
+    case, sid, threads, candidates = setup_case()
+    field, value = next(iter(case["fixed_terms"].items()))
+    data = {
+        "supplier_id": sid,
+        "action": "send",
+        "proposals": [{"base_id": "A", "changes": {"payment_days": 60, field: value}}],
+    }
+    portfolio, trace = admit_proposals(case, threads, sid, candidates, {}, data, learn_beliefs(case, []))
+    assert trace["selected"] == "L1" and field not in portfolio[-1]["terms"]
+    data["proposals"][0]["changes"][field] = "illegal-fixed-change"
+    portfolio, trace = admit_proposals(case, threads, sid, candidates, {}, data, learn_beliefs(case, []))
+    assert portfolio == candidates and trace["rejected"]
+
+
+def test_supported_prior_concession_survives_portfolio_regeneration():
+    from aeiou.concessions import preserve_progress
+
+    case, sid, threads, candidates = setup_case()
+    prior = complete_offer(case, {"unit_price": 18, "payment_days": 30})
+    threads[sid].insert(0, {"from": "buyer", "term_sheets": [{"terms": prior}]})
+    cash = complete_offer(case, {"unit_price": 16, "payment_days": 30})
+    candidates[0]["terms"]["payment_days"] = 90
+    candidates.append({"id": "B", "terms": cash, "cost": total_cost(case, cash)})
+    before = copy.deepcopy(candidates)
+    result = preserve_progress(case, threads[sid], candidates, lambda t: total_cost(case, t), float("inf"))
+    assert candidates == before
+    assert result[0] == candidates[0]
+    assert result[1]["terms"] == prior
+    # A previous offer that no longer beats the actual standing quote must not persist.
+    threads[sid][-1]["term_sheets"][0]["terms"]["unit_price"] = 17
+    assert preserve_progress(case, threads[sid], candidates, lambda t: total_cost(case, t), float("inf")) == candidates

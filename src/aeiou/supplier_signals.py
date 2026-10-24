@@ -4,7 +4,11 @@ import re
 
 KINDS = {"price_resistance", "liquidity", "continuity", "delivery_cost", "approval_required", "closing_warning"}
 PATTERNS = {
-    "price_resistance": r"not feasible|unrealistic|serious proposal|far apart|no constructive movement",
+    "price_resistance": (
+        r"not feasible|unrealistic|serious proposal|far apart|no constructive movement|"
+        r"movement is still too small|do not represent a step forward|"
+        r"(?:only|barely) moved (?:a few cents|your price)|prices do not reflect"
+    ),
     "liquidity": r"cash flow|liquidity|liquidit|cash moving",
     "continuity": r"extended commitment|longer commitment|stability.*contract|planning security",
     "delivery_cost": r"overtime|at a premium|expedit",

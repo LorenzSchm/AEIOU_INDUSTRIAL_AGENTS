@@ -7,6 +7,10 @@ Return one JSON object:
  "proposals":[{"base_id":"existing candidate ID", "changes":{"legal_field":value}}]}
 Propose zero to two complete-package amendments. Use ONLY negotiable fields and
 the supplied term_options; each amendment inherits all other fields from base_id.
+proposal_contract is your executable schema: copy a base_id from base_ids, put
+ONLY editable_fields in changes and omit every fixed term, even if unchanged.
+Check previous_buyer_packages: never lower a price you already offered on the
+same complete terms. Prefer extending an observed concession to starting over.
 Seek trades the existing candidates missed: quality versus liability, cash versus
 index protection, delivery versus volume or duration. Use observed replies to
 identify an obstacle, not just a cheaper price. Consider a small conditional

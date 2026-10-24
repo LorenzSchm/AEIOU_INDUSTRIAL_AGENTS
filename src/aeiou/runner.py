@@ -5,7 +5,7 @@ import time
 
 from arena_kit import ArenaClient
 from arena_kit.agents.naive import NaiveAgent
-from arena_kit.play import RemoteTable, closing_move, fetch_documents, latest, live_threads, play, standing
+from arena_kit.play import RemoteTable, closing_move, fetch_documents, latest, live_threads, moves_left, play, standing
 
 from .agent import ClaudeBackend, Negotiator
 from .research import package
@@ -70,6 +70,8 @@ class RecordingTable(RemoteTable):
 
     def deadline_close(self, agent, threads):
         """Protect an existing deal before another slow supplier reply can expire it."""
+        if hasattr(agent, "set_runtime_context"):
+            agent.set_runtime_context({})
         if not any(m.get("from") == "buyer" for events in threads.values() for m in events):
             return None
         choice = (
@@ -83,6 +85,34 @@ class RecordingTable(RemoteTable):
         reserve = max(15.0, self.slowest_reply + 12.0) if len(live_threads(threads)) > 1 else 15.0
         deadline = self.deadlines.get(choice["supplier_id"])
         if deadline is not None and deadline - time.monotonic() <= reserve:
+            sid = choice["supplier_id"]
+            seconds_left = deadline - time.monotonic()
+            if (
+                hasattr(agent, "set_runtime_context")
+                and latest(threads[sid]).get("status") == "open"
+                and moves_left(self.run["case"], threads[sid]) > 1
+                and seconds_left > 8.0
+            ):
+                # A reply to THIS supplier pauses its own message clock. Only
+                # switching to another supplier needs a whole reply-time reserve.
+                # Use a bounded code-only decision here, not a potentially slow LLM.
+                agent.set_runtime_context(
+                    {
+                        "focus_supplier": sid,
+                        "policy_only": True,
+                        "seconds_left": seconds_left,
+                        "reason": "Protect incumbent by replying now",
+                    }
+                )
+                self.run.setdefault("transport_events", []).append(
+                    {
+                        "type": "deadline_focus",
+                        "supplier_id": sid,
+                        "seconds_left": seconds_left,
+                        "avoided_reply_reserve_s": reserve,
+                    }
+                )
+                return None
             self.run.setdefault("transport_events", []).append(
                 {"type": "deadline_close", "supplier_id": choice["supplier_id"], "reserve_s": reserve}
             )

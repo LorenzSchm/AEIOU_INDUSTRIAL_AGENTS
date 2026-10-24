@@ -12,7 +12,8 @@ from arena_kit.docs import standard_terms
 from arena_kit.play import latest, live_threads, moves_left
 
 from .agent import Negotiator, log
-from .economic_beliefs import infer_economics
+from .concessions import preserve_progress
+from .economic_beliefs import infer_economics, total_cost
 from .grounding import (
     compose_email,
     fresh_evidence_cards,
@@ -94,6 +95,10 @@ class StrategicNegotiator(Negotiator):
         self.planner_instruction = planner_instruction or ""
         self.controller = {}
         self._interpretations = {}
+        self.runtime_context = {}
+
+    def set_runtime_context(self, context):
+        self.runtime_context = dict(context)
 
     def prepare(self, case):
         super().prepare(case)
@@ -145,6 +150,15 @@ class StrategicNegotiator(Negotiator):
                     else budget
                 )
             ]
+            standard = standard_terms(threads[sid])
+            supplier = estimate(case, sid, standard, self.intelligence)
+            plan["packages"] = preserve_progress(
+                case,
+                threads[sid],
+                plan["packages"],
+                lambda terms, std=standard, model=supplier: total_cost(case, terms, std, model),
+                ceiling,
+            )
             if plan["recommendation"] not in {p["id"] for p in plan["packages"]}:
                 plan["recommendation"] = next((p["id"] for p in plan["packages"]), None)
             plan["economic_ceiling"] = budget if math.isfinite(budget) else None
@@ -175,6 +189,7 @@ class StrategicNegotiator(Negotiator):
                             or p.get("closing_probe")
                             or p.get("uncertainty_probe")
                             or p.get("portfolio_probe")
+                            or p.get("retained_concession")
                         ]
                     )
                 )[:3]
@@ -210,6 +225,36 @@ class StrategicNegotiator(Negotiator):
     def reject(self, reason):
         self.rejections.append(reason)
         return None
+
+    def render_plan(self, case, threads, offers, best):
+        """One actionable supplier view; avoid repeating entire controller traces."""
+        payload = json.loads(self.render(case, threads, offers, best))
+        sid = self.controller["supplier_id"]
+        candidates = payload["candidate_packages"][sid]
+        payload["candidate_packages"] = {sid: candidates}
+        payload["threads"] = {sid: payload["threads"][sid]}
+        payload["threads"][sid]["messages"] = payload["threads"][sid]["messages"][-4:]
+        support = self.support[sid]
+        economics = support.get("economics", {})
+        payload["decision_support"] = {
+            sid: {
+                "strategy": support["strategy"],
+                "signals": support["state"].get("signals", [])[-6:],
+                "preferences": support["state"].get("preferences", []),
+                "issue_belief": support["issue_belief"],
+                "economics": {k: economics[k] for k in ("full_cost", "prior_band_pct", "limitation") if k in economics},
+            }
+        }
+        payload["proposal_contract"] = {
+            "base_ids": [p["id"] for p in candidates],
+            "editable_fields": case["negotiable"],
+            "legal_values": {k: v for k, v in case.get("term_options", {}).items() if k in case["negotiable"]},
+            "fixed_terms_do_not_change": case.get("fixed_terms", {}),
+            "previous_buyer_packages": [
+                s["terms"] for m in threads[sid] if m.get("from") == "buyer" for s in m.get("term_sheets", [])
+            ][-9:],
+        }
+        return json.dumps(payload, ensure_ascii=False, default=str)
 
     def guard(self, case, threads, data, candidates):
         sid, action = data.get("supplier_id"), data.get("action")
@@ -315,6 +360,7 @@ class StrategicNegotiator(Negotiator):
                 self.features.opponent_learning
                 and interpret
                 and not planner
+                and not self.runtime_context.get("policy_only")
                 and not interpreted_this_turn
                 and key
                 and key not in self._interpretations
@@ -347,8 +393,13 @@ class StrategicNegotiator(Negotiator):
             unexplored or open_suppliers or live,
             key=lambda s: (sum(m.get("from") == "buyer" for m in threads[s]), quote_costs[s]),
         )
+        focus = self.runtime_context.get("focus_supplier")
+        if focus in open_suppliers and offers.get(focus):
+            sid = focus
         controller = self.support[sid]["controller"]
         self.controller = {**controller, "supplier_id": sid}
+        if self.runtime_context:
+            self.controller["timing"] = dict(self.runtime_context)
         if unexplored and controller["action"] == "accept":
             self.controller["action"] = "send"
         if (
@@ -397,9 +448,10 @@ class StrategicNegotiator(Negotiator):
         move, source = None, "controller policy"
         if self.controller["action"] in {"accept", "walk_away"} or not offers.get(sid):
             move, source = safe_close(case, threads, self.intelligence), "controller close"
-        if move is None and self.backend:
+        if move is None and self.backend and not self.runtime_context.get("policy_only"):
             try:
-                payload = self.render(case, threads, offers, evaluate(case, threads, self.intelligence))
+                renderer = self.render_plan if planner else self.render
+                payload = renderer(case, threads, offers, evaluate(case, threads, self.intelligence))
                 if planner:
                     data = planner(payload)
                     proposed, trace = admit_proposals(
@@ -508,4 +560,5 @@ class StrategicNegotiator(Negotiator):
             controller=copy.deepcopy(self.controller),
             evidence_cards=copy.deepcopy(self._cards),
         )
+        self.runtime_context = {}  # Timing hints apply to one decision only.
         return move

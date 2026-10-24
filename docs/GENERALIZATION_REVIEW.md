@@ -290,3 +290,98 @@ includes [Cicero](https://ai.meta.com/research/cicero),
 [GEPA](https://arxiv.org/abs/2507.19457) and
 [PSRO](https://arxiv.org/abs/1711.00832). Their published gains are not projected onto
 our competition score.
+
+
+## Final readiness revision — 24 October 2026
+
+This revision addresses observed implementation failures, with `1dd5dbc` as the
+frozen reference. No new hosted session or paid model call was started. Use the
+`strategic` agent for the next user-initiated Arena test.
+
+### Findings from the four sandbox runs
+
+D01 scored 89.07 / 76.78 (mean 82.92); D02 scored 47.05 / 47.05. Both D02 runs
+closed at EUR 15.40 under the deadline hook after only three or four planner
+turns. The earlier EUR 14.20 reference had eight decisions. New planner decisions
+took approximately 2–3 seconds, while complete sessions took 120–137 seconds.
+The evidence points to reply waiting and the scheduler as a concrete bottleneck;
+it does not isolate an LLM-only causal effect.
+
+The old deadline hook reserved the slowest full supplier reply plus 12 seconds
+before allowing any continuation. That reserve is appropriate when switching to
+another supplier, whose reply does not pause the incumbent's clock. It is too
+restrictive when sending a counter directly to the incumbent, whose own supplier
+reply time does not count against its message deadline (Arena API time rules).
+
+D01's weaker run also dropped a previously offered EUR 47.00 / 30-day / January
+package from a later email. A rebuilt portfolio asked for less supplier value,
+and the supplier explicitly said the packages did not represent progress. The
+existing guard protected identical model-proposed structures, but did not retain
+prior model concessions when the deterministic portfolio was regenerated.
+
+### Final behavior
+
+When an acceptable incumbent has an open quote, at least one counter plus an
+acceptance move remains, and more than eight seconds remain to send, the deadline
+hook can prioritize a direct reply to that incumbent. The urgent turn uses code
+only and makes no LLM call. Final/agreed offers, exhausted rounds and genuinely
+short remaining deadlines still close safely. Timing hints apply to one decision.
+The existing stale-offer refresh, bounded recovery and economic acceptance checks
+remain active. A Live Final wave cap still has precedence over continuation.
+
+The portfolio retains a previously sent, legal concession on a structure that the
+supplier has actually countered on, if it still beats the current quote and global
+cost ceiling. Buyer-value A and settlement probes remain protected. Prior offers
+that are now too expensive or irrelevant to the current structure are not retained.
+Broader ordinary-language price-resistance phrases trigger the existing bounded
+concession policy. No demo IDs, historical winning prices or hidden floors are
+used in the production rules.
+
+The planner receives a focused supplier history, explicit editable-field schema,
+valid current base IDs and recent buyer packages. It still receives the buyer
+requirements, full standing costs and approved evidence. On one saved D02 prefix,
+serialized context falls from 28,255 to 12,512 characters (55.7%); this is a payload
+diagnostic, not measured API token savings or a claim of better language reasoning.
+Identical repetitions of fixed terms are removed before validation; changed fixed
+terms and unknown fields are rejected. Rejections now distinguish unknown package
+IDs from illegal field changes. The submitted base ID and field names are logged
+for diagnosis, without recording arbitrary free-form model output.
+
+Uncertain expected-cost control and automatic response rollouts remain disabled
+by default; their earlier evidence did not justify production promotion. Supplier
+cost uncertainty still informs diagnostics and proposal sensitivity checks.
+
+### Validation
+
+| Offline comparison | Conditions per version | Reference | Final candidate | Wins / ties / losses |
+|---|---:|---:|---:|---:|
+| RFQ timing, stable supplier order | 24 | 27.77 | 62.66 | 18 / 6 / 0 |
+| RFQ timing, changing supplier advantage | 18 | 32.45 | 42.70 | 6 / 12 / 0 |
+| Reused multi-issue regression | 54 | 75.19 | 75.59 | 3 / 51 / 0 |
+| Reused generalization regression | 96 | 91.59 | 91.59 | 0 / 96 / 0 |
+
+Across 192 conditions: 27 improvements, 165 ties, no declines. The timing evaluator
+uses 2–4 suppliers, multiple reply delays, one session per case, current-offer IDs,
+60-second per-thread clocks and automatic timeout events. A reply pauses only its
+own clock. Private concession schedules remain exclusively in the evaluator. The
+second timing profile has fresh seeds/delays and makes initially more expensive
+suppliers capable of deeper concessions. All timing cases produce legal deals.
+
+These are synthetic scenario scores, not Arena forecasts. Prioritizing an incumbent
+can deliberately let other supplier threads expire: total timeout events in the
+stable timing suite rise from 6 to 72 while every case still closes with a valid
+deal. That tradeoff remains a limitation, particularly with unknown supplier upside.
+The non-timing suites are reused regressions, not independent new holdouts.
+
+Full test suite: **192 passed, 2 skipped**. Ruff and diff checks pass. New tests
+verify code-only urgent continuation, final-offer protection, rejection of changed
+fixed terms and preservation/retirement of observed concessions. Historical replay
+confirms the earlier D01 concession now survives portfolio regeneration. No actual
+Claude generation was evaluated after this revision.
+
+Reproduce timing checks with `python src/aeiou/timing_evaluation.py --output
+ data/local/timing.json`; add `--profile reversed` for the second population or
+`--agent-source data/local/frozen-1dd5dbc/src` for the reference. Machine-readable
+paired rows, source hashes, exact defaults, replay and limitations are in
+`evaluation/final-readiness.json`. The active prompt is exported in
+`prompts/strategic-current.txt`.
