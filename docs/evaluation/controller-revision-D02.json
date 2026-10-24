@@ -1,0 +1,984 @@
+{
+  "title": "case:D02 \u2014 two runs per version",
+  "created_at": "2026-10-24T16:43:10.293641+00:00",
+  "arena_scope": "sandbox",
+  "arena_sessions_used": 4,
+  "new_sessions_used": 2,
+  "practice_sessions_used": 0,
+  "conditions": {
+    "case_ids": [
+      "case:D02"
+    ],
+    "planned_sessions": 4,
+    "repetitions_per_version": 2,
+    "supplier_mode": "hosted sandbox",
+    "buyer_model": "claude-sonnet-5-5"
+  },
+  "infrastructure_failures": [
+    {
+      "case_id": "case:D02",
+      "repetition": 2,
+      "run_id": "f6987d5b19a14d19a0a91b4d5c38f676",
+      "status": "failed",
+      "result": {},
+      "error": "ArenaError: at most 10 open sessions per key",
+      "metrics": {
+        "elapsed_s": 0.22,
+        "fallbacks": 0,
+        "calls": 0,
+        "errors": 0,
+        "input_tokens": 0,
+        "output_tokens": 0
+      }
+    }
+  ],
+  "summary": {
+    "reference-9ceb745": {
+      "scores": [
+        0.4704697342922398,
+        0.4704697342922398
+      ],
+      "mean_score": 0.4704697342922398,
+      "spread": 0.0,
+      "sessions": 2,
+      "failures": 0,
+      "must_have_violations": 0,
+      "decision_p95_s": 2.375
+    },
+    "current-bfd470c": {
+      "scores": [
+        0.4494079109449694,
+        0.0
+      ],
+      "mean_score": 0.2247039554724847,
+      "spread": 0.4494079109449694,
+      "sessions": 2,
+      "failures": 1,
+      "must_have_violations": 0,
+      "decision_p95_s": 4.141
+    }
+  },
+  "runs": {
+    "reference-9ceb745": [
+      {
+        "case_id": "case:D02",
+        "repetition": 1,
+        "run_id": "a15062072d5b40e4b3ca4dc535afc3b3",
+        "status": "completed",
+        "result": {
+          "ended": true,
+          "deal": true,
+          "supplier_id": "sup:DEMO-J1",
+          "offer_id": "offer:DEMO-J1-5",
+          "terms": {
+            "payment_days": 14,
+            "lead_time_days": 35,
+            "volume_per_year": 6000,
+            "contract_months": 24,
+            "effective_date": null,
+            "index_clause": null,
+            "incoterm": "DAP",
+            "tooling_eur": 0.0,
+            "ppm_commitment": 1100,
+            "chargeback_eur_per_complaint": 0.0,
+            "unit_price": 15.4
+          },
+          "c_open": 214296.0,
+          "c_deal": 187217.07,
+          "c_alt": 238800.0,
+          "c_best": 156738.78,
+          "score": 0.4704697342922398,
+          "must_haves_ok": true,
+          "cost_breakdown": {
+            "price": 184800.0,
+            "uncovered_need": 0.0,
+            "fallback_risk": 0.0,
+            "payment_terms": 1889.07,
+            "freight": 0.0,
+            "late_delivery": 0.0,
+            "quality": 528.0,
+            "tooling": 0.0,
+            "index_clause": 0.0,
+            "index_risk": 0.0,
+            "relationship": 0.0
+          }
+        },
+        "error": null,
+        "metrics": {
+          "elapsed_s": 221.59,
+          "fallbacks": 0,
+          "calls": 9,
+          "errors": 0,
+          "input_tokens": 117614,
+          "output_tokens": 609
+        }
+      },
+      {
+        "case_id": "case:D02",
+        "repetition": 2,
+        "run_id": "a215b45599514b2993c6dc1182c8ffa0",
+        "status": "completed",
+        "result": {
+          "ended": true,
+          "deal": true,
+          "supplier_id": "sup:DEMO-J1",
+          "offer_id": "offer:DEMO-J1-5",
+          "terms": {
+            "payment_days": 14,
+            "lead_time_days": 35,
+            "volume_per_year": 6000,
+            "contract_months": 24,
+            "effective_date": null,
+            "index_clause": null,
+            "incoterm": "DAP",
+            "tooling_eur": 0.0,
+            "ppm_commitment": 1100,
+            "chargeback_eur_per_complaint": 0.0,
+            "unit_price": 15.4
+          },
+          "c_open": 214296.0,
+          "c_deal": 187217.07,
+          "c_alt": 238800.0,
+          "c_best": 156738.78,
+          "score": 0.4704697342922398,
+          "must_haves_ok": true,
+          "cost_breakdown": {
+            "price": 184800.0,
+            "uncovered_need": 0.0,
+            "fallback_risk": 0.0,
+            "payment_terms": 1889.07,
+            "freight": 0.0,
+            "late_delivery": 0.0,
+            "quality": 528.0,
+            "tooling": 0.0,
+            "index_clause": 0.0,
+            "index_risk": 0.0,
+            "relationship": 0.0
+          }
+        },
+        "error": null,
+        "metrics": {
+          "elapsed_s": 16.73,
+          "fallbacks": 0,
+          "calls": 9,
+          "errors": 0,
+          "input_tokens": 117614,
+          "output_tokens": 611
+        }
+      }
+    ],
+    "current-bfd470c": [
+      {
+        "case_id": "case:D02",
+        "repetition": 1,
+        "run_id": "fdde5729d89049c897d8d6aa41aece9f",
+        "status": "completed",
+        "result": {
+          "ended": true,
+          "deal": true,
+          "supplier_id": "sup:DEMO-J1",
+          "offer_id": "offer:DEMO-J1-4",
+          "terms": {
+            "payment_days": 14,
+            "lead_time_days": 35,
+            "volume_per_year": 6000,
+            "contract_months": 24,
+            "effective_date": null,
+            "index_clause": null,
+            "incoterm": "DAP",
+            "tooling_eur": 0.0,
+            "ppm_commitment": 1100,
+            "chargeback_eur_per_complaint": 0.0,
+            "unit_price": 15.5
+          },
+          "c_open": 214296.0,
+          "c_deal": 188429.33,
+          "c_alt": 238800.0,
+          "c_best": 156738.78,
+          "score": 0.4494079109449694,
+          "must_haves_ok": true,
+          "cost_breakdown": {
+            "price": 186000.0,
+            "uncovered_need": 0.0,
+            "fallback_risk": 0.0,
+            "payment_terms": 1901.33,
+            "freight": 0.0,
+            "late_delivery": 0.0,
+            "quality": 528.0,
+            "tooling": 0.0,
+            "index_clause": 0.0,
+            "index_risk": 0.0,
+            "relationship": 0.0
+          }
+        },
+        "error": null,
+        "metrics": {
+          "elapsed_s": 226.38,
+          "fallbacks": 0,
+          "calls": 11,
+          "errors": 0,
+          "input_tokens": 97565,
+          "output_tokens": 979
+        }
+      },
+      {
+        "case_id": "case:D02",
+        "repetition": 2,
+        "run_id": "82d64970eec8499e96b200ce4dfad894",
+        "status": "completed",
+        "technical_failure": true,
+        "result": {
+          "ended": true,
+          "deal": false,
+          "supplier_id": null,
+          "offer_id": null,
+          "terms": null,
+          "c_open": 214296.0,
+          "c_deal": null,
+          "c_alt": 238800.0,
+          "c_best": 156738.78,
+          "score": 0.0,
+          "must_haves_ok": null,
+          "cost_breakdown": null,
+          "trace": [
+            {
+              "round": 0,
+              "actor": "sup:DEMO-J1",
+              "move": {
+                "offer_id": "offer:DEMO-J1-0",
+                "round": 0,
+                "status": "open",
+                "terms": {
+                  "unit_price": 17.1,
+                  "payment_days": 30,
+                  "lead_time_days": 28
+                },
+                "alternatives": [],
+                "missing_fields": [
+                  "incoterm"
+                ],
+                "claims": [],
+                "claim_results": [],
+                "signals": {
+                  "reply_delay_days": 4,
+                  "validity_days": null
+                },
+                "text": "Hallo,\nhere is our price.\nOur terms: a price of \u20ac17.10 per unit, Zahlungsziel 30 days net, Lieferzeit 28 days.\nBack to the machines now.\nGru\u00df\nClaudia Aigner\nOwner, Demo Drehteile GmbH"
+              },
+              "reasons": []
+            },
+            {
+              "round": 0,
+              "actor": "sup:DEMO-C1",
+              "move": {
+                "offer_id": "offer:DEMO-C1-0",
+                "round": 0,
+                "status": "open",
+                "terms": {
+                  "unit_price": 16.0,
+                  "payment_days": 45,
+                  "incoterm": "EXW"
+                },
+                "alternatives": [],
+                "missing_fields": [
+                  "lead_time_days"
+                ],
+                "claims": [],
+                "claim_results": [],
+                "signals": {
+                  "reply_delay_days": 2,
+                  "validity_days": 30
+                },
+                "text": "Dear partner,\nThank you for your enquiry. Please find our Angebot below.\nOur terms: a price of \u20ac16.00 per unit, Zahlungsziel 45 days net, delivery EXW.\nWe are fully committed to winning your business and to becoming a long-term partner for your team.\nBest regards\nJoanna Kaczmarek\nExport Manager, Demo Machining Sp. z o.o."
+              },
+              "reasons": []
+            },
+            {
+              "round": 1,
+              "actor": "buyer",
+              "move": {
+                "type": "message",
+                "message_id": null,
+                "subject": "New stainless pump shaft SH-220: award one of two suppliers",
+                "body": "Thank you for working through the options with us. We value a reliable agreement. The alternative trades a commercial term against its quoted price. Both changes are conditional on accepting the complete package. Which package can you authorize? Any movement is conditional on the executable terms below.\n\nExecutable packages:\nPackage 1: Unit price (EUR): 13.12; Payment (days): 60; Lead time (days): 35; Freight terms: \"DAP\"\nPackage 2: Unit price (EUR): 12.98; Payment (days): 14; Lead time (days): 35; Freight terms: \"DAP\"\nPackage 3: Unit price (EUR): 13.12; Payment (days): 60; Lead time (days): 21; Freight terms: \"DAP\"",
+                "refs": [],
+                "term_sheets": [
+                  {
+                    "term_sheet_id": null,
+                    "terms": {
+                      "unit_price": 13.12,
+                      "payment_days": 60,
+                      "lead_time_days": 35,
+                      "incoterm": "DAP"
+                    }
+                  },
+                  {
+                    "term_sheet_id": null,
+                    "terms": {
+                      "unit_price": 12.98,
+                      "payment_days": 14,
+                      "lead_time_days": 35,
+                      "incoterm": "DAP"
+                    }
+                  },
+                  {
+                    "term_sheet_id": null,
+                    "terms": {
+                      "unit_price": 13.12,
+                      "payment_days": 60,
+                      "lead_time_days": 21,
+                      "incoterm": "DAP"
+                    }
+                  }
+                ],
+                "interpreted": {
+                  "claims": []
+                },
+                "supplier_id": "sup:DEMO-C1"
+              },
+              "reasons": []
+            },
+            {
+              "round": 1,
+              "actor": "sup:DEMO-C1",
+              "move": {
+                "offer_id": "offer:DEMO-C1-1",
+                "round": 1,
+                "status": "open",
+                "terms": {
+                  "unit_price": 17.1,
+                  "payment_days": 14,
+                  "lead_time_days": 35,
+                  "incoterm": "DAP"
+                },
+                "alternatives": [
+                  {
+                    "offer_id": "offer:DEMO-C1-1-a",
+                    "terms": {
+                      "unit_price": 16.5,
+                      "payment_days": 14,
+                      "lead_time_days": 35,
+                      "incoterm": "EXW"
+                    }
+                  }
+                ],
+                "missing_fields": [],
+                "claims": [],
+                "claim_results": [],
+                "signals": {
+                  "reply_delay_days": 2,
+                  "validity_days": 30
+                },
+                "text": "Dear partner,\nThank you very much for your message - we are very glad about your interest in our company.\nWe have reviewed your offer and can adjust our Angebot as follows.\nOur terms: a price of \u20ac17.10 per unit, Zahlungsziel 14 days net, Lieferzeit 35 days, delivery DAP.\nPlease let me explain.\nWe welcome the 14-day payment terms, which allow us to offer a more competitive rate.\nHowever, providing DAP delivery adds significant freight costs that would increase the price above our initial offer.\nAlternatively, with delivery EXW: \u20ac16.50 per unit.\nOur standard Zahlungsziel is 45 days net.\nFaster payment is welcome; we can reflect it in the price.\nWe are fully committed to winning your business and to becoming a long-term partner for your team.\nBest regards\nJoanna Kaczmarek\nExport Manager, Demo Machining Sp. z o.o."
+              },
+              "reasons": [
+                "We welcome the 14-day payment terms, which allow us to offer a more competitive rate.",
+                "However, providing DAP delivery adds significant freight costs that would increase the price above our initial offer.",
+                "Alternatively, with delivery EXW: \u20ac\u2026 per unit.",
+                "Our standard Zahlungsziel is \u2026 days net.",
+                "Faster payment is welcome; we can reflect it in the price."
+              ]
+            },
+            {
+              "round": 1,
+              "actor": "buyer",
+              "move": {
+                "type": "message",
+                "message_id": null,
+                "subject": "New stainless pump shaft SH-220: award one of two suppliers",
+                "body": "Thank you for working through the options with us. We value a reliable agreement. These are its quoted conditions; can you improve your complete package competitively? The alternative trades a commercial term against its quoted price. Both changes are conditional on accepting the complete package. Which package can you authorize? Any movement is conditional on the executable terms below.\n\nExecutable packages:\nPackage 1: Unit price (EUR): 14.02; Payment (days): 60; Lead time (days): 35; Freight terms: \"DAP\"\nPackage 2: Unit price (EUR): 13.87; Payment (days): 14; Lead time (days): 35; Freight terms: \"DAP\"\nPackage 3: Unit price (EUR): 14.02; Payment (days): 60; Lead time (days): 21; Freight terms: \"DAP\"",
+                "refs": [],
+                "term_sheets": [
+                  {
+                    "term_sheet_id": null,
+                    "terms": {
+                      "unit_price": 14.02,
+                      "payment_days": 60,
+                      "lead_time_days": 35,
+                      "incoterm": "DAP"
+                    }
+                  },
+                  {
+                    "term_sheet_id": null,
+                    "terms": {
+                      "unit_price": 13.87,
+                      "payment_days": 14,
+                      "lead_time_days": 35,
+                      "incoterm": "DAP"
+                    }
+                  },
+                  {
+                    "term_sheet_id": null,
+                    "terms": {
+                      "unit_price": 14.02,
+                      "payment_days": 60,
+                      "lead_time_days": 21,
+                      "incoterm": "DAP"
+                    }
+                  }
+                ],
+                "interpreted": {
+                  "claims": []
+                },
+                "supplier_id": "sup:DEMO-J1"
+              },
+              "reasons": []
+            },
+            {
+              "round": 1,
+              "actor": "sup:DEMO-J1",
+              "move": {
+                "offer_id": "offer:DEMO-J1-1",
+                "round": 1,
+                "status": "open",
+                "terms": {
+                  "unit_price": 16.1,
+                  "payment_days": 14,
+                  "lead_time_days": 35,
+                  "incoterm": "DAP"
+                },
+                "alternatives": [],
+                "missing_fields": [],
+                "claims": [],
+                "claim_results": [],
+                "signals": {
+                  "reply_delay_days": 4,
+                  "validity_days": null
+                },
+                "text": "Hallo,\nthanks for the mail.\nwe can move a bit:\nOur terms: a price of \u20ac16.10 per unit, Zahlungsziel 14 days net, Lieferzeit 35 days, delivery DAP.\nStraight answer:\nWe can do DAP and 35 days lead time, but your price is way too low; I can do \u20ac16.10.\nYou talk about competition, but send us some proof so we know what we're dealing with.\nOur standard Zahlungsziel is 30 days net.\nFaster payment is welcome; we can reflect it in the price.\nOur Lieferzeit is 35 days.\nWith overtime we can deliver in 21 days, at a premium.\nWe have free capacity for your parts.\nJust write if something is unclear.\nGru\u00df\nClaudia Aigner\nOwner, Demo Drehteile GmbH"
+              },
+              "reasons": [
+                "We can do DAP and \u2026 days lead time, but your price is way too low; I can do \u20ac\u2026.",
+                "You talk about competition, but send us some proof so we know what we're dealing with.",
+                "Our standard Zahlungsziel is \u2026 days net.",
+                "Faster payment is welcome; we can reflect it in the price.",
+                "Our Lieferzeit is \u2026 days.",
+                "With overtime we can deliver in \u2026 days, at a premium.",
+                "We have free capacity for your parts."
+              ]
+            },
+            {
+              "round": 2,
+              "actor": "buyer",
+              "move": {
+                "type": "message",
+                "message_id": null,
+                "subject": "New stainless pump shaft SH-220: award one of two suppliers",
+                "body": "Thank you for working through the options with us. We value a reliable agreement. We understand that our earlier price was not workable for you. We have revised the complete options; what reciprocal movement can you authorize? Any movement is conditional on the executable terms below.\n\nExecutable packages:\nPackage 1: Unit price (EUR): 14.49; Payment (days): 60; Lead time (days): 35; Freight terms: \"DAP\"\nPackage 2: Unit price (EUR): 14.34; Payment (days): 14; Lead time (days): 35; Freight terms: \"DAP\"\nPackage 3: Unit price (EUR): 13.89; Payment (days): 60; Lead time (days): 35; Freight terms: \"EXW\"",
+                "refs": [],
+                "term_sheets": [
+                  {
+                    "term_sheet_id": null,
+                    "terms": {
+                      "unit_price": 14.49,
+                      "payment_days": 60,
+                      "lead_time_days": 35,
+                      "incoterm": "DAP"
+                    }
+                  },
+                  {
+                    "term_sheet_id": null,
+                    "terms": {
+                      "unit_price": 14.34,
+                      "payment_days": 14,
+                      "lead_time_days": 35,
+                      "incoterm": "DAP"
+                    }
+                  },
+                  {
+                    "term_sheet_id": null,
+                    "terms": {
+                      "unit_price": 13.89,
+                      "payment_days": 60,
+                      "lead_time_days": 35,
+                      "incoterm": "EXW"
+                    }
+                  }
+                ],
+                "interpreted": {
+                  "claims": []
+                },
+                "supplier_id": "sup:DEMO-J1"
+              },
+              "reasons": []
+            },
+            {
+              "round": 2,
+              "actor": "sup:DEMO-J1",
+              "move": {
+                "offer_id": "offer:DEMO-J1-2",
+                "round": 2,
+                "status": "open",
+                "terms": {
+                  "unit_price": 15.6,
+                  "payment_days": 14,
+                  "lead_time_days": 35,
+                  "incoterm": "DAP"
+                },
+                "alternatives": [],
+                "missing_fields": [],
+                "claims": [],
+                "claim_results": [],
+                "signals": {
+                  "reply_delay_days": 4,
+                  "validity_days": null
+                },
+                "text": "Hallo,\ngot your mail, thanks.\nwe can move a bit:\nOur terms: a price of \u20ac15.60 per unit, Zahlungsziel 14 days net, Lieferzeit 35 days, delivery DAP.\nStraight answer:\nThe 14 days payment in your second package works well for us.\nI can drop the price to \u20ac15.60 for that package with DAP delivery.\nOur standard Zahlungsziel is 30 days net.\nFaster payment is welcome; we can reflect it in the price.\nOur price follows our main cost drivers: BAR-14021, WAGES-METAL.\nBack to the machines now.\nGru\u00df\nClaudia Aigner\nOwner, Demo Drehteile GmbH"
+              },
+              "reasons": [
+                "The \u2026 days payment in your second package works well for us.",
+                "I can drop the price to \u20ac\u2026 for that package with DAP delivery.",
+                "Our standard Zahlungsziel is \u2026 days net.",
+                "Faster payment is welcome; we can reflect it in the price.",
+                "Our price follows our main cost drivers: BAR-14021, WAGES-METAL."
+              ]
+            },
+            {
+              "round": 2,
+              "actor": "buyer",
+              "move": {
+                "type": "message",
+                "message_id": null,
+                "subject": "New stainless pump shaft SH-220: award one of two suppliers",
+                "body": "Thank you for working through the options with us. We value a reliable agreement. Another supplier's current offer (offer:DEMO-J1-2) is EUR 15.60 per unit, payment 14 days, delivery 35 days, DAP. These are its quoted conditions; can you improve your complete package competitively? Which complete package could your decision-maker authorize? Any movement is conditional on the executable terms below.\n\nExecutable packages:\nPackage 1: Unit price (EUR): 13.19; Payment (days): 60; Lead time (days): 35; Freight terms: \"DAP\"\nPackage 2: Unit price (EUR): 13.05; Payment (days): 14; Lead time (days): 35; Freight terms: \"DAP\"\nPackage 3: Unit price (EUR): 12.46; Payment (days): 14; Lead time (days): 35; Freight terms: \"EXW\"",
+                "refs": [],
+                "term_sheets": [
+                  {
+                    "term_sheet_id": null,
+                    "terms": {
+                      "unit_price": 13.19,
+                      "payment_days": 60,
+                      "lead_time_days": 35,
+                      "incoterm": "DAP"
+                    }
+                  },
+                  {
+                    "term_sheet_id": null,
+                    "terms": {
+                      "unit_price": 13.05,
+                      "payment_days": 14,
+                      "lead_time_days": 35,
+                      "incoterm": "DAP"
+                    }
+                  },
+                  {
+                    "term_sheet_id": null,
+                    "terms": {
+                      "unit_price": 12.46,
+                      "payment_days": 14,
+                      "lead_time_days": 35,
+                      "incoterm": "EXW"
+                    }
+                  }
+                ],
+                "interpreted": {
+                  "claims": [
+                    {
+                      "type": "rival_quote",
+                      "refs": [
+                        "offer:DEMO-J1-2"
+                      ],
+                      "asserted": {
+                        "unit_price": 15.6
+                      }
+                    }
+                  ]
+                },
+                "supplier_id": "sup:DEMO-C1"
+              },
+              "reasons": []
+            },
+            {
+              "round": 2,
+              "actor": "sup:DEMO-C1",
+              "move": {
+                "offer_id": "offer:DEMO-C1-2",
+                "round": 2,
+                "status": "open",
+                "terms": {
+                  "unit_price": 16.3,
+                  "payment_days": 14,
+                  "lead_time_days": 35,
+                  "incoterm": "EXW"
+                },
+                "alternatives": [
+                  {
+                    "offer_id": "offer:DEMO-C1-2-a",
+                    "terms": {
+                      "unit_price": 16.8,
+                      "payment_days": 14,
+                      "lead_time_days": 35,
+                      "incoterm": "DAP"
+                    }
+                  }
+                ],
+                "missing_fields": [],
+                "claims": [],
+                "claim_results": [
+                  {
+                    "index": 0,
+                    "result": "verified"
+                  }
+                ],
+                "signals": {
+                  "reply_delay_days": 2,
+                  "validity_days": 30
+                },
+                "text": "Dear partner,\nThank you very much for your message - we are very glad about your interest in our company.\nWe have reviewed your offer and can adjust our Angebot as follows.\nOur terms: a price of \u20ac16.30 per unit, Zahlungsziel 14 days net, Lieferzeit 35 days, delivery EXW.\nTo be fully transparent with you:\nWe checked the rival quote data you cited; it holds and we took it into account.\nTo demonstrate our commitment to this partnership, we have reduced our price to EUR 16.80 per unit for the package with DAP delivery and 14-day payment terms.\nWe believe this offer provides a strong balance of reliability and value for Hollerau Pumpenwerke GmbH.\nOur price follows our main cost drivers: BAR-14021, WAGES-METAL.\nWe are fully committed to winning your business and to becoming a long-term partner for your team.\nBest regards\nJoanna Kaczmarek\nExport Manager, Demo Machining Sp. z o.o."
+              },
+              "reasons": [
+                "We checked the rival quote data you cited; it holds and we took it into account.",
+                "To demonstrate our commitment to this partnership, we have reduced our price to EUR \u2026 per unit for the package with DAP delivery and 14-day payment terms.",
+                "We believe this offer provides a strong balance of reliability and value for Hollerau Pumpenwerke GmbH.",
+                "Our price follows our main cost drivers: BAR-14021, WAGES-METAL."
+              ]
+            },
+            {
+              "round": 3,
+              "actor": "buyer",
+              "move": {
+                "type": "message",
+                "message_id": null,
+                "subject": "New stainless pump shaft SH-220: award one of two suppliers",
+                "body": "Thank you for working through the options with us. We value a reliable agreement. The alternative trades a commercial term against its quoted price. Both changes are conditional on accepting the complete package. Which package can you authorize? Any movement is conditional on the executable terms below.\n\nExecutable packages:\nPackage 1: Unit price (EUR): 14.49; Payment (days): 60; Lead time (days): 35; Freight terms: \"DAP\"\nPackage 2: Unit price (EUR): 14.34; Payment (days): 14; Lead time (days): 35; Freight terms: \"DAP\"",
+                "refs": [],
+                "term_sheets": [
+                  {
+                    "term_sheet_id": null,
+                    "terms": {
+                      "unit_price": 14.49,
+                      "payment_days": 60,
+                      "lead_time_days": 35,
+                      "incoterm": "DAP"
+                    }
+                  },
+                  {
+                    "term_sheet_id": null,
+                    "terms": {
+                      "unit_price": 14.34,
+                      "payment_days": 14,
+                      "lead_time_days": 35,
+                      "incoterm": "DAP"
+                    }
+                  }
+                ],
+                "interpreted": {
+                  "claims": []
+                },
+                "supplier_id": "sup:DEMO-J1"
+              },
+              "reasons": []
+            },
+            {
+              "round": 3,
+              "actor": "sup:DEMO-J1",
+              "move": {
+                "offer_id": "offer:DEMO-J1-3",
+                "round": 3,
+                "status": "open",
+                "terms": {
+                  "unit_price": 15.6,
+                  "payment_days": 14,
+                  "lead_time_days": 35,
+                  "incoterm": "DAP"
+                },
+                "alternatives": [],
+                "missing_fields": [],
+                "claims": [],
+                "claim_results": [],
+                "signals": {
+                  "reply_delay_days": 4,
+                  "validity_days": null
+                },
+                "text": "Hallo,\ngot your mail, thanks.\nprice stays as it is.\nOur terms: a price of \u20ac15.60 per unit, Zahlungsziel 14 days net, Lieferzeit 35 days, delivery DAP.\nStraight answer:\nYou sent the exact same prices as last time, so I can't move either.\nI am holding at \u20ac15.60 for the 14 days payment and DAP delivery.\nIf you have better offers, send me the proof so I can see what we are up against.\nWe calculate tight, there is not much air in our prices.\nBack to the machines now.\nGru\u00df\nClaudia Aigner\nOwner, Demo Drehteile GmbH"
+              },
+              "reasons": [
+                "You sent the exact same prices as last time, so I can't move either.",
+                "I am holding at \u20ac\u2026 for the \u2026 days payment and DAP delivery.",
+                "If you have better offers, send me the proof so I can see what we are up against."
+              ]
+            },
+            {
+              "round": 3,
+              "actor": "buyer",
+              "move": {
+                "type": "message",
+                "message_id": null,
+                "subject": "New stainless pump shaft SH-220: award one of two suppliers",
+                "body": "Thank you for working through the options with us. We value a reliable agreement. Another supplier's current offer (offer:DEMO-J1-3) is EUR 15.60 per unit, payment 14 days, delivery 35 days, DAP. These are its quoted conditions; can you improve your complete package competitively? Which complete package could your decision-maker authorize? Any movement is conditional on the executable terms below.\n\nExecutable packages:\nPackage 1: Unit price (EUR): 13.95; Payment (days): 60; Lead time (days): 35; Freight terms: \"DAP\"\nPackage 2: Unit price (EUR): 13.8; Payment (days): 14; Lead time (days): 35; Freight terms: \"DAP\"",
+                "refs": [],
+                "term_sheets": [
+                  {
+                    "term_sheet_id": null,
+                    "terms": {
+                      "unit_price": 13.95,
+                      "payment_days": 60,
+                      "lead_time_days": 35,
+                      "incoterm": "DAP"
+                    }
+                  },
+                  {
+                    "term_sheet_id": null,
+                    "terms": {
+                      "unit_price": 13.8,
+                      "payment_days": 14,
+                      "lead_time_days": 35,
+                      "incoterm": "DAP"
+                    }
+                  }
+                ],
+                "interpreted": {
+                  "claims": [
+                    {
+                      "type": "rival_quote",
+                      "refs": [
+                        "offer:DEMO-J1-3"
+                      ],
+                      "asserted": {
+                        "unit_price": 15.6
+                      }
+                    }
+                  ]
+                },
+                "supplier_id": "sup:DEMO-C1"
+              },
+              "reasons": []
+            },
+            {
+              "round": 3,
+              "actor": "sup:DEMO-C1",
+              "move": {
+                "offer_id": "offer:DEMO-C1-3",
+                "round": 3,
+                "status": "open",
+                "terms": {
+                  "unit_price": 16.6,
+                  "payment_days": 14,
+                  "lead_time_days": 35,
+                  "incoterm": "DAP"
+                },
+                "alternatives": [],
+                "missing_fields": [],
+                "claims": [],
+                "claim_results": [
+                  {
+                    "index": 0,
+                    "result": "verified"
+                  }
+                ],
+                "signals": {
+                  "reply_delay_days": 2,
+                  "validity_days": 30
+                },
+                "text": "Dear partner,\nMany thanks for your reply; we really appreciate the chance to work with you.\nWe have reviewed your offer and can adjust our Angebot as follows.\nOur terms: a price of \u20ac16.60 per unit, Zahlungsziel 14 days net, Lieferzeit 35 days, delivery DAP.\nTo be fully transparent with you:\nWe appreciate your improved offer and have adjusted our price in response.\nWe have reviewed the competing offer you cited, but our pricing reflects our reliable quality and service.\nWe can offer EUR 16.60 per unit for DAP delivery with 14-day payment terms.\nWe are fully committed to winning your business and to becoming a long-term partner for your team.\nBest regards\nJoanna Kaczmarek\nExport Manager, Demo Machining Sp. z o.o."
+              },
+              "reasons": [
+                "We appreciate your improved offer and have adjusted our price in response.",
+                "We have reviewed the competing offer you cited, but our pricing reflects our reliable quality and service.",
+                "We can offer EUR \u2026 per unit for DAP delivery with 14-day payment terms."
+              ]
+            },
+            {
+              "round": 4,
+              "actor": "buyer",
+              "move": {
+                "type": "timeout",
+                "supplier_id": "sup:DEMO-J1"
+              },
+              "reasons": []
+            },
+            {
+              "round": 4,
+              "actor": "sup:DEMO-J1",
+              "move": {
+                "offer_id": "offer:DEMO-J1-4",
+                "round": 4,
+                "status": "final_offer",
+                "terms": {
+                  "unit_price": 15.6,
+                  "payment_days": 14,
+                  "lead_time_days": 35,
+                  "incoterm": "DAP"
+                },
+                "alternatives": [],
+                "missing_fields": [],
+                "claims": [],
+                "claim_results": [],
+                "signals": {
+                  "reply_delay_days": 5,
+                  "validity_days": null
+                },
+                "text": "Hallo,\ngot your mail, thanks.\nthis is our last price, take it or leave it.\nOur terms: a price of \u20ac15.60 per unit, Zahlungsziel 14 days net, Lieferzeit 35 days, delivery DAP.\nStraight answer:\nI haven't heard back from you, so I am just checking in.\nMy offer of \u20ac15.60 for 14 days payment and DAP delivery still stands.\nPlease let me know if we have a deal so I can plan the machines.\nWe calculate tight, there is not much air in our prices.\nJust write if something is unclear.\nGru\u00df\nClaudia Aigner\nOwner, Demo Drehteile GmbH"
+              },
+              "reasons": [
+                "I haven't heard back from you, so I am just checking in.",
+                "My offer of \u20ac\u2026 for \u2026 days payment and DAP delivery still stands.",
+                "Please let me know if we have a deal so I can plan the machines."
+              ]
+            },
+            {
+              "round": 4,
+              "actor": "buyer",
+              "move": {
+                "type": "timeout",
+                "supplier_id": "sup:DEMO-C1"
+              },
+              "reasons": []
+            },
+            {
+              "round": 4,
+              "actor": "sup:DEMO-C1",
+              "move": {
+                "offer_id": "offer:DEMO-C1-4",
+                "round": 4,
+                "status": "final_offer",
+                "terms": {
+                  "unit_price": 16.6,
+                  "payment_days": 14,
+                  "lead_time_days": 35,
+                  "incoterm": "DAP"
+                },
+                "alternatives": [],
+                "missing_fields": [],
+                "claims": [],
+                "claim_results": [],
+                "signals": {
+                  "reply_delay_days": 3,
+                  "validity_days": 7
+                },
+                "text": "Dear partner,\nThank you very much for your message - we are very glad about your interest in our company.\nThis is our final offer (letztes Angebot). Please decide.\nOur terms: a price of \u20ac16.60 per unit, Zahlungsziel 14 days net, Lieferzeit 35 days, delivery DAP.\nPlease let me explain.\nWe are following up on our previous offer of EUR 16.60 per unit for DAP delivery with 14-day payment terms.\nPlease let us know your feedback so we can proceed with this agreement.\nWe are a competitive and flexible partner.\nWe are fully committed to winning your business and to becoming a long-term partner for your team.\nBest regards\nJoanna Kaczmarek\nExport Manager, Demo Machining Sp. z o.o."
+              },
+              "reasons": [
+                "We are following up on our previous offer of EUR \u2026 per unit for DAP delivery with 14-day payment terms.",
+                "Please let us know your feedback so we can proceed with this agreement."
+              ]
+            },
+            {
+              "round": 5,
+              "actor": "buyer",
+              "move": {
+                "type": "timeout",
+                "supplier_id": "sup:DEMO-J1"
+              },
+              "reasons": []
+            },
+            {
+              "round": 5,
+              "actor": "sup:DEMO-J1",
+              "move": {
+                "offer_id": "offer:DEMO-J1-5",
+                "round": 5,
+                "status": "final_offer",
+                "terms": {
+                  "unit_price": 15.6,
+                  "payment_days": 14,
+                  "lead_time_days": 35,
+                  "incoterm": "DAP"
+                },
+                "alternatives": [],
+                "missing_fields": [],
+                "claims": [],
+                "claim_results": [],
+                "signals": {
+                  "reply_delay_days": 5,
+                  "validity_days": null
+                },
+                "text": "Hallo,\nthanks for the mail.\nthis is our last price, take it or leave it.\nOur terms: a price of \u20ac15.60 per unit, Zahlungsziel 14 days net, Lieferzeit 35 days, delivery DAP.\nHere is how it is:\nI haven't heard back from you since my last mail.\nPlease let me know if we are still in the running for these parts.\nI am keeping my offer at \u20ac15.60 for 14 days payment and DAP delivery.\nWe calculate tight, there is not much air in our prices.\nBack to the machines now.\nGru\u00df\nClaudia Aigner\nOwner, Demo Drehteile GmbH"
+              },
+              "reasons": [
+                "I haven't heard back from you since my last mail.",
+                "Please let me know if we are still in the running for these parts.",
+                "I am keeping my offer at \u20ac\u2026 for \u2026 days payment and DAP delivery."
+              ]
+            },
+            {
+              "round": 5,
+              "actor": "buyer",
+              "move": {
+                "type": "timeout",
+                "supplier_id": "sup:DEMO-C1"
+              },
+              "reasons": []
+            },
+            {
+              "round": 5,
+              "actor": "sup:DEMO-C1",
+              "move": {
+                "offer_id": null,
+                "round": 5,
+                "status": "walked_away",
+                "terms": {},
+                "alternatives": [],
+                "missing_fields": [],
+                "claims": [],
+                "claim_results": [],
+                "signals": {
+                  "reply_delay_days": 3,
+                  "validity_days": 14
+                },
+                "text": "Dear partner,\nWe are withdrawing from this negotiation.\nTo be fully transparent with you:\nWe are happy to discuss this in a call; until then our offer stands.\nBest regards\nJoanna Kaczmarek\nExport Manager, Demo Machining Sp. z o.o."
+              },
+              "reasons": [
+                "We are happy to discuss this in a call; until then our offer stands."
+              ]
+            },
+            {
+              "round": 6,
+              "actor": "buyer",
+              "move": {
+                "type": "timeout",
+                "supplier_id": "sup:DEMO-J1"
+              },
+              "reasons": []
+            },
+            {
+              "round": 6,
+              "actor": "sup:DEMO-J1",
+              "move": {
+                "offer_id": null,
+                "round": 6,
+                "status": "walked_away",
+                "terms": {},
+                "alternatives": [],
+                "missing_fields": [],
+                "claims": [],
+                "claim_results": [],
+                "signals": {
+                  "reply_delay_days": 5,
+                  "validity_days": null
+                },
+                "text": "Hallo,\n\nWe are withdrawing from this negotiation. We cannot find a common ground here, so we will not continue these talks.\n\nGru\u00df\nClaudia Aigner\nOwner, Demo Drehteile GmbH"
+              },
+              "reasons": []
+            }
+          ]
+        },
+        "error": "Windows file-lock interrupted run persistence; server ended this same session with timeout. No replacement session.",
+        "metrics": {
+          "elapsed_s": 109.74,
+          "fallbacks": 0,
+          "calls": 11,
+          "errors": 0,
+          "input_tokens": 98920,
+          "output_tokens": 947
+        }
+      }
+    ]
+  },
+  "paired_comparisons": {},
+  "excluded_pairs": 0,
+  "mean_change_points": -24.57657788197551,
+  "limitation": "Includes two previously completed reference sessions and two new sessions. Different versions ran at different times; two repeats cannot establish generalization or isolate LLM causality. Multiple controller changes are bundled. No extra Practice attempts. D02 repetition 2 then suffered a Windows file-lock crash and server timeout: its actual zero score is included, not discarded. It does not measure LLM-only variation. The subsequent storage and delivery-probe fixes were locally tested only. One D02 start was rejected with HTTP 429 before creating a session and was retried when capacity became available; that rejection is recorded separately.",
+  "practice_before": {
+    "used": 28,
+    "left": 172,
+    "limit": 200,
+    "resets_at": "2026-10-25T11:19:44.936916+00:00"
+  },
+  "practice_after": {
+    "used": 28,
+    "left": 172,
+    "limit": 200,
+    "resets_at": "2026-10-25T11:19:44.936916+00:00"
+  }
+}

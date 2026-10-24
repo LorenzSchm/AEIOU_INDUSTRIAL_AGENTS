@@ -137,6 +137,7 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
                     t
                     for value in case.get("term_options", {}).get(field, [])
                     if value != base.get(field)
+                    and (field != "lead_time_days" or value >= base.get(field, 0))
                     and (t := equivalent_probe(case, base, field, value, cost)) is not None
                     and t not in [p["terms"] for p in packages]
                 ),

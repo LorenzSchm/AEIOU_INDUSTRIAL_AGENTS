@@ -211,3 +211,29 @@ its response probabilities remain explicitly uncalibrated assumptions.
 Validation before hosted evaluation: 125 tests passed, 2 skipped; all five targeted
 revision tests passed after adding the interpretation-cache regression. No hidden
 floors or post-run reference scores are inputs to the agent.
+
+Hosted comparison (fixed agent commit `bfd470c`, two sessions per case):
+
+| Case | Reference scores | New scores | New mean | Mean change |
+| --- | --- | --- | --- | --- |
+| D01 | 68.89 / 68.89 | 77.20 / 92.07 | 84.63 | +15.74 points |
+| D02 | 47.05 / 47.05 | 44.94 / 0.00 | 22.47 | -24.58 points |
+
+D01 obtained an April price start in both runs; the second also closed at EUR 50.20.
+D02 repetition 2 suffered a local Windows file-lock failure while recording a move,
+then timed out on the server. Its real zero score is included. An earlier HTTP 429
+rejected its start before a session existed; it was retried after capacity freed.
+Exactly four new sessions were created, and Practice quota stayed at 172. Recorded
+buyer usage was 34 model calls, 254,385 input tokens and 2,878 output tokens; these
+input counters exclude separately reported provider cache-token fields.
+
+This is a mixed result, not a general improvement claim or an isolated LLM variance
+measurement. Multiple changes are bundled and there are only two runs per case.
+The complete comparison reports are `docs/evaluation/controller-revision-D01.json`
+and `docs/evaluation/controller-revision-D02.json`.
+
+After the hosted runs, local fixes added bounded file-replacement retries and a
+readable recovery snapshot when Windows locks the primary run file. A regression
+also prevents generic delivery probes from reintroducing unnecessarily fast terms.
+These two follow-ups have local validation only; no additional paid runs were made.
+Final validation: 129 Python tests passed, 2 skipped; all 6 JavaScript tests passed.

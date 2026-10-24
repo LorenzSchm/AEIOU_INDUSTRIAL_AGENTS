@@ -38,6 +38,18 @@ def test_higher_price_can_pay_for_later_start_without_increasing_total_cost():
     assert total_cost(case, probe) <= total_cost(case, base)
 
 
+def test_opening_exploration_does_not_demand_unneeded_expedited_delivery():
+    data = fixture("public_supplier_feedback.json")["d02"]
+    threads = {sid: events[:1] for sid, events in data["threads"].items()}
+    agent = StrategicNegotiator(package())
+    agent.decide(data["case"], threads)
+    for support in agent.support.values():
+        assert all(
+            p["terms"]["lead_time_days"] >= data["case"]["buyer"]["need_lead_time_days"]
+            for p in support["plan"]["packages"]
+        )
+
+
 def test_interpretation_requires_known_kind_and_exact_quote():
     body = "Cash flow matters, but we can wait."
     assert validated_interpretation({"signals": [{"kind": "liquidity", "quote": "Cash flow matters"}]}, body, 2)

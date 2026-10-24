@@ -1,7 +1,9 @@
 import json
+import logging
 import math
 import os
 import threading
+import time
 import uuid
 from datetime import UTC, datetime
 
@@ -38,23 +40,44 @@ def save_run(run):
     folder.mkdir(exist_ok=True)
     with LOCK:
         target = folder / f"{run['id']}.json"
-        tmp = target.with_suffix(".tmp")
+        tmp = target.with_name(f"{run['id']}.{uuid.uuid4().hex}.tmp")
         tmp.write_text(json.dumps(clean(run), ensure_ascii=False, indent=2), encoding="utf-8")
-        os.replace(tmp, target)
+        for attempt in range(5):
+            try:
+                os.replace(tmp, target)
+                return
+            except PermissionError:
+                if attempt < 4:
+                    time.sleep(0.05 * (attempt + 1))
+        # Windows readers/antivirus can deny replacing an existing file. Preserve
+        # the completed snapshot at a fresh name rather than aborting a live move.
+        recovery = folder / "recovery"
+        recovery.mkdir(exist_ok=True)
+        tmp.rename(recovery / f"{run['id']}.{uuid.uuid4().hex}.json")
+        logging.getLogger("aeiou").warning("Run snapshot stored in recovery after a Windows file lock")
 
 
 def get_run(run_id):
     if not run_id.isalnum():
         raise FileNotFoundError(run_id)
-    return json.loads((state_root() / "runs" / f"{run_id}.json").read_text(encoding="utf-8"))
+    folder = state_root() / "runs"
+    paths = [p for p in [folder / f"{run_id}.json", *(folder / "recovery").glob(f"{run_id}.*.json")] if p.exists()]
+    if not paths:
+        raise FileNotFoundError(run_id)
+    return json.loads(max(paths, key=lambda p: p.stat().st_mtime_ns).read_text(encoding="utf-8"))
 
 
 def list_runs(limit=200):
     folder = state_root() / "runs"
     out = []
     local_count = 0
-    for path in sorted(folder.glob("*.json"), key=lambda p: p.stat().st_mtime, reverse=True):
+    seen = set()
+    paths = [*folder.glob("*.json"), *(folder / "recovery").glob("*.json")]
+    for path in sorted(paths, key=lambda p: p.stat().st_mtime_ns, reverse=True):
         r = json.loads(path.read_text(encoding="utf-8"))
+        if r["id"] in seen:
+            continue
+        seen.add(r["id"])
         if r.get("mode") == "local":
             local_count += 1
             if local_count > limit:

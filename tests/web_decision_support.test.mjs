@@ -23,6 +23,14 @@ test('sandbox reports show Arena use without claiming practice consumption', () 
   assert.doesNotMatch(html, /No Arena sessions/);
 });
 
+test('repeat comparisons show individual scores, mean and spread', () => {
+  const html = context.controlledReportCards([{title:'D01 repeats',conditions:{planned_sessions:4,supplier_mode:'sandbox'},
+    summary:{current:{scores:[0.5,0.7],mean_score:0.6,spread:0.2,failures:0,decision_p95_s:1}}}]);
+  assert.match(html, /D01 repeats/);
+  assert.match(html, /50 \/ 70/);
+  assert.match(html, /<td>60<\/td><td>20<\/td>/);
+});
+
 function fixture() {
   return {
     id: 'run123', status: 'completed', mode: 'local',
