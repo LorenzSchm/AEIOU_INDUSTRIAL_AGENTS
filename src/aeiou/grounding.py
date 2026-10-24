@@ -27,6 +27,20 @@ QUESTIONS = {
 }
 
 COMMERCIAL_CONTEXT = {
+    "bundle_review": (
+        "Please assess this as a consolidated award for the complete kit in this enquiry, "
+        "at the annual quantity, duration and service conditions in each package. "
+        "We are asking for a complete-kit price that reflects this combined scope; "
+        "the commitment is limited to the stated contract terms.",
+        "Can you approve a sharper complete-kit price for this combined award, "
+        "or arrange the appropriate pricing review?",
+    ),
+    "bundle_reciprocity": (
+        "The revised packages include a price concession from our previous proposal. "
+        "In return, we are asking for a better complete-kit price under the stated terms. "
+        "Please assess the combined award as a whole.",
+        "What remaining adjustment would allow you to approve one of these complete-kit packages?",
+    ),
     "date_transition": (
         "The later-start option treats the transition to the new price as part of the exchange. "
         "Please consider its price and payment terms together when reviewing what works for your business.",
@@ -65,6 +79,30 @@ def commercial_context(case, events, terms, signals):
     if "effective_date" in fields and all(isinstance(d, str) for d in dates):
         if any(isinstance(t.get("effective_date"), str) and t["effective_date"] > max(dates) for t in proposed):
             return "date_transition"
+    if (
+        case.get("type") == "bundling"
+        and len(set(case.get("parts", []))) > 1
+        and all(
+            t["volume_per_year"] == case["buyer"]["need_per_year"]
+            and t["contract_months"] >= case["buyer"]["horizon_years"] * 12
+            for t in proposed
+        )
+    ):
+        buyer_index = next((i for i in range(len(events) - 1, -1, -1) if events[i].get("from") == "buyer"), None)
+        if buyer_index is not None:
+            previous = [
+                closing_terms(case, s.get("terms", {}), standard_terms(events[: buyer_index + 1]))
+                for s in events[buyer_index].get("term_sheets", [])
+            ]
+            if any(
+                t.get("unit_price", 0) > p.get("unit_price", float("inf"))
+                and {k: v for k, v in t.items() if k != "unit_price"}
+                == {k: v for k, v in p.items() if k != "unit_price"}
+                for t in proposed
+                for p in previous
+            ):
+                return "bundle_reciprocity"
+        return "bundle_review"
     if "contract_months" in fields:
         if "price_freeze" in signals and "payment_days" in fields:
             if any(t["payment_days"] not in {q["payment_days"] for q in quoted} for t in proposed):

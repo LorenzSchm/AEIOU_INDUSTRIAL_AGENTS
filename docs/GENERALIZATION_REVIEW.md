@@ -844,3 +844,32 @@ round. This protects observed behavior; future stochastic outcomes remain
 unproven. Local artifacts are `data/local/material-progress-review.json` and
 `material-progress-before.json` / `material-progress-after.json`. The user
 authorized one subsequent P07 hosted attempt after these checks.
+
+## Complete-kit approval strategy
+
+The reciprocity revision scored P07 68.21: an improvement over 63.66, still below
+the prior 70.15 best. Both recent runs ended in a final supplier offer after two
+buyer messages. Further arbitrary concession tuning has weak support.
+
+The preparation package provides a different, concrete hypothesis. The May annual
+review note records that the account manager described pricing-committee approval
+for changes above 2%. The September enquiry asks to consolidate a specified kit
+previously sourced across suppliers. These are planning inputs, not proof of the
+supplier's present authority or acceptance threshold. Recent outgoing messages
+focused on longer duration and did not frame the complete-kit pricing review.
+
+For published bundling cases with multiple parts and complete quantity/horizon
+coverage, the composer now asks for approval of a consolidated complete-kit
+price or the appropriate pricing review. It does not quote the internal note,
+claim a committee currently exists, disclose a threshold, or promise extra volume
+or exclusivity. After an actual comparable price increase in our own proposal,
+it acknowledges that movement and asks which remaining adjustment permits approval.
+No prices, concession limits or acceptance logic change.
+
+Validation: 30 focused tests passed. All 57 P01-P05 historical decisions, messages
+and portfolios match frozen `f5b46b4`; both P07 pre-final prefixes preserve their
+exact economic terms. Examples with different synthetic part IDs check scope,
+coverage, no unsupported authority claims and factual concession acknowledgment.
+Local audit: `data/local/bundle-review.json`. This is a source-grounded strategy
+experiment, not evidence that a new record is assured. One hosted attempt is the
+maximum planned test of this revision; no retries of session creation.

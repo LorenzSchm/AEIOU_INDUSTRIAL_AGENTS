@@ -79,3 +79,45 @@ def test_fixed_duration_and_dates_do_not_activate_new_context():
     case["negotiable"] = ["unit_price", "payment_days"]
     events[0]["body"] = "Our prices are frozen and require management approval."
     assert responsive_act({}, events, case=case, terms=[{**terms, "payment_days": 60}])["commercial_context"] is None
+
+
+def test_complete_bundle_requests_approval_without_claiming_private_authority_rules():
+    case, events, terms = situation()
+    case.update(type="bundling", parts=["part:new-a", "part:new-b"])
+    before = copy.deepcopy((case, events, terms))
+    act = responsive_act({}, events, case=case, terms=[terms])
+    assert act["commercial_context"] == "bundle_review"
+    email = compose_email(act, [], "supplier")
+    assert "complete kit" in email and "pricing review" in email
+    assert "committee" not in email and "2%" not in email and "exclusive" not in email
+    assert email.count("?") == 1
+    assert (case, events, terms) == before
+
+
+@pytest.mark.parametrize("change", ["single_part", "not_bundle", "extra_volume", "short_coverage"])
+def test_bundle_claim_requires_actual_complete_scope(change):
+    case, events, terms = situation()
+    case.update(type="bundling", parts=["part:new-a", "part:new-b"])
+    proposal = dict(terms)
+    if change == "single_part":
+        case["parts"] = ["part:new-a"]
+    elif change == "not_bundle":
+        case["type"] = "renewal"
+    elif change == "extra_volume":
+        proposal["volume_per_year"] = case["buyer"]["need_per_year"] + 1
+    else:
+        case["buyer"]["horizon_years"] = 2
+    act = responsive_act({}, events, case=case, terms=[proposal])
+    assert act["commercial_context"] not in {"bundle_review", "bundle_reciprocity"}
+
+
+def test_bundle_concession_is_acknowledged_only_on_comparable_previous_terms():
+    case, events, terms = situation()
+    case.update(type="bundling", parts=["part:new-a", "part:new-b"])
+    previous = {**terms, "unit_price": 18}
+    events = [events[0], {"from": "buyer", "term_sheets": [{"terms": previous}]}, copy.deepcopy(events[0])]
+    proposal = {**previous, "unit_price": 18.2}
+    act = responsive_act({}, events, case=case, terms=[proposal])
+    assert act["commercial_context"] == "bundle_reciprocity"
+    proposal["payment_days"] = 60
+    assert responsive_act({}, events, case=case, terms=[proposal])["commercial_context"] == "bundle_review"
