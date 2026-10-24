@@ -28,7 +28,7 @@ def test_p18_counter_produces_compensated_index_package_without_repeating_eviden
     assert all(valid_terms(case, p["terms"]) for p in plan)
     assert "idx:AS-14404@2025-09" not in move["message"]["body"]
     assert "cost breakdown" not in move["message"]["body"]
-    assert "counteroffer" in move["message"]["body"]
+    assert "workable exchange" in move["message"]["body"]
     # A supplier repeating the indexed structure after seeing our new probe
     # must not cause the controller to revert to fixed-price-only proposals.
     reply = dict(threads[sid][-1])

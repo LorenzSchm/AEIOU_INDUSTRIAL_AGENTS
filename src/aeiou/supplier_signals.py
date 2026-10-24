@@ -2,8 +2,21 @@
 
 import re
 
-KINDS = {"price_resistance", "liquidity", "continuity", "delivery_cost", "approval_required", "closing_warning"}
+PRICE_FREEZE = (
+    r"(?:pric\w*|reductions?).{0,45}(?:frozen|freez\w*|on hold)|"
+    r"(?:frozen|freez\w*).{0,45}(?:pric\w*|reductions?)"
+)
+KINDS = {
+    "price_resistance",
+    "price_freeze",
+    "liquidity",
+    "continuity",
+    "delivery_cost",
+    "approval_required",
+    "closing_warning",
+}
 PATTERNS = {
+    "price_freeze": PRICE_FREEZE,
     "price_resistance": (
         r"not feasible|unrealistic|serious proposal|far apart|no constructive movement|"
         r"movement is still too small|do not represent a step forward|"

@@ -299,12 +299,42 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
     packages = distinct_packages(packages)
     anchor_expected = packages[0].get("uncertainty_anchor", {}).get("expected_cost")
     if anchor_expected is not None:
+        expected = lambda terms: sensitivity_cost(case, terms, std, sensitivities)  # noqa: E731
+        survivors = [
+            p
+            for p in packages
+            if p.get("bounded_uncertainty_probe")
+            or p.get("uncertainty_probe")
+            or expected(p["terms"]) <= anchor_expected * 1.0025
+        ]
+        for p in packages[1:] if len(survivors) < 2 else []:
+            if (
+                p.get("bounded_uncertainty_probe")
+                or p.get("uncertainty_probe")
+                or p.get("portfolio_probe")
+                or p.get("feedback_probe")
+                or p.get("closing_probe")
+                or expected(p["terms"]) <= anchor_expected * 1.0025
+            ):
+                continue
+            # Reprice a date/duration/cash alternative before discarding it.
+            # Refining only A otherwise collapses first-contact trade discovery.
+            terms = equivalent_package(case, p["terms"], p["terms"], expected, target_cost=anchor_expected * 1.0025)
+            if (
+                terms is not None
+                and terms["unit_price"] <= p["terms"]["unit_price"]
+                and cost(terms) <= p["cost"] * 1.0025
+            ):
+                p.update(terms=terms, cost=cost(terms), sensitivity_compensation=True)
+                if p.get("exchange"):
+                    p["exchange"]["required_price_reduction"] = round(base["unit_price"] - terms["unit_price"], 2)
         # A supplier may pick any sent option. A newly improved anchor is useless
         # if an expensive payment alternative gives the savings straight back.
         packages = [
             p
             for p in packages
             if p.get("bounded_uncertainty_probe")
+            or p.get("uncertainty_probe")
             or sensitivity_cost(case, p["terms"], std, sensitivities) <= anchor_expected * 1.0025
         ]
     risk_ceiling = risk_exchange_ceiling(case, packages, std, sensitivities)
@@ -314,6 +344,7 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
             for p in packages
             if p["id"] == "A"
             or p.get("bounded_uncertainty_probe")
+            or p.get("uncertainty_probe")
             or p["terms"].get("index_clause") is None
             or sensitivity_cost(case, p["terms"], std, sensitivities) <= risk_ceiling
         ]

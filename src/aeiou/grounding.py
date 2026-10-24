@@ -3,7 +3,7 @@
 import re
 
 OPENINGS = {
-    "warm": "Thank you for working through the options with us. We value a reliable agreement.",
+    "warm": "Thank you for your offer. We would like to find terms that work well for both sides.",
     "concise": "Thank you for your response. Please review the complete conditional packages below.",
     "firm": "We can move conditionally on a complete package that works for both parties.",
 }
@@ -11,26 +11,18 @@ QUESTIONS = {
     "priorities": "Which package best fits your operating needs, and which term prevents agreement?",
     "cash": "Would earlier payment allow a reciprocal improvement in the complete package?",
     "continuity": "Would a longer commitment support better pricing or delivery terms?",
-    "authority": "Which complete package could your decision-maker authorize?",
+    "authority": "Which complete package could you approve, and would any part need a further review?",
     "costs": "Could you share a cost breakdown and explain which drivers affect this quotation?",
     "delivery": "What delivery flexibility would allow you to improve the overall package?",
     "quality": "What quality commitment and complaint compensation could you approve together?",
-    "tradeoff": (
-        "One option follows your counteroffer's commercial terms. "
-        "What reciprocal price improvement can you authorize for that package?"
-    ),
-    "exchange": (
-        "The alternative trades a commercial term against its quoted price. "
-        "Both changes are conditional on accepting the complete package. "
-        "Which package can you authorize?"
-    ),
+    "tradeoff": ("Could you review the complete options below and help us identify a workable exchange?"),
+    "exchange": ("Which of these complete packages would work best for you, and what would need to change?"),
     "settlement": (
         "One option builds on your quoted conditions with a reciprocal improvement. "
         "Could you approve that complete package?"
     ),
     "price_response": (
-        "We understand that our earlier price was not workable for you. "
-        "We have revised the complete options; what reciprocal movement can you authorize?"
+        "We have considered your feedback. What adjustment to the complete package would help us move forward?"
     ),
 }
 
@@ -49,6 +41,24 @@ def fresh_evidence_cards(cards, threads):
     return [c for c in cards if not used.intersection(c.get("source_ids") or [c.get("source_id")])]
 
 
+def evidence_requested(events):
+    reply = next((m.get("body", "") for m in reversed(events) if m.get("from") != "buyer"), "")
+    return bool(
+        re.search(
+            r"(?:support|substantiate|verify|back up|provide|share|cite).{0,80}(?:data|evidence|sources|indices)",
+            reply,
+            re.I,
+        )
+    )
+
+
+def communication_evidence(cards, events):
+    """Keep inflation in research; do not volunteer it as a standalone discount claim."""
+    if evidence_requested(events):
+        return cards
+    return [c for c in cards if not (c.get("kind") == "computed_index" and (c.get("change_pct") or 0) > 0)]
+
+
 def responsive_act(
     data,
     events,
@@ -57,6 +67,7 @@ def responsive_act(
     closing_probe=False,
     interpretations=(),
     portfolio_issue=None,
+    case=None,
 ):
     """Do not ask repeatedly for a breakdown; ask for the next actionable trade."""
     data = dict(data)
@@ -70,22 +81,51 @@ def responsive_act(
             ),
         }
     )
-    if "closing_warning" in signals or "approval_required" in signals:
+    supplier_messages = [m for m in events if m.get("from") != "buyer"]
+    reply = supplier_messages[-1].get("body", "") if supplier_messages else ""
+    refused_costs = any(
+        re.search(
+            r"(?:do not|don't|not to|cannot|won't).{0,35}share.{0,50}(?:cost|breakdown|calculation)|"
+            r"(?:cost|breakdown|calculation).{0,60}(?:stay\w* internal|confidential|not.{0,12}shar)|"
+            r"more detail we do not share",
+            m.get("body", ""),
+            re.I,
+        )
+        for m in supplier_messages
+    )
+    data["acknowledgment"] = "review" if any(m.get("from") == "buyer" for m in events) else "initial"
+    if re.search(r"long[- ]standing|partnership|cooperation", reply, re.I):
+        data["acknowledgment"] = "relationship"
+    if refused_costs:
+        data["acknowledgment"] = "confidential"
+    if "price_freeze" in signals:
+        data["acknowledgment"] = "price_freeze"
+        data["question"] = "exchange"
+    elif "closing_warning" in signals or "approval_required" in signals:
         data["question"] = "authority"
     elif closing_probe:
         data["question"] = "settlement"
     elif feedback_probe:
         data["question"] = "tradeoff"
-    elif portfolio_issue in {"quality", "index", "delivery"}:
-        data["question"] = {"quality": "quality", "index": "exchange", "delivery": "delivery"}[portfolio_issue]
+    elif portfolio_issue in {"quality", "index", "delivery", "delivery_flex"}:
+        data["question"] = {
+            "quality": "quality",
+            "index": "exchange",
+            "delivery": "delivery",
+            "delivery_flex": "delivery",
+        }[portfolio_issue]
     elif "price_resistance" in signals and not feedback_probe:
         data["question"] = "price_response"
     elif exchange_probe and not feedback_probe:
         data["question"] = "exchange"
     elif data.get("question", "costs") == "costs":
         prior = " ".join(m.get("body", "").lower() for m in events if m.get("from") == "buyer")
-        if "cost breakdown" in prior:
+        if refused_costs:
+            data["question"] = "exchange"
+        elif "cost breakdown" in prior:
             data["question"] = "authority" if QUESTIONS["priorities"].lower() in prior else "priorities"
+    if case and data.get("question") == "continuity" and "contract_months" not in case["negotiable"]:
+        data["question"] = "exchange"
     return data
 
 
@@ -141,12 +181,7 @@ def next_evidence_ids(cards, threads, sid):
     # public price movement stalls or reverses, rather than unloading all evidence
     # in the opening or repeating a claim the supplier has already addressed.
     improving = len(prices) >= 2 and prices[-1] < prices[-2]
-    reply = next((m.get("body", "") for m in reversed(events) if m.get("from") != "buyer"), "")
-    requested_evidence = re.search(
-        r"(?:support|substantiate|verify|back up|provide|share|cite).{0,80}(?:data|evidence|sources|indices)",
-        reply,
-        re.I,
-    )
+    requested_evidence = evidence_requested(events)
     used = {
         ref
         for events in threads.values()
@@ -157,7 +192,7 @@ def next_evidence_ids(cards, threads, sid):
     for card in cards:
         if card.get("kind") == "computed_index" and (card.get("change_pct") or 0) > 0 and not requested_evidence:
             # Accurate inflation data may support the seller, not a discount.
-            # Retain it for analysis/explicit writer selection, not automatic citation.
+            # Retain it for internal analysis and explicit supplier requests.
             continue
         if improving and card.get("kind") not in {"rival_quote", "contract_notice"}:
             continue
@@ -207,7 +242,27 @@ def compose_email(data, cards, sid, strategy="balanced"):
     by_id = {c["id"]: c for c in cards}
     claims = [{"evidence_id": i, "text": by_id.get(i, {}).get("text", "")} for i in selected]
     approved = validate_claims(claims, cards, sid)
-    body = [OPENINGS[opening]]
+    acknowledgment = data.get("acknowledgment", "initial")
+    context = {
+        "initial": "",
+        "review": "",
+        "relationship": "We appreciate the cooperation and would like to plan the next agreement together.",
+        "confidential": (
+            "We respect that your detailed cost calculation is confidential. Let us work with the terms you can offer."
+        ),
+        "price_freeze": (
+            "You have explained the restriction on price changes. "
+            "Let us focus on a workable exchange of contract terms."
+        ),
+    }
+    if acknowledgment not in context:
+        raise ValueError("Unknown acknowledgment")
+    greeting = OPENINGS[opening]
+    if opening == "warm" and acknowledgment != "initial":
+        greeting = "Thank you for considering our proposal and explaining your position."
+    body = [greeting]
+    if context[acknowledgment]:
+        body.append(context[acknowledgment])
     for card in approved:
         refs = card.get("source_ids") or [card["source_id"]]
         if card["kind"] == "rival_quote":

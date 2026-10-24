@@ -16,6 +16,7 @@ from .competitive_anchor import competitive_packages
 from .concessions import preserve_progress
 from .economic_beliefs import infer_economics, total_cost
 from .grounding import (
+    communication_evidence,
     compose_email,
     fixed_commitment_answer,
     fresh_evidence_cards,
@@ -323,6 +324,7 @@ class StrategicNegotiator(Negotiator):
                         (p["issue"] for p in candidates.get(sid, []) if p.get("portfolio_probe") and p["id"] in ids),
                         None,
                     ),
+                    case=case,
                 )
                 data = {**data, "body": compose_email(data, self._cards, sid, strategy)}
             except ValueError as exc:
@@ -459,6 +461,7 @@ class StrategicNegotiator(Negotiator):
                             self.intelligence["facts"][ref] = fact
         if self.features.grounded_language:
             self._cards = fresh_evidence_cards(self._cards, threads)
+            self._cards = communication_evidence(self._cards, threads[sid])
         self._cards = rival_quote_cards(case, threads, self.intelligence, sid) + self._cards
         self.support[sid]["evidence_available"] = any(c.get("shareable") for c in self._cards)
         move, source = None, "controller policy"
@@ -511,6 +514,7 @@ class StrategicNegotiator(Negotiator):
                         any(p.get("closing_probe") for p in chosen),
                         self.support[sid]["state"].get("signals", []),
                         portfolio_issue=next((p["issue"] for p in chosen if p.get("portfolio_probe")), None),
+                        case=case,
                     ),
                     self._cards,
                     sid,

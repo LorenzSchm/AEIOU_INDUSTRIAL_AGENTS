@@ -49,6 +49,18 @@ def test_explicit_impasse_asks_for_one_term_instead_of_everything_at_once():
     assert len({p["id"] for p in result}) == len(result)
 
 
+def test_explicit_price_freeze_explores_terms_after_first_reply():
+    case, buyer, seller, packages = scenario()
+    seller["body"] = "Management has frozen all price reductions. We can discuss terms instead."
+    result = responsive_packages(
+        case, [seller, buyer, seller], packages, {}, lambda t: total_cost(case, t), float("inf")
+    )
+    probe = next(p for p in result if p.get("responsive_probe"))
+    quote = seller["term_sheets"][0]["terms"]
+    assert probe["terms"]["unit_price"] == quote["unit_price"]
+    assert probe["cost"] < total_cost(case, quote)
+
+
 @pytest.mark.parametrize("status", ["agreed", "final_offer", "walked_away"])
 def test_reciprocity_never_reopens_terminal_quote(status):
     case, buyer, seller, packages = scenario()

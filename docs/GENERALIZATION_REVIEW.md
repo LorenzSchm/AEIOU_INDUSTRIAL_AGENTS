@@ -644,3 +644,46 @@ on the historical prefix rejects both early price increases and sends 25.97,
 357.94 / 14 days and indexed 356.68 / 14 days with the public permitted clause.
 All preparation used zero LLM calls and zero Arena sessions. The user authorized
 one subsequent hosted P02 and one P05 attempt, with session-start retries disabled.
+
+## P01 / P03 / P04 readiness and contextual communication
+
+After `0d50564`, read-only Arena checks show team bests of P01 70.59, P03 86.21
+and P04 86.04. No new hosted attempts or Claude calls were used for this review.
+The last first-five batch remains 50.28 / 82.39 / 70.05 on these three cases.
+
+Public-thread evidence identifies different mechanisms. P01 emphasizes the
+relationship and negotiates effective dates; generic repeated approval questions
+and unsolicited inflation citations do not address that exchange. P03 explicitly
+says its pricing is frozen, a form the old `freez` pattern missed. P04 closes
+quickly; its earlier 4.94 / 90-day deal scored higher than 4.90 / 45 days because
+the scoring range is narrow and financing matters substantially.
+
+The implemented changes are general, not challenge-ID rules:
+
+- When first-contact sensitivity refinement would leave only one commercial
+  structure, reprice ordinary date, cash or duration alternatives before removing
+  them. Both the expected-cost envelope and bounded point-cost check still apply.
+  Existing diverse portfolios are not expanded; P02/P05 opening terms were
+  explicitly compared with their successful `0d50564` runs and remain identical.
+- Recognize stated price freezes and use an already bounded, one-term improvement
+  at the actual quoted price after the first response. The quote stays nonbinding
+  until accepted; coverage, validity, total-cost and prior-price guards still apply.
+- Compose acknowledgments from the observed context: an established-relationship
+  statement, a refused cost breakdown or a price freeze. Do not repeat refused
+  requests, invent a history or promise extra concessions. Ask for approval without
+  presuming the correspondent needs a superior; avoid claims that our packages
+  match the counteroffer when that has not been established.
+- Rising computed indices remain in research but are not available for unsolicited
+  standalone discount citations. They remain shareable when the supplier requests
+  supporting evidence. Ordinary approved evidence and binding terms are unchanged.
+- Preserve cost-stressed risk alternatives that already beat the actual quote,
+  rather than discarding them solely against an unaccepted hypothetical anchor.
+
+Validation: nine historical-prefix replays, 93 passing focused tests and one
+pre-existing synthetic comparison failure. That failure is identical on frozen
+`0d50564`: S02/scripted/seed99 gives strategic 85.9182 versus adaptive 99.0061.
+It is not waived or represented as a passing check. A separate pre-existing test
+for a prematurely discarded risk alternative now passes. Ruff and diff checks pass.
+Local audit: `data/local/p134-context-review.json` (includes before/after moves).
+These checks establish behavior and bounds, not higher hosted scores or a causal
+benefit from warmer language. No new scoreboard attempts were authorized or run.

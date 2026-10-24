@@ -7,6 +7,7 @@ from arena_kit.cost import closing_terms
 from arena_kit.play import latest
 
 from .optimizer import valid_terms
+from .supplier_signals import PRICE_FREEZE
 
 
 def same_structure(a, b):
@@ -24,7 +25,7 @@ def responsive_packages(case, events, packages, standard, cost, ceiling):
     buyers = [m for m in events if m.get("from") == "buyer" and m.get("term_sheets")]
     if not buyers or latest(events).get("status") != "open" or not packages:
         return packages
-    requested = bool(
+    requested = bool(re.search(PRICE_FREEZE, latest(events).get("body", ""), re.I)) or bool(
         re.search(
             r"reciprocal (?:step|move)|(?:prices?|packages?).{0,25}(?:unchanged|not changed)|"
             r"best (?:possible )?pric|firm position|real jump|revised offer|"
