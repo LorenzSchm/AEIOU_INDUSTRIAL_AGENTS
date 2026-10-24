@@ -873,3 +873,13 @@ coverage, no unsupported authority claims and factual concession acknowledgment.
 Local audit: `data/local/bundle-review.json`. This is a source-grounded strategy
 experiment, not evidence that a new record is assured. One hosted attempt is the
 maximum planned test of this revision; no retries of session creation.
+
+Outcome: the single `5909c98` run scored **66.91**, versus 68.21 for `f5b46b4`
+and the historical 70.15 best. The deal was 5.53 / 90 days / 24 months; there
+were no model errors or fallbacks and quota increased by exactly one. This does
+not establish causal harm from the wording, but it provides no reason to promote
+the experiment. Its communication code and tests were restored exactly to
+`f5b46b4`. Experimental code remains in Git history; the report is
+`data/local/evaluations/practice-p07-5909c98/report.json`. The earlier protection
+checks established compatibility, not confidence in beating the record. No
+second hosted attempt was run.
