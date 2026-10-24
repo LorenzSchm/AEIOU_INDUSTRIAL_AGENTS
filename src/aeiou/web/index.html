@@ -1,40 +1,15 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#ff6414"><title>AEIOU — Negotiation intelligence</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff6414'/%3E%3Cpath d='M7 24L16 7l9 17h-5l-4-9-4 9z' fill='%23ffffff'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="/assets/style.css"><script src="/assets/app.js" defer></script>
-</head>
-<body>
-  <aside class="sidebar">
-    <a class="brand" href="#overview" aria-label="AEIOU overview"><span class="brandmark">A<span>↗</span></span>AEIOU<span class="brand-dot">®</span></a>
-    <div class="workspace"><span class="workspace-icon">H</span><div>Hollerau Pumpenwerke<small>Procurement intelligence</small></div><span>⌄</span></div>
-    <div class="nav-label">WORKBENCH</div>
-    <nav aria-label="Main navigation">
-      <a href="#overview" data-page="overview"><span>◫</span>Overview</a>
-      <a href="#negotiations" data-page="negotiations"><span>⇄</span>Negotiations<span id="run-count" class="nav-count">0</span></a>
-      <a href="#evidence" data-page="evidence"><span>▤</span>Evidence library</a>
-      <a href="#evaluations" data-page="evaluations"><span>↗</span>Evaluations</a>
-    </nav>
-    <div class="sidebar-note"><div class="tiny-label">THE AEIOU APPROACH</div><p>Know the context.<br>Find the trade.<br><em>Close with confidence.</em></p><div class="note-rule"></div><span>Evidence → Strategy → Agreement</span></div>
-    <div class="agent-state"><span class="status-dot"></span><div>Claude connected<small id="sidebar-model">Checking configuration…</small></div><span class="connection-icon">↗</span></div>
-    <div class="sidebar-foot"><span class="avatar">LS</span><div>Team AEIOU<small>Tacto Negotiation Arena</small></div></div>
-  </aside>
-  <div class="shell">
-    <header class="topbar"><div><span class="breadcrumb">Workspace</span><span class="slash">/</span><span id="breadcrumb-current">Overview</span></div><div class="topbar-right"><span class="environment"><span class="status-dot"></span>LOCAL WORKBENCH</span><span class="topbar-avatar">A</span></div></header>
-    <main id="main" tabindex="-1"><div class="loading">Loading your negotiation workbench…</div></main>
-    <footer>AEIOU · Evidence-led industrial agents <span>Powered by Claude · Built for Tacto Arena</span></footer>
-  </div>
-  <dialog id="launch-dialog"><form id="launch-form">
-    <div class="dialog-header"><span class="eyebrow">START A NEGOTIATION</span><button type="button" class="icon-button" id="close-dialog" aria-label="Close dialog">×</button></div>
-    <h2>Put your agent to work.</h2><p class="muted">Choose a case and a test environment.</p>
-    <label>Environment<select name="mode" id="launch-mode"><option value="hosted">Hosted practice · uses arena quota</option><option value="local">Local simulator · no arena quota</option></select></label>
-    <label>Negotiation case<select name="case_id" id="launch-case" required></select></label>
-    <label>Buyer agent<select name="agent"><option value="claude">AEIOU · Claude + economic guards</option><option value="adaptive">AEIOU · deterministic adaptive policy</option><option value="baseline">Upstream naive baseline</option></select></label>
-    <label id="opponent-label" hidden>Local opponent<select name="opponent" id="launch-opponent"></select></label>
-    <div class="form-note" id="launch-note">Claude calls use your configured Anthropic account. Hosted sessions count against your practice quota.</div>
-    <p class="form-error" id="launch-error" role="alert"></p><button type="submit" class="button primary full" id="launch-submit">Launch negotiation <span>↗</span></button>
-  </form></dialog>
-  <div id="toast" role="status" aria-live="polite"></div>
-</body></html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#14141c" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cdefs%3E%3CradialGradient id='t' cx='1' cy='0' r='.85'%3E%3Cstop offset='0' stop-color='%23b6f4f1'/%3E%3Cstop offset='.3' stop-color='%234c9fa2' stop-opacity='.7'/%3E%3Cstop offset='.75' stop-color='%2324494d' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='l' cx='0' cy='1' r='.95'%3E%3Cstop offset='0' stop-color='%23c2b2e4'/%3E%3Cstop offset='.35' stop-color='%237b6ba6' stop-opacity='.7'/%3E%3Cstop offset='.8' stop-color='%233b3352' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='40' height='40' rx='9' fill='%2314141c'/%3E%3Crect width='40' height='40' rx='9' fill='url(%23l)'/%3E%3Crect width='40' height='40' rx='9' fill='url(%23t)'/%3E%3Ctext x='20' y='30.5' text-anchor='middle' fill='white' font-size='28' font-family='Times New Roman,Georgia,serif'%3EA%3C/text%3E%3C/svg%3E" />
+    <title>AEIOU — Negotiation intelligence</title>
+    <script type="module" crossorigin src="/assets/index-CKGFIbCK.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DrV2aGww.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

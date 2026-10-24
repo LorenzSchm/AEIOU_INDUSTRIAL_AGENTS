@@ -15,10 +15,26 @@ cp .env.example .env
 uv run aeiou serve
 ```
 
-Open **http://127.0.0.1:8765**. Pages cover overview, negotiation/replay, evidence, local
-evaluations and a separate hosted comparison. All values come from recorded runs and reports.
+Open **http://127.0.0.1:8765**. Pages cover overview, a live deal pipeline, negotiation/replay,
+evidence, local evaluations and a separate hosted comparison. The buyer model can be switched in
+the sidebar (stored in `data/local/settings.json`); "Live demo" paces a local run so the pipeline
+visibly moves. All values come from recorded runs and reports.
 The adaptive policy needs no API key. Claude calls use Anthropic credits; hosted practice also
 uses arena quota. Page load does not start paid work.
+
+### Dashboard development
+
+The dashboard is a React + Tailwind + [shadcn/ui](https://ui.shadcn.com) app in `frontend/`,
+themed to match Tacto's product (Inter, orange `#ff6414`, Untitled-UI neutrals). Its production
+build is committed to `src/aeiou/web/`, so `aeiou serve` and Docker need no Node. To change it
+(Node 20.19+ or 22+), keep `uv run aeiou serve` running and in a second terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev     # http://localhost:5173, proxies /api to :8765
+npm run build   # writes src/aeiou/web/; commit the result
+```
 
 Environment variables override `.env`. Defaults: `LLM_PROVIDER=anthropic`,
 `LLM_MODEL=claude-sonnet-5-5`, `LLM_TIMEOUT=35`, `LLM_MAX_TOKENS=1800`. See
@@ -159,7 +175,8 @@ The runner follows API wave state, not hard-coded event times.
 | `src/aeiou/simulation.py`, `benchmark.py` | Local opponents and paired evaluation |
 | `src/aeiou/hosted_evaluation.py` | Observed hosted comparison |
 | `src/aeiou/prompt_protocol.py`, `prompt_comparison.py`, `language_sim.py` | Exact original prompt, local matched comparison and model-driven seller |
-| `src/aeiou/service.py`, `web/` | FastAPI and responsive dashboard |
+| `src/aeiou/service.py`, `web/` | FastAPI and the built dashboard |
+| `frontend/` | Dashboard source (React, Tailwind, shadcn/ui) |
 | `data/package/`, `docs/arena/` | Procurement dataset, case files and challenge requirements |
 | `vendor/arena-kit/` | Pinned kit client, C function, simulator and tests |
 | `reports/` | Versioned benchmark evidence |

@@ -141,8 +141,8 @@ class StressSim(Sim):
 
 
 class LocalTable:
-    def __init__(self, sim, run):
-        self.sim, self.run, self.team, self.session_id = sim, run, "local-team", None
+    def __init__(self, sim, run, pace=0.0):
+        self.sim, self.run, self.team, self.session_id, self.pace = sim, run, "local-team", None, pace
 
     def open(self, case_id):
         r = self.sim.open(self.team, case_id)
@@ -151,7 +151,14 @@ class LocalTable:
         return r["case"], copy.deepcopy(r["threads"])
 
     def send(self, supplier_id, message):
-        return copy.deepcopy(self.sim.message(self.team, self.session_id, supplier_id, message))
+        reply = copy.deepcopy(self.sim.message(self.team, self.session_id, supplier_id, message))
+        # Persist each exchange so the dashboard pipeline can follow the negotiation live.
+        threads = self.sim.sessions[self.session_id]["threads"]
+        self.run["threads"] = {s: copy.deepcopy(t["messages"]) for s, t in threads.items()}
+        save_run(self.run)
+        if self.pace:
+            time.sleep(self.pace)
+        return reply
 
     def close(self, supplier_id, message):
         return self.send(supplier_id, message)["result"]
@@ -163,7 +170,7 @@ class LocalTable:
         return self.sim.sessions[self.session_id]["result"]
 
 
-def local_play(case_id="case:S01", name="adaptive", opponent="scripted", seed=0, run=None, pkg=None):
+def local_play(case_id="case:S01", name="adaptive", opponent="scripted", seed=0, run=None, pkg=None, pace=0.0):
     from .research import package
 
     pkg = pkg or package()
@@ -177,7 +184,7 @@ def local_play(case_id="case:S01", name="adaptive", opponent="scripted", seed=0,
     sim = (
         Sim(cases, pkg.facts, no_clock=True) if opponent == "scripted" else StressSim(cases, opponent, seed, pkg.facts)
     )
-    table, agent = LocalTable(sim, run), make_agent(name, pkg)
+    table, agent = LocalTable(sim, run, pace), make_agent(name, pkg)
     try:
         result = play(table, case_id, agent)
         state = sim.sessions[table.session_id]
