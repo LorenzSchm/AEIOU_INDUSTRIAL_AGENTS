@@ -1065,3 +1065,23 @@ Compare with the 72.75 baseline and the earlier combined-trade tie, reporting
 raw scores and terms. Do not infer variance or causality from that single run.
 No new P01-P05 sessions are planned. Known unrelated S02 regression remains
 outside these focused checks; this is not a claim that the entire suite passes.
+
+
+Hosted outcome (`3f209fa`): session `b9bd096e33005f30`, **72.75**, exactly tied
+with the existing record. The live trace confirms explore -> continue: combined
+bids advanced 4.84 -> 4.98 at 14 days / 36 months. Supplier primary prices were
+5.74 -> 5.60 -> 5.49 -> 5.44; final alternative 5.35 / 14 / 36 remained available.
+The chosen 5.44 / 90 / 24 costs 324252.80; the lower sticker-price alternative
+costs 324310.13, so choosing the main quote saves 57.33 under the buyer model.
+The stale-offer defect is fixed, but this attempt provides no score improvement.
+It also does not establish a private price floor or expected future performance.
+
+Keep this lifecycle repair because its actual behavior and correctness are
+verified, unlike the prior speculative concession multiplier. Preserve the
+baseline commit fc3d541 for comparison. 104 focused tests and 57 unchanged
+protected decision prefixes support compatibility; new P01-P05 hosted outcomes
+remain untested. Three model calls used 16304 input / 282 output tokens, no API
+errors or fallbacks, 38.31 seconds. Quota rose 129 -> 130, exactly one session;
+the best-score map was unchanged. No further attempt was started. Research
+hypotheses are not presented as causal performance claims.
+Report: data/local/evaluations/practice-p07-3f209fa/report.json.
