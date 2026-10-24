@@ -997,3 +997,71 @@ Quota increased 128 -> 129 and best scores were unchanged. No second session was
 started. A tie does not justify claiming an improvement: restore runtime/tests
 exactly to fd10d6d (the 72.75 baseline), preserving experiment code in Git history.
 Report: data/local/evaluations/practice-p07-3587083/report.json.
+
+
+## Research review: keep supported packages on the current cost frontier
+
+Research reviewed on 25 October 2026. The aim is a transferable policy repair,
+not a table of P07 bid prices or a fitted hidden reservation value.
+
+| Primary source | Relevant finding | Application and limits here |
+| --- | --- | --- |
+| [Leonardelli et al., 2019, MESOs](https://www.sciencedirect.com/science/article/pii/S074959781630557X) | Six experiments found benefits from offering several equivalent first packages, including economic and relational outcomes. | Keep meaningful, similarly valued alternatives. Human first-offer experiments do not establish a later-round effect against an LLM. |
+| [Lai, Sycara and Li, 2008](https://publications.ri.cmu.edu/a-decentralized-model-for-automated-multi-attribute-negotiations-with-incomplete-information-and-general-utility-functions) | Multi-attribute counteroffers are chosen on an indifference surface near the opponent's prior offer. | Reprice an explicitly countered structure against today's buyer cost target. We borrow this principle; we do not implement their random-neighborhood algorithm or claim Pareto optimality. |
+| [Baarslag et al., opponent-modeling survey](https://link.springer.com/article/10.1007/s10458-015-9309-1) | Reviews learning, reciprocal tactics and preference-model evaluation. | Separate observable quote structures from assumptions about utility. A counter is evidence of a negotiating path, not acceptance or a private floor. |
+| [Chang and Fujita, COMB, 2024](https://link.springer.com/article/10.1007/s10726-024-09889-7) | Bayesian preference learning can improve model accuracy, but depends on behavioral assumptions; evaluated over 45 domains. | Publisher abstract/preview reviewed, not inaccessible full text. Our few informative replies do not justify a new calibrated acceptance model. Retain explicit uncertainty. |
+| [Tey et al., 2021](https://www.sciencedirect.com/science/article/abs/pii/S0749597821000613) and [authors' explanation](https://knowledge.insead.edu/strategy/negotiators-should-decrease-concessions-across-rounds) | Decreasing concessions can signal a limit and change recipients' expectations. | Do not interpret P07's slowing cuts as proof of a floor, or assume larger buyer concessions are always better. Human distributive experiments are not a prescription for this arena. |
+| [Oh et al., MERIT, 2026](https://arxiv.org/html/2602.10467v1) | Utility feedback and explicit opponent-aware reasoning improve bargaining in the authors' settings. | Keep decision feedback economically grounded. The paper is buyer-centric and excludes tool-augmented settings; wholesale prompting/training changes lack direct validation here. |
+| [Zhang et al., TERMS-Bench, 2026](https://arxiv.org/html/2605.13909v1) | Separates inference, uncertainty and control failures; better posterior information alone has inconsistent benefits. | First repair how known counteroffers reach executable bids. Synthetic benchmark/oracle experiments are diagnostic inspiration, not evidence of a particular P07 gain. |
+
+### Diagnosis from actual execution
+
+The combined-trade run changed the supplier's menu to 5.49 / 90 / 24 and
+5.40 / 14 / 36. Three individually cautious rules interacted badly:
+
+1. Initiating the coupled trade required a live pair differing only in payment;
+   the new supplier menu differed in duration too, so that trigger disappeared.
+2. counteroffer_probe deliberately skipped an already-proposed matching shape
+   (except indexed structures), rather than regenerating that shape at today's
+   target cost.
+3. preserve_progress retained our old 4.84 / 14 / 36 concession. This avoided
+   withdrawing an offer but did not advance it alongside the new A/B prices.
+
+This is a package-follow-up defect supported by traceable code and a transcript,
+not a causal explanation of all low scores. The actual supplier response path
+must be tested; replaying only the prior baseline cannot expose it.
+
+### Chosen repair and alternatives deferred
+
+Restore the combined proposal, then distinguish exploration from continuation.
+Exploration still requires a real like-for-like cash discount plus material
+reciprocal progress. Continuation requires the latest supplier quote to match a
+combined structure in our immediately previous outgoing menu. Reprice that
+structure at the current A cost limit, preserve every prior same-structure price
+concession, and enforce legality, finite cost and improvement over live quotes.
+A/B remain intact. Terminal messages and protected close/uncertainty/other-issue
+probes cannot be displaced. The continuation does not assume equal-value seller
+quotes or infer finance rates from a menu that changes several terms.
+
+Deferred: another concession multiplier (last attempt regressed), a new Bayesian
+acceptance model (too little identifying evidence), prompt-only persuasion
+(does not fix the executable offer), and unrestricted model pricing (would remove
+cost/duplicate protections). More market data cannot itself repair this stale
+state transition. Existing research tools remain available.
+
+### Validation and bounded experiment
+
+104 focused tests pass, with Ruff and formatting clean. All 57 archived P01-P05
+decisions are exactly unchanged. Tests include synthetic identities, different
+payment/duration choices and two scaled three-turn trajectories where the seller
+changes its menu in response to the proposed combination. They verify continued
+movement without increasing modeled buyer cost; they are not score forecasts.
+The actual 3587083 trajectory now yields 4.98 / 14 / 36 rather than stale 4.84;
+its opener, second menu, A/B and terminal acceptance are unchanged. Artifacts:
+data/local/cash-followup-p07.json and cash-followup-protected.json.
+
+Exactly one hosted P07 attempt is authorized, without session-creation retries.
+Compare with the 72.75 baseline and the earlier combined-trade tie, reporting
+raw scores and terms. Do not infer variance or causality from that single run.
+No new P01-P05 sessions are planned. Known unrelated S02 regression remains
+outside these focused checks; this is not a claim that the entire suite passes.

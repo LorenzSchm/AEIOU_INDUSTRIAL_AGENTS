@@ -15,6 +15,102 @@ def structure(terms):
     return {k: v for k, v in terms.items() if k != "unit_price"}
 
 
+def combine_cash_continuity(case, events, packages, cost, compensate):
+    """Combine a quoted cash incentive with an already-proposed longer contract.
+
+    Preserve A/B. Start only from a generic duration experiment plus a live
+    like-for-like cash discount. Continue a previously sent combination when the
+    supplier explicitly quotes it, even if that changes the live quote menu.
+    Both stages require genuine reciprocal price progress.
+    The longer commitment is explicit, not an assumed free supplier benefit.
+    """
+    if (
+        len(packages) != 3
+        or not packages[0].get("reciprocal_progress")
+        or not {"payment_days", "contract_months"} <= set(case["negotiable"])
+        or not events
+        or events[-1].get("from") == "buyer"
+        or events[-1].get("status") != "open"
+        or any(packages[2].get(flag) for flag in ("closing_probe", "uncertainty_probe", "bounded_uncertainty_probe"))
+        or (packages[2].get("portfolio_probe") and packages[2].get("issue") != "cash_continuity")
+    ):
+        return packages
+    base, cash, longer = (p["terms"] for p in packages)
+    std = standard_terms(events)
+    quotes = [closing_terms(case, s.get("terms", {}), std) for s in events[-1].get("term_sheets", [])]
+    fields = case["negotiable"]
+    buyer = next((m for m in reversed(events) if m.get("from") == "buyer"), {})
+    offered = [closing_terms(case, s.get("terms", {}), std) for s in buyer.get("term_sheets", [])]
+    # A supplier's actual counter preserves this structure as an available
+    # negotiating path. Rebuild it on today's buyer-cost frontier instead of
+    # leaving its prior price stale when A/B advance.
+    supported = [
+        {f: q[f] for f in fields}
+        for q in quotes
+        if q["payment_days"] < base["payment_days"]
+        and q["contract_months"] > base["contract_months"]
+        and all(q.get(f) == base.get(f) for f in fields if f not in {"unit_price", "payment_days", "contract_months"})
+        and any(all(q.get(f) == p.get(f) for f in fields if f != "unit_price") for p in offered)
+        and valid_terms(case, {f: q[f] for f in fields})
+    ]
+    mode = "continue" if supported else "explore"
+    if supported:
+        shape = min(supported, key=cost)
+    else:
+        if (
+            packages[2].get("label") != "Explore contract_months"
+            or cash["payment_days"] >= base["payment_days"]
+            or longer["contract_months"] <= base["contract_months"]
+        ):
+            return packages
+        shape = {**cash, "contract_months": longer["contract_months"]}
+
+    def comparable(a, b):
+        return all(a.get(f) == b.get(f) for f in a.keys() | b.keys() if f not in {"unit_price", "payment_days"})
+
+    incentive = any(
+        q["payment_days"] == cash["payment_days"]
+        and other["payment_days"] == base["payment_days"]
+        and q["unit_price"] < other["unit_price"]
+        and comparable(q, other)
+        for q in quotes
+        for other in quotes
+    )
+    if not supported and not incentive:
+        return packages
+    terms = compensate(case, base, shape, cost)
+    if terms is None:
+        return packages
+    for message in events:
+        if message.get("from") != "buyer":
+            continue
+        for sheet in message.get("term_sheets", []):
+            prior = sheet.get("terms", {})
+            if all(prior.get(f) == terms.get(f) for f in fields if f != "unit_price"):
+                terms["unit_price"] = max(terms["unit_price"], prior["unit_price"])
+    if (
+        not valid_terms(case, terms)
+        or not math.isfinite(cost(terms))
+        or cost(terms) > cost(base) + 0.001
+        or cost(terms) >= min(cost(q) for q in quotes) - 0.01
+    ):
+        return packages
+    return packages[:2] + [
+        {
+            "id": packages[2]["id"],
+            "label": "Combined cash and continuity exchange",
+            "terms": terms,
+            "cost": cost(terms),
+            "portfolio_probe": True,
+            "issue": "cash_continuity",
+            "package_stage": mode,
+            "standing_cost": min(cost(q) for q in quotes),
+            "portfolio_ceiling": cost(base),
+            "limitation": "Observed cash incentive or countered package; preference weights and acceptance unverified.",
+        }
+    ]
+
+
 def commercial_shapes(case, base, current):
     """Explore coupled issues that a one-coordinate optimizer cannot price jointly."""
     options, fields = case.get("term_options", {}), case["negotiable"]
