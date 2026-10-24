@@ -940,3 +940,17 @@ changes, from 5.07 to 5.11 at 90 days / 24 months (cash alternative 5.02). This
 cannot prove that a supplier will continue negotiating. One hosted P07 attempt
 is planned, without new-session retries. Local audits: sustained-progress-after,
 sustained-p07-before and sustained-p07-after JSON files under data/local.
+
+
+Outcome (`9aaa548`): the sole hosted session `0826f9d47355d316` scored **72.10**,
+0.65 points below the 72.75 best. The first two exchanges reproduced the previous
+prices; the stronger 5.11 third bid received a final 5.45 / 90 days / 24 months
+offer, with total cost 324848.80. It did not obtain an extra round. Three model
+calls used 16273 input / 255 output tokens, with zero API errors or fallbacks.
+Quota increased 125 -> 126 and the entire best-score map was unchanged. No second
+attempt was started. This is not evidence of causal harm, but provides no reason
+to promote the more generous rule. Restored concessions.py and its tests exactly
+to c6c2019; all runtime code/tests match that version. The experiment remains in
+Git history and data/local/evaluations/practice-p07-9aaa548/report.json. Further
+bid-increment tuning has weak support; investigate executable package tradeoffs
+or defensible valuation evidence before another hosted test.
