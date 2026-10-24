@@ -52,6 +52,16 @@ def match_material_progress(case, events, packages, cost):
         or cost(current) >= cost(previous) - 0.01
     ):
         return packages
+    # Continued, comparable movement is evidence of an active exchange, not a
+    # reservation price. Relax the gap cap only after two consecutive genuine
+    # improvements; a plateau, reversal or worse prior terms resets this signal.
+    sustained = (
+        len(quotes) >= 3
+        and quotes[-3]["unit_price"] - previous["unit_price"] > 0.001
+        and shape(quotes[-3]) == shape(previous)
+        and all(previous[f] >= quotes[-3][f] for f in ("payment_days", "contract_months"))
+        and cost(previous) < cost(quotes[-3]) - 0.01
+    )
     history = [s.get("terms", {}) for m in events if m.get("from") == "buyer" for s in m.get("term_sheets", [])]
     result = copy.deepcopy(packages)
     ceiling = min(alternative_cost(case), cost(current) - 0.01)
@@ -68,10 +78,11 @@ def match_material_progress(case, events, packages, cost):
         gap = max(0, current["unit_price"] - last)
         # Asymmetric opening anchors make literal one-for-one reciprocity too
         # slow when the remaining gap is large. Close at most a quarter of that
-        # gap, capped at twice the latest observed supplier movement. This is an
+        # gap, or half after sustained reciprocity, still capped at twice the
+        # latest observed supplier movement. This is an
         # explicit policy heuristic, not an inferred acceptance price; unchanged
         # quotes cannot activate it. Never withdraw an existing concession.
-        step_limit = min(2 * step, gap * 0.25)
+        step_limit = min(2 * step, gap * (0.5 if sustained else 0.25))
         bounded = math.floor((last + step_limit) * 100 + 1e-7) / 100
         price = max(terms["unit_price"], bounded)
         proposed = {**terms, "unit_price": price}
@@ -86,6 +97,7 @@ def match_material_progress(case, events, packages, cost):
                 "prior_buyer_price": last,
                 "buyer_step_limit": step_limit,
                 "standing_cost": cost(current),
+                "sustained_reciprocity": sustained,
             },
         )
     return result

@@ -919,3 +919,24 @@ Quota rose 123 -> 124; only P07 changed in the best-score map. Keep this revisio
 but treat the observed extra round and record as a single-run result, not proof
 of causality or reliable future gains. No further hosted attempt was made.
 Dashboard report: data/local/evaluations/practice-p07-6b8ff24/report.json.
+
+
+## Sustained reciprocal movement experiment
+
+The 72.75 run reached a third exchange, then closed with a 5.44 supplier final.
+The buyer's quarter-gap cap shrank its third concession from 0.22 to 0.14. The
+next hypothesis is to preserve momentum only after two consecutive comparable
+supplier price and cost reductions, with no worsening payment or duration terms.
+In that situation the gap cap becomes one half; the separate cap of twice the
+latest supplier step and the buyer cost ceilings remain unchanged. A plateau,
+reversal or worsened prior terms prevents the sustained signal. No hidden floor,
+challenge ID or historic winning price enters the runtime policy. The half-gap
+cap is an experimental policy choice, not an empirically established optimum.
+
+75 focused tests pass. All 57 archived P01-P05 decisions remain identical to
+c6c2019's archived replay. P07's opening, second counter and terminal acceptance
+are identical in an offline replay against frozen c6c2019. Only the third offer
+changes, from 5.07 to 5.11 at 90 days / 24 months (cash alternative 5.02). This
+cannot prove that a supplier will continue negotiating. One hosted P07 attempt
+is planned, without new-session retries. Local audits: sustained-progress-after,
+sustained-p07-before and sustained-p07-after JSON files under data/local.

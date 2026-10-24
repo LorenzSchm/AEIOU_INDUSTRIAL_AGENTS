@@ -101,3 +101,38 @@ def test_cash_discount_does_not_trigger_when_better_complete_quote_barely_moved(
         {"terms": {"unit_price": 9.9, "payment_days": 14}},
     ]
     assert match_material_progress(case, events, packages, lambda t: total_cost(case, t)) == packages
+
+
+@pytest.mark.parametrize("prior_price, expected", [(9.7, 9.2), (10, 9.1), (10.1, 9.1)])
+def test_sustained_exchange_requires_two_consecutive_improvements(prior_price, expected):
+    case, events, packages = setup()
+    events[-1]["term_sheets"][0]["terms"]["unit_price"] = prior_price
+    bid = {**packages[0]["terms"], "unit_price": 9}
+    counter = {**events[-1]["term_sheets"][0]["terms"], "unit_price": 9.4}
+    events.extend(
+        [
+            {"from": "buyer", "term_sheets": [{"terms": bid}]},
+            {"from": "supplier", "status": "open", "term_sheets": [{"terms": counter}]},
+        ]
+    )
+    packages[0]["terms"]["unit_price"] = 9.02
+    result = match_material_progress(case, events, packages, lambda t: total_cost(case, t))
+    assert result[0]["terms"]["unit_price"] == expected
+
+
+def test_prior_payment_deterioration_does_not_count_as_sustained_progress():
+    case, events, packages = setup()
+    events[0]["term_sheets"][0]["terms"]["payment_days"] = 90
+    events[-1]["term_sheets"][0]["terms"]["payment_days"] = 14
+    bid = {**packages[0]["terms"], "unit_price": 9, "payment_days": 90}
+    counter = {**events[0]["term_sheets"][0]["terms"], "unit_price": 9.4}
+    events.extend(
+        [
+            {"from": "buyer", "term_sheets": [{"terms": bid}]},
+            {"from": "supplier", "status": "open", "term_sheets": [{"terms": counter}]},
+        ]
+    )
+    packages[0]["terms"] = {**bid, "unit_price": 9.02}
+    result = match_material_progress(case, events, packages, lambda t: total_cost(case, t))
+    assert result[0]["terms"]["unit_price"] == 9.1
+    assert not result[0]["reciprocal_progress"]["sustained_reciprocity"]
