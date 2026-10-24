@@ -1202,3 +1202,30 @@ source without guard fallback. Archived P08 replay proposes 5.01/cash14/36
 with 5% deadband after the first counter, within the explicit cost ceiling.
 One additional hosted P08 attempt is authorized by the follow-up request;
 no other categories and no automatic session-creation retry.
+
+
+Outcome (12e75ba): one session 71065f49f4ab4c49 scored **48.20**, 1.26 points
+below the preceding 49.47 and 10.94 below the best 59.15. Agreement 5.44,
+payment14, duration36, index share45%/deadband5%; total cost 1051250.26.
+The price concession did not compensate for earlier cash: total cost increased
+2216.21 versus the previous run. Quota 135 -> 136, best map unchanged. Three
+model calls, 20642 input / 296 output tokens, no errors/fallbacks, 94.69 seconds.
+
+The first supplier counter explicitly asked for "the data underlying your
+target price". The broad request matcher admitted rising index evidence; the
+next supplier reply said "Your figures confirm our case: that driver rose."
+The next counter did not win further concessions. This is public trajectory
+evidence, not a controlled estimate of causal effects.
+
+Remove the indexed-commitment heuristic and its tests, restoring the preceding
+portfolio implementation. The failed experiment remains in Git history. Retain
+qualified dated cover selection and require an explicit index/benchmark request
+before releasing positive index cards to the writer. Generic price-support or
+forecast requests, cross-sentence index mentions and negated requests do not
+qualify. The actual triggering request now fails that gate. Explicit requests
+remain supported; negative movements remain available as before.
+
+Final validation: 125 focused tests pass; 57 protected P01-P05 decisions are
+exactly identical; Ruff clean. The final runtime is not hosted-tested: no second
+attempt was opened under this follow-up. One cannot claim a score improvement.
+Report: data/local/evaluations/practice-p08-12e75ba/report.json.

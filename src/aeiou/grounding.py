@@ -131,13 +131,16 @@ def fresh_evidence_cards(cards, threads):
 
 
 def evidence_requested(events):
+    """Positive index cards require a specific index request, not a generic challenge."""
     reply = next((m.get("body", "") for m in reversed(events) if m.get("from") != "buyer"), "")
-    return bool(
+    return any(
         re.search(
-            r"(?:support|substantiate|verify|back up|provide|share|cite).{0,80}(?:data|evidence|sources|indices)",
-            reply,
+            r"(?:support|substantiate|verify|back up|provide|share|cite).{0,80}\b(?:index|indices|benchmarks?)\b",
+            sentence,
             re.I,
         )
+        and not re.search(r"(?:do not|don't|no need to).{0,20}(?:provide|share|cite|verify)", sentence, re.I)
+        for sentence in re.split(r"[.!?\n]", reply)
     )
 
 

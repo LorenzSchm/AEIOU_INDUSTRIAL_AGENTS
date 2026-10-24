@@ -137,6 +137,8 @@ def test_automatic_evidence_does_not_use_rising_index_as_discount_argument():
     }
     assert next_evidence_ids([card], {}, "supplier") == []
     request = {"supplier": [{"from": "seller", "body": "Please substantiate your argument with actual data IDs."}]}
+    assert next_evidence_ids([card], request, "supplier") == []
+    request["supplier"][0]["body"] = "Please provide the index data and sources."
     assert next_evidence_ids([card], request, "supplier") == [card["id"]]
     assert next_evidence_ids([{**card, "change_pct": -12}], {}, "supplier") == [card["id"]]
     assert safe_excerpt("To Our Important Supplier Company.\n\nOur price is fixed for this quarter only.") == (

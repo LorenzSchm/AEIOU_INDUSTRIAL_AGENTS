@@ -69,8 +69,23 @@ def test_rising_indices_remain_available_for_requested_evidence_but_not_unsolici
     ]
     assert communication_evidence(cards, []) == [cards[1]]
     events = [{"from": "supplier", "body": "Please substantiate your argument with source data."}]
+    assert communication_evidence(cards, events) == [cards[1]]
+    events[0]["body"] = "Please provide the index data and sources."
     assert communication_evidence(cards, events) == cards
     assert len(cards) == 2  # research input unchanged
+
+
+@pytest.mark.parametrize(
+    "reply",
+    [
+        "Please provide the data underlying your target price.",
+        "Please share forecast data. Our indices rose last year.",
+        "Do not provide index data.",
+    ],
+)
+def test_generic_or_negated_requests_do_not_release_positive_indices(reply):
+    cards = [{"id": "up", "kind": "computed_index", "change_pct": 10}]
+    assert communication_evidence(cards, [{"from": "supplier", "body": reply}]) == []
 
 
 def test_refining_anchor_preserves_legal_cost_compensated_commercial_alternatives():
