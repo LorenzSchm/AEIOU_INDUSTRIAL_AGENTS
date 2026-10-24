@@ -105,7 +105,12 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
             plan["packages"] = [
                 p
                 for p in plan["packages"]
-                if p["cost"] <= (min(ceiling, p["standing_cost"] - 0.01) if p.get("closing_probe") else budget)
+                if p["cost"]
+                <= (
+                    min(ceiling, p["standing_cost"] - 0.01)
+                    if p.get("closing_probe") or p.get("uncertainty_probe")
+                    else budget
+                )
             ]
             if plan["recommendation"] not in {p["id"] for p in plan["packages"]}:
                 plan["recommendation"] = next((p["id"] for p in plan["packages"]), None)
@@ -131,7 +136,10 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
                         + [
                             p["id"]
                             for p in plan["packages"]
-                            if p.get("feedback_probe") or p.get("exchange_probe") or p.get("closing_probe")
+                            if p.get("feedback_probe")
+                            or p.get("exchange_probe")
+                            or p.get("closing_probe")
+                            or p.get("uncertainty_probe")
                         ]
                     )
                 )[:3]

@@ -24,6 +24,13 @@ def test_d01_strategy_switch_preserves_previous_concession_and_horizon():
     base = next(p for p in plans if p["id"] == "A")
     assert base["terms"]["unit_price"] >= previous["unit_price"]
     assert all(p["terms"]["contract_months"] == 24 for p in plans)
+    # The latest reply reciprocates; historical resistance must not trigger
+    # another settlement concession. A fresh warning still enables that path.
+    assert not any(p.get("closing_probe") for p in plans)
+    events[-1]["body"] += "\nThat price is not feasible; this is our last offer."
+    agent = StrategicNegotiator(package())
+    agent.decide(data["case"], data["threads"])
+    plans = agent.support[move["supplier_id"]]["plan"]["packages"]
     closing = next(p for p in plans if p.get("closing_probe"))
     assert closing["cost"] < closing["standing_cost"]
     assert closing["terms"]["effective_date"] == "2027-04-01"

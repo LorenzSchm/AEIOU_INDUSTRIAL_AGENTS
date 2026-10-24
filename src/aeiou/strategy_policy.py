@@ -41,8 +41,8 @@ def select_strategy(case, events, state, belief, enabled=True):
         }
     if state["identical_price_replies"] >= 3:
         return {"name": "trade_terms", "reason": "Repeated price suggests exploring compensated terms", "anchor": 0.18}
-    probable = max(belief["hypotheses"], key=lambda h: h["weight"])
-    if belief["observations"] >= 2 and probable["finance"] >= 0.4:
+    cash_weight = sum(h["weight"] for h in belief["hypotheses"] if h["finance"] >= 0.4)
+    if belief["observations"] >= 2 and cash_weight >= 2 / 3:
         return {
             "name": "cash_exchange",
             "reason": "Observed package choices favor liquidity hypotheses",

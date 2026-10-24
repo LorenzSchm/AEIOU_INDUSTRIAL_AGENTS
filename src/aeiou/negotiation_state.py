@@ -93,6 +93,7 @@ def supplier_state(case, events):
         for a in m.get("attachments", [])
     ]
     return {
+        "last_supplier_message_index": max(i for i, m in enumerate(events) if m.get("from") != "buyer"),
         "status": latest(events).get("status"),
         "moves_left": moves_left(case, events),
         "supplier_price_change": round(supplier_prices[-1] - supplier_prices[0], 2) if supplier_prices else None,

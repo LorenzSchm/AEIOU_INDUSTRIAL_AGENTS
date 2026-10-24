@@ -9,6 +9,7 @@ from arena_kit.docs import standard_terms
 from .optimizer import estimate, valid_terms
 from .supplier_signals import recent_kinds
 from .term_exchange import exchange_history, ranked_exchanges
+from .uncertainty import robust_quote_improvement
 
 SCENARIOS = (
     {"id": "base", "label": "Published case rates"},
@@ -169,6 +170,39 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
                     {"id": "C", "label": f"Explore {field}", "terms": probe, "cost": cost(probe)}
                 ]
                 break
+        else:
+            # A point-estimate optimum can wrongly rule out every trade. Explore
+            # only direct-cost-compensated variants that beat the real quote at
+            # all three supplier-cost stress points. Keep protected A unchanged.
+            replies = events[-1].get("term_sheets", [])
+            current = complete_offer(case, {**std, **replies[0]["terms"]}) if replies else None
+            uncertainty = intelligence.get("estimates", {}).get(sid, {}).get("confidence_pct")
+            probes = []
+            if current and supplier and uncertainty:
+                for field in fields:
+                    if field not in case["negotiable"]:
+                        continue
+                    for value in case.get("term_options", {}).get(field, []):
+                        if value == base.get(field) or (field == "lead_time_days" and value < base[field]):
+                            continue
+                        probe = equivalent_probe(case, base, field, value, lambda t: total_cost(case, t, std))
+                        if probe is None:
+                            continue
+                        stresses = robust_quote_improvement(case, probe, current, std, supplier, uncertainty)
+                        if stresses:
+                            probes.append(
+                                {
+                                    "id": "C",
+                                    "label": f"Estimate-sensitive {field} exchange",
+                                    "terms": probe,
+                                    "cost": cost(probe),
+                                    "standing_cost": cost(current),
+                                    "uncertainty_probe": True,
+                                    "estimate_stresses": stresses,
+                                }
+                            )
+            if probes:
+                packages = packages[:2] + [min(probes, key=lambda p: p["cost"])]
     # Respond to the supplier's actual counter even when it varies several terms
     # (e.g. an index clause with a longer contract, or a feasible delivery date).
     # A stays protected; the extra structure requires a compensating cash price.

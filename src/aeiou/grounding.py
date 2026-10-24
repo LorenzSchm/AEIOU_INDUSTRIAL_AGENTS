@@ -54,7 +54,14 @@ def responsive_act(data, events, feedback_probe=False, exchange_probe=False, clo
     data = dict(data)
     from .supplier_signals import observed_signals, recent_kinds
 
-    signals = recent_kinds({"signals": observed_signals(events) + list(interpretations)})
+    signals = recent_kinds(
+        {
+            "signals": observed_signals(events) + list(interpretations),
+            "last_supplier_message_index": max(
+                (i for i, m in enumerate(events) if m.get("from") != "buyer"), default=-1
+            ),
+        }
+    )
     if "closing_warning" in signals or "approval_required" in signals:
         data["question"] = "authority"
     elif closing_probe:

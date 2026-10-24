@@ -48,5 +48,5 @@ def validated_interpretation(data, body, index):
 
 def recent_kinds(state):
     signals = state.get("signals", [])
-    last = max((s["message_index"] for s in signals), default=-1)
+    last = state.get("last_supplier_message_index", max((s["message_index"] for s in signals), default=-1))
     return {s["kind"] for s in signals if s["message_index"] == last}

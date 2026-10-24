@@ -51,6 +51,11 @@ def learn_beliefs(case, events, enabled=True):
         complete = [closing_terms(case, p, std) for p in packages]
         reply = closing_terms(case, replies[0].get("terms", {}), std)
         fields = [f for f in case["negotiable"] if f != "unit_price"]
+        varied = {f for f in fields if len({repr(p.get(f)) for p in complete}) > 1}
+        # This model knows cash, duration and freight only. Quality, volume,
+        # index and delivery trades cannot identify its preference hypotheses.
+        if not varied or varied - {"payment_days", "contract_months", "incoterm"}:
+            continue
         matches = [i for i, p in enumerate(complete) if all(p.get(f) == reply.get(f) for f in fields)]
         if len(matches) != 1:
             continue
@@ -67,14 +72,21 @@ def learn_beliefs(case, events, enabled=True):
     weights = [math.exp(v - high) for v in logs]
     total = sum(weights)
     posterior = [{**h, "weight": w / total} for h, w in zip(HYPOTHESES, weights, strict=True)]
-    prices = [
-        s["terms"]["unit_price"]
-        for m in events
-        if m.get("from") != "buyer"
-        for s in m.get("term_sheets", [])[:1]
-        if s.get("terms", {}).get("unit_price")
-    ]
-    changes = [a - b for a, b in zip(prices, prices[1:], strict=False) if a > b]
+    changes, previous = [], None
+    fields = [f for f in case["negotiable"] if f != "unit_price"]
+    for index, message in enumerate(events):
+        if message.get("from") == "buyer":
+            continue
+        sheets = message.get("term_sheets", [])
+        if len(sheets) != 1 or not sheets[0].get("terms", {}).get("unit_price"):
+            previous = None
+            continue
+        terms = closing_terms(case, sheets[0]["terms"], standard_terms(events[: index + 1]))
+        if previous and all(previous.get(f) == terms.get(f) for f in fields):
+            step = previous["unit_price"] - terms["unit_price"]
+            if step > 0:
+                changes.append(step)
+        previous = terms
     return {
         "hypotheses": posterior,
         "observations": observations,
