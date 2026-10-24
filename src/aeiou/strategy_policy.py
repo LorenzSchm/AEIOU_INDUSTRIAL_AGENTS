@@ -52,6 +52,20 @@ def adaptive_packages(case, events, sid, intelligence, state, belief, features):
         if not features.adaptive_bidding:
             packages = candidate_packages(case, events, sid, intelligence)
         return packages, strategy
+    # Do not demand faster delivery than the buyer needs when it has no buyer
+    # cost benefit. A supplier may charge overtime for that unnecessary demand.
+    if "lead_time_days" in case["negotiable"]:
+        std = standard_terms(events)
+        supplier = estimate(case, sid, std, intelligence)
+        need = case["buyer"]["need_lead_time_days"]
+        for package in packages:
+            for days in sorted(case.get("term_options", {}).get("lead_time_days", []), reverse=True):
+                if package["terms"]["lead_time_days"] <= days <= need:
+                    terms = {**package["terms"], "lead_time_days": days}
+                    cost = total_cost(case, terms, std, supplier)
+                    if valid_terms(case, terms) and cost <= package["cost"] + 0.001:
+                        package.update(terms=terms, cost=cost)
+                        break
     _, current = standing(events)
     rounds = sum(m.get("from") == "buyer" for m in events)
     remaining = moves_left(case, events)

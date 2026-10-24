@@ -3,7 +3,7 @@
 import copy
 import math
 
-from arena_kit.cost import total_cost
+from arena_kit.cost import complete_offer, total_cost
 from arena_kit.docs import standard_terms
 
 from .optimizer import estimate, valid_terms
@@ -38,7 +38,14 @@ def equivalent_probe(case, base, field, value, cost):
 
     This is a hypothetical offer. No supplier acceptance or feasibility is inferred.
     """
-    terms = {**base, field: value}
+    return equivalent_package(case, base, {**base, field: value}, cost)
+
+
+def equivalent_package(case, base, terms, cost):
+    """Compensate an observed commercial structure without raising buyer cost."""
+    terms = {**terms, "unit_price": base["unit_price"]}
+    if not valid_terms(case, terms):
+        return None
     target = cost(base)
     lo, hi = 0.01, base["unit_price"]
     # Restrict probes to a lower cash price in exchange for a less favorable buyer term.
@@ -50,13 +57,42 @@ def equivalent_probe(case, base, field, value, cost):
             hi = mid
         else:
             lo = mid
-    terms["unit_price"] = round(lo, 2)
-    if valid_terms(case, terms) and abs(cost(terms) - target) <= max(1, target * 0.0001):
+    # Whole-cent contracts cannot always hit a fractional-cent equal-cost root.
+    # Round toward the buyer and allow at most one price tick of compensation.
+    terms["unit_price"] = max(0.01, math.floor(lo * 100 + 1e-7) / 100)
+    priced = cost(terms)
+    tick = abs(cost({**terms, "unit_price": round(terms["unit_price"] + 0.01, 2)}) - priced)
+    if valid_terms(case, terms) and priced <= target + 0.001 and target - priced <= max(1, tick + 0.01):
         return terms
     return None
 
 
-def plan_packages(case, events, sid, intelligence, candidates, state):
+def counteroffer_probe(case, events, base, std, cost):
+    """Use explicit counteroffer terms, never infer a binding promise from prose."""
+    buyer = next((m for m in reversed(events) if m.get("from") == "buyer"), None)
+    if buyer is None or events[-1].get("from") == "buyer":
+        return None
+    offered = [complete_offer(case, {**std, **p.get("terms", {})}) for p in buyer.get("term_sheets", [])]
+    fields = [f for f in case["negotiable"] if f != "unit_price"]
+    probes = []
+    for sheet in events[-1].get("term_sheets", []):
+        terms = complete_offer(case, {**std, **sheet.get("terms", {})})
+        # Once the supplier has countered with an index clause, retain that
+        # alternative while the protected buyer package still has a fixed price.
+        # Otherwise matching our last probe would make it disappear next turn.
+        retain_index = (
+            "index_clause" in fields and terms.get("index_clause") is not None and base.get("index_clause") is None
+        )
+        if not retain_index and any(all(terms.get(f) == p.get(f) for f in fields) for p in offered):
+            continue
+        probe = equivalent_package(case, base, terms, cost)
+        if probe is not None and probe != base:
+            probes.append(probe)
+    # At equal buyer cost, retain the commercially closest price to the base.
+    return max(probes, key=lambda p: p["unit_price"], default=None)
+
+
+def plan_packages(case, events, sid, intelligence, candidates, state, use_counteroffers=True):
     std, supplier = standard_terms(events), estimate(case, sid, standard_terms(events), intelligence)
 
     def cost(terms):
@@ -89,6 +125,21 @@ def plan_packages(case, events, sid, intelligence, candidates, state):
                     {"id": "C", "label": f"Explore {field}", "terms": probe, "cost": cost(probe)}
                 ]
                 break
+    # Respond to the supplier's actual counter even when it varies several terms
+    # (e.g. an index clause with a longer contract, or a feasible delivery date).
+    # A stays protected; the extra structure requires a compensating cash price.
+    if use_counteroffers and state["moves_left"] > 0:
+        probe = counteroffer_probe(case, events, base, std, cost)
+        if probe is not None and probe not in [p["terms"] for p in packages]:
+            packages = packages[:2] + [
+                {
+                    "id": "C",
+                    "label": "Supplier terms with price compensation",
+                    "terms": probe,
+                    "cost": cost(probe),
+                    "feedback_probe": True,
+                }
+            ]
     scenario_cases = [(s, stressed_case(case, s)) for s in SCENARIOS]
     for package in packages:
         package["cost"] = cost(package["terms"])

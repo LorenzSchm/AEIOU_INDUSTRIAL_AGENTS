@@ -1,0 +1,445 @@
+{
+  "p18": {
+    "case": {
+      "case_id": "case:P18",
+      "set": "practice",
+      "type": "raw_material",
+      "title": "Alloy surcharge and base price for 1.4404 bar (Werdenfels)",
+      "briefing": "You negotiate for Hollerau Pumpenwerke with Blankstahl Werdenfels GmbH. Alloy surcharge and base price for 1.4404 bar (Werdenfels). Need: 23700 kg a year. Category goal: leverage: competition and data should bring the price down. Score: the lowest total cost C as defined in the rules, valued with this case's rates (need lead time 14 days). Fallback if you walk away: the second-source quote quote:7200018. Must-haves: none. Prepare from the data package.",
+      "trigger_doc": "doc:20260922-70740-P18",
+      "parts": [
+        "part:370010"
+      ],
+      "suppliers": [
+        "sup:70740"
+      ],
+      "negotiable": [
+        "unit_price",
+        "index_clause",
+        "payment_days",
+        "contract_months"
+      ],
+      "fixed_terms": {
+        "lead_time_days": 14,
+        "volume_per_year": 23700,
+        "effective_date": "2027-01-01",
+        "incoterm": "DAP",
+        "tooling_eur": 0
+      },
+      "term_options": {
+        "index_clause": [
+          null,
+          {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 0,
+            "base_month": "2026-08"
+          },
+          {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 3,
+            "base_month": "2026-08"
+          },
+          {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        ],
+        "payment_days": [
+          14,
+          30,
+          45,
+          60,
+          90
+        ],
+        "contract_months": [
+          12,
+          24,
+          36
+        ]
+      },
+      "buyer": {
+        "need_per_year": 23700,
+        "horizon_years": 2,
+        "current_unit_price": 5.84,
+        "fallback_unit_price": 6.13,
+        "interest_rate": 0.08,
+        "reference_payment_days": 60,
+        "need_lead_time_days": 14,
+        "category_goal": "leverage",
+        "fallback_risk_pct": 3,
+        "index_risk_pct": 1,
+        "late_cost_per_day": 96,
+        "cost_per_defect": 0,
+        "freight_eur_per_unit": {
+          "EXW": 0.06,
+          "FCA": 0.05,
+          "DAP": 0.0
+        },
+        "index_paths": {
+          "AS-14404": 0.06
+        },
+        "must_haves": [],
+        "alternative": {
+          "kind": "quote",
+          "ref": "quote:7200018",
+          "terms": {
+            "unit_price": 6.31,
+            "payment_days": 30,
+            "lead_time_days": 10,
+            "volume_per_year": 23700,
+            "contract_months": 24,
+            "effective_date": "2027-01-01",
+            "index_clause": null,
+            "incoterm": "DAP",
+            "tooling_eur": 0,
+            "ppm_commitment": 75
+          }
+        }
+      },
+      "round_limit": 10,
+      "refs": [
+        "doc:20260922-70740-P18",
+        "ctr:4600070740",
+        "sc:70740@2026Q3",
+        "quote:7200018"
+      ]
+    },
+    "threads": {
+      "sup:70740": [
+        {
+          "from": "sales@70740",
+          "body": "Dear customer,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe are delighted to present our competitive quote for your requirements. Our price is \u20ac6.10 per unit, with a Zahlungsziel of 30 days net, a contract term of 12 months, and no Preisgleitklausel. Please note that AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. Furthermore, LCI-C rose 2.7 % in twelve months and is 5 % of our cost, while PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. This offer remains valid for 30 days.\n\nMit freundlichen Gr\u00fc\u00dfen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+          "status": "open",
+          "term_sheets": [
+            {
+              "term_sheet_id": "offer:70740-0",
+              "terms": {
+                "unit_price": 6.1,
+                "payment_days": 30,
+                "index_clause": null,
+                "contract_months": 12
+              }
+            }
+          ],
+          "attachments": [
+            {
+              "name": "quote-offer-70740-0.pdf",
+              "text": "Blankstahl Werdenfels GmbH\nTo: Hollerau Pumpenwerke GmbH\nAngebot / Quote offer:70740-0\nOffered terms\nUnit price (EUR) 6.10\nPayment terms (days net) 30\nIndex clause none\nContract term (months) 12\nOur standard terms (apply to everything not stated above)\nQuality commitment (ppm) 70\nChargeback per complaint (EUR) 0.00\nTerms fixed by your enquiry\nLead time (days) 14\nVolume per year (pcs) 23700\nPrice valid from 2027-01-01\nIncoterm DAP\nTooling (EUR) 0.00\nPart(s): part:370010. Enquiry: Alloy surcharge and base price for 1.4404 bar (Werdenfels).\nValidity: 30 days."
+            }
+          ]
+        },
+        {
+          "from": "buyer",
+          "body": "Thank you for working through the options with us. We value a reliable agreement. AS-14404 changed +5.92% from 2025-09 to 2026-09 (idx:AS-14404@2025-09, idx:AS-14404@2026-09). This driver alone does not establish your total cost. Please reconcile it with the other cost movements. Your supplied document states: for Round bar 1.4404 dia 30 mm, peeled (part:370010) we propose to agree the price basis for the coming period, including a price adjustment clause based on AS-14404. Please let us know your view. (doc:20260922-70740-P18). Could you share a cost breakdown and explain which drivers affect this quotation? Any movement is conditional on the executable terms below.\n\nExecutable packages:\nPackage 1: Unit price (EUR): 5.0; Index clause: null; Payment (days): 90; Contract duration (months): 24\nPackage 2: Unit price (EUR): 4.92; Index clause: null; Payment (days): 14; Contract duration (months): 24\nPackage 3: Unit price (EUR): 5.0; Index clause: null; Payment (days): 90; Contract duration (months): 36",
+          "term_sheets": [
+            {
+              "terms": {
+                "unit_price": 5.0,
+                "index_clause": null,
+                "payment_days": 90,
+                "contract_months": 24
+              }
+            },
+            {
+              "terms": {
+                "unit_price": 4.92,
+                "index_clause": null,
+                "payment_days": 14,
+                "contract_months": 24
+              }
+            },
+            {
+              "terms": {
+                "unit_price": 5.0,
+                "index_clause": null,
+                "payment_days": 90,
+                "contract_months": 36
+              }
+            }
+          ],
+          "attachments": []
+        },
+        {
+          "from": "sales@70740",
+          "body": "Dear customer,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We thank you for your detailed response and the proposed options. Your figures confirm our case: that driver rose. Please note that our price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. Material accounts for about 45 % of our cost; more detail we do not share. \n\nPlease note that for a 24-month contract duration, we must include an AS-14404 price adjustment clause, as a fixed price over this period is not feasible given raw material volatility. Our current offer stands at a price of \u20ac5.60 per unit, Zahlungsziel 90 days net, a contract term of 24 months, a Preisgleitklausel on AS-14404. \n\nIncorporating your preferred 14-day payment term and the index clause, we can offer a revised unit price of \u20ac5.60. Alternatively, with Zahlungsziel 14 days net and a Preisgleitklausel on AS-14404: \u20ac5.60 per unit, a contract term of 24 months. \n\nThis offer stays valid for 30 days.\n\nMit freundlichen Gr\u00fc\u00dfen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+          "status": "open",
+          "term_sheets": [
+            {
+              "term_sheet_id": "offer:70740-1",
+              "terms": {
+                "unit_price": 5.6,
+                "payment_days": 90,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 0.0,
+                  "base_month": "2026-08"
+                },
+                "contract_months": 24
+              }
+            },
+            {
+              "term_sheet_id": "offer:70740-1-a",
+              "terms": {
+                "unit_price": 5.6,
+                "payment_days": 14,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5.0,
+                  "base_month": "2026-08"
+                },
+                "contract_months": 24
+              }
+            }
+          ],
+          "attachments": []
+        }
+      ]
+    }
+  },
+  "d02": {
+    "case": {
+      "case_id": "case:D02",
+      "set": "demo",
+      "type": "rfq",
+      "title": "New stainless pump shaft SH-220: award one of two suppliers",
+      "briefing": "The new PX pump series needs shaft SH-220 (1.4021). Two suppliers quote: a German job shop and a Polish machining company. Lead time must not exceed 42 days; the line needs parts within 35 days, every day later costs EUR 150. Machined shafts are a leverage category: several capable suppliers, the goal is the lowest total cost. Award one.",
+      "trigger_doc": null,
+      "parts": [
+        "part:SH-220"
+      ],
+      "suppliers": [
+        "sup:DEMO-J1",
+        "sup:DEMO-C1"
+      ],
+      "negotiable": [
+        "unit_price",
+        "payment_days",
+        "lead_time_days",
+        "incoterm"
+      ],
+      "fixed_terms": {
+        "contract_months": 24
+      },
+      "term_options": {
+        "payment_days": [
+          14,
+          30,
+          45,
+          60
+        ],
+        "lead_time_days": [
+          21,
+          28,
+          35,
+          42,
+          49
+        ],
+        "incoterm": [
+          "EXW",
+          "FCA",
+          "DAP"
+        ]
+      },
+      "buyer": {
+        "category_goal": "leverage",
+        "need_per_year": 6000,
+        "horizon_years": 2,
+        "current_unit_price": null,
+        "fallback_unit_price": 19.9,
+        "fallback_risk_pct": 5,
+        "interest_rate": 0.08,
+        "reference_payment_days": 60,
+        "need_lead_time_days": 35,
+        "late_cost_per_day": 150,
+        "cost_per_defect": 40,
+        "freight_eur_per_unit": {
+          "EXW": 0.6,
+          "FCA": 0.4,
+          "DAP": 0.0
+        },
+        "index_paths": {},
+        "must_haves": [
+          {
+            "field": "lead_time_days",
+            "op": "<=",
+            "value": 42
+          }
+        ],
+        "alternative": {
+          "kind": "quote",
+          "ref": "quote:D02-ALT",
+          "terms": {
+            "unit_price": 19.9,
+            "incoterm": "DAP",
+            "payment_days": 60,
+            "lead_time_days": 35
+          }
+        }
+      },
+      "round_limit": 10,
+      "refs": [
+        "quote:D02-ALT",
+        "sc:DEMO-J1@2026Q3",
+        "sc:DEMO-C1@2026Q3",
+        "cost:part:SH-220",
+        "fc:SH-220@2026-09",
+        "news:N-0412"
+      ]
+    },
+    "threads": {
+      "sup:DEMO-J1": [
+        {
+          "from": "sales@DEMO-J1",
+          "body": "Hallo,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe can offer you a price of \u20ac17.10 per unit, Zahlungsziel 30 days net, Lieferzeit 28 days.\n\nAs a small shop, we like to keep things practical and clear for our customers. Everything is set up on our end to run your parts efficiently, and we look forward to working together on this order.\n\nLet us know if this works for you so we can get started.\n\nGru\u00df\nClaudia Aigner\nOwner, Demo Drehteile GmbH",
+          "status": "open",
+          "term_sheets": [
+            {
+              "term_sheet_id": "offer:DEMO-J1-0",
+              "terms": {
+                "unit_price": 17.1,
+                "payment_days": 30,
+                "lead_time_days": 28
+              }
+            }
+          ],
+          "attachments": [
+            {
+              "name": "quote-offer-DEMO-J1-0.pdf",
+              "text": "Demo Drehteile GmbH\nTo: Hollerau Pumpenwerke GmbH\nAngebot / Quote offer:DEMO-J1-0\nOffered terms\nUnit price (EUR) 17.10\nPayment terms (days net) 30\nLead time (days) 28\nOur standard terms (apply to everything not stated above)\nVolume per year (pcs) 6000\nPrice valid from none\nIndex clause none\nIncoterm EXW\nTooling (EUR) 0.00\nQuality commitment (ppm) 1100\nChargeback per complaint (EUR) 0.00\nTerms fixed by your enquiry\nContract term (months) 24\nPart(s): part:SH-220. Enquiry: New stainless pump shaft SH-220: award one of two suppliers.\nValidity: on request."
+            }
+          ]
+        },
+        {
+          "from": "buyer",
+          "body": "Thank you for working through the options with us. We value a reliable agreement. Which package best fits your operating needs, and which term prevents agreement? Any movement is conditional on the executable terms below.\n\nExecutable packages:\nPackage 1: Unit price (EUR): 14.02; Payment (days): 60; Lead time (days): 21; Freight terms: \"DAP\"\nPackage 2: Unit price (EUR): 13.88; Payment (days): 14; Lead time (days): 21; Freight terms: \"DAP\"\nPackage 3: Unit price (EUR): 13.42; Payment (days): 60; Lead time (days): 21; Freight terms: \"EXW\"",
+          "term_sheets": [
+            {
+              "terms": {
+                "unit_price": 14.02,
+                "payment_days": 60,
+                "lead_time_days": 21,
+                "incoterm": "DAP"
+              }
+            },
+            {
+              "terms": {
+                "unit_price": 13.88,
+                "payment_days": 14,
+                "lead_time_days": 21,
+                "incoterm": "DAP"
+              }
+            },
+            {
+              "terms": {
+                "unit_price": 13.42,
+                "payment_days": 60,
+                "lead_time_days": 21,
+                "incoterm": "EXW"
+              }
+            }
+          ],
+          "attachments": []
+        },
+        {
+          "from": "sales@DEMO-J1",
+          "body": "Hallo,\n\nWe have reviewed your offer and can adjust our Angebot as follows.\n\nThe 14 days payment in your second package is much better for us, and we can manage the 21 days lead time and DAP delivery. For this package, we can come down to \u20ac16.50. Let me know if we have a deal.\n\nOur offer is a price of \u20ac16.50 per unit, Zahlungsziel 14 days net, Lieferzeit 21 days, delivery DAP.\n\nGru\u00df\nClaudia Aigner\nOwner, Demo Drehteile GmbH",
+          "status": "open",
+          "term_sheets": [
+            {
+              "term_sheet_id": "offer:DEMO-J1-1",
+              "terms": {
+                "unit_price": 16.5,
+                "payment_days": 14,
+                "lead_time_days": 21,
+                "incoterm": "DAP"
+              }
+            }
+          ],
+          "attachments": []
+        }
+      ],
+      "sup:DEMO-C1": [
+        {
+          "from": "sales@DEMO-C1",
+          "body": "Dear partner,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe are delighted to submit our proposal and are very keen to win your business and demonstrate our capabilities as a reliable, long-term partner. For this position, our offer includes a price of \u20ac16.00 per unit, a Zahlungsziel 45 days net, and delivery EXW. \n\nPlease note that this offer remains valid for 30 days. \n\nWe look forward to the opportunity of working together and building a successful partnership with Hollerau Pumpenwerke GmbH. Please let us know if you have any questions.\n\nBest regards\nJoanna Kaczmarek\nExport Manager, Demo Machining Sp. z o.o.",
+          "status": "open",
+          "term_sheets": [
+            {
+              "term_sheet_id": "offer:DEMO-C1-0",
+              "terms": {
+                "unit_price": 16.0,
+                "payment_days": 45,
+                "incoterm": "EXW"
+              }
+            }
+          ],
+          "attachments": [
+            {
+              "name": "quote-offer-DEMO-C1-0.pdf",
+              "text": "Demo Machining Sp. z o.o.\nTo: Hollerau Pumpenwerke GmbH\nAngebot / Quote offer:DEMO-C1-0\nOffered terms\nUnit price (EUR) 16.00\nPayment terms (days net) 45\nIncoterm EXW\nOur standard terms (apply to everything not stated above)\nLead time (days) 45\nVolume per year (pcs) 6000\nPrice valid from none\nIndex clause none\nTooling (EUR) 0.00\nQuality commitment (ppm) 2600\nChargeback per complaint (EUR) 0.00\nTerms fixed by your enquiry\nContract term (months) 24\nPart(s): part:SH-220. Enquiry: New stainless pump shaft SH-220: award one of two suppliers.\nValidity: 30 days."
+            }
+          ]
+        },
+        {
+          "from": "buyer",
+          "body": "Thank you for working through the options with us. We value a reliable agreement. What delivery flexibility would allow you to improve the overall package? Any movement is conditional on the executable terms below.\n\nExecutable packages:\nPackage 1: Unit price (EUR): 13.12; Payment (days): 60; Lead time (days): 21; Freight terms: \"DAP\"\nPackage 2: Unit price (EUR): 12.99; Payment (days): 14; Lead time (days): 21; Freight terms: \"DAP\"\nPackage 3: Unit price (EUR): 12.52; Payment (days): 60; Lead time (days): 21; Freight terms: \"EXW\"",
+          "term_sheets": [
+            {
+              "terms": {
+                "unit_price": 13.12,
+                "payment_days": 60,
+                "lead_time_days": 21,
+                "incoterm": "DAP"
+              }
+            },
+            {
+              "terms": {
+                "unit_price": 12.99,
+                "payment_days": 14,
+                "lead_time_days": 21,
+                "incoterm": "DAP"
+              }
+            },
+            {
+              "terms": {
+                "unit_price": 12.52,
+                "payment_days": 60,
+                "lead_time_days": 21,
+                "incoterm": "EXW"
+              }
+            }
+          ],
+          "attachments": []
+        },
+        {
+          "from": "sales@DEMO-C1",
+          "body": "Dear partner,\n\nYour offer is far below any calculation we can make. Please explain its basis. We value our cooperation and have made a step towards you. \n\nThe requested Lieferzeit is not feasible; we quote our earliest. Faster payment helps our cash flow; that is reflected in the price. A shorter Lieferzeit means overtime; that is priced in. A different delivery term moves the freight between us; that is priced in.\n\nWe quote a price of \u20ac17.90 per unit, Zahlungsziel 14 days net, Lieferzeit 28 days, delivery DAP. Our Angebot is valid for 30 days.\n\nBest regards\nJoanna Kaczmarek\nExport Manager, Demo Machining Sp. z o.o.\n\nFreight Forwarder: Our Lieferzeit is 28 days, and with overtime we can deliver in 28 days at a premium.",
+          "status": "open",
+          "term_sheets": [
+            {
+              "term_sheet_id": "offer:DEMO-C1-1",
+              "terms": {
+                "unit_price": 17.9,
+                "payment_days": 14,
+                "lead_time_days": 28,
+                "incoterm": "DAP"
+              }
+            }
+          ],
+          "attachments": [
+            {
+              "name": "delivery-schedule.xlsx",
+              "text": "[Delivery schedule]\nMonth | Quantity | Cumulative\n1 | =ROUND(6000/12,0) | =SUM(B$2:B2)\n2 | =ROUND(6000/12,0) | =SUM(B$2:B3)\n3 | =ROUND(6000/12,0) | =SUM(B$2:B4)\n4 | =ROUND(6000/12,0) | =SUM(B$2:B5)\n5 | =ROUND(6000/12,0) | =SUM(B$2:B6)\n6 | =ROUND(6000/12,0) | =SUM(B$2:B7)\n7 | =ROUND(6000/12,0) | =SUM(B$2:B8)\n8 | =ROUND(6000/12,0) | =SUM(B$2:B9)\n9 | =ROUND(6000/12,0) | =SUM(B$2:B10)\n10 | =ROUND(6000/12,0) | =SUM(B$2:B11)\n11 | =ROUND(6000/12,0) | =SUM(B$2:B12)\n12 | =ROUND(6000/12,0) | =SUM(B$2:B13)\n13 | =ROUND(6000/12,0) | =SUM(B$2:B14)\n14 | =ROUND(6000/12,0) | =SUM(B$2:B15)\n15 | =ROUND(6000/12,0) | =SUM(B$2:B16)\n16 | =ROUND(6000/12,0) | =SUM(B$2:B17)\n17 | =ROUND(6000/12,0) | =SUM(B$2:B18)\n18 | =ROUND(6000/12,0) | =SUM(B$2:B19)\n19 | =ROUND(6000/12,0) | =SUM(B$2:B20)\n20 | =ROUND(6000/12,0) | =SUM(B$2:B21)\n21 | =ROUND(6000/12,0) | =SUM(B$2:B22)\n22 | =ROUND(6000/12,0) | =SUM(B$2:B23)\n23 | =ROUND(6000/12,0) | =SUM(B$2:B24)\n24 | =ROUND(6000/12,0) | =SUM(B$2:B25)\nLead time (days) | 28 | "
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -131,3 +131,26 @@ additional unseen supplier cases and multiple models are the next validation ste
 The architecture follows the separation of bidding, opponent modeling and
 acceptance discussed in automated negotiation research. It is an engineering
 implementation, not a reproduction of a paper's reported performance.
+
+### Hosted sandbox feedback: D02 and P18
+
+Public supplier feedback now produces a legally valid counteroffer package with
+price compensation that protects the buyer's target cost. Indexed counteroffers
+remain available across rounds. The controller relaxes unnecessarily fast delivery
+when the buyer's deadline and cost model permit it. Grounded communication avoids
+reusing cited sources and repeating unanswered cost-breakdown questions.
+
+Exactly two hosted sandbox D02 sessions were run: one before and one after these
+changes. Score rose from **25.99 to 47.05/100**, unit price fell from **EUR 16.40 to
+15.40**, and evaluated total cost fell from **EUR 199,339.73 to 187,217.07**.
+Both deals met mandatory requirements. Practice quota remained **172**; neither
+sandbox session consumed a Practice attempt. Combined buyer usage was 13 Claude
+calls, 141,579 input tokens and 875 output tokens, with no errors or fallbacks.
+
+This is one observed before/after comparison, not statistical or causal proof:
+supplier responses vary. P18's index behavior was checked using public-message
+replays, without another Practice attempt. The final index-retention adjustment
+was replay-tested separately and does not affect D02's non-indexed schema.
+The Python suite passed 117 tests (2 skipped); the subsequent index-retention
+check passed all 5 feedback tests. All 5 JavaScript tests passed.
+Results and run identifiers are in `docs/evaluation/sandbox-feedback.json`.

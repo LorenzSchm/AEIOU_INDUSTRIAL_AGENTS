@@ -11,7 +11,7 @@ from arena_kit.agents.llm import parse
 from arena_kit.play import latest, live_threads, moves_left
 
 from .agent import Negotiator, log
-from .grounding import compose_email, next_evidence_ids
+from .grounding import compose_email, fresh_evidence_cards, next_evidence_ids, responsive_act
 from .negotiation_state import supplier_state
 from .opponent_model import learn_beliefs, predicted_choices
 from .optimizer import alternative_cost, evaluate, safe_close
@@ -57,7 +57,7 @@ class StrategicNegotiator(Negotiator):
 The economic controller already selected the action and executable package IDs.
 You select a communication act only. Return JSON with the planned supplier_id,
 action='send', the supplied candidate_ids, opening='warm|concise|firm',
-question='priorities|cash|continuity|authority|costs|delivery|quality', evidence_ids=[].
+question='priorities|cash|continuity|authority|costs|delivery|quality|tradeoff', evidence_ids=[].
 Select at most two current shareable evidence cards for THIS supplier. The composer
 quotes complete approved excerpts verbatim and adds exact contract terms.
 Do not add term_sheets or free-form factual claims. Do not change the planned action.
@@ -82,7 +82,15 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
         ceiling = min(alternative_cost(case), min(safe, default=math.inf) * 1.005)
         result = {}
         for sid, candidates in raw.items():
-            plan = plan_packages(case, threads[sid], sid, self.intelligence, candidates, self.support[sid]["state"])
+            plan = plan_packages(
+                case,
+                threads[sid],
+                sid,
+                self.intelligence,
+                candidates,
+                self.support[sid]["state"],
+                use_counteroffers=self.features.opponent_learning,
+            )
             # No exploration package may cost more than the current optimizer's envelope.
             budget = min(ceiling, max((p["cost"] for p in candidates), default=0) * 1.0025)
             plan["packages"] = [p for p in plan["packages"] if p["cost"] <= budget]
@@ -103,6 +111,11 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
             if self.support[sid]["belief"]["observations"] >= 2 and plan["packages"]:
                 chosen = max(zip(plan["packages"], plan["modeled_choice_weights"], strict=True), key=lambda p: p[1])[0]
                 controller["candidate_ids"] = list(dict.fromkeys([plan["packages"][0]["id"], chosen["id"]]))
+                controller["candidate_ids"] = list(
+                    dict.fromkeys(
+                        controller["candidate_ids"] + [p["id"] for p in plan["packages"] if p.get("feedback_probe")]
+                    )
+                )[:3]
             self.support[sid]["controller"] = controller
             self.support[sid]["plan"] = plan
             result[sid] = plan["packages"]
@@ -168,6 +181,9 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
                 strategy = self.support.get(sid, {}).get("strategy", {}).get("name", "balanced")
                 if not data.get("evidence_ids"):
                     data = {**data, "evidence_ids": next_evidence_ids(self._cards, threads, sid)}
+                data = responsive_act(
+                    data, threads[sid], any(p.get("feedback_probe") and p["id"] in ids for p in candidates.get(sid, []))
+                )
                 data = {**data, "body": compose_email(data, self._cards, sid, strategy)}
             except ValueError as exc:
                 return self.reject(str(exc))
@@ -237,6 +253,8 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
                     if ref and ref not in self.intelligence["facts"]:
                         if fact := self.pkg.lookup(ref):
                             self.intelligence["facts"][ref] = fact
+        if self.features.grounded_language:
+            self._cards = fresh_evidence_cards(self._cards, threads)
         move, source = None, "controller policy"
         if self.controller["action"] in {"accept", "walk_away"} or not offers.get(sid):
             move, source = safe_close(case, threads, self.intelligence), "controller close"
@@ -267,7 +285,12 @@ Do not add term_sheets or free-form factual claims. Do not change the planned ac
                     next_evidence_ids(self._cards, threads, sid) if self.features.grounded_language else []
                 )
                 body = compose_email(
-                    {"evidence_ids": selected_evidence}, self._cards, sid, self.support[sid]["strategy"]["name"]
+                    responsive_act(
+                        {"evidence_ids": selected_evidence}, threads[sid], any(p.get("feedback_probe") for p in chosen)
+                    ),
+                    self._cards,
+                    sid,
+                    self.support[sid]["strategy"]["name"],
                 )
                 move = {
                     "supplier_id": sid,

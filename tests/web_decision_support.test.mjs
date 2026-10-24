@@ -4,12 +4,24 @@ import vm from 'node:vm';
 import test from 'node:test';
 
 const context = vm.createContext({
+  document: { addEventListener() {} },
   esc: value => String(value ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c])),
   euros: value => `EUR ${value}`,
   number: value => String(value),
   human: value => String(value).replaceAll('_', ' '),
 });
 vm.runInContext(fs.readFileSync(new URL('../src/aeiou/web/decision-support.js', import.meta.url), 'utf8'), context);
+vm.runInContext(fs.readFileSync(new URL('../src/aeiou/web/research-tools.js', import.meta.url), 'utf8'), context);
+
+test('sandbox reports show Arena use without claiming practice consumption', () => {
+  const report = {created_at:'today', conditions:{planned_sessions:2,supplier_mode:'hosted sandbox'},
+    excluded_pairs:0,summary:{},arena_sessions_used:2,arena_scope:'sandbox',practice_sessions_used:0,
+    limitation:'One run per version.'};
+  const html = context.controlledReportCards([report]);
+  assert.match(html, /2 hosted sandbox sessions/);
+  assert.match(html, /0 Practice sessions used/);
+  assert.doesNotMatch(html, /No Arena sessions/);
+});
 
 function fixture() {
   return {

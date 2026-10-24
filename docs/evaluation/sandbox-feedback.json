@@ -1,0 +1,153 @@
+{
+  "created_at": "2026-10-24T15:44:52.869608+00:00",
+  "arena_scope": "sandbox",
+  "arena_sessions_used": 2,
+  "practice_sessions_used": 0,
+  "conditions": {
+    "planned_sessions": 2,
+    "agents": [
+      "strategic-before",
+      "strategic-after"
+    ],
+    "supplier_mode": "hosted sandbox",
+    "case_ids": [
+      "case:D02"
+    ],
+    "buyer_model": "claude-sonnet-5-5"
+  },
+  "summary": {
+    "strategic-before": {
+      "mean_score": 0.2598504583786359,
+      "sessions": 1,
+      "failures": 0,
+      "must_have_violations": 0,
+      "decision_p95_s": 1.687,
+      "llm_calls": 4,
+      "llm_errors": 0,
+      "fallbacks": 0,
+      "input_tokens": 38399,
+      "output_tokens": 267
+    },
+    "strategic-after": {
+      "mean_score": 0.4704697342922398,
+      "sessions": 1,
+      "failures": 0,
+      "must_have_violations": 0,
+      "decision_p95_s": 2.468,
+      "llm_calls": 9,
+      "llm_errors": 0,
+      "fallbacks": 0,
+      "input_tokens": 103180,
+      "output_tokens": 608
+    }
+  },
+  "paired_comparisons": {},
+  "excluded_pairs": 0,
+  "observed_score_delta": 0.2106192759136039,
+  "observed_cost_reduction": 12122.660000000003,
+  "practice_remaining_before": 172,
+  "practice_remaining_after": 172,
+  "runs": {
+    "before": {
+      "run_id": "b5f7ac34530f447d971ca0d342fe3ab8",
+      "session_id": "31f37787dfa249cc",
+      "result": {
+        "ended": true,
+        "deal": true,
+        "supplier_id": "sup:DEMO-J1",
+        "offer_id": "offer:DEMO-J1-3",
+        "terms": {
+          "payment_days": 14,
+          "lead_time_days": 21,
+          "volume_per_year": 6000,
+          "contract_months": 24,
+          "effective_date": null,
+          "index_clause": null,
+          "incoterm": "DAP",
+          "tooling_eur": 0.0,
+          "ppm_commitment": 1100,
+          "chargeback_eur_per_complaint": 0.0,
+          "unit_price": 16.4
+        },
+        "c_open": 214296.0,
+        "c_deal": 199339.73,
+        "c_alt": 238800.0,
+        "c_best": 156738.78,
+        "score": 0.2598504583786359,
+        "must_haves_ok": true,
+        "cost_breakdown": {
+          "price": 196800.0,
+          "uncovered_need": 0.0,
+          "fallback_risk": 0.0,
+          "payment_terms": 2011.73,
+          "freight": 0.0,
+          "late_delivery": 0.0,
+          "quality": 528.0,
+          "tooling": 0.0,
+          "index_clause": 0.0,
+          "index_risk": 0.0,
+          "relationship": 0.0
+        }
+      },
+      "metrics": {
+        "elapsed_s": 178.19,
+        "fallbacks": 0,
+        "calls": 4,
+        "errors": 0,
+        "input_tokens": 38399,
+        "output_tokens": 267
+      }
+    },
+    "after": {
+      "run_id": "2160e84ca31544cc95689e9ba6762c9f",
+      "session_id": "52ec899a9bc688ad",
+      "result": {
+        "ended": true,
+        "deal": true,
+        "supplier_id": "sup:DEMO-J1",
+        "offer_id": "offer:DEMO-J1-5",
+        "terms": {
+          "payment_days": 14,
+          "lead_time_days": 35,
+          "volume_per_year": 6000,
+          "contract_months": 24,
+          "effective_date": null,
+          "index_clause": null,
+          "incoterm": "DAP",
+          "tooling_eur": 0.0,
+          "ppm_commitment": 1100,
+          "chargeback_eur_per_complaint": 0.0,
+          "unit_price": 15.4
+        },
+        "c_open": 214296.0,
+        "c_deal": 187217.07,
+        "c_alt": 238800.0,
+        "c_best": 156738.78,
+        "score": 0.4704697342922398,
+        "must_haves_ok": true,
+        "cost_breakdown": {
+          "price": 184800.0,
+          "uncovered_need": 0.0,
+          "fallback_risk": 0.0,
+          "payment_terms": 1889.07,
+          "freight": 0.0,
+          "late_delivery": 0.0,
+          "quality": 528.0,
+          "tooling": 0.0,
+          "index_clause": 0.0,
+          "index_risk": 0.0,
+          "relationship": 0.0
+        }
+      },
+      "metrics": {
+        "elapsed_s": 277.01,
+        "fallbacks": 0,
+        "calls": 9,
+        "errors": 0,
+        "input_tokens": 103180,
+        "output_tokens": 608
+      }
+    }
+  },
+  "limitation": "One sandbox run per version; model responses vary, so this is an observed improvement, not a causal or statistical guarantee. P18 index behavior was replay-tested locally, not rerun on the Arena."
+}

@@ -15,7 +15,37 @@ QUESTIONS = {
     "costs": "Could you share a cost breakdown and explain which drivers affect this quotation?",
     "delivery": "What delivery flexibility would allow you to improve the overall package?",
     "quality": "What quality commitment and complaint compensation could you approve together?",
+    "tradeoff": (
+        "One option follows your counteroffer's commercial terms. "
+        "What reciprocal price improvement can you authorize for that package?"
+    ),
 }
+
+
+def fresh_evidence_cards(cards, threads):
+    """Hide already-cited sources from the writer, including new chunks of a used source."""
+    from .agent import ID_RE
+
+    used = {
+        ref
+        for events in threads.values()
+        for m in events
+        if m.get("from") == "buyer"
+        for ref in ID_RE.findall(m.get("body", ""))
+    }
+    return [c for c in cards if not used.intersection(c.get("source_ids") or [c.get("source_id")])]
+
+
+def responsive_act(data, events, feedback_probe=False):
+    """Do not ask repeatedly for a breakdown; ask for the next actionable trade."""
+    data = dict(data)
+    if feedback_probe:
+        data["question"] = "tradeoff"
+    elif data.get("question", "costs") == "costs":
+        prior = " ".join(m.get("body", "").lower() for m in events if m.get("from") == "buyer")
+        if "cost breakdown" in prior:
+            data["question"] = "authority" if QUESTIONS["priorities"].lower() in prior else "priorities"
+    return data
 
 
 def next_evidence_ids(cards, threads, sid):

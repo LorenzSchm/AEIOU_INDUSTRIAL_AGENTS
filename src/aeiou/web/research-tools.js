@@ -15,7 +15,7 @@ function controlledReportCards(reports) {
     <div class="table-scroll"><table><thead><tr><th>AGENT</th><th>MEAN SCORE</th><th>FAILURES</th><th>P95 DECISION</th></tr></thead><tbody>
     ${Object.entries(r.summary).map(([name,s]) => `<tr><td>${esc(name)}</td><td>${s.mean_score == null ? '—' : number(s.mean_score*100,2)}</td><td>${number(s.failures)}</td><td>${number(s.decision_p95_s,3)} s</td></tr>`).join('')}</tbody></table></div>
     ${Object.entries(r.paired_comparisons ?? {}).map(([name,c]) => c ? `<p>${esc(name)} vs reference: ${number(c.mean_case_delta*100,2)} points; 95% case-cluster interval ${number(c.low_95*100,2)} to ${number(c.high_95*100,2)}; ${number(c.case_clusters)} base cases.</p>` : '').join('')}
-    <p class="section-note">${esc(r.limitation)} No Arena sessions.</p></section>`).join('');
+    <p class="section-note">${esc(r.limitation)} ${r.arena_sessions_used ? `${number(r.arena_sessions_used)} hosted ${esc(r.arena_scope ?? 'Arena')} sessions.` : 'No Arena sessions.'}${r.practice_sessions_used != null ? ` ${number(r.practice_sessions_used)} Practice sessions used.` : ''}</p></section>`).join('');
 }
 
 function controlledExperimentsPanel() {
@@ -29,11 +29,11 @@ function controlledEvaluations() {
   const headline = reference?.mean_score != null && challenger?.mean_score != null ? `<div class="metrics">
     ${metric('Reference score',number(reference.mean_score*100,2),esc(names[0]),'◉')}
     ${metric('Upgrade score',number(challenger.mean_score*100,2),esc(names[1]),'↗',true)}
-    ${metric('Paired gain',number((challenger.mean_score-reference.mean_score)*100,2)+' pts','Local simulated conditions','⇄')}
+    ${metric('Paired gain',number((challenger.mean_score-reference.mean_score)*100,2)+' pts',newest.arena_scope==='sandbox'?'Hosted sandbox; one run per version':'Local simulated conditions','⇄')}
     ${metric('Paired conditions',number(reference.sessions),`${number(challenger.failures)} failures · ${number(challenger.must_have_violations)} must-have violations`,'✓')}
     </div>` : '';
-  return heading('PAIRED LOCAL EXPERIMENTS', 'Does the upgrade <em>perform better?</em>',
-    'Both agents receive the same cases, seeds and supplier conditions. All outcomes count.') +
+  return heading(newest?.arena_scope==='sandbox'?'SANDBOX BEFORE / AFTER':'PAIRED LOCAL EXPERIMENTS', 'Does the upgrade <em>perform better?</em>',
+    newest?.arena_scope==='sandbox'?'One sandbox session before and one after the change. Supplier responses can vary.':'Both agents receive the same cases, seeds and supplier conditions. All outcomes count.') +
     evaluationTabs() + headline + controlledExperimentsPanel().replace(
       '<div id="controlled-reports" aria-live="polite"></div>',
       `<div id="controlled-reports" aria-live="polite">${controlledReportCards(state.controlledReports ?? [])}</div>`);
