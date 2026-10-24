@@ -1346,3 +1346,36 @@ protected P01-P05 archived decisions unchanged. P08 replay leaves the opening
 and terminal acceptance unchanged. First response offers 4.96/deadband0 beside
 5.08/deadband5, both payment90/duration24, with no higher modeled buyer cost.
 One further hosted P08 attempt is authorized, without session-creation retries.
+
+
+Outcome (5ceddad): one session f9d81aee9c39a074, recovered score **54.87**,
+2.18 points below 57.04 and 4.28 below the 59.15 best. Agreement 5.35/payment90/
+duration24, AS-14404 share45%/deadband0%, total cost 1039549.94. The supplier
+priced the risk trade but the lower base price did not offset increased index
+cost. Revert risk-menu runtime/tests to 14b0eda, retaining the prior reciprocal
+index policy. No further hosted attempt.
+
+The API advertised alternative offer:70710-3-a but rejected its acceptance with
+422 "not a standing offer in this session" three times. Primary offer:70710-3
+remained live. We validated its legal terms and cost, then accepted it in the
+same session using the direct acceptance endpoint before expiry. Full failure
+snapshots and recovery response remain in the run folder; final report uses the
+actual recovered result, not the failed empty result. The advertised alternative
+was only EUR 18.01 cheaper than the primary. Quota 144 -> 145, exactly one creation
+request/marker/session. Model use: three calls, 20147 input / 254 output tokens,
+no provider errors; transport acceptance failed three times before recovery.
+Recorded agent time 76.23 seconds excludes manual recovery time.
+
+Transport fix: track only IDs explicitly rejected by a 422 not-standing-offer
+acceptance. On the next server refresh, exclude rejected non-primary alternatives
+from the live decision view and preserve their original sheets in transport audit.
+Do not replace an ID and silently change terms: the existing close policy must
+re-evaluate remaining offers, including walking away from an expensive primary.
+Keep the server's current primary for normal bounded stale-offer race recovery.
+Unrelated errors remain visible. No new session is ever opened by this recovery.
+
+39 focused recovery/final/reciprocity tests pass, including rejected advertised
+alternatives and expensive-primary rejection. Ruff clean. Negotiation policy
+files match 14b0eda exactly; its 57 protected P01-P05 replays remain applicable.
+The new recovery is locally tested, not tested with an additional paid run.
+Report: data/local/evaluations/practice-p08-5ceddad/report.json.

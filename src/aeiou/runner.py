@@ -20,6 +20,32 @@ class RecordingTable(RemoteTable):
         self.started = time.monotonic()
         self.deadlines = {}
         self.slowest_reply = 0.0
+        self.rejected_acceptances = set()
+
+    def discard_rejected_alternatives(self, supplier_id, events, primary_id):
+        """A rejected advertised alternative must not win the next close decision.
+
+        Keep the server's current primary even after a race, and let the ordinary
+        economic close policy re-evaluate all surviving offers. Never substitute
+        an ID while silently accepting different terms.
+        """
+        message = latest(events)
+        removed = [
+            s
+            for s in message.get("term_sheets", [])
+            if (supplier_id, s.get("term_sheet_id")) in self.rejected_acceptances
+            and s.get("term_sheet_id") != primary_id
+        ]
+        if removed:
+            message["term_sheets"] = [s for s in message["term_sheets"] if s not in removed]
+            self.run.setdefault("transport_events", []).append(
+                {
+                    "type": "rejected_alternative_excluded",
+                    "supplier_id": supplier_id,
+                    "primary_offer_id": primary_id,
+                    "rejected_term_sheets": copy.deepcopy(removed),
+                }
+            )
 
     def refresh(self, threads):
         """Reconcile server-side timeout moves before planning or accepting."""
@@ -42,6 +68,7 @@ class RecordingTable(RemoteTable):
                 and not meta.get("closed")
                 and (standing(events)[0], latest(events).get("status")) == (meta.get("offer_id"), meta.get("status"))
             ):
+                self.discard_rejected_alternatives(sid, events, meta.get("offer_id"))
                 continue
             refreshed = copy.deepcopy(self.client.thread(self.session_id, sid)["messages"])
             cached = {
@@ -61,6 +88,7 @@ class RecordingTable(RemoteTable):
                         "body": "Server reports this supplier thread closed.",
                     }
                 )
+            self.discard_rejected_alternatives(sid, refreshed, meta.get("offer_id"))
             threads[sid] = refreshed
             self.run.setdefault("transport_events", []).append(
                 {"type": "thread_refreshed", "supplier_id": sid, "offer_id": meta.get("offer_id")}
@@ -200,6 +228,14 @@ class RecordingTable(RemoteTable):
         try:
             reply = super().send(supplier_id, message)
         except Exception as exc:
+            action = message.get("action", {})
+            if (
+                getattr(exc, "status", None) == 422
+                and "not a standing offer" in str(getattr(exc, "detail", ""))
+                and action.get("type") == "accept"
+                and action.get("term_sheet_id")
+            ):
+                self.rejected_acceptances.add((supplier_id, action["term_sheet_id"]))
             self.run.setdefault("transport_events", []).append(
                 {
                     "type": "send_failed",

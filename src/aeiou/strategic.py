@@ -12,7 +12,6 @@ from arena_kit.docs import standard_terms
 from arena_kit.play import latest, live_threads, moves_left
 
 from .agent import Negotiator, log
-from .commercial_portfolio import index_risk_menu
 from .competitive_anchor import competitive_packages
 from .concessions import preserve_progress
 from .contract_tradeoffs import compensated_date
@@ -33,7 +32,7 @@ from .opponent_model import learn_beliefs, predicted_choices
 from .optimizer import alternative_cost, estimate, evaluate, safe_close
 from .reciprocity import responsive_packages
 from .retrieval import evidence_cards, evidence_cutoff
-from .scenario_planner import equivalent_package, plan_packages
+from .scenario_planner import plan_packages
 from .strategic_planner import admit_proposals, proposal_limits
 from .strategy_policy import StrategicFeatures, adaptive_packages, plan_next_action
 from .supplier_signals import observed_signals, validated_interpretation
@@ -175,14 +174,6 @@ class StrategicNegotiator(Negotiator):
                 plan["packages"],
                 standard,
                 lambda terms, std=standard, model=supplier: total_cost(case, terms, std, model),
-                ceiling,
-            )
-            plan["packages"] = index_risk_menu(
-                case,
-                threads[sid],
-                plan["packages"],
-                lambda terms, std=standard, model=supplier: total_cost(case, terms, std, model),
-                equivalent_package,
                 ceiling,
             )
             if plan["packages"] and "effective_date" in case["negotiable"]:

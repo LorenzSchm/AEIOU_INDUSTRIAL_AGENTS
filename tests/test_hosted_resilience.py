@@ -102,6 +102,39 @@ def test_recovery_is_bounded_and_does_not_hide_other_errors(client, tmp_path, mo
     assert client.opens == 1 and len(client.accepts) <= 3
 
 
+class AdvertisedAlternativeArena(ChangingArena):
+    def quote(self):
+        message = super().quote()
+        message["term_sheets"].append(
+            {
+                "term_sheet_id": f"offer:{self.version}-alt",
+                "terms": {"unit_price": 14, "payment_days": 30},
+            }
+        )
+        return message
+
+    def send_message(self, session_id, supplier_id, message):
+        action = message["action"]
+        if action.get("term_sheet_id", "").endswith("-alt"):
+            self.accepts.append(action["term_sheet_id"])
+            raise ArenaError(422, "not a standing offer in this session")
+        return super().send_message(session_id, supplier_id, message)
+
+
+@pytest.mark.parametrize("expensive", [False, True])
+def test_rejected_advertised_alternative_is_not_retried_and_primary_is_revalued(expensive, tmp_path, monkeypatch):
+    client = AdvertisedAlternativeArena(expensive=expensive)
+    result, run = run_fake(client, tmp_path, monkeypatch)
+    assert client.opens == 1
+    assert result["deal"] is (not expensive)
+    assert client.accepts == (["offer:1-alt"] if expensive else ["offer:1-alt", "offer:1"])
+    exclusions = [e for e in run["transport_events"] if e["type"] == "rejected_alternative_excluded"]
+    assert len(exclusions) == 1
+    assert exclusions[0]["primary_offer_id"] == "offer:1"
+    assert exclusions[0]["rejected_term_sheets"][0]["term_sheet_id"] == "offer:1-alt"
+    assert sum(m.get("from") == "buyer" for m in run["threads"][client.sid]) == 1
+
+
 def test_deadline_protects_existing_offer_before_slow_rfq_turn(tmp_path, monkeypatch):
     monkeypatch.setenv("AEIOU_STATE", str(tmp_path))
     client = ChangingArena()
