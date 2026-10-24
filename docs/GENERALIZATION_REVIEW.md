@@ -1085,3 +1085,31 @@ errors or fallbacks, 38.31 seconds. Quota rose 129 -> 130, exactly one session;
 the best-score map was unchanged. No further attempt was started. Research
 hypotheses are not presented as causal performance claims.
 Report: data/local/evaluations/practice-p07-3f209fa/report.json.
+
+
+## Quantified conditional commitment and pricing review
+
+After the repaired portfolio again tied at 72.75, the next bounded experiment
+changes the commercial argument while preserving the economic policy. For an
+executable combined cash/continuity option only, explain the total quantity over
+each contractual duration and the payment trade, then request a price review
+with whoever can authorize that complete package. This is different from the
+old generic bundle-approval wording: it quantifies actual signed-term alternatives
+after the cash/duration trade has been created. No committee, private threshold,
+additional annual demand or service change is asserted. Model-supplied claims
+are overwritten with code-derived quantities. Every quoted alternative must be
+legal; the comparison is suppressed for differing service or annual quantities.
+
+P07's existing 30000 annual units mean 60000 over 24 months versus 90000 over
+36 months. The longer option uses 14-day payment versus the main 90-day option.
+The arithmetic describes the already-executable commitments, not a promise
+outside their terms or a claim of cost-free extra buyer exposure. Supplier value
+and a resulting concession remain hypotheses. This is a communication experiment,
+not a proven score improvement or a change to the bids themselves.
+
+41 focused tests passed, Ruff clean. All 57 protected archived P01-P05 decisions
+are exactly unchanged. All three P07 offer menus in the latest 3f209fa run replay
+unchanged; only the second and third messages explain/review the trade. The
+opening and terminal acceptance stay unchanged. Local audits:
+commitment-protected.json and commitment-p07.json. Exactly one P07 hosted attempt
+is planned, without session-creation retries; no other categories are tested.
