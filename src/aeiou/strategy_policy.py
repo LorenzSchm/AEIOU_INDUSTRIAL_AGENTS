@@ -22,6 +22,7 @@ class StrategicFeatures:
     lookahead: bool = True
     retrieval: bool = True
     grounded_language: bool = True
+    multi_issue_portfolio: bool = True
 
     def metadata(self):
         return asdict(self)

@@ -72,6 +72,18 @@ def learn_beliefs(case, events, enabled=True):
     weights = [math.exp(v - high) for v in logs]
     total = sum(weights)
     posterior = [{**h, "weight": w / total} for h, w in zip(HYPOTHESES, weights, strict=True)]
+    return {
+        "hypotheses": posterior,
+        "observations": observations,
+        "evidence": trace[-12:],
+        "entropy": -sum(h["weight"] * math.log(h["weight"]) for h in posterior),
+        "observed_price_step": comparable_price_step(case, events),
+        "limitation": "Assumption-based posterior over package preferences, not calibrated acceptance probabilities.",
+    }
+
+
+def comparable_price_step(case, events):
+    """Estimate concessions only between consecutive quotes on identical terms."""
     changes, previous = [], None
     fields = [f for f in case["negotiable"] if f != "unit_price"]
     for index, message in enumerate(events):
@@ -87,14 +99,7 @@ def learn_beliefs(case, events, enabled=True):
             if step > 0:
                 changes.append(step)
         previous = terms
-    return {
-        "hypotheses": posterior,
-        "observations": observations,
-        "evidence": trace[-12:],
-        "entropy": -sum(h["weight"] * math.log(h["weight"]) for h in posterior),
-        "observed_price_step": median(changes[-3:]) if changes else 0,
-        "limitation": "Assumption-based posterior over package preferences, not calibrated acceptance probabilities.",
-    }
+    return median(changes[-3:]) if changes else 0
 
 
 def predicted_choices(case, packages, belief, standard=None):

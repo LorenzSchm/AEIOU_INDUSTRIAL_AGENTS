@@ -6,6 +6,8 @@ from arena_kit.cost import closing_terms, complete_offer, cost_breakdown, must_h
 from arena_kit.docs import standard_terms
 from arena_kit.play import latest, live_threads, standing
 
+from .opponent_model import comparable_price_step
+
 
 def estimate(case, sid, std, intelligence):
     source = intelligence.get("estimates", {}).get(sid)
@@ -108,15 +110,7 @@ def candidate_packages(case, events, sid, intelligence, anchor=0.18):
     # Only concede against observable resistance; avoid paying above the standing ask.
     price = min(price, current["unit_price"])
     if rounds >= max(3, round(case.get("round_limit", 10) * 0.4)):
-        observations = [
-            s["terms"]["unit_price"]
-            for m in events
-            if m.get("from") != "buyer"
-            for s in m.get("term_sheets", [])
-            if s["terms"].get("unit_price")
-        ]
-        changes = [a - b for a, b in zip(observations[-4:-1], observations[-3:], strict=False) if a > b]
-        step = sorted(changes)[len(changes) // 2] if changes else 0
+        step = comparable_price_step(case, events)
         # Extrapolate a small observed step instead of chasing an unobserved floor into an ultimatum.
         price = min(current["unit_price"], max(price, current["unit_price"] - min(step, current["unit_price"] * 0.03)))
     supplier = estimate(case, sid, std, intelligence)

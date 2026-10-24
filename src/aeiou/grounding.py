@@ -49,7 +49,15 @@ def fresh_evidence_cards(cards, threads):
     return [c for c in cards if not used.intersection(c.get("source_ids") or [c.get("source_id")])]
 
 
-def responsive_act(data, events, feedback_probe=False, exchange_probe=False, closing_probe=False, interpretations=()):
+def responsive_act(
+    data,
+    events,
+    feedback_probe=False,
+    exchange_probe=False,
+    closing_probe=False,
+    interpretations=(),
+    portfolio_issue=None,
+):
     """Do not ask repeatedly for a breakdown; ask for the next actionable trade."""
     data = dict(data)
     from .supplier_signals import observed_signals, recent_kinds
@@ -66,17 +74,42 @@ def responsive_act(data, events, feedback_probe=False, exchange_probe=False, clo
         data["question"] = "authority"
     elif closing_probe:
         data["question"] = "settlement"
+    elif feedback_probe:
+        data["question"] = "tradeoff"
+    elif portfolio_issue in {"quality", "index", "delivery"}:
+        data["question"] = {"quality": "quality", "index": "exchange", "delivery": "delivery"}[portfolio_issue]
     elif "price_resistance" in signals and not feedback_probe:
         data["question"] = "price_response"
     elif exchange_probe and not feedback_probe:
         data["question"] = "exchange"
-    elif feedback_probe:
-        data["question"] = "tradeoff"
     elif data.get("question", "costs") == "costs":
         prior = " ".join(m.get("body", "").lower() for m in events if m.get("from") == "buyer")
         if "cost breakdown" in prior:
             data["question"] = "authority" if QUESTIONS["priorities"].lower() in prior else "priorities"
     return data
+
+
+def package_rationale(terms):
+    """Explain only trades actually present in the outgoing executable packages."""
+    explanations = []
+    for cheap in terms:
+        for dear in terms:
+            if cheap["unit_price"] >= dear["unit_price"]:
+                continue
+            if cheap.get("ppm_commitment", 0) >= dear.get("ppm_commitment", 0) and cheap.get(
+                "chargeback_eur_per_complaint", 0
+            ) < dear.get("chargeback_eur_per_complaint", 0):
+                explanations.append(
+                    "The lower-price quality option reduces complaint liability "
+                    "while retaining our required quality limit."
+                )
+            if cheap.get("index_clause") and dear.get("index_clause") is None:
+                explanations.append(
+                    "The indexed option exchanges a lower base price for the specified sharing of material-price risk."
+                )
+            if cheap.get("lead_time_days", 0) > dear.get("lead_time_days", 0):
+                explanations.append("The higher-price delivery option is conditional on the quoted shorter lead time.")
+    return " ".join(dict.fromkeys(explanations))
 
 
 def next_evidence_ids(cards, threads, sid):

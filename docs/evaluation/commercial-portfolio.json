@@ -1,0 +1,114 @@
+{
+  "reference_commit": "68d714b45381824480a676314d8e73189903da3a",
+  "source_hashes": {
+    "src/aeiou/__init__.py": "a6bb00075d6c56365876fd210238cb57aee7a4b600a22fcb66a3845f8878e840",
+    "src/aeiou/agent.py": "b6523b59d632592d0c53d457868eea22db444efcf2ab78328f29fe6d5b2d47e6",
+    "src/aeiou/benchmark.py": "3dcc3920981dd655a89d8c2619a26fb8265afc0b37a9c2d2a94ab0d5421fd268",
+    "src/aeiou/cli.py": "3d8f9917371792b54df05fa47ddcc2bd9f25215359802645a83a12e4e674450f",
+    "src/aeiou/commercial_portfolio.py": "3feb4e6c54f27f3cd3d40c5eb141b2fe7fac4cc63bc02319be547b7f606745c9",
+    "src/aeiou/config.py": "25e8454a976a32bfdfd270e4c805a7ebb1970f8eb15e53bc9324f1c7fe208d41",
+    "src/aeiou/evaluation.py": "b460878e955406edf459b916ccfa5049dff5c1381d27b8de4ae2760dbacdcf6d",
+    "src/aeiou/generalization.py": "bbb22914578257639d14df8991f37d08776f79db795e5021ee5494495ebe3f09",
+    "src/aeiou/grounding.py": "d116996949e4b94af73a96a0c2a0433fed50b99e1976f43ea351febe7b459701",
+    "src/aeiou/handoff.py": "fe2fd057e8163b3658bc31483774af601e176061bb881d9c0e236dcf45123409",
+    "src/aeiou/hosted_evaluation.py": "27e2d6e8b87f4ddf4a9b30efbf148da3d3920f7c173bcc583972d8754d433ce6",
+    "src/aeiou/language_sim.py": "c448145db3aed08e365ab976e4694946b9b5dbc79a687594cd88f7410de3e185",
+    "src/aeiou/negotiation_state.py": "7894808009d048f8b29669115e5e57847670431940127af4f9886271defef5cd",
+    "src/aeiou/opponent_model.py": "99b0747d6ae50511cfe11f3ef503507ba21d7739c927c47437e664505435ac79",
+    "src/aeiou/optimizer.py": "47c163c101e1ade332c2251b3693e568650fa7385092c6956b0554a0f1d13440",
+    "src/aeiou/portfolio_evaluation.py": "9cce20fbcfacbc48424f188024d9d46a2bab8438f44e7d807fd364062d4e01e0",
+    "src/aeiou/prompt_comparison.py": "980b2676cb39d3a706b38e5cc2b2ca789555ef19ba6cd1c19b2fc0e51d60e85d",
+    "src/aeiou/prompt_optimization.py": "bb011d65c578df360af5c37b116977669e9d41dee7c41b0c356ac4dbd1525140",
+    "src/aeiou/prompt_protocol.py": "a2206c18b8575e3c62ef85803edbd7e619cca45df037cbb2d2d3e00b114068ae",
+    "src/aeiou/prompts.py": "bb37939d01f913e5fdd2dca184d02911c61a42628a2cfe795a0a146c78b8605b",
+    "src/aeiou/research.py": "7f22f1f9ee006e50e3ad74bf27efae6569f26d382c21bd41e81816e7568e125f",
+    "src/aeiou/research_tools.py": "37646aba18c6dbf757cebe574ee4af0336f1015e86dad2bee28b13c05681880f",
+    "src/aeiou/retrieval.py": "e3fd5b7ddbc4ab51d01604a5c6358e819e5b933e4e85be67b79bc52495f49f4b",
+    "src/aeiou/runner.py": "ecd3b8a748f61326342f27c5a9cee12d89705d018d5e66d92826143e8983abcb",
+    "src/aeiou/scenario_planner.py": "d8f3434916fa92abf101a542e63055e22dccb200e74f4e58bda3f56be6616cbe",
+    "src/aeiou/service.py": "d32e663f7b9c209d89ad29780ab3faf8e9bad2638cf2f4612e1983b75d4d3718",
+    "src/aeiou/simulation.py": "097e42d000b651de968eebfb740b3c838711a3573bec09a1e2756a52031b4a9b",
+    "src/aeiou/store.py": "9c9eb567d0cd98252ebda89c26efb9f5d22b2d6fc789ffab17a3d9228a9711f5",
+    "src/aeiou/strategic.py": "704494b4d1124874d000baa2e17323631506263de71251b363cc4711f0a009c5",
+    "src/aeiou/strategy_policy.py": "5d0edb3c71d29e851aa8a899317ce10ee3e76910897dc2afbe383d3446567c3d",
+    "src/aeiou/supplier_signals.py": "0d7bf2cd5d73c326ddd01e363f7d6474829393d3855b7e4b073a631844c0b7f8",
+    "src/aeiou/term_exchange.py": "d291990885eeec983fe3754ba42707b3f4e6bf357254f5453544093ec279d04d",
+    "src/aeiou/uncertainty.py": "dba16bfa41e9babc175854ec78902e191092967d2f58d7633e650117447f348f"
+  },
+  "comparisons": [
+    {
+      "evaluation": "development",
+      "conditions_per_arm": 27,
+      "dataset_hash": "ea60fb9d4e63d90e5ede1e9776e4f3c346da9d10ee862de77d1e86075b8a534c",
+      "reference_mean": 0.8135269255051665,
+      "candidate_mean": 0.8135644217157658,
+      "mean_delta": 3.7496210599320936e-05,
+      "wins": 2,
+      "ties": 25,
+      "losses": 0,
+      "failures": [
+        0,
+        0
+      ],
+      "must_have_violations": [
+        0,
+        0
+      ],
+      "limitation": "New scripted sensitivity policies, including indifferent and reversed preferences. Synthetic scores are not Arena predictions. No LLM, latency or supplier-cost-estimate uncertainty."
+    },
+    {
+      "evaluation": "fresh_multi_issue",
+      "conditions_per_arm": 54,
+      "dataset_hash": "ae62cd57e5e4aaa2e8dc9ff0159c8a7eddb27f129c93cc2625aae565cfa2cc69",
+      "reference_mean": 0.8153906056762864,
+      "candidate_mean": 0.8153906056762864,
+      "mean_delta": 0.0,
+      "wins": 0,
+      "ties": 54,
+      "losses": 0,
+      "failures": [
+        0,
+        0
+      ],
+      "must_have_violations": [
+        0,
+        0
+      ],
+      "limitation": "New scripted sensitivity policies, including indifferent and reversed preferences. Synthetic scores are not Arena predictions. No LLM, latency or supplier-cost-estimate uncertainty."
+    },
+    {
+      "evaluation": "existing_regression",
+      "conditions_per_arm": 96,
+      "dataset_hash": "ed793d588a2ba826997f378e01734120b6861a0ee5c5292426bec1424ed4ec08",
+      "reference_mean": 0.9158741424443887,
+      "candidate_mean": 0.9159297742391002,
+      "mean_delta": 5.5631794711516934e-05,
+      "wins": 1,
+      "ties": 94,
+      "losses": 1,
+      "failures": [
+        0,
+        0
+      ],
+      "must_have_violations": [
+        0,
+        0
+      ],
+      "limitation": "Synthetic supplier policies and generated variations of six case templates. No LLM variation, live timeouts or independent real-world case families. Supplier sustainability estimates may differ from the simplified simulator economics."
+    }
+  ],
+  "tests": {
+    "passed": 169,
+    "skipped": 2
+  },
+  "arena_sessions_used": 0,
+  "llm_calls": 0,
+  "meaningful_score_gain_demonstrated": false,
+  "limitations": [
+    "Scripted supplier policies; no live latency or LLM variance.",
+    "54 new holdout conditions are 18 generated cases times three sensitivity policies, not 54 independent case families.",
+    "96 regression conditions reuse the previously inspected dataset; they are not a new holdout.",
+    "Development variants were revised before freezing.",
+    "P02 opening still excludes index proposals under the supplied cost estimate and conservative cost envelope; this change does not claim to resolve that case."
+  ]
+}

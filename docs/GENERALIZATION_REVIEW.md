@@ -127,3 +127,55 @@ Final local validation: **158 tests passed, 2 skipped**; Ruff and whitespace
 checks passed. Regression coverage includes confounded price changes, unsupported
 preference inference, expired signals, renamed unknown cases, invalid estimate
 bands and a complete uncertainty-probe path through the economic controller.
+
+## Subsequent commercial portfolio revision
+
+The exact previously composed writer prompt is exported in
+`prompts/strategic-before-portfolio.txt`; `prompts/strategic-current.txt` contains
+the new default grounded writer prompt. The per-turn JSON context remains dynamic.
+The old combined prompt permitted custom packages in one section and prohibited
+them in another. The default writer now has one communication-only output contract.
+Its system text shrank from 5,197 to 2,188 characters; no token or quality gain is
+inferred from character count alone. Ungrounded experimental mode retains its
+separate existing prompt.
+
+The commercial planner now offers joint quality/complaint-liability alternatives,
+missing index/payment alternatives, and bounded timely-delivery/commitment options.
+It preserves buyer-value A, explicit supplier counteroffer probes, full coverage,
+must-haves and the global alternative/standing-offer ceiling. Equal-cost probes are
+preferred. Where an additional envelope is used, it retains at least 75% of the
+anchor's estimated improvement over the current quote. Strategic supplier estimates
+must also pass low/central/high cost stresses. These bounds are policy assumptions,
+not calibrated acceptance probabilities.
+
+Incoming noncompliant quality quotes can be cost references for remediation but
+cannot be accepted; all outgoing options still require legal terms. Prior concessions
+on an identical structure cannot be silently withdrawn by the new probes. Existing
+index alternatives are retained rather than crowding out payment alternatives.
+Explanations of quality, index and delivery trades are composed only when those
+trades actually appear in the outgoing packages. The cash-price concession estimator
+is now shared by the opponent model and optimizer, preventing changed non-price
+conditions from becoming a fictitious price-only concession in either path.
+
+This does **not** establish a materially higher Arena score. P02's opening still
+does not admit an indexed package under the supplied cost estimate and conservative
+envelope; the historical winning indexed deal is not used to override that estimate.
+
+| Offline comparison | Conditions per version | Frozen 68d714b | Candidate |
+|---|---:|---:|---:|
+| Multi-issue development | 27 | 81.353 | 81.356 |
+| New multi-issue holdout | 54 | 81.539 | 81.539 |
+| Existing generalization regression | 96 | 91.587 | 91.593 |
+
+The new holdout comprises 18 generated cases across three families and three
+scripted sensitivity policies, including indifferent and reversed preferences.
+All 54 paired results tie. The reused 96-condition regression has one improvement
+(+0.547 points), one small decline (-0.013 points), and 94 ties. Both versions have
+zero execution failures and zero must-have violations in all three comparisons.
+These simulations exclude LLM wording effects and live deadline behavior and must
+not be presented as hosted performance predictions. Development revisions preceded
+the recorded source freeze; no production changes followed holdout inspection.
+
+Validation: **169 tests passed, 2 skipped**; Ruff passed. Audit, dataset hashes,
+source hashes and limitations are in `evaluation/commercial-portfolio.json`.
+No hosted Arena session or paid LLM call was started for this revision.

@@ -6,6 +6,7 @@ import math
 from arena_kit.cost import complete_offer, total_cost
 from arena_kit.docs import standard_terms
 
+from .commercial_portfolio import merge_portfolio, portfolio_probes
 from .optimizer import estimate, valid_terms
 from .supplier_signals import recent_kinds
 from .term_exchange import exchange_history, ranked_exchanges
@@ -44,7 +45,7 @@ def equivalent_probe(case, base, field, value, cost):
     return equivalent_package(case, base, {**base, field: value}, cost)
 
 
-def equivalent_package(case, base, terms, cost):
+def equivalent_package(case, base, terms, cost, *, target_cost=None):
     """Compensate an observed commercial structure without raising buyer cost."""
     terms = {**terms, "unit_price": base["unit_price"]}
     if not valid_terms(case, terms):
@@ -54,7 +55,7 @@ def equivalent_package(case, base, terms, cost):
         and terms.get("contract_months", 0) < case["buyer"]["horizon_years"] * 12
     ):
         return None
-    target = cost(base)
+    target = cost(base) if target_cost is None else target_cost
     # Search a bounded plausible neighborhood in both directions. The relationship
     # penalty can make cost U-shaped; locate its minimum before the upper root.
     lower, upper = max(0.01, base["unit_price"] * 0.80), base["unit_price"] * 1.20
@@ -133,7 +134,7 @@ def distinct_packages(packages):
     return result
 
 
-def plan_packages(case, events, sid, intelligence, candidates, state, use_counteroffers=True):
+def plan_packages(case, events, sid, intelligence, candidates, state, use_counteroffers=True, use_portfolio=True):
     std, supplier = standard_terms(events), estimate(case, sid, standard_terms(events), intelligence)
 
     def cost(terms):
@@ -278,6 +279,17 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
                             "limitation": "Observed structure, acceptance unverified.",
                         }
                     ]
+    if use_portfolio and state["moves_left"] > 2:
+        probes = portfolio_probes(
+            case,
+            events,
+            base,
+            cost,
+            supplier,
+            intelligence.get("estimates", {}).get(sid, {}).get("confidence_pct"),
+            equivalent_package,
+        )
+        packages = merge_portfolio(packages, probes)
     packages = distinct_packages(packages)
     scenario_cases = [(s, stressed_case(case, s)) for s in SCENARIOS]
     for package in packages:
