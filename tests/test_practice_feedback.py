@@ -8,6 +8,7 @@ from aeiou.optimizer import valid_terms
 from aeiou.research import package
 from aeiou.scenario_planner import distinct_packages
 from aeiou.strategic import StrategicNegotiator
+from aeiou.strategic_planner import admit_proposals
 
 
 def opening(name):
@@ -75,19 +76,49 @@ def test_raw_material_risk_is_explored_only_with_price_compensation():
     assert all(valid_terms(data["case"], p["terms"]) for p in packages)
 
 
-def test_index_probe_keeps_contractual_savings_and_bounded_model_risk():
+def test_model_cannot_undo_improved_opening_with_same_terms_and_higher_price():
+    data = opening("P02")
+    agent = StrategicNegotiator(package())
+    move = agent.decide(data["case"], data["threads"])
+    sid = move["supplier_id"]
+    packages = agent.support[sid]["plan"]["packages"]
+    proposal = {
+        "supplier_id": sid,
+        "action": "send",
+        "proposals": [
+            {
+                "base_id": "A",
+                "changes": {
+                    "unit_price": packages[0]["uncertainty_anchor"]["original_price"],
+                },
+            }
+        ],
+    }
+    result, trace = admit_proposals(
+        data["case"],
+        data["threads"],
+        sid,
+        packages,
+        agent.intelligence,
+        proposal,
+        agent.support[sid]["belief"],
+    )
+    assert result == packages
+    assert trace["rejected"]
+
+
+def test_initial_portfolio_does_not_give_away_savings_through_index_risk():
     data = opening("P02")
     agent = StrategicNegotiator(package())
     move = agent.decide(data["case"], data["threads"])
     packages = agent.support[move["supplier_id"]]["plan"]["packages"]
-    indexed = [p for p in packages if p["terms"]["index_clause"] is not None]
-    assert indexed
-    for p in indexed:
-        assert p["bounded_uncertainty_probe"]
-        assert p["cost"] <= p["point_cost_limit"] == p["standing_cost"] * 1.005
-        assert p["expected_cost"] < p["expected_quote_cost"]
-        assert total_cost(data["case"], p["terms"]) < total_cost(data["case"], packages[0]["terms"])
-        assert valid_terms(data["case"], p["terms"])
+    anchor = packages[0]
+    audit = anchor["uncertainty_anchor"]
+    assert anchor["terms"]["unit_price"] < audit["original_price"]
+    assert anchor["cost"] <= audit["point_cost_limit"]
+    assert audit["expected_cost"] < audit["original_expected_cost"]
+    assert all(p["terms"]["index_clause"] is None for p in packages)
+    assert all(valid_terms(data["case"], p["terms"]) for p in packages)
 
 
 def test_automatic_evidence_does_not_use_rising_index_as_discount_argument():

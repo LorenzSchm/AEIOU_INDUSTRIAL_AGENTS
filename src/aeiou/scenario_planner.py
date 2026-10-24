@@ -9,6 +9,7 @@ from arena_kit.docs import standard_terms
 from .commercial_portfolio import merge_portfolio, portfolio_probes
 from .economic_beliefs import total_cost
 from .optimizer import estimate, valid_terms
+from .portfolio_value import bounded_anchor, risk_exchange_ceiling, sensitivity_cost
 from .supplier_signals import recent_kinds
 from .term_exchange import exchange_history, ranked_exchanges
 from .uncertainty import robust_quote_improvement
@@ -144,6 +145,9 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
     packages = copy.deepcopy(candidates)
     if not packages:
         return {"packages": [], "recommendation": None, "scenarios": list(SCENARIOS)}
+    sensitivities = intelligence.get("economic_sensitivities", {}).get(sid, {}).get("scenarios")
+    if use_portfolio and state["moves_left"] > 2:
+        packages[0] = bounded_anchor(case, events, packages[0], std, cost, sensitivities)
     base = packages[0]["terms"]
     observed = {p["field"] for p in state["preferences"] if p["confidence"] == "tentative"}
     # Preserve the best-cost package and early-payment alternative. Use the remaining
@@ -293,6 +297,22 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
         )
         packages = merge_portfolio(packages, probes)
     packages = distinct_packages(packages)
+    anchor_expected = packages[0].get("uncertainty_anchor", {}).get("expected_cost")
+    if anchor_expected is not None:
+        # A supplier may pick any sent option. A newly improved anchor is useless
+        # if an expensive payment alternative gives the savings straight back.
+        packages = [
+            p for p in packages if sensitivity_cost(case, p["terms"], std, sensitivities) <= anchor_expected * 1.0025
+        ]
+    risk_ceiling = risk_exchange_ceiling(case, packages, std, sensitivities)
+    if risk_ceiling is not None:
+        packages = [
+            p
+            for p in packages
+            if p["id"] == "A"
+            or p["terms"].get("index_clause") is None
+            or sensitivity_cost(case, p["terms"], std, sensitivities) <= risk_ceiling
+        ]
     scenario_cases = [(s, stressed_case(case, s)) for s in SCENARIOS]
     for package in packages:
         package["cost"] = cost(package["terms"])
@@ -315,6 +335,7 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
         "recommendation": recommendation["id"],
         "scenarios": list(SCENARIOS),
         "exchange_observations": exchanges,
+        "risk_exchange_expected_cost_limit": risk_ceiling,
         "limitation": (
             "Buyer-cost sensitivity only. Assumptions are illustrative stresses, not forecasts of supplier behavior."
         ),

@@ -10,6 +10,7 @@ from arena_kit.play import latest
 from .economic_beliefs import total_cost
 from .opponent_model import predicted_choices
 from .optimizer import alternative_cost, estimate, evaluate, valid_terms
+from .portfolio_value import risk_exchange_ceiling, sensitivity_cost
 from .reciprocity import same_structure
 
 PLANNER_SYSTEM = """You are the buyer's strategic negotiation planner. Minimize COMPLETE
@@ -31,8 +32,9 @@ identify an obstacle, not just a cheaper price. Consider a small conditional
 concession when necessary for agreement. Do not repeat failed equivalent offers.
 Supplier should-cost is an uncertain estimate, never a known minimum price.
 Do not offer different prices for identical non-price terms in the same message.
-Keep a compensated index/risk alternative when available: reduced base price
-must pay for its buyer financing and index risk. A fast-payment option must earn
+Keep an index/risk alternative only when its reduced base price compensates for
+financing and index risk relative to our fixed-price option, within proposal_limits.
+A fast-payment option must earn
 a sufficient discount; do not give it away merely because the seller prefers it.
 Prefer a small improvement to one term at an observed supplier price over an
 unchanged ambitious package. Do not repeat a request for a refused cost breakdown.
@@ -59,7 +61,17 @@ def proposal_limits(case, threads, sid, candidates, intelligence):
     if quote:
         envelope = max(envelope, anchor["cost"] + fraction * max(0, quote["cost"] - anchor["cost"]))
     ceiling = min(alternative_cost(case), min((r["cost"] for r in safe), default=math.inf), envelope)
-    return {"max_modeled_cost": ceiling, "concession_fraction": fraction, "standing_quote": quote}
+    scenarios = intelligence.get("economic_sensitivities", {}).get(sid, {}).get("scenarios")
+    risk_ceiling = risk_exchange_ceiling(case, candidates, standard_terms(threads[sid]), scenarios)
+    anchor_expected = anchor.get("uncertainty_anchor", {}).get("expected_cost")
+    return {
+        "max_modeled_cost": ceiling,
+        "concession_fraction": fraction,
+        "standing_quote": quote,
+        "max_index_expected_cost": risk_ceiling,
+        "same_structure_anchor_expected_cost": anchor_expected,
+        "max_portfolio_expected_cost": anchor_expected * 1.0025 if anchor_expected is not None else None,
+    }
 
 
 def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
@@ -130,6 +142,22 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
             trace["submitted"][-1].update(terms=copy.deepcopy(terms), modeled_cost=price)
             if not math.isfinite(price) or price > ceiling + 0.001:
                 raise ValueError("Exceeds buyer concession envelope")
+            scenarios = intelligence.get("economic_sensitivities", {}).get(sid, {}).get("scenarios")
+            if scenarios:
+                expected = sensitivity_cost(case, terms, std, scenarios)
+                portfolio_limit = limits["max_portfolio_expected_cost"]
+                if portfolio_limit is not None and expected > portfolio_limit:
+                    raise ValueError("Worsens expected portfolio cost beyond the first-contact envelope")
+                risk_limit = limits["max_index_expected_cost"]
+                if terms.get("index_clause") is not None and risk_limit is not None and expected > risk_limit:
+                    raise ValueError("Index risk is insufficiently compensated versus fixed-price portfolio")
+                anchor_limit = limits["same_structure_anchor_expected_cost"]
+                if (
+                    anchor_limit is not None
+                    and same_structure(terms, anchor["terms"])
+                    and expected > anchor_limit + 0.01
+                ):
+                    raise ValueError("Worsens sensitivity cost of first-contact anchor on identical terms")
             # Do not silently retract a price concession on identical terms.
             for message in events:
                 if message.get("from") != "buyer":

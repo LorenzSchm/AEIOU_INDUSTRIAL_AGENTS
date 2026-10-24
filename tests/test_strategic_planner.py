@@ -74,6 +74,28 @@ def test_planner_can_change_real_executable_terms_without_removing_anchor():
     assert trace["selected"] == "L1"
 
 
+def test_planner_cannot_reintroduce_uncompensated_index_risk():
+    case, sid, threads, candidates = setup_case()
+    clause = {"series": "NEW-INDEX", "material_share": 0.5, "deadband_pct": 5, "base_month": "2026-01"}
+    case["negotiable"].append("index_clause")
+    case["fixed_terms"].pop("index_clause", None)
+    case["term_options"]["index_clause"] = [None, clause]
+    case["buyer"].update(index_risk_pct=4, index_paths={"NEW-INDEX": 0})
+    for p in candidates:
+        p["terms"]["index_clause"] = None
+        p["cost"] = total_cost(case, p["terms"])
+    scenarios = [{"full_cost": 15, "interest_rate": 0.12, "standard": {}, "weight": 1}]
+    intelligence = {"economic_sensitivities": {sid: {"scenarios": scenarios}}}
+    data = {
+        "supplier_id": sid,
+        "action": "send",
+        "proposals": [{"base_id": "A", "changes": {"index_clause": clause}}],
+    }
+    portfolio, trace = admit_proposals(case, threads, sid, candidates, intelligence, data, learn_beliefs(case, []))
+    assert portfolio == candidates
+    assert any("insufficiently compensated" in reason for reason in trace["rejected"])
+
+
 @pytest.mark.parametrize(
     "changes",
     [

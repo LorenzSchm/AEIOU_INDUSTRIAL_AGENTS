@@ -50,6 +50,18 @@ def commercial_shapes(case, base, current):
                         terms["contract_months"] = duration
                     if valid_terms(case, terms):
                         yield "delivery", terms
+    if {"lead_time_days", "payment_days"} <= set(fields):
+        # Follow the supplier's quoted cash preference while buying a discount
+        # with the nearest legal delivery relaxation. Full cost prices lateness.
+        cash = current.get("payment_days")
+        if cash is not None and cash < base.get("payment_days", cash):
+            for days in sorted(options.get("lead_time_days", [])):
+                if days <= max(base.get("lead_time_days", 0), current.get("lead_time_days", 0)):
+                    continue
+                terms = {**base, "lead_time_days": days, "payment_days": cash}
+                if valid_terms(case, terms):
+                    yield "delivery_flex", terms
+                    break
 
 
 def portfolio_probes(case, events, base, cost, supplier, confidence, compensate, sensitivities=None):
@@ -93,12 +105,16 @@ def portfolio_probes(case, events, base, cost, supplier, confidence, compensate,
     ]
     grouped = {}
     for issue, shape in commercial_shapes(case, base, current):
+        if issue == "delivery_flex" and not prior:
+            continue  # Preserve the opening; bundle trades after observing a response.
         if structure(shape) == structure(base):
             continue
         # Keep strict equal-cost trades where possible. If the estimated
         # sustainability minimum blocks one, use the bounded standing-offer gap.
         probe = compensate(case, base, shape, cost, target_cost=ceiling if issue == "delivery" else None)
         if probe is None:
+            if issue == "delivery_flex":
+                continue  # Never give away cash AND service via the concession envelope.
             probe = compensate(case, base, shape, cost, target_cost=ceiling)
         if probe is None:
             continue
@@ -107,6 +123,8 @@ def portfolio_probes(case, events, base, cost, supplier, confidence, compensate,
             probe["unit_price"] = max(probe["unit_price"], max(previous))
         value = cost(probe)
         if not valid_terms(case, probe) or not math.isfinite(value) or value > ceiling + 0.001:
+            continue
+        if issue == "delivery_flex" and (value > anchor_cost + 0.001 or probe["unit_price"] >= base["unit_price"]):
             continue
         stresses = None
         if supplier and case["buyer"].get("category_goal") in {"stabilise", "secure_supply"}:

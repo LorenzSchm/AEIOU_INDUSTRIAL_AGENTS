@@ -565,3 +565,51 @@ That is a proposed counter, not a predicted agreement or score. Validation is
 restricted to 57 relevant regression tests and the small discovery clock stress;
 the broader unchanged suites are not rerun. The next hosted batch again contains
 exactly one P02 and one P05 attempt; P02 is a repeatability/control observation.
+
+## Follow-up after `7b036b9`: protect value across the whole offered portfolio
+
+The last hosted observations are P02 **60.51** and P05 **82.05**. No additional
+hosted or Claude calls were made for this revision.
+
+P02 immediately selected the indexed first-contact option. Its actual cost
+included EUR 17,446.25 of index risk and EUR 32,503.30 of relationship cost. The
+experimental option beat the standing quote under weighted sensitivities, but
+was substantially worse than the simultaneously offered fixed-price option.
+Beating an expensive opening is therefore an insufficient portfolio guard.
+
+The revision uses only public terms, cost estimates and observed messages:
+
+- On first contact in sustainability categories, search a bounded lower-price
+  neighborhood on the existing anchor's exact terms. Weighted sensitivity cost
+  must improve, point-model cost stays within the existing 0.25% anchor envelope
+  and below an executable standing quote. This does not replace the production
+  acceptance model and never retracts an executed price concession.
+- If that refinement succeeds, no alternative may give back more than 0.25% of
+  the refined anchor's weighted cost. Indexed alternatives are also compared to
+  the best fixed-price candidate, not only to the supplier's opening. The same
+  limits apply to model amendments and appear in the planner's proposal schema.
+- After a supplier counter, explore the supplier's quoted earlier-payment term
+  together with the nearest legal delivery relaxation. The price must compensate
+  the entire buyer cost, including lateness and financing. There is no extra
+  concession envelope for this combined trade; existing legal cash/on-time offers
+  remain available in the P05 replay.
+
+Public-opening replay now generates P02 **357.94 / 14 days / fixed price**, rather
+than the previous 362.44 fixed-price anchor alongside the 356.92 indexed option.
+Anchor weighted cost falls from 2,278,630.07 to 2,271,788.26, while point-model cost
+rises from 2,275,297.17 to 2,280,966.65, within its 2,280,985.41 limit. This explicit
+model disagreement is a bounded experiment, not a guarantee: true supplier costs
+and willingness to accept fixed pricing remain unknown. No hidden scoring inputs
+or historical winning price is embedded in runtime code.
+
+P05 counter-prefix replay adds **26.46 / 14 days / 42 days delivery** beside
+27.08 / 90 / 35 and 26.62 / 14 / 35. These are proposals, not realized agreements.
+
+Validation: 55 focused regression tests passed, including invented supplier/case
+structures, term legality, full trade compensation, terminal-state protection,
+prior-concession preservation, and attempts by the model to reintroduce costly
+risk or undo the refined anchor. A paired subset of eight existing synthetic
+raw-material negotiations (two estimate variants, four supplier policies) stayed
+at mean 87.07 for both frozen `7b036b9` and this revision, with no errors or
+must-have violations. These reused synthetic regressions show no regression in
+those conditions; they do not demonstrate a higher Arena score or LLM reliability.

@@ -17,8 +17,9 @@ identify an obstacle, not just a cheaper price. Consider a small conditional
 concession when necessary for agreement. Do not repeat failed equivalent offers.
 Supplier should-cost is an uncertain estimate, never a known minimum price.
 Do not offer different prices for identical non-price terms in the same message.
-Keep a compensated index/risk alternative when available: reduced base price
-must pay for its buyer financing and index risk. A fast-payment option must earn
+Keep an index/risk alternative only when its reduced base price compensates for
+financing and index risk relative to our fixed-price option, within proposal_limits.
+A fast-payment option must earn
 a sufficient discount; do not give it away merely because the seller prefers it.
 Prefer a small improvement to one term at an observed supplier price over an
 unchanged ambitious package. Do not repeat a request for a refused cost breakdown.
