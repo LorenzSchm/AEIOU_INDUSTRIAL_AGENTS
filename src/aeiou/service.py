@@ -106,6 +106,30 @@ def dossier(case_id: str):
     return clean({"case": case, "research": research(case, pkg())})
 
 
+@app.get("/api/research/{case_id}/search")
+def research_search(case_id: str, q: str, supplier_id: str | None = None):
+    from .research_tools import decision_research
+
+    case = dossier(case_id)["case"]
+    try:
+        return clean(decision_research(case, pkg(), q, supplier_id))
+    except ValueError as exc:
+        raise HTTPException(422, str(exc)) from exc
+
+
+@app.get("/api/evaluations")
+def advanced_evaluations():
+    files = sorted((state_root() / "evaluations").glob("*/report.json"), key=lambda p: p.stat().st_mtime, reverse=True)
+    reports = []
+    for path in files[:12]:
+        try:
+            report = json.loads(path.read_text(encoding="utf-8"))
+            reports.append({k: v for k, v in report.items() if k != "rows"})
+        except (ValueError, OSError):
+            continue
+    return reports
+
+
 @app.get("/api/benchmarks")
 def benchmarks():
     files = sorted((ROOT / "reports").glob("*.json"), reverse=True)

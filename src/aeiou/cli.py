@@ -28,6 +28,37 @@ def main():
     compare.add_argument("--seed", type=int, default=71)
     compare.add_argument("--label", default="prompt-screen")
     compare.add_argument("--parallel", type=int, default=2)
+    evaluation = sub.add_parser("evaluate", help="Paired local evaluation, uncertainty intervals and ablations")
+    evaluation.add_argument("--agents", nargs="+", default=["adaptive", "strategic-policy"])
+    evaluation.add_argument("--seeds", nargs="+", type=int, default=[99, 100])
+    evaluation.add_argument("--cases", nargs="+")
+    evaluation.add_argument("--opponents", nargs="+")
+    evaluation.add_argument("--repeats", type=int, default=1)
+    evaluation.add_argument("--supplier", choices=["scripted", "language"], default="scripted")
+    evaluation.add_argument("--supplier-models", nargs="+", default=[None])
+    evaluation.add_argument("--buyer-model")
+    evaluation.add_argument("--allow-api", action="store_true")
+    evaluation.add_argument("--max-sessions", type=int, default=120)
+    evaluation.add_argument("--output")
+    evaluation.add_argument("--ablations", action="store_true", help="Add one disabled feature at a time")
+    optimize = sub.add_parser("optimize-writer", help="Offline prompt search with disjoint case splits")
+    optimize.add_argument("--agent", choices=["strategic", "strategic-policy"], default="strategic")
+    optimize.add_argument("--rounds", type=int, default=2)
+    optimize.add_argument("--train", nargs="+", default=["case:S01", "case:S02", "case:T01"])
+    optimize.add_argument("--validation", nargs="+", default=["case:S03"])
+    optimize.add_argument("--test", nargs="+", default=["case:T02"])
+    optimize.add_argument("--opponents", nargs="+", default=["hardliner"])
+    optimize.add_argument("--supplier", choices=["scripted", "language"], default="scripted")
+    optimize.add_argument("--allow-api", action="store_true")
+    optimize.add_argument("--max-sessions", type=int, default=40)
+    optimize.add_argument("--output")
+    retrieve = sub.add_parser("research", help="Search case-scoped supplier evidence locally")
+    retrieve.add_argument("case_id")
+    retrieve.add_argument("query")
+    retrieve.add_argument("--supplier-id")
+    retrieval_eval = sub.add_parser("evaluate-retrieval", help="Measure recall on a labeled local query set")
+    retrieval_eval.add_argument("gold_file")
+    retrieval_eval.add_argument("--output", default="data/local/retrieval-evaluation.json")
     play = sub.add_parser("play")
     play.add_argument("case_id")
     play.add_argument("--mode", choices=["local", "hosted"], default="hosted")
@@ -75,6 +106,63 @@ def main():
 
         report = compare_prompts(a.model, a.supplier, a.supplier_model, a.seed, a.label, a.parallel)
         print(json.dumps({k: report[k] for k in ("status", "arena_sessions_used", "summary", "report_path")}, indent=2))
+    elif a.command == "evaluate":
+        from .evaluation import evaluate_matrix
+        from .strategy_policy import StrategicFeatures
+
+        labels = list(a.agents)
+        if a.ablations:
+            base = next((name for name in labels if name in {"strategic", "strategic-policy"}), None)
+            if base is None:
+                p.error("--ablations requires strategic or strategic-policy in --agents")
+            labels.extend(f"{base}:no-{field.replace('_', '-')}" for field in StrategicFeatures().metadata())
+        report = evaluate_matrix(
+            agents=labels,
+            seeds=a.seeds,
+            case_ids=a.cases,
+            opponents=a.opponents,
+            repeats=a.repeats,
+            supplier_mode=a.supplier,
+            supplier_models=a.supplier_models,
+            buyer_model=a.buyer_model,
+            allow_api=a.allow_api,
+            max_sessions=a.max_sessions,
+            output=a.output,
+        )
+        print(json.dumps({k: v for k, v in report.items() if k != "rows"}, indent=2))
+    elif a.command == "optimize-writer":
+        from .prompt_optimization import optimize_writer
+
+        report = optimize_writer(
+            train=a.train,
+            validation=a.validation,
+            test=a.test,
+            rounds=a.rounds,
+            agent=a.agent,
+            supplier_mode=a.supplier,
+            opponents=a.opponents,
+            allow_api=a.allow_api,
+            max_sessions=a.max_sessions,
+            output=a.output,
+        )
+        print(json.dumps(report, indent=2))
+    elif a.command == "research":
+        from .research import package
+        from .research_tools import decision_research
+        from .simulation import local_cases
+
+        pkg = package()
+        cases = {**pkg.cases, **local_cases()}
+        if a.case_id not in cases:
+            p.error("Unknown case")
+        print(json.dumps(decision_research(cases[a.case_id], pkg, a.query, a.supplier_id), indent=2))
+    elif a.command == "evaluate-retrieval":
+        from pathlib import Path
+
+        from .research_tools import evaluate_retrieval
+
+        gold = json.loads(Path(a.gold_file).read_text(encoding="utf-8"))
+        print(json.dumps(evaluate_retrieval(gold, a.output), indent=2))
     elif a.command == "report":
         from .hosted_evaluation import hosted_evaluation
 

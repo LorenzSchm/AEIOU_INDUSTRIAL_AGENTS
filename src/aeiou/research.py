@@ -14,7 +14,16 @@ class ResearchPackage(DataPackage):
 
     def __init__(self, root):
         self._read_lock = threading.RLock()
+        self._evidence_index = None
         super().__init__(root)
+
+    def evidence_index(self):
+        from .retrieval import HybridEvidenceIndex
+
+        with self._read_lock:
+            if self._evidence_index is None:
+                self._evidence_index = HybridEvidenceIndex.from_package(self)
+            return self._evidence_index
 
     def tables(self):
         with self._read_lock:

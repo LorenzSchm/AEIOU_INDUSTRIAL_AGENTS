@@ -212,6 +212,9 @@ docker run --rm --env-file .env -p 127.0.0.1:8765:8765 -v "$PWD/data/local:/app/
 The Docker build was attempted but could not be verified because the local Docker daemon was stopped.
 
 Negotiation assumptions and paper references are in [docs/RESEARCH.md](docs/RESEARCH.md).
+The opt-in strategic upgrade, research search, ablations and offline writer optimization
+are documented in [docs/STRATEGIC_V2.md](docs/STRATEGIC_V2.md), including measured results
+and the limits of the current evidence.
 Should-cost and supplier financing remain estimates. The Sunday release was not yet public
 during the initial build. No presentation file was present locally or upstream to review.
 

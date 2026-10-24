@@ -8,6 +8,16 @@ function decisionSupport(run, supplier) {
   const plan = planned?.decision_support[supplier].plan;
   const learned = observation.state;
   const rejections = history.flatMap(d => d.guard_rejections ?? []);
+  const belief = observation.belief;
+  const controller = history.at(-1).controller;
+  const strategy = observation.strategy;
+  const policy = belief ? `<details class="scenario-assumptions" open><summary>Controller and preference hypotheses</summary>
+    <p>${esc(strategy?.name ?? 'balanced')} · ${esc(strategy?.reason ?? '')}</p>
+    <p>Action: ${esc(controller?.action ?? 'recorded')} · ${esc(controller?.reason ?? '')}</p>
+    <p>${number(belief.observations)} distinct observed package choices. Assumption weights: ${(belief.hypotheses ?? []).map(h => `${esc(h.name)} ${number(h.weight*100,1)}%`).join(' · ')}</p>
+    <p>${esc(belief.limitation)}</p>
+    ${(controller?.traces ?? []).map(t => `<p>${esc(t.candidate_id)}: modeled continuation ${euros(t.modeled_continuation_cost)} · assumed loss risk ${number(t.assumed_loss_risk*100,1)}%</p>`).join('')}
+    <p class="section-note">Hypothetical continuation costs use uncalibrated supplier assumptions. Economic guards preserve better legal counters and terminal offers.</p></details>` : '';
   const preferences = (learned.preferences ?? []).map(p =>
     `<div class="audit-item"><strong>${esc(human(p.field))}: ${esc(typeof p.value === 'object' ? JSON.stringify(p.value) : p.value)}</strong>
       <br>${esc(p.confidence)} hypothesis from ${number(p.observations)} package responses
@@ -28,7 +38,7 @@ function decisionSupport(run, supplier) {
       <p class="section-note">${number(learned.identical_price_replies)} identical price replies · ${number(learned.moves_left)} moves remaining at this decision</p>
       <p class="section-note">Package choices can reflect price or several terms together. These are not revealed supplier utilities.</p></div>
     <div><h4>Package exposure</h4><p class="section-note">Cost sensitivities, not predictions or acceptance probabilities. Last offer plan${planned ? ` from decision ${number((run.decisions ?? []).indexOf(planned) + 1)}` : ''}.</p>${scenarios}</div></div>
-    ${rejections.length ? `<details class="scenario-assumptions"><summary>${number(rejections.length)} guarded model proposals</summary>${rejections.map(reason => `<p>${esc(reason)}</p>`).join('')}</details>` : ''}</section>`;
+    ${policy}${rejections.length ? `<details class="scenario-assumptions"><summary>${number(rejections.length)} guarded model proposals</summary>${rejections.map(reason => `<p>${esc(reason)}</p>`).join('')}</details>` : ''}</section>`;
 }
 
 function handoffLink(run) {

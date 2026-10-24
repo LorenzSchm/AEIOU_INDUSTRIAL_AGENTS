@@ -1,0 +1,133 @@
+# Strategic controller upgrade
+
+Use `strategic-policy` for the complete local controller without model calls, or
+`strategic` for the same controller with a Claude communication writer. Existing
+`adaptive`, `claude` and baseline agents retain their behavior. The default agent
+is unchanged; choose the new agent explicitly in the UI or CLI.
+
+## Implemented behavior
+
+1. Adaptive bidding uses observed price movement, resistance and remaining turns
+   to resolve full packages. Published buyer goals and observed behavior select
+   balanced, continuity, liquidity, term-exchange or closing strategies.
+2. A Bayesian ensemble updates six assumed supplier preference types after
+   identifiable package responses. Counteroffers provide tempered evidence;
+   ambiguous responses and repeated status messages do not add observations.
+   The posterior affects package selection after two observations.
+3. Bounded two-step lookahead compares acceptance with hypothetical responses
+   across preference types and observed price-step scenarios. A 100 ms budget
+   limits planning. These are uncalibrated assumptions, not a supplier digital twin.
+   Independent guards preserve materially better legal counters, other suppliers'
+   continuation opportunities, and terminal final offers.
+4. The controller selects the supplier, action and executable package IDs. Claude
+   selects tone, diagnostic question and approved evidence IDs. Free-form factual
+   prose does not reach suppliers in grounded mode. Exact contract summaries come
+   from code. Invalid model output falls back to a deterministic communication act.
+   The deterministic writer introduces one fresh approved source at opening or
+   when the observed price stalls or worsens. It preserves evidence while price
+   concessions continue, avoids repeated source claims, and explains that one
+   market index does not establish a supplier's total costs.
+5. Local hybrid retrieval combines BM25 with explicit business-concept matching,
+   supplier/part/date filters, source IDs and exact-content chunk hashes. Optional
+   supplied dense embeddings are supported; no embedding service is called.
+   The default is not a learned vector model or hosted vector database.
+   Internal notes remain private; only complete approved letter excerpts and
+   computed index claims may appear in supplier-facing text. The data cutoff
+   defaults to the competition's 30 September 2026 world.
+6. The research UI answers focused questions from the supplied competition data.
+   It exposes uncertainty and unanswered questions. No live market scraping or
+   real supplier contact occurs.
+7. Offline writer optimization separates train, validation and test base cases.
+   Reflection sees training traces only; validation selects one instruction;
+   the held-out test runs once. Instructions are text, never executable code.
+   An explicit environment setting loads a selected hash-checked result.
+8. Evaluation supports feature ablations, repeated runs, multiple language supplier
+   models, case-cluster bootstrap intervals, score tails, latency, tokens, failures
+   and fallbacks. A supplier failure excludes the entire paired condition from
+   score comparison; resource totals still include excluded attempts. Buyer
+   failures count as zero. There is no best-of-attempt selection.
+
+## Local commands
+
+```powershell
+aeiou play case:S03 --mode local --agent strategic-policy
+aeiou research case:S01 "What supports a cash-for-price exchange?"
+aeiou evaluate --agents adaptive strategic-policy --seeds 99 100 101 --max-sessions 180
+aeiou evaluate --agents adaptive strategic-policy --seeds 102 --ablations --max-sessions 240
+aeiou evaluate-retrieval tests/fixtures/retrieval-gold.json
+aeiou optimize-writer --agent strategic-policy --rounds 0
+```
+
+These commands use zero Arena sessions. The first five use no model API. The
+last command exercises the split/report pipeline without reflection. Model-backed
+evaluation and reflection require `--allow-api`; session counts are checked before
+execution. Session limits do not represent a monetary spend limit.
+
+With configured Anthropic credentials, explicitly requested paid experiments can
+use `--agents adaptive strategic --allow-api`, `--supplier language`, a fixed
+`--buyer-model` and one or more `--supplier-models`. Writer optimization with
+reflection uses `aeiou optimize-writer --rounds 2 --allow-api`. To apply a selected
+result deliberately:
+
+```powershell
+$env:AEIOU_WRITER_INSTRUCTION_FILE = "absolute/path/to/prompt-optimization/report.json"
+```
+
+Search is `GET /api/research/{case_id}/search?q=...`. Saved experiments are
+`GET /api/evaluations`; the evaluation UI loads these without starting runs.
+Default experiment reports and full run traces live in ignored `data/local/`.
+`--output` can choose another local report directory.
+
+## Evidence and limits
+
+The first 120-session comparison exposed premature acceptance in S02:
+adaptive 96.44 vs strategic 91.43. A feature-ablation run isolated lookahead.
+An intermediate correction also intercepted terminal offers and regressed further;
+the final guard explicitly preserves terminal handling. Both issues have regression tests.
+
+The corrected implementation matched adaptive exactly across 90 paired conditions
+(five cases, six profiles, three seeds; 180 sessions): **97.4644/100 each**, zero
+failures and zero must-have violations. A separate seed-102 ablation matrix ran
+240 sessions; all eight arms tied at **95.1015/100**. This does not establish a
+score improvement, causal feature value, or generalization beyond these cases.
+These cases were used during development and are not an untouched final test set.
+
+An additional comparison on seeds 103 and 104 ran 120 sessions after the fixes:
+both agents scored **99.9669/100**, with no failures or must-have violations.
+These are new seeds on the same five cases, not new independent base cases.
+
+### Follow-up: measured evidence-feedback improvement
+
+After those ties, the evidence-feedback rule above improved the development
+comparison on seeds 99/100 from **96.4362 to 97.3139/100**. A preselected follow-up
+used seeds 105–114, which had not been used to develop that rule. It ran 900 local
+sessions: adaptive, strategic-policy and strategic-policy without grounded language
+on all five cases and all six supplier profiles.
+
+| Metric | Adaptive | Strategic with evidence feedback |
+| --- | ---: | ---: |
+| Mean score | 97.5996 | 98.2108 |
+| 10th percentile | 90.3924 | 91.2316 |
+| Failures / must-have violations | 0 / 0 | 0 / 0 |
+| Decision p95 | 0.016 s | 0.047 s |
+
+The new policy won 24, tied 276 and lost zero paired conditions. The mean gain was
+**0.6112 points**; the case-cluster bootstrap interval was **+0.2212 to +0.9258
+points**, across only five base cases. Removing grounded language and its evidence
+feedback returned exactly to adaptive's score. The gain came from the simulated
+index-skeptical profile, whose response rule rewards novel verified evidence.
+That profile-specific mechanism is a material limit; this is not proof of better
+results against human suppliers, Claude suppliers or hidden competition cases.
+
+Full condition-level evidence is in `docs/evaluation/evidence-feedback-new-seeds.json`;
+the development comparison and earlier equal-score results are retained alongside it.
+
+Claude writer quality, dense retrieval lift, live prompt optimization and
+cross-model negotiation performance have not been measured in this upgrade.
+The four-query retrieval fixture is a smoke benchmark, not a representative
+search-quality study. A five-case dataset gives weak generalization evidence;
+additional unseen supplier cases and multiple models are the next validation step.
+
+The architecture follows the separation of bidding, opponent modeling and
+acceptance discussed in automated negotiation research. It is an engineering
+implementation, not a reproduction of a paper's reported performance.

@@ -39,14 +39,14 @@ def save_run(run):
     with LOCK:
         target = folder / f"{run['id']}.json"
         tmp = target.with_suffix(".tmp")
-        tmp.write_text(json.dumps(clean(run), ensure_ascii=False, indent=2))
+        tmp.write_text(json.dumps(clean(run), ensure_ascii=False, indent=2), encoding="utf-8")
         os.replace(tmp, target)
 
 
 def get_run(run_id):
     if not run_id.isalnum():
         raise FileNotFoundError(run_id)
-    return json.loads((state_root() / "runs" / f"{run_id}.json").read_text())
+    return json.loads((state_root() / "runs" / f"{run_id}.json").read_text(encoding="utf-8"))
 
 
 def list_runs(limit=200):
@@ -54,7 +54,7 @@ def list_runs(limit=200):
     out = []
     local_count = 0
     for path in sorted(folder.glob("*.json"), key=lambda p: p.stat().st_mtime, reverse=True):
-        r = json.loads(path.read_text())
+        r = json.loads(path.read_text(encoding="utf-8"))
         if r.get("mode") == "local":
             local_count += 1
             if local_count > limit:
