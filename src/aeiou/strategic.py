@@ -340,6 +340,11 @@ class StrategicNegotiator(Negotiator):
                     terms=[p["terms"] for p in candidates.get(sid, []) if p["id"] in ids],
                 )
                 data = {**data, "body": compose_email(data, self._cards, sid, strategy)}
+                if any(p.get("index_reciprocity") and p["id"] in ids for p in candidates.get(sid, [])):
+                    data["body"] += (
+                        "\n\nThe indexed option makes a further price movement on the terms you quoted. "
+                        "In return, please review your price on that complete package."
+                    )
                 if cover:
                     data["body"] += (
                         "\n\nCould you reconcile the requested adjustment with that covered material period, "

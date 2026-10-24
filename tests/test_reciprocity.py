@@ -101,3 +101,68 @@ def test_fixed_volume_request_gets_an_answer_without_disclosing_private_numbers(
     assert "annual volume is fixed" in answer and "12345" not in answer
     case["negotiable"].append("volume_per_year")
     assert fixed_commitment_answer(case, events) == ""
+
+
+def indexed_scenario():
+    case = copy.deepcopy(local_cases()["case:S01"])
+    case.update(
+        case_id="case:UNSEEN-INDEX", negotiable=["unit_price", "index_clause", "payment_days", "contract_months"]
+    )
+    for field in case["negotiable"]:
+        case["fixed_terms"].pop(field, None)
+    clause = {"series": "UNSEEN", "material_share": 0.32, "deadband_pct": 4, "base_month": "2026-02"}
+    case["term_options"] = {"index_clause": [None, clause], "payment_days": [21, 75], "contract_months": [24, 30]}
+    case["buyer"].update(category_goal="leverage", index_paths={"UNSEEN": 0.08})
+    fixed = {"unit_price": 20, "index_clause": None, "payment_days": 75, "contract_months": 24}
+    indexed = {**fixed, "unit_price": 19.5, "index_clause": clause}
+    packages = [
+        {"id": "A", "terms": fixed},
+        {"id": "B", "terms": {**fixed, "unit_price": 19.8, "payment_days": 21}},
+        {"id": "C", "terms": indexed},
+    ]
+    for p in packages:
+        p["cost"] = total_cost(case, p["terms"])
+    events = [
+        {"from": "buyer", "term_sheets": [{"terms": p["terms"]} for p in packages]},
+        {
+            "from": "seller",
+            "status": "open",
+            "body": "Here is our counter on your indexed terms.",
+            "term_sheets": [{"terms": {**indexed, "unit_price": 23.5}}],
+        },
+    ]
+    return case, events, packages
+
+
+def test_index_reciprocity_moves_quarter_gap_after_first_comparable_counter():
+    case, events, packages = indexed_scenario()
+    before = copy.deepcopy((events, packages))
+    result = responsive_packages(case, events, packages, {}, lambda t: total_cost(case, t), float("inf"))
+    assert (events, packages) == before
+    assert result[:2] == packages[:2]
+    assert result[2]["index_reciprocity"]
+    assert result[2]["terms"]["unit_price"] == 20.5
+    assert same_structure(result[2]["terms"], packages[2]["terms"])
+    assert result[2]["cost"] < result[2]["standing_cost"]
+
+
+@pytest.mark.parametrize(
+    "change", ["unoffered_shape", "nonindexed", "stabilise", "terminal", "ceiling", "already_higher"]
+)
+def test_index_reciprocity_requires_observed_structure_and_safe_movement(change):
+    case, events, packages = indexed_scenario()
+    ceiling = float("inf")
+    if change == "unoffered_shape":
+        events[-1]["term_sheets"][0]["terms"]["contract_months"] = 30
+    elif change == "nonindexed":
+        events[-1]["term_sheets"][0]["terms"]["index_clause"] = None
+    elif change == "stabilise":
+        case["buyer"]["category_goal"] = "stabilise"
+    elif change == "terminal":
+        events[-1]["status"] = "final_offer"
+    elif change == "ceiling":
+        ceiling = packages[2]["cost"]
+    elif change == "already_higher":
+        packages[2] = {**packages[2], "terms": {**packages[2]["terms"], "unit_price": 21}}
+        packages[2]["cost"] = total_cost(case, packages[2]["terms"])
+    assert responsive_packages(case, events, packages, {}, lambda t: total_cost(case, t), ceiling) == packages

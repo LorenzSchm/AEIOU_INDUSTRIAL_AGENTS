@@ -45,16 +45,29 @@ def responsive_packages(case, events, packages, standard, cost, ceiling):
     quotes = [q for q in quotes if valid_terms(case, q)]
     if not quotes:
         return packages
+    previous = [s["terms"] for m in buyers for s in m["term_sheets"]]
+    # Once a supplier counters on our indexed structure, respond on that same
+    # structure instead of waiting for two identical menus or an explicit impasse.
+    # Preserve the fixed-price anchor and other categories' existing policy.
+    indexed_quotes = [
+        q
+        for q in quotes
+        if case["buyer"].get("category_goal") == "leverage"
+        and "index_clause" in case["negotiable"]
+        and packages[0]["terms"].get("index_clause") is None
+        and q.get("index_clause") is not None
+        and any(same_structure(p, q) for p in previous)
+        and any(same_structure(p["terms"], q) for p in packages[1:])
+    ]
     date_menu = (
         "effective_date" in case["negotiable"]
         and len(buyers) >= 2
         and len({q.get("effective_date") for q in quotes}) > 1
     )
-    if not requested and not repeated and not date_menu:
+    if not requested and not repeated and not date_menu and not indexed_quotes:
         return packages
     quote = min(quotes, key=cost)
     limit = min(ceiling, cost(quote) - 0.01)
-    previous = [s["terms"] for m in buyers for s in m["term_sheets"]]
 
     def allowed(t, cost_limit=None):
         return (
@@ -104,15 +117,25 @@ def responsive_packages(case, events, packages, standard, cost, ceiling):
                 entry["id"] = result[slot]["id"]
                 result[slot] = entry
 
-    for counter in sorted(quotes, key=cost) if date_menu else [quote]:
+    counters = sorted(quotes, key=cost) if date_menu else [min(indexed_quotes, key=cost)] if indexed_quotes else [quote]
+    for counter in counters:
         comparable = [p for p in previous if same_structure(p, counter)]
-        if len(buyers) >= 2 and comparable:
+        if (len(buyers) >= 2 or counter in indexed_quotes) and comparable:
             last_price = max(p["unit_price"] for p in comparable)
             gap = counter["unit_price"] - last_price
             if gap > 0.02:
                 terms = {**counter, "unit_price": round(last_price + max(0.01, gap * 0.25), 2)}
-                if allowed(terms):
-                    insert(terms, "Reciprocal step on observed supplier terms")
+                # Never replace today's planned bid with a smaller concession.
+                current = max(
+                    (p["terms"]["unit_price"] for p in packages if same_structure(p["terms"], terms)),
+                    default=last_price,
+                )
+                if allowed(terms) and (counter not in indexed_quotes or terms["unit_price"] > current):
+                    insert(
+                        terms,
+                        "Reciprocal step on observed supplier terms",
+                        **({"index_reciprocity": True} if counter in indexed_quotes else {}),
+                    )
 
     # With a declared price restriction, start from the longest payment option
     # already quoted on each identical contract. Restarting from the cheap cash

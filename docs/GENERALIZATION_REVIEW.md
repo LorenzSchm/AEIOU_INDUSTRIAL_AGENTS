@@ -1247,3 +1247,25 @@ Exactly one creation marker/request and one P08 session. Shared quota changed
 P08 session; we did not create or interact with that P18 session. Session list
 metadata is saved in practice-p08-a5b7a16/quota-audit.json. Best map unchanged
 at completion. Dashboard: data/local/evaluations/practice-p08-a5b7a16/report.json.
+
+
+## Indexed-package reciprocity before impasse
+
+The latest P08 negotiation moved the indexed buyer price 4.91 -> 4.94 -> 5.00,
+while the supplier moved 5.57 -> 5.54 -> 5.51 before closing. The generic quarter-gap
+reciprocity rule only activated after repeated identical menus or an explicit
+impasse, so it never participated. Test earlier activation only for leverage
+purchases where a supplier actually counters on an indexed structure already
+proposed by the buyer and still present in the current non-anchor portfolio.
+
+Preserve A/B and other categories; move the comparable indexed price by one
+quarter of the gap from the prior buyer bid. Do not withdraw today's higher
+planned concession, exceed the best live alternative/external ceiling, or
+reopen a final offer. Exact structures must match: no inferred preference or
+hardcoded challenge/record prices. Explain the conditional movement only when
+that verified reciprocal package is actually selected.
+
+132 focused tests pass, Ruff clean, all 57 protected P01-P05 prefix decisions
+unchanged. Archived P08 replay: opening unchanged, first indexed counter 5.08
+instead of 4.94; final acceptance unchanged. This is a policy check, not a
+simulated supplier result. One additional P08 attempt is authorized and planned.
