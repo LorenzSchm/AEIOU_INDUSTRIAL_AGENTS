@@ -1,6 +1,44 @@
 """Compose a controlled strategic act using approved, verbatim evidence cards."""
 
 import re
+from datetime import date
+
+
+def material_cover_evidence(cards, case, events, sid):
+    """Prioritize a supplier's dated material cover when opening against inflation.
+
+    Only a cover period overlapping the new contract qualifies. Quote the exact
+    source, without claiming it covers the whole contract or all supplier costs.
+    """
+    if (
+        case["buyer"].get("category_goal") != "leverage"
+        or "index_clause" not in case["negotiable"]
+        or any(m.get("from") == "buyer" for m in events)
+    ):
+        return None
+    reply = events[-1].get("body", "") if events else ""
+    if not re.search(r"\b(?:rose|risen|increased|rising|increase)\b", reply, re.I):
+        return None
+    start = case.get("fixed_terms", {}).get("effective_date")
+    if not start:
+        return None
+    months = "January February March April May June July August September October November December".split()
+    for card in cards:
+        if not card.get("shareable") or card.get("supplier_id") != sid or card.get("kind") != "verbatim_source":
+            continue
+        text = card.get("text", "")
+        if not re.search(r"(?:material|nickel|alloy|steel|energy|copper|alumin)", text, re.I):
+            continue
+        match = re.search(r"(?:covered|hedged|secured) at fixed prices until (\w+) (\d{4})\b", text, re.I)
+        if not match or match[1].capitalize() not in months:
+            continue
+        # Conservative: require the first day of the named month to overlap,
+        # rather than guessing a later expiry date within that month.
+        until = date(int(match[2]), months.index(match[1].capitalize()) + 1, 1)
+        if date.fromisoformat(start) <= until:
+            return card["id"]
+    return None
+
 
 OPENINGS = {
     "warm": "Thank you for your offer. We would like to find terms that work well for both sides.",

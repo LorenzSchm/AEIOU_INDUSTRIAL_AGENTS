@@ -21,6 +21,7 @@ from .grounding import (
     compose_email,
     fixed_commitment_answer,
     fresh_evidence_cards,
+    material_cover_evidence,
     next_evidence_ids,
     package_rationale,
     responsive_act,
@@ -319,6 +320,11 @@ class StrategicNegotiator(Negotiator):
                 strategy = self.support.get(sid, {}).get("strategy", {}).get("name", "balanced")
                 if "evidence_ids" not in data:
                     data = {**data, "evidence_ids": next_evidence_ids(self._cards, threads, sid)}
+                cover = material_cover_evidence(self._cards, case, threads[sid], sid)
+                if cover:
+                    # Keep the qualification in the verbatim excerpt; do not let
+                    # a restatement of the supplier's ask displace counter-evidence.
+                    data = {**data, "evidence_ids": [cover]}
                 data = responsive_act(
                     data,
                     threads[sid],
@@ -334,6 +340,11 @@ class StrategicNegotiator(Negotiator):
                     terms=[p["terms"] for p in candidates.get(sid, []) if p["id"] in ids],
                 )
                 data = {**data, "body": compose_email(data, self._cards, sid, strategy)}
+                if cover:
+                    data["body"] += (
+                        "\n\nCould you reconcile the requested adjustment with that covered material period, "
+                        "and distinguish costs during and after the cover expires?"
+                    )
             except ValueError as exc:
                 return self.reject(str(exc))
         move = super().guard(case, threads, data, candidates)

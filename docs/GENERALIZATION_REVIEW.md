@@ -1171,3 +1171,34 @@ small cost-ranking correction as enum-order-independent economic behavior,
 not as a proven score improvement; all protected P01-P05 replays are unchanged.
 Further strategy changes require separate validation. Dashboard report:
 data/local/evaluations/practice-p08-6daa3e5/report.json.
+
+
+## P08 follow-up: dated counter-evidence and responsive indexed commitment
+
+The 49.47 run left a price gap despite winning index protection. Its opening
+writer selected the supplier's own request rather than the available material
+cover letter, and the portfolio retained two fixed-price offers after explicit
+index requirements. Correct both generic failure modes without case IDs.
+
+For leverage cases with index negotiation and an inflation-based opening,
+prioritize a shareable, supplier-specific verbatim material-cover excerpt only
+when its explicit dated cover overlaps the fixed contract start. Ask to reconcile
+covered and uncovered periods, never imply coverage for the whole agreement.
+This deterministic evidence selection applies only to the opening; unrelated
+categories and later turns retain their communication policy.
+
+After an explicit index requirement backed by all live term sheets, replace a
+redundant non-anchor fixed-price package with a longer indexed commitment.
+Payment structure must have appeared in a supplier quote. Retain A and the
+other existing probe. Price within the established portfolio envelope: retain
+at least 75% of A's modeled improvement over the best live quote. Preserve prior
+same-structure price concessions, legal terms and terminal-offer handling.
+This is a hypothetical requested exchange, not a supplier acceptance estimate.
+
+128 focused tests pass, including 20 synthetic constraint/evidence tests. All
+57 protected P01-P05 prefix decisions remain identical. A mock planner that
+chooses the irrelevant trigger citation is corrected to the genuine cover
+source without guard fallback. Archived P08 replay proposes 5.01/cash14/36
+with 5% deadband after the first counter, within the explicit cost ceiling.
+One additional hosted P08 attempt is authorized by the follow-up request;
+no other categories and no automatic session-creation retry.
