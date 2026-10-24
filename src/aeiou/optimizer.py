@@ -2,10 +2,11 @@
 
 import math
 
-from arena_kit.cost import closing_terms, complete_offer, cost_breakdown, must_haves_ok, total_cost
+from arena_kit.cost import closing_terms, complete_offer, must_haves_ok
 from arena_kit.docs import standard_terms
 from arena_kit.play import latest, live_threads, standing
 
+from .economic_beliefs import cost_breakdown, total_cost
 from .opponent_model import comparable_price_step
 
 
@@ -19,7 +20,8 @@ def estimate(case, sid, std, intelligence):
     reference = {k: master[k] for k in ("payment_days", "incoterm") if master.get(k) is not None}
     reference.update(std)
     reference = closing_terms(case, {}, reference)
-    return {"full_cost": source["full_cost"], "interest_rate": 0.12, "standard": reference}
+    belief = intelligence.get("economic_beliefs", {}).get(sid) or {}
+    return {"full_cost": source["full_cost"], "interest_rate": 0.12, **belief, "standard": reference}
 
 
 def valid_terms(case, terms):

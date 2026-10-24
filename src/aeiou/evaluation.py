@@ -59,13 +59,18 @@ def paired_interval(rows, reference, challenger, samples=1000):
 
 
 def features_for(label):
-    name, _, ablation = label.partition(":no-")
+    name, _, ablation = label.partition(":")
     features = StrategicFeatures()
     if ablation:
-        field = ablation.replace("-", "_")
-        if name not in {"strategic", "strategic-policy"} or field not in features.metadata():
+        enabled = ablation.startswith("with-")
+        field = ablation.removeprefix("with-" if enabled else "no-").replace("-", "_")
+        if (
+            not ablation.startswith(("with-", "no-"))
+            or name not in {"strategic", "strategic-policy"}
+            or field not in features.metadata()
+        ):
             raise ValueError("Unknown strategic ablation")
-        features = replace(features, **{field: False})
+        features = replace(features, **{field: enabled})
     return name, features
 
 
@@ -76,7 +81,8 @@ def evaluation_agent(label, pkg, buyer_model=None, backend_factory=ClaudeBackend
             pkg,
             backend_factory(model=buyer_model) if name == "strategic" else None,
             features=features,
-            writer_instruction=writer_instruction,
+            writer_instruction=writer_instruction if not features.strategic_planner else "",
+            planner_instruction=writer_instruction if features.strategic_planner else "",
         )
     if name == "claude" and buyer_model:
         from .agent import Negotiator

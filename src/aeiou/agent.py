@@ -6,11 +6,12 @@ import time
 
 import anthropic
 from arena_kit.agents.llm import ID_RE, parse
-from arena_kit.cost import complete_offer, total_cost
+from arena_kit.cost import complete_offer
 from arena_kit.docs import standard_terms
 from arena_kit.play import latest, live_threads, moves_left, standing
 
 from .config import model_name
+from .economic_beliefs import total_cost
 from .optimizer import alternative_cost, candidate_packages, estimate, evaluate, safe_close, valid_terms
 from .prompts import SYSTEM, VOSS
 from .research import research
@@ -43,6 +44,12 @@ class ClaudeBackend:
         except Exception:
             self.errors += 1
             raise
+
+    def plan_negotiation(self, payload):
+        """Replace the writer call; no extra model round-trip or automatic retry."""
+        from .strategic_planner import PLANNER_SYSTEM
+
+        return parse(self.complete(PLANNER_SYSTEM, payload))
 
     def interpret_supplier(self, body):
         """One bounded advisory call; economics and actions remain in the controller."""

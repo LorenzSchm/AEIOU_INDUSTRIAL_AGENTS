@@ -19,6 +19,36 @@ HYPOTHESES = (
     {"name": "price_focused", "finance": 0.0, "duration": 0.0, "freight": 0.0},
 )
 
+# Preference hypotheses include competing signs for risk/capacity. They are
+# structural priors, not supplier personas assigned by challenge identity.
+ISSUE_HYPOTHESES = tuple(
+    {"name": name, "finance": 0.08, "duration": 0.0, "freight": 0.5, **weights}
+    for name, weights in (
+        ("quality_cost", {"ppm_commitment": 0.08, "chargeback_eur_per_complaint": -0.06}),
+        ("quality_capable", {"ppm_commitment": 0.0, "chargeback_eur_per_complaint": 0.0}),
+        ("index_security", {"index_clause": 0.06}),
+        ("fixed_security", {"index_clause": -0.06}),
+        ("delivery_constrained", {"lead_time_days": 0.08}),
+        ("spare_capacity", {"volume_per_year": 0.06}),
+        ("capacity_constrained", {"volume_per_year": -0.06}),
+        ("cash_quality", {"finance": 0.4, "ppm_commitment": 0.08, "chargeback_eur_per_complaint": -0.06}),
+    )
+)
+
+
+def issue_value(case, terms, field):
+    """Dimensionless, legal-domain normalization avoids part-specific scales."""
+    value = terms.get(field)
+    options = case.get("term_options", {}).get(field, [])
+    if field == "index_clause":
+        if not isinstance(value, dict):
+            return 0.0
+        return float(value.get("material_share", 0)) / (1 + float(value.get("deadband_pct", 0)) / 10)
+    numeric = [v for v in options if type(v) in (int, float)]
+    if type(value) not in (int, float) or len(numeric) < 2 or max(numeric) == min(numeric):
+        return 0.0
+    return (value - min(numeric)) / (max(numeric) - min(numeric))
+
 
 def supplier_utility(case, terms, hypothesis, standard=None):
     t = closing_terms(case, terms, standard)
@@ -30,11 +60,23 @@ def supplier_utility(case, terms, hypothesis, standard=None):
         - hypothesis["finance"] * (t["payment_days"] - reference) / 360
         + hypothesis["duration"] * min(t["contract_months"], 36) / 12
         + hypothesis["freight"] * freight / price
+        + sum(
+            hypothesis.get(f, 0) * issue_value(case, t, f)
+            for f in (
+                "ppm_commitment",
+                "chargeback_eur_per_complaint",
+                "index_clause",
+                "lead_time_days",
+                "volume_per_year",
+            )
+        )
     )
 
 
-def learn_beliefs(case, events, enabled=True):
-    logs, observations, trace = [0.0] * len(HYPOTHESES), 0, []
+def learn_beliefs(case, events, enabled=True, multi_issue=False):
+    hypotheses = HYPOTHESES + ISSUE_HYPOTHESES if multi_issue else HYPOTHESES
+    logs, observations, trace = [0.0] * len(hypotheses), 0, []
+    seen = set()
     pending = None
     for index, message in enumerate(events):
         if message.get("from") == "buyer":
@@ -54,24 +96,41 @@ def learn_beliefs(case, events, enabled=True):
         varied = {f for f in fields if len({repr(p.get(f)) for p in complete}) > 1}
         # This model knows cash, duration and freight only. Quality, volume,
         # index and delivery trades cannot identify its preference hypotheses.
-        if not varied or varied - {"payment_days", "contract_months", "incoterm"}:
+        supported = {"payment_days", "contract_months", "incoterm"}
+        if multi_issue:
+            supported |= {
+                "ppm_commitment",
+                "chargeback_eur_per_complaint",
+                "index_clause",
+                "lead_time_days",
+                "volume_per_year",
+            }
+        if not varied or varied - supported:
             continue
         matches = [i for i, p in enumerate(complete) if all(p.get(f) == reply.get(f) for f in fields)]
         if len(matches) != 1:
             continue
         selected = matches[0]
-        for i, hypothesis in enumerate(HYPOTHESES):
+        # Repeating the identical package experiment is correlated evidence.
+        signature = repr((complete, selected))
+        if signature in seen:
+            continue
+        seen.add(signature)
+        for i, hypothesis in enumerate(hypotheses):
             utilities = [supplier_utility(case, p, hypothesis, std) for p in complete]
             high = max(utilities)
             likelihood = math.exp((utilities[selected] - high) * 30) / sum(math.exp((u - high) * 30) for u in utilities)
             # Counters may copy package terms strategically; temper their evidence.
             logs[i] += (1.0 if message.get("status") == "agreed" else 0.35) * math.log(max(likelihood, 1e-9))
         observations += 1
-        trace.append({"message_index": index, "offer_id": replies[0].get("term_sheet_id")})
+        item = {"message_index": index, "offer_id": replies[0].get("term_sheet_id")}
+        if multi_issue:
+            item.update(joint_dimensions=sorted(varied), selected_package=selected)
+        trace.append(item)
     high = max(logs)
     weights = [math.exp(v - high) for v in logs]
     total = sum(weights)
-    posterior = [{**h, "weight": w / total} for h, w in zip(HYPOTHESES, weights, strict=True)]
+    posterior = [{**h, "weight": w / total} for h, w in zip(hypotheses, weights, strict=True)]
     return {
         "hypotheses": posterior,
         "observations": observations,
@@ -111,3 +170,20 @@ def predicted_choices(case, packages, belief, standard=None):
         for i, value in enumerate(weights):
             scores[i] += hypothesis["weight"] * value / sum(weights)
     return scores
+
+
+def equivalent_response_price(case, proposed, current, hypothesis, standard=None):
+    """Solve a hypothetical counter on its OWN terms, not the old quote's terms.
+
+    Finite bounds deliberately prevent extreme extrapolation. This is a scenario,
+    not an executable quote or a prediction of the supplier's private floor.
+    """
+    target = supplier_utility(case, current, hypothesis, standard)
+    lo, hi = current["unit_price"] * 0.7, current["unit_price"] * 1.3
+    for _ in range(22):
+        mid = (lo + hi) / 2
+        if supplier_utility(case, {**proposed, "unit_price": mid}, hypothesis, standard) < target:
+            lo = mid
+        else:
+            hi = mid
+    return (lo + hi) / 2

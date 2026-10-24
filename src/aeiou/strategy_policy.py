@@ -5,11 +5,12 @@ import math
 import time
 from dataclasses import asdict, dataclass
 
-from arena_kit.cost import complete_offer, total_cost
+from arena_kit.cost import complete_offer
 from arena_kit.docs import standard_terms
 from arena_kit.play import latest, moves_left, standing
 
-from .opponent_model import supplier_utility
+from .economic_beliefs import total_cost
+from .opponent_model import equivalent_response_price, supplier_utility
 from .optimizer import candidate_packages, estimate, valid_terms
 from .supplier_signals import recent_kinds
 
@@ -23,6 +24,12 @@ class StrategicFeatures:
     retrieval: bool = True
     grounded_language: bool = True
     multi_issue_portfolio: bool = True
+    # Cost expectation and automatic rollout control remain experimental: local
+    # diagnostics do not yet justify replacing the stable execution policy.
+    economic_uncertainty: bool = False
+    strategic_planner: bool = True
+    multi_issue_learning: bool = True
+    response_rollouts: bool = False
 
     def metadata(self):
         return asdict(self)
@@ -120,7 +127,9 @@ def adaptive_packages(case, events, sid, intelligence, state, belief, features):
     return packages, strategy
 
 
-def plan_next_action(case, events, packages, standing_rows, belief, enabled=True, budget_ms=100, supplier=None):
+def plan_next_action(
+    case, events, packages, standing_rows, belief, enabled=True, budget_ms=100, supplier=None, response_rollouts=False
+):
     """Compare actual acceptance with hypothetical send continuations.
 
     Public price movement provides a range, not a private floor. Hypothesis weights
@@ -152,11 +161,18 @@ def plan_next_action(case, events, packages, standing_rows, belief, enabled=True
         for hypothesis in belief["hypotheses"]:
             utility = supplier_utility(case, package["terms"], hypothesis, std)
             threshold = supplier_utility(case, current, hypothesis, std)
+            response_price = (
+                equivalent_response_price(case, package["terms"], current, hypothesis, std)
+                if response_rollouts
+                else current["unit_price"]
+            )
             # Next counter prices bracket an extrapolation of observed concessions.
             for factor in (0.0, 1.0, 2.0):
                 predicted = {
                     **package["terms"],
-                    "unit_price": max(0.01, current["unit_price"] - factor * belief["observed_price_step"]),
+                    "unit_price": max(
+                        package["terms"]["unit_price"], response_price - factor * belief["observed_price_step"]
+                    ),
                 }
                 accepts = utility >= threshold - 1e-6
                 response_cost = package["cost"] if accepts else total_cost(case, predicted, std, supplier)

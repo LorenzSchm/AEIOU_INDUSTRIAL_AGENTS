@@ -1,0 +1,1583 @@
+{
+  "baseline_commit": "b88f961bdf7a91cf41bc908b5211f7acc1b41c87",
+  "source_hashes": {
+    "src\\aeiou\\agent.py": "2d1033416e1f4394e425455deffa6e65aab2b27691c3b4818fa53644f8d56cad",
+    "src\\aeiou\\benchmark.py": "3dcc3920981dd655a89d8c2619a26fb8265afc0b37a9c2d2a94ab0d5421fd268",
+    "src\\aeiou\\cli.py": "14bb8681c66f2a9399a339ae77577f06b291f83161f79fcfaf0492620f52b828",
+    "src\\aeiou\\commercial_portfolio.py": "3feb4e6c54f27f3cd3d40c5eb141b2fe7fac4cc63bc02319be547b7f606745c9",
+    "src\\aeiou\\config.py": "25e8454a976a32bfdfd270e4c805a7ebb1970f8eb15e53bc9324f1c7fe208d41",
+    "src\\aeiou\\economics_audit.py": "1da9f6478f93d51a2713c3fe0096c341396c1cf419308197e8f30a2c1b441ff1",
+    "src\\aeiou\\economic_beliefs.py": "f84dc4cb3797e72d2a593357a28fc6b4de0448fd51c996fa0d3af03698fa4077",
+    "src\\aeiou\\evaluation.py": "386c5842406c71aa948cef3d9d868ec3cd8607cc1567d6cb879900a9d0be4485",
+    "src\\aeiou\\generalization.py": "38bfd96ae6082817a07753c19600f2471753b917c39a40d1e9b8c49e725c2c8c",
+    "src\\aeiou\\grounding.py": "d116996949e4b94af73a96a0c2a0433fed50b99e1976f43ea351febe7b459701",
+    "src\\aeiou\\handoff.py": "fe2fd057e8163b3658bc31483774af601e176061bb881d9c0e236dcf45123409",
+    "src\\aeiou\\hosted_evaluation.py": "27e2d6e8b87f4ddf4a9b30efbf148da3d3920f7c173bcc583972d8754d433ce6",
+    "src\\aeiou\\language_sim.py": "c448145db3aed08e365ab976e4694946b9b5dbc79a687594cd88f7410de3e185",
+    "src\\aeiou\\negotiation_state.py": "7894808009d048f8b29669115e5e57847670431940127af4f9886271defef5cd",
+    "src\\aeiou\\opponent_model.py": "9a2a044b29de2986ebde4a2d4010b26b7252cc1c376c102c359ad41f338dafe3",
+    "src\\aeiou\\optimizer.py": "081a13251d6e23065339fd3210ce8070993c39e0189688e87bfb0b46cf91b637",
+    "src\\aeiou\\portfolio_evaluation.py": "59577b0ddee441c9875239b17352a5c41480f2e40ca208460f2540118783d2da",
+    "src\\aeiou\\prompts.py": "bb37939d01f913e5fdd2dca184d02911c61a42628a2cfe795a0a146c78b8605b",
+    "src\\aeiou\\prompt_comparison.py": "980b2676cb39d3a706b38e5cc2b2ca789555ef19ba6cd1c19b2fc0e51d60e85d",
+    "src\\aeiou\\prompt_optimization.py": "250f8953fc5c229a0519a294299e20046525376770611547c56bfe6631153e78",
+    "src\\aeiou\\prompt_protocol.py": "a2206c18b8575e3c62ef85803edbd7e619cca45df037cbb2d2d3e00b114068ae",
+    "src\\aeiou\\research.py": "7f22f1f9ee006e50e3ad74bf27efae6569f26d382c21bd41e81816e7568e125f",
+    "src\\aeiou\\research_tools.py": "37646aba18c6dbf757cebe574ee4af0336f1015e86dad2bee28b13c05681880f",
+    "src\\aeiou\\retrieval.py": "e3fd5b7ddbc4ab51d01604a5c6358e819e5b933e4e85be67b79bc52495f49f4b",
+    "src\\aeiou\\runner.py": "ecd3b8a748f61326342f27c5a9cee12d89705d018d5e66d92826143e8983abcb",
+    "src\\aeiou\\scenario_planner.py": "6c942cde0ae6011de4a724e6c4f79abdfe662d111d340e960907f5bb92893607",
+    "src\\aeiou\\service.py": "d32e663f7b9c209d89ad29780ab3faf8e9bad2638cf2f4612e1983b75d4d3718",
+    "src\\aeiou\\simulation.py": "097e42d000b651de968eebfb740b3c838711a3573bec09a1e2756a52031b4a9b",
+    "src\\aeiou\\store.py": "9c9eb567d0cd98252ebda89c26efb9f5d22b2d6fc789ffab17a3d9228a9711f5",
+    "src\\aeiou\\strategic.py": "95c737f81568a25b671c704ad2c4141cdc5227f56065a65690a1ffb9e954a5a6",
+    "src\\aeiou\\strategic_planner.py": "c919a2a3b2cad8211b7c9629da0f19fa1a4eaaa149382236a5084fd386488fb4",
+    "src\\aeiou\\strategy_policy.py": "460d6ca8b7da8c6f88e737a25d2ba9a316a23e92d19dba76c19c190f260e66c0",
+    "src\\aeiou\\supplier_signals.py": "0d7bf2cd5d73c326ddd01e363f7d6474829393d3855b7e4b073a631844c0b7f8",
+    "src\\aeiou\\term_exchange.py": "d291990885eeec983fe3754ba42707b3f4e6bf357254f5453544093ec279d04d",
+    "src\\aeiou\\uncertainty.py": "dba16bfa41e9babc175854ec78902e191092967d2f58d7633e650117447f348f",
+    "src\\aeiou\\__init__.py": "a6bb00075d6c56365876fd210238cb57aee7a4b600a22fcb66a3845f8878e840"
+  },
+  "comparisons": {
+    "reused_regression": {
+      "conditions_per_arm": 96,
+      "dataset_hash": "ed793d588a2ba826997f378e01734120b6861a0ee5c5292426bec1424ed4ec08",
+      "baseline_points": 91.59297742391001,
+      "candidate_points": 91.59297742391001,
+      "wins": 0,
+      "ties": 96,
+      "losses": 0,
+      "failures": 0,
+      "must_have_violations": 0,
+      "before_file": "strategy-v3-regression-before.json",
+      "after_file": "strategy-v3-regression-final.json"
+    },
+    "sealed_multi_issue": {
+      "conditions_per_arm": 54,
+      "dataset_hash": "82874184631f1073cd3a9e3e0416e62834133b6604d7ac6deabf3ef462adff84",
+      "baseline_points": 75.18876991495225,
+      "candidate_points": 75.18876991495225,
+      "wins": 0,
+      "ties": 54,
+      "losses": 0,
+      "failures": 0,
+      "must_have_violations": 0,
+      "before_file": "strategy-v3-sealed-before.json",
+      "after_file": "strategy-v3-sealed-after.json"
+    }
+  },
+  "economics_diagnostic": {
+    "seed": 190481,
+    "cases": 100,
+    "arena_sessions": 0,
+    "llm_calls": 0,
+    "summary": {
+      "prior_point": {
+        "absolute_error": 8249.4839,
+        "ranking_error": 0.15416666666666667,
+        "decision_regret": 2658.169899999999
+      },
+      "scenario_expectation": {
+        "absolute_error": 6998.367022222222,
+        "ranking_error": 0.14888888888888888,
+        "decision_regret": 2563.4088000000006
+      }
+    },
+    "rows": [
+      {
+        "case": 0,
+        "method": "prior_point",
+        "absolute_error": 16665.665555555555,
+        "ranking_error": 0.3611111111111111,
+        "decision_regret": 562.5499999999884
+      },
+      {
+        "case": 0,
+        "method": "scenario_expectation",
+        "absolute_error": 15247.055555555553,
+        "ranking_error": 0.4166666666666667,
+        "decision_regret": 562.5499999999884
+      },
+      {
+        "case": 1,
+        "method": "prior_point",
+        "absolute_error": 9425.842222222223,
+        "ranking_error": 0.3333333333333333,
+        "decision_regret": 3978.5200000000186
+      },
+      {
+        "case": 1,
+        "method": "scenario_expectation",
+        "absolute_error": 13735.616666666665,
+        "ranking_error": 0.4166666666666667,
+        "decision_regret": 3978.5200000000186
+      },
+      {
+        "case": 2,
+        "method": "prior_point",
+        "absolute_error": 3428.9311111111115,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 2,
+        "method": "scenario_expectation",
+        "absolute_error": 3024.7533333333236,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 3,
+        "method": "prior_point",
+        "absolute_error": 20361.25999999999,
+        "ranking_error": 0.5555555555555556,
+        "decision_regret": 7286.209999999963
+      },
+      {
+        "case": 3,
+        "method": "scenario_expectation",
+        "absolute_error": 16440.019999999993,
+        "ranking_error": 0.5555555555555556,
+        "decision_regret": 7286.209999999963
+      },
+      {
+        "case": 4,
+        "method": "prior_point",
+        "absolute_error": 27453.932222222225,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 4,
+        "method": "scenario_expectation",
+        "absolute_error": 22462.54555555557,
+        "ranking_error": 0.027777777777777776,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 5,
+        "method": "prior_point",
+        "absolute_error": 2988.816666666651,
+        "ranking_error": 0.027777777777777776,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 5,
+        "method": "scenario_expectation",
+        "absolute_error": 4814.378888888867,
+        "ranking_error": 0.1111111111111111,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 6,
+        "method": "prior_point",
+        "absolute_error": 558.912222222231,
+        "ranking_error": 0.027777777777777776,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 6,
+        "method": "scenario_expectation",
+        "absolute_error": 1647.114444444454,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 7,
+        "method": "prior_point",
+        "absolute_error": 4948.661111111106,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 7,
+        "method": "scenario_expectation",
+        "absolute_error": 4537.787777777761,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 8,
+        "method": "prior_point",
+        "absolute_error": 3588.632222222229,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 11564.759999999893
+      },
+      {
+        "case": 8,
+        "method": "scenario_expectation",
+        "absolute_error": 2710.316666666664,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 11564.759999999893
+      },
+      {
+        "case": 9,
+        "method": "prior_point",
+        "absolute_error": 7212.283333333326,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 9,
+        "method": "scenario_expectation",
+        "absolute_error": 6115.259999999997,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 10,
+        "method": "prior_point",
+        "absolute_error": 3769.177777777775,
+        "ranking_error": 0.3055555555555556,
+        "decision_regret": 15214.820000000007
+      },
+      {
+        "case": 10,
+        "method": "scenario_expectation",
+        "absolute_error": 2584.8288888888846,
+        "ranking_error": 0.2777777777777778,
+        "decision_regret": 8117.279999999999
+      },
+      {
+        "case": 11,
+        "method": "prior_point",
+        "absolute_error": 988.1377777777767,
+        "ranking_error": 0.05555555555555555,
+        "decision_regret": 494.87999999997555
+      },
+      {
+        "case": 11,
+        "method": "scenario_expectation",
+        "absolute_error": 3659.6988888888864,
+        "ranking_error": 0.16666666666666666,
+        "decision_regret": 1252.109999999986
+      },
+      {
+        "case": 12,
+        "method": "prior_point",
+        "absolute_error": 3514.845555555554,
+        "ranking_error": 0.1111111111111111,
+        "decision_regret": 10289.570000000007
+      },
+      {
+        "case": 12,
+        "method": "scenario_expectation",
+        "absolute_error": 3601.105555555563,
+        "ranking_error": 0.1111111111111111,
+        "decision_regret": 10289.570000000007
+      },
+      {
+        "case": 13,
+        "method": "prior_point",
+        "absolute_error": 15556.718888888885,
+        "ranking_error": 0.19444444444444445,
+        "decision_regret": 6831.289999999979
+      },
+      {
+        "case": 13,
+        "method": "scenario_expectation",
+        "absolute_error": 9764.492222222229,
+        "ranking_error": 0.1388888888888889,
+        "decision_regret": 6831.289999999979
+      },
+      {
+        "case": 14,
+        "method": "prior_point",
+        "absolute_error": 20903.911111111094,
+        "ranking_error": 0.1111111111111111,
+        "decision_regret": 5683.960000000079
+      },
+      {
+        "case": 14,
+        "method": "scenario_expectation",
+        "absolute_error": 19047.621111111093,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 5683.960000000079
+      },
+      {
+        "case": 15,
+        "method": "prior_point",
+        "absolute_error": 16220.41111111112,
+        "ranking_error": 0.16666666666666666,
+        "decision_regret": 628.8099999999977
+      },
+      {
+        "case": 15,
+        "method": "scenario_expectation",
+        "absolute_error": 12066.090000000006,
+        "ranking_error": 0.16666666666666666,
+        "decision_regret": 628.8099999999977
+      },
+      {
+        "case": 16,
+        "method": "prior_point",
+        "absolute_error": 5518.050000000001,
+        "ranking_error": 0.1388888888888889,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 16,
+        "method": "scenario_expectation",
+        "absolute_error": 10715.121111111095,
+        "ranking_error": 0.4444444444444444,
+        "decision_regret": 402.6900000000023
+      },
+      {
+        "case": 17,
+        "method": "prior_point",
+        "absolute_error": 45376.08777777778,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 17,
+        "method": "scenario_expectation",
+        "absolute_error": 29707.166666666668,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 18,
+        "method": "prior_point",
+        "absolute_error": 2656.572222222225,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 18,
+        "method": "scenario_expectation",
+        "absolute_error": 2072.574444444423,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 19,
+        "method": "prior_point",
+        "absolute_error": 20615.43333333333,
+        "ranking_error": 0.05555555555555555,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 19,
+        "method": "scenario_expectation",
+        "absolute_error": 9169.048888888887,
+        "ranking_error": 0.05555555555555555,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 20,
+        "method": "prior_point",
+        "absolute_error": 27651.20555555556,
+        "ranking_error": 0.4722222222222222,
+        "decision_regret": 1408.460000000021
+      },
+      {
+        "case": 20,
+        "method": "scenario_expectation",
+        "absolute_error": 23681.06111111111,
+        "ranking_error": 0.4722222222222222,
+        "decision_regret": 1408.460000000021
+      },
+      {
+        "case": 21,
+        "method": "prior_point",
+        "absolute_error": 12557.721111111108,
+        "ranking_error": 0.05555555555555555,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 21,
+        "method": "scenario_expectation",
+        "absolute_error": 15290.735555555553,
+        "ranking_error": 0.05555555555555555,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 22,
+        "method": "prior_point",
+        "absolute_error": 6626.626666666662,
+        "ranking_error": 0.4722222222222222,
+        "decision_regret": 10634.549999999988
+      },
+      {
+        "case": 22,
+        "method": "scenario_expectation",
+        "absolute_error": 5860.291111111111,
+        "ranking_error": 0.3611111111111111,
+        "decision_regret": 4572.869999999995
+      },
+      {
+        "case": 23,
+        "method": "prior_point",
+        "absolute_error": 15178.813333333315,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 23,
+        "method": "scenario_expectation",
+        "absolute_error": 11719.544444444422,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 24,
+        "method": "prior_point",
+        "absolute_error": 11777.944444444445,
+        "ranking_error": 0.3333333333333333,
+        "decision_regret": 6300.780000000028
+      },
+      {
+        "case": 24,
+        "method": "scenario_expectation",
+        "absolute_error": 8513.604444444432,
+        "ranking_error": 0.3333333333333333,
+        "decision_regret": 6300.780000000028
+      },
+      {
+        "case": 25,
+        "method": "prior_point",
+        "absolute_error": 2490.61222222223,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 25,
+        "method": "scenario_expectation",
+        "absolute_error": 2677.3299999999967,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 26,
+        "method": "prior_point",
+        "absolute_error": 652.6588888888849,
+        "ranking_error": 0.05555555555555555,
+        "decision_regret": 1723.9400000000023
+      },
+      {
+        "case": 26,
+        "method": "scenario_expectation",
+        "absolute_error": 557.0433333333317,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 3460.9500000000116
+      },
+      {
+        "case": 27,
+        "method": "prior_point",
+        "absolute_error": 6934.032222222223,
+        "ranking_error": 0.4722222222222222,
+        "decision_regret": 4060.5800000000163
+      },
+      {
+        "case": 27,
+        "method": "scenario_expectation",
+        "absolute_error": 5976.078888888895,
+        "ranking_error": 0.4722222222222222,
+        "decision_regret": 4060.5800000000163
+      },
+      {
+        "case": 28,
+        "method": "prior_point",
+        "absolute_error": 13809.012222222207,
+        "ranking_error": 0.5277777777777778,
+        "decision_regret": 13173.359999999986
+      },
+      {
+        "case": 28,
+        "method": "scenario_expectation",
+        "absolute_error": 11984.143333333332,
+        "ranking_error": 0.3611111111111111,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 29,
+        "method": "prior_point",
+        "absolute_error": 784.8222222222313,
+        "ranking_error": 0.16666666666666666,
+        "decision_regret": 1839.1599999999744
+      },
+      {
+        "case": 29,
+        "method": "scenario_expectation",
+        "absolute_error": 2383.995555555558,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 1839.1599999999744
+      },
+      {
+        "case": 30,
+        "method": "prior_point",
+        "absolute_error": 16448.963333333337,
+        "ranking_error": 0.6666666666666666,
+        "decision_regret": 3251.969999999972
+      },
+      {
+        "case": 30,
+        "method": "scenario_expectation",
+        "absolute_error": 12009.384444444448,
+        "ranking_error": 0.6388888888888888,
+        "decision_regret": 3251.969999999972
+      },
+      {
+        "case": 31,
+        "method": "prior_point",
+        "absolute_error": 2993.297777777777,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 31,
+        "method": "scenario_expectation",
+        "absolute_error": 2297.55777777778,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 32,
+        "method": "prior_point",
+        "absolute_error": 5208.929999999999,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 32,
+        "method": "scenario_expectation",
+        "absolute_error": 5120.2900000000045,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 33,
+        "method": "prior_point",
+        "absolute_error": 1299.2611111110955,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 6036.3099999999395
+      },
+      {
+        "case": 33,
+        "method": "scenario_expectation",
+        "absolute_error": 1430.4133333333302,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 6036.3099999999395
+      },
+      {
+        "case": 34,
+        "method": "prior_point",
+        "absolute_error": 22302.397777777773,
+        "ranking_error": 0.19444444444444445,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 34,
+        "method": "scenario_expectation",
+        "absolute_error": 20911.22111111111,
+        "ranking_error": 0.2777777777777778,
+        "decision_regret": 13487.140000000014
+      },
+      {
+        "case": 35,
+        "method": "prior_point",
+        "absolute_error": 2417.5122222222208,
+        "ranking_error": 0.1111111111111111,
+        "decision_regret": 1182.8800000000047
+      },
+      {
+        "case": 35,
+        "method": "scenario_expectation",
+        "absolute_error": 1827.4755555555716,
+        "ranking_error": 0.1111111111111111,
+        "decision_regret": 1182.8800000000047
+      },
+      {
+        "case": 36,
+        "method": "prior_point",
+        "absolute_error": 10142.527777777765,
+        "ranking_error": 0.1111111111111111,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 36,
+        "method": "scenario_expectation",
+        "absolute_error": 5415.082222222221,
+        "ranking_error": 0.1111111111111111,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 37,
+        "method": "prior_point",
+        "absolute_error": 13839.318888888902,
+        "ranking_error": 0.25,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 37,
+        "method": "scenario_expectation",
+        "absolute_error": 13079.654444444446,
+        "ranking_error": 0.3333333333333333,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 38,
+        "method": "prior_point",
+        "absolute_error": 13053.828888888886,
+        "ranking_error": 0.5,
+        "decision_regret": 8210.76000000001
+      },
+      {
+        "case": 38,
+        "method": "scenario_expectation",
+        "absolute_error": 11612.357777777777,
+        "ranking_error": 0.4722222222222222,
+        "decision_regret": 8210.76000000001
+      },
+      {
+        "case": 39,
+        "method": "prior_point",
+        "absolute_error": 6479.519999999996,
+        "ranking_error": 0.4444444444444444,
+        "decision_regret": 1629.820000000007
+      },
+      {
+        "case": 39,
+        "method": "scenario_expectation",
+        "absolute_error": 4834.912222222221,
+        "ranking_error": 0.3888888888888889,
+        "decision_regret": 1629.820000000007
+      },
+      {
+        "case": 40,
+        "method": "prior_point",
+        "absolute_error": 2277.8622222222234,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 2463.74000000002
+      },
+      {
+        "case": 40,
+        "method": "scenario_expectation",
+        "absolute_error": 2513.6422222222222,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 41,
+        "method": "prior_point",
+        "absolute_error": 3991.0544444444367,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 367.0
+      },
+      {
+        "case": 41,
+        "method": "scenario_expectation",
+        "absolute_error": 2946.3644444444344,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 367.0
+      },
+      {
+        "case": 42,
+        "method": "prior_point",
+        "absolute_error": 519.7877777777774,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 42,
+        "method": "scenario_expectation",
+        "absolute_error": 780.3822222222257,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 43,
+        "method": "prior_point",
+        "absolute_error": 1361.0555555555557,
+        "ranking_error": 0.027777777777777776,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 43,
+        "method": "scenario_expectation",
+        "absolute_error": 2278.424444444442,
+        "ranking_error": 0.1111111111111111,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 44,
+        "method": "prior_point",
+        "absolute_error": 11622.58888888888,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 1695.899999999965
+      },
+      {
+        "case": 44,
+        "method": "scenario_expectation",
+        "absolute_error": 7674.424444444445,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 1695.899999999965
+      },
+      {
+        "case": 45,
+        "method": "prior_point",
+        "absolute_error": 167.78777777776122,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 45,
+        "method": "scenario_expectation",
+        "absolute_error": 487.4788888888822,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 46,
+        "method": "prior_point",
+        "absolute_error": 2164.898888888898,
+        "ranking_error": 0.05555555555555555,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 46,
+        "method": "scenario_expectation",
+        "absolute_error": 2036.7222222222288,
+        "ranking_error": 0.05555555555555555,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 47,
+        "method": "prior_point",
+        "absolute_error": 5044.878888888899,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 47,
+        "method": "scenario_expectation",
+        "absolute_error": 4649.958888888883,
+        "ranking_error": 0.027777777777777776,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 48,
+        "method": "prior_point",
+        "absolute_error": 947.7933333333478,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 48,
+        "method": "scenario_expectation",
+        "absolute_error": 5114.994444444465,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 1592.6000000000931
+      },
+      {
+        "case": 49,
+        "method": "prior_point",
+        "absolute_error": 1427.941111111121,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 4683.560000000056
+      },
+      {
+        "case": 49,
+        "method": "scenario_expectation",
+        "absolute_error": 2423.1077777778005,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 4683.560000000056
+      },
+      {
+        "case": 50,
+        "method": "prior_point",
+        "absolute_error": 29523.99444444444,
+        "ranking_error": 0.19444444444444445,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 50,
+        "method": "scenario_expectation",
+        "absolute_error": 24076.16444444443,
+        "ranking_error": 0.19444444444444445,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 51,
+        "method": "prior_point",
+        "absolute_error": 3852.1388888888855,
+        "ranking_error": 0.3611111111111111,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 51,
+        "method": "scenario_expectation",
+        "absolute_error": 2816.5522222222207,
+        "ranking_error": 0.2777777777777778,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 52,
+        "method": "prior_point",
+        "absolute_error": 17800.334444444445,
+        "ranking_error": 0.3333333333333333,
+        "decision_regret": 14627.380000000005
+      },
+      {
+        "case": 52,
+        "method": "scenario_expectation",
+        "absolute_error": 14125.297777777778,
+        "ranking_error": 0.1111111111111111,
+        "decision_regret": 14627.380000000005
+      },
+      {
+        "case": 53,
+        "method": "prior_point",
+        "absolute_error": 5591.0911111111245,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 53,
+        "method": "scenario_expectation",
+        "absolute_error": 5291.117777777784,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 54,
+        "method": "prior_point",
+        "absolute_error": 2342.2611111111087,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 9651.01000000001
+      },
+      {
+        "case": 54,
+        "method": "scenario_expectation",
+        "absolute_error": 2837.646666666661,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 9651.01000000001
+      },
+      {
+        "case": 55,
+        "method": "prior_point",
+        "absolute_error": 18057.235555555548,
+        "ranking_error": 0.4444444444444444,
+        "decision_regret": 12815.159999999974
+      },
+      {
+        "case": 55,
+        "method": "scenario_expectation",
+        "absolute_error": 13789.735555555555,
+        "ranking_error": 0.4444444444444444,
+        "decision_regret": 12815.159999999974
+      },
+      {
+        "case": 56,
+        "method": "prior_point",
+        "absolute_error": 867.7099999999887,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 56,
+        "method": "scenario_expectation",
+        "absolute_error": 705.5922222222305,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 57,
+        "method": "prior_point",
+        "absolute_error": 1203.3622222222102,
+        "ranking_error": 0.05555555555555555,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 57,
+        "method": "scenario_expectation",
+        "absolute_error": 1293.2977777777705,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 58,
+        "method": "prior_point",
+        "absolute_error": 2835.36888888888,
+        "ranking_error": 0.16666666666666666,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 58,
+        "method": "scenario_expectation",
+        "absolute_error": 3886.9155555555576,
+        "ranking_error": 0.3055555555555556,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 59,
+        "method": "prior_point",
+        "absolute_error": 17961.20555555554,
+        "ranking_error": 0.25,
+        "decision_regret": 694.2199999999721
+      },
+      {
+        "case": 59,
+        "method": "scenario_expectation",
+        "absolute_error": 13257.13666666665,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 694.2199999999721
+      },
+      {
+        "case": 60,
+        "method": "prior_point",
+        "absolute_error": 8641.346666666679,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 60,
+        "method": "scenario_expectation",
+        "absolute_error": 7269.372222222239,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 61,
+        "method": "prior_point",
+        "absolute_error": 7395.320000000001,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 61,
+        "method": "scenario_expectation",
+        "absolute_error": 6264.254444444448,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 62,
+        "method": "prior_point",
+        "absolute_error": 422.2177777777801,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 62,
+        "method": "scenario_expectation",
+        "absolute_error": 941.5866666666633,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 63,
+        "method": "prior_point",
+        "absolute_error": 3594.157777777789,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 63,
+        "method": "scenario_expectation",
+        "absolute_error": 3783.8511111111275,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 64,
+        "method": "prior_point",
+        "absolute_error": 4413.997777777782,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 9016.520000000019
+      },
+      {
+        "case": 64,
+        "method": "scenario_expectation",
+        "absolute_error": 2664.7511111111185,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 9016.520000000019
+      },
+      {
+        "case": 65,
+        "method": "prior_point",
+        "absolute_error": 5544.228888888889,
+        "ranking_error": 0.05555555555555555,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 65,
+        "method": "scenario_expectation",
+        "absolute_error": 3957.041111111117,
+        "ranking_error": 0.1388888888888889,
+        "decision_regret": 15664.050000000047
+      },
+      {
+        "case": 66,
+        "method": "prior_point",
+        "absolute_error": 14884.84444444444,
+        "ranking_error": 0.75,
+        "decision_regret": 12233.940000000002
+      },
+      {
+        "case": 66,
+        "method": "scenario_expectation",
+        "absolute_error": 11187.285555555552,
+        "ranking_error": 0.19444444444444445,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 67,
+        "method": "prior_point",
+        "absolute_error": 7626.604444444448,
+        "ranking_error": 0.5,
+        "decision_regret": 86.80999999999767
+      },
+      {
+        "case": 67,
+        "method": "scenario_expectation",
+        "absolute_error": 6495.61888888889,
+        "ranking_error": 0.3055555555555556,
+        "decision_regret": 3971.359999999986
+      },
+      {
+        "case": 68,
+        "method": "prior_point",
+        "absolute_error": 2059.3044444444304,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 68,
+        "method": "scenario_expectation",
+        "absolute_error": 1633.3500000000026,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 69,
+        "method": "prior_point",
+        "absolute_error": 10546.157777777773,
+        "ranking_error": 0.027777777777777776,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 69,
+        "method": "scenario_expectation",
+        "absolute_error": 8119.242222222221,
+        "ranking_error": 0.05555555555555555,
+        "decision_regret": 1873.5500000000175
+      },
+      {
+        "case": 70,
+        "method": "prior_point",
+        "absolute_error": 14792.963333333339,
+        "ranking_error": 0.16666666666666666,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 70,
+        "method": "scenario_expectation",
+        "absolute_error": 7465.472222222235,
+        "ranking_error": 0.25,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 71,
+        "method": "prior_point",
+        "absolute_error": 7553.996666666663,
+        "ranking_error": 0.4722222222222222,
+        "decision_regret": 2197.140000000014
+      },
+      {
+        "case": 71,
+        "method": "scenario_expectation",
+        "absolute_error": 9002.741111111109,
+        "ranking_error": 0.5,
+        "decision_regret": 3437.0800000000163
+      },
+      {
+        "case": 72,
+        "method": "prior_point",
+        "absolute_error": 2290.6311111111136,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 3187.8099999999977
+      },
+      {
+        "case": 72,
+        "method": "scenario_expectation",
+        "absolute_error": 1778.1533333333339,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 3187.8099999999977
+      },
+      {
+        "case": 73,
+        "method": "prior_point",
+        "absolute_error": 5734.147777777783,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 73,
+        "method": "scenario_expectation",
+        "absolute_error": 4024.5899999999997,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 74,
+        "method": "prior_point",
+        "absolute_error": 3690.7633333333197,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 74,
+        "method": "scenario_expectation",
+        "absolute_error": 2511.536666666649,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 75,
+        "method": "prior_point",
+        "absolute_error": 3615.3477777777784,
+        "ranking_error": 0.16666666666666666,
+        "decision_regret": 5369.669999999998
+      },
+      {
+        "case": 75,
+        "method": "scenario_expectation",
+        "absolute_error": 4765.337777777779,
+        "ranking_error": 0.1388888888888889,
+        "decision_regret": 3394.209999999992
+      },
+      {
+        "case": 76,
+        "method": "prior_point",
+        "absolute_error": 1189.3399999999867,
+        "ranking_error": 0.05555555555555555,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 76,
+        "method": "scenario_expectation",
+        "absolute_error": 3410.6944444444443,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 77,
+        "method": "prior_point",
+        "absolute_error": 3179.20444444446,
+        "ranking_error": 0.2222222222222222,
+        "decision_regret": 4522.010000000009
+      },
+      {
+        "case": 77,
+        "method": "scenario_expectation",
+        "absolute_error": 4435.064444444446,
+        "ranking_error": 0.16666666666666666,
+        "decision_regret": 2618.3800000000047
+      },
+      {
+        "case": 78,
+        "method": "prior_point",
+        "absolute_error": 1393.2533333333365,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 78,
+        "method": "scenario_expectation",
+        "absolute_error": 3337.904444444446,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 79,
+        "method": "prior_point",
+        "absolute_error": 3997.3444444444417,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 79,
+        "method": "scenario_expectation",
+        "absolute_error": 2765.9599999999755,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 80,
+        "method": "prior_point",
+        "absolute_error": 33340.001111111116,
+        "ranking_error": 0.027777777777777776,
+        "decision_regret": 608.5899999999965
+      },
+      {
+        "case": 80,
+        "method": "scenario_expectation",
+        "absolute_error": 21452.896666666667,
+        "ranking_error": 0.027777777777777776,
+        "decision_regret": 608.5899999999965
+      },
+      {
+        "case": 81,
+        "method": "prior_point",
+        "absolute_error": 6702.949999999999,
+        "ranking_error": 0.19444444444444445,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 81,
+        "method": "scenario_expectation",
+        "absolute_error": 4869.764444444445,
+        "ranking_error": 0.19444444444444445,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 82,
+        "method": "prior_point",
+        "absolute_error": 1500.5544444444563,
+        "ranking_error": 0.16666666666666666,
+        "decision_regret": 1897.2399999999907
+      },
+      {
+        "case": 82,
+        "method": "scenario_expectation",
+        "absolute_error": 1571.6388888888953,
+        "ranking_error": 0.16666666666666666,
+        "decision_regret": 1897.2399999999907
+      },
+      {
+        "case": 83,
+        "method": "prior_point",
+        "absolute_error": 1078.8011111111102,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 3565.050000000003
+      },
+      {
+        "case": 83,
+        "method": "scenario_expectation",
+        "absolute_error": 1783.9555555555562,
+        "ranking_error": 0.1388888888888889,
+        "decision_regret": 4634.3399999999965
+      },
+      {
+        "case": 84,
+        "method": "prior_point",
+        "absolute_error": 2914.828888888891,
+        "ranking_error": 0.05555555555555555,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 84,
+        "method": "scenario_expectation",
+        "absolute_error": 2130.4966666666637,
+        "ranking_error": 0.05555555555555555,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 85,
+        "method": "prior_point",
+        "absolute_error": 1755.5500000000013,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 85,
+        "method": "scenario_expectation",
+        "absolute_error": 1607.9222222222177,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 86,
+        "method": "prior_point",
+        "absolute_error": 3627.3022222222257,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 323.46999999997206
+      },
+      {
+        "case": 86,
+        "method": "scenario_expectation",
+        "absolute_error": 2204.325555555561,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 323.46999999997206
+      },
+      {
+        "case": 87,
+        "method": "prior_point",
+        "absolute_error": 6930.6088888888935,
+        "ranking_error": 0.2222222222222222,
+        "decision_regret": 4407.869999999995
+      },
+      {
+        "case": 87,
+        "method": "scenario_expectation",
+        "absolute_error": 6401.081111111106,
+        "ranking_error": 0.16666666666666666,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 88,
+        "method": "prior_point",
+        "absolute_error": 365.7022222222165,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 88,
+        "method": "scenario_expectation",
+        "absolute_error": 1331.7300000000073,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 89,
+        "method": "prior_point",
+        "absolute_error": 14992.708888888876,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 385.25
+      },
+      {
+        "case": 89,
+        "method": "scenario_expectation",
+        "absolute_error": 11762.143333333337,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 90,
+        "method": "prior_point",
+        "absolute_error": 3956.2611111111214,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 90,
+        "method": "scenario_expectation",
+        "absolute_error": 4852.984444444456,
+        "ranking_error": 0.1111111111111111,
+        "decision_regret": 4367.030000000028
+      },
+      {
+        "case": 91,
+        "method": "prior_point",
+        "absolute_error": 1207.136666666668,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 45.220000000001164
+      },
+      {
+        "case": 91,
+        "method": "scenario_expectation",
+        "absolute_error": 896.9666666666648,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 45.220000000001164
+      },
+      {
+        "case": 92,
+        "method": "prior_point",
+        "absolute_error": 2721.9477777777743,
+        "ranking_error": 0.1111111111111111,
+        "decision_regret": 12058.25
+      },
+      {
+        "case": 92,
+        "method": "scenario_expectation",
+        "absolute_error": 2160.1399999999817,
+        "ranking_error": 0.08333333333333333,
+        "decision_regret": 6209.52999999997
+      },
+      {
+        "case": 93,
+        "method": "prior_point",
+        "absolute_error": 6054.871111111121,
+        "ranking_error": 0.05555555555555555,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 93,
+        "method": "scenario_expectation",
+        "absolute_error": 5937.5266666666785,
+        "ranking_error": 0.05555555555555555,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 94,
+        "method": "prior_point",
+        "absolute_error": 1539.1433333333375,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 94,
+        "method": "scenario_expectation",
+        "absolute_error": 3083.1633333333366,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 95,
+        "method": "prior_point",
+        "absolute_error": 7368.608888888888,
+        "ranking_error": 0.16666666666666666,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 95,
+        "method": "scenario_expectation",
+        "absolute_error": 6039.39888888889,
+        "ranking_error": 0.1111111111111111,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 96,
+        "method": "prior_point",
+        "absolute_error": 11765.595555555561,
+        "ranking_error": 0.19444444444444445,
+        "decision_regret": 10127.790000000037
+      },
+      {
+        "case": 96,
+        "method": "scenario_expectation",
+        "absolute_error": 9080.93888888889,
+        "ranking_error": 0.19444444444444445,
+        "decision_regret": 10127.790000000037
+      },
+      {
+        "case": 97,
+        "method": "prior_point",
+        "absolute_error": 7720.4011111111095,
+        "ranking_error": 0.3055555555555556,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 97,
+        "method": "scenario_expectation",
+        "absolute_error": 6765.941111111095,
+        "ranking_error": 0.3055555555555556,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 98,
+        "method": "prior_point",
+        "absolute_error": 1124.2788888888963,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 98,
+        "method": "scenario_expectation",
+        "absolute_error": 778.5911111111119,
+        "ranking_error": 0,
+        "decision_regret": 0.0
+      },
+      {
+        "case": 99,
+        "method": "prior_point",
+        "absolute_error": 41754.32555555555,
+        "ranking_error": 0.9166666666666666,
+        "decision_regret": 26798.45000000001
+      },
+      {
+        "case": 99,
+        "method": "scenario_expectation",
+        "absolute_error": 36021.558888888896,
+        "ranking_error": 0.8888888888888888,
+        "decision_regret": 26798.45000000001
+      }
+    ],
+    "limitation": "Synthetic economics and fixed candidate menus; does not establish negotiation or Arena gains."
+  },
+  "historical_diagnostic": {
+    "rows": [
+      {
+        "case": "P01",
+        "run": "last-ten",
+        "actual": 1121711.96,
+        "prior_point": 1124477.53,
+        "scenario_expectation": 1132659.01
+      },
+      {
+        "case": "P02",
+        "run": "last-ten",
+        "actual": 2275433.52,
+        "prior_point": 2284923.83,
+        "scenario_expectation": 2296160.71
+      },
+      {
+        "case": "P02",
+        "run": "historical-best",
+        "actual": 2257068.1,
+        "prior_point": 2322601.89,
+        "scenario_expectation": 2293545.93
+      },
+      {
+        "case": "P03",
+        "run": "last-ten",
+        "actual": 3966261.31,
+        "prior_point": 3981155.95,
+        "scenario_expectation": 4020725.1
+      },
+      {
+        "case": "P04",
+        "run": "last-ten",
+        "actual": 196852.67,
+        "prior_point": 196852.67,
+        "scenario_expectation": 196852.67
+      },
+      {
+        "case": "P07",
+        "run": "last-ten",
+        "actual": 326636.8,
+        "prior_point": 326636.8,
+        "scenario_expectation": 326636.8
+      },
+      {
+        "case": "P08",
+        "run": "last-ten",
+        "actual": 1049317.82,
+        "prior_point": 1049317.82,
+        "scenario_expectation": 1049317.82
+      },
+      {
+        "case": "P10",
+        "run": "last-ten",
+        "actual": 1541808.0,
+        "prior_point": 1541808.0,
+        "scenario_expectation": 1541808.0
+      },
+      {
+        "case": "P11",
+        "run": "last-ten",
+        "actual": 797385.0,
+        "prior_point": 797385.0,
+        "scenario_expectation": 797385.0
+      },
+      {
+        "case": "P18",
+        "run": "last-ten",
+        "actual": 265711.23,
+        "prior_point": 265711.23,
+        "scenario_expectation": 265711.23
+      }
+    ],
+    "input_boundary": "Only the opening supplier email, buyer research and public terms update economics. Final terms are evaluated, result costs are labels only.",
+    "production_cost_default": "prior_point",
+    "arena_sessions": 0,
+    "llm_calls": 0
+  },
+  "rejected_experiments": {
+    "all_new_modules_regression": 91.54090388328795,
+    "automatic_multi_issue_selection": 77.82384268292998,
+    "without_automatic_multi_issue_selection": 81.53906056762864
+  },
+  "default_decision": "Planner enabled; multi-issue beliefs advise validated planner proposals; cost expectation and new automatic response rollouts disabled.",
+  "llm_calls": 0,
+  "arena_sessions_used": 0,
+  "limitations": [
+    "No actual Claude generation was tested in this revision.",
+    "New scenario seed and supplier interactions, but three reused case families.",
+    "Reused regression/holdout results were used for module selection and are not independent holdout evidence.",
+    "Cost diagnosis gains do not imply higher negotiation scores.",
+    "No model weight fine-tuning or paid prompt optimization was performed."
+  ]
+}

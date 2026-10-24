@@ -12,6 +12,7 @@ from arena_kit.docs import standard_terms
 from arena_kit.play import latest, live_threads, moves_left
 
 from .agent import Negotiator, log
+from .economic_beliefs import infer_economics
 from .grounding import (
     compose_email,
     fresh_evidence_cards,
@@ -25,6 +26,7 @@ from .opponent_model import learn_beliefs, predicted_choices
 from .optimizer import alternative_cost, estimate, evaluate, safe_close
 from .retrieval import evidence_cards, evidence_cutoff
 from .scenario_planner import plan_packages
+from .strategic_planner import admit_proposals
 from .strategy_policy import StrategicFeatures, adaptive_packages, plan_next_action
 from .supplier_signals import observed_signals, validated_interpretation
 
@@ -76,7 +78,7 @@ listed among received_attachments. Never expose scenario costs, ceilings or priv
 
 
 class StrategicNegotiator(Negotiator):
-    def __init__(self, pkg, backend=None, features=None, writer_instruction=None, **kwargs):
+    def __init__(self, pkg, backend=None, features=None, writer_instruction=None, planner_instruction=None, **kwargs):
         super().__init__(pkg, backend, **kwargs)
         self.support, self.rejections = {}, []
         self.features = features or StrategicFeatures()
@@ -85,6 +87,11 @@ class StrategicNegotiator(Negotiator):
 
             writer_instruction = load_writer_instruction(os.environ["AEIOU_WRITER_INSTRUCTION_FILE"])
         self.writer_instruction = writer_instruction or ""
+        if planner_instruction is None and os.getenv("AEIOU_STRATEGY_INSTRUCTION_FILE"):
+            from .prompt_optimization import load_writer_instruction
+
+            planner_instruction = load_writer_instruction(os.environ["AEIOU_STRATEGY_INSTRUCTION_FILE"])
+        self.planner_instruction = planner_instruction or ""
         self.controller = {}
         self._interpretations = {}
 
@@ -105,7 +112,8 @@ class StrategicNegotiator(Negotiator):
         for sid in live_threads(threads):
             state = self.support[sid]["state"]
             belief = self.support[sid].setdefault(
-                "belief", learn_beliefs(case, threads[sid], self.features.opponent_learning)
+                "belief",
+                learn_beliefs(case, threads[sid], self.features.opponent_learning),
             )
             raw[sid], strategy = adaptive_packages(
                 case, threads[sid], sid, self.intelligence, state, belief, self.features
@@ -149,6 +157,7 @@ class StrategicNegotiator(Negotiator):
                 self.support[sid]["belief"],
                 self.features.lookahead,
                 supplier=estimate(case, sid, standard_terms(threads[sid]), self.intelligence),
+                response_rollouts=self.features.response_rollouts,
             )
             # Initially retain diverse questions. Once evidence accumulates, exploit
             # the preferred compensated package while preserving buyer-value A.
@@ -184,6 +193,8 @@ class StrategicNegotiator(Negotiator):
             }
         payload["decision_support"] = self.support
         payload["planned_action"] = self.controller
+        if self.planner_instruction:
+            payload["strategy_guidance"] = self.planner_instruction
         if self.features.grounded_language:
             sid = self.controller.get("supplier_id")
             cards = [c for c in self._cards if c.get("shareable") and c.get("supplier_id") in {None, sid}]
@@ -268,9 +279,28 @@ class StrategicNegotiator(Negotiator):
             sid: {
                 "state": supplier_state(case, events),
                 "belief": learn_beliefs(case, events, self.features.opponent_learning),
+                "issue_belief": learn_beliefs(
+                    case, events, self.features.opponent_learning, self.features.multi_issue_learning
+                ),
             }
             for sid, events in threads.items()
         }
+        planner = getattr(self.backend, "plan_negotiation", None) if self.features.strategic_planner else None
+        self.intelligence["economic_beliefs"] = {}
+        self.intelligence["economic_sensitivities"] = {}
+        for supplier_id, events in threads.items():
+            prior = self.intelligence.get("estimates", {}).get(supplier_id)
+            supplier = estimate(case, supplier_id, standard_terms(events), self.intelligence)
+            if prior and supplier:
+                belief = infer_economics(case, events, prior, supplier["standard"])
+                if belief:
+                    self.intelligence["economic_sensitivities"][supplier_id] = belief
+                    self.support[supplier_id]["economics"] = {
+                        **belief,
+                        "controls_cost": self.features.economic_uncertainty,
+                    }
+                    if self.features.economic_uncertainty:
+                        self.intelligence["economic_beliefs"][supplier_id] = belief
         interpreted_this_turn = False
         for sid, events in threads.items():
             state = self.support[sid]["state"]
@@ -284,6 +314,7 @@ class StrategicNegotiator(Negotiator):
             if (
                 self.features.opponent_learning
                 and interpret
+                and not planner
                 and not interpreted_this_turn
                 and key
                 and key not in self._interpretations
@@ -368,17 +399,28 @@ class StrategicNegotiator(Negotiator):
             move, source = safe_close(case, threads, self.intelligence), "controller close"
         if move is None and self.backend:
             try:
-                data = parse(
-                    self.backend.complete(
-                        self.system_prompt(),
-                        self.render(case, threads, offers, evaluate(case, threads, self.intelligence)),
+                payload = self.render(case, threads, offers, evaluate(case, threads, self.intelligence))
+                if planner:
+                    data = planner(payload)
+                    proposed, trace = admit_proposals(
+                        case, threads, sid, offers[sid], self.intelligence, data, self.support[sid]["issue_belief"]
                     )
-                )
+                    self.support[sid]["planner"] = trace
+                    if not isinstance(data, dict):
+                        raise ValueError("Planner response must be an object")
+                    offers[sid] = proposed
+                    ids = [p["id"] for p in proposed]
+                    self.controller["candidate_ids"] = ids
+                    self.support[sid]["plan"]["packages"] = proposed
+                    # Only the independently admitted portfolio can reach the writer guard.
+                    data = {**data, "candidate_ids": ids}
+                else:
+                    data = parse(self.backend.complete(self.system_prompt(), payload))
                 if data.get("action") != "send" or data.get("supplier_id") != sid:
                     self.reject("The writer cannot change the controller's action or supplier")
                 else:
                     move = self.guard(case, threads, data, offers)
-                source = "claude" if move else "guard fallback"
+                source = ("claude strategic planner" if planner else "claude") if move else "guard fallback"
             except Exception as exc:
                 log.warning("Strategic writer failed: %s", type(exc).__name__)
                 source = "provider fallback"
@@ -461,7 +503,7 @@ class StrategicNegotiator(Negotiator):
         self.decisions[-1].update(
             decision_support=copy.deepcopy(self.support),
             guard_rejections=list(self.rejections),
-            policy="strategic-v2",
+            policy="strategic-v3",
             features=self.features.metadata(),
             controller=copy.deepcopy(self.controller),
             evidence_cards=copy.deepcopy(self._cards),

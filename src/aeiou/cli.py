@@ -41,7 +41,9 @@ def main():
     evaluation.add_argument("--max-sessions", type=int, default=120)
     evaluation.add_argument("--output")
     evaluation.add_argument("--ablations", action="store_true", help="Add one disabled feature at a time")
-    optimize = sub.add_parser("optimize-writer", help="Offline prompt search with disjoint case splits")
+    optimize = sub.add_parser(
+        "optimize-writer", aliases=["optimize-strategy"], help="Bounded prompt search with disjoint case splits"
+    )
     optimize.add_argument("--agent", choices=["strategic", "strategic-policy"], default="strategic")
     optimize.add_argument("--rounds", type=int, default=2)
     optimize.add_argument("--train", nargs="+", default=["case:S01", "case:S02", "case:T01"])
@@ -130,10 +132,11 @@ def main():
             output=a.output,
         )
         print(json.dumps({k: v for k, v in report.items() if k != "rows"}, indent=2))
-    elif a.command == "optimize-writer":
+    elif a.command in {"optimize-writer", "optimize-strategy"}:
         from .prompt_optimization import optimize_writer
 
         report = optimize_writer(
+            target="strategy" if a.command == "optimize-strategy" else "writer",
             train=a.train,
             validation=a.validation,
             test=a.test,

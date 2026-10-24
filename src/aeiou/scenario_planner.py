@@ -3,10 +3,11 @@
 import copy
 import math
 
-from arena_kit.cost import complete_offer, total_cost
+from arena_kit.cost import complete_offer
 from arena_kit.docs import standard_terms
 
 from .commercial_portfolio import merge_portfolio, portfolio_probes
+from .economic_beliefs import total_cost
 from .optimizer import estimate, valid_terms
 from .supplier_signals import recent_kinds
 from .term_exchange import exchange_history, ranked_exchanges

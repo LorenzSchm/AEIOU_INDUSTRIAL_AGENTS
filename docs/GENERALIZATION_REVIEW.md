@@ -179,3 +179,114 @@ the recorded source freeze; no production changes followed holdout inspection.
 Validation: **169 tests passed, 2 skipped**; Ruff passed. Audit, dataset hashes,
 source hashes and limitations are in `evaluation/commercial-portfolio.json`.
 No hosted Arena session or paid LLM call was started for this revision.
+
+
+## Strategic planner and economics audit — 24 October 2026
+
+Baseline: `b88f961` on `paulstestbranch`. The implementation adds a strategic
+Claude proposal path, broader opponent hypotheses, uncertain supplier economics,
+bounded response scenarios and strategy-prompt optimization. It does not establish
+a higher hosted score. No Arena session or model API call was used for this revision.
+
+### Production behavior
+
+Claude now proposes up to two amendments to existing complete packages. A separate
+validator admits at most one into the outgoing portfolio, alongside the protected
+buyer-value offer and a policy fallback. It rejects illegal fields/options, unmet
+must-haves, reduced policy coverage, repeated packages, retracted comparable price
+concessions and excessive full buyer cost. Where an acceptable supplier quote
+exists, the proposal must improve it across all available supplier-cost scenarios.
+It must retain at least 65% of the anchor's modeled advantage over that quote.
+Without an acceptable quote, the existing policy envelope remains the limit.
+These are policy limits, not learned agreement probabilities. The model cannot
+accept a deal, change suppliers, override a final offer or change the validator.
+
+The planner replaces the writer call and its separate interpretation call; it does
+not add another provider call per decision. Existing provider timeout, token cap,
+no-retry policy and deterministic fallback remain. The exact active prompt is
+`prompts/strategic-current.txt`; the communication-only fallback is separately
+preserved in `prompts/strategic-writer-fallback.txt`.
+
+Additional preference hypotheses cover quality/liability, index protection,
+delivery and capacity, including competing signs where priorities are ambiguous.
+They update from matched package choices. An identical repeated experiment does
+not multiply its evidential weight. The learned beliefs advise Claude and rank
+admitted planner proposals. They do not automatically replace the established
+policy's portfolio selection. A causal intervention test checks that changing the
+quality-cost belief can change which validated proposal is sent.
+
+Supplier economics uses the public should-cost error band and a tempered quote
+likelihood, without treating a quote as proof of a floor. Repeated quotes do not
+manufacture confidence. Scenario costs evaluate the nonlinear relationship penalty
+before averaging. These estimates are visible as decision-support diagnostics and
+sensitivity checks. Automatic expected-cost control is **off by default**, as is
+the new utility-equivalent response rollout controller. Both can be enabled in
+explicit evaluations via `strategic-policy:with-economic-uncertainty` and
+`strategic-policy:with-response-rollouts` respectively.
+
+### Evidence and rejected variants
+
+An early integration automatically used the expanded opponent ensemble for the
+existing deterministic selector. On the reused 54-condition multi-issue suite,
+this reduced the mean from 81.539 to 77.824 points. Disabling the new response
+rollouts did not recover it; removing the new automatic preference selection did.
+That integration was rejected. These ablation data informed implementation and
+are not independent holdout evidence.
+
+The expected-cost model correctly reverses the problematic historical P02 ranking
+using only the original opening quote to update beliefs: modeled cost changes from
+EUR 2,284,923.83 versus EUR 2,322,601.89 to EUR 2,296,160.71 versus EUR 2,293,545.93
+(last ten-agent run versus historical best). Actual costs were EUR 2,275,433.52
+versus EUR 2,257,068.10. However, its absolute error worsens on P01 and P03. This is
+why it is not promoted to the default economic controller or calibrated against
+specific challenge targets.
+
+In 100 generated economic conditions, with hidden true costs and finance rates
+available only to the evaluator, mean absolute cost error falls from EUR 8,249.48
+to EUR 6,998.37 (15.2%). Mean decision regret falls from EUR 2,658.17 to EUR 2,563.41
+(3.6%). Pair-ranking error falls from 15.42% to 14.89%. These are cost-estimation
+diagnostics on fixed candidate menus, not negotiation scores or a guarantee that
+the scenario assumptions transfer to the Arena.
+
+The final runtime source was hashed before the new sealed comparison. The new set
+uses different seeds, supplier sensitivities and cross-issue cost interactions;
+it still reuses three case families. No production source changed after observing
+its results.
+
+| Final offline comparison | Conditions per arm | Frozen b88f961 | Final defaults | Wins / ties / losses |
+|---|---:|---:|---:|---:|
+| Reused generalization regression | 96 | 91.593 | 91.593 | 0 / 96 / 0 |
+| New sealed multi-issue conditions | 54 | 75.189 | 75.189 | 0 / 54 / 0 |
+
+All final conditions have zero execution failures and zero must-have violations.
+These runs use no LLM and therefore cannot validate Claude's new commercial
+proposal quality, real latency or language effects. Mock-backed tests validate
+actual execution, malformed/adversarial proposals, cost limits, terminal offers,
+call counts and causal belief effects. Full suite: **188 passed, 2 skipped**;
+Ruff and `git diff --check` passed.
+
+### Reproduction and bounded optimization
+
+`python -m aeiou.economics_audit --output data/local/economics-audit.json`
+reproduces the synthetic economics diagnosis without network access.
+`python src/aeiou/portfolio_evaluation.py --split sealed --data data/package
+--output data/local/sealed.json` reproduces the new population; `--agent-source`
+can select the frozen baseline. `--disable` supports feature ablations.
+
+`aeiou optimize-strategy` adds bounded reflective search over commercial strategy
+instructions, with disjoint train/validation/test base cases, explicit session
+limits and API opt-in. Reflection sees only training feedback. It cannot modify
+code or validators. Winners are never automatically promoted. The existing
+`optimize-writer` explicitly uses the communication-only path so it still measures
+writer changes. An explicitly selected, hash-checked strategy result may be loaded
+with `AEIOU_STRATEGY_INSTRUCTION_FILE`. No paid optimization was run here. This is
+an extension of the existing bounded search, not a reproduction of GEPA, PSRO or
+weight fine-tuning; LLM opponent rollouts and reinforcement learning are not added.
+
+Machine-readable evidence, source hashes, historical diagnostics and limitations
+are in `evaluation/strategic-planner-v3.json`. The research motivating the design
+includes [Cicero](https://ai.meta.com/research/cicero),
+[dialogue rollouts](https://aclanthology.org/D17-1259/),
+[GEPA](https://arxiv.org/abs/2507.19457) and
+[PSRO](https://arxiv.org/abs/1711.00832). Their published gains are not projected onto
+our competition score.

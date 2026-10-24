@@ -18,7 +18,7 @@ from statistics import mean
 def specifications(split):
     from aeiou.simulation import local_cases
 
-    rng = random.Random({"development": 43172, "holdout": 831023}[split])
+    rng = random.Random({"development": 43172, "holdout": 831023, "sealed": 336451}[split])
     bases = local_cases()
     cases = []
     for family in ("quality", "index", "delivery"):
@@ -83,7 +83,7 @@ def specifications(split):
     return cases
 
 
-def run(split, output):
+def run(split, output, disabled=()):
     from arena_kit import ArenaClient
     from arena_kit.play import play
 
@@ -91,6 +91,7 @@ def run(split, output):
     from aeiou.simulation import LocalTable, StressSim
     from aeiou.store import new_run
     from aeiou.strategic import StrategicNegotiator
+    from aeiou.strategy_policy import StrategicFeatures
 
     def no_network(*args, **kwargs):
         raise AssertionError("Arena API disabled in offline evaluation")
@@ -116,6 +117,22 @@ def run(split, output):
             else:
                 ratio += sensitivity * 0.06 if terms.get("lead_time_days", 28) <= 28 else 0
                 ratio -= 0.015 if terms.get("contract_months", 12) >= 24 else 0
+            if split == "sealed":
+                # New cross-issue interactions, kept inside the seller simulator.
+                # Do not infer the supplier's real costs from these test policies.
+                if family == "quality":
+                    ratio += (
+                        sensitivity
+                        * 0.03
+                        * max(0, 1 - terms.get("ppm_commitment", limit) / limit)
+                        * (terms.get("chargeback_eur_per_complaint", 0) / b["cost_per_defect"])
+                    )
+                elif family == "index":
+                    ratio -= (
+                        sensitivity * 0.035 if terms.get("index_clause") and terms.get("payment_days", 30) <= 30 else 0
+                    )
+                elif terms.get("lead_time_days", 28) <= 28 and terms.get("contract_months", 12) < 24:
+                    ratio += abs(sensitivity) * 0.025
             return round(opening * ratio, 2)
 
         def _answer(self, s, th, msg, sheets):
@@ -125,9 +142,9 @@ def run(split, output):
 
     specs, pkg, rows = specifications(split), package(), []
     for spec in specs:
-        for sensitivity in (-0.5, 0.0, 1.5):
+        for sensitivity in (-1.0, 0.65, 2.0) if split == "sealed" else (-0.5, 0.0, 1.5):
             case = spec["case"]
-            agent = StrategicNegotiator(pkg, backend=None)
+            agent = StrategicNegotiator(pkg, backend=None, features=StrategicFeatures(**dict.fromkeys(disabled, False)))
             table = LocalTable(MultiIssueSim(spec, sensitivity), new_run(case["case_id"], "local", "portfolio-audit"))
             row = {"case_id": case["case_id"], "family": spec["family"], "sensitivity": sensitivity}
             try:
@@ -145,6 +162,7 @@ def run(split, output):
         print(json.dumps({"completed": len(rows), "planned": len(specs) * 3}), flush=True)
     report = {
         "split": split,
+        "disabled_features": list(disabled),
         "rows": rows,
         "sessions": len(rows),
         "mean_score": mean(r["score"] for r in rows),
@@ -158,16 +176,18 @@ def run(split, output):
     }
     Path(output).write_text(json.dumps(report, indent=2), encoding="utf-8")
     print(json.dumps({k: v for k, v in report.items() if k != "rows"}), flush=True)
+    return report
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--split", choices=["development", "holdout"], required=True)
+    parser.add_argument("--split", choices=["development", "holdout", "sealed"], required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument("--agent-source")
     parser.add_argument("--data", required=True)
+    parser.add_argument("--disable", action="append", default=[])
     args = parser.parse_args()
     os.environ["ARENA_DATA"] = str(Path(args.data).resolve())
     if args.agent_source:
         sys.path.insert(0, str(Path(args.agent_source).resolve()))
-    run(args.split, args.output)
+    run(args.split, args.output, args.disable)

@@ -92,7 +92,7 @@ def generate_cases(split):
     return result
 
 
-def run_arm(split, output):
+def run_arm(split, output, disabled=()):
     from arena_kit import ArenaClient
     from arena_kit.play import play
 
@@ -128,7 +128,9 @@ def run_arm(split, output):
                         for sid in incoming["suppliers"]
                     }
 
-            agent = EstimatedAgent(pkg, backend=None)
+            from aeiou.strategy_policy import StrategicFeatures
+
+            agent = EstimatedAgent(pkg, backend=None, features=StrategicFeatures(**dict.fromkeys(disabled, False)))
             sim = StressSim({case["case_id"]: case}, opponent, spec["seed"], {})
             table = LocalTable(sim, new_run(case["case_id"], "local", "generalization"))
             row = {
@@ -158,6 +160,7 @@ def run_arm(split, output):
             print(json.dumps({"completed": len(rows), "planned": len(specifications) * 4}), flush=True)
     report = {
         "split": split,
+        "disabled_features": list(disabled),
         "rows": rows,
         "case_count": len(specifications),
         "sessions": len(rows),
@@ -182,8 +185,9 @@ if __name__ == "__main__":
     parser.add_argument("--output", required=True)
     parser.add_argument("--agent-source")
     parser.add_argument("--data", required=True)
+    parser.add_argument("--disable", action="append", default=[])
     args = parser.parse_args()
     os.environ["ARENA_DATA"] = str(Path(args.data).resolve())
     if args.agent_source:
         sys.path.insert(0, str(Path(args.agent_source).resolve()))
-    run_arm(args.split, args.output)
+    run_arm(args.split, args.output, args.disable)

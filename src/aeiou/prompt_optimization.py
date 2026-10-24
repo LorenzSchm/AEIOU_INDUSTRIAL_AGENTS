@@ -21,6 +21,16 @@ questions, tone and evidence selection only. Preserve privacy and use current sh
 Do not include executable code or ask to change budgets, sources, validation or protected rules.
 """
 
+STRATEGY_REFLECTION_SYSTEM = """Improve a negotiation planner's commercial strategy instructions.
+Return one concise instruction string, diagnosing only the supplied training outcomes.
+Focus on conditional multi-issue exchanges, eliciting priorities, adapting concessions
+and responding to observed refusals. Generalize across unseen cases and suppliers.
+Do not memorize target prices, case IDs or private opponent parameters. Do not change
+the hard validator, legal terms, concession caps, evidence rules, or acceptance code.
+Your instruction may influence proposed packages, but every proposal is validated.
+Never emit executable code. Do not claim gains absent paired evaluation.
+"""
+
 
 def load_writer_instruction(path):
     """Load a deliberately selected optimization result, never auto-promote it."""
@@ -56,15 +66,20 @@ def optimize_writer(
     backend_factory=ClaudeBackend,
     reflector=None,
     supplier_backend_factory=ClaudeBackend,
+    target="writer",
 ):
     validate_split(train, validation, test)
     if agent not in {"strategic", "strategic-policy"} or not 0 <= rounds <= 5:
         raise ValueError("Use a strategic agent and 0–5 bounded reflection rounds")
+    if target not in {"writer", "strategy"} or (target == "strategy" and agent != "strategic"):
+        raise ValueError("Strategy optimization requires the model-backed strategic planner")
     required = (rounds + 1) * (len(train) + len(validation)) * len(opponents) + len(test) * len(opponents)
     if required > max_sessions:
         raise ValueError(f"Optimization needs {required} sessions; explicit budget is {max_sessions}")
     if (agent == "strategic" or supplier_mode == "language" or rounds) and not allow_api:
         raise ValueError("Optimization with models or reflection requires explicit --allow-api")
+    if target == "writer":
+        agent += ":no-strategic-planner"
     folder = Path(output) if output else state_root() / "prompt-optimization" / uuid.uuid4().hex
     folder.mkdir(parents=True, exist_ok=True)
     if rounds and reflector is None:
@@ -108,7 +123,13 @@ def optimize_writer(
                         "score": row["scores"][agent],
                         "status": run["status"],
                         "decisions": [
-                            {k: d.get(k) for k in ("action", "source", "guard_rejections")} for d in run["decisions"]
+                            {
+                                **{k: d.get(k) for k in ("action", "source", "guard_rejections")},
+                                "planner_feedback": [
+                                    s.get("planner") for s in d.get("decision_support", {}).values() if s.get("planner")
+                                ],
+                            }
+                            for d in run["decisions"]
                         ],
                         "public_emails": [
                             m.get("body", "")[:1200]
@@ -119,7 +140,8 @@ def optimize_writer(
                     }
                 )
             instruction = reflector.complete(
-                REFLECTION_SYSTEM, json.dumps({"current_instruction": instruction, "training_feedback": feedback})
+                STRATEGY_REFLECTION_SYSTEM if target == "strategy" else REFLECTION_SYSTEM,
+                json.dumps({"current_instruction": instruction, "training_feedback": feedback}),
             )
             if not isinstance(instruction, str) or not instruction.strip() or len(instruction) > 3000:
                 raise ValueError("Reflection must produce a nonempty instruction of at most 3000 characters")
@@ -142,6 +164,7 @@ def optimize_writer(
         writer_instructions={agent: winner["instruction"]},
     )
     report = {
+        "target": target,
         "winner": winner,
         "candidates": candidates,
         "heldout_report": heldout["report_path"],
