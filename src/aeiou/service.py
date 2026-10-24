@@ -10,15 +10,16 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from .config import ROOT, model_name, state_root
+from .config import MODELS, ROOT, model_name, set_model, state_root
 from .research import package, research
 from .runner import hosted_play
 from .simulation import OPPONENTS, local_cases, local_play
-from .store import clean, get_run, list_runs, new_run
+from .store import clean, get_run, list_runs, new_run, save_run
 
 app = FastAPI(title="AEIOU Negotiation Workbench", docs_url="/api/docs", redoc_url=None)
+# Built from frontend/ with `npm run build`; the output is committed so no Node is needed to serve it.
 WEB = ROOT / "src" / "aeiou" / "web"
-app.mount("/assets", StaticFiles(directory=WEB), name="assets")
+app.mount("/assets", StaticFiles(directory=WEB / "assets"), name="assets")
 POOL = ThreadPoolExecutor(max_workers=4)
 JOBS, JOB_LOCK = {}, threading.Lock()
 
@@ -57,6 +58,7 @@ def index():
 def status():
     return {
         "model": model_name(),
+        "models": [{"id": k, "label": v} for k, v in MODELS.items()],
         "claude_configured": bool(os.environ.get("ANTHROPIC_API_KEY")),
         "arena_configured": bool(os.environ.get("ARENA_API_KEY")),
         "facts": len(pkg().facts),
@@ -103,7 +105,32 @@ def benchmarks():
 def hosted_report():
     from .hosted_evaluation import hosted_evaluation
 
-    return hosted_evaluation()
+    report = hosted_evaluation()
+    snapshot = ROOT / "reports" / "hosted-practice.json"
+    # Hosted transcripts stay on the machine that played them; fall back to the committed report.
+    if not report["cases"] and snapshot.is_file():
+        return {**json.loads(snapshot.read_text()), "source": "snapshot"}
+    return {**report, "source": "live"}
+
+
+@app.get("/api/pipeline")
+def deal_pipeline():
+    from .pipeline import pipeline
+
+    return pipeline({c["case_id"]: c for c in [*local_cases().values(), *hosted_cases()]})
+
+
+class ModelRequest(BaseModel):
+    model: str = Field(max_length=100)
+
+
+@app.post("/api/settings/model")
+def choose_model(body: ModelRequest):
+    try:
+        set_model(body.model)
+    except ValueError as e:
+        raise HTTPException(422, "Unknown model") from e
+    return {"model": model_name()}
 
 
 @app.get("/api/prompts")
@@ -133,6 +160,8 @@ class PlayRequest(BaseModel):
     mode: str = Field(pattern="^(local|hosted)$")
     agent: str = Field(default="claude", pattern="^(baseline|guarded|adaptive|claude)$")
     opponent: str = Field(default="scripted", max_length=50)
+    # Seconds between local exchanges, so a demo audience can watch the pipeline move.
+    pace: float = Field(default=0, ge=0, le=5)
 
 
 def dispatch(job_id, fn):
@@ -157,10 +186,12 @@ def launch(body: PlayRequest):
         if sum(j["status"] == "running" for j in JOBS.values()) >= 3:
             raise HTTPException(429, "Three jobs are already running")
         JOBS[run["id"]] = {"status": "running", "kind": "negotiation", "case_id": body.case_id}
+    # Persist the placeholder now so the returned id resolves before the job writes its first step.
+    save_run({**run, "opponent": body.opponent} if body.mode == "local" else run)
     fn = (
         (lambda: hosted_play(body.case_id, body.agent, run))
         if body.mode == "hosted"
-        else (lambda: local_play(body.case_id, body.agent, body.opponent, run=run))
+        else (lambda: local_play(body.case_id, body.agent, body.opponent, run=run, pace=body.pace))
     )
     POOL.submit(dispatch, run["id"], fn)
     return {"id": run["id"]}
