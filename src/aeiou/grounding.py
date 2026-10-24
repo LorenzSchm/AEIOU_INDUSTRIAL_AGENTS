@@ -27,11 +27,6 @@ QUESTIONS = {
 }
 
 COMMERCIAL_CONTEXT = {
-    "cash_continuity_review": (
-        "Please assess the earlier payment and longer commitment together as one conditional package.",
-        "Could you review the price for that complete commitment with whoever can authorize it, "
-        "and identify the remaining condition for agreement?",
-    ),
     "date_transition": (
         "The later-start option treats the transition to the new price as part of the exchange. "
         "Please consider its price and payment terms together when reviewing what works for your business.",
@@ -50,42 +45,6 @@ COMMERCIAL_CONTEXT = {
         "Which complete package could you approve in exchange for that longer commitment?",
     ),
 }
-
-
-def commitment_comparison(case, terms):
-    """Quantify only the duration/payment trade present in the executable menu."""
-    from arena_kit.cost import closing_terms
-
-    from .optimizer import valid_terms
-
-    if not terms or any(not valid_terms(case, t) for t in terms):
-        return ""
-    full = [closing_terms(case, t) for t in terms]
-    base = full[0]
-    for option in full[1:]:
-        if not (
-            option["payment_days"] < base["payment_days"]
-            and option["contract_months"] > base["contract_months"]
-            and option["volume_per_year"] == base["volume_per_year"] == case["buyer"]["need_per_year"]
-            and all(
-                option.get(f) == base.get(f)
-                for f in option.keys() | base.keys()
-                if f not in {"unit_price", "payment_days", "contract_months"}
-            )
-        ):
-            continue
-        annual = base["volume_per_year"]
-        short_total = annual * base["contract_months"] / 12
-        long_total = annual * option["contract_months"] / 12
-        return (
-            f"At the stated annual quantity of {annual:,.12g} units, the {option['contract_months']}-month "
-            f"option represents {long_total:,.12g} units over its term, compared with {short_total:,.12g} "
-            f"over {base['contract_months']} months. It combines that duration with "
-            f"{option['payment_days']}-day payment instead of {base['payment_days']} days. "
-            "These are alternative contract commitments, conditional on the corresponding price; "
-            "the annual quantity and service requirements stay the same."
-        )
-    return ""
 
 
 def commercial_context(case, events, terms, signals):
@@ -221,17 +180,6 @@ def responsive_act(
         data["question"] = "exchange"
     # These fields are code-owned, even if a model supplies values with the same names.
     data["commercial_context"] = commercial_context(case, events, terms, signals) if case and terms else None
-    data["commitment_comparison"] = ""
-    if (
-        case
-        and portfolio_issue == "cash_continuity"
-        and supplier_messages
-        and supplier_messages[-1].get("status") == "open"
-    ):
-        comparison = commitment_comparison(case, terms)
-        if comparison:
-            data["commercial_context"] = "cash_continuity_review"
-            data["commitment_comparison"] = comparison
     prior = " ".join(m.get("body", "") for m in events if m.get("from") == "buyer")
     context = COMMERCIAL_CONTEXT.get(data["commercial_context"])
     data["repeat_context"] = bool(context and context[0] in prior)
@@ -391,8 +339,6 @@ def compose_email(data, cards, sid, strategy="balanced"):
         brief, diagnostic = COMMERCIAL_CONTEXT[context_key]
         if not data.get("repeat_context"):
             body.append(brief)
-        if context_key == "cash_continuity_review" and data.get("commitment_comparison"):
-            body.append(data["commitment_comparison"])
     else:
         diagnostic = QUESTIONS[question]
     body.extend([diagnostic, "Any movement is conditional on the executable terms below."])

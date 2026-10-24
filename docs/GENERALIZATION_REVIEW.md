@@ -1113,3 +1113,21 @@ unchanged; only the second and third messages explain/review the trade. The
 opening and terminal acceptance stay unchanged. Local audits:
 commitment-protected.json and commitment-p07.json. Exactly one P07 hosted attempt
 is planned, without session-creation retries; no other categories are tested.
+
+
+Outcome (`6f107f3`): sole session `9756614085332d5f` scored **70.15**, 2.60
+points below the 72.75 best. Final agreement 5.48 / 90 / 24, total cost 326636.80.
+After the quantified 90000-unit contract comparison the supplier requested the
+underlying forecast; the next reply discussed index evidence and ended bargaining.
+This is an observed trajectory, not proof of a causal wording effect. Three model
+calls, 18027 input / 273 output tokens, no API errors/fallbacks, 53.53 seconds.
+Quota increased 130 -> 131; the entire best-score map was unchanged. No second
+attempt was started. Restore grounding.py and remove this experiment's tests,
+returning runtime/tests exactly to 0123709; retain the verified package-follow-up
+fix. The experiment and tests remain recoverable in Git history.
+
+A follow-up observation is that broad evidence_requested matching on "provide
+... data" can treat a forecast request as permission to volunteer cost-index
+cards. The next evidence-selection audit should distinguish these intents; this
+turn does not silently modify that separate subsystem or claim it would improve
+P07. Report: data/local/evaluations/practice-p07-6f107f3/report.json.
