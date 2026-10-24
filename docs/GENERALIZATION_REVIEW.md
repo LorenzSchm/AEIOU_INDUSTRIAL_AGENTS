@@ -1269,3 +1269,17 @@ that verified reciprocal package is actually selected.
 unchanged. Archived P08 replay: opening unchanged, first indexed counter 5.08
 instead of 4.94; final acceptance unchanged. This is a policy check, not a
 simulated supplier result. One additional P08 attempt is authorized and planned.
+
+
+Outcome (80410b4): sole session ec0cae5bbc3b8701 scored **57.04**, +6.49 points
+versus the preceding 50.55, still 2.11 below the 59.15 record. Agreement 5.45,
+payment90, duration24, AS-14404 share45%/deadband5%; cost 1035731.08.
+Actual indexed bids 4.91 -> 5.08 -> 5.18, supplier counters 5.57 -> 5.48 -> 5.45.
+The final offer was respected. The supplier reciprocated the larger first step
+more strongly; one trajectory does not prove causality or repeatability.
+
+Retain this bounded reciprocity revision. No further runtime changes or attempts.
+Three calls, 19708 input / 273 output tokens, zero errors/fallbacks, 68.89 seconds.
+Exactly one session-creation marker/request; quota 141 -> 142. P08 best unchanged.
+The best-map change was an independent team P18 result (64.27 -> 67.27), not ours.
+Dashboard: data/local/evaluations/practice-p08-80410b4/report.json.
