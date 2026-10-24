@@ -1131,3 +1131,26 @@ A follow-up observation is that broad evidence_requested matching on "provide
 cards. The next evidence-selection audit should distinguish these intents; this
 turn does not silently modify that separate subsystem or claim it would improve
 P07. Report: data/local/evaluations/practice-p07-6f107f3/report.json.
+
+
+## P08: cost-ranked index exploration
+
+The existing P08 best is 59.1487 (session 7587c332bf02874e): price 5.26,
+payment 45, duration 36, index share 45%, deadband 0. Its modeled index and
+risk charges total 31414.82. Changing only the deadband to 5 would save
+22439.16, but supplier acceptance of that hypothetical change is unknown.
+
+Opening exploration previously used the first legal index enum. For leverage
+categories, rank available clauses by modeled buyer cost at a common price,
+then apply the existing bounded equal-cost compensation. No challenge IDs,
+historical score normalizers, or supplier-specific floors enter the policy.
+P08 opening indexed package changes from 4.80/deadband0 to 4.91/deadband5,
+with payment90 and duration24 unchanged. The fixed-price anchor is unchanged.
+This is a better trade proposal, not a guarantee of a better agreement.
+Relationship-oriented categories keep their existing uncertainty policy.
+
+Validation: 108 focused tests passed. Four synthetic cases vary index direction
+and enum order; rising indices favor larger deadbands, falling indices favor
+smaller ones, always within the protected buyer budget. All 57 archived P01-P05
+decisions and portfolios remain exactly identical. One hosted P08 attempt is
+planned, with exclusive creation markers and no session-creation retries.

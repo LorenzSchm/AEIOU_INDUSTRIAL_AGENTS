@@ -148,3 +148,35 @@ def test_grounded_writer_receives_one_unambiguous_output_contract():
     assert "You choose only a communication act" in prompt
     assert "To propose your own" not in prompt
     assert "Copy supplier_id and candidate_ids exactly" in prompt
+
+
+@pytest.mark.parametrize("path, expected_deadband", [(0.08, 6), (-0.08, 1)])
+@pytest.mark.parametrize("reverse", [False, True])
+def test_index_exploration_uses_economics_not_enum_order(path, expected_deadband, reverse):
+    from arena_kit.cost import complete_offer
+
+    from aeiou.scenario_planner import plan_packages
+
+    case = copy.deepcopy(local_cases()["case:S01"])
+    case.update(case_id="case:UNSEEN-INDEX", suppliers=["sup:NEW"], negotiable=["unit_price", "index_clause"])
+    case["fixed_terms"].pop("index_clause", None)
+    clauses = [{"series": "NEW", "material_share": 0.31, "deadband_pct": d, "base_month": "2026-02"} for d in (1, 4, 6)]
+    case["term_options"] = {"index_clause": [None, *(reversed(clauses) if reverse else clauses)]}
+    case["buyer"].update(category_goal="leverage", index_paths={"NEW": path})
+    base = complete_offer(case, {"unit_price": 25, "index_clause": None})
+    candidate = {"id": "A", "label": "Protected", "terms": base, "cost": total_cost(case, base)}
+    plan = plan_packages(
+        case,
+        opening({**base, "unit_price": 30}),
+        "sup:NEW",
+        {},
+        [candidate],
+        {"moves_left": 8, "preferences": []},
+        use_counteroffers=False,
+        use_portfolio=False,
+    )
+    probe = next(p for p in plan["packages"] if p["id"] == "C")
+    assert plan["packages"][0]["terms"] == base
+    assert probe["terms"]["index_clause"]["deadband_pct"] == expected_deadband
+    assert probe["cost"] <= candidate["cost"] + 0.001
+    assert valid_terms(case, probe["terms"])

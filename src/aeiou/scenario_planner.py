@@ -165,6 +165,13 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
                 # Prefer the date that saves actual contract spend at the same
                 # price; do not choose the first date merely by enum order.
                 values = sorted(values, key=lambda value: total_cost(case, {**base, field: value}, std))
+            elif field == "index_clause" and case["buyer"].get("category_goal") == "leverage":
+                # Enum order is not an economic preference. Compare risk clauses
+                # at one price before compensating the selected structure. A
+                # lower-cost clause leaves room for a more attractive base price
+                # at the same buyer budget. Relationship-oriented categories keep
+                # their existing sustainability/uncertainty portfolio policy.
+                values = sorted(values, key=lambda value: cost({**base, field: value}))
             probe = next(
                 (
                     t
