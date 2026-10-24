@@ -15,6 +15,9 @@ Seek trades the existing candidates missed: quality versus liability, cash versu
 index protection, delivery versus volume or duration. Use observed replies to
 identify an obstacle, not just a cheaper price. Consider a small conditional
 concession when necessary for agreement. Do not repeat failed equivalent offers.
+Before the closing phase, Python owns price-only concessions: do not raise the
+price on an existing candidate's unchanged commercial terms. New coupled trades
+must fit the current policy portfolio cost envelope, not a fraction of the opening ask.
 Supplier should-cost is an uncertain estimate, never a known minimum price.
 Do not offer different prices for identical non-price terms in the same message.
 Keep an index/risk alternative only when its reduced base price compensates for

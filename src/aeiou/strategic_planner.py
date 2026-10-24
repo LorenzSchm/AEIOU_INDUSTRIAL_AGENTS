@@ -5,7 +5,7 @@ import math
 
 from arena_kit.cost import total_cost as published_cost
 from arena_kit.docs import standard_terms
-from arena_kit.play import latest
+from arena_kit.play import latest, moves_left
 
 from .economic_beliefs import total_cost
 from .opponent_model import predicted_choices
@@ -30,6 +30,9 @@ Seek trades the existing candidates missed: quality versus liability, cash versu
 index protection, delivery versus volume or duration. Use observed replies to
 identify an obstacle, not just a cheaper price. Consider a small conditional
 concession when necessary for agreement. Do not repeat failed equivalent offers.
+Before the closing phase, Python owns price-only concessions: do not raise the
+price on an existing candidate's unchanged commercial terms. New coupled trades
+must fit the current policy portfolio cost envelope, not a fraction of the opening ask.
 Supplier should-cost is an uncertain estimate, never a known minimum price.
 Do not offer different prices for identical non-price terms in the same message.
 Keep an index/risk alternative only when its reduced base price compensates for
@@ -56,7 +59,8 @@ def proposal_limits(case, threads, sid, candidates, intelligence):
     safe = [r for r in evaluate(case, threads, intelligence) if r["acceptable"]]
     quote = min((r for r in safe if r["supplier_id"] == sid), key=lambda r: r["cost"], default=None)
     rounds = sum(m.get("from") == "buyer" for m in threads[sid])
-    fraction = 0.5 if rounds < 2 else 0.75
+    closing = rounds > 0 and moves_left(case, threads[sid]) <= 2
+    fraction = 0.75 if closing else 0.0
     envelope = max(p["cost"] for p in candidates)
     if quote:
         envelope = max(envelope, anchor["cost"] + fraction * max(0, quote["cost"] - anchor["cost"]))
@@ -71,6 +75,7 @@ def proposal_limits(case, threads, sid, candidates, intelligence):
         "max_index_expected_cost": risk_ceiling,
         "same_structure_anchor_expected_cost": anchor_expected,
         "max_portfolio_expected_cost": anchor_expected * 1.0025 if anchor_expected is not None else None,
+        "price_only_concessions_allowed": closing,
     }
 
 
@@ -138,6 +143,10 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
                     raise ValueError("Cannot reduce policy coverage")
             if any(terms == p["terms"] for p in candidates + admitted):
                 raise ValueError("Duplicate existing package")
+            if not limits["price_only_concessions_allowed"] and any(
+                same_structure(terms, p["terms"]) and terms["unit_price"] > p["terms"]["unit_price"] for p in candidates
+            ):
+                raise ValueError("Price-only concession exceeds the controller schedule")
             price = cost(terms)
             trace["submitted"][-1].update(terms=copy.deepcopy(terms), modeled_cost=price)
             if not math.isfinite(price) or price > ceiling + 0.001:

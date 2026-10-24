@@ -107,7 +107,7 @@ def test_model_cannot_undo_improved_opening_with_same_terms_and_higher_price():
     assert trace["rejected"]
 
 
-def test_initial_portfolio_does_not_give_away_savings_through_index_risk():
+def test_initial_portfolio_keeps_bounded_risk_exchange_beside_unaccepted_fixed_price():
     data = opening("P02")
     agent = StrategicNegotiator(package())
     move = agent.decide(data["case"], data["threads"])
@@ -117,7 +117,13 @@ def test_initial_portfolio_does_not_give_away_savings_through_index_risk():
     assert anchor["terms"]["unit_price"] < audit["original_price"]
     assert anchor["cost"] <= audit["point_cost_limit"]
     assert audit["expected_cost"] < audit["original_expected_cost"]
-    assert all(p["terms"]["index_clause"] is None for p in packages)
+    indexed = [p for p in packages if p["terms"].get("index_clause")]
+    assert len(indexed) == 1
+    probe = indexed[0]
+    assert probe["bounded_uncertainty_probe"]
+    assert probe["cost"] <= probe["point_cost_limit"] == probe["standing_cost"] * 1.005
+    assert probe["expected_cost"] < probe["expected_quote_cost"]
+    assert probe["terms"]["unit_price"] < anchor["terms"]["unit_price"]
     assert all(valid_terms(data["case"], p["terms"]) for p in packages)
 
 

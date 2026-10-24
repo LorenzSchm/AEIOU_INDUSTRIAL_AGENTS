@@ -613,3 +613,34 @@ raw-material negotiations (two estimate variants, four supplier policies) stayed
 at mean 87.07 for both frozen `7b036b9` and this revision, with no errors or
 must-have violations. These reused synthetic regressions show no regression in
 those conditions; they do not demonstrate a higher Arena score or LLM reliability.
+
+## Follow-up after `338e989`: control concessions before the closing phase
+
+The next hosted pair regressed: P02 55.93 and P05 56.21. P02 rejected the initial
+fixed-price proposal and eventually accepted a more expensive indexed option.
+In P05 the planner raised the first cash offer to 30.50, exploiting the previous
+halfway-to-opening concession allowance. The prior-price floor then correctly
+retained this expensive commitment. Deadline handling shortened the subsequent
+negotiation but was not the original source of the costly proposal.
+
+Before the final two moves, planner proposals now fit the existing controlled
+portfolio envelope; they cannot independently raise the price on any matching
+commercial structure. Coupled trades and buyer-cost improvements remain possible.
+The controller's gradual bidding, reciprocity and terminal handling still run.
+The existing bounded closing concession envelope remains available after a buyer
+turn when at most two moves remain. These rules do not inspect challenge IDs.
+
+The bounded uncertainty risk option is retained alongside the refined fixed-price
+anchor: an unaccepted buyer proposal must not be treated as an available supplier
+contract. This explicit exception still requires a lower base price, direct cost
+and weighted sensitivity improvement over the real standing quote, the existing
+0.5% point-cost limit, term legality and prior-price preservation. Ordinary model
+risk amendments retain their stricter portfolio checks. This restores exploration,
+not a guarantee of acceptance or higher score.
+
+Validation: 59 focused tests passed. Replaying the recorded P05 model proposals
+on the historical prefix rejects both early price increases and sends 25.97,
+25.53 and 25.80 instead of adding 30.50. P02 public-opening replay yields fixed
+357.94 / 14 days and indexed 356.68 / 14 days with the public permitted clause.
+All preparation used zero LLM calls and zero Arena sessions. The user authorized
+one subsequent hosted P02 and one P05 attempt, with session-start retries disabled.

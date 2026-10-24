@@ -175,8 +175,8 @@ def portfolio_probes(case, events, base, cost, supplier, confidence, compensate,
             result.append(min(probes, key=lambda p: p["cost"]))
     if sensitivities and "index_clause" in case["negotiable"] and not any(p["issue"] == "index" for p in result):
         # A noisy supplier-cost estimate may rule out every indexed exchange.
-        # Reserve one experimental option: direct contractual cost must improve
-        # even over A, expected sensitivity cost must beat the real quote, and
+        # Reserve one experimental option: direct contractual cost and expected
+        # sensitivity cost must beat the real quote, and
         # point-estimate downside is capped at the existing 0.5% guard tolerance.
         options = []
         quote_expected = sum(s["weight"] * direct_cost(case, current, std, s) for s in sensitivities)
@@ -191,10 +191,7 @@ def portfolio_probes(case, events, base, cost, supplier, confidence, compensate,
                 value = cost(probe)
                 if not valid_terms(case, probe) or value > standing_cost * 1.005:
                     continue
-                if (
-                    direct_cost(case, probe, std)
-                    > min(direct_cost(case, base, std), direct_cost(case, current, std)) - 0.01
-                ):
+                if direct_cost(case, probe, std) > direct_cost(case, current, std) - 0.01:
                     continue
                 expected = sum(s["weight"] * direct_cost(case, probe, std, s) for s in sensitivities)
                 if expected >= quote_expected - 0.01:

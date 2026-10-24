@@ -84,6 +84,8 @@ def test_planner_cannot_reintroduce_uncompensated_index_risk():
     for p in candidates:
         p["terms"]["index_clause"] = None
         p["cost"] = total_cost(case, p["terms"])
+    cash = {**candidates[0]["terms"], "unit_price": 18, "payment_days": 14}
+    candidates.append({"id": "B", "terms": cash, "cost": total_cost(case, cash)})
     scenarios = [{"full_cost": 15, "interest_rate": 0.12, "standard": {}, "weight": 1}]
     intelligence = {"economic_sensitivities": {sid: {"scenarios": scenarios}}}
     data = {
@@ -126,6 +128,9 @@ def test_planner_cannot_reopen_final_offer_or_change_supplier():
 @pytest.mark.parametrize("adverse_weight,accepted", [(0.1, True), (0.9, False)])
 def test_uncertain_adverse_tail_is_reported_but_not_an_automatic_veto(adverse_weight, accepted):
     case, sid, threads, candidates = setup_case()
+    # Isolate uncertainty validation in the closing phase, where the planner may concede.
+    case["round_limit"] = 2
+    threads[sid].insert(0, {"from": "buyer", "term_sheets": [{"terms": candidates[0]["terms"]}]})
     case["buyer"].update(category_goal="stabilise", sustainable_margin_pct=5, relationship_eur_per_point=3000)
     standard = closing_terms(case, {"unit_price": 20, "payment_days": 30})
     scenarios = [

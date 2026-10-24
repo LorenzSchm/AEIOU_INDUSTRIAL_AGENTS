@@ -302,7 +302,10 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
         # A supplier may pick any sent option. A newly improved anchor is useless
         # if an expensive payment alternative gives the savings straight back.
         packages = [
-            p for p in packages if sensitivity_cost(case, p["terms"], std, sensitivities) <= anchor_expected * 1.0025
+            p
+            for p in packages
+            if p.get("bounded_uncertainty_probe")
+            or sensitivity_cost(case, p["terms"], std, sensitivities) <= anchor_expected * 1.0025
         ]
     risk_ceiling = risk_exchange_ceiling(case, packages, std, sensitivities)
     if risk_ceiling is not None:
@@ -310,6 +313,7 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
             p
             for p in packages
             if p["id"] == "A"
+            or p.get("bounded_uncertainty_probe")
             or p["terms"].get("index_clause") is None
             or sensitivity_cost(case, p["terms"], std, sensitivities) <= risk_ceiling
         ]
