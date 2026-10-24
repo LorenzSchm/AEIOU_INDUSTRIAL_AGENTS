@@ -29,7 +29,7 @@ class TimedSuppliers:
         from aeiou.simulation import local_cases
 
         rng = random.Random(seed)
-        self.clock, self.delay = Clock(), delay
+        self.clock, self.delay, self.profile = Clock(), delay, profile
         self.case = copy.deepcopy(local_cases()["case:S01"])
         self.case.update(
             case_id=f"case:clock-{count}-{delay}-{seed}",
@@ -42,6 +42,7 @@ class TimedSuppliers:
         )
         self.case["buyer"].update(alternative={"kind": "none", "terms": {}}, category_goal="leverage")
         price = rng.uniform(20, 80)
+        discovery_winner = rng.randrange(count)
         self.state, self.opens, self.done, self.timeouts, self.accepts = {}, 0, None, 0, 0
         for i, sid in enumerate(self.case["suppliers"]):
             opening = price * (1 + 0.06 * i)
@@ -53,7 +54,12 @@ class TimedSuppliers:
                 "closed": False,
                 "status": "open",
                 "opening": opening,
-                "floor": opening * (0.82 if profile == "stable" else 0.97 - 0.19 * i / max(1, count - 1)),
+                "floor": opening
+                * (
+                    (0.70 if i == discovery_winner else 0.98)
+                    if profile == "discovery"
+                    else (0.82 if profile == "stable" else 0.97 - 0.19 * i / max(1, count - 1))
+                ),
                 "terms": complete_offer(self.case, {"unit_price": opening, "payment_days": 30}),
                 "messages": [],
             }
@@ -146,6 +152,10 @@ class TimedSuppliers:
         chosen = max(sheets, key=lambda s: s["terms"]["unit_price"])["terms"]
         state["round"] += 1
         target = max(state["floor"], state["opening"] * (1 - 0.04 * state["round"]))
+        if self.profile == "discovery":
+            # Some suppliers reveal a substantially better feasible position on
+            # first contact, while others have almost no discount capacity.
+            target = state["floor"]
         state["status"] = (
             "agreed" if chosen["unit_price"] >= target else ("final_offer" if state["round"] >= 5 else "open")
         )
@@ -186,6 +196,12 @@ def run(output, seeds=(613, 981), profile="stable", delays=(8, 25, 45, 55)):
                         "starts": client.opens,
                         "accepts": client.accepts,
                         "timeouts": client.timeouts,
+                        "suppliers_contacted": sum(
+                            any(m.get("from") == "buyer" for m in s["messages"]) for s in client.state.values()
+                        ),
+                        "exploratory_turns": sum(
+                            e["type"] == "deadline_explore" for e in record.get("transport_events", [])
+                        ),
                         "focused_turns": sum(e["type"] == "deadline_focus" for e in record.get("transport_events", [])),
                     }
                 )
@@ -199,7 +215,7 @@ def run(output, seeds=(613, 981), profile="stable", delays=(8, 25, 45, 55)):
         "arena_sessions": 0,
         "limitation": (
             "Synthetic timing and concessions, not Arena predictions. "
-            "Prioritizing an incumbent can let weaker threads expire."
+            "Incumbent protection can lose undiscovered alternatives; exploration can lose incumbent concessions."
         ),
     }
     Path(output).write_text(json.dumps(report, indent=2), encoding="utf-8")
@@ -212,14 +228,26 @@ if __name__ == "__main__":
     parser.add_argument("--output", required=True)
     parser.add_argument("--agent-source")
     parser.add_argument("--data", default="data/package")
-    parser.add_argument("--profile", choices=["stable", "reversed"], default="stable")
+    parser.add_argument("--profile", choices=["stable", "reversed", "discovery"], default="stable")
+    parser.add_argument("--seeds", type=int, nargs="+")
+    parser.add_argument("--delays", type=float, nargs="+")
     args = parser.parse_args()
     os.environ["ARENA_DATA"] = str(Path(args.data).resolve())
     if args.agent_source:
         sys.path.insert(0, str(Path(args.agent_source).resolve()))
     run(
         args.output,
-        seeds=(1259, 8102) if args.profile == "reversed" else (613, 981),
+        seeds=args.seeds
+        or (
+            (37591, 96017)
+            if args.profile == "discovery"
+            else ((1259, 8102) if args.profile == "reversed" else (613, 981))
+        ),
         profile=args.profile,
-        delays=(12, 32, 48) if args.profile == "reversed" else (8, 25, 45, 55),
+        delays=args.delays
+        or (
+            (20, 40, 55)
+            if args.profile == "discovery"
+            else ((12, 32, 48) if args.profile == "reversed" else (8, 25, 45, 55))
+        ),
     )

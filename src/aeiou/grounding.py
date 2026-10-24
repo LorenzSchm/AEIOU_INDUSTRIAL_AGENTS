@@ -112,6 +112,19 @@ def package_rationale(terms):
     return " ".join(dict.fromkeys(explanations))
 
 
+def fixed_commitment_answer(case, events):
+    """Answer a requested volume trade when the contract makes it unavailable."""
+    if "volume_per_year" in case["negotiable"] or "volume_per_year" not in case.get("fixed_terms", {}):
+        return ""
+    reply = next((m.get("body", "") for m in reversed(events) if m.get("from") != "buyer"), "")
+    if re.search(r"(?:which|what|increase|jump).{0,40}volume|volume.{0,30}(?:increase|jump)", reply, re.I):
+        return (
+            "The annual volume is fixed for this enquiry. "
+            "Please price the complete alternatives below within that commitment."
+        )
+    return ""
+
+
 def next_evidence_ids(cards, threads, sid):
     """Use a relevant, approved source once; do not spend turns repeating claims."""
     from .agent import ID_RE

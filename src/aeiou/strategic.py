@@ -16,6 +16,7 @@ from .concessions import preserve_progress
 from .economic_beliefs import infer_economics, total_cost
 from .grounding import (
     compose_email,
+    fixed_commitment_answer,
     fresh_evidence_cards,
     next_evidence_ids,
     package_rationale,
@@ -25,9 +26,10 @@ from .grounding import (
 from .negotiation_state import supplier_state
 from .opponent_model import learn_beliefs, predicted_choices
 from .optimizer import alternative_cost, estimate, evaluate, safe_close
+from .reciprocity import responsive_packages
 from .retrieval import evidence_cards, evidence_cutoff
 from .scenario_planner import plan_packages
-from .strategic_planner import admit_proposals
+from .strategic_planner import admit_proposals, proposal_limits
 from .strategy_policy import StrategicFeatures, adaptive_packages, plan_next_action
 from .supplier_signals import observed_signals, validated_interpretation
 
@@ -159,6 +161,14 @@ class StrategicNegotiator(Negotiator):
                 lambda terms, std=standard, model=supplier: total_cost(case, terms, std, model),
                 ceiling,
             )
+            plan["packages"] = responsive_packages(
+                case,
+                threads[sid],
+                plan["packages"],
+                standard,
+                lambda terms, std=standard, model=supplier: total_cost(case, terms, std, model),
+                ceiling,
+            )
             if plan["recommendation"] not in {p["id"] for p in plan["packages"]}:
                 plan["recommendation"] = next((p["id"] for p in plan["packages"]), None)
             plan["economic_ceiling"] = budget if math.isfinite(budget) else None
@@ -190,6 +200,7 @@ class StrategicNegotiator(Negotiator):
                             or p.get("uncertainty_probe")
                             or p.get("portfolio_probe")
                             or p.get("retained_concession")
+                            or p.get("responsive_probe")
                         ]
                     )
                 )[:3]
@@ -246,6 +257,7 @@ class StrategicNegotiator(Negotiator):
             }
         }
         payload["proposal_contract"] = {
+            "economic_limits": proposal_limits(case, threads, sid, offers[sid], self.intelligence),
             "base_ids": [p["id"] for p in candidates],
             "editable_fields": case["negotiable"],
             "legal_values": {k: v for k, v in case.get("term_options", {}).items() if k in case["negotiable"]},
@@ -510,6 +522,8 @@ class StrategicNegotiator(Negotiator):
                 }
         sheets = move["message"].get("term_sheets", [])
         if sheets:
+            if answer := fixed_commitment_answer(case, threads[sid]):
+                move["message"]["body"] += "\n\n" + answer
             if rationale := package_rationale([s["terms"] for s in sheets]):
                 move["message"]["body"] += "\n\n" + rationale
             if (

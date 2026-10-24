@@ -101,6 +101,25 @@ def test_planner_cannot_reopen_final_offer_or_change_supplier():
     assert admit_proposals(case, threads, sid, candidates, {}, data, learn_beliefs(case, []))[1]["rejected"]
 
 
+@pytest.mark.parametrize("adverse_weight,accepted", [(0.1, True), (0.9, False)])
+def test_uncertain_adverse_tail_is_reported_but_not_an_automatic_veto(adverse_weight, accepted):
+    case, sid, threads, candidates = setup_case()
+    case["buyer"].update(category_goal="stabilise", sustainable_margin_pct=5, relationship_eur_per_point=3000)
+    standard = closing_terms(case, {"unit_price": 20, "payment_days": 30})
+    scenarios = [
+        {"full_cost": 12, "interest_rate": 0.12, "standard": standard, "weight": 1 - adverse_weight},
+        {"full_cost": 22, "interest_rate": 0.12, "standard": standard, "weight": adverse_weight},
+    ]
+    intelligence = {"estimates": {sid: {"full_cost": 12}}, "economic_sensitivities": {sid: {"scenarios": scenarios}}}
+    data = {"supplier_id": sid, "action": "send", "proposals": [{"base_id": "A", "changes": {"unit_price": 18.4}}]}
+    _, trace = admit_proposals(case, threads, sid, candidates, intelligence, data, learn_beliefs(case, []))
+    assert bool(trace["selected"]) is accepted
+    assert trace["submitted"][0]["worst_cost_delta"] > 0
+    assert trace["submitted"][0]["sensitivity_improvements"] == 1
+    assert trace["submitted"][0]["terms"]["unit_price"] == 18.4
+    assert trace["submitted"][0]["changes"] == {"unit_price": 18.4}
+
+
 def test_multidimensional_choices_change_ranking_and_repeats_do_not_amplify():
     case = copy.deepcopy(local_cases()["case:T01"])
     strict = complete_offer(case, {"unit_price": 40, "ppm_commitment": 500, "chargeback_eur_per_complaint": 100})

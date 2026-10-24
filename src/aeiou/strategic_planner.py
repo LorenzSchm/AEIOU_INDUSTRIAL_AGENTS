@@ -1,5 +1,6 @@
 """Model proposes commercial exchanges; immutable code admits executable terms."""
 
+import copy
 import math
 
 from arena_kit.cost import total_cost as published_cost
@@ -28,8 +29,11 @@ index protection, delivery versus volume or duration. Use observed replies to
 identify an obstacle, not just a cheaper price. Consider a small conditional
 concession when necessary for agreement. Do not repeat failed equivalent offers.
 Supplier should-cost is an uncertain estimate, never a known minimum price.
+Prefer a small improvement to one term at an observed supplier price over an
+unchanged ambitious package. Do not repeat a request for a refused cost breakdown.
 Python validates legal terms, must-haves, full coverage, full buyer cost, estimate
-sensitivities and concession limits. Rejected proposals fall back to its policy.
+sensitivities and concession limits. Sensitivities are estimates, not known floors.
+Rejected proposals fall back to its policy.
 The buyer-value package remains available. You cannot accept, change supplier,
 override a final offer, change policy limits or execute tools. No free-form email,
 numeric contract claims in prose or private buyer information in the response.
@@ -39,13 +43,28 @@ quality, tradeoff, exchange, settlement, price_response. Empty proposals is vali
 """
 
 
+def proposal_limits(case, threads, sid, candidates, intelligence):
+    """The same numeric envelope is visible to the planner and enforced in code."""
+    anchor = next((p for p in candidates if p["id"] == "A"), candidates[0])
+    safe = [r for r in evaluate(case, threads, intelligence) if r["acceptable"]]
+    quote = min((r for r in safe if r["supplier_id"] == sid), key=lambda r: r["cost"], default=None)
+    rounds = sum(m.get("from") == "buyer" for m in threads[sid])
+    fraction = 0.5 if rounds < 2 else 0.75
+    envelope = max(p["cost"] for p in candidates)
+    if quote:
+        envelope = max(envelope, anchor["cost"] + fraction * max(0, quote["cost"] - anchor["cost"]))
+    ceiling = min(alternative_cost(case), min((r["cost"] for r in safe), default=math.inf), envelope)
+    return {"max_modeled_cost": ceiling, "concession_fraction": fraction, "standing_quote": quote}
+
+
 def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
     """Return bounded portfolio and diagnostics. Never mutate caller's proposals.
 
     At most one model proposal is sent alongside A and a policy fallback. A
-    proposal retains 65% of A's modeled upside and must beat a standing quote
-    across all supplier-economics scenarios when an acceptable quote exists.
-    This envelope is a policy limit, not a claimed acceptance probability.
+    proposal must improve the executable alternative under the production model
+    and the weighted economic sensitivity model. Individual stress scenarios
+    are reported, not treated as certain supplier floors. Existing controlled
+    concessions define the minimum available envelope.
     """
     trace = {"accepted": [], "rejected": [], "selected": None, "submitted": []}
     if not isinstance(data, dict) or data.get("supplier_id") != sid or data.get("action") != "send":
@@ -64,15 +83,9 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
     cost = lambda terms: total_cost(case, terms, std, supplier)  # noqa: E731
     by_id = {p["id"]: p for p in candidates}
     anchor = by_id.get("A", candidates[0])
-    safe = [r for r in evaluate(case, threads, intelligence) if r["acceptable"]]
-    local_quotes = [r for r in safe if r["supplier_id"] == sid]
-    quote = min(local_quotes, key=lambda r: r["cost"], default=None)
-    # Without a valid standing quote, stay within existing policy's expenditure.
-    ceiling = min(alternative_cost(case), min((r["cost"] for r in safe), default=math.inf))
-    envelope = (
-        anchor["cost"] + 0.35 * max(0, quote["cost"] - anchor["cost"]) if quote else max(p["cost"] for p in candidates)
-    )
-    ceiling = min(ceiling, envelope)
+    limits = proposal_limits(case, threads, sid, candidates, intelligence)
+    quote, ceiling = limits["standing_quote"], limits["max_modeled_cost"]
+    trace.update(cost_ceiling=ceiling, concession_fraction=limits["concession_fraction"])
     admitted = []
     for index, proposal in enumerate(proposals):
         try:
@@ -84,6 +97,7 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
                 {
                     "base_id": proposal["base_id"][:80],
                     "fields": sorted(str(k)[:80] for k in changes)[:20] if isinstance(changes, dict) else [],
+                    "changes": copy.deepcopy(changes),
                 }
             )
             if not base:
@@ -108,6 +122,7 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
             if any(terms == p["terms"] for p in candidates + admitted):
                 raise ValueError("Duplicate existing package")
             price = cost(terms)
+            trace["submitted"][-1].update(terms=copy.deepcopy(terms), modeled_cost=price)
             if not math.isfinite(price) or price > ceiling + 0.001:
                 raise ValueError("Exceeds buyer concession envelope")
             # Do not silently retract a price concession on identical terms.
@@ -122,11 +137,20 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
             if quote:
                 sensitivities = intelligence.get("economic_sensitivities", {}).get(sid, {})
                 scenarios = sensitivities.get("scenarios") or (supplier or {}).get("scenarios") or [supplier]
-                if any(
-                    published_cost(case, terms, std, s) > published_cost(case, quote["terms"], std, s) - 0.01
+                deltas = [
+                    published_cost(case, terms, std, s) - published_cost(case, quote["terms"], std, s)
                     for s in scenarios
-                ):
-                    raise ValueError("Does not improve the quote across economic scenarios")
+                ]
+                weights = [(s or {}).get("weight", 1.0) for s in scenarios]
+                expected_delta = sum(d * w for d, w in zip(deltas, weights, strict=True)) / sum(weights)
+                trace["submitted"][-1].update(
+                    expected_cost_delta=expected_delta,
+                    worst_cost_delta=max(deltas),
+                    sensitivity_improvements=sum(d < -0.01 for d in deltas),
+                    sensitivity_scenarios=len(deltas),
+                )
+                if price >= quote["cost"] - 0.01 or expected_delta >= -0.01:
+                    raise ValueError("Does not improve modeled and sensitivity-weighted quote cost")
             package = {
                 "id": f"L{index + 1}",
                 "terms": terms,
@@ -143,7 +167,9 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
     # Preference weights are only a relative ranking. Never label them agreement probabilities.
     weights = predicted_choices(case, admitted, belief, std)
     chosen = max(zip(admitted, weights, strict=True), key=lambda p: (p[1], -p[0]["cost"]))[0]
-    fallback = next((p for p in candidates if p.get("closing_probe")), None)
+    fallback = next((p for p in candidates if p.get("responsive_probe") and p["id"] != anchor["id"]), None)
+    if fallback is None:
+        fallback = next((p for p in candidates if p.get("closing_probe")), None)
     if fallback is None:
         fallback = next((p for p in candidates if p.get("retained_concession")), None)
     if fallback is None:

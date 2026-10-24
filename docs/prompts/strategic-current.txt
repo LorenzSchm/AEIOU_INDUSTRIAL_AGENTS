@@ -16,8 +16,11 @@ index protection, delivery versus volume or duration. Use observed replies to
 identify an obstacle, not just a cheaper price. Consider a small conditional
 concession when necessary for agreement. Do not repeat failed equivalent offers.
 Supplier should-cost is an uncertain estimate, never a known minimum price.
+Prefer a small improvement to one term at an observed supplier price over an
+unchanged ambitious package. Do not repeat a request for a refused cost breakdown.
 Python validates legal terms, must-haves, full coverage, full buyer cost, estimate
-sensitivities and concession limits. Rejected proposals fall back to its policy.
+sensitivities and concession limits. Sensitivities are estimates, not known floors.
+Rejected proposals fall back to its policy.
 The buyer-value package remains available. You cannot accept, change supplier,
 override a final offer, change policy limits or execute tools. No free-form email,
 numeric contract claims in prose or private buyer information in the response.

@@ -8,6 +8,7 @@ from arena_kit.agents.naive import NaiveAgent
 from arena_kit.play import RemoteTable, closing_move, fetch_documents, latest, live_threads, moves_left, play, standing
 
 from .agent import ClaudeBackend, Negotiator
+from .optimizer import evaluate
 from .research import package
 from .store import new_run, save_run
 
@@ -87,6 +88,59 @@ class RecordingTable(RemoteTable):
         if deadline is not None and deadline - time.monotonic() <= reserve:
             sid = choice["supplier_id"]
             seconds_left = deadline - time.monotonic()
+            # A long reply must not lock the whole RFQ onto the first incumbent.
+            # Explore each untouched open supplier once while the incumbent can
+            # survive at most one timeout. Final/last-round offers and an already
+            # timed-out incumbent still take priority. This is bounded exploration,
+            # not a guarantee that the incumbent's next quote stays unchanged.
+            last_buyer = max((i for i, m in enumerate(threads[sid]) if m.get("from") == "buyer"), default=-1)
+            unanswered = sum(m.get("from") != "buyer" for m in threads[sid][last_buyer + 1 :])
+            replies = [i for i, m in enumerate(threads[sid]) if m.get("from") != "buyer" and m.get("term_sheets")]
+            progressing = False
+            if len(replies) >= 2:
+                economics = getattr(agent, "intelligence", {})
+                previous = evaluate(self.run["case"], {sid: threads[sid][: replies[-2] + 1]}, economics)
+                current = evaluate(self.run["case"], {sid: threads[sid]}, economics)
+                old_cost = min((r["cost"] for r in previous if r["acceptable"]), default=None)
+                new_cost = min((r["cost"] for r in current if r["acceptable"]), default=None)
+                progressing = old_cost is not None and new_cost is not None and new_cost < old_cost * 0.999
+            untouched = [
+                s
+                for s in live_threads(threads)
+                if s != sid
+                and latest(threads[s]).get("status") == "open"
+                and not any(m.get("from") == "buyer" for m in threads[s])
+                and self.deadlines.get(s, 0) - time.monotonic() > 8
+            ]
+            if (
+                untouched
+                and not progressing
+                and hasattr(agent, "set_runtime_context")
+                and latest(threads[sid]).get("status") == "open"
+                and moves_left(self.run["case"], threads[sid]) > 3
+                and unanswered <= 1
+                and seconds_left > 8
+                and max(60.0, self.slowest_reply) + 5 < seconds_left + 60
+            ):
+                target = min(untouched, key=lambda s: self.deadlines[s])
+                agent.set_runtime_context(
+                    {
+                        "focus_supplier": target,
+                        "policy_only": True,
+                        "seconds_left": self.deadlines[target] - time.monotonic(),
+                        "reason": "Bounded first contact before alternatives expire",
+                    }
+                )
+                self.run.setdefault("transport_events", []).append(
+                    {
+                        "type": "deadline_explore",
+                        "supplier_id": target,
+                        "incumbent": sid,
+                        "incumbent_seconds_left": seconds_left,
+                        "maximum_expected_timeouts": 1,
+                    }
+                )
+                return None
             if (
                 hasattr(agent, "set_runtime_context")
                 and latest(threads[sid]).get("status") == "open"

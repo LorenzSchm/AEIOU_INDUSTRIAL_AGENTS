@@ -385,3 +385,124 @@ Reproduce timing checks with `python src/aeiou/timing_evaluation.py --output
 paired rows, source hashes, exact defaults, replay and limitations are in
 `evaluation/final-readiness.json`. The active prompt is exported in
 `prompts/strategic-current.txt`.
+
+## Practice score repair after the five `3c0df55` runs
+
+The five new hosted scores average **44.22/100**, despite five legal deals and no
+provider failures. This is a commercial-policy problem, not an API reliability
+problem. The published score is the fraction of the opening-to-benchmark cost
+gap captured by the deal, clipped to 0–100. A small discount can therefore produce
+a very low score, particularly after financing or other terms consume it.
+
+| Case | Score | Saving against opening | Remaining gap to benchmark | Observed failure |
+|---|---:|---:|---:|---|
+| P01 | 50.28 | EUR 28,639.11 | EUR 28,324.85 | Four identical buyer portfolios; all eight model proposals rejected |
+| P02 | 2.01 | EUR 952.89 | EUR 46,400.55 | Three identical portfolios; all six proposals rejected; EUR 23,078.15 financing cost at 14 days |
+| P03 | 82.39 | EUR 277,871.65 | EUR 59,399.27 | Four identical outgoing portfolios despite the supplier's price-freeze explanation |
+| P04 | 70.05 | EUR 1,623.00 | EUR 694.01 | Supplier closed price negotiations; buyer still sought a large price cut with other term changes |
+| P05 | 16.39 | EUR 13,461.84 | EUR 68,658.95 | Only one of three suppliers contacted; timing reserve exceeded the entire message window |
+
+The previous ten-run batch also contains weak P02/P11/P18 outcomes and a P05
+transport failure (`not a standing offer`). Nine saved results have scores; the
+failed P05 record has no result score. Its zero in the earlier batch aggregate is
+a failure penalty, not a measured deal score. Historical team-best scores reflect
+unequal attempts and different versions and must not be treated as paired controls.
+
+### Causes and changes
+
+1. **The model was constrained into repeating the policy.** Of 28 submitted
+   proposals, four were admitted and three selected. P01/P02 admitted none. A
+   35%-of-anchor-gap envelope and a requirement to beat the quote in every cost
+   scenario turned uncertain supplier-cost assumptions into vetoes. The planner
+   now receives the exact numeric envelope used by validation. Existing legal
+   policy concessions remain available; the model may use 50% of the remaining
+   anchor-to-quote gap early and 75% after two buyer turns. It still must improve
+   the actual standing quote under both the production model and the weighted
+   sensitivity model, and remain inside the external alternative ceiling.
+   Worst-scenario losses are recorded explicitly. These weights remain assumptions,
+   not calibrated probabilities; this change deliberately trades a universal
+   worst-scenario guarantee for bounded exploration.
+
+2. **There was no dependable response to a negotiation impasse.** A new recovery
+   policy detects repeated buyer portfolios or explicit requests for reciprocity.
+   After repeated counters, it moves one quarter of the remaining price gap on
+   terms the supplier has actually offered. On an explicit impasse, it can ask
+   for one adjacent beneficial non-price change at the observed price. Each
+   option must improve complete modeled cost, preserve coverage and earlier
+   comparable concessions, and obey all legal terms. A stale price is replaced
+   on its structure, rather than offering two prices for identical terms. Active
+   early negotiations do not automatically get near-quote offers.
+   Historical-prefix replay demonstrates real changes to P01/P02 portfolios.
+   For P04 it requests the next payment step on the supplier's existing contract
+   structure. At the recorded price, 45-to-60-day payment would save EUR 653.33;
+   supplier acceptance remains unknown. This is a counterfactual cost calculation,
+   not a new achieved score or a hardcoded case-specific price.
+
+3. **The deadline policy confused a safe deal with a good competitive outcome.**
+   P05's reserve reached roughly 62 seconds against a 60-second message clock,
+   so the incumbent kept receiving urgent policy turns while competitors were
+   never contacted. The revised policy may make one first contact with an
+   untouched open supplier when the incumbent stalls or worsens. It protects an
+   incumbent whose observed acceptable total cost is still falling by more than
+   0.1%. It does not explore against a final/last-round offer, a hard eight-second
+   deadline, or an incumbent already carrying an unanswered timeout update.
+   Forecast reply time must fit within at most one additional timeout window.
+   Urgent decisions remain code-only. Slower-than-observed future replies and
+   withdrawals remain possible; this is not a timing guarantee.
+
+4. **A concrete supplier question was ignored.** In P05 the supplier asked for
+   more volume, which the case does not allow negotiating. The composer now
+   explicitly answers that the annual commitment is fixed instead of ignoring
+   the request or offering an illegal change.
+
+5. **Diagnostics and tests hid the failure modes.** Rejected proposals previously
+   retained only base IDs and field names; their actual rejected prices cannot
+   be reconstructed reliably. New traces retain changes, executable terms,
+   modeled costs, the budget and scenario deltas. An offline audit tool separates
+   scored runs from unscored failures and replays only historical prefixes with
+   no future results exposed to the agent. The timing evaluator now includes
+   suppliers whose competitive advantage is revealed only after first contact.
+
+The production agent contains no P/D case-ID switches, benchmark costs, previous
+winning terms or hidden supplier floors. Public should-cost and supplier-financing
+models remain imperfect. The final estimated costs differ from actual costs by
+about EUR 1,650 in P01, EUR 6,588 in P02 and EUR 17,115 in P03. Expanding the planner
+does not by itself establish that these estimates are calibrated.
+
+### Verification and limitations
+
+| Offline comparison | Conditions per version | `3c0df55` | Revised |
+|---|---:|---:|---:|
+| Reused generalization regression | 96 | 91.59 | 91.59 |
+| Reused multi-issue regression | 54 | 75.59 | 75.59 |
+| Timing: stable advantage | 24 | 62.66 | 62.66 |
+| Timing: reversed advantage | 18 | 42.70 | 42.70 |
+| Discovery stress used during development | 18 | 40.48 | 48.03 |
+| Discovery stress, fresh seeds and delays | 18 | 42.86 | 50.01 |
+
+The new random draws use seeds 719341/230017 and delays 17/36/54 seconds. They test
+the same discovery mechanism, not an independent real-world supplier population.
+All reported final runs close legally, with no must-have violations. No new Claude
+calls, Sandbox sessions or Practice scoreboard attempts were used for this repair.
+There is **no newly measured Arena score for the revised version**.
+
+The complete local test suite passes **210 tests with 2 skips**; Ruff and diff
+checks pass. Regression tests cover impasse recovery, productive early talks,
+invalid standing terms, cost ceilings, terminal offers, weighted cost uncertainty,
+first-contact deadlines, ongoing incumbent progress and timeout exhaustion.
+
+Two broader changes were rejected during development: unconditional near-quote
+offers reduced the generalization and multi-issue averages to 79.91 and 41.69;
+exploring even while the incumbent improved reduced the stable timing average to
+53.48. The shipped conditions were narrowed to address those regressions. This
+development history is retained in the machine-readable evidence rather than
+presenting only successful experiments.
+
+Reproduce the record audit with `python -m aeiou.practice_review
+data/local/practice-first-five-3c0df55 --replay --output data/local/review.json`.
+Run the new clock profile with `python src/aeiou/timing_evaluation.py --profile
+discovery --seeds 719341 230017 --delays 17 36 54 --output data/local/discovery.json`;
+use `--agent-source` for a frozen baseline checkout. Paired rows, historical
+evidence, limitations and source hashes are in
+`evaluation/practice-score-repair.json`; the local dashboard has a matching
+**Score repair — observed causes and offline validation** experiment entry.

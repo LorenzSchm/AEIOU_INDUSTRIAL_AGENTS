@@ -156,7 +156,12 @@ def test_deadline_hook_also_supports_agents_without_close_method(tmp_path, monke
     assert table.deadline_close(object(), threads)["message"]["action"]["type"] == "accept"
 
 
-def test_open_incumbent_is_countered_without_llm_instead_of_early_close(tmp_path, monkeypatch):
+@pytest.mark.parametrize("explored", [False, True])
+@pytest.mark.parametrize("progressing", [False, True])
+@pytest.mark.parametrize("reply_seconds", [35, 55])
+def test_deadline_continuation_balances_first_contact_and_incumbent(
+    tmp_path, monkeypatch, explored, progressing, reply_seconds
+):
     from aeiou.research import package
     from aeiou.strategic import StrategicNegotiator
 
@@ -170,6 +175,10 @@ def test_open_incumbent_is_countered_without_llm_instead_of_early_close(tmp_path
     case, threads = table.open(client.case["case_id"])
     threads[client.sid][-1]["status"] = "open"
     threads[client.sid].insert(0, {"from": "buyer", "body": "A prior counter."})
+    if progressing:
+        initial = copy.deepcopy(threads[client.sid][-1])
+        initial["term_sheets"][0]["terms"]["unit_price"] = 18
+        threads[client.sid].insert(0, initial)
     threads["other"] = [
         {
             **client.quote(),
@@ -177,17 +186,26 @@ def test_open_incumbent_is_countered_without_llm_instead_of_early_close(tmp_path
             "term_sheets": [{"term_sheet_id": "offer:other", "terms": {"unit_price": 18, "payment_days": 30}}],
         }
     ]
+    if explored:
+        threads["other"].insert(0, {"from": "buyer", "body": "Already explored."})
     agent = StrategicNegotiator(package(), NoCalls())
     monkeypatch.setattr("aeiou.runner.time.monotonic", lambda: 100)
-    table.slowest_reply = 35
+    table.slowest_reply = reply_seconds
     table.deadlines = {client.sid: 140, "other": 155}
     assert table.deadline_close(agent, threads) is None
     decision = agent.decide(case, threads)
-    assert decision["supplier_id"] == client.sid  # not the unexplored but slower alternative
+    assert decision["supplier_id"] == (client.sid if explored or progressing else "other")
     assert decision["message"].get("term_sheets")
     assert agent.fallbacks == 0
     assert agent.controller["timing"]["policy_only"]
-    assert table.run["transport_events"][-1]["type"] == "deadline_focus"
+    assert table.run["transport_events"][-1]["type"] == (
+        "deadline_focus" if explored or progressing else "deadline_explore"
+    )
+    # After one unanswered supplier update, stop exploration and protect the
+    # incumbent; a first-contact policy must not spend all three timeouts.
+    threads[client.sid].append(copy.deepcopy(threads[client.sid][-1]))
+    assert table.deadline_close(agent, threads) is None
+    assert agent.runtime_context["focus_supplier"] == client.sid
     table.deadlines[client.sid] = 105
     assert table.deadline_close(agent, threads)["message"]["action"]["type"] == "accept"
     assert not agent.runtime_context

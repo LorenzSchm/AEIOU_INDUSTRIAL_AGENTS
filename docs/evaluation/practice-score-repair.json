@@ -1,0 +1,4053 @@
+{
+  "title": "Score repair — observed causes and offline validation",
+  "created_at": "2026-10-24T20:23:38.568801+00:00",
+  "baseline_commit": "3c0df55",
+  "arena_sessions_used": 0,
+  "practice_sessions_used": 0,
+  "llm_calls": 0,
+  "conditions": {
+    "planned_sessions": 0,
+    "supplier_mode": "offline scripted suppliers and historical prefixes",
+    "buyer_model": "deterministic policy; no new Claude calls"
+  },
+  "summary": {
+    "Generalization regression / before": {
+      "scores": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.782196943496383,
+        0.9827585018642522,
+        0.9294379440189849,
+        1.0,
+        0.9163552390212205,
+        1.0,
+        0.7979649878954699,
+        0.8620580533767013,
+        0.6980166039741746,
+        0.9226521595001196,
+        0.8796013019419024,
+        0.9600076151538862,
+        0.7838825081439965,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.8538502530642067,
+        1.0,
+        1.0,
+        1.0,
+        0.7978701853322018,
+        0.8404255883139433,
+        0.7281815428313362,
+        0.7889420774392804,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.837472030114932,
+        0.9718892201468567,
+        0.968732538407456,
+        0.9534378824073916,
+        0.7924371175124616,
+        0.9118046745149972,
+        0.9971006898915709,
+        1.0,
+        1.0,
+        1.0,
+        0.7162438114094101,
+        0.789744329556009,
+        0.6787473196414003,
+        0.7426524274342697,
+        0.7952039582621501,
+        0.8420032109164246,
+        0.7182114070413987,
+        0.7908845357210104,
+        0.8044344523367257,
+        1.0,
+        0.9562399856840734,
+        1.0,
+        0.9086674218771593,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.8523236466548376,
+        0.9929995112473303,
+        0.8932320932106641,
+        0.8372164345176579,
+        0.7464136307543674,
+        0.8592061460392245,
+        0.964980510724943,
+        1.0,
+        0.9209277120356083,
+        1.0,
+        1.0,
+        1.0,
+        0.9706160295464157,
+        1.0,
+        0.9121262268294442,
+        1.0,
+        0.9877703979229104,
+        1.0,
+        0.7454329096931706,
+        1.0,
+        0.8866742003969112,
+        0.9599901671181904,
+        0.7781913730534246,
+        0.7912622914577376,
+        0.7181269768495121,
+        0.7777711147963621,
+        0.7582305169947109,
+        0.9621448907239776,
+        0.913513028142461,
+        1.0
+      ],
+      "mean_score": 0.9159297742391002,
+      "sessions": 96,
+      "failures": 0,
+      "must_have_violations": 0
+    },
+    "Generalization regression / after": {
+      "scores": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.782196943496383,
+        0.9827585018642522,
+        0.9294379440189849,
+        1.0,
+        0.9163552390212205,
+        1.0,
+        0.7979649878954699,
+        0.8620580533767013,
+        0.6980166039741746,
+        0.9226521595001196,
+        0.8796013019419024,
+        0.9600076151538862,
+        0.7838825081439965,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.8538502530642067,
+        1.0,
+        1.0,
+        1.0,
+        0.7978701853322018,
+        0.8404255883139433,
+        0.7281815428313362,
+        0.7889420774392804,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.837472030114932,
+        0.9718892201468567,
+        0.968732538407456,
+        0.9534378824073916,
+        0.7924371175124616,
+        0.9118046745149972,
+        0.9971006898915709,
+        1.0,
+        1.0,
+        1.0,
+        0.7162438114094101,
+        0.789744329556009,
+        0.6787473196414003,
+        0.7426524274342697,
+        0.7952039582621501,
+        0.8420032109164246,
+        0.7182114070413987,
+        0.7908845357210104,
+        0.8044344523367257,
+        1.0,
+        0.9562399856840734,
+        1.0,
+        0.9086674218771593,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.8523236466548376,
+        0.9929995112473303,
+        0.8932320932106641,
+        0.8372164345176579,
+        0.7464136307543674,
+        0.8592061460392245,
+        0.964980510724943,
+        1.0,
+        0.9209277120356083,
+        1.0,
+        1.0,
+        1.0,
+        0.9706160295464157,
+        1.0,
+        0.9121262268294442,
+        1.0,
+        0.9877703979229104,
+        1.0,
+        0.7454329096931706,
+        1.0,
+        0.8866742003969112,
+        0.9599901671181904,
+        0.7781913730534246,
+        0.7912622914577376,
+        0.7181269768495121,
+        0.7777711147963621,
+        0.7582305169947109,
+        0.9621448907239776,
+        0.913513028142461,
+        1.0
+      ],
+      "mean_score": 0.9159297742391002,
+      "sessions": 96,
+      "failures": 0,
+      "must_have_violations": 0
+    },
+    "Multi-issue regression / before": {
+      "scores": [
+        0.3084744266667733,
+        0.7572565072295295,
+        0.7572565072295295,
+        0.3212741076179878,
+        0.8672602551176449,
+        0.8672602551176449,
+        0.3347736239650899,
+        0.9603012672742495,
+        0.9603012672742495,
+        0.31186935796403303,
+        0.8566593235118637,
+        0.8566593235118637,
+        0.43659077589388123,
+        1.0,
+        1.0,
+        0.316348440003307,
+        0.810691370565259,
+        0.810691370565259,
+        0.9194794939400476,
+        0.6407060135570495,
+        0.34041116304511737,
+        1.0,
+        0.7707276385064653,
+        0.4305652510142734,
+        0.911827969280625,
+        0.5384587734113143,
+        0.27969542873321424,
+        1.0,
+        0.6163518026996775,
+        0.3150659676079223,
+        1.0,
+        0.8427735869815637,
+        0.4491296815174731,
+        1.0,
+        0.7794069344094459,
+        0.4227654519868521,
+        0.8476627661221547,
+        1.0,
+        1.0,
+        0.6137201291585433,
+        0.8475905615184064,
+        0.8475905615184064,
+        0.8574964580737557,
+        1.0,
+        1.0,
+        0.6174503434497949,
+        0.8718907149402755,
+        0.8718907149402755,
+        0.8238982733248734,
+        1.0,
+        1.0,
+        0.8271229577998743,
+        1.0,
+        1.0
+      ],
+      "mean_score": 0.7558767929082513,
+      "sessions": 54,
+      "failures": 0,
+      "must_have_violations": 0
+    },
+    "Multi-issue regression / after": {
+      "scores": [
+        0.3084744266667733,
+        0.7572565072295295,
+        0.7572565072295295,
+        0.3212741076179878,
+        0.8672602551176449,
+        0.8672602551176449,
+        0.3347736239650899,
+        0.9603012672742495,
+        0.9603012672742495,
+        0.31186935796403303,
+        0.8566593235118637,
+        0.8566593235118637,
+        0.43659077589388123,
+        1.0,
+        1.0,
+        0.316348440003307,
+        0.810691370565259,
+        0.810691370565259,
+        0.9194794939400476,
+        0.6407060135570495,
+        0.34041116304511737,
+        1.0,
+        0.7707276385064653,
+        0.4305652510142734,
+        0.911827969280625,
+        0.5384587734113143,
+        0.27969542873321424,
+        1.0,
+        0.6163518026996775,
+        0.3150659676079223,
+        1.0,
+        0.8427735869815637,
+        0.4491296815174731,
+        1.0,
+        0.7794069344094459,
+        0.4227654519868521,
+        0.8476627661221547,
+        1.0,
+        1.0,
+        0.6137201291585433,
+        0.8475905615184064,
+        0.8475905615184064,
+        0.8574964580737557,
+        1.0,
+        1.0,
+        0.6174503434497949,
+        0.8718907149402755,
+        0.8718907149402755,
+        0.8238982733248734,
+        1.0,
+        1.0,
+        0.8271229577998743,
+        1.0,
+        1.0
+      ],
+      "mean_score": 0.7558767929082513,
+      "sessions": 54,
+      "failures": 0,
+      "must_have_violations": 0
+    },
+    "Timing: stable advantage / before": {
+      "scores": [
+        0.6663985244833556,
+        0.6670277471368551,
+        0.6663985244833556,
+        0.6670277471368551,
+        0.6663985244833556,
+        0.6670277471368551,
+        0.7134094967329354,
+        0.7129154801673709,
+        0.44499113615608066,
+        0.44424998585444436,
+        0.7134094967329354,
+        0.7129154801673709,
+        0.6663985244833556,
+        0.6670277471368551,
+        0.7134094967329354,
+        0.7129154801673709,
+        0.22206741296513377,
+        0.22221238724872,
+        0.6663985244833556,
+        0.6670277471368551,
+        0.6663985244833556,
+        0.6670277471368551,
+        0.7134094967329354,
+        0.7129154801673709
+      ],
+      "mean_score": 0.6266407691477862,
+      "sessions": 24,
+      "failures": 0,
+      "must_have_violations": 0
+    },
+    "Timing: stable advantage / after": {
+      "scores": [
+        0.6663985244833556,
+        0.6670277471368551,
+        0.6663985244833556,
+        0.6670277471368551,
+        0.6663985244833556,
+        0.6670277471368551,
+        0.7134094967329354,
+        0.7129154801673709,
+        0.44499113615608066,
+        0.44424998585444436,
+        0.7134094967329354,
+        0.7129154801673709,
+        0.6663985244833556,
+        0.6670277471368551,
+        0.7134094967329354,
+        0.7129154801673709,
+        0.22206741296513377,
+        0.22221238724872,
+        0.6663985244833556,
+        0.6670277471368551,
+        0.6663985244833556,
+        0.6670277471368551,
+        0.7134094967329354,
+        0.7129154801673709
+      ],
+      "mean_score": 0.6266407691477862,
+      "sessions": 24,
+      "failures": 0,
+      "must_have_violations": 0
+    },
+    "Timing: reversed advantage / before": {
+      "scores": [
+        0.43939673884196173,
+        0.4387367990012936,
+        0.43939673884196173,
+        0.4387367990012936,
+        0.17308436442344965,
+        0.17294853449175415,
+        0.5324022383589058,
+        0.5319233358375638,
+        0.5727447212627984,
+        0.5737163890200463,
+        0.23716938318543512,
+        0.2369833036031271,
+        0.3766107933569148,
+        0.37631518063048247,
+        0.6969171598285225,
+        0.6967631357316358,
+        0.3766107933569148,
+        0.37631518063048247
+      ],
+      "mean_score": 0.4270428660780302,
+      "sessions": 18,
+      "failures": 0,
+      "must_have_violations": 0
+    },
+    "Timing: reversed advantage / after": {
+      "scores": [
+        0.43939673884196173,
+        0.4387367990012936,
+        0.43939673884196173,
+        0.4387367990012936,
+        0.17308436442344965,
+        0.17294853449175415,
+        0.5324022383589058,
+        0.5319233358375638,
+        0.5727447212627984,
+        0.5737163890200463,
+        0.23716938318543512,
+        0.2369833036031271,
+        0.3766107933569148,
+        0.37631518063048247,
+        0.6969171598285225,
+        0.6967631357316358,
+        0.3766107933569148,
+        0.37631518063048247
+      ],
+      "mean_score": 0.4270428660780302,
+      "sessions": 18,
+      "failures": 0,
+      "must_have_violations": 0
+    },
+    "Discovery stress (development) / before": {
+      "scores": [
+        0.5995880187420798,
+        0.5068958536286118,
+        0.5995880187420798,
+        0.5068958536286118,
+        0.5995880187420798,
+        0.07734272606084197,
+        0.5995880187420798,
+        0.5068958536286118,
+        0.5995880187420798,
+        0.5068958536286118,
+        0.5995880187420798,
+        0.07734272606084197,
+        0.5069373000389603,
+        0.1856965301786148,
+        0.5069373000389603,
+        0.11468060277439841,
+        0.07739298826828778,
+        0.11468060277439841
+      ],
+      "mean_score": 0.40478457239790167,
+      "sessions": 18,
+      "failures": 0,
+      "must_have_violations": 0
+    },
+    "Discovery stress (development) / after": {
+      "scores": [
+        0.5995880187420798,
+        0.5068958536286118,
+        0.5995880187420798,
+        0.5068958536286118,
+        0.5995880187420798,
+        0.5068958536286118,
+        0.5995880187420798,
+        0.5068958536286118,
+        0.5995880187420798,
+        0.5068958536286118,
+        0.5995880187420798,
+        0.5068958536286118,
+        0.5069373000389603,
+        0.1856965301786148,
+        0.5069373000389603,
+        0.1856965301786148,
+        0.5069373000389603,
+        0.11468060277439841
+      ],
+      "mean_score": 0.4803215998595921,
+      "sessions": 18,
+      "failures": 0,
+      "must_have_violations": 0
+    },
+    "Discovery stress (fresh seeds) / before": {
+      "scores": [
+        0.5995142786426789,
+        0.5066082298785407,
+        0.5995142786426789,
+        0.5066082298785407,
+        0.5995142786426789,
+        0.07702391109604148,
+        0.5995142786426789,
+        0.5066082298785407,
+        0.5995142786426789,
+        0.5066082298785407,
+        0.5995142786426789,
+        0.07702391109604148,
+        0.5061114468255264,
+        0.37706446849141234,
+        0.5061114468255264,
+        0.37706446849141234,
+        0.07821647781983683,
+        0.09200078695948778
+      ],
+      "mean_score": 0.4285630838319734,
+      "sessions": 18,
+      "failures": 0,
+      "must_have_violations": 0
+    },
+    "Discovery stress (fresh seeds) / after": {
+      "scores": [
+        0.5995142786426789,
+        0.5066082298785407,
+        0.5995142786426789,
+        0.5066082298785407,
+        0.5995142786426789,
+        0.5066082298785407,
+        0.5995142786426789,
+        0.5066082298785407,
+        0.5995142786426789,
+        0.5066082298785407,
+        0.5995142786426789,
+        0.5066082298785407,
+        0.5061114468255264,
+        0.37706446849141234,
+        0.5061114468255264,
+        0.37706446849141234,
+        0.5061114468255264,
+        0.09200078695948778
+      ],
+      "mean_score": 0.500066617530345,
+      "sessions": 18,
+      "failures": 0,
+      "must_have_violations": 0
+    }
+  },
+  "paired_comparisons": {},
+  "excluded_pairs": 0,
+  "offline_comparisons": [
+    {
+      "name": "Generalization regression",
+      "conditions": 96,
+      "before": 91.59297742391001,
+      "after": 91.59297742391001,
+      "wins": 0,
+      "ties": 96,
+      "losses": 0,
+      "paired_rows": [
+        {
+          "condition": {
+            "case_id": "case:G0bf33b519a5a",
+            "family": "price_increase",
+            "opponent": "hardliner",
+            "seed": 570721
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G0bf33b519a5a",
+            "family": "price_increase",
+            "opponent": "cashflow",
+            "seed": 570721
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G0bf33b519a5a",
+            "family": "price_increase",
+            "opponent": "relationship",
+            "seed": 570721
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G0bf33b519a5a",
+            "family": "price_increase",
+            "opponent": "adversarial",
+            "seed": 570721
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gd00819e56f21",
+            "family": "price_increase",
+            "opponent": "hardliner",
+            "seed": 743703
+          },
+          "before": 0.782196943496383,
+          "after": 0.782196943496383,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gd00819e56f21",
+            "family": "price_increase",
+            "opponent": "cashflow",
+            "seed": 743703
+          },
+          "before": 0.9827585018642522,
+          "after": 0.9827585018642522,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gd00819e56f21",
+            "family": "price_increase",
+            "opponent": "relationship",
+            "seed": 743703
+          },
+          "before": 0.9294379440189849,
+          "after": 0.9294379440189849,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gd00819e56f21",
+            "family": "price_increase",
+            "opponent": "adversarial",
+            "seed": 743703
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gc8d7561370e6",
+            "family": "price_increase",
+            "opponent": "hardliner",
+            "seed": 363357
+          },
+          "before": 0.9163552390212205,
+          "after": 0.9163552390212205,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gc8d7561370e6",
+            "family": "price_increase",
+            "opponent": "cashflow",
+            "seed": 363357
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gc8d7561370e6",
+            "family": "price_increase",
+            "opponent": "relationship",
+            "seed": 363357
+          },
+          "before": 0.7979649878954699,
+          "after": 0.7979649878954699,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gc8d7561370e6",
+            "family": "price_increase",
+            "opponent": "adversarial",
+            "seed": 363357
+          },
+          "before": 0.8620580533767013,
+          "after": 0.8620580533767013,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gfd2dafa3f527",
+            "family": "price_increase",
+            "opponent": "hardliner",
+            "seed": 416464
+          },
+          "before": 0.6980166039741746,
+          "after": 0.6980166039741746,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gfd2dafa3f527",
+            "family": "price_increase",
+            "opponent": "cashflow",
+            "seed": 416464
+          },
+          "before": 0.9226521595001196,
+          "after": 0.9226521595001196,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gfd2dafa3f527",
+            "family": "price_increase",
+            "opponent": "relationship",
+            "seed": 416464
+          },
+          "before": 0.8796013019419024,
+          "after": 0.8796013019419024,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gfd2dafa3f527",
+            "family": "price_increase",
+            "opponent": "adversarial",
+            "seed": 416464
+          },
+          "before": 0.9600076151538862,
+          "after": 0.9600076151538862,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G5a2c5d82aeeb",
+            "family": "rfq",
+            "opponent": "hardliner",
+            "seed": 588925
+          },
+          "before": 0.7838825081439965,
+          "after": 0.7838825081439965,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G5a2c5d82aeeb",
+            "family": "rfq",
+            "opponent": "cashflow",
+            "seed": 588925
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G5a2c5d82aeeb",
+            "family": "rfq",
+            "opponent": "relationship",
+            "seed": 588925
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G5a2c5d82aeeb",
+            "family": "rfq",
+            "opponent": "adversarial",
+            "seed": 588925
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G692bce01eefa",
+            "family": "rfq",
+            "opponent": "hardliner",
+            "seed": 864282
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G692bce01eefa",
+            "family": "rfq",
+            "opponent": "cashflow",
+            "seed": 864282
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G692bce01eefa",
+            "family": "rfq",
+            "opponent": "relationship",
+            "seed": 864282
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G692bce01eefa",
+            "family": "rfq",
+            "opponent": "adversarial",
+            "seed": 864282
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gddf1eb47fe65",
+            "family": "rfq",
+            "opponent": "hardliner",
+            "seed": 655671
+          },
+          "before": 0.8538502530642067,
+          "after": 0.8538502530642067,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gddf1eb47fe65",
+            "family": "rfq",
+            "opponent": "cashflow",
+            "seed": 655671
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gddf1eb47fe65",
+            "family": "rfq",
+            "opponent": "relationship",
+            "seed": 655671
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gddf1eb47fe65",
+            "family": "rfq",
+            "opponent": "adversarial",
+            "seed": 655671
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gcb40a33df824",
+            "family": "rfq",
+            "opponent": "hardliner",
+            "seed": 433349
+          },
+          "before": 0.7978701853322018,
+          "after": 0.7978701853322018,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gcb40a33df824",
+            "family": "rfq",
+            "opponent": "cashflow",
+            "seed": 433349
+          },
+          "before": 0.8404255883139433,
+          "after": 0.8404255883139433,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gcb40a33df824",
+            "family": "rfq",
+            "opponent": "relationship",
+            "seed": 433349
+          },
+          "before": 0.7281815428313362,
+          "after": 0.7281815428313362,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gcb40a33df824",
+            "family": "rfq",
+            "opponent": "adversarial",
+            "seed": 433349
+          },
+          "before": 0.7889420774392804,
+          "after": 0.7889420774392804,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gb96e0d5aca52",
+            "family": "renewal",
+            "opponent": "hardliner",
+            "seed": 437042
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gb96e0d5aca52",
+            "family": "renewal",
+            "opponent": "cashflow",
+            "seed": 437042
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gb96e0d5aca52",
+            "family": "renewal",
+            "opponent": "relationship",
+            "seed": 437042
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gb96e0d5aca52",
+            "family": "renewal",
+            "opponent": "adversarial",
+            "seed": 437042
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gbfdab7bb96b9",
+            "family": "renewal",
+            "opponent": "hardliner",
+            "seed": 564224
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gbfdab7bb96b9",
+            "family": "renewal",
+            "opponent": "cashflow",
+            "seed": 564224
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gbfdab7bb96b9",
+            "family": "renewal",
+            "opponent": "relationship",
+            "seed": 564224
+          },
+          "before": 0.837472030114932,
+          "after": 0.837472030114932,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gbfdab7bb96b9",
+            "family": "renewal",
+            "opponent": "adversarial",
+            "seed": 564224
+          },
+          "before": 0.9718892201468567,
+          "after": 0.9718892201468567,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G03e2a0b83e5b",
+            "family": "renewal",
+            "opponent": "hardliner",
+            "seed": 843299
+          },
+          "before": 0.968732538407456,
+          "after": 0.968732538407456,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G03e2a0b83e5b",
+            "family": "renewal",
+            "opponent": "cashflow",
+            "seed": 843299
+          },
+          "before": 0.9534378824073916,
+          "after": 0.9534378824073916,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G03e2a0b83e5b",
+            "family": "renewal",
+            "opponent": "relationship",
+            "seed": 843299
+          },
+          "before": 0.7924371175124616,
+          "after": 0.7924371175124616,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G03e2a0b83e5b",
+            "family": "renewal",
+            "opponent": "adversarial",
+            "seed": 843299
+          },
+          "before": 0.9118046745149972,
+          "after": 0.9118046745149972,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G7c2ad8e48690",
+            "family": "renewal",
+            "opponent": "hardliner",
+            "seed": 236153
+          },
+          "before": 0.9971006898915709,
+          "after": 0.9971006898915709,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G7c2ad8e48690",
+            "family": "renewal",
+            "opponent": "cashflow",
+            "seed": 236153
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G7c2ad8e48690",
+            "family": "renewal",
+            "opponent": "relationship",
+            "seed": 236153
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G7c2ad8e48690",
+            "family": "renewal",
+            "opponent": "adversarial",
+            "seed": 236153
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gb8cad4a62567",
+            "family": "quality",
+            "opponent": "hardliner",
+            "seed": 353559
+          },
+          "before": 0.7162438114094101,
+          "after": 0.7162438114094101,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gb8cad4a62567",
+            "family": "quality",
+            "opponent": "cashflow",
+            "seed": 353559
+          },
+          "before": 0.789744329556009,
+          "after": 0.789744329556009,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gb8cad4a62567",
+            "family": "quality",
+            "opponent": "relationship",
+            "seed": 353559
+          },
+          "before": 0.6787473196414003,
+          "after": 0.6787473196414003,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gb8cad4a62567",
+            "family": "quality",
+            "opponent": "adversarial",
+            "seed": 353559
+          },
+          "before": 0.7426524274342697,
+          "after": 0.7426524274342697,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gce2c9b3db2e4",
+            "family": "quality",
+            "opponent": "hardliner",
+            "seed": 199588
+          },
+          "before": 0.7952039582621501,
+          "after": 0.7952039582621501,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gce2c9b3db2e4",
+            "family": "quality",
+            "opponent": "cashflow",
+            "seed": 199588
+          },
+          "before": 0.8420032109164246,
+          "after": 0.8420032109164246,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gce2c9b3db2e4",
+            "family": "quality",
+            "opponent": "relationship",
+            "seed": 199588
+          },
+          "before": 0.7182114070413987,
+          "after": 0.7182114070413987,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gce2c9b3db2e4",
+            "family": "quality",
+            "opponent": "adversarial",
+            "seed": 199588
+          },
+          "before": 0.7908845357210104,
+          "after": 0.7908845357210104,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G1a1c7f64bd75",
+            "family": "quality",
+            "opponent": "hardliner",
+            "seed": 552797
+          },
+          "before": 0.8044344523367257,
+          "after": 0.8044344523367257,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G1a1c7f64bd75",
+            "family": "quality",
+            "opponent": "cashflow",
+            "seed": 552797
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G1a1c7f64bd75",
+            "family": "quality",
+            "opponent": "relationship",
+            "seed": 552797
+          },
+          "before": 0.9562399856840734,
+          "after": 0.9562399856840734,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G1a1c7f64bd75",
+            "family": "quality",
+            "opponent": "adversarial",
+            "seed": 552797
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gbc4d5ebb85e7",
+            "family": "quality",
+            "opponent": "hardliner",
+            "seed": 309185
+          },
+          "before": 0.9086674218771593,
+          "after": 0.9086674218771593,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gbc4d5ebb85e7",
+            "family": "quality",
+            "opponent": "cashflow",
+            "seed": 309185
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gbc4d5ebb85e7",
+            "family": "quality",
+            "opponent": "relationship",
+            "seed": 309185
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gbc4d5ebb85e7",
+            "family": "quality",
+            "opponent": "adversarial",
+            "seed": 309185
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G895e065c2430",
+            "family": "capacity",
+            "opponent": "hardliner",
+            "seed": 734373
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G895e065c2430",
+            "family": "capacity",
+            "opponent": "cashflow",
+            "seed": 734373
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G895e065c2430",
+            "family": "capacity",
+            "opponent": "relationship",
+            "seed": 734373
+          },
+          "before": 0.8523236466548376,
+          "after": 0.8523236466548376,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G895e065c2430",
+            "family": "capacity",
+            "opponent": "adversarial",
+            "seed": 734373
+          },
+          "before": 0.9929995112473303,
+          "after": 0.9929995112473303,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gbfd01793859e",
+            "family": "capacity",
+            "opponent": "hardliner",
+            "seed": 511335
+          },
+          "before": 0.8932320932106641,
+          "after": 0.8932320932106641,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gbfd01793859e",
+            "family": "capacity",
+            "opponent": "cashflow",
+            "seed": 511335
+          },
+          "before": 0.8372164345176579,
+          "after": 0.8372164345176579,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gbfd01793859e",
+            "family": "capacity",
+            "opponent": "relationship",
+            "seed": 511335
+          },
+          "before": 0.7464136307543674,
+          "after": 0.7464136307543674,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Gbfd01793859e",
+            "family": "capacity",
+            "opponent": "adversarial",
+            "seed": 511335
+          },
+          "before": 0.8592061460392245,
+          "after": 0.8592061460392245,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G2ff158bb68bb",
+            "family": "capacity",
+            "opponent": "hardliner",
+            "seed": 322801
+          },
+          "before": 0.964980510724943,
+          "after": 0.964980510724943,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G2ff158bb68bb",
+            "family": "capacity",
+            "opponent": "cashflow",
+            "seed": 322801
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G2ff158bb68bb",
+            "family": "capacity",
+            "opponent": "relationship",
+            "seed": 322801
+          },
+          "before": 0.9209277120356083,
+          "after": 0.9209277120356083,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G2ff158bb68bb",
+            "family": "capacity",
+            "opponent": "adversarial",
+            "seed": 322801
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G96ddcaedd8aa",
+            "family": "capacity",
+            "opponent": "hardliner",
+            "seed": 947182
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G96ddcaedd8aa",
+            "family": "capacity",
+            "opponent": "cashflow",
+            "seed": 947182
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G96ddcaedd8aa",
+            "family": "capacity",
+            "opponent": "relationship",
+            "seed": 947182
+          },
+          "before": 0.9706160295464157,
+          "after": 0.9706160295464157,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G96ddcaedd8aa",
+            "family": "capacity",
+            "opponent": "adversarial",
+            "seed": 947182
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G6a2b5f5386cc",
+            "family": "raw_material",
+            "opponent": "hardliner",
+            "seed": 904837
+          },
+          "before": 0.9121262268294442,
+          "after": 0.9121262268294442,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G6a2b5f5386cc",
+            "family": "raw_material",
+            "opponent": "cashflow",
+            "seed": 904837
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G6a2b5f5386cc",
+            "family": "raw_material",
+            "opponent": "relationship",
+            "seed": 904837
+          },
+          "before": 0.9877703979229104,
+          "after": 0.9877703979229104,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G6a2b5f5386cc",
+            "family": "raw_material",
+            "opponent": "adversarial",
+            "seed": 904837
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G44eeedeedbf5",
+            "family": "raw_material",
+            "opponent": "hardliner",
+            "seed": 449827
+          },
+          "before": 0.7454329096931706,
+          "after": 0.7454329096931706,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G44eeedeedbf5",
+            "family": "raw_material",
+            "opponent": "cashflow",
+            "seed": 449827
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G44eeedeedbf5",
+            "family": "raw_material",
+            "opponent": "relationship",
+            "seed": 449827
+          },
+          "before": 0.8866742003969112,
+          "after": 0.8866742003969112,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G44eeedeedbf5",
+            "family": "raw_material",
+            "opponent": "adversarial",
+            "seed": 449827
+          },
+          "before": 0.9599901671181904,
+          "after": 0.9599901671181904,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G27fa18cdd24c",
+            "family": "raw_material",
+            "opponent": "hardliner",
+            "seed": 911697
+          },
+          "before": 0.7781913730534246,
+          "after": 0.7781913730534246,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G27fa18cdd24c",
+            "family": "raw_material",
+            "opponent": "cashflow",
+            "seed": 911697
+          },
+          "before": 0.7912622914577376,
+          "after": 0.7912622914577376,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G27fa18cdd24c",
+            "family": "raw_material",
+            "opponent": "relationship",
+            "seed": 911697
+          },
+          "before": 0.7181269768495121,
+          "after": 0.7181269768495121,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G27fa18cdd24c",
+            "family": "raw_material",
+            "opponent": "adversarial",
+            "seed": 911697
+          },
+          "before": 0.7777711147963621,
+          "after": 0.7777711147963621,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G74a531a8fe2f",
+            "family": "raw_material",
+            "opponent": "hardliner",
+            "seed": 250217
+          },
+          "before": 0.7582305169947109,
+          "after": 0.7582305169947109,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G74a531a8fe2f",
+            "family": "raw_material",
+            "opponent": "cashflow",
+            "seed": 250217
+          },
+          "before": 0.9621448907239776,
+          "after": 0.9621448907239776,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G74a531a8fe2f",
+            "family": "raw_material",
+            "opponent": "relationship",
+            "seed": 250217
+          },
+          "before": 0.913513028142461,
+          "after": 0.913513028142461,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:G74a531a8fe2f",
+            "family": "raw_material",
+            "opponent": "adversarial",
+            "seed": 250217
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        }
+      ],
+      "source_files": {
+        "data\\local\\final-regression.json": "a79107cae47d78ac0ffb0ed0a1176f1f03481f98be1a33c842b8b0d12c42e402",
+        "data\\local\\score-repair-generalization-final.json": "a79107cae47d78ac0ffb0ed0a1176f1f03481f98be1a33c842b8b0d12c42e402"
+      }
+    },
+    {
+      "name": "Multi-issue regression",
+      "conditions": 54,
+      "before": 75.58767929082512,
+      "after": 75.58767929082512,
+      "wins": 0,
+      "ties": 54,
+      "losses": 0,
+      "paired_rows": [
+        {
+          "condition": {
+            "case_id": "case:M9a10b2fe8649",
+            "family": "quality",
+            "sensitivity": -1.0
+          },
+          "before": 0.3084744266667733,
+          "after": 0.3084744266667733,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M9a10b2fe8649",
+            "family": "quality",
+            "sensitivity": 0.65
+          },
+          "before": 0.7572565072295295,
+          "after": 0.7572565072295295,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M9a10b2fe8649",
+            "family": "quality",
+            "sensitivity": 2.0
+          },
+          "before": 0.7572565072295295,
+          "after": 0.7572565072295295,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Mffcd0f0b3daf",
+            "family": "quality",
+            "sensitivity": -1.0
+          },
+          "before": 0.3212741076179878,
+          "after": 0.3212741076179878,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Mffcd0f0b3daf",
+            "family": "quality",
+            "sensitivity": 0.65
+          },
+          "before": 0.8672602551176449,
+          "after": 0.8672602551176449,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Mffcd0f0b3daf",
+            "family": "quality",
+            "sensitivity": 2.0
+          },
+          "before": 0.8672602551176449,
+          "after": 0.8672602551176449,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M0e5aee8a3416",
+            "family": "quality",
+            "sensitivity": -1.0
+          },
+          "before": 0.3347736239650899,
+          "after": 0.3347736239650899,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M0e5aee8a3416",
+            "family": "quality",
+            "sensitivity": 0.65
+          },
+          "before": 0.9603012672742495,
+          "after": 0.9603012672742495,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M0e5aee8a3416",
+            "family": "quality",
+            "sensitivity": 2.0
+          },
+          "before": 0.9603012672742495,
+          "after": 0.9603012672742495,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Me452e34fd2ac",
+            "family": "quality",
+            "sensitivity": -1.0
+          },
+          "before": 0.31186935796403303,
+          "after": 0.31186935796403303,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Me452e34fd2ac",
+            "family": "quality",
+            "sensitivity": 0.65
+          },
+          "before": 0.8566593235118637,
+          "after": 0.8566593235118637,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Me452e34fd2ac",
+            "family": "quality",
+            "sensitivity": 2.0
+          },
+          "before": 0.8566593235118637,
+          "after": 0.8566593235118637,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M77ba04242ea5",
+            "family": "quality",
+            "sensitivity": -1.0
+          },
+          "before": 0.43659077589388123,
+          "after": 0.43659077589388123,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M77ba04242ea5",
+            "family": "quality",
+            "sensitivity": 0.65
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M77ba04242ea5",
+            "family": "quality",
+            "sensitivity": 2.0
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M9e8770193290",
+            "family": "quality",
+            "sensitivity": -1.0
+          },
+          "before": 0.316348440003307,
+          "after": 0.316348440003307,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M9e8770193290",
+            "family": "quality",
+            "sensitivity": 0.65
+          },
+          "before": 0.810691370565259,
+          "after": 0.810691370565259,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M9e8770193290",
+            "family": "quality",
+            "sensitivity": 2.0
+          },
+          "before": 0.810691370565259,
+          "after": 0.810691370565259,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M2e9278248481",
+            "family": "index",
+            "sensitivity": -1.0
+          },
+          "before": 0.9194794939400476,
+          "after": 0.9194794939400476,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M2e9278248481",
+            "family": "index",
+            "sensitivity": 0.65
+          },
+          "before": 0.6407060135570495,
+          "after": 0.6407060135570495,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M2e9278248481",
+            "family": "index",
+            "sensitivity": 2.0
+          },
+          "before": 0.34041116304511737,
+          "after": 0.34041116304511737,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M15cf97477001",
+            "family": "index",
+            "sensitivity": -1.0
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M15cf97477001",
+            "family": "index",
+            "sensitivity": 0.65
+          },
+          "before": 0.7707276385064653,
+          "after": 0.7707276385064653,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M15cf97477001",
+            "family": "index",
+            "sensitivity": 2.0
+          },
+          "before": 0.4305652510142734,
+          "after": 0.4305652510142734,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M1baeb617494d",
+            "family": "index",
+            "sensitivity": -1.0
+          },
+          "before": 0.911827969280625,
+          "after": 0.911827969280625,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M1baeb617494d",
+            "family": "index",
+            "sensitivity": 0.65
+          },
+          "before": 0.5384587734113143,
+          "after": 0.5384587734113143,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M1baeb617494d",
+            "family": "index",
+            "sensitivity": 2.0
+          },
+          "before": 0.27969542873321424,
+          "after": 0.27969542873321424,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M96020d674d88",
+            "family": "index",
+            "sensitivity": -1.0
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M96020d674d88",
+            "family": "index",
+            "sensitivity": 0.65
+          },
+          "before": 0.6163518026996775,
+          "after": 0.6163518026996775,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M96020d674d88",
+            "family": "index",
+            "sensitivity": 2.0
+          },
+          "before": 0.3150659676079223,
+          "after": 0.3150659676079223,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M4b9692aff5fb",
+            "family": "index",
+            "sensitivity": -1.0
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M4b9692aff5fb",
+            "family": "index",
+            "sensitivity": 0.65
+          },
+          "before": 0.8427735869815637,
+          "after": 0.8427735869815637,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M4b9692aff5fb",
+            "family": "index",
+            "sensitivity": 2.0
+          },
+          "before": 0.4491296815174731,
+          "after": 0.4491296815174731,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Ma0e3c379fcb3",
+            "family": "index",
+            "sensitivity": -1.0
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Ma0e3c379fcb3",
+            "family": "index",
+            "sensitivity": 0.65
+          },
+          "before": 0.7794069344094459,
+          "after": 0.7794069344094459,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Ma0e3c379fcb3",
+            "family": "index",
+            "sensitivity": 2.0
+          },
+          "before": 0.4227654519868521,
+          "after": 0.4227654519868521,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Mf30c63b2284a",
+            "family": "delivery",
+            "sensitivity": -1.0
+          },
+          "before": 0.8476627661221547,
+          "after": 0.8476627661221547,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Mf30c63b2284a",
+            "family": "delivery",
+            "sensitivity": 0.65
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:Mf30c63b2284a",
+            "family": "delivery",
+            "sensitivity": 2.0
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M31fdab72debe",
+            "family": "delivery",
+            "sensitivity": -1.0
+          },
+          "before": 0.6137201291585433,
+          "after": 0.6137201291585433,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M31fdab72debe",
+            "family": "delivery",
+            "sensitivity": 0.65
+          },
+          "before": 0.8475905615184064,
+          "after": 0.8475905615184064,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M31fdab72debe",
+            "family": "delivery",
+            "sensitivity": 2.0
+          },
+          "before": 0.8475905615184064,
+          "after": 0.8475905615184064,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M590dcc0a1eb6",
+            "family": "delivery",
+            "sensitivity": -1.0
+          },
+          "before": 0.8574964580737557,
+          "after": 0.8574964580737557,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M590dcc0a1eb6",
+            "family": "delivery",
+            "sensitivity": 0.65
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M590dcc0a1eb6",
+            "family": "delivery",
+            "sensitivity": 2.0
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M1a09d4e578b1",
+            "family": "delivery",
+            "sensitivity": -1.0
+          },
+          "before": 0.6174503434497949,
+          "after": 0.6174503434497949,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M1a09d4e578b1",
+            "family": "delivery",
+            "sensitivity": 0.65
+          },
+          "before": 0.8718907149402755,
+          "after": 0.8718907149402755,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M1a09d4e578b1",
+            "family": "delivery",
+            "sensitivity": 2.0
+          },
+          "before": 0.8718907149402755,
+          "after": 0.8718907149402755,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M753731834f34",
+            "family": "delivery",
+            "sensitivity": -1.0
+          },
+          "before": 0.8238982733248734,
+          "after": 0.8238982733248734,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M753731834f34",
+            "family": "delivery",
+            "sensitivity": 0.65
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M753731834f34",
+            "family": "delivery",
+            "sensitivity": 2.0
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M15ab560f657c",
+            "family": "delivery",
+            "sensitivity": -1.0
+          },
+          "before": 0.8271229577998743,
+          "after": 0.8271229577998743,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M15ab560f657c",
+            "family": "delivery",
+            "sensitivity": 0.65
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "case_id": "case:M15ab560f657c",
+            "family": "delivery",
+            "sensitivity": 2.0
+          },
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0
+        }
+      ],
+      "source_files": {
+        "data\\local\\final-portfolio.json": "bafb1cb7f3446c5feb8d30b81c27c38c4b347e0ff8dcf2941a0636820bc7d01c",
+        "data\\local\\score-repair-portfolio-final.json": "bafb1cb7f3446c5feb8d30b81c27c38c4b347e0ff8dcf2941a0636820bc7d01c"
+      }
+    },
+    {
+      "name": "Timing: stable advantage",
+      "conditions": 24,
+      "before": 62.66407691477862,
+      "after": 62.66407691477862,
+      "wins": 0,
+      "ties": 24,
+      "losses": 0,
+      "paired_rows": [
+        {
+          "condition": {
+            "seed": 613,
+            "suppliers": 2,
+            "delay_s": 8
+          },
+          "before": 0.6663985244833556,
+          "after": 0.6663985244833556,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 981,
+            "suppliers": 2,
+            "delay_s": 8
+          },
+          "before": 0.6670277471368551,
+          "after": 0.6670277471368551,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 613,
+            "suppliers": 2,
+            "delay_s": 25
+          },
+          "before": 0.6663985244833556,
+          "after": 0.6663985244833556,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 981,
+            "suppliers": 2,
+            "delay_s": 25
+          },
+          "before": 0.6670277471368551,
+          "after": 0.6670277471368551,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 613,
+            "suppliers": 2,
+            "delay_s": 45
+          },
+          "before": 0.6663985244833556,
+          "after": 0.6663985244833556,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 981,
+            "suppliers": 2,
+            "delay_s": 45
+          },
+          "before": 0.6670277471368551,
+          "after": 0.6670277471368551,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 613,
+            "suppliers": 2,
+            "delay_s": 55
+          },
+          "before": 0.7134094967329354,
+          "after": 0.7134094967329354,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 981,
+            "suppliers": 2,
+            "delay_s": 55
+          },
+          "before": 0.7129154801673709,
+          "after": 0.7129154801673709,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 613,
+            "suppliers": 3,
+            "delay_s": 8
+          },
+          "before": 0.44499113615608066,
+          "after": 0.44499113615608066,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 981,
+            "suppliers": 3,
+            "delay_s": 8
+          },
+          "before": 0.44424998585444436,
+          "after": 0.44424998585444436,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 613,
+            "suppliers": 3,
+            "delay_s": 25
+          },
+          "before": 0.7134094967329354,
+          "after": 0.7134094967329354,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 981,
+            "suppliers": 3,
+            "delay_s": 25
+          },
+          "before": 0.7129154801673709,
+          "after": 0.7129154801673709,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 613,
+            "suppliers": 3,
+            "delay_s": 45
+          },
+          "before": 0.6663985244833556,
+          "after": 0.6663985244833556,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 981,
+            "suppliers": 3,
+            "delay_s": 45
+          },
+          "before": 0.6670277471368551,
+          "after": 0.6670277471368551,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 613,
+            "suppliers": 3,
+            "delay_s": 55
+          },
+          "before": 0.7134094967329354,
+          "after": 0.7134094967329354,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 981,
+            "suppliers": 3,
+            "delay_s": 55
+          },
+          "before": 0.7129154801673709,
+          "after": 0.7129154801673709,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 613,
+            "suppliers": 4,
+            "delay_s": 8
+          },
+          "before": 0.22206741296513377,
+          "after": 0.22206741296513377,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 981,
+            "suppliers": 4,
+            "delay_s": 8
+          },
+          "before": 0.22221238724872,
+          "after": 0.22221238724872,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 613,
+            "suppliers": 4,
+            "delay_s": 25
+          },
+          "before": 0.6663985244833556,
+          "after": 0.6663985244833556,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 981,
+            "suppliers": 4,
+            "delay_s": 25
+          },
+          "before": 0.6670277471368551,
+          "after": 0.6670277471368551,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 613,
+            "suppliers": 4,
+            "delay_s": 45
+          },
+          "before": 0.6663985244833556,
+          "after": 0.6663985244833556,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 981,
+            "suppliers": 4,
+            "delay_s": 45
+          },
+          "before": 0.6670277471368551,
+          "after": 0.6670277471368551,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 613,
+            "suppliers": 4,
+            "delay_s": 55
+          },
+          "before": 0.7134094967329354,
+          "after": 0.7134094967329354,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 981,
+            "suppliers": 4,
+            "delay_s": 55
+          },
+          "before": 0.7129154801673709,
+          "after": 0.7129154801673709,
+          "delta": 0.0
+        }
+      ],
+      "source_files": {
+        "data\\local\\final-timing-after.json": "ace3a84025fe950a6ce91c94da724672d5404d7fe274b0069d982ae0956cff7c",
+        "data\\local\\score-repair-clock-stable-balanced.json": "a6ed95ce3e15d3e4016af082dbf0c2266054307c9b902434af8c242d25639d5e"
+      }
+    },
+    {
+      "name": "Timing: reversed advantage",
+      "conditions": 18,
+      "before": 42.70428660780302,
+      "after": 42.70428660780302,
+      "wins": 0,
+      "ties": 18,
+      "losses": 0,
+      "paired_rows": [
+        {
+          "condition": {
+            "seed": 1259,
+            "suppliers": 2,
+            "delay_s": 12
+          },
+          "before": 0.43939673884196173,
+          "after": 0.43939673884196173,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 8102,
+            "suppliers": 2,
+            "delay_s": 12
+          },
+          "before": 0.4387367990012936,
+          "after": 0.4387367990012936,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 1259,
+            "suppliers": 2,
+            "delay_s": 32
+          },
+          "before": 0.43939673884196173,
+          "after": 0.43939673884196173,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 8102,
+            "suppliers": 2,
+            "delay_s": 32
+          },
+          "before": 0.4387367990012936,
+          "after": 0.4387367990012936,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 1259,
+            "suppliers": 2,
+            "delay_s": 48
+          },
+          "before": 0.17308436442344965,
+          "after": 0.17308436442344965,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 8102,
+            "suppliers": 2,
+            "delay_s": 48
+          },
+          "before": 0.17294853449175415,
+          "after": 0.17294853449175415,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 1259,
+            "suppliers": 3,
+            "delay_s": 12
+          },
+          "before": 0.5324022383589058,
+          "after": 0.5324022383589058,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 8102,
+            "suppliers": 3,
+            "delay_s": 12
+          },
+          "before": 0.5319233358375638,
+          "after": 0.5319233358375638,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 1259,
+            "suppliers": 3,
+            "delay_s": 32
+          },
+          "before": 0.5727447212627984,
+          "after": 0.5727447212627984,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 8102,
+            "suppliers": 3,
+            "delay_s": 32
+          },
+          "before": 0.5737163890200463,
+          "after": 0.5737163890200463,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 1259,
+            "suppliers": 3,
+            "delay_s": 48
+          },
+          "before": 0.23716938318543512,
+          "after": 0.23716938318543512,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 8102,
+            "suppliers": 3,
+            "delay_s": 48
+          },
+          "before": 0.2369833036031271,
+          "after": 0.2369833036031271,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 1259,
+            "suppliers": 4,
+            "delay_s": 12
+          },
+          "before": 0.3766107933569148,
+          "after": 0.3766107933569148,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 8102,
+            "suppliers": 4,
+            "delay_s": 12
+          },
+          "before": 0.37631518063048247,
+          "after": 0.37631518063048247,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 1259,
+            "suppliers": 4,
+            "delay_s": 32
+          },
+          "before": 0.6969171598285225,
+          "after": 0.6969171598285225,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 8102,
+            "suppliers": 4,
+            "delay_s": 32
+          },
+          "before": 0.6967631357316358,
+          "after": 0.6967631357316358,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 1259,
+            "suppliers": 4,
+            "delay_s": 48
+          },
+          "before": 0.3766107933569148,
+          "after": 0.3766107933569148,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 8102,
+            "suppliers": 4,
+            "delay_s": 48
+          },
+          "before": 0.37631518063048247,
+          "after": 0.37631518063048247,
+          "delta": 0.0
+        }
+      ],
+      "source_files": {
+        "data\\local\\score-repair-clock-before.json": "3c846a5ae6fa39678f4c94d04f4eae8b7920b32a538b38cef9421787d9d8683a",
+        "data\\local\\score-repair-clock-reversed-balanced.json": "83a3fb2f9d157a794fa388922e3122c0ff3aa0d4a057677eb7ec8d8eabd9342f"
+      }
+    },
+    {
+      "name": "Discovery stress (development)",
+      "conditions": 18,
+      "before": 40.47845723979017,
+      "after": 48.03215998595921,
+      "wins": 4,
+      "ties": 14,
+      "losses": 0,
+      "paired_rows": [
+        {
+          "condition": {
+            "seed": 37591,
+            "suppliers": 2,
+            "delay_s": 20
+          },
+          "before": 0.5995880187420798,
+          "after": 0.5995880187420798,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 96017,
+            "suppliers": 2,
+            "delay_s": 20
+          },
+          "before": 0.5068958536286118,
+          "after": 0.5068958536286118,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 37591,
+            "suppliers": 2,
+            "delay_s": 40
+          },
+          "before": 0.5995880187420798,
+          "after": 0.5995880187420798,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 96017,
+            "suppliers": 2,
+            "delay_s": 40
+          },
+          "before": 0.5068958536286118,
+          "after": 0.5068958536286118,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 37591,
+            "suppliers": 2,
+            "delay_s": 55
+          },
+          "before": 0.5995880187420798,
+          "after": 0.5995880187420798,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 96017,
+            "suppliers": 2,
+            "delay_s": 55
+          },
+          "before": 0.07734272606084197,
+          "after": 0.5068958536286118,
+          "delta": 0.4295531275677698
+        },
+        {
+          "condition": {
+            "seed": 37591,
+            "suppliers": 3,
+            "delay_s": 20
+          },
+          "before": 0.5995880187420798,
+          "after": 0.5995880187420798,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 96017,
+            "suppliers": 3,
+            "delay_s": 20
+          },
+          "before": 0.5068958536286118,
+          "after": 0.5068958536286118,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 37591,
+            "suppliers": 3,
+            "delay_s": 40
+          },
+          "before": 0.5995880187420798,
+          "after": 0.5995880187420798,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 96017,
+            "suppliers": 3,
+            "delay_s": 40
+          },
+          "before": 0.5068958536286118,
+          "after": 0.5068958536286118,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 37591,
+            "suppliers": 3,
+            "delay_s": 55
+          },
+          "before": 0.5995880187420798,
+          "after": 0.5995880187420798,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 96017,
+            "suppliers": 3,
+            "delay_s": 55
+          },
+          "before": 0.07734272606084197,
+          "after": 0.5068958536286118,
+          "delta": 0.4295531275677698
+        },
+        {
+          "condition": {
+            "seed": 37591,
+            "suppliers": 4,
+            "delay_s": 20
+          },
+          "before": 0.5069373000389603,
+          "after": 0.5069373000389603,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 96017,
+            "suppliers": 4,
+            "delay_s": 20
+          },
+          "before": 0.1856965301786148,
+          "after": 0.1856965301786148,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 37591,
+            "suppliers": 4,
+            "delay_s": 40
+          },
+          "before": 0.5069373000389603,
+          "after": 0.5069373000389603,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 96017,
+            "suppliers": 4,
+            "delay_s": 40
+          },
+          "before": 0.11468060277439841,
+          "after": 0.1856965301786148,
+          "delta": 0.07101592740421638
+        },
+        {
+          "condition": {
+            "seed": 37591,
+            "suppliers": 4,
+            "delay_s": 55
+          },
+          "before": 0.07739298826828778,
+          "after": 0.5069373000389603,
+          "delta": 0.42954431177067254
+        },
+        {
+          "condition": {
+            "seed": 96017,
+            "suppliers": 4,
+            "delay_s": 55
+          },
+          "before": 0.11468060277439841,
+          "after": 0.11468060277439841,
+          "delta": 0.0
+        }
+      ],
+      "source_files": {
+        "data\\local\\score-repair-discovery-before.json": "521c4c02c7e0f67ac797bb7f814ef4c7fbd87095101d3b5c176678763329de69",
+        "data\\local\\score-repair-discovery-balanced.json": "26fb5ee1bcdc9c4e8e2ba93103589013f7bd1b99b2a251a2c4db74db2930ef86"
+      }
+    },
+    {
+      "name": "Discovery stress (fresh seeds)",
+      "conditions": 18,
+      "before": 42.85630838319734,
+      "after": 50.0066617530345,
+      "wins": 3,
+      "ties": 15,
+      "losses": 0,
+      "paired_rows": [
+        {
+          "condition": {
+            "seed": 719341,
+            "suppliers": 2,
+            "delay_s": 17.0
+          },
+          "before": 0.5995142786426789,
+          "after": 0.5995142786426789,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 230017,
+            "suppliers": 2,
+            "delay_s": 17.0
+          },
+          "before": 0.5066082298785407,
+          "after": 0.5066082298785407,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 719341,
+            "suppliers": 2,
+            "delay_s": 36.0
+          },
+          "before": 0.5995142786426789,
+          "after": 0.5995142786426789,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 230017,
+            "suppliers": 2,
+            "delay_s": 36.0
+          },
+          "before": 0.5066082298785407,
+          "after": 0.5066082298785407,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 719341,
+            "suppliers": 2,
+            "delay_s": 54.0
+          },
+          "before": 0.5995142786426789,
+          "after": 0.5995142786426789,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 230017,
+            "suppliers": 2,
+            "delay_s": 54.0
+          },
+          "before": 0.07702391109604148,
+          "after": 0.5066082298785407,
+          "delta": 0.42958431878249925
+        },
+        {
+          "condition": {
+            "seed": 719341,
+            "suppliers": 3,
+            "delay_s": 17.0
+          },
+          "before": 0.5995142786426789,
+          "after": 0.5995142786426789,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 230017,
+            "suppliers": 3,
+            "delay_s": 17.0
+          },
+          "before": 0.5066082298785407,
+          "after": 0.5066082298785407,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 719341,
+            "suppliers": 3,
+            "delay_s": 36.0
+          },
+          "before": 0.5995142786426789,
+          "after": 0.5995142786426789,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 230017,
+            "suppliers": 3,
+            "delay_s": 36.0
+          },
+          "before": 0.5066082298785407,
+          "after": 0.5066082298785407,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 719341,
+            "suppliers": 3,
+            "delay_s": 54.0
+          },
+          "before": 0.5995142786426789,
+          "after": 0.5995142786426789,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 230017,
+            "suppliers": 3,
+            "delay_s": 54.0
+          },
+          "before": 0.07702391109604148,
+          "after": 0.5066082298785407,
+          "delta": 0.42958431878249925
+        },
+        {
+          "condition": {
+            "seed": 719341,
+            "suppliers": 4,
+            "delay_s": 17.0
+          },
+          "before": 0.5061114468255264,
+          "after": 0.5061114468255264,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 230017,
+            "suppliers": 4,
+            "delay_s": 17.0
+          },
+          "before": 0.37706446849141234,
+          "after": 0.37706446849141234,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 719341,
+            "suppliers": 4,
+            "delay_s": 36.0
+          },
+          "before": 0.5061114468255264,
+          "after": 0.5061114468255264,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 230017,
+            "suppliers": 4,
+            "delay_s": 36.0
+          },
+          "before": 0.37706446849141234,
+          "after": 0.37706446849141234,
+          "delta": 0.0
+        },
+        {
+          "condition": {
+            "seed": 719341,
+            "suppliers": 4,
+            "delay_s": 54.0
+          },
+          "before": 0.07821647781983683,
+          "after": 0.5061114468255264,
+          "delta": 0.42789496900568963
+        },
+        {
+          "condition": {
+            "seed": 230017,
+            "suppliers": 4,
+            "delay_s": 54.0
+          },
+          "before": 0.09200078695948778,
+          "after": 0.09200078695948778,
+          "delta": 0.0
+        }
+      ],
+      "source_files": {
+        "data\\local\\score-repair-discovery-fresh-before.json": "20fc96b6ea058b7500da96ef1372a43242f46a3415f406db13416653308cea97",
+        "data\\local\\score-repair-discovery-fresh-after.json": "af1779e69da72181b1dea8c220a9543d88f503daf6ff1b723ef4ba27c10b2f2d"
+      }
+    }
+  ],
+  "historical_first_five": {
+    "rows": [
+      {
+        "file": "data\\local\\practice-first-five-3c0df55\\P01-1.json",
+        "sha256": "2e50b77b75882b08c1b8bccc0be85745b246201aa5243bb02da658e8fdf62543",
+        "case_id": "case:P01",
+        "score": 50.27584107565577,
+        "actual_savings_eur": 28639.110000000102,
+        "benchmark_gap_eur": 28324.84999999986,
+        "actual_cost_breakdown": {
+          "price": 1096858.93,
+          "uncovered_need": 0.0,
+          "fallback_risk": 0.0,
+          "payment_terms": 11212.34,
+          "freight": 15485.0,
+          "late_delivery": 0.0,
+          "quality": 1584.36,
+          "tooling": 0.0,
+          "index_clause": 0.0,
+          "index_risk": 0.0,
+          "relationship": 0.0
+        },
+        "production_estimated_final_cost": 1126790.67,
+        "actual_final_cost": 1125140.63,
+        "proposals_submitted": 8,
+        "proposals_admitted": 0,
+        "proposals_selected": 0,
+        "proposal_rejections": [
+          "Proposal 1: Does not improve the quote across economic scenarios",
+          "Proposal 2: Exceeds buyer concession envelope",
+          "Proposal 1: Does not improve the quote across economic scenarios",
+          "Proposal 2: Does not improve the quote across economic scenarios",
+          "Proposal 1: Does not improve the quote across economic scenarios",
+          "Proposal 2: Does not improve the quote across economic scenarios",
+          "Proposal 1: Does not improve the quote across economic scenarios",
+          "Proposal 2: Does not improve the quote across economic scenarios"
+        ],
+        "suppliers_contacted": 1,
+        "suppliers_available": 1,
+        "repeated_buyer_portfolios": 3,
+        "replay": [
+          {
+            "message_index": 1,
+            "observed_action": [
+              {
+                "unit_price": 132.27,
+                "effective_date": "2027-01-01",
+                "payment_days": 14
+              },
+              {
+                "unit_price": 134.68,
+                "effective_date": "2027-04-01",
+                "payment_days": 14
+              },
+              {
+                "unit_price": 131.31,
+                "effective_date": "2026-11-01",
+                "payment_days": 14
+              }
+            ],
+            "revised_policy_action": [
+              {
+                "unit_price": 132.27,
+                "effective_date": "2027-01-01",
+                "payment_days": 14
+              },
+              {
+                "unit_price": 134.68,
+                "effective_date": "2027-04-01",
+                "payment_days": 14
+              },
+              {
+                "unit_price": 131.31,
+                "effective_date": "2026-11-01",
+                "payment_days": 14
+              }
+            ],
+            "revised_action_type": "send"
+          },
+          {
+            "message_index": 3,
+            "observed_action": [
+              {
+                "unit_price": 132.27,
+                "effective_date": "2027-01-01",
+                "payment_days": 14
+              },
+              {
+                "unit_price": 134.68,
+                "effective_date": "2027-04-01",
+                "payment_days": 14
+              },
+              {
+                "unit_price": 131.31,
+                "effective_date": "2026-11-01",
+                "payment_days": 14
+              }
+            ],
+            "revised_policy_action": [
+              {
+                "unit_price": 132.27,
+                "effective_date": "2027-01-01",
+                "payment_days": 14
+              },
+              {
+                "unit_price": 134.68,
+                "effective_date": "2027-04-01",
+                "payment_days": 14
+              },
+              {
+                "unit_price": 131.31,
+                "effective_date": "2026-11-01",
+                "payment_days": 14
+              }
+            ],
+            "revised_action_type": "send"
+          },
+          {
+            "message_index": 5,
+            "observed_action": [
+              {
+                "unit_price": 132.27,
+                "effective_date": "2027-01-01",
+                "payment_days": 14
+              },
+              {
+                "unit_price": 134.68,
+                "effective_date": "2027-04-01",
+                "payment_days": 14
+              },
+              {
+                "unit_price": 131.31,
+                "effective_date": "2026-11-01",
+                "payment_days": 14
+              }
+            ],
+            "revised_policy_action": [
+              {
+                "unit_price": 133.4,
+                "effective_date": "2027-01-01",
+                "payment_days": 14
+              },
+              {
+                "unit_price": 134.68,
+                "effective_date": "2027-04-01",
+                "payment_days": 14
+              },
+              {
+                "unit_price": 131.31,
+                "effective_date": "2026-11-01",
+                "payment_days": 14
+              }
+            ],
+            "revised_action_type": "send"
+          },
+          {
+            "message_index": 7,
+            "observed_action": [
+              {
+                "unit_price": 132.27,
+                "effective_date": "2027-01-01",
+                "payment_days": 14
+              },
+              {
+                "unit_price": 134.68,
+                "effective_date": "2027-04-01",
+                "payment_days": 14
+              },
+              {
+                "unit_price": 131.31,
+                "effective_date": "2026-11-01",
+                "payment_days": 14
+              }
+            ],
+            "revised_policy_action": [
+              {
+                "unit_price": 133.25,
+                "effective_date": "2027-01-01",
+                "payment_days": 14
+              },
+              {
+                "unit_price": 134.68,
+                "effective_date": "2027-04-01",
+                "payment_days": 14
+              },
+              {
+                "unit_price": 131.31,
+                "effective_date": "2026-11-01",
+                "payment_days": 14
+              }
+            ],
+            "revised_action_type": "send"
+          }
+        ]
+      },
+      {
+        "file": "data\\local\\practice-first-five-3c0df55\\P02-1.json",
+        "sha256": "afe04d3855778285050a01ec2ed33b61d608a5140c94a088c4972ca5fc5934ec",
+        "case_id": "case:P02",
+        "score": 2.0122930878941894,
+        "actual_savings_eur": 952.8900000001304,
+        "benchmark_gap_eur": 46400.55000000028,
+        "actual_cost_breakdown": {
+          "price": 2257645.0,
+          "uncovered_need": 0.0,
+          "fallback_risk": 0.0,
+          "payment_terms": 23078.15,
+          "freight": 0.0,
+          "late_delivery": 0.0,
+          "quality": 1191.45,
+          "tooling": 0.0,
+          "index_clause": 0.0,
+          "index_risk": 0.0,
+          "relationship": 0.0
+        },
+        "production_estimated_final_cost": 2288502.65,
+        "actual_final_cost": 2281914.6,
+        "proposals_submitted": 6,
+        "proposals_admitted": 0,
+        "proposals_selected": 0,
+        "proposal_rejections": [
+          "Proposal 1: Exceeds buyer concession envelope",
+          "Proposal 2: Exceeds buyer concession envelope",
+          "Proposal 1: Does not improve the quote across economic scenarios",
+          "Proposal 2: Exceeds buyer concession envelope",
+          "Proposal 1: Does not improve the quote across economic scenarios",
+          "Proposal 2: Exceeds buyer concession envelope"
+        ],
+        "suppliers_contacted": 1,
+        "suppliers_available": 1,
+        "repeated_buyer_portfolios": 2,
+        "replay": [
+          {
+            "message_index": 1,
+            "observed_action": [
+              {
+                "unit_price": 362.44,
+                "payment_days": 14,
+                "index_clause": null
+              },
+              {
+                "unit_price": 362.44,
+                "payment_days": 60,
+                "index_clause": null
+              }
+            ],
+            "revised_policy_action": [
+              {
+                "unit_price": 362.44,
+                "payment_days": 14,
+                "index_clause": null
+              },
+              {
+                "unit_price": 362.44,
+                "payment_days": 60,
+                "index_clause": null
+              }
+            ],
+            "revised_action_type": "send"
+          },
+          {
+            "message_index": 3,
+            "observed_action": [
+              {
+                "unit_price": 362.44,
+                "payment_days": 14,
+                "index_clause": null
+              },
+              {
+                "unit_price": 362.44,
+                "payment_days": 60,
+                "index_clause": null
+              }
+            ],
+            "revised_policy_action": [
+              {
+                "unit_price": 362.44,
+                "payment_days": 14,
+                "index_clause": null
+              },
+              {
+                "unit_price": 362.44,
+                "payment_days": 60,
+                "index_clause": null
+              }
+            ],
+            "revised_action_type": "send"
+          },
+          {
+            "message_index": 5,
+            "observed_action": [
+              {
+                "unit_price": 362.44,
+                "payment_days": 14,
+                "index_clause": null
+              },
+              {
+                "unit_price": 362.44,
+                "payment_days": 60,
+                "index_clause": null
+              }
+            ],
+            "revised_policy_action": [
+              {
+                "unit_price": 364.2,
+                "payment_days": 14,
+                "index_clause": null
+              },
+              {
+                "unit_price": 362.44,
+                "payment_days": 60,
+                "index_clause": null
+              },
+              {
+                "unit_price": 369.5,
+                "payment_days": 30,
+                "index_clause": null
+              }
+            ],
+            "revised_action_type": "send"
+          }
+        ]
+      },
+      {
+        "file": "data\\local\\practice-first-five-3c0df55\\P03-1.json",
+        "sha256": "1ad5450772612bb30b629fd100a7021e5de53745661bcb830858128c893e7211",
+        "case_id": "case:P03",
+        "score": 82.38826223144287,
+        "actual_savings_eur": 277871.64999999944,
+        "benchmark_gap_eur": 59399.27000000002,
+        "actual_cost_breakdown": {
+          "price": 3940174.0,
+          "uncovered_need": 0.0,
+          "fallback_risk": 0.0,
+          "payment_terms": 26267.83,
+          "freight": 0.0,
+          "late_delivery": 0.0,
+          "quality": 2000.54,
+          "tooling": 0.0,
+          "index_clause": 0.0,
+          "index_risk": 0.0,
+          "relationship": 0.0
+        },
+        "production_estimated_final_cost": 3985557.1,
+        "actual_final_cost": 3968442.37,
+        "proposals_submitted": 8,
+        "proposals_admitted": 2,
+        "proposals_selected": 1,
+        "proposal_rejections": [
+          "Proposal 1: Exceeds buyer concession envelope",
+          "Proposal 2: Does not improve the quote across economic scenarios",
+          "Proposal 1: Exceeds buyer concession envelope",
+          "Proposal 2: Does not improve the quote across economic scenarios",
+          "Proposal 1: Exceeds buyer concession envelope",
+          "Proposal 2: Exceeds buyer concession envelope"
+        ],
+        "suppliers_contacted": 1,
+        "suppliers_available": 1,
+        "repeated_buyer_portfolios": 3,
+        "replay": [
+          {
+            "message_index": 1,
+            "observed_action": [
+              {
+                "unit_price": 419.61,
+                "payment_days": 14,
+                "contract_months": 24,
+                "volume_per_year": 4580
+              },
+              {
+                "unit_price": 419.61,
+                "payment_days": 60,
+                "contract_months": 24,
+                "volume_per_year": 4580
+              },
+              {
+                "unit_price": 424.0,
+                "payment_days": 30,
+                "contract_months": 36,
+                "volume_per_year": 4580
+              }
+            ],
+            "revised_policy_action": [
+              {
+                "unit_price": 419.61,
+                "payment_days": 14,
+                "contract_months": 24,
+                "volume_per_year": 4580
+              },
+              {
+                "unit_price": 419.61,
+                "payment_days": 60,
+                "contract_months": 24,
+                "volume_per_year": 4580
+              },
+              {
+                "unit_price": 419.61,
+                "payment_days": 14,
+                "contract_months": 36,
+                "volume_per_year": 4580
+              }
+            ],
+            "revised_action_type": "send"
+          },
+          {
+            "message_index": 3,
+            "observed_action": [
+              {
+                "unit_price": 419.61,
+                "payment_days": 14,
+                "contract_months": 24,
+                "volume_per_year": 4580
+              },
+              {
+                "unit_price": 419.61,
+                "payment_days": 60,
+                "contract_months": 24,
+                "volume_per_year": 4580
+              },
+              {
+                "unit_price": 424.0,
+                "payment_days": 30,
+                "contract_months": 36,
+                "volume_per_year": 4580
+              }
+            ],
+            "revised_policy_action": [
+              {
+                "unit_price": 419.61,
+                "payment_days": 14,
+                "contract_months": 24,
+                "volume_per_year": 4580
+              },
+              {
+                "unit_price": 419.61,
+                "payment_days": 60,
+                "contract_months": 24,
+                "volume_per_year": 4580
+              },
+              {
+                "unit_price": 424.0,
+                "payment_days": 30,
+                "contract_months": 36,
+                "volume_per_year": 4580
+              }
+            ],
+            "revised_action_type": "send"
+          },
+          {
+            "message_index": 5,
+            "observed_action": [
+              {
+                "unit_price": 419.61,
+                "payment_days": 14,
+                "contract_months": 24,
+                "volume_per_year": 4580
+              },
+              {
+                "unit_price": 419.61,
+                "payment_days": 60,
+                "contract_months": 24,
+                "volume_per_year": 4580
+              },
+              {
+                "unit_price": 424.0,
+                "payment_days": 30,
+                "contract_months": 36,
+                "volume_per_year": 4580
+              }
+            ],
+            "revised_policy_action": [
+              {
+                "unit_price": 419.61,
+                "payment_days": 14,
+                "contract_months": 24,
+                "volume_per_year": 4580
+              },
+              {
+                "unit_price": 419.61,
+                "payment_days": 60,
+                "contract_months": 24,
+                "volume_per_year": 4580
+              },
+              {
+                "unit_price": 425.54,
+                "payment_days": 30,
+                "contract_months": 36,
+                "volume_per_year": 4580
+              }
+            ],
+            "revised_action_type": "send"
+          },
+          {
+            "message_index": 7,
+            "observed_action": [
+              {
+                "unit_price": 419.61,
+                "payment_days": 14,
+                "contract_months": 24,
+                "volume_per_year": 4580
+              },
+              {
+                "unit_price": 419.61,
+                "payment_days": 60,
+                "contract_months": 24,
+                "volume_per_year": 4580
+              },
+              {
+                "unit_price": 424.0,
+                "payment_days": 30,
+                "contract_months": 36,
+                "volume_per_year": 4580
+              }
+            ],
+            "revised_policy_action": [
+              {
+                "unit_price": 419.61,
+                "payment_days": 14,
+                "contract_months": 24,
+                "volume_per_year": 4580
+              },
+              {
+                "unit_price": 430.15,
+                "payment_days": 45,
+                "contract_months": 36,
+                "volume_per_year": 4580
+              },
+              {
+                "unit_price": 425.54,
+                "payment_days": 30,
+                "contract_months": 36,
+                "volume_per_year": 4580
+              }
+            ],
+            "revised_action_type": "send"
+          }
+        ]
+      },
+      {
+        "file": "data\\local\\practice-first-five-3c0df55\\P04-1.json",
+        "sha256": "cc51796f755c1d2439fcce9b52fc1146123d9d7f95398083fc74394bee9c8a9e",
+        "case_id": "case:P04",
+        "score": 70.04717286502924,
+        "actual_savings_eur": 1623.0,
+        "benchmark_gap_eur": 694.0099999999802,
+        "actual_cost_breakdown": {
+          "price": 196000.0,
+          "uncovered_need": 0.0,
+          "fallback_risk": 0.0,
+          "payment_terms": 653.33,
+          "freight": 0.0,
+          "late_delivery": 0.0,
+          "quality": 570.0,
+          "tooling": 0.0,
+          "index_clause": 0.0,
+          "index_risk": 0.0,
+          "relationship": 0.0
+        },
+        "production_estimated_final_cost": 197223.33,
+        "actual_final_cost": 197223.33,
+        "proposals_submitted": 4,
+        "proposals_admitted": 2,
+        "proposals_selected": 2,
+        "proposal_rejections": [
+          "Proposal 1: Exceeds buyer concession envelope",
+          "Proposal 1: Exceeds buyer concession envelope"
+        ],
+        "suppliers_contacted": 1,
+        "suppliers_available": 1,
+        "repeated_buyer_portfolios": 0,
+        "replay": [
+          {
+            "message_index": 1,
+            "observed_action": [
+              {
+                "unit_price": 4.07,
+                "payment_days": 90,
+                "contract_months": 24
+              },
+              {
+                "unit_price": 4.0,
+                "payment_days": 14,
+                "contract_months": 24
+              },
+              {
+                "unit_price": 4.3,
+                "payment_days": 45,
+                "contract_months": 36
+              }
+            ],
+            "revised_policy_action": [
+              {
+                "unit_price": 4.07,
+                "payment_days": 90,
+                "contract_months": 24
+              },
+              {
+                "unit_price": 4.0,
+                "payment_days": 14,
+                "contract_months": 24
+              },
+              {
+                "unit_price": 4.07,
+                "payment_days": 90,
+                "contract_months": 36
+              }
+            ],
+            "revised_action_type": "send"
+          },
+          {
+            "message_index": 3,
+            "observed_action": [
+              {
+                "unit_price": 4.09,
+                "payment_days": 90,
+                "contract_months": 24
+              },
+              {
+                "unit_price": 4.3,
+                "payment_days": 45,
+                "contract_months": 36
+              },
+              {
+                "unit_price": 4.2,
+                "payment_days": 60,
+                "contract_months": 24
+              }
+            ],
+            "revised_policy_action": [
+              {
+                "unit_price": 4.09,
+                "payment_days": 90,
+                "contract_months": 24
+              },
+              {
+                "unit_price": 4.02,
+                "payment_days": 14,
+                "contract_months": 24
+              },
+              {
+                "unit_price": 4.9,
+                "payment_days": 60,
+                "contract_months": 36
+              }
+            ],
+            "revised_action_type": "send"
+          }
+        ]
+      },
+      {
+        "file": "data\\local\\practice-first-five-3c0df55\\P05-1.json",
+        "sha256": "5d30470b7afee36b06d9a933a12248643de0a574a68d12123fbe2cb6abfa6e50",
+        "case_id": "case:P05",
+        "score": 16.39273075673045,
+        "actual_savings_eur": 13461.840000000026,
+        "benchmark_gap_eur": 68658.94999999998,
+        "actual_cost_breakdown": {
+          "price": 289800.0,
+          "uncovered_need": 0.0,
+          "fallback_risk": 0.0,
+          "payment_terms": 966.0,
+          "freight": 0.0,
+          "late_delivery": 0.0,
+          "quality": 1317.12,
+          "tooling": 0.0,
+          "index_clause": 0.0,
+          "index_risk": 0.0,
+          "relationship": 0.0
+        },
+        "production_estimated_final_cost": 292083.12,
+        "actual_final_cost": 292083.12,
+        "proposals_submitted": 2,
+        "proposals_admitted": 0,
+        "proposals_selected": 0,
+        "proposal_rejections": [
+          "Proposal 1: Exceeds buyer concession envelope",
+          "Proposal 2: Exceeds buyer concession envelope"
+        ],
+        "suppliers_contacted": 1,
+        "suppliers_available": 3,
+        "repeated_buyer_portfolios": 0,
+        "replay": []
+      }
+    ],
+    "mean_score": 44.223260003350504,
+    "arena_sessions_used": 0,
+    "llm_calls": 0,
+    "limitation": "Historical observations and code-only prefix replay; no counterfactual supplier replies or new Arena scores. Older traces do not retain rejected proposal values, so those proposals cannot be replayed exactly."
+  },
+  "historical_ten": {
+    "rows": [
+      {
+        "file": "data\\local\\practice-ten-43e7857\\P01.json",
+        "sha256": "f32fe3a65c8bc1e54d7c358510bb89c0c0ee9d191eed811bf8e5fa1409ef079f",
+        "case_id": "case:P01",
+        "deal": true,
+        "score": 56.294857309779815,
+        "actual_savings_eur": 32067.780000000028,
+        "benchmark_gap_eur": 24896.179999999935,
+        "actual_cost_breakdown": {
+          "price": 1093464.96,
+          "uncovered_need": 0.0,
+          "fallback_risk": 0.0,
+          "payment_terms": 11177.64,
+          "freight": 15485.0,
+          "late_delivery": 0.0,
+          "quality": 1584.36,
+          "tooling": 0.0,
+          "index_clause": 0.0,
+          "index_risk": 0.0,
+          "relationship": 0.0
+        },
+        "production_estimated_final_cost": 1124477.53,
+        "actual_final_cost": 1121711.96,
+        "proposals_submitted": 0,
+        "proposals_admitted": 0,
+        "proposals_selected": 0,
+        "proposal_rejections": [],
+        "suppliers_contacted": 1,
+        "suppliers_available": 1,
+        "repeated_buyer_portfolios": 1,
+        "replay": []
+      },
+      {
+        "file": "data\\local\\practice-ten-43e7857\\P02.json",
+        "sha256": "17337f6e4ad92382d23f1ec8a55e209112252ac3805e460a0914a4a37db30466",
+        "case_id": "case:P02",
+        "deal": true,
+        "score": 15.698901705979843,
+        "actual_savings_eur": 7433.970000000205,
+        "benchmark_gap_eur": 39919.470000000205,
+        "actual_cost_breakdown": {
+          "price": 2251229.5,
+          "uncovered_need": 0.0,
+          "fallback_risk": 0.0,
+          "payment_terms": 23012.57,
+          "freight": 0.0,
+          "late_delivery": 0.0,
+          "quality": 1191.45,
+          "tooling": 0.0,
+          "index_clause": 0.0,
+          "index_risk": 0.0,
+          "relationship": 0.0
+        },
+        "production_estimated_final_cost": 2284923.83,
+        "actual_final_cost": 2275433.52,
+        "proposals_submitted": 0,
+        "proposals_admitted": 0,
+        "proposals_selected": 0,
+        "proposal_rejections": [],
+        "suppliers_contacted": 1,
+        "suppliers_available": 1,
+        "repeated_buyer_portfolios": 0,
+        "replay": []
+      },
+      {
+        "file": "data\\local\\practice-ten-43e7857\\P03.json",
+        "sha256": "3ac26b3b07475d7d458be18c5bfbaf4e82a541ba01417abc2b8923fd412c252a",
+        "case_id": "case:P03",
+        "deal": true,
+        "score": 83.03494116836399,
+        "actual_savings_eur": 280052.7099999995,
+        "benchmark_gap_eur": 57218.20999999996,
+        "actual_cost_breakdown": {
+          "price": 3924144.0,
+          "uncovered_need": 0.0,
+          "fallback_risk": 0.0,
+          "payment_terms": 40113.47,
+          "freight": 0.0,
+          "late_delivery": 0.0,
+          "quality": 2000.54,
+          "tooling": 0.0,
+          "index_clause": 0.0,
+          "index_risk": 0.0,
+          "relationship": 3.29
+        },
+        "production_estimated_final_cost": 3981155.95,
+        "actual_final_cost": 3966261.31,
+        "proposals_submitted": 0,
+        "proposals_admitted": 0,
+        "proposals_selected": 0,
+        "proposal_rejections": [],
+        "suppliers_contacted": 1,
+        "suppliers_available": 1,
+        "repeated_buyer_portfolios": 0,
+        "replay": []
+      },
+      {
+        "file": "data\\local\\practice-ten-43e7857\\P04.json",
+        "sha256": "e03f6e33b1f385889b0daecac7e37ee7921e596a3a1f5fe22fefc0eb87af9745",
+        "case_id": "case:P04",
+        "deal": true,
+        "score": 86.04451426623068,
+        "actual_savings_eur": 1993.6599999999744,
+        "benchmark_gap_eur": 323.3500000000058,
+        "actual_cost_breakdown": {
+          "price": 197600.0,
+          "uncovered_need": 0.0,
+          "fallback_risk": 0.0,
+          "payment_terms": -1317.33,
+          "freight": 0.0,
+          "late_delivery": 0.0,
+          "quality": 570.0,
+          "tooling": 0.0,
+          "index_clause": 0.0,
+          "index_risk": 0.0,
+          "relationship": 0.0
+        },
+        "production_estimated_final_cost": 196852.67,
+        "actual_final_cost": 196852.67,
+        "proposals_submitted": 0,
+        "proposals_admitted": 0,
+        "proposals_selected": 0,
+        "proposal_rejections": [],
+        "suppliers_contacted": 1,
+        "suppliers_available": 1,
+        "repeated_buyer_portfolios": 0,
+        "replay": []
+      },
+      {
+        "file": "data\\local\\practice-ten-43e7857\\P07.json",
+        "sha256": "d408753a1732b7ee05e47337c0871c4ae84c89fb8d2a2d6af250e69fea9fad63",
+        "case_id": "case:P07",
+        "deal": true,
+        "score": 70.15303329236482,
+        "actual_savings_eur": 64390.600000000035,
+        "benchmark_gap_eur": 27395.309999999998,
+        "actual_cost_breakdown": {
+          "price": 328800.0,
+          "uncovered_need": 0.0,
+          "fallback_risk": 0.0,
+          "payment_terms": -2192.0,
+          "freight": 0.0,
+          "late_delivery": 0.0,
+          "quality": 28.8,
+          "tooling": 0.0,
+          "index_clause": 0.0,
+          "index_risk": 0.0,
+          "relationship": 0.0
+        },
+        "production_estimated_final_cost": 326636.8,
+        "actual_final_cost": 326636.8,
+        "proposals_submitted": 0,
+        "proposals_admitted": 0,
+        "proposals_selected": 0,
+        "proposal_rejections": [],
+        "suppliers_contacted": 1,
+        "suppliers_available": 1,
+        "repeated_buyer_portfolios": 0,
+        "replay": []
+      },
+      {
+        "file": "data\\local\\practice-ten-43e7857\\P08.json",
+        "sha256": "0ee4c87934040d7d5f6108e1e825b95ae1cc4a198be233ff290981be42ec3a5a",
+        "case_id": "case:P08",
+        "deal": true,
+        "score": 49.30542815883198,
+        "actual_savings_eur": 86569.45999999996,
+        "benchmark_gap_eur": 89008.4900000001,
+        "actual_cost_breakdown": {
+          "price": 1029528.0,
+          "uncovered_need": 0.0,
+          "fallback_risk": 0.0,
+          "payment_terms": 10524.06,
+          "freight": 0.0,
+          "late_delivery": 0.0,
+          "quality": 0.0,
+          "tooling": 0.0,
+          "index_clause": 4632.88,
+          "index_risk": 4632.88,
+          "relationship": 0.0
+        },
+        "production_estimated_final_cost": 1049317.82,
+        "actual_final_cost": 1049317.82,
+        "proposals_submitted": 0,
+        "proposals_admitted": 0,
+        "proposals_selected": 0,
+        "proposal_rejections": [],
+        "suppliers_contacted": 1,
+        "suppliers_available": 1,
+        "repeated_buyer_portfolios": 0,
+        "replay": []
+      },
+      {
+        "file": "data\\local\\practice-ten-43e7857\\P10.json",
+        "sha256": "59636ef087a2a9db4f4ac76623528c0f0be25b7d65071856b4c1c461a3f6c670",
+        "case_id": "case:P10",
+        "deal": true,
+        "score": 64.72939820644754,
+        "actual_savings_eur": 390684.17999999993,
+        "benchmark_gap_eur": 212881.1100000001,
+        "actual_cost_breakdown": {
+          "price": 1492920.0,
+          "uncovered_need": 0.0,
+          "fallback_risk": 0.0,
+          "payment_terms": 9952.8,
+          "freight": 0.0,
+          "late_delivery": 33600.0,
+          "quality": 5335.2,
+          "tooling": 0.0,
+          "index_clause": 0.0,
+          "index_risk": 0.0,
+          "relationship": 0.0
+        },
+        "production_estimated_final_cost": 1541808.0,
+        "actual_final_cost": 1541808.0,
+        "proposals_submitted": 0,
+        "proposals_admitted": 0,
+        "proposals_selected": 0,
+        "proposal_rejections": [],
+        "suppliers_contacted": 1,
+        "suppliers_available": 1,
+        "repeated_buyer_portfolios": 0,
+        "replay": []
+      },
+      {
+        "file": "data\\local\\practice-ten-43e7857\\P11.json",
+        "sha256": "149841acb46af1f75ea919ce50e136e94810b237bed8e64c1ed190a1eb264b90",
+        "case_id": "case:P11",
+        "deal": true,
+        "score": 21.238356136720622,
+        "actual_savings_eur": 20193.0,
+        "benchmark_gap_eur": 74884.97999999998,
+        "actual_cost_breakdown": {
+          "price": 772899.0,
+          "uncovered_need": 0.0,
+          "fallback_risk": 0.0,
+          "payment_terms": 0.0,
+          "freight": 24486.0,
+          "late_delivery": 0.0,
+          "quality": 0.0,
+          "tooling": 0.0,
+          "index_clause": 0.0,
+          "index_risk": 0.0,
+          "relationship": 0.0
+        },
+        "production_estimated_final_cost": 797385.0,
+        "actual_final_cost": 797385.0,
+        "proposals_submitted": 0,
+        "proposals_admitted": 0,
+        "proposals_selected": 0,
+        "proposal_rejections": [],
+        "suppliers_contacted": 1,
+        "suppliers_available": 1,
+        "repeated_buyer_portfolios": 0,
+        "replay": []
+      },
+      {
+        "file": "data\\local\\practice-ten-43e7857\\P18.json",
+        "sha256": "bd396aef7bdef4b798501a2f45a3e1f721fc571de6f98e5c7169ecda186deee7",
+        "case_id": "case:P18",
+        "deal": true,
+        "score": 40.624936226213414,
+        "actual_savings_eur": 29462.0,
+        "benchmark_gap_eur": 43059.95999999999,
+        "actual_cost_breakdown": {
+          "price": 260700.0,
+          "uncovered_need": 0.0,
+          "fallback_risk": 0.0,
+          "payment_terms": 2664.93,
+          "freight": 0.0,
+          "late_delivery": 0.0,
+          "quality": 0.0,
+          "tooling": 0.0,
+          "index_clause": 1173.15,
+          "index_risk": 1173.15,
+          "relationship": 0.0
+        },
+        "production_estimated_final_cost": 265711.23,
+        "actual_final_cost": 265711.23,
+        "proposals_submitted": 0,
+        "proposals_admitted": 0,
+        "proposals_selected": 0,
+        "proposal_rejections": [],
+        "suppliers_contacted": 1,
+        "suppliers_available": 1,
+        "repeated_buyer_portfolios": 0,
+        "replay": []
+      }
+    ],
+    "unscored_runs": [
+      {
+        "case_id": "case:P05",
+        "status": "failed",
+        "error": "ArenaError: not a standing offer in this session"
+      }
+    ],
+    "scored_runs": 9,
+    "mean_score": 54.12492960788141,
+    "arena_sessions_used": 0,
+    "llm_calls": 0,
+    "limitation": "Historical observations and code-only prefix replay; no new supplier replies or Arena scores. Older traces omit rejected proposal values, so those proposals cannot be replayed exactly."
+  },
+  "source_hashes": {
+    "src\\aeiou\\reciprocity.py": "c8cca605b61c993bed734b76d0b988fec853c0a741b7df6c7d5ac1881c388a2b",
+    "src\\aeiou\\runner.py": "1e095198bbf5ec641c0883777e2c9a51294208cb63799b6623df0f8b4195b8a4",
+    "src\\aeiou\\strategic.py": "816aa72ec9621c6dde04384c3451a65cd68cfe002d281e16d564721cdc533404",
+    "src\\aeiou\\strategic_planner.py": "f68fd1eca36310ce0505022dd827835c3dc00c87989fa602317c8aa0ccc37cad",
+    "src\\aeiou\\grounding.py": "b2a87d527e3f84ce59a3cdbfdb40eaba20797ddffe825813672b820605af45fe",
+    "src\\aeiou\\timing_evaluation.py": "f721b745e825be78af6aca4b6f940afdc26d82cd09a033e4b21051664079cb7a",
+    "src\\aeiou\\practice_review.py": "cb1fbe265ccce4d4605bb3b8d52e1b1d8e43e39d41d30afca0b26367c692294b"
+  },
+  "rejected_experiments": [
+    {
+      "description": "Unconditional quote-near proposals conceded too early",
+      "generalization_score": 79.90749445789145,
+      "multi_issue_score": 41.69020233863742,
+      "promoted": false
+    },
+    {
+      "description": "First-contact exploration even during incumbent progress",
+      "timing_stable_score": 53.48483992936177,
+      "promoted": false
+    }
+  ],
+  "limitation": "Synthetic scores are not Arena forecasts. Generalization and multi-issue sets are reused regressions. Fresh seeds change draws within the same discovery mechanism, not an independent real-world opponent family. No new LLM behavior measured. Current supplier economics remain estimates. Historical best-of-many is not a controlled comparison."
+}
