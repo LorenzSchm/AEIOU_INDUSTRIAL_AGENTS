@@ -905,3 +905,17 @@ This establishes historical compatibility, not future scores. It does not resolv
 the previously documented unrelated S02 controller regression. One P07 hosted
 attempt is authorized; no automatic new-session retries. Local artifacts:
 accelerated-progress-after.json and accelerated-progress-p07.json.
+
+
+Outcome (`6b8ff24`): exactly one hosted P07 session, `0ce35b5ec7ad1289`,
+scored **72.75**, exceeding the previous 70.15 best by **2.60 points** and the
+restored f5b46b4 run by 4.55 points. Supplier quotes moved 5.74 -> 5.60 ->
+5.51 -> 5.44; unlike recent attempts, the second response remained open.
+Buyer counters were 4.71 -> 4.93 -> 5.07 at 90 days / 24 months. The final
+5.44 / 90 / 24 deal costs 324252.80, or 2384.00 less than the prior best deal.
+Three model calls used 16248 input / 255 output tokens, with zero API errors or
+fallbacks. No model amendment was admitted; controller packages drove the bids.
+Quota rose 123 -> 124; only P07 changed in the best-score map. Keep this revision,
+but treat the observed extra round and record as a single-run result, not proof
+of causality or reliable future gains. No further hosted attempt was made.
+Dashboard report: data/local/evaluations/practice-p07-6b8ff24/report.json.
