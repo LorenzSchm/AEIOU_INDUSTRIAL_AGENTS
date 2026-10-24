@@ -331,6 +331,7 @@ class StrategicNegotiator(Negotiator):
                         None,
                     ),
                     case=case,
+                    terms=[p["terms"] for p in candidates.get(sid, []) if p["id"] in ids],
                 )
                 data = {**data, "body": compose_email(data, self._cards, sid, strategy)}
             except ValueError as exc:
@@ -521,6 +522,7 @@ class StrategicNegotiator(Negotiator):
                         self.support[sid]["state"].get("signals", []),
                         portfolio_issue=next((p["issue"] for p in chosen if p.get("portfolio_probe")), None),
                         case=case,
+                        terms=[p["terms"] for p in chosen],
                     ),
                     self._cards,
                     sid,

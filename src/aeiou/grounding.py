@@ -26,6 +26,57 @@ QUESTIONS = {
     ),
 }
 
+COMMERCIAL_CONTEXT = {
+    "date_transition": (
+        "The later-start option treats the transition to the new price as part of the exchange. "
+        "Please consider its price and payment terms together when reviewing what works for your business.",
+        "Which complete price-and-start-date combination could you support?",
+    ),
+    "payment_review": (
+        "For your internal review, the alternatives below set out payment terms alongside the complete "
+        "price and contract commitment. We recognize the pricing restriction you described; "
+        "we are asking you to assess a contract-term exchange within that restriction.",
+        "Could you review a payment-term adjustment within one of these packages "
+        "and identify the terms you could approve?",
+    ),
+    "continuity_review": (
+        "The longer-duration option offers a longer contractual commitment at the stated annual quantity. "
+        "This is part of that complete package, with no additional volume commitment outside its terms.",
+        "Which complete package could you approve in exchange for that longer commitment?",
+    ),
+}
+
+
+def commercial_context(case, events, terms, signals):
+    """Explain only executable date/duration trades; never infer an extra promise."""
+    from arena_kit.cost import closing_terms
+    from arena_kit.docs import standard_terms
+
+    latest = next((m for m in reversed(events) if m.get("from") != "buyer"), {})
+    sheets = latest.get("term_sheets", [])
+    if latest.get("status") != "open" or not sheets or not terms:
+        return None
+    std = standard_terms(events)
+    quoted = [closing_terms(case, s.get("terms", {}), std) for s in sheets]
+    proposed = [closing_terms(case, t, std) for t in terms]
+    fields = case["negotiable"]
+    # Require improvement over every live option, not merely the first sheet.
+    dates = [t.get("effective_date") for t in quoted]
+    if "effective_date" in fields and all(isinstance(d, str) for d in dates):
+        if any(isinstance(t.get("effective_date"), str) and t["effective_date"] > max(dates) for t in proposed):
+            return "date_transition"
+    if "contract_months" in fields:
+        if "price_freeze" in signals and "payment_days" in fields:
+            if any(t["payment_days"] not in {q["payment_days"] for q in quoted} for t in proposed):
+                return "payment_review"
+        if any(
+            t["contract_months"] > max(q["contract_months"] for q in quoted)
+            and all(t["volume_per_year"] == q["volume_per_year"] for q in quoted)
+            for t in proposed
+        ):
+            return "continuity_review"
+    return None
+
 
 def fresh_evidence_cards(cards, threads):
     """Hide already-cited sources from the writer, including new chunks of a used source."""
@@ -68,6 +119,7 @@ def responsive_act(
     interpretations=(),
     portfolio_issue=None,
     case=None,
+    terms=(),
 ):
     """Do not ask repeatedly for a breakdown; ask for the next actionable trade."""
     data = dict(data)
@@ -126,6 +178,11 @@ def responsive_act(
             data["question"] = "authority" if QUESTIONS["priorities"].lower() in prior else "priorities"
     if case and data.get("question") == "continuity" and "contract_months" not in case["negotiable"]:
         data["question"] = "exchange"
+    # These fields are code-owned, even if a model supplies values with the same names.
+    data["commercial_context"] = commercial_context(case, events, terms, signals) if case and terms else None
+    prior = " ".join(m.get("body", "") for m in events if m.get("from") == "buyer")
+    context = COMMERCIAL_CONTEXT.get(data["commercial_context"])
+    data["repeat_context"] = bool(context and context[0] in prior)
     return data
 
 
@@ -275,7 +332,16 @@ def compose_email(data, cards, sid, strategy="balanced"):
             )
         else:
             body.append(f"The referenced document states: {card['text']} ({', '.join(refs)}).")
-    body.extend([QUESTIONS[question], "Any movement is conditional on the executable terms below."])
+    context_key = data.get("commercial_context")
+    if context_key is not None and context_key not in COMMERCIAL_CONTEXT:
+        raise ValueError("Unknown commercial context")
+    if context_key:
+        brief, diagnostic = COMMERCIAL_CONTEXT[context_key]
+        if not data.get("repeat_context"):
+            body.append(brief)
+    else:
+        diagnostic = QUESTIONS[question]
+    body.extend([diagnostic, "Any movement is conditional on the executable terms below."])
     return "\n\n".join(body)
 
 
