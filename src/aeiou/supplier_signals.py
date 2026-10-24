@@ -4,7 +4,9 @@ import re
 
 PRICE_FREEZE = (
     r"(?:pric\w*|reductions?).{0,45}(?:frozen|freez\w*|on hold)|"
-    r"(?:frozen|freez\w*).{0,45}(?:pric\w*|reductions?)"
+    r"(?:frozen|freez\w*).{0,45}(?:pric\w*|reductions?)|"
+    r"(?<!not )(?<!no longer )(?<!never )(?:prohibit|forbid|ban)(?:s|den|ned)?"
+    r".{0,30}(?:price reductions?|price cuts?)"
 )
 KINDS = {
     "price_resistance",

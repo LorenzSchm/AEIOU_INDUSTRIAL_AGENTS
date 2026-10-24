@@ -3,7 +3,7 @@
 import copy
 import re
 
-from arena_kit.cost import closing_terms
+from arena_kit.cost import closing_terms, total_cost
 from arena_kit.play import latest
 
 from .optimizer import valid_terms
@@ -37,8 +37,6 @@ def responsive_packages(case, events, packages, standard, cost, ceiling):
     repeated = len(buyers) >= 2 and [s["terms"] for s in buyers[-1]["term_sheets"]] == [
         s["terms"] for s in buyers[-2]["term_sheets"]
     ]
-    if not requested and not repeated:
-        return packages
     quotes = [
         {f: full.get(f) for f in case["negotiable"]}
         for s in latest(events).get("term_sheets", [])
@@ -47,14 +45,21 @@ def responsive_packages(case, events, packages, standard, cost, ceiling):
     quotes = [q for q in quotes if valid_terms(case, q)]
     if not quotes:
         return packages
+    date_menu = (
+        "effective_date" in case["negotiable"]
+        and len(buyers) >= 2
+        and len({q.get("effective_date") for q in quotes}) > 1
+    )
+    if not requested and not repeated and not date_menu:
+        return packages
     quote = min(quotes, key=cost)
     limit = min(ceiling, cost(quote) - 0.01)
     previous = [s["terms"] for m in buyers for s in m["term_sheets"]]
 
-    def allowed(t):
+    def allowed(t, cost_limit=None):
         return (
             valid_terms(case, t)
-            and cost(t) <= limit
+            and cost(t) <= (limit if cost_limit is None else cost_limit)
             and all(t["unit_price"] >= p["unit_price"] for p in previous if same_structure(p, t))
             and all(
                 t.get(f, need) >= need
@@ -75,7 +80,7 @@ def responsive_packages(case, events, packages, standard, cost, ceiling):
 
     result = copy.deepcopy(packages)
 
-    def insert(terms, label):
+    def insert(terms, label, **metadata):
         # Replace the old price on the SAME structure, including a stale A.
         # Never send two prices for an otherwise identical contract.
         match = next((i for i, p in enumerate(result) if same_structure(p["terms"], terms)), None)
@@ -86,6 +91,7 @@ def responsive_packages(case, events, packages, standard, cost, ceiling):
             "label": label,
             "responsive_probe": True,
             "standing_cost": cost(quote),
+            **metadata,
         }
         if match is not None:
             result[match] = entry
@@ -98,14 +104,54 @@ def responsive_packages(case, events, packages, standard, cost, ceiling):
                 entry["id"] = result[slot]["id"]
                 result[slot] = entry
 
-    comparable = [p for p in previous if same_structure(p, quote)]
-    if len(buyers) >= 2 and comparable:
-        last_price = max(p["unit_price"] for p in comparable)
-        gap = quote["unit_price"] - last_price
-        if gap > 0.02:
-            terms = {**quote, "unit_price": round(last_price + max(0.01, gap * 0.25), 2)}
-            if allowed(terms):
-                insert(terms, "Reciprocal step on observed supplier terms")
+    for counter in sorted(quotes, key=cost) if date_menu else [quote]:
+        comparable = [p for p in previous if same_structure(p, counter)]
+        if len(buyers) >= 2 and comparable:
+            last_price = max(p["unit_price"] for p in comparable)
+            gap = counter["unit_price"] - last_price
+            if gap > 0.02:
+                terms = {**counter, "unit_price": round(last_price + max(0.01, gap * 0.25), 2)}
+                if allowed(terms):
+                    insert(terms, "Reciprocal step on observed supplier terms")
+
+    # With a declared price restriction, start from the longest payment option
+    # already quoted on each identical contract. Restarting from the cheap cash
+    # option merely asks for a discount on terms the supplier has already priced.
+    # This is a bounded probe, not evidence of acceptance or a true financing rate.
+    if "payment_days" in case["negotiable"] and re.search(PRICE_FREEZE, latest(events).get("body", ""), re.I):
+        frontier = []
+        probe_limit = min(ceiling, cost(quote) * 1.0025)
+        for counter in quotes:
+            peers = [q for q in quotes if all(q[f] == counter[f] for f in q if f not in {"unit_price", "payment_days"})]
+            if counter["payment_days"] < max(q["payment_days"] for q in peers):
+                continue
+            days = sorted(
+                d
+                for d in case.get("term_options", {}).get("payment_days", [])
+                if type(d) in (int, float) and d > counter["payment_days"]
+            )
+            if not days:
+                continue
+            terms = {**counter, "payment_days": days[0]}
+            if (
+                terms in previous
+                or not allowed(terms, probe_limit)
+                or total_cost(case, terms, standard) >= min(total_cost(case, q, standard) for q in quotes) - 0.01
+            ):
+                continue
+            frontier.append((total_cost(case, terms, standard), terms, counter))
+        if frontier:
+            _, terms, counter = min(frontier, key=lambda item: item[0])
+            insert(
+                terms,
+                "Extend the supplier's quoted payment frontier",
+                payment_frontier_probe=True,
+                reference_quote=counter,
+                point_cost_limit=probe_limit,
+            )
+            # Reserve this slot for learning a new term price; do not overwrite it
+            # with another request starting from the already-priced cash option.
+            return result
 
     # Ask for the nearest beneficial change, rather than insisting on a large
     # price cut AND every favorable term at once. Prefer untouched dimensions.

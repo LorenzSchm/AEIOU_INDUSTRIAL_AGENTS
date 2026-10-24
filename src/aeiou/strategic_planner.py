@@ -3,6 +3,7 @@
 import copy
 import math
 
+from arena_kit.cost import closing_terms
 from arena_kit.cost import total_cost as published_cost
 from arena_kit.docs import standard_terms
 from arena_kit.play import latest, moves_left
@@ -84,6 +85,8 @@ def proposal_limits(case, threads, sid, candidates, intelligence):
             "max_direct_contract_cost": published_cost(case, anchor["terms"], standard_terms(threads[sid])),
             "rule": "An earlier effective date must earn enough contractual savings to meet this direct cost limit.",
         }
+    if any(p.get("payment_frontier_probe") for p in candidates) and not closing:
+        limits["quoted_fallback_resubmission_allowed"] = False
     return limits
 
 
@@ -148,6 +151,17 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
                 raise ValueError("Illegal terms or unmet must-have")
             if not compensated_date(case, terms, anchor["terms"], std):
                 raise ValueError("Earlier effective date is not compensated in direct contractual cost")
+            if limits.get("quoted_fallback_resubmission_allowed") is False:
+                # Reoffering a known fallback lets the supplier immediately agree,
+                # bypassing the controller's decision to continue a term exchange.
+                proposed = closing_terms(case, terms, std)
+                if any(
+                    proposed == closing_terms(case, sheet.get("terms", {}), standard_terms(events[: i + 1]))
+                    for i, message in enumerate(events)
+                    if message.get("from") != "buyer"
+                    for sheet in message.get("term_sheets", [])
+                ):
+                    raise ValueError("Quoted fallback would bypass the controller's payment exploration")
             for field in ("contract_months", "volume_per_year"):
                 if field in terms and terms[field] < base["terms"][field]:
                     raise ValueError("Cannot reduce policy coverage")
@@ -219,7 +233,9 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
     # Preference weights are only a relative ranking. Never label them agreement probabilities.
     weights = predicted_choices(case, admitted, belief, std)
     chosen = max(zip(admitted, weights, strict=True), key=lambda p: (p[1], -p[0]["cost"]))[0]
-    fallback = next((p for p in candidates if p.get("responsive_probe") and p["id"] != anchor["id"]), None)
+    fallback = next((p for p in candidates if p.get("payment_frontier_probe") and p["id"] != anchor["id"]), None)
+    if fallback is None:
+        fallback = next((p for p in candidates if p.get("responsive_probe") and p["id"] != anchor["id"]), None)
     if fallback is None:
         fallback = next((p for p in candidates if p.get("portfolio_probe") and p["id"] != anchor["id"]), None)
     if fallback is None:

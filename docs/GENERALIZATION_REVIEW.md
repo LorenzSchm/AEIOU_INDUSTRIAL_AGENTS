@@ -756,3 +756,56 @@ P02/P05 historical moves, including their messages, stayed identical. P01/P03/P0
 wording changed at 5/4/3 decision points respectively. No additional model call
 is introduced. The hosted trio tests the combined economic and communication
 revision; a single run each cannot isolate the causal effect of its wording.
+
+## After `a132673`: preserve payment exploration and respond to date menus
+
+The hosted trio finished at P01 64.40, P03 83.03 and P04 86.04, mean 77.83.
+The runner opened exactly three sessions; a separate P18 session accounted for
+the fourth increment in shared practice usage. P01's later date saved EUR 2,637.22
+against its preceding run. P03's accepted cash option lost EUR 4,243.76 versus its
+preceding run: the lower nominal price did not compensate for earlier payment.
+
+Two controller mechanisms explain the missed opportunities. With multiple live
+payment quotes, reciprocity selected the cheapest point-model quote and restarted
+from its cash terms. This generated requests for discounts on already-priced
+payment options instead of learning the next payment step. Later, a model proposal
+resubmitted the supplier's prior cash quote; the supplier immediately agreed,
+ending exploration even though the controller had chosen to continue. P01 left
+one date alternative unanswered while repeating the same low anchors.
+
+Changes are generic and use current legal offers and transcript evidence:
+
+- On an explicit price restriction, group current quotes by identical commercial
+  scope and extend the longest quoted payment term by one legal step at that
+  quote's price. Require lower direct contract cost than every current quote,
+  valid terms, full coverage and prior-price preservation. Original point-model
+  cost can worsen at most 0.25% relative to the cheapest current quote and must
+  stay inside the external ceiling. This is a bounded experimental offer, not
+  an inferred supplier agreement or financing rate. Already-tried exact probes
+  are not repeated; terminal offers remain untouched.
+- Preserve this probe when admitting another model amendment. Before the closing
+  phase, the model cannot resubmit an exact historical supplier quote while this
+  exploration is active. Actual acceptance remains the controller's decision;
+  the restriction expires when two moves remain. The planner sees the restriction.
+- Recognize explicit prohibitions on price cuts, including the wording observed
+  in the last P03 replies, while excluding simple negations of that prohibition.
+- After two buyer turns, reciprocate separately on each comparable live date
+  option, using the existing quarter-gap step and full cost ceiling. Do not wait
+  for a repeated identical message to respond to the alternative date.
+
+Validation: 89 focused tests passed, including invented quote menus, quote-order
+invariance, direct and point cost bounds, failed-probe repetition, terminal states,
+negation and date-menu reciprocity. Twenty-five historical-prefix replays against
+frozen `a132673` keep P02 2/2, P04 4/4 and P05 7/7 identical. The P01 third buyer
+message now counters both January and April, rather than repeating both prior
+prices. The P03 multi-menu replay proposes 430.15 / 45 days from the live
+430.15 / 30-day quote. Replaying the captured model proposal that previously
+inserted 428.40 / 14 days now rejects that known fallback and retains the
+45-day probe, with no provider/guard fallback.
+
+Local artifacts: `data/local/frontier-review.json`, `frontier-before.json`,
+`frontier-after.json` and `frontier-model-before.json` / `frontier-model-after.json`.
+No new hosted runs or LLM calls were used. Reused histories establish behavior,
+not an actual score increase or how a supplier will respond. The previously
+documented S02 scripted comparison failure remains outside this focused suite
+and unresolved. Runtime rules contain no challenge IDs or benchmark prices.
