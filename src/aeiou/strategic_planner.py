@@ -7,6 +7,7 @@ from arena_kit.cost import total_cost as published_cost
 from arena_kit.docs import standard_terms
 from arena_kit.play import latest, moves_left
 
+from .contract_tradeoffs import compensated_date
 from .economic_beliefs import total_cost
 from .opponent_model import predicted_choices
 from .optimizer import alternative_cost, estimate, evaluate, valid_terms
@@ -68,7 +69,7 @@ def proposal_limits(case, threads, sid, candidates, intelligence):
     scenarios = intelligence.get("economic_sensitivities", {}).get(sid, {}).get("scenarios")
     risk_ceiling = risk_exchange_ceiling(case, candidates, standard_terms(threads[sid]), scenarios)
     anchor_expected = anchor.get("uncertainty_anchor", {}).get("expected_cost")
-    return {
+    limits = {
         "max_modeled_cost": ceiling,
         "concession_fraction": fraction,
         "standing_quote": quote,
@@ -77,6 +78,13 @@ def proposal_limits(case, threads, sid, candidates, intelligence):
         "max_portfolio_expected_cost": anchor_expected * 1.0025 if anchor_expected is not None else None,
         "price_only_concessions_allowed": closing,
     }
+    if "effective_date" in case["negotiable"]:
+        limits["earlier_effective_date"] = {
+            "reference_date": anchor["terms"]["effective_date"],
+            "max_direct_contract_cost": published_cost(case, anchor["terms"], standard_terms(threads[sid])),
+            "rule": "An earlier effective date must earn enough contractual savings to meet this direct cost limit.",
+        }
+    return limits
 
 
 def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
@@ -138,6 +146,8 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
                 terms["unit_price"] = round(terms["unit_price"], 2)
             if not valid_terms(case, terms):
                 raise ValueError("Illegal terms or unmet must-have")
+            if not compensated_date(case, terms, anchor["terms"], std):
+                raise ValueError("Earlier effective date is not compensated in direct contractual cost")
             for field in ("contract_months", "volume_per_year"):
                 if field in terms and terms[field] < base["terms"][field]:
                     raise ValueError("Cannot reduce policy coverage")

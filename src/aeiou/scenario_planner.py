@@ -160,10 +160,15 @@ def plan_packages(case, events, sid, intelligence, candidates, state, use_counte
         for field in fields:
             if field not in case["negotiable"]:
                 continue
+            values = case.get("term_options", {}).get(field, [])
+            if field == "effective_date":
+                # Prefer the date that saves actual contract spend at the same
+                # price; do not choose the first date merely by enum order.
+                values = sorted(values, key=lambda value: total_cost(case, {**base, field: value}, std))
             probe = next(
                 (
                     t
-                    for value in case.get("term_options", {}).get(field, [])
+                    for value in values
                     if value != base.get(field)
                     and (field != "lead_time_days" or value >= base.get(field, 0))
                     and (t := equivalent_probe(case, base, field, value, cost)) is not None

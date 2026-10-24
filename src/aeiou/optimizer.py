@@ -8,6 +8,7 @@ from arena_kit.play import latest, live_threads, standing
 
 from .economic_beliefs import cost_breakdown, total_cost
 from .opponent_model import comparable_price_step
+from .quote_financing import observed_financing_close
 
 
 def estimate(case, sid, std, intelligence):
@@ -79,13 +80,29 @@ def evaluate(case, threads, intelligence):
     return sorted(rows, key=lambda r: r["cost"])
 
 
+def closing_choice(case, threads, intelligence):
+    rows = [r for r in evaluate(case, threads, intelligence) if r["acceptable"]]
+    if not rows:
+        return None
+    best = rows[0]
+    sid = best["supplier_id"]
+    return observed_financing_close(
+        case,
+        threads[sid],
+        estimate(case, sid, standard_terms(threads[sid]), intelligence),
+        intelligence.get("estimates", {}).get(sid, {}).get("confidence_pct"),
+        [r for r in rows if r["supplier_id"] == sid],
+        best,
+    )
+
+
 def safe_close(case, threads, intelligence):
-    for row in evaluate(case, threads, intelligence):
-        if row["acceptable"]:
-            return {
-                "supplier_id": row["supplier_id"],
-                "message": {"action": {"type": "accept", "term_sheet_id": row["sheet_id"]}},
-            }
+    row = closing_choice(case, threads, intelligence)
+    if row:
+        return {
+            "supplier_id": row["supplier_id"],
+            "message": {"action": {"type": "accept", "term_sheet_id": row["sheet_id"]}},
+        }
     return {"supplier_id": live_threads(threads)[0], "message": {"action": {"type": "walk_away"}}}
 
 

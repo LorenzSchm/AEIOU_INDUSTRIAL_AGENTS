@@ -14,6 +14,7 @@ from arena_kit.play import latest, live_threads, moves_left
 from .agent import Negotiator, log
 from .competitive_anchor import competitive_packages
 from .concessions import preserve_progress
+from .contract_tradeoffs import compensated_date
 from .economic_beliefs import infer_economics, total_cost
 from .grounding import (
     communication_evidence,
@@ -174,6 +175,11 @@ class StrategicNegotiator(Negotiator):
                 lambda terms, std=standard, model=supplier: total_cost(case, terms, std, model),
                 ceiling,
             )
+            if plan["packages"] and "effective_date" in case["negotiable"]:
+                reference = plan["packages"][0]["terms"]
+                plan["packages"] = [
+                    p for p in plan["packages"] if compensated_date(case, p["terms"], reference, standard)
+                ]
             if plan["recommendation"] not in {p["id"] for p in plan["packages"]}:
                 plan["recommendation"] = next((p["id"] for p in plan["packages"]), None)
             plan["economic_ceiling"] = budget if math.isfinite(budget) else None
