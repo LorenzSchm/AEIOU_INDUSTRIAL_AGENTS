@@ -1,7 +1,6 @@
 """Recover from repeated packages using observed counters, never hidden floors."""
 
 import copy
-import math
 import re
 
 from arena_kit.cost import closing_terms, total_cost
@@ -13,60 +12,6 @@ from .supplier_signals import PRICE_FREEZE
 
 def same_structure(a, b):
     return {k: v for k, v in a.items() if k != "unit_price"} == {k: v for k, v in b.items() if k != "unit_price"}
-
-
-def extend_indexed_commitment(case, events, packages, cost, ceiling):
-    """Pair verified indexed reciprocity with the next legal duration, not faster cash.
-
-    Keep the anchor and reciprocal package. Replace only a redundant fixed-price
-    alternative. This requests a price for additional commitment; its supplier
-    value and acceptance remain unknown, and modeled buyer cost may not increase.
-    """
-    if (
-        not events
-        or latest(events).get("status") != "open"
-        or "contract_months" not in case["negotiable"]
-        or case["buyer"].get("category_goal") != "leverage"
-    ):
-        return packages
-    reference = next((p for p in packages if p.get("index_reciprocity")), None)
-    slot = next(
-        (
-            i
-            for i, p in enumerate(packages)
-            if i and not p.get("responsive_probe") and p["terms"].get("index_clause") is None
-        ),
-        None,
-    )
-    if reference is None or slot is None:
-        return packages
-    base = reference["terms"]
-    durations = sorted(
-        d for d in case.get("term_options", {}).get("contract_months", []) if d > base["contract_months"]
-    )
-    if not durations:
-        return packages
-    terms = {**base, "contract_months": durations[0]}
-    prior = [s["terms"] for e in events if e.get("from") == "buyer" for s in e.get("term_sheets", [])]
-    terms["unit_price"] = max([terms["unit_price"], *(p["unit_price"] for p in prior if same_structure(p, terms))])
-    value = cost(terms)
-    if not valid_terms(case, terms) or not math.isfinite(value) or value > min(cost(base), ceiling) + 0.001:
-        return packages
-    if any(p["terms"] == terms for p in packages):
-        return packages
-    result = list(packages)
-    result[slot] = {
-        "id": packages[slot]["id"],
-        "label": "Conditional longer indexed commitment",
-        "terms": terms,
-        "cost": value,
-        "responsive_probe": True,
-        "indexed_continuity": True,
-        "standing_cost": reference["standing_cost"],
-        "point_cost_limit": cost(base),
-        "limitation": "Next legal duration at unchanged payment and no higher modeled cost; acceptance unknown.",
-    }
-    return result
 
 
 def responsive_packages(case, events, packages, standard, cost, ceiling):

@@ -1301,3 +1301,24 @@ unchanged. Replay of 80410b4 leaves the opening and terminal acceptance unchange
 after the first counter, 5.08/index5%/pay90 is offered for both 24 and 36 months.
 The duration is a requested contract trade, not an assumed supplier acceptance.
 One further P08 hosted attempt is authorized, no session-creation retries.
+
+
+Outcome (94ca4a3): single session 8bedd1af3c62476b scored **57.04**, exactly
+matching the previous run, still 2.11 points below the 59.15 best. Agreement
+5.45/payment90/duration36, AS-14404 share45%/deadband5%, cost 1035731.08.
+The model amended the new 36-month package to 5.00 instead of the policy's 5.08;
+the seller accepted the longer structure but finished at the same price as before.
+The longer contract produced no incremental modeled saving. This is one observed
+trajectory, not a controlled test isolating duration from model variation.
+
+Revert the duration experiment and restore runtime/tests exactly to b279f11
+(the retained reciprocal-index policy with 132 previously passing focused tests).
+The experiment had 139 passing tests and unchanged 57 protected P01-P05 prefixes;
+it remains recoverable in Git history. Exact src/tests diff against b279f11 is
+empty after restoration. No new attempt or further policy change.
+
+Three calls, 19571 input / 288 output tokens, zero errors/fallbacks, 64.80 seconds.
+Own creation marker/request/session count is one. Shared quota 142 -> 144 includes
+concurrent team P18 session 78bbf2ceff456d95, opened after our P08 session; no
+interaction with that session. Best map unchanged. Audit in the run folder.
+Report: data/local/evaluations/practice-p08-94ca4a3/report.json.
