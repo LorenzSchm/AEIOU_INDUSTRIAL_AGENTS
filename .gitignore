@@ -218,3 +218,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# AEIOU runtime state, credentials and local reports
+.env.*
+!.env.example
+data/local/
+*.log
+tmp/
+.DS_Store
