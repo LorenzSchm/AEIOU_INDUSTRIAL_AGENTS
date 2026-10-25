@@ -1496,3 +1496,23 @@ counter, then proposes one 5.43/payment90/duration24/deadband5 package from the
 observed 5.57 -> 5.48 seller step. Existing final-offer acceptance is unchanged.
 This verifies the action, not supplier acceptance or score gain. One hosted P08
 attempt is authorized; no session-creation retry or second hosted attempt.
+
+
+Outcome (0e8119e): sole P08 session 6e5cc186067140dc scored **57.04**, tied
+with retained strategy and 2.11 below the unchanged 59.15 record. Actual buyer
+last offer was a single 5.43/payment90/duration24/deadband5 package. The supplier
+acknowledged our significant movement and readiness to conclude, then returned
+5.45 on identical terms. Closing cost1035731.08; all must-haves satisfied.
+This does not prove an absolute price floor; it does show no gain from this
+larger conditional settlement bid in the one observed run.
+
+Revert runtime/tests exactly to aaefcbc. Keep the request-verb boundary fix and
+previous validated strategy. 91 focused tests passed overall; one fixture needed
+an approved rerun outside Windows sandbox temp restrictions. All57 protected
+P01-P05 replays unchanged; no further hosted attempt. Three model calls,
+19720input/295output tokens, no errors/fallbacks,40.58seconds.
+
+Quota159->161 is shared-team usage: our runner created exactly one P08 session;
+read-only session audit confirms P10 sessionb75995e7ee098d4c opened1.39seconds
+after ours. We did not create or modify that other session. Team best map was
+unchanged. Report:data/local/evaluations/practice-p08-0e8119e/report.json.
