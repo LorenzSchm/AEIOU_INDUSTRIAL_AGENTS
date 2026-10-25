@@ -290,3 +290,49 @@ Local artifacts: `data/local/practice-p01-p05-learned-v1/` contains the five raw
 runs, runner/adapter/model snapshots, creation markers, quota audit, JSON and HTML
 reports. The dashboard copy is
 `data/local/evaluations/practice-p01-p05-learned-v1/report.json`.
+
+## Remaining five hosted tracks: same experiment, no retraining
+
+The follow-up request authorized one attempt on each of the other five hosted
+tracks. Availability preflight established that these are P07, P08, P10, P11 and
+P18; P06 and P09 are not hosted. An initial P06–P10 preflight stopped before any
+session creation. The actual batch used commit `0f7a9e8`, unchanged adapter code
+and the same refinement-v2 model hash as above. No strategy changes or retraining
+were made between the two batches.
+
+| Track | Score / 100 | Historical team best before | Difference | Session |
+| --- | ---: | ---: | ---: | --- |
+| P7 | 72.7504 | 72.7504 | 0.0000 | 1800006a0874c4d6 |
+| P8 | 53.7966 | 62.4556 | -8.6591 | c0609a5ab592b871 |
+| P10 | 56.2462 | 70.2080 | -13.9618 | cc0ac2b624c033dc |
+| P11 | **61.9591** | 61.1230 | **+0.8362** | 9b3297f46b768c41 |
+| P18 | 38.6079 | 68.4565 | -29.8486 | 0d6610ca6ea71215 |
+
+Mean across these five: 56.6720. All five completed with deals and valid
+must-haves. No planner fallbacks, model-selection errors or transport events were
+recorded. Buyer usage: 15 Claude calls, 91,534 input tokens, 1,578 output tokens.
+The batch's five exclusive creation markers each record exactly one request and
+match five distinct completed sessions. Shared quota rose 211 to 223: the saved
+session audit contains these five plus seven additional sessions outside this
+runner, so the entire quota delta must not be attributed to this experiment.
+
+P7 and P10 had no model menu changes. P8 had one controller recommendation change
+but no guarded outgoing menu changes. P11 had two guarded changes for its sole
+supplier; it closed at EUR 45.50, 60-day payment, 1,500 PPM, FCA. P18 had one
+guarded change and closed at EUR 5.50, 90-day payment, AS-14404 share45% with zero
+deadband and 24 months. Its evaluated index cost and index risk totaled EUR
+8,212.05. P8 closed at EUR 5.48 with a5% index deadband and90-day payment. P10
+closed at EUR33.70, 23,400units, 36months, 30-day payment. These are outcome
+diagnostics, not evidence that any one intervention caused the score differences.
+
+The two batches together achieved10 deals and a66.2222 mean. P5 and P11 exceeded
+their historical bests; P4 and P7 tied; the other six were lower. Historical
+maxima are optimistic, unpaired comparators, so this does not estimate causal
+degradation either. The evidence does not justify globally promoting this learned
+selector. Keep it experimental and investigate the existing execution/decision
+limitations before spending additional Arena attempts.
+
+Artifacts: `data/local/practice-remaining-five-learned-v1/` contains all five
+runs, frozen model and source snapshots, creation markers, quota audit and the
+HTML/JSON reports. Dashboard copy:
+`data/local/evaluations/practice-remaining-five-learned-v1/report.json`.
