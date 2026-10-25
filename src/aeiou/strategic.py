@@ -86,6 +86,8 @@ listed among received_attachments. Never expose scenario costs, ceilings or priv
 
 
 class StrategicNegotiator(Negotiator):
+    defer_response_support = True
+
     def __init__(self, pkg, backend=None, features=None, writer_instruction=None, planner_instruction=None, **kwargs):
         super().__init__(pkg, backend, **kwargs)
         self.support, self.rejections = {}, []
@@ -246,6 +248,7 @@ class StrategicNegotiator(Negotiator):
             if sid == self.controller.get("supplier_id"):
                 ids = self.controller.get("candidate_ids", [p["id"] for p in packages])
                 payload["candidate_packages"][sid] = [p for p in packages if p["id"] in ids]
+        self.add_response_support(payload, case, threads)
         return json.dumps(payload, ensure_ascii=False, default=str)
 
     def reject(self, reason):
@@ -364,6 +367,7 @@ class StrategicNegotiator(Negotiator):
 
     def decide(self, case, threads):
         started = time.monotonic()
+        self.last_response_support = None
         if self.case_id != case["case_id"]:
             self.prepare(case)
         self.support = {
@@ -526,6 +530,8 @@ class StrategicNegotiator(Negotiator):
             if move is None:
                 self.fallbacks += 1
         if move is None:
+            if self.last_response_support is None:
+                self.add_response_support({"candidate_packages": {sid: offers.get(sid, [])}}, case, threads)
             chosen = [p for p in offers.get(sid, []) if p["id"] in ids]
             if not chosen:
                 move = safe_close(case, threads, self.intelligence)
@@ -619,6 +625,7 @@ class StrategicNegotiator(Negotiator):
             policy="strategic-v3",
             features=self.features.metadata(),
             controller=copy.deepcopy(self.controller),
+            learned_response_support=copy.deepcopy(self.last_response_support),
             evidence_cards=copy.deepcopy(self._cards),
         )
         self.runtime_context = {}  # Timing hints apply to one decision only.

@@ -87,10 +87,11 @@ class HybridEvidenceIndex:
         documents = []
         for ref, fact in pkg.facts.items():
             if ref.startswith("news:"):
+                row = pkg._ids.get(ref, {})
                 documents.append(
                     {
                         "id": ref,
-                        "text": fact.get("headline", ""),
+                        "text": "\n".join(filter(None, [fact.get("headline", ""), row.get("body", "")])),
                         "supplier_id": fact.get("supplier"),
                         "part_id": fact.get("part"),
                         "date": fact.get("date"),
@@ -122,7 +123,8 @@ class HybridEvidenceIndex:
         words, concepts = tokens(query), concept_vector(query)
         ranked = []
         for chunk in self.chunks:
-            if chunk.get("supplier_id") not in suppliers:
+            general_market = chunk.get("supplier_id") is None and chunk.get("type") in {"memo", "news"}
+            if chunk.get("supplier_id") not in suppliers and not general_market:
                 continue
             if parts and chunk.get("part_id") and chunk["part_id"] not in parts:
                 continue

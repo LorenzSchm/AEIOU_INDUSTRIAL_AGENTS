@@ -1,0 +1,7 @@
+{
+  "instruction": "Forget P18 and focus experiments on P10",
+  "active_case": "case:P10",
+  "stop_new_p18_runs": true,
+  "target": 72,
+  "historical_p18_data": "Retained as previously authorized general training data; no further P18 optimization."
+}

@@ -1,0 +1,73 @@
+{
+  "session_id": "9f33a1a869f4a609",
+  "case_id": "case:P10",
+  "excluded_steps": {
+    "action_only_close": 1
+  },
+  "models": [
+    {
+      "path": "data/local/custom-p10-p18-v4-frozen/model.json",
+      "sha256": "162ef7d80bc60c6fa1c2926260ef63012b7f101a0da492c999f3c00fa47e50c3",
+      "supported_predictions": 2,
+      "mae": 0.001425057703060637,
+      "mse": 3.2618166331121856e-06,
+      "predictions": [
+        {
+          "turn": 1,
+          "actual_gain": 0.2095255981837918,
+          "predicted_gain": 0.20921005712146248,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        },
+        {
+          "turn": 3,
+          "actual_gain": 0.009252247468161582,
+          "predicted_gain": 0.006717673124369619,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "data/local/custom-p10-p18-v5-after-i01/model.json",
+      "sha256": "c473f043fe1b4887d2499ef532193c0656a6cb35bd49a3599de68fca0ba14ebd",
+      "supported_predictions": 2,
+      "mae": 0.0014764014088633403,
+      "mse": 3.299238010412653e-06,
+      "predictions": [
+        {
+          "turn": 1,
+          "actual_gain": 0.2095255981837918,
+          "predicted_gain": 0.20910725012439577,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        },
+        {
+          "turn": 3,
+          "actual_gain": 0.009252247468161582,
+          "predicted_gain": 0.00671779270983093,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        }
+      ]
+    }
+  ],
+  "method": "Actual sent email, public prefix only; session excluded from each model's corpus.",
+  "limitation": "One session is noisy evidence. Abstentions are reported, not assigned zero error."
+}

@@ -1,0 +1,53 @@
+{
+  "created_at": "2026-10-25T09:24:45.781875+00:00",
+  "candidates": {
+    "case:P10": {
+      "model_sha256": "162ef7d80bc60c6fa1c2926260ef63012b7f101a0da492c999f3c00fa47e50c3",
+      "system_sha256": "8aafe27f7299383568c8328e9300089c4dd935505fb2fbd7eecb7f46b424f559",
+      "policy_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "settings": {
+        "model": "claude-opus-5-5",
+        "provider": "anthropic",
+        "effort": "high",
+        "speed": "fast"
+      },
+      "max_tokens": 12000,
+      "timeout": 50,
+      "buyer_source_sha256": "62c7ee602979c3e7e72e5e06a6e8b56ed31446415640f83ee01c6ade17692744",
+      "reference_data_sha256": "8eec2f8802af9cf3d20ebbc939dc9dbe3d4b82df076d32d95e8d73a283616053"
+    },
+    "case:P18": {
+      "model_sha256": "162ef7d80bc60c6fa1c2926260ef63012b7f101a0da492c999f3c00fa47e50c3",
+      "system_sha256": "e77d51057cbb7893aee32b9186237dbb5f8e389ec06060035723ef28332879ec",
+      "policy_sha256": "071309aa4f5c069b17befb29dfb89dd6f6028a93d1a81a9b47503aaf096d72c5",
+      "settings": {
+        "model": "claude-opus-5-5",
+        "provider": "anthropic",
+        "effort": "high",
+        "speed": "fast"
+      },
+      "max_tokens": 12000,
+      "timeout": 50,
+      "buyer_source_sha256": "62c7ee602979c3e7e72e5e06a6e8b56ed31446415640f83ee01c6ade17692744",
+      "reference_data_sha256": "8eec2f8802af9cf3d20ebbc939dc9dbe3d4b82df076d32d95e8d73a283616053"
+    }
+  },
+  "inputs": {
+    "case:P10": [
+      "prompts/p10-capacity-v32.txt",
+      null
+    ],
+    "case:P18": [
+      "prompts/p18-learning-v4-menu.txt",
+      "reports/p10-p18-target72-v4/p18-development3-policy.json"
+    ]
+  },
+  "model_path": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/data/local/custom-p10-p18-v4-frozen/model.json",
+  "validation_plan": {
+    "sessions_per_case": 3,
+    "success_threshold": 72,
+    "required": "official score >72, accepted deal, all must-haves",
+    "report": "all runs, including no-deal zeros; min/mean/max and count >72",
+    "no_training_on_validation": true
+  }
+}

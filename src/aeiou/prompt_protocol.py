@@ -69,6 +69,7 @@ from .optimizer import candidate_packages, case_with_supplier_defaults, evaluate
 from .package_sequence import sequence_plan, stage_from_action
 from .price_planner import capacity_opening_config, price_plan
 from .prompts import SYSTEM
+from .response_support import GUIDANCE as RESPONSE_SUPPORT_GUIDANCE
 from .supplier_signals import supplier_signals
 
 TRANSPORT = """
@@ -169,6 +170,11 @@ class PromptSpec:
     revision: str = "unversioned"
     assessment_enabled: bool = False
     execution_policy: dict | None = None
+    response_support_mode: str = "shadow"
+
+    def __post_init__(self):
+        if self.response_support_mode not in {"shadow", "advisory"}:
+            raise ValueError("Response support mode must be shadow or advisory")
 
     @property
     def acceptance_floor(self):
@@ -187,6 +193,7 @@ class PromptSpec:
     def transport(self):
         return (
             TRANSPORT
+            + (RESPONSE_SUPPORT_GUIDANCE if self.response_support_mode == "advisory" else "")
             + (REFERENCE_TRANSPORT if self.enforce_reference_tactics else "")
             + (ASSESSMENT_TRANSPORT if self.assessment_enabled else "")
             + (EVIDENCE_TRANSPORT if self.assessment_enabled else "")
@@ -208,6 +215,7 @@ class PromptSpec:
             "protocol_version": PROTOCOL_VERSION,
             "required_repeats": REQUIRED_REPEATS if self.enforce_reference_tactics else 0,
             "enforce_reference_tactics": self.enforce_reference_tactics,
+            "response_support_mode": self.response_support_mode,
             **({"assessment_version": ASSESSMENT_VERSION} if self.assessment_enabled else {}),
             **({"acceptance_floor": self.acceptance_floor.metadata()} if self.acceptance_floor else {}),
             **({"execution_policy": self.execution_policy} if self.execution_policy else {}),
@@ -288,10 +296,12 @@ class PromptLabAgent(Negotiator):
     # This harness owns its exact acceptance, confirmation and stopping policy.
     # Generic hosted deadline/refresh hooks must not replace a selected action.
     manages_execution = True
+    defer_response_support = True
 
     def __init__(self, pkg, backend, spec):
         super().__init__(pkg, backend)
         self.spec = spec
+        self.response_support_mode = spec.response_support_mode
         self.acceptance_floor = spec.acceptance_floor
         self.capacity_opening = spec.capacity_opening
         self.execution_policy = (
@@ -454,6 +464,7 @@ class PromptLabAgent(Negotiator):
             )
             for sid, ev in threads.items()
         }
+        self.add_response_support(payload, case, threads)
         return encode_payload(payload)
 
     def selected_offer(self, case, events, action):
@@ -813,6 +824,7 @@ class PromptLabAgent(Negotiator):
             "assessment_label_repairs": label_repairs,
             "supplier_signals": payload.get("supplier_signals", {}).get(sid),
             "price_plan": payload.get("price_plan", {}).get("suppliers", {}).get(sid),
+            "learned_response_support": self.last_response_support,
             "outgoing_source_attachments": source_attachment_receipts(action, message),
         }
         if assessment is not None:

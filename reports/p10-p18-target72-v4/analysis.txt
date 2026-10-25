@@ -1,0 +1,195 @@
+P10 / P18: training, evidence, keywords and the remaining score gap
+25 October 2026
+
+Outcome
+
+The authorized budget is exhausted: twelve new hosted negotiations, six per case.
+None exceeded 72. Official results were read back from every session and reconciled
+with the local ledger; failed/no-deal attempts remain in the denominator.
+
+P10: six deals from six attempts. Best new score 69.42748149; all-attempt mean
+68.64691971. The three frozen validation scores were 69.42748149, 68.64691971,
+68.64691971 (mean 68.90710697). The previous best, 70.20804328, remains better.
+
+P18: one deal from six attempts. Five attempts scored zero, including both frozen
+validations. The final single-package/keyword diagnostic scored 68.45646477,
+matching the previous best. All-attempt mean: 11.40941080. It restored a deal in
+that run, but did not establish a repeatable improvement or a score above 72.
+
+The final P18 slot was changed from validation to diagnosis after the user's
+evidence/keyword steering. It is reported separately. The original freeze manifest
+is preserved; see plan-amendment.json and results.json. No additional session was
+opened after these twelve. No prospective result was added to the frozen training
+corpus. The newly trained candidate has not replaced the registered v3 model.
+
+What was trained and what benefit is supported
+
+The frozen corpus contains 754 public exchanges from 236 sessions across 12 cases.
+The selected predictors use 252 P10/P18 exchanges from 106 sessions. Experiments
+included all-case histories plus dated purchasing, supplier, contract and index
+records. Broader-history variants did not pass selection. P10 selected tactical
+email/evidence features plus business context. Its historical test next-quote MSE
+fell about 33.4% and MAE about 31.3% against its incumbent. This is prediction error,
+not a negotiation-score improvement. P18 retained its refitted baseline: the
+tactical candidate reduced MSE but increased MAE and was rejected by the gate.
+
+These are response estimators and historical-experience retrieval, not a fine-tune
+of Claude's language-model weights. Hard execution controls remain independent.
+The hosted sample does not demonstrate an outcome benefit from learned advice.
+The baseline/advisory development comparison is too small, and strategies vary.
+
+Missing or new evidence
+
+The official data index and download contents were checked read-only. All 286 base
+package files and all eight Sunday-release files match the local copies byte for
+byte. The release adds four documents and six news records, dated October 13-23;
+there is no direct P10/sup:70410 or P18/sup:70740 update. The official API contract
+says practice cases continue to use base v1. The index series end in September.
+The general release market memo does not authorize changing fixed case volume.
+See evidence-audit/release-comparison.json and remote-data-index.json.
+
+The offline collection audit verified 316 source records: 125 P10 and 191 P18,
+with no collection issues or unretrievable sources. This is not a claim that every
+record was fully included in every model call. Reconstructing the actual opening
+requests found P10: 52 full / 1 partial / 81 deferred records; P18: 89 full /
+1 partial / 129 deferred. Deferred material remained retrievable. P10's committee,
+commitment and cost-estimate records and P18's owner/committee notes and authorized
+rival quote were delivered. Availability does not prove attention or persuasion.
+
+P18's 53 distinct recorded historical sessions contained no cost-breakdown XLSX.
+Some contained delivery schedules. Cost questions had already been tried; the
+supplier sometimes replied that material was about 45% and declined more detail.
+There is no evidence of a newly omitted supplier cost spreadsheet. Source details
+are in evidence-audit/collection.json, the reconstructed openings and
+p18-history-audit.json.
+
+Keyword cues and concrete actions
+
+The new evidence_cues module extracts bounded commercial phrases from current
+case-scoped records. It retains source IDs, dates, hashes and exact excerpts;
+marks shortened/deferred excerpts; excludes future, unrelated or undated sources;
+and labels buyer estimates. No keyword is treated as a proven causal lever.
+
+P10 — firm / long-term / binding commitment / allocation:
+  doc:20260918-70410-P10 explicitly prioritizes firm, long-term commitments under
+  high utilization. doc:20260327-70410-M2 links extra volumes to a binding
+  12-month commitment; news:20260822-23 describes allocation against prior calloffs.
+  Action: offer an authorized quantity/duration commitment in exchange for a
+  specific price and allocation, then evaluate the delivery trade. Our current
+  experiments already use the full 23,400 annual requirement and a 36-month term.
+  Repeating these words is not fresh consideration. The current requirement,
+  21,310 forecast and 19,880 last-year orders are different quantities.
+
+P10 — calculation / unit_cost / delivery / approval:
+  cost:340010 estimates EUR 24.31/unit, +/-5%, excluding supplier margin:
+  material 3.40, conversion 14.64, overhead 6.27. The EUR 31.40 quote exceeds this
+  estimate by EUR 7.09; that is 29.16% markup on the estimate, or 22.58% margin
+  only IF the estimate were actual cost. Neither figure is observed profit.
+  ctr:4600070410#5.1 states a 42-day standard. It does not prove current capacity.
+  doc:20260310-70410-M1 describes a historical committee route for changes over
+  2%; live replies have said Ms Zellner has authority. Do not invent escalation.
+  Earlier experiments already tested committee references, cost/service evidence
+  and 42-day delivery. The latter finished at EUR 33.50, score about 57.81.
+
+P18 — focus on customers with volume / calculation / hourly rates:
+  doc:20260813-70740-M2, doc:20260601-70740-M4 and doc:20260916-70740-M5 indicate
+  account-size concerns. doc:20260514-70740-M6 and doc:20260904-70740-M1 record an
+  owner's historical offer to explain hourly rates/material calculations.
+  Action: make the authorized 23,700 kg/year commitment concrete and request a
+  useful explanation early. These notes do not authorize promising the much
+  larger 118,500 kg forecast, and do not disclose a supplier cost floor.
+
+P18 — price basis / price adjustment clause / AS-14404 / PPI-C2431:
+  doc:20260922-70740-P18 explicitly invites agreement on base price and the
+  AS-14404 clause together. Action: negotiate one complete package before finality,
+  with a real reciprocal concession and a new verified index argument each turn.
+  The recent PPI June-August decrease is 2.27%; AS June-September decrease is 5.49%.
+  Those declines coexist with the supplier's annual increases. The existing
+  PPI-based contract and proposed AS-based clause are different arrangements.
+  Different buyer/supplier cost weights do not prove double charging.
+  The authorized rival quote is EUR 6.31, not a cheaper replacement. No P18 buyer
+  should-cost estimate exists. Filed financials do not demonstrate distress.
+
+The integrated briefs are evidence-audit/p10-keywords-integrated.json and
+p18-keywords-integrated.json. keyword-response-observations.json links all 32
+public buyer/response pairs from the new trials to lexical themes. These complete
+proposals change several things simultaneously; price changes cannot be attributed
+to individual keywords. The diagnostic's original brief and full prompt remain
+unchanged under p18-keywords.json and p18-diagnostic-single-package.prompt.txt.
+
+Why P18 did not close, and what changed in the last run
+
+In both frozen validations, menus ultimately produced a binding EUR 5.20/90-day
+offer and an advertised EUR 5.10/30-day alternative. The price cap was EUR 5.10,
+so the standing offer was not eligible. The cheaper alternative was not yet
+server-acceptable. Even one unchanged confirmation after 'final offer' caused
+withdrawal. Knowing the response pattern does not make a non-standing ID binding.
+
+The final diagnostic kept one 30-day, 36-month package throughout. Buyer proposals
+were EUR 4.60 with 0% deadband, then EUR 5.00 with 5% deadband and the verified PPI
+argument, then EUR 5.04 with the same clause and the verified AS argument. Supplier
+quotes moved 6.10 -> 5.40 -> 5.20 -> 5.10. This time EUR 5.10 was the standing
+final offer, and the controller immediately accepted its exact eligible ID.
+
+This supports resolving package ambiguity before finality. It does not isolate
+whether keywords, concession size, package count or wording caused the result.
+It also shows that verified evidence can be acknowledged without moving the
+supplier below EUR 5.10. Repeated traces do not reveal a proven private floor.
+
+Exact score gaps (published cost function; local totals match official totals)
+
+P10, EUR 31.40, 54 days, 23,400/year, 36 months:
+  Goods                         1,469,520.00
+  Payment terms                     9,796.80
+  Late delivery                    28,800.00
+  Standard quality                  5,335.20
+  Total                         1,513,452.00
+  Cost at score 72              1,497,925.17
+  Required further saving          15,526.83
+
+The 12 days beyond the 42-day requirement cost EUR 2,400 each. With all other
+terms unchanged, EUR 31.07 at 54 days calculates to 72.0033; EUR 31.68 at 42 days
+calculates to 72.0136. Faster than 42 gives no further delivery reward. These are
+conditional thresholds, not supplier agreements. One price cent is EUR 471.12
+over the scored horizon. The initial offline package screen omitted standard
+quality cost; its original values are preserved and corrected totals annotated.
+Runtime costs and official results already included quality and matched exactly.
+The third contract year is a real commitment outside the two-year score horizon;
+it does not itself reduce the score's cost calculation.
+
+P18, EUR 5.10, 30 days, 36 months, AS-14404 45% / 5% deadband:
+  Goods                           241,740.00
+  Payment terms                     1,611.60
+  Expected index adjustment         1,087.83
+  Index risk                        1,087.83
+  Total                           245,527.26
+  Cost at score 72                242,957.42
+  Required further saving           2,569.84
+
+Keeping other terms constant, EUR 5.04/30 days calculates to 72.4395 and
+EUR 5.07/60 days to 72.6571. EUR 5.08/60 days is below 72. A 90-day calculation
+alone permits EUR 5.11, but the authorized EUR 5.10 price cap still applies.
+The supplier charged more for 90 days in the observed menu runs. None of these
+above-72 packages has been accepted. Full calculations: evidence-audit/cost-gap.json.
+
+Implementation and practical limit
+
+The source-linked cues are now part of ResponseSupport alongside business context,
+retrieved historical proposals/responses and optional forecasts. They remain
+internal audit data for ordinary shadow buyers; explicit experimental advice can
+use them. The original prompt input stays unchanged in shadow mode. Evidence,
+package costs, current acceptance eligibility and saved limits retain authority.
+Automatic cue integration was added after the twelve runs and verified offline;
+there is no further hosted result for that integration. The new v4 weights remain
+separate because this experiment did not demonstrate better negotiation outcomes.
+
+Verification
+
+The full base-environment suite passed 965 tests with 10 skips and 3 expected
+failures. After the final source-scope tightening, all 37 affected keyword, support
+and learning tests passed with the optional learning dependencies enabled; the
+other 20 optional-learning tests also passed. Ruff and git diff --check passed.
+Offline integration verified both cases, original-input isolation and exact
+terminal acceptance without new API calls. The idle workbench was restarted and
+both final results are visible; the v3 registry and shadow default were confirmed.
+Detailed commands and limitations are recorded in verification.json.

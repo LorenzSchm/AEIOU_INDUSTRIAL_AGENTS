@@ -1,0 +1,3820 @@
+{
+  "case": {
+    "case_id": "case:P10",
+    "set": "practice",
+    "type": "capacity",
+    "title": "Ravensteiner cuts the seal allocation",
+    "briefing": "You negotiate for Hollerau Pumpenwerke with Dichtungswerk Ravensteiner GmbH. Ravensteiner cuts the seal allocation. Need: 23400 pc a year. Category goal: secure supply of a bottleneck part: coverage of the full need and a supplier that stays healthy come first. Score: the lowest total cost C as defined in the rules, valued with this case's rates (need lead time 42 days). There is no fallback supplier: without a deal the demand is bought at the fallback price. Must-haves: volume_per_year >= 22230. Prepare from the data package.",
+    "trigger_doc": "doc:20260918-70410-P10",
+    "parts": [
+      "part:340010"
+    ],
+    "suppliers": [
+      "sup:70410"
+    ],
+    "negotiable": [
+      "unit_price",
+      "volume_per_year",
+      "contract_months",
+      "lead_time_days"
+    ],
+    "fixed_terms": {
+      "payment_days": 30,
+      "effective_date": "2027-01-01",
+      "index_clause": null,
+      "incoterm": "DAP",
+      "tooling_eur": 0
+    },
+    "term_options": {
+      "volume_per_year": [
+        16379,
+        19890,
+        23400
+      ],
+      "contract_months": [
+        12,
+        24,
+        36
+      ],
+      "lead_time_days": [
+        35,
+        42,
+        56
+      ]
+    },
+    "buyer": {
+      "need_per_year": 23400,
+      "horizon_years": 2,
+      "current_unit_price": 29.89,
+      "fallback_unit_price": 37.36,
+      "interest_rate": 0.08,
+      "reference_payment_days": 60,
+      "need_lead_time_days": 42,
+      "category_goal": "secure_supply",
+      "fallback_risk_pct": 25,
+      "index_risk_pct": 3,
+      "late_cost_per_day": 2400,
+      "cost_per_defect": 380,
+      "sustainable_margin_pct": 10,
+      "relationship_eur_per_point": 13990,
+      "freight_eur_per_unit": {
+        "EXW": 0.01,
+        "FCA": 0.01,
+        "DAP": 0.0
+      },
+      "index_paths": {},
+      "must_haves": [
+        {
+          "field": "volume_per_year",
+          "op": ">=",
+          "value": 22230
+        }
+      ],
+      "alternative": {
+        "kind": "none",
+        "ref": null,
+        "terms": {}
+      }
+    },
+    "round_limit": 10,
+    "refs": [
+      "doc:20260918-70410-P10",
+      "ctr:4600070410",
+      "sc:70410@2026Q3",
+      "fc:340010@2026-09"
+    ]
+  },
+  "research": {
+    "facts": {
+      "sup:70410": {
+        "table": "suppliers",
+        "id": "sup:70410",
+        "name": "Dichtungswerk Ravensteiner GmbH",
+        "country": "DE",
+        "currency": "EUR",
+        "payment_days": 30,
+        "skonto_days": null,
+        "skonto_pct": null,
+        "incoterm": "DAP",
+        "created": "1996-01-01",
+        "category": "seals",
+        "detail": "full",
+        "blocked": 0,
+        "contract_id": "ctr:4600070410",
+        "standard_lead_time_days": 42,
+        "abc_class": "A"
+      },
+      "part:340010": {
+        "table": "parts",
+        "id": "part:340010",
+        "description": "Mechanical seal 24 mm, SiC/carbon, EPDM",
+        "category": "seals",
+        "material_group": "seal",
+        "grade": "EN 12756",
+        "net_weight_kg": 0.25,
+        "uom": "pc",
+        "price_unit": 1,
+        "planned_lead_time_days": 42,
+        "pump_series": "ALL",
+        "standard_price": 29.89,
+        "status": "series",
+        "abc_class": "B"
+      },
+      "doc:20260918-70410-P10": {
+        "asked_pct": null,
+        "asked_price": null,
+        "date": "2026-09-18",
+        "days": null,
+        "effective_date": null,
+        "supplier": "sup:70410",
+        "title": "Capacity situation and delivery dates",
+        "type": "email"
+      },
+      "ctr:4600070410": {
+        "days": 90,
+        "supplier": "sup:70410",
+        "valid_from": "2025-07-01",
+        "valid_to": "2027-06-30"
+      },
+      "sc:70410@2026Q3": {
+        "colour": "green",
+        "otd_confirmed_pct": 85.9,
+        "otd_pct": 79.5,
+        "ppm": 270,
+        "quarter": "2026Q3",
+        "supplier": "sup:70410"
+      },
+      "fc:340010@2026-09": {
+        "change_pct": 10.1,
+        "part": "part:340010",
+        "volume_per_year": 21310
+      },
+      "cost:340010": {
+        "confidence_pct": 5,
+        "part": "part:340010",
+        "price_unit": 1,
+        "unit_cost": 24.31
+      },
+      "ctr:4600070410#5.1": {
+        "days": 42,
+        "material_share": null,
+        "series": null,
+        "supplier": "sup:70410",
+        "type": "delivery",
+        "text": "Delivery DAP; standard lead time 42 days from order."
+      },
+      "idx:LCI-C@2025-06": {
+        "month": "2025-06",
+        "series": "LCI-C",
+        "value": 116.5
+      },
+      "idx:LCI-C@2026-06": {
+        "month": "2026-06",
+        "series": "LCI-C",
+        "value": 119.6
+      },
+      "idx:PPI-C2219@2025-08": {
+        "month": "2025-08",
+        "series": "PPI-C2219",
+        "value": 117.8
+      },
+      "idx:PPI-C2219@2026-08": {
+        "month": "2026-08",
+        "series": "PPI-C2219",
+        "value": 122.4
+      },
+      "po:4500014383-10": {
+        "change_pct": 22.3,
+        "date": "2026-09-07",
+        "part": "part:340010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70410",
+        "unit_price": 29.89
+      },
+      "po:4500014436-10": {
+        "change_pct": 12.7,
+        "date": "2026-09-21",
+        "part": "part:340010",
+        "price_unit": 1,
+        "qty": 930,
+        "supplier": "sup:70410",
+        "unit_price": 29.89
+      },
+      "sc:70410@2024Q3": {
+        "colour": "green",
+        "otd_confirmed_pct": 87.7,
+        "otd_pct": 84.6,
+        "ppm": 266,
+        "quarter": "2024Q3",
+        "supplier": "sup:70410"
+      },
+      "sc:70410@2024Q4": {
+        "colour": "green",
+        "otd_confirmed_pct": 83.8,
+        "otd_pct": 81.1,
+        "ppm": 317,
+        "quarter": "2024Q4",
+        "supplier": "sup:70410"
+      },
+      "sc:70410@2025Q1": {
+        "colour": "green",
+        "otd_confirmed_pct": 81.6,
+        "otd_pct": 77.6,
+        "ppm": 345,
+        "quarter": "2025Q1",
+        "supplier": "sup:70410"
+      },
+      "sc:70410@2025Q2": {
+        "colour": "green",
+        "otd_confirmed_pct": 81.3,
+        "otd_pct": 78.7,
+        "ppm": 375,
+        "quarter": "2025Q2",
+        "supplier": "sup:70410"
+      },
+      "sc:70410@2025Q3": {
+        "colour": "green",
+        "otd_confirmed_pct": 81.3,
+        "otd_pct": 78.7,
+        "ppm": 476,
+        "quarter": "2025Q3",
+        "supplier": "sup:70410"
+      },
+      "sc:70410@2025Q4": {
+        "colour": "green",
+        "otd_confirmed_pct": 84.4,
+        "otd_pct": 81.8,
+        "ppm": 412,
+        "quarter": "2025Q4",
+        "supplier": "sup:70410"
+      },
+      "sc:70410@2026Q1": {
+        "colour": "green",
+        "otd_confirmed_pct": 84.2,
+        "otd_pct": 81.6,
+        "ppm": 405,
+        "quarter": "2026Q1",
+        "supplier": "sup:70410"
+      },
+      "sc:70410@2026Q2": {
+        "colour": "green",
+        "otd_confirmed_pct": 83.5,
+        "otd_pct": 79.7,
+        "ppm": 366,
+        "quarter": "2026Q2",
+        "supplier": "sup:70410"
+      },
+      "ctr:4600070410#2.1": {
+        "days": null,
+        "material_share": null,
+        "series": null,
+        "supplier": "sup:70410",
+        "type": "scope",
+        "text": "Subject: supply of Mechanical seal 24 mm, SiC/carbon, EPDM, Mechanical seal 32 mm, SiC/carbon, EPDM, Casing gasket, aramid fibre."
+      },
+      "ctr:4600070410#3.1": {
+        "days": 90,
+        "material_share": null,
+        "series": null,
+        "supplier": "sup:70410",
+        "type": "price",
+        "text": "Prices as per the price annex, fixed for each calendar year. Changes require written notice of at least 90 days before the end of the calendar year."
+      },
+      "ctr:4600070410#4.1": {
+        "days": 30,
+        "material_share": null,
+        "series": null,
+        "supplier": "sup:70410",
+        "type": "payment",
+        "text": "Payment: 30 days net."
+      },
+      "ctr:4600070410#6.1": {
+        "days": null,
+        "material_share": null,
+        "series": null,
+        "supplier": "sup:70410",
+        "type": "quality",
+        "text": "The quality agreement applies: on-time delivery target 95 %, flat fee of EUR 150 per supplier-caused complaint."
+      },
+      "ctr:4600070410#8.1": {
+        "days": 90,
+        "material_share": null,
+        "series": null,
+        "supplier": "sup:70410",
+        "type": "term",
+        "text": "Valid from 2025-07-01 to 2027-06-30; extends by 12 months unless terminated with 90 days' notice."
+      },
+      "doc:20251108-70410-N": {
+        "asked_pct": null,
+        "asked_price": null,
+        "date": "2025-11-08",
+        "days": null,
+        "effective_date": null,
+        "supplier": "sup:70410",
+        "title": "New contact person",
+        "type": "email"
+      }
+    },
+    "documents": [
+      {
+        "id": "doc:20260918-70410-P10",
+        "text": "# Capacity situation and delivery dates\n\nemail - 2026-09-18 - Dichtungswerk Ravensteiner GmbH\n\nHello,\n\ndue to very high capacity utilisation we cannot confirm your full forecast for Mechanical seal 24 mm, SiC/carbon, EPDM (part:340010) for the coming months. Lead times are currently longer than agreed. We will prioritise customers with firm, long-term commitments.\n\nBest regards,\nDichtungswerk Ravensteiner GmbH\n",
+        "metadata": {
+          "asked_pct": null,
+          "asked_price": null,
+          "date": "2026-09-18",
+          "days": null,
+          "effective_date": null,
+          "supplier": "sup:70410",
+          "title": "Capacity situation and delivery dates",
+          "type": "email"
+        },
+        "truncated": false
+      },
+      {
+        "id": "doc:20251108-70410-N",
+        "text": "# New contact person\n\nemail - 2025-11-08 - Dichtungswerk Ravensteiner GmbH\n\nFrom 1 October your contact in sales is our new colleague in inside sales; all other contacts stay the same.\n",
+        "metadata": {
+          "asked_pct": null,
+          "asked_price": null,
+          "date": "2025-11-08",
+          "days": null,
+          "effective_date": null,
+          "supplier": "sup:70410",
+          "title": "New contact person",
+          "type": "email"
+        },
+        "truncated": false
+      },
+      {
+        "id": "doc:20260310-70410-M1",
+        "text": "# Annual review\n\nmeeting note - 2026-03-10 - Hollerau Pumpenwerke, Purchasing\n\nAnnual review with Dichtungswerk Ravensteiner GmbH. Their key account manager explained that price changes above 2 % need the approval of their pricing committee, which meets every two weeks.\n",
+        "metadata": {
+          "asked_pct": null,
+          "asked_price": null,
+          "date": "2026-03-10",
+          "days": null,
+          "effective_date": null,
+          "supplier": "sup:70410",
+          "title": "Annual review",
+          "type": "meeting_note"
+        },
+        "truncated": false
+      },
+      {
+        "id": "doc:20260327-70410-M2",
+        "text": "# New volumes\n\nemail - 2026-03-27 - Dichtungswerk Ravensteiner GmbH\n\nOrder intake is very strong. We can confirm additional volumes only against a binding 12-month commitment.\n",
+        "metadata": {
+          "asked_pct": null,
+          "asked_price": null,
+          "date": "2026-03-27",
+          "days": null,
+          "effective_date": null,
+          "supplier": "sup:70410",
+          "title": "New volumes",
+          "type": "email"
+        },
+        "truncated": false
+      },
+      {
+        "id": "ctr:4600070410",
+        "text": "# Framework agreement 4600070410\n\nBetween Hollerau Pumpenwerke GmbH and Dichtungswerk Ravensteiner GmbH.\n\n**\u00a7 2.1** Subject: supply of Mechanical seal 24 mm, SiC/carbon, EPDM, Mechanical seal 32 mm, SiC/carbon, EPDM, Casing gasket, aramid fibre.\n\n**\u00a7 3.1** Prices as per the price annex, fixed for each calendar year. Changes require written notice of at least 90 days before the end of the calendar year.\n\n**\u00a7 4.1** Payment: 30 days net.\n\n**\u00a7 5.1** Delivery DAP; standard lead time 42 days from order.\n\n**\u00a7 6.1** The quality agreement applies: on-time delivery target 95 %, flat fee of EUR 150 per supplier-caused complaint.\n\n**\u00a7 8.1** Valid from 2025-07-01 to 2027-06-30; extends by 12 months unless terminated with 90 days' notice.\n\nParts: part:340010, part:340011, part:340030\n",
+        "metadata": {
+          "days": 90,
+          "supplier": "sup:70410",
+          "valid_from": "2025-07-01",
+          "valid_to": "2027-06-30"
+        },
+        "truncated": false
+      }
+    ],
+    "tables": {
+      "scorecards": [
+        {
+          "id": "sc:70410@2024Q3",
+          "supplier_id": "sup:70410",
+          "quarter": "2024Q3",
+          "period_start": "2023-10-01",
+          "period_end": "2024-09-30",
+          "gr_lines": 65,
+          "otd_pct": 84.6,
+          "otd_confirmed_pct": 87.7,
+          "received_qty": 45112,
+          "complaint_qty": 12,
+          "ppm": 266,
+          "qn_count": 10,
+          "open_8d_overdue": 0,
+          "score": 91.0,
+          "class": "A",
+          "colour": "green"
+        },
+        {
+          "id": "sc:70410@2024Q4",
+          "supplier_id": "sup:70410",
+          "quarter": "2024Q4",
+          "period_start": "2024-01-01",
+          "period_end": "2024-12-31",
+          "gr_lines": 74,
+          "otd_pct": 81.1,
+          "otd_confirmed_pct": 83.8,
+          "received_qty": 50458,
+          "complaint_qty": 16,
+          "ppm": 317,
+          "qn_count": 14,
+          "open_8d_overdue": 0,
+          "score": 89.0,
+          "class": "A",
+          "colour": "green"
+        },
+        {
+          "id": "sc:70410@2025Q1",
+          "supplier_id": "sup:70410",
+          "quarter": "2025Q1",
+          "period_start": "2024-04-01",
+          "period_end": "2025-03-31",
+          "gr_lines": 76,
+          "otd_pct": 77.6,
+          "otd_confirmed_pct": 81.6,
+          "received_qty": 52223,
+          "complaint_qty": 18,
+          "ppm": 345,
+          "qn_count": 16,
+          "open_8d_overdue": 0,
+          "score": 87.1,
+          "class": "A",
+          "colour": "green"
+        },
+        {
+          "id": "sc:70410@2025Q2",
+          "supplier_id": "sup:70410",
+          "quarter": "2025Q2",
+          "period_start": "2024-07-01",
+          "period_end": "2025-06-30",
+          "gr_lines": 75,
+          "otd_pct": 78.7,
+          "otd_confirmed_pct": 81.3,
+          "received_qty": 50726,
+          "complaint_qty": 19,
+          "ppm": 375,
+          "qn_count": 17,
+          "open_8d_overdue": 0,
+          "score": 87.5,
+          "class": "A",
+          "colour": "green"
+        },
+        {
+          "id": "sc:70410@2025Q3",
+          "supplier_id": "sup:70410",
+          "quarter": "2025Q3",
+          "period_start": "2024-10-01",
+          "period_end": "2025-09-30",
+          "gr_lines": 75,
+          "otd_pct": 78.7,
+          "otd_confirmed_pct": 81.3,
+          "received_qty": 48366,
+          "complaint_qty": 23,
+          "ppm": 476,
+          "qn_count": 22,
+          "open_8d_overdue": 0,
+          "score": 87.0,
+          "class": "A",
+          "colour": "green"
+        },
+        {
+          "id": "sc:70410@2025Q4",
+          "supplier_id": "sup:70410",
+          "quarter": "2025Q4",
+          "period_start": "2025-01-01",
+          "period_end": "2025-12-31",
+          "gr_lines": 77,
+          "otd_pct": 81.8,
+          "otd_confirmed_pct": 84.4,
+          "received_qty": 51000,
+          "complaint_qty": 21,
+          "ppm": 412,
+          "qn_count": 20,
+          "open_8d_overdue": 0,
+          "score": 88.8,
+          "class": "A",
+          "colour": "green"
+        },
+        {
+          "id": "sc:70410@2026Q1",
+          "supplier_id": "sup:70410",
+          "quarter": "2026Q1",
+          "period_start": "2025-04-01",
+          "period_end": "2026-03-31",
+          "gr_lines": 76,
+          "otd_pct": 81.6,
+          "otd_confirmed_pct": 84.2,
+          "received_qty": 49330,
+          "complaint_qty": 20,
+          "ppm": 405,
+          "qn_count": 19,
+          "open_8d_overdue": 0,
+          "score": 88.8,
+          "class": "A",
+          "colour": "green"
+        },
+        {
+          "id": "sc:70410@2026Q2",
+          "supplier_id": "sup:70410",
+          "quarter": "2026Q2",
+          "period_start": "2025-07-01",
+          "period_end": "2026-06-30",
+          "gr_lines": 79,
+          "otd_pct": 79.7,
+          "otd_confirmed_pct": 83.5,
+          "received_qty": 51896,
+          "complaint_qty": 19,
+          "ppm": 366,
+          "qn_count": 19,
+          "open_8d_overdue": 0,
+          "score": 88.0,
+          "class": "A",
+          "colour": "green"
+        },
+        {
+          "id": "sc:70410@2026Q3",
+          "supplier_id": "sup:70410",
+          "quarter": "2026Q3",
+          "period_start": "2025-10-01",
+          "period_end": "2026-09-30",
+          "gr_lines": 78,
+          "otd_pct": 79.5,
+          "otd_confirmed_pct": 85.9,
+          "received_qty": 51826,
+          "complaint_qty": 14,
+          "ppm": 270,
+          "qn_count": 14,
+          "open_8d_overdue": 0,
+          "score": 88.4,
+          "class": "A",
+          "colour": "green"
+        }
+      ],
+      "quotes": [],
+      "forecasts": [
+        {
+          "id": "fc:340010@2023-12",
+          "part_id": "part:340010",
+          "snapshot_month": "2023-12",
+          "horizon_months": 12,
+          "qty_next_12m": 20200,
+          "uom": "pc",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:340010@2024-03",
+          "part_id": "part:340010",
+          "snapshot_month": "2024-03",
+          "horizon_months": 12,
+          "qty_next_12m": 20800,
+          "uom": "pc",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:340010@2024-06",
+          "part_id": "part:340010",
+          "snapshot_month": "2024-06",
+          "horizon_months": 12,
+          "qty_next_12m": 20450,
+          "uom": "pc",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:340010@2024-09",
+          "part_id": "part:340010",
+          "snapshot_month": "2024-09",
+          "horizon_months": 12,
+          "qty_next_12m": 20150,
+          "uom": "pc",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:340010@2024-12",
+          "part_id": "part:340010",
+          "snapshot_month": "2024-12",
+          "horizon_months": 12,
+          "qty_next_12m": 21500,
+          "uom": "pc",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:340010@2025-03",
+          "part_id": "part:340010",
+          "snapshot_month": "2025-03",
+          "horizon_months": 12,
+          "qty_next_12m": 21500,
+          "uom": "pc",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:340010@2025-06",
+          "part_id": "part:340010",
+          "snapshot_month": "2025-06",
+          "horizon_months": 12,
+          "qty_next_12m": 21800,
+          "uom": "pc",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:340010@2025-09",
+          "part_id": "part:340010",
+          "snapshot_month": "2025-09",
+          "horizon_months": 12,
+          "qty_next_12m": 19850,
+          "uom": "pc",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:340010@2025-12",
+          "part_id": "part:340010",
+          "snapshot_month": "2025-12",
+          "horizon_months": 12,
+          "qty_next_12m": 21650,
+          "uom": "pc",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:340010@2026-03",
+          "part_id": "part:340010",
+          "snapshot_month": "2026-03",
+          "horizon_months": 12,
+          "qty_next_12m": 21500,
+          "uom": "pc",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:340010@2026-06",
+          "part_id": "part:340010",
+          "snapshot_month": "2026-06",
+          "horizon_months": 12,
+          "qty_next_12m": 20490,
+          "uom": "pc",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:340010@2026-09",
+          "part_id": "part:340010",
+          "snapshot_month": "2026-09",
+          "horizon_months": 12,
+          "qty_next_12m": 21310,
+          "uom": "pc",
+          "shared_with_suppliers": 1
+        }
+      ],
+      "cost_drivers": [
+        {
+          "part_id": "part:340010",
+          "series_id": "LCI-C",
+          "weight": 0.28,
+          "source": "category team estimate 2026-06"
+        },
+        {
+          "part_id": "part:340010",
+          "series_id": "PPI-C2219",
+          "weight": 0.14,
+          "source": "category team estimate 2026-06"
+        }
+      ],
+      "price_conditions": [
+        {
+          "part_id": "part:340010",
+          "supplier_id": "sup:70410",
+          "valid_from": "2023-01-01",
+          "price": 28.94,
+          "basis": "contract",
+          "event_id": "EV-2023-70410-340010",
+          "valid_to": "2023-12-31",
+          "price_unit": 1,
+          "currency": "EUR"
+        },
+        {
+          "part_id": "part:340010",
+          "supplier_id": "sup:70410",
+          "valid_from": "2024-01-01",
+          "price": 29.89,
+          "basis": "renewal",
+          "event_id": "EV-2024-70410-340010",
+          "valid_to": "2024-12-31",
+          "price_unit": 1,
+          "currency": "EUR"
+        },
+        {
+          "part_id": "part:340010",
+          "supplier_id": "sup:70410",
+          "valid_from": "2025-01-01",
+          "price": 29.89,
+          "basis": "renewal",
+          "event_id": "EV-2025-70410-340010",
+          "valid_to": "2025-12-31",
+          "price_unit": 1,
+          "currency": "EUR"
+        },
+        {
+          "part_id": "part:340010",
+          "supplier_id": "sup:70410",
+          "valid_from": "2026-01-01",
+          "price": 29.89,
+          "basis": "renewal",
+          "event_id": "EV-2026-70410-340010",
+          "valid_to": null,
+          "price_unit": 1,
+          "currency": "EUR"
+        }
+      ],
+      "supplier_intel": [
+        {
+          "supplier_id": "sup:70410",
+          "legal_form": "GmbH",
+          "founded": 1958,
+          "owner_type": "group",
+          "group_parent": "Ravensteiner Holding AG",
+          "staff": 650,
+          "filed_fy": 2025,
+          "turnover_eur": 151000000,
+          "turnover_band": "100-250 M EUR",
+          "equity_ratio_pct": 28.8,
+          "credit_index": 159,
+          "credit_index_12m_ago": 159,
+          "vda63_grade": "A",
+          "certifications": "ISO 9001; ISO 14001"
+        }
+      ],
+      "spend_cube": [
+        {
+          "fiscal_year": "FY2024",
+          "supplier_id": "sup:70410",
+          "category": "seals",
+          "spend_eur": 700404.93,
+          "invoice_count": 64
+        },
+        {
+          "fiscal_year": "FY2025",
+          "supplier_id": "sup:70410",
+          "category": "seals",
+          "spend_eur": 808344.4,
+          "invoice_count": 76
+        },
+        {
+          "fiscal_year": "FY2026",
+          "supplier_id": "sup:70410",
+          "category": "seals",
+          "spend_eur": 816440.74,
+          "invoice_count": 78
+        }
+      ],
+      "news": [
+        {
+          "id": "news:20260822-23",
+          "date": "2026-08-22",
+          "supplier_id": "sup:70410",
+          "topic": "allocation",
+          "headline": "Dichtungswerk Ravensteiner GmbH allocates volumes",
+          "body": "Dichtungswerk Ravensteiner GmbH has informed customers that deliveries of standard mechanical seals will be allocated in line with last year's call-offs.",
+          "source": "Metall-Kurier"
+        }
+      ],
+      "should_cost": [
+        {
+          "id": "cost:340010",
+          "part_id": "part:340010",
+          "estimate_date": "2026-07-15",
+          "cost_base": "DE",
+          "supplier_id": "sup:70410",
+          "unit_cost": 24.31,
+          "price_unit": 1,
+          "material_eur": 3.4,
+          "conversion_eur": 14.64,
+          "overhead_eur": 6.27,
+          "confidence_pct": 5,
+          "method": "bottom-up estimate of this supplier's plant, no margin included"
+        }
+      ],
+      "contract_clauses": [
+        {
+          "id": "ctr:4600070410#2.1",
+          "contract_id": "ctr:4600070410",
+          "clause": "2.1",
+          "type": "scope",
+          "text": "Subject: supply of Mechanical seal 24 mm, SiC/carbon, EPDM, Mechanical seal 32 mm, SiC/carbon, EPDM, Casing gasket, aramid fibre.",
+          "series": null,
+          "material_share": null,
+          "deadband_pct": null,
+          "days": null
+        },
+        {
+          "id": "ctr:4600070410#3.1",
+          "contract_id": "ctr:4600070410",
+          "clause": "3.1",
+          "type": "price",
+          "text": "Prices as per the price annex, fixed for each calendar year. Changes require written notice of at least 90 days before the end of the calendar year.",
+          "series": null,
+          "material_share": null,
+          "deadband_pct": null,
+          "days": 90
+        },
+        {
+          "id": "ctr:4600070410#4.1",
+          "contract_id": "ctr:4600070410",
+          "clause": "4.1",
+          "type": "payment",
+          "text": "Payment: 30 days net.",
+          "series": null,
+          "material_share": null,
+          "deadband_pct": null,
+          "days": 30
+        },
+        {
+          "id": "ctr:4600070410#5.1",
+          "contract_id": "ctr:4600070410",
+          "clause": "5.1",
+          "type": "delivery",
+          "text": "Delivery DAP; standard lead time 42 days from order.",
+          "series": null,
+          "material_share": null,
+          "deadband_pct": null,
+          "days": 42
+        },
+        {
+          "id": "ctr:4600070410#6.1",
+          "contract_id": "ctr:4600070410",
+          "clause": "6.1",
+          "type": "quality",
+          "text": "The quality agreement applies: on-time delivery target 95 %, flat fee of EUR 150 per supplier-caused complaint.",
+          "series": null,
+          "material_share": null,
+          "deadband_pct": null,
+          "days": null
+        },
+        {
+          "id": "ctr:4600070410#8.1",
+          "contract_id": "ctr:4600070410",
+          "clause": "8.1",
+          "type": "term",
+          "text": "Valid from 2025-07-01 to 2027-06-30; extends by 12 months unless terminated with 90 days' notice.",
+          "series": null,
+          "material_share": null,
+          "deadband_pct": null,
+          "days": 90
+        }
+      ],
+      "sourcing": [
+        {
+          "part_id": "part:340010",
+          "supplier_id": "sup:70410",
+          "status": "active",
+          "quota_pct": 100,
+          "approved_since": "2020-07-01",
+          "tooling_owner": "n/a"
+        }
+      ],
+      "negotiation_history": [
+        {
+          "event_id": "EV-2023-70410-340010",
+          "date": "2022-11-18",
+          "supplier_id": "sup:70410",
+          "part_id": "part:340010",
+          "type": "initial price",
+          "asked_pct": null,
+          "settled_pct": null,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2023-70410-340011",
+          "date": "2022-12-10",
+          "supplier_id": "sup:70410",
+          "part_id": "part:340011",
+          "type": "initial price",
+          "asked_pct": null,
+          "settled_pct": null,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2023-70410-340030",
+          "date": "2022-11-14",
+          "supplier_id": "sup:70410",
+          "part_id": "part:340030",
+          "type": "initial price",
+          "asked_pct": null,
+          "settled_pct": null,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2024-70410-340010",
+          "date": "2023-12-10",
+          "supplier_id": "sup:70410",
+          "part_id": "part:340010",
+          "type": "annual renewal",
+          "asked_pct": 7.0,
+          "settled_pct": 3.3,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2024-70410-340011",
+          "date": "2023-12-02",
+          "supplier_id": "sup:70410",
+          "part_id": "part:340011",
+          "type": "annual renewal",
+          "asked_pct": 1.8,
+          "settled_pct": 0.0,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2024-70410-340030",
+          "date": "2023-12-08",
+          "supplier_id": "sup:70410",
+          "part_id": "part:340030",
+          "type": "annual renewal",
+          "asked_pct": 2.2,
+          "settled_pct": 0.0,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2025-70410-340010",
+          "date": "2024-11-24",
+          "supplier_id": "sup:70410",
+          "part_id": "part:340010",
+          "type": "annual renewal",
+          "asked_pct": 2.0,
+          "settled_pct": 0.0,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2025-70410-340011",
+          "date": "2024-11-24",
+          "supplier_id": "sup:70410",
+          "part_id": "part:340011",
+          "type": "annual renewal",
+          "asked_pct": 4.9,
+          "settled_pct": 2.1,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2025-70410-340030",
+          "date": "2024-12-06",
+          "supplier_id": "sup:70410",
+          "part_id": "part:340030",
+          "type": "annual renewal",
+          "asked_pct": 5.6,
+          "settled_pct": 3.7,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2026-70410-340010",
+          "date": "2025-11-23",
+          "supplier_id": "sup:70410",
+          "part_id": "part:340010",
+          "type": "annual renewal",
+          "asked_pct": 2.5,
+          "settled_pct": 0.0,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2026-70410-340011",
+          "date": "2025-12-02",
+          "supplier_id": "sup:70410",
+          "part_id": "part:340011",
+          "type": "annual renewal",
+          "asked_pct": 1.5,
+          "settled_pct": 0.0,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2026-70410-340030",
+          "date": "2025-12-07",
+          "supplier_id": "sup:70410",
+          "part_id": "part:340030",
+          "type": "annual renewal",
+          "asked_pct": 1.1,
+          "settled_pct": 0.0,
+          "note": ""
+        }
+      ],
+      "rfqs": []
+    },
+    "latest_forecasts": [
+      {
+        "part_id": "part:340010",
+        "forecast": {
+          "id": "fc:340010@2026-09",
+          "part_id": "part:340010",
+          "snapshot_month": "2026-09",
+          "horizon_months": 12,
+          "qty_next_12m": 21310,
+          "uom": "pc",
+          "shared_with_suppliers": 1
+        },
+        "monthly_rows": [
+          {
+            "fc_id": "fc:340010@2026-09",
+            "target_month": "2026-10",
+            "qty": 2100
+          },
+          {
+            "fc_id": "fc:340010@2026-09",
+            "target_month": "2026-11",
+            "qty": 1900
+          },
+          {
+            "fc_id": "fc:340010@2026-09",
+            "target_month": "2026-12",
+            "qty": 1200
+          },
+          {
+            "fc_id": "fc:340010@2026-09",
+            "target_month": "2027-01",
+            "qty": 1700
+          },
+          {
+            "fc_id": "fc:340010@2026-09",
+            "target_month": "2027-02",
+            "qty": 1800
+          },
+          {
+            "fc_id": "fc:340010@2026-09",
+            "target_month": "2027-03",
+            "qty": 1700
+          },
+          {
+            "fc_id": "fc:340010@2026-09",
+            "target_month": "2027-04",
+            "qty": 2100
+          },
+          {
+            "fc_id": "fc:340010@2026-09",
+            "target_month": "2027-05",
+            "qty": 1900
+          },
+          {
+            "fc_id": "fc:340010@2026-09",
+            "target_month": "2027-06",
+            "qty": 2000
+          },
+          {
+            "fc_id": "fc:340010@2026-09",
+            "target_month": "2027-07",
+            "qty": 1600
+          },
+          {
+            "fc_id": "fc:340010@2026-09",
+            "target_month": "2027-08",
+            "qty": 910
+          },
+          {
+            "fc_id": "fc:340010@2026-09",
+            "target_month": "2027-09",
+            "qty": 2400
+          }
+        ],
+        "source_refs": [
+          "table:forecasts",
+          "table:forecast_history_lines"
+        ],
+        "coverage": {
+          "expected_months": [
+            "2026-10",
+            "2026-11",
+            "2026-12",
+            "2027-01",
+            "2027-02",
+            "2027-03",
+            "2027-04",
+            "2027-05",
+            "2027-06",
+            "2027-07",
+            "2027-08",
+            "2027-09"
+          ],
+          "missing_months": [],
+          "unexpected_months": [],
+          "duplicate_months": [],
+          "monthly_total": 21310,
+          "matches_reported_total": true,
+          "complete": true
+        }
+      }
+    ],
+    "indices": [
+      {
+        "series": "LCI-C",
+        "weight": 0.28,
+        "change_pct": 2.6609,
+        "weighted_change_pct": 0.7451,
+        "claim": "LCI-C changed +2.66% from 2025-06 to 2026-06 (idx:LCI-C@2025-06, idx:LCI-C@2026-06).",
+        "refs": [
+          "idx:LCI-C@2025-06",
+          "idx:LCI-C@2026-06"
+        ]
+      },
+      {
+        "series": "PPI-C2219",
+        "weight": 0.14,
+        "change_pct": 3.9049,
+        "weighted_change_pct": 0.5467,
+        "claim": "PPI-C2219 changed +3.90% from 2025-08 to 2026-08 (idx:PPI-C2219@2025-08, idx:PPI-C2219@2026-08).",
+        "refs": [
+          "idx:PPI-C2219@2025-08",
+          "idx:PPI-C2219@2026-08"
+        ]
+      }
+    ],
+    "estimates": {
+      "sup:70410": {
+        "full_cost": 24.31,
+        "confidence_pct": 5,
+        "source": "cost:340010"
+      }
+    },
+    "table_row_counts": {
+      "suppliers": 1,
+      "parts": 1,
+      "supplier_intel": 1,
+      "negotiation_history": 12,
+      "news": 1,
+      "scorecards": 9,
+      "contracts": 1,
+      "spend_cube": 3,
+      "documents": 4,
+      "should_cost": 1,
+      "quotes": 0,
+      "forecasts": 12,
+      "sourcing": 1,
+      "cost_drivers": 2,
+      "rfqs": 0,
+      "po_lines": 72,
+      "goods_receipts": 74,
+      "quality_notifications": 22,
+      "price_conditions": 4,
+      "invoices": 74,
+      "contract_clauses": 6,
+      "forecast_history_lines": 144,
+      "index_series": 2,
+      "index_values": 134
+    },
+    "retrieval_issues": [],
+    "collection": {
+      "version": "research-collection-v1",
+      "tables": {
+        "suppliers": {
+          "status": "complete",
+          "source_table": "suppliers",
+          "expected_rows": 1,
+          "loaded_rows": 1,
+          "scope": {
+            "id": [
+              "sup:70410"
+            ]
+          },
+          "retained_rows": 1
+        },
+        "parts": {
+          "status": "complete",
+          "source_table": "parts",
+          "expected_rows": 1,
+          "loaded_rows": 1,
+          "scope": {
+            "id": [
+              "part:340010"
+            ]
+          },
+          "retained_rows": 1
+        },
+        "supplier_intel": {
+          "status": "complete",
+          "source_table": "supplier_intel",
+          "expected_rows": 1,
+          "loaded_rows": 1,
+          "scope": {
+            "supplier_id": [
+              "sup:70410"
+            ]
+          },
+          "retained_rows": 1
+        },
+        "negotiation_history": {
+          "status": "complete",
+          "source_table": "negotiation_history",
+          "expected_rows": 12,
+          "loaded_rows": 12,
+          "scope": {
+            "supplier_id": [
+              "sup:70410"
+            ]
+          },
+          "retained_rows": 12
+        },
+        "news": {
+          "status": "complete",
+          "source_table": "news",
+          "expected_rows": 1,
+          "loaded_rows": 1,
+          "scope": {
+            "supplier_id": [
+              "sup:70410"
+            ]
+          },
+          "retained_rows": 1
+        },
+        "scorecards": {
+          "status": "complete",
+          "source_table": "scorecards",
+          "expected_rows": 9,
+          "loaded_rows": 9,
+          "scope": {
+            "supplier_id": [
+              "sup:70410"
+            ]
+          },
+          "retained_rows": 9
+        },
+        "contracts": {
+          "status": "complete",
+          "source_table": "contracts",
+          "expected_rows": 1,
+          "loaded_rows": 1,
+          "scope": {
+            "supplier_id": [
+              "sup:70410"
+            ]
+          },
+          "retained_rows": 1
+        },
+        "spend_cube": {
+          "status": "complete",
+          "source_table": "spend_cube",
+          "expected_rows": 3,
+          "loaded_rows": 3,
+          "scope": {
+            "supplier_id": [
+              "sup:70410"
+            ]
+          },
+          "retained_rows": 3
+        },
+        "documents": {
+          "status": "complete",
+          "source_table": "documents",
+          "expected_rows": 4,
+          "loaded_rows": 4,
+          "scope": {
+            "supplier_id": [
+              "sup:70410"
+            ]
+          },
+          "retained_rows": 4
+        },
+        "should_cost": {
+          "status": "complete",
+          "source_table": "should_cost",
+          "expected_rows": 1,
+          "loaded_rows": 1,
+          "scope": {
+            "part_id": [
+              "part:340010"
+            ]
+          },
+          "retained_rows": 1
+        },
+        "quotes": {
+          "status": "complete",
+          "source_table": "quotes",
+          "expected_rows": 0,
+          "loaded_rows": 0,
+          "scope": {
+            "part_id": [
+              "part:340010"
+            ]
+          },
+          "retained_rows": 0
+        },
+        "forecasts": {
+          "status": "complete",
+          "source_table": "forecasts",
+          "expected_rows": 12,
+          "loaded_rows": 12,
+          "scope": {
+            "part_id": [
+              "part:340010"
+            ]
+          },
+          "retained_rows": 12
+        },
+        "sourcing": {
+          "status": "complete",
+          "source_table": "sourcing",
+          "expected_rows": 1,
+          "loaded_rows": 1,
+          "scope": {
+            "part_id": [
+              "part:340010"
+            ]
+          },
+          "retained_rows": 1
+        },
+        "cost_drivers": {
+          "status": "complete",
+          "source_table": "cost_drivers",
+          "expected_rows": 2,
+          "loaded_rows": 2,
+          "scope": {
+            "part_id": [
+              "part:340010"
+            ]
+          },
+          "retained_rows": 2
+        },
+        "rfqs": {
+          "status": "complete",
+          "source_table": "rfqs",
+          "expected_rows": 0,
+          "loaded_rows": 0,
+          "scope": {
+            "part_id": [
+              "part:340010"
+            ]
+          },
+          "retained_rows": 0
+        },
+        "po_lines": {
+          "status": "complete",
+          "source_table": "po_lines",
+          "expected_rows": 72,
+          "loaded_rows": 72,
+          "scope": {
+            "supplier_id": [
+              "sup:70410"
+            ],
+            "part_id": [
+              "part:340010"
+            ]
+          },
+          "retained_rows": 72
+        },
+        "goods_receipts": {
+          "status": "complete",
+          "source_table": "goods_receipts",
+          "expected_rows": 74,
+          "loaded_rows": 74,
+          "scope": {
+            "supplier_id": [
+              "sup:70410"
+            ],
+            "part_id": [
+              "part:340010"
+            ]
+          },
+          "retained_rows": 74
+        },
+        "quality_notifications": {
+          "status": "complete",
+          "source_table": "quality_notifications",
+          "expected_rows": 22,
+          "loaded_rows": 22,
+          "scope": {
+            "supplier_id": [
+              "sup:70410"
+            ],
+            "part_id": [
+              "part:340010"
+            ]
+          },
+          "retained_rows": 22
+        },
+        "price_conditions": {
+          "status": "complete",
+          "source_table": "price_conditions",
+          "expected_rows": 4,
+          "loaded_rows": 4,
+          "scope": {
+            "supplier_id": [
+              "sup:70410"
+            ],
+            "part_id": [
+              "part:340010"
+            ]
+          },
+          "retained_rows": 4
+        },
+        "invoices": {
+          "status": "complete",
+          "source_table": "invoices",
+          "expected_rows": 74,
+          "loaded_rows": 74,
+          "scope": {
+            "supplier_id": [
+              "sup:70410"
+            ]
+          },
+          "retained_rows": 74
+        },
+        "contract_clauses": {
+          "status": "complete",
+          "source_table": "contract_clauses",
+          "expected_rows": 6,
+          "loaded_rows": 6,
+          "scope": {
+            "contract_id": [
+              "ctr:4600070410"
+            ]
+          },
+          "retained_rows": 6
+        },
+        "forecast_history_lines": {
+          "status": "complete",
+          "source_table": "forecast_lines",
+          "expected_rows": 144,
+          "loaded_rows": 144,
+          "scope": {
+            "fc_id": [
+              "fc:340010@2023-12",
+              "fc:340010@2024-03",
+              "fc:340010@2024-06",
+              "fc:340010@2024-09",
+              "fc:340010@2024-12",
+              "fc:340010@2025-03",
+              "fc:340010@2025-06",
+              "fc:340010@2025-09",
+              "fc:340010@2025-12",
+              "fc:340010@2026-03",
+              "fc:340010@2026-06",
+              "fc:340010@2026-09"
+            ]
+          },
+          "retained_rows": 144
+        },
+        "index_series": {
+          "status": "complete",
+          "source_table": "index_series",
+          "expected_rows": 2,
+          "loaded_rows": 2,
+          "scope": {
+            "id": [
+              "LCI-C",
+              "PPI-C2219"
+            ]
+          },
+          "retained_rows": 2
+        },
+        "index_values": {
+          "status": "complete",
+          "source_table": "index_values",
+          "expected_rows": 134,
+          "loaded_rows": 134,
+          "scope": {
+            "series_id": [
+              "LCI-C",
+              "PPI-C2219"
+            ]
+          },
+          "retained_rows": 134
+        }
+      },
+      "sunday_release_loaded": false,
+      "scope_note": "Supplier account context and case-part records. Historical quotes are not automatically authorized live alternatives. Forecasts are not commitments.",
+      "fact_count": 101,
+      "document_count": 5,
+      "issues": []
+    },
+    "calculation_location": "decision_context.calculations",
+    "p10_evidence": {
+      "scope": "Supplier 70410 / part 340010; frozen practice data through September 2026",
+      "order_refs": [
+        "po:4500010017-10",
+        "po:4500010099-10",
+        "po:4500010149-10",
+        "po:4500010219-10",
+        "po:4500010274-10",
+        "po:4500010364-10",
+        "po:4500010407-10",
+        "po:4500010483-10",
+        "po:4500010543-10",
+        "po:4500010608-10",
+        "po:4500010658-10",
+        "po:4500010738-10",
+        "po:4500010850-10",
+        "po:4500010890-10",
+        "po:4500010927-10",
+        "po:4500010989-10",
+        "po:4500011057-10",
+        "po:4500011167-10",
+        "po:4500011225-10",
+        "po:4500011248-10",
+        "po:4500011284-10",
+        "po:4500011317-10",
+        "po:4500011381-10",
+        "po:4500011517-10",
+        "po:4500011546-10",
+        "po:4500011580-10",
+        "po:4500011642-10",
+        "po:4500011710-10",
+        "po:4500011752-10",
+        "po:4500011850-10",
+        "po:4500011912-10",
+        "po:4500011972-10",
+        "po:4500012033-10",
+        "po:4500012093-10",
+        "po:4500012147-10",
+        "po:4500012237-10",
+        "po:4500012283-10",
+        "po:4500012360-10",
+        "po:4500012425-10",
+        "po:4500012472-10",
+        "po:4500012551-10",
+        "po:4500012651-10",
+        "po:4500012660-10",
+        "po:4500012784-10",
+        "po:4500012784-20",
+        "po:4500012828-10",
+        "po:4500012868-10",
+        "po:4500012956-10",
+        "po:4500013017-10",
+        "po:4500013077-10",
+        "po:4500013138-10",
+        "po:4500013203-10",
+        "po:4500013269-10",
+        "po:4500013313-10",
+        "po:4500013370-10",
+        "po:4500013451-10",
+        "po:4500013515-10",
+        "po:4500013591-10",
+        "po:4500013646-10",
+        "po:4500013725-10",
+        "po:4500013787-10",
+        "po:4500013851-10",
+        "po:4500013964-10",
+        "po:4500013987-10",
+        "po:4500014027-10",
+        "po:4500014147-10",
+        "po:4500014147-20",
+        "po:4500014213-10",
+        "po:4500014318-10",
+        "po:4500014337-10",
+        "po:4500014383-10",
+        "po:4500014436-10"
+      ],
+      "opening_arguments": [
+        {
+          "id": "recent_order_prices",
+          "source_refs": [
+            "po:4500014383-10",
+            "po:4500014436-10"
+          ],
+          "sentence": "Our orders for this seal on 2026-09-07 and 2026-09-21 were both at EUR 29.89/unit (po:4500014383-10, po:4500014436-10).",
+          "numeric_claims": []
+        },
+        {
+          "id": "buyer_should_cost",
+          "source_refs": [
+            "cost:340010"
+          ],
+          "interpretation": "Buyer estimate excluding margin, not a proven supplier floor; use the recorded value and uncertainty, not a profitability assertion."
+        },
+        {
+          "id": "delivery_performance",
+          "source_refs": [
+            "sc:70410@2026Q3"
+          ],
+          "interpretation": "Supplier-wide rolling on-time delivery, not this part's delivery rate. A past service level is not proof of future capacity."
+        }
+      ],
+      "interpretation": [
+        "Use at most three evidence groups per email, with one argument per sentence.",
+        "PO change_pct is not a unit-price change. Compare normalized prices explicitly.",
+        "Annual LCI and PPI increased. They support rising inputs and do not establish a required price cut.",
+        "Keep the forecast, authorized annual need and past orders distinct; compare their periods in demand_preparation before making a volume argument.",
+        "The allocation news refers to past call-offs. Full future allocation remains to be negotiated.",
+        "Do not ask for a best/final quote merely to obtain an ordinary counteroffer."
+      ],
+      "demand_preparation": {
+        "forecast_ref": "fc:340010@2026-09",
+        "source_refs": [
+          "case",
+          "table:forecasts",
+          "table:forecast_history_lines"
+        ],
+        "forecast_rows_complete": true,
+        "authorized_need_per_year": 23400,
+        "forecast_total": 21310,
+        "forecast_horizon_months": 12,
+        "forecast_start_month": "2026-10",
+        "forecast_end_month": "2027-09",
+        "contract_start_month": "2027-01",
+        "need_minus_forecast_units": 2090,
+        "same_first_year_window": false,
+        "forecast_months_before_contract": [
+          "2026-10",
+          "2026-11",
+          "2026-12"
+        ],
+        "full_need_contract_scenarios": [
+          {
+            "contract_months": 12,
+            "start_month": "2027-01",
+            "end_month": "2027-12",
+            "annual_volume": 23400,
+            "total_committed_units": 23400.0,
+            "months_with_forecast": 9,
+            "months_without_forecast": [
+              "2027-10",
+              "2027-11",
+              "2027-12"
+            ],
+            "months_beyond_scoring_horizon": 0
+          },
+          {
+            "contract_months": 24,
+            "start_month": "2027-01",
+            "end_month": "2028-12",
+            "annual_volume": 23400,
+            "total_committed_units": 46800.0,
+            "months_with_forecast": 9,
+            "months_without_forecast": [
+              "2027-10",
+              "2027-11",
+              "2027-12",
+              "2028-01",
+              "2028-02",
+              "2028-03",
+              "2028-04",
+              "2028-05",
+              "2028-06",
+              "2028-07",
+              "2028-08",
+              "2028-09",
+              "2028-10",
+              "2028-11",
+              "2028-12"
+            ],
+            "months_beyond_scoring_horizon": 0
+          },
+          {
+            "contract_months": 36,
+            "start_month": "2027-01",
+            "end_month": "2029-12",
+            "annual_volume": 23400,
+            "total_committed_units": 70200.0,
+            "months_with_forecast": 9,
+            "months_without_forecast": [
+              "2027-10",
+              "2027-11",
+              "2027-12",
+              "2028-01",
+              "2028-02",
+              "2028-03",
+              "2028-04",
+              "2028-05",
+              "2028-06",
+              "2028-07",
+              "2028-08",
+              "2028-09",
+              "2028-10",
+              "2028-11",
+              "2028-12",
+              "2029-01",
+              "2029-02",
+              "2029-03",
+              "2029-04",
+              "2029-05",
+              "2029-06",
+              "2029-07",
+              "2029-08",
+              "2029-09",
+              "2029-10",
+              "2029-11",
+              "2029-12"
+            ],
+            "months_beyond_scoring_horizon": 12
+          }
+        ],
+        "interpretation": [
+          "The annual case need is authorized; the forecast is planning evidence, not a binding call-off schedule.",
+          "Different forecast and contract windows are not a measured demand shortfall or proof of growth.",
+          "Missing months are unknown, not zero demand. Do not extrapolate or scale monthly rows to the annual need.",
+          "Do not promise level monthly call-offs without a supported plan. Reconcile the periods before using a schedule as a concession; preserve the case's authorized volume and must-haves.",
+          "Contract scenarios show full-need commitments, not accepted supplier offers. Months beyond the scoring horizon remain a real commitment."
+        ]
+      },
+      "unresolved_from_buyer_records": [
+        {
+          "topic": "capacity_tradeoff",
+          "source_refs": [
+            "doc:20260918-70410-P10"
+          ],
+          "gap": "The supplied records do not quantify available capacity or the allocation/price concession for a longer commitment. Reconcile with current supplier replies; priority is not guaranteed capacity."
+        },
+        {
+          "topic": "current_approval_authority",
+          "source_refs": [
+            "doc:20260310-70410-M1"
+          ],
+          "gap": "The March approval process is historical. Current authority is not confirmed by these buyer records; use current supplier replies and do not assume committee escalation is available."
+        }
+      ]
+    }
+  },
+  "standing_costs": [
+    {
+      "supplier_id": "sup:70410",
+      "sheet_id": "offer:70410-0",
+      "terms": {
+        "volume_per_year": 19890,
+        "contract_months": 12,
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "incoterm": "DAP",
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "tooling_eur": 0,
+        "unit_price": 32.2
+      },
+      "cost": 1932492.18,
+      "valid": false,
+      "acceptable": false,
+      "breakdown": {
+        "price": 640458.0,
+        "uncovered_need": 1005357.6,
+        "fallback_risk": 251339.4,
+        "payment_terms": 4269.72,
+        "freight": 0.0,
+        "late_delivery": 28800,
+        "quality": 2267.46,
+        "tooling": 0.0,
+        "index_clause": 0.0,
+        "index_risk": 0.0,
+        "relationship": 0.0
+      },
+      "relationship_estimated": true
+    }
+  ],
+  "candidate_packages": {
+    "sup:70410": [
+      {
+        "id": "A",
+        "label": "Buyer value",
+        "terms": {
+          "unit_price": 26.4,
+          "volume_per_year": 23400,
+          "contract_months": 24,
+          "lead_time_days": 35
+        },
+        "cost": 1261236.1
+      }
+    ]
+  },
+  "threads": {
+    "sup:70410": {
+      "moves_left": 10,
+      "standard_terms": {
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0
+      },
+      "messages": [
+        {
+          "from": "sales@70410",
+          "body": "Dear Sir or Madam,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe offer a price of \u20ac32.20 per unit for a volume of 19890 pcs per year. Our Lieferzeit is 54 days, and the contract term is 12 months. \n\nPlease note that this offer remains valid for 30 days. All deliveries and services are strictly subject to our standard procedure and standard conditions.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH",
+          "status": "open",
+          "term_sheets": [
+            {
+              "term_sheet_id": "offer:70410-0",
+              "terms": {
+                "unit_price": 32.2,
+                "lead_time_days": 54,
+                "volume_per_year": 19890,
+                "contract_months": 12
+              }
+            }
+          ],
+          "claim_results": [],
+          "source_ref": "message:sup:70410:0",
+          "attachments": [
+            {
+              "source_ref": "attachment:sup:70410:0:0",
+              "name": "quote-offer-70410-0.pdf",
+              "text": "Dichtungswerk Ravensteiner GmbH\nTo: Hollerau Pumpenwerke GmbH\nAngebot / Quote offer:70410-0\nOffered terms\nUnit price (EUR) 32.20\nLead time (days) 54\nVolume per year (pcs) 19890\nContract term (months) 12\nOur standard terms (apply to everything not stated above)\nQuality commitment (ppm) 300\nChargeback per complaint (EUR) 0.00\nTerms fixed by your enquiry\nPayment terms (days net) 30\nPrice valid from 2027-01-01\nIndex clause none\nIncoterm DAP\nTooling (EUR) 0.00\nPart(s): part:340010. Enquiry: Ravensteiner cuts the seal allocation.\nValidity: 30 days.",
+              "truncated": false
+            }
+          ]
+        }
+      ],
+      "consecutive_identical_supplier_offers": 1
+    }
+  },
+  "protocol_state": {
+    "version": "faithful-v18-closing-cost-comparison",
+    "required_repeats": 0,
+    "alternative_cost": null,
+    "suppliers": {
+      "sup:70410": {
+        "rounds_left": 10,
+        "round_limit": 10,
+        "supplier_status": "open",
+        "phase": "negotiate",
+        "offers": [
+          {
+            "term_sheet_id": "offer:70410-0",
+            "offer_position": 1,
+            "package_fingerprint": "b1c4f1eca51a0137b4bc4e968d0f83ea3312c304b56860cceeddc6d0cc46fe99",
+            "terms": {
+              "volume_per_year": 19890,
+              "contract_months": 12,
+              "payment_days": 30,
+              "lead_time_days": 54,
+              "incoterm": "DAP",
+              "ppm_commitment": 300,
+              "chargeback_eur_per_complaint": 0.0,
+              "effective_date": "2027-01-01",
+              "index_clause": null,
+              "tooling_eur": 0,
+              "unit_price": 32.2
+            },
+            "cost": 1932492.18,
+            "must_haves_ok": false,
+            "economically_acceptable": false,
+            "repeat_count": 1,
+            "confirmations_needed": 0,
+            "server_acceptance_available": true,
+            "acceptance_eligible": false
+          }
+        ],
+        "legal_actions": [
+          "send"
+        ],
+        "eligible_offer_ids": [],
+        "confirmation_offer_ids": [],
+        "confirmation_target": null,
+        "confirmation_window_missed": false,
+        "acceptance_rejection": null,
+        "consequences": {
+          "accept": "Closes the case on the selected eligible binding package.",
+          "send": "Consumes one round. Changing any package term resets that package's repeat count.",
+          "confirm": "Consumes one round requesting the identical complete package, with no changed terms."
+        },
+        "term_options": {
+          "volume_per_year": [
+            16379,
+            19890,
+            23400
+          ],
+          "contract_months": [
+            12,
+            24,
+            36
+          ],
+          "lead_time_days": [
+            35,
+            42,
+            54,
+            56
+          ]
+        }
+      }
+    }
+  },
+  "source_attachments": {
+    "sup:70410": {
+      "doc:20260918-70410-P10": {
+        "name": "doc-20260918-70410-P10.md",
+        "bytes": 414,
+        "content_sha256": "12ccf74533fa54aadf8cde7be6250a063811a30942646ff9ffd97be93fad03fe"
+      },
+      "doc:20251108-70410-N": {
+        "name": "doc-20251108-70410-N.md",
+        "bytes": 185,
+        "content_sha256": "853acfc0267ff2f855c3afcbd63d31d7cec9d285837c12410def02ea2b29e320"
+      },
+      "doc:20260310-70410-M1": {
+        "name": "doc-20260310-70410-M1.md",
+        "bytes": 271,
+        "content_sha256": "571c326806c2cf12c36e7d42e31e1cab9ee9377656139c78a165c05691bdbcc1"
+      },
+      "doc:20260327-70410-M2": {
+        "name": "doc-20260327-70410-M2.md",
+        "bytes": 176,
+        "content_sha256": "772adadb66ea9fd344282d55b20886332ddf43d09370b3536c4fb70776c840ce"
+      },
+      "ctr:4600070410": {
+        "name": "ctr-4600070410.md",
+        "bytes": 787,
+        "content_sha256": "e5d84bfca21ec65b1b08ce21548b1ee93f418d0a505e1eae67fc27fa1e68b133"
+      }
+    }
+  },
+  "private_preparation": "",
+  "decision_context": {
+    "version": "supplier-assessment-v2-source-labels",
+    "suppliers": {
+      "sup:70410": {
+        "latest_message_ref": "message:sup:70410:0",
+        "status": "open",
+        "live": true,
+        "current_best_valid_offer": null,
+        "supplier_change": null,
+        "buyer_change": null,
+        "offer_history": [
+          {
+            "message_ref": "message:sup:70410:0",
+            "party": "supplier",
+            "best_valid_offer": null
+          }
+        ],
+        "previous_assessment": null
+      }
+    },
+    "sources": {
+      "case": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": false
+      },
+      "sup:70410": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "part:340010": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "doc:20260918-70410-P10": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "ctr:4600070410": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "sc:70410@2026Q3": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "fc:340010@2026-09": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "cost:340010": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "news:20260822-23": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 135
+      },
+      "sc:70410@2024Q3": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "sc:70410@2024Q4": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "sc:70410@2025Q1": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "sc:70410@2025Q2": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "sc:70410@2025Q3": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "sc:70410@2025Q4": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "sc:70410@2026Q1": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "sc:70410@2026Q2": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "ctr:4600070410#2.1": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "ctr:4600070410#3.1": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "ctr:4600070410#4.1": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "ctr:4600070410#5.1": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "ctr:4600070410#6.1": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "ctr:4600070410#8.1": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "doc:20251108-70410-N": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "doc:20260310-70410-M1": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "doc:20260327-70410-M2": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "idx:LCI-C@2025-06": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "idx:LCI-C@2026-06": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "idx:PPI-C2219@2025-08": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "idx:PPI-C2219@2026-08": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "po:4500010017-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500010099-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500010149-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500010219-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500010274-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500010364-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500010407-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500010483-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500010543-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500010608-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500010658-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500010738-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500010850-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500010890-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500010927-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500010989-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500011057-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500011167-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500011225-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500011248-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500011284-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500011317-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500011381-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500011517-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500011546-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500011580-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500011642-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500011710-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500011752-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500011850-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500011912-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500011972-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500012033-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500012093-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500012147-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500012237-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500012283-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500012360-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500012425-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500012472-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500012551-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500012651-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500012660-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500012784-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500012784-20": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500012828-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500012868-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500012956-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500013017-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500013077-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500013138-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500013203-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500013269-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500013313-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500013370-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500013451-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500013515-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500013591-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500013646-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500013725-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500013787-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500013851-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500013964-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500013987-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500014027-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 139
+      },
+      "po:4500014147-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500014147-20": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500014213-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500014318-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 141
+      },
+      "po:4500014337-10": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 140
+      },
+      "po:4500014383-10": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "po:4500014436-10": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "index:0:change_pct": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": false
+      },
+      "index:0:weighted_change_pct": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": false
+      },
+      "index:1:change_pct": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": false
+      },
+      "index:1:weighted_change_pct": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": false
+      },
+      "p10:ordered_last_12m_units": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": false
+      },
+      "p10:commitment_vs_orders_pct": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": false
+      },
+      "message:sup:70410:0": {
+        "kind": "supplier_claim",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "table:suppliers": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 340
+      },
+      "table:parts": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 317
+      },
+      "table:supplier_intel": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "table:negotiation_history": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "table:news": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "table:scorecards": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "table:contracts": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 265
+      },
+      "table:spend_cube": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "table:documents": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 1330
+      },
+      "table:should_cost": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "table:quotes": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "table:forecasts": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "table:sourcing": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "table:cost_drivers": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "table:rfqs": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "table:po_lines": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 26432
+      },
+      "table:goods_receipts": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 13177
+      },
+      "table:quality_notifications": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 6515
+      },
+      "table:price_conditions": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "table:invoices": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 20758
+      },
+      "table:contract_clauses": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      },
+      "table:forecast_history_lines": {
+        "kind": "public_record",
+        "available": true,
+        "delivery": "partial",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 10362
+      },
+      "table:index_series": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 946
+      },
+      "table:index_values": {
+        "kind": "public_record",
+        "available": false,
+        "delivery": "deferred",
+        "complete_record": false,
+        "retrievable": true,
+        "total_chars": 12190
+      },
+      "attachment:sup:70410:0:0": {
+        "kind": "supplier_claim",
+        "available": true,
+        "delivery": "full",
+        "complete_record": true,
+        "retrievable": true
+      }
+    },
+    "calculations": {
+      "index:0:change_pct": {
+        "value": 2.6609,
+        "description": "LCI-C: change_pct; weight 0.28",
+        "source_refs": [
+          "idx:LCI-C@2025-06",
+          "idx:LCI-C@2026-06"
+        ]
+      },
+      "index:0:weighted_change_pct": {
+        "value": 0.7451,
+        "description": "LCI-C: weighted_change_pct; weight 0.28",
+        "source_refs": [
+          "idx:LCI-C@2025-06",
+          "idx:LCI-C@2026-06"
+        ]
+      },
+      "index:1:change_pct": {
+        "value": 3.9049,
+        "description": "PPI-C2219: change_pct; weight 0.14",
+        "source_refs": [
+          "idx:PPI-C2219@2025-08",
+          "idx:PPI-C2219@2026-08"
+        ]
+      },
+      "index:1:weighted_change_pct": {
+        "value": 0.5467,
+        "description": "PPI-C2219: weighted_change_pct; weight 0.14",
+        "source_refs": [
+          "idx:PPI-C2219@2025-08",
+          "idx:PPI-C2219@2026-08"
+        ]
+      },
+      "p10:ordered_last_12m_units": {
+        "value": 19880,
+        "description": "Units ordered for this supplier/part, 2025-10 through 2026-09; not receipts or consumption",
+        "source_refs": [
+          "po:4500013017-10",
+          "po:4500013077-10",
+          "po:4500013138-10",
+          "po:4500013203-10",
+          "po:4500013269-10",
+          "po:4500013313-10",
+          "po:4500013370-10",
+          "po:4500013451-10",
+          "po:4500013515-10",
+          "po:4500013591-10",
+          "po:4500013646-10",
+          "po:4500013725-10",
+          "po:4500013787-10",
+          "po:4500013851-10",
+          "po:4500013964-10",
+          "po:4500013987-10",
+          "po:4500014027-10",
+          "po:4500014147-10",
+          "po:4500014147-20",
+          "po:4500014213-10",
+          "po:4500014318-10",
+          "po:4500014337-10",
+          "po:4500014383-10",
+          "po:4500014436-10"
+        ]
+      },
+      "p10:commitment_vs_orders_pct": {
+        "value": 17.7062,
+        "description": "Annual case need versus preceding 12 months of orders; not forecast growth",
+        "source_refs": [
+          "case",
+          "po:4500013017-10",
+          "po:4500013077-10",
+          "po:4500013138-10",
+          "po:4500013203-10",
+          "po:4500013269-10",
+          "po:4500013313-10",
+          "po:4500013370-10",
+          "po:4500013451-10",
+          "po:4500013515-10",
+          "po:4500013591-10",
+          "po:4500013646-10",
+          "po:4500013725-10",
+          "po:4500013787-10",
+          "po:4500013851-10",
+          "po:4500013964-10",
+          "po:4500013987-10",
+          "po:4500014027-10",
+          "po:4500014147-10",
+          "po:4500014147-20",
+          "po:4500014213-10",
+          "po:4500014318-10",
+          "po:4500014337-10",
+          "po:4500014383-10",
+          "po:4500014436-10"
+        ]
+      }
+    },
+    "cost_basis": "Public case formula; excludes unknown private supplier relationship costs."
+  },
+  "evidence_transport": {
+    "version": "evidence-transport-v6-latest-forecasts",
+    "max_local_reads": 2,
+    "complete_source_count": 127,
+    "raw_payload_chars": 156639,
+    "selected_fact_count": 28,
+    "availability_note": "Deferred records remain accessible through retrieve_evidence. No arbitrary queries.",
+    "collection_issues": [],
+    "delivery_counts": {
+      "full": 52,
+      "partial": 1,
+      "deferred": 81
+    },
+    "partial_refs": [
+      "table:forecast_history_lines"
+    ],
+    "unretrievable_refs": [],
+    "retained_pages": 0,
+    "delivered_payload_chars": 81947
+  },
+  "supplier_signals": {
+    "sup:70410": {
+      "live": true,
+      "status": "open",
+      "tone": "courteous",
+      "stance": "negotiating",
+      "authority": "unspecified",
+      "withdrawal_risk_signal": "unknown",
+      "risk_basis": "Explicit finality or terminal status; qualitative signal, not a calibrated probability.",
+      "rounds_left": 10,
+      "rounds_note": "Remaining API sends are not a promise that the supplier will continue.",
+      "evidence": [
+        {
+          "signal": "courtesy",
+          "source_ref": "message:sup:70410:0",
+          "quote": "Dear Sir or Madam,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe offer a price of \u20ac32.20 per unit for a volume "
+        }
+      ],
+      "primary_price_history": [
+        {
+          "unit_price": 32.2,
+          "source_ref": "message:sup:70410:0"
+        }
+      ],
+      "latest_primary_price_movement": null,
+      "live_objections": [],
+      "latest_stated_cost_drivers": [],
+      "previously_cited_refs": [],
+      "supplier_questions": []
+    }
+  },
+  "price_plan": {
+    "basis": "Public total-cost formula and explicit buyer limits; no private supplier costs or reservation price.",
+    "needed_quantity": 46800,
+    "horizon_years": 2,
+    "preferred_closing_price": null,
+    "ideal_price": null,
+    "ideal_price_status": "Not identifiable from public data: the supplier's feasible minimum is unknown.",
+    "closing_comparison_basis": "Discussed structures compared at preferred_closing_price. Rankings are arithmetic, not predictions of supplier acceptance. Buyer proposals are not supplier commitments or eligible offers.",
+    "suppliers": {
+      "sup:70410": {
+        "offers": [
+          {
+            "offer_id": "offer:70410-0",
+            "unit_price": 32.2,
+            "complete_cost": 1932492.18,
+            "acceptance_eligible": false
+          }
+        ],
+        "best_eligible_offer_id": null,
+        "closing_package_comparison": [],
+        "capacity_opening_tradeoffs": [
+          {
+            "terms": {
+              "unit_price": 27.37,
+              "volume_per_year": 23400,
+              "contract_months": 24,
+              "lead_time_days": 42
+            },
+            "complete_cost": 1294790.64,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 0.0,
+            "unit_price_reduction": 0.0,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          },
+          {
+            "terms": {
+              "unit_price": 26.75,
+              "volume_per_year": 23400,
+              "contract_months": 24,
+              "lead_time_days": 54
+            },
+            "complete_cost": 1294381.2,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 28800.0,
+            "unit_price_reduction": 0.62,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          },
+          {
+            "terms": {
+              "unit_price": 26.65,
+              "volume_per_year": 23400,
+              "contract_months": 24,
+              "lead_time_days": 56
+            },
+            "complete_cost": 1294470.0,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 33600.0,
+            "unit_price_reduction": 0.72,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          },
+          {
+            "terms": {
+              "unit_price": 27.37,
+              "volume_per_year": 23400,
+              "contract_months": 36,
+              "lead_time_days": 42
+            },
+            "complete_cost": 1294790.64,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 0.0,
+            "unit_price_reduction": 0.0,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          },
+          {
+            "terms": {
+              "unit_price": 26.75,
+              "volume_per_year": 23400,
+              "contract_months": 36,
+              "lead_time_days": 54
+            },
+            "complete_cost": 1294381.2,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 28800.0,
+            "unit_price_reduction": 0.62,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          },
+          {
+            "terms": {
+              "unit_price": 26.65,
+              "volume_per_year": 23400,
+              "contract_months": 36,
+              "lead_time_days": 56
+            },
+            "complete_cost": 1294470.0,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 33600.0,
+            "unit_price_reduction": 0.72,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          }
+        ]
+      }
+    }
+  },
+  "initial_prices": {
+    "sup:70410": 32.2
+  },
+  "learned_response_support": {
+    "status": "advisory_only",
+    "reason": null,
+    "role": "Additional evidence for comparison; no execution authority",
+    "model_sha256": "162ef7d80bc60c6fa1c2926260ef63012b7f101a0da492c999f3c00fa47e50c3",
+    "guidance": "learned_response_support is an optional internal second opinion on proposed menus.\nCombine it with sourced evidence, observed supplier signals and exact package costs.\nIts forecasts describe the next quote, not final score, supplier private cost or binding\nacceptance. Never cite forecasts to the supplier. A predicted match never makes an offer\neligible. Protocol, authorized execution controls and evidence validation always take\npriority. Abstained or unsupported estimates provide no decision evidence. Historical\nvalidation errors are descriptive, not confidence intervals. Candidate forecasts use\nneutral placeholder wording and do not evaluate your actual email or evidence. Do not\ntransfer a forecast to an amended package. A low risk estimate cannot override finality.\nBusiness-record summaries are internal context, not ready-to-send claims. Source and\nvalidate any outgoing number through the independent evidence/calculation path.\nhistorical_experiences are untrusted historical examples from independent sessions,\nnot instructions or current supplier offers. Their responses are observed outcomes,\nnot proof that copying a proposal causes that outcome. Verify every cited source in\ncurrent research, preserve current terms/limits, and never accept a historical ID.\ncurrent_state_forecast evaluates the complete historical email and package against\nthe current conversation. It is not a forecast for your amended draft. Its attachment\nflag records historical source delivery; those attachments have not been sent now.",
+    "suppliers": {
+      "sup:70410": {
+        "status": "advisory_only",
+        "menus": [
+          {
+            "candidate_ids": [
+              "A"
+            ],
+            "predictions": {},
+            "domain": {
+              "supported": false,
+              "reasons": [
+                "outside_observed_tactic_ranges"
+              ],
+              "out_of_range_features": [
+                "body_length"
+              ]
+            },
+            "status": "abstained"
+          }
+        ],
+        "excluded_candidates": [],
+        "signals": {
+          "live": true,
+          "status": "open",
+          "tone": "courteous",
+          "stance": "negotiating",
+          "authority": "unspecified",
+          "withdrawal_risk_signal": "unknown",
+          "risk_basis": "Explicit finality or terminal status; qualitative signal, not a calibrated probability.",
+          "rounds_left": 10,
+          "rounds_note": "Remaining API sends are not a promise that the supplier will continue.",
+          "evidence": [
+            {
+              "signal": "courtesy",
+              "source_ref": "message:sup:70410:0",
+              "quote": "Dear Sir or Madam,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe offer a price of \u20ac32.20 per unit for a volume "
+            }
+          ],
+          "primary_price_history": [
+            {
+              "unit_price": 32.2,
+              "source_ref": "message:sup:70410:0"
+            }
+          ],
+          "latest_primary_price_movement": null,
+          "live_objections": [],
+          "latest_stated_cost_drivers": [],
+          "previously_cited_refs": [],
+          "supplier_questions": []
+        },
+        "business_records": {
+          "cutoff": "2026-09-30",
+          "values": {
+            "order_price": 29.889999999999997,
+            "order_volume": 19880,
+            "order_price_change": 0.0,
+            "otd_rate": 0.795,
+            "quality_ppm_log": 0.5602118820879701,
+            "equity_ratio": 0.28800000000000003,
+            "credit_change": 0.0,
+            "annual_index_change": 0.005466893039049242,
+            "quarter_index_change": 0.0029190992493744843,
+            "contract_payment_days": 30
+          },
+          "sha256": "afd84ac194f7e4e1f24fa8ccd66e417974d7b9e8367e865de0057db076812677",
+          "source_refs": [
+            {
+              "table": "po_lines",
+              "ref": "po:4500013017-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500013077-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500013138-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500013203-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500013269-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500013313-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500013370-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500013451-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500013515-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500013591-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500013646-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500013725-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500013787-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500013851-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500013964-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500013987-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500014027-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500014147-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500014147-20"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500014213-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500014318-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500014337-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500014383-10"
+            },
+            {
+              "table": "po_lines",
+              "ref": "po:4500014436-10"
+            },
+            {
+              "table": "scorecards",
+              "ref": "sc:70410@2026Q3"
+            },
+            {
+              "table": "supplier_intel",
+              "ref": "sup:70410"
+            },
+            {
+              "table": "contracts",
+              "ref": "ctr:4600070410"
+            },
+            {
+              "table": "cost_drivers",
+              "ref": "sup:70410"
+            },
+            {
+              "table": "index_values",
+              "ref": "idx:PPI-C2219@2025-08"
+            },
+            {
+              "table": "index_values",
+              "ref": "idx:PPI-C2219@2026-05"
+            },
+            {
+              "table": "index_values",
+              "ref": "idx:PPI-C2219@2026-08"
+            }
+          ],
+          "source_count": 31,
+          "meaning": "Frozen buyer records, not supplier private costs or guaranteed response predictors. Index weights are buyer estimates; supplier scorecards cover the supplier account."
+        },
+        "training_routes": {
+          "direct_cost_improved": {
+            "selected": "focused",
+            "active": "focused",
+            "promotion_reason": "no_validation_gain"
+          },
+          "quoted_cost_gain": {
+            "selected": "focused",
+            "active": "focused",
+            "promotion_reason": "no_validation_gain"
+          },
+          "supplier_exit": {
+            "selected": "general_history",
+            "active": "focused",
+            "promotion_reason": "insufficient_target_support"
+          },
+          "package_matched": {
+            "selected": "focused",
+            "active": "focused",
+            "promotion_reason": "no_validation_gain"
+          }
+        },
+        "packages": [
+          {
+            "id": "A",
+            "terms": {
+              "unit_price": 26.4,
+              "volume_per_year": 23400,
+              "contract_months": 24,
+              "lead_time_days": 35
+            },
+            "direct_cost": 1249092.0
+          }
+        ],
+        "economic_order": [
+          "A"
+        ],
+        "historical_experiences": [
+          {
+            "case_id": "case:P10",
+            "session_id": "7da4c59206d5823e",
+            "turn": 1,
+            "proposal": {
+              "body": "Dear Ms Zellner,  Thank you for your offer. Your note of 2026-09-18 says you prioritise customers with firm, long-term commitments. We can offer exactly that: a binding 24-month contract for our full need of 23,400 pcs/year, with lead time 35 days. That gives you planning certainty and a stable allocation. In return we need a price of \u20ac26.40 per unit. Offer 70410-0 (19,890 pcs, 12 months, 54 days, \u20ac32.20) does not cover our requirement, and the price is well above our current level. Could you tell us which parts of your cost base, such as materials, labour or capacity, drive your price, so we can look for a fair solution together? Please confirm whether this package works for you or send an improved package. Best regards, Hollerau Pumpenwerke Purchasing",
+              "term_sheets": [
+                {
+                  "terms": {
+                    "unit_price": 26.4,
+                    "volume_per_year": 23400,
+                    "contract_months": 24,
+                    "lead_time_days": 35
+                  }
+                }
+              ]
+            },
+            "source_attachment_present": false,
+            "response_status": "final_offer",
+            "response_terms": [
+              {
+                "term_sheet_id": "offer:70410-1",
+                "terms": {
+                  "unit_price": 35.1,
+                  "lead_time_days": 35,
+                  "volume_per_year": 23400,
+                  "contract_months": 24
+                }
+              }
+            ],
+            "observed": {
+              "quoted_cost_gain": 0.14154043303813008,
+              "supplier_exit": 0,
+              "package_matched": 0,
+              "direct_cost_improved": 1
+            },
+            "current_state_forecast": {
+              "status": "advisory_only",
+              "predictions": {
+                "quoted_cost_gain": 0.1624030819060563
+              },
+              "domain": {
+                "supported": true,
+                "reasons": [],
+                "out_of_range_features": []
+              },
+              "unsupported_targets": [
+                "direct_cost_improved",
+                "supplier_exit",
+                "package_matched"
+              ],
+              "reliability": {
+                "direct_cost_improved": {
+                  "validation_support": {
+                    "examples": 22,
+                    "label_counts": {
+                      "1": 22
+                    },
+                    "discrimination_evaluable": false
+                  },
+                  "validation_mae": 0.07168458781362008,
+                  "validation_sessions": 11,
+                  "validation_class_sessions": {
+                    "0": 0,
+                    "1": 11
+                  },
+                  "usable_for_comparison": false,
+                  "calibrated_probability": false
+                },
+                "quoted_cost_gain": {
+                  "validation_support": {
+                    "examples": 22,
+                    "label_counts": null,
+                    "discrimination_evaluable": true
+                  },
+                  "validation_mae": 0.006607913858230755,
+                  "validation_sessions": 11,
+                  "validation_class_sessions": null,
+                  "usable_for_comparison": true,
+                  "calibrated_probability": false
+                },
+                "supplier_exit": {
+                  "validation_support": {
+                    "examples": 22,
+                    "label_counts": {
+                      "0": 22
+                    },
+                    "discrimination_evaluable": false
+                  },
+                  "validation_mae": 0.031362007168458786,
+                  "validation_sessions": 11,
+                  "validation_class_sessions": {
+                    "0": 11,
+                    "1": 0
+                  },
+                  "usable_for_comparison": false,
+                  "calibrated_probability": false
+                },
+                "package_matched": {
+                  "validation_support": {
+                    "examples": 22,
+                    "label_counts": {
+                      "0": 22
+                    },
+                    "discrimination_evaluable": false
+                  },
+                  "validation_mae": 0.0,
+                  "validation_sessions": 11,
+                  "validation_class_sessions": {
+                    "0": 11,
+                    "1": 0
+                  },
+                  "usable_for_comparison": false,
+                  "calibrated_probability": false
+                }
+              }
+            }
+          },
+          {
+            "case_id": "case:P10",
+            "session_id": "aa6f57de0522592c",
+            "turn": 1,
+            "proposal": {
+              "body": "Thank you for your offer. We need a better price to go ahead.",
+              "term_sheets": [
+                {
+                  "terms": {
+                    "unit_price": 28.98,
+                    "volume_per_year": 19890,
+                    "contract_months": 12,
+                    "lead_time_days": 56
+                  }
+                }
+              ]
+            },
+            "source_attachment_present": false,
+            "response_status": "open",
+            "response_terms": [
+              {
+                "term_sheet_id": "offer:70410-1",
+                "terms": {
+                  "unit_price": 32.0,
+                  "lead_time_days": 56,
+                  "volume_per_year": 19890,
+                  "contract_months": 12
+                }
+              }
+            ],
+            "observed": {
+              "quoted_cost_gain": -0.00041163426596633443,
+              "supplier_exit": 0,
+              "package_matched": 0,
+              "direct_cost_improved": 0
+            },
+            "current_state_forecast": {
+              "status": "abstained",
+              "reason": "historical_proposal_incomplete_or_outside_limits"
+            }
+          },
+          {
+            "case_id": "case:P10",
+            "session_id": "4f281eb70bb8c03a",
+            "turn": 1,
+            "proposal": {
+              "body": "Dear Ms Zellner,\n\nThank you for your Angebot for the mechanical seal 24 mm (part 340010).\n\nWe understand the capacity situation and your preference for customers with firm, long-term commitments. That is exactly what we would like to give you. Two points in your quote do not work for us:\n- Volume: our need is 23,400 pcs per year, and we need it fully covered.\n- Lieferzeit: 54 days is not one of the options in our enquiry (35 / 42 / 56 days). We need 42 days, which matches your standard lead time.\n\nWe propose a binding commitment for our full volume. Please choose the package that suits your planning best:\n\nA) \u20ac27.20 per unit | 23,400 pcs/year | 24 months | 42 days lead time\nB) \u20ac27.50 per unit | 23,400 pcs/year | 36 months | 42 days lead time\n\nPayment terms remain 30 days net and DAP, as in the enquiry.\n\nOur reasoning on price:\n- Our current price is \u20ac29.89, and the last two renewals on this part were settled at 0%.\n- The relevant cost indices (producer prices and labour costs) moved only about +1.3% weighted over the last year.\n- In return, you receive a firm, multi-year full-volume commitment. You can plan capacity against it instead of allocating.\n\nIf it helps your capacity planning, we are also happy to align on an even monthly call-off schedule.\n\nCould you let us know which package works for you, or which term you would need adjusted?\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke",
+              "term_sheets": [
+                {
+                  "terms": {
+                    "unit_price": 27.2,
+                    "volume_per_year": 23400,
+                    "contract_months": 24,
+                    "lead_time_days": 42
+                  }
+                },
+                {
+                  "terms": {
+                    "unit_price": 27.5,
+                    "volume_per_year": 23400,
+                    "contract_months": 36,
+                    "lead_time_days": 42
+                  }
+                }
+              ]
+            },
+            "source_attachment_present": false,
+            "response_status": "final_offer",
+            "response_terms": [
+              {
+                "term_sheet_id": "offer:70410-1",
+                "terms": {
+                  "unit_price": 34.1,
+                  "lead_time_days": 42,
+                  "volume_per_year": 23400,
+                  "contract_months": 36
+                }
+              }
+            ],
+            "observed": {
+              "quoted_cost_gain": 0.16591931564763177,
+              "supplier_exit": 0,
+              "package_matched": 0,
+              "direct_cost_improved": 1
+            },
+            "current_state_forecast": {
+              "status": "advisory_only",
+              "predictions": {
+                "quoted_cost_gain": 0.16805196270596184
+              },
+              "domain": {
+                "supported": true,
+                "reasons": [],
+                "out_of_range_features": []
+              },
+              "unsupported_targets": [
+                "direct_cost_improved",
+                "supplier_exit",
+                "package_matched"
+              ],
+              "reliability": {
+                "direct_cost_improved": {
+                  "validation_support": {
+                    "examples": 22,
+                    "label_counts": {
+                      "1": 22
+                    },
+                    "discrimination_evaluable": false
+                  },
+                  "validation_mae": 0.07168458781362008,
+                  "validation_sessions": 11,
+                  "validation_class_sessions": {
+                    "0": 0,
+                    "1": 11
+                  },
+                  "usable_for_comparison": false,
+                  "calibrated_probability": false
+                },
+                "quoted_cost_gain": {
+                  "validation_support": {
+                    "examples": 22,
+                    "label_counts": null,
+                    "discrimination_evaluable": true
+                  },
+                  "validation_mae": 0.006607913858230755,
+                  "validation_sessions": 11,
+                  "validation_class_sessions": null,
+                  "usable_for_comparison": true,
+                  "calibrated_probability": false
+                },
+                "supplier_exit": {
+                  "validation_support": {
+                    "examples": 22,
+                    "label_counts": {
+                      "0": 22
+                    },
+                    "discrimination_evaluable": false
+                  },
+                  "validation_mae": 0.031362007168458786,
+                  "validation_sessions": 11,
+                  "validation_class_sessions": {
+                    "0": 11,
+                    "1": 0
+                  },
+                  "usable_for_comparison": false,
+                  "calibrated_probability": false
+                },
+                "package_matched": {
+                  "validation_support": {
+                    "examples": 22,
+                    "label_counts": {
+                      "0": 22
+                    },
+                    "discrimination_evaluable": false
+                  },
+                  "validation_mae": 0.0,
+                  "validation_sessions": 11,
+                  "validation_class_sessions": {
+                    "0": 11,
+                    "1": 0
+                  },
+                  "usable_for_comparison": false,
+                  "calibrated_probability": false
+                }
+              }
+            }
+          }
+        ],
+        "reliability": {
+          "direct_cost_improved": {
+            "validation_support": {
+              "examples": 22,
+              "label_counts": {
+                "1": 22
+              },
+              "discrimination_evaluable": false
+            },
+            "validation_mae": 0.07168458781362008,
+            "validation_sessions": 11,
+            "validation_class_sessions": {
+              "0": 0,
+              "1": 11
+            },
+            "usable_for_comparison": false,
+            "calibrated_probability": false
+          },
+          "quoted_cost_gain": {
+            "validation_support": {
+              "examples": 22,
+              "label_counts": null,
+              "discrimination_evaluable": true
+            },
+            "validation_mae": 0.006607913858230755,
+            "validation_sessions": 11,
+            "validation_class_sessions": null,
+            "usable_for_comparison": true,
+            "calibrated_probability": false
+          },
+          "supplier_exit": {
+            "validation_support": {
+              "examples": 22,
+              "label_counts": {
+                "0": 22
+              },
+              "discrimination_evaluable": false
+            },
+            "validation_mae": 0.031362007168458786,
+            "validation_sessions": 11,
+            "validation_class_sessions": {
+              "0": 11,
+              "1": 0
+            },
+            "usable_for_comparison": false,
+            "calibrated_probability": false
+          },
+          "package_matched": {
+            "validation_support": {
+              "examples": 22,
+              "label_counts": {
+                "0": 22
+              },
+              "discrimination_evaluable": false
+            },
+            "validation_mae": 0.0,
+            "validation_sessions": 11,
+            "validation_class_sessions": {
+              "0": 11,
+              "1": 0
+            },
+            "usable_for_comparison": false,
+            "calibrated_probability": false
+          }
+        },
+        "unsupported_targets": [
+          "direct_cost_improved",
+          "supplier_exit",
+          "package_matched"
+        ],
+        "signal_evidence": [],
+        "meaning": "Next observed response to this whole menu. Package match is not binding acceptance; cost gain is a fraction of the prior direct cost, not final score.",
+        "business_context": {
+          "used_by_supported_targets": true,
+          "sha256": "afd84ac194f7e4e1f24fa8ccd66e417974d7b9e8367e865de0057db076812677",
+          "cutoff": "2026-09-30",
+          "source_count": 31
+        },
+        "preferred_menu": null,
+        "comparison": "insufficient_supported_separation"
+      }
+    },
+    "elapsed_ms": 2.65,
+    "mode": "advisory"
+  }
+}

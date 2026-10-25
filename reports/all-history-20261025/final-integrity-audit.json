@@ -1,0 +1,14 @@
+{
+  "hosted_sessions_match_all_listed_ids": 417,
+  "missing_remote_sessions": [],
+  "split_session_counts": {
+    "train": 1261,
+    "validation": 176,
+    "test": 144
+  },
+  "cross_split_trajectory_groups": 0,
+  "known_verification_fixtures_excluded": 14,
+  "forbidden_input_fields_found": 0,
+  "prompt_hashes_match_frozen_experiments": true,
+  "new_sandbox_runs_with_must_haves_ok": 18
+}

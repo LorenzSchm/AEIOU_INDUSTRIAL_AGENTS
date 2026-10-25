@@ -16,6 +16,8 @@ from .negotiation_state import walk_away_diagnostic
 from .optimizer import alternative_cost, candidate_packages, estimate, evaluate, safe_close, valid_terms
 from .prompts import SYSTEM, VOSS
 from .research import research
+from .response_support import GUIDANCE as RESPONSE_SUPPORT_GUIDANCE
+from .response_support import ResponseSupport
 
 log = logging.getLogger("aeiou")
 
@@ -170,14 +172,24 @@ def make_backend(model=None, **kwargs):
 class Negotiator:
     """Claude selects tactics and terms; independent code enforces the economic contract."""
 
+    defer_response_support = False
+    response_support_mode = "shadow"
+
     def __init__(self, pkg, backend=None, variant="adaptive", tactic="prepared"):
         self.pkg, self.backend, self.variant, self.tactic = pkg, backend, variant, tactic
         self.case_id, self.intelligence = None, {}
         self.decisions, self.fallbacks = [], 0
+        self.audit = {"response_support": []}
+        self.response_support = None
+        self.last_response_support = None
 
     def prepare(self, case):
         self.case_id = case["case_id"]
         self.intelligence = research(case, self.pkg)
+        self.response_support = ResponseSupport(
+            case, model=getattr(self, "response_model", None), intelligence=self.intelligence
+        )
+        self.last_response_support = None
 
     def close(self, case, threads):
         if case["case_id"] != self.case_id:
@@ -206,12 +218,41 @@ class Negotiator:
         }
 
     def system_prompt(self):
-        return SYSTEM + (VOSS if self.tactic == "voss" else "")
+        return (
+            SYSTEM
+            + (VOSS if self.tactic == "voss" else "")
+            + (RESPONSE_SUPPORT_GUIDANCE if self.response_support_mode == "advisory" else "")
+        )
+
+    def add_response_support(self, payload, case, threads):
+        if self.response_support is None or case["case_id"] not in {"case:P10", "case:P18"}:
+            return
+        support = self.response_support.safe_assess(
+            case,
+            threads,
+            payload["candidate_packages"],
+            protocol=payload.get("protocol_state"),
+            floor=getattr(self, "acceptance_floor", None),
+            policy=getattr(self, "execution_policy", None),
+        )
+        # Retain evaluation data without changing the default buyer's model input.
+        # Prediction accuracy alone has not demonstrated better negotiation outcomes.
+        support = {**support, "mode": self.response_support_mode}
+        if self.response_support_mode == "advisory":
+            payload["learned_response_support"] = support
+        self.last_response_support = support
+        self.audit.setdefault("response_support", []).append(
+            {
+                "message_index": {sid: len(events) for sid, events in threads.items()},
+                **support,
+            }
+        )
 
     def decide(self, case, threads):
         if case["case_id"] != self.case_id:
             self.prepare(case)
         started = time.monotonic()
+        self.last_response_support = None
         live = live_threads(threads)
         if not live:
             raise ValueError("no live supplier thread")
@@ -245,6 +286,8 @@ class Negotiator:
                 if move is None:
                     self.fallbacks += 1
             if move is None:
+                if self.last_response_support is None:
+                    self.add_response_support({"candidate_packages": offers}, case, threads)
                 if terminal or not offers.get(sid):
                     move = safe_close(case, threads, self.intelligence)
                 else:
@@ -275,6 +318,7 @@ class Negotiator:
                 "source": source,
                 "elapsed_s": round(time.monotonic() - started, 3),
                 "action": move["message"].get("action", {}).get("type", "send"),
+                "learned_response_support": self.last_response_support,
             }
         )
         if self.decisions[-1]["action"] == "walk_away":
@@ -301,14 +345,17 @@ class Negotiator:
                         ],
                     }
                 )
+        payload = {
+            "case": case,
+            "research": self.intelligence,
+            "standing_costs": best,
+            "candidate_packages": offers,
+            "threads": histories,
+        }
+        if not self.defer_response_support:
+            self.add_response_support(payload, case, threads)
         return json.dumps(
-            {
-                "case": case,
-                "research": self.intelligence,
-                "standing_costs": best,
-                "candidate_packages": offers,
-                "threads": histories,
-            },
+            payload,
             ensure_ascii=False,
             default=str,
         )

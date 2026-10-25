@@ -1,0 +1,70 @@
+{
+  "session_id": "bdc7650ae9436225",
+  "case_id": "case:P10",
+  "excluded_steps": {
+    "action_only_close": 1
+  },
+  "models": [
+    {
+      "path": "data/local/custom-p10-p18-v6-conditional/model.json",
+      "sha256": "ea0fad8e0ec15aee87dd05c094667a5f7f3d6960d38b9db413992def280d4970",
+      "supported_predictions": 2,
+      "mae": 0.003448717992407745,
+      "mse": 1.5552460455107128e-05,
+      "predictions": [
+        {
+          "turn": 1,
+          "actual_gain": 0.21196348644474206,
+          "predicted_gain": 0.20660196823695628,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        },
+        {
+          "turn": 3,
+          "actual_gain": 0.006187246958777367,
+          "predicted_gain": 0.0077231647358070865,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        }
+      ],
+      "conditional_cost": {
+        "supported_predictions": 2,
+        "mae_eur": 2463.944999999949,
+        "predictions": [
+          {
+            "turn": 1,
+            "forecast": {
+              "status": "conditional_advice",
+              "expected_final_cost_given_agreement": 1516190.19,
+              "validation_mae_eur": 8223.56,
+              "meaning": "Historical estimate conditional on agreement and continuation policy. Not acceptance probability, not a binding quote, not causal evidence, and not transferable to an edited proposal. Validation error is descriptive, not a confidence interval."
+            },
+            "actual_accepted_cost": 1513452.0,
+            "terminal_label": "accepted"
+          },
+          {
+            "turn": 3,
+            "forecast": {
+              "status": "conditional_advice",
+              "expected_final_cost_given_agreement": 1515641.7,
+              "validation_mae_eur": 8223.56,
+              "meaning": "Historical estimate conditional on agreement and continuation policy. Not acceptance probability, not a binding quote, not causal evidence, and not transferable to an edited proposal. Validation error is descriptive, not a confidence interval."
+            },
+            "actual_accepted_cost": 1513452.0,
+            "terminal_label": "accepted"
+          }
+        ]
+      }
+    }
+  ],
+  "method": "Actual sent email, public prefix only; session excluded from each model's corpus.",
+  "limitation": "One session is noisy evidence. Abstentions are reported, not assigned zero error."
+}

@@ -1,0 +1,1089 @@
+{
+  "created_at": "2026-10-25T09:31:24.673528+00:00",
+  "mode": "offline_data_integrity",
+  "model_calls": 0,
+  "hosted_sessions_used": 0,
+  "limitations": "Checks collected buyer data, generated model inputs and local retrieval. Does not prove model attention, supplier acceptance or improved scores. The audit reads all pages offline; a live decision retains its two-read time budget.",
+  "cases": [
+    {
+      "case_id": "case:P10",
+      "status": "passed",
+      "collection": {
+        "version": "research-collection-v1",
+        "tables": {
+          "suppliers": {
+            "status": "complete",
+            "source_table": "suppliers",
+            "expected_rows": 1,
+            "loaded_rows": 1,
+            "scope": {
+              "id": [
+                "sup:70410"
+              ]
+            },
+            "retained_rows": 1
+          },
+          "parts": {
+            "status": "complete",
+            "source_table": "parts",
+            "expected_rows": 1,
+            "loaded_rows": 1,
+            "scope": {
+              "id": [
+                "part:340010"
+              ]
+            },
+            "retained_rows": 1
+          },
+          "supplier_intel": {
+            "status": "complete",
+            "source_table": "supplier_intel",
+            "expected_rows": 1,
+            "loaded_rows": 1,
+            "scope": {
+              "supplier_id": [
+                "sup:70410"
+              ]
+            },
+            "retained_rows": 1
+          },
+          "negotiation_history": {
+            "status": "complete",
+            "source_table": "negotiation_history",
+            "expected_rows": 12,
+            "loaded_rows": 12,
+            "scope": {
+              "supplier_id": [
+                "sup:70410"
+              ]
+            },
+            "retained_rows": 12
+          },
+          "news": {
+            "status": "complete",
+            "source_table": "news",
+            "expected_rows": 1,
+            "loaded_rows": 1,
+            "scope": {
+              "supplier_id": [
+                "sup:70410"
+              ]
+            },
+            "retained_rows": 1
+          },
+          "scorecards": {
+            "status": "complete",
+            "source_table": "scorecards",
+            "expected_rows": 9,
+            "loaded_rows": 9,
+            "scope": {
+              "supplier_id": [
+                "sup:70410"
+              ]
+            },
+            "retained_rows": 9
+          },
+          "contracts": {
+            "status": "complete",
+            "source_table": "contracts",
+            "expected_rows": 1,
+            "loaded_rows": 1,
+            "scope": {
+              "supplier_id": [
+                "sup:70410"
+              ]
+            },
+            "retained_rows": 1
+          },
+          "spend_cube": {
+            "status": "complete",
+            "source_table": "spend_cube",
+            "expected_rows": 3,
+            "loaded_rows": 3,
+            "scope": {
+              "supplier_id": [
+                "sup:70410"
+              ]
+            },
+            "retained_rows": 3
+          },
+          "documents": {
+            "status": "complete",
+            "source_table": "documents",
+            "expected_rows": 4,
+            "loaded_rows": 4,
+            "scope": {
+              "supplier_id": [
+                "sup:70410"
+              ]
+            },
+            "retained_rows": 4
+          },
+          "should_cost": {
+            "status": "complete",
+            "source_table": "should_cost",
+            "expected_rows": 1,
+            "loaded_rows": 1,
+            "scope": {
+              "part_id": [
+                "part:340010"
+              ]
+            },
+            "retained_rows": 1
+          },
+          "quotes": {
+            "status": "complete",
+            "source_table": "quotes",
+            "expected_rows": 0,
+            "loaded_rows": 0,
+            "scope": {
+              "part_id": [
+                "part:340010"
+              ]
+            },
+            "retained_rows": 0
+          },
+          "forecasts": {
+            "status": "complete",
+            "source_table": "forecasts",
+            "expected_rows": 12,
+            "loaded_rows": 12,
+            "scope": {
+              "part_id": [
+                "part:340010"
+              ]
+            },
+            "retained_rows": 12
+          },
+          "sourcing": {
+            "status": "complete",
+            "source_table": "sourcing",
+            "expected_rows": 1,
+            "loaded_rows": 1,
+            "scope": {
+              "part_id": [
+                "part:340010"
+              ]
+            },
+            "retained_rows": 1
+          },
+          "cost_drivers": {
+            "status": "complete",
+            "source_table": "cost_drivers",
+            "expected_rows": 2,
+            "loaded_rows": 2,
+            "scope": {
+              "part_id": [
+                "part:340010"
+              ]
+            },
+            "retained_rows": 2
+          },
+          "rfqs": {
+            "status": "complete",
+            "source_table": "rfqs",
+            "expected_rows": 0,
+            "loaded_rows": 0,
+            "scope": {
+              "part_id": [
+                "part:340010"
+              ]
+            },
+            "retained_rows": 0
+          },
+          "po_lines": {
+            "status": "complete",
+            "source_table": "po_lines",
+            "expected_rows": 72,
+            "loaded_rows": 72,
+            "scope": {
+              "supplier_id": [
+                "sup:70410"
+              ],
+              "part_id": [
+                "part:340010"
+              ]
+            },
+            "retained_rows": 72
+          },
+          "goods_receipts": {
+            "status": "complete",
+            "source_table": "goods_receipts",
+            "expected_rows": 74,
+            "loaded_rows": 74,
+            "scope": {
+              "supplier_id": [
+                "sup:70410"
+              ],
+              "part_id": [
+                "part:340010"
+              ]
+            },
+            "retained_rows": 74
+          },
+          "quality_notifications": {
+            "status": "complete",
+            "source_table": "quality_notifications",
+            "expected_rows": 22,
+            "loaded_rows": 22,
+            "scope": {
+              "supplier_id": [
+                "sup:70410"
+              ],
+              "part_id": [
+                "part:340010"
+              ]
+            },
+            "retained_rows": 22
+          },
+          "price_conditions": {
+            "status": "complete",
+            "source_table": "price_conditions",
+            "expected_rows": 4,
+            "loaded_rows": 4,
+            "scope": {
+              "supplier_id": [
+                "sup:70410"
+              ],
+              "part_id": [
+                "part:340010"
+              ]
+            },
+            "retained_rows": 4
+          },
+          "invoices": {
+            "status": "complete",
+            "source_table": "invoices",
+            "expected_rows": 74,
+            "loaded_rows": 74,
+            "scope": {
+              "supplier_id": [
+                "sup:70410"
+              ]
+            },
+            "retained_rows": 74
+          },
+          "contract_clauses": {
+            "status": "complete",
+            "source_table": "contract_clauses",
+            "expected_rows": 6,
+            "loaded_rows": 6,
+            "scope": {
+              "contract_id": [
+                "ctr:4600070410"
+              ]
+            },
+            "retained_rows": 6
+          },
+          "forecast_history_lines": {
+            "status": "complete",
+            "source_table": "forecast_lines",
+            "expected_rows": 144,
+            "loaded_rows": 144,
+            "scope": {
+              "fc_id": [
+                "fc:340010@2023-12",
+                "fc:340010@2024-03",
+                "fc:340010@2024-06",
+                "fc:340010@2024-09",
+                "fc:340010@2024-12",
+                "fc:340010@2025-03",
+                "fc:340010@2025-06",
+                "fc:340010@2025-09",
+                "fc:340010@2025-12",
+                "fc:340010@2026-03",
+                "fc:340010@2026-06",
+                "fc:340010@2026-09"
+              ]
+            },
+            "retained_rows": 144
+          },
+          "index_series": {
+            "status": "complete",
+            "source_table": "index_series",
+            "expected_rows": 2,
+            "loaded_rows": 2,
+            "scope": {
+              "id": [
+                "LCI-C",
+                "PPI-C2219"
+              ]
+            },
+            "retained_rows": 2
+          },
+          "index_values": {
+            "status": "complete",
+            "source_table": "index_values",
+            "expected_rows": 134,
+            "loaded_rows": 134,
+            "scope": {
+              "series_id": [
+                "LCI-C",
+                "PPI-C2219"
+              ]
+            },
+            "retained_rows": 134
+          }
+        },
+        "sunday_release_loaded": false,
+        "scope_note": "Supplier account context and case-part records. Historical quotes are not automatically authorized live alternatives. Forecasts are not commitments.",
+        "fact_count": 101,
+        "document_count": 5,
+        "issues": []
+      },
+      "table_row_counts": {
+        "suppliers": 1,
+        "parts": 1,
+        "supplier_intel": 1,
+        "negotiation_history": 12,
+        "news": 1,
+        "scorecards": 9,
+        "contracts": 1,
+        "spend_cube": 3,
+        "documents": 4,
+        "should_cost": 1,
+        "quotes": 0,
+        "forecasts": 12,
+        "sourcing": 1,
+        "cost_drivers": 2,
+        "rfqs": 0,
+        "po_lines": 72,
+        "goods_receipts": 74,
+        "quality_notifications": 22,
+        "price_conditions": 4,
+        "invoices": 74,
+        "contract_clauses": 6,
+        "forecast_history_lines": 144,
+        "index_series": 2,
+        "index_values": 134
+      },
+      "transport": {
+        "version": "evidence-transport-v6-latest-forecasts",
+        "max_local_reads": 2,
+        "complete_source_count": 125,
+        "raw_payload_chars": 151689,
+        "selected_fact_count": 28,
+        "availability_note": "Deferred records remain accessible through retrieve_evidence. No arbitrary queries.",
+        "collection_issues": [],
+        "delivery_counts": {
+          "full": 50,
+          "partial": 1,
+          "deferred": 81
+        },
+        "partial_refs": [
+          "table:forecast_history_lines"
+        ],
+        "unretrievable_refs": [],
+        "retained_pages": 0,
+        "delivered_payload_chars": 57976
+      },
+      "payload_sha256": "8026da6caa189425c6eb7c27e12f881c2bb42f8bba46ff9cb3599340040b2a7d",
+      "verified_source_refs": [
+        "sup:70410",
+        "part:340010",
+        "doc:20260918-70410-P10",
+        "ctr:4600070410",
+        "sc:70410@2026Q3",
+        "fc:340010@2026-09",
+        "cost:340010",
+        "news:20260822-23",
+        "sc:70410@2024Q3",
+        "sc:70410@2024Q4",
+        "sc:70410@2025Q1",
+        "sc:70410@2025Q2",
+        "sc:70410@2025Q3",
+        "sc:70410@2025Q4",
+        "sc:70410@2026Q1",
+        "sc:70410@2026Q2",
+        "ctr:4600070410#2.1",
+        "ctr:4600070410#3.1",
+        "ctr:4600070410#4.1",
+        "ctr:4600070410#5.1",
+        "ctr:4600070410#6.1",
+        "ctr:4600070410#8.1",
+        "doc:20251108-70410-N",
+        "doc:20260310-70410-M1",
+        "doc:20260327-70410-M2",
+        "idx:LCI-C@2025-06",
+        "idx:LCI-C@2026-06",
+        "idx:PPI-C2219@2025-08",
+        "idx:PPI-C2219@2026-08",
+        "po:4500010017-10",
+        "po:4500010099-10",
+        "po:4500010149-10",
+        "po:4500010219-10",
+        "po:4500010274-10",
+        "po:4500010364-10",
+        "po:4500010407-10",
+        "po:4500010483-10",
+        "po:4500010543-10",
+        "po:4500010608-10",
+        "po:4500010658-10",
+        "po:4500010738-10",
+        "po:4500010850-10",
+        "po:4500010890-10",
+        "po:4500010927-10",
+        "po:4500010989-10",
+        "po:4500011057-10",
+        "po:4500011167-10",
+        "po:4500011225-10",
+        "po:4500011248-10",
+        "po:4500011284-10",
+        "po:4500011317-10",
+        "po:4500011381-10",
+        "po:4500011517-10",
+        "po:4500011546-10",
+        "po:4500011580-10",
+        "po:4500011642-10",
+        "po:4500011710-10",
+        "po:4500011752-10",
+        "po:4500011850-10",
+        "po:4500011912-10",
+        "po:4500011972-10",
+        "po:4500012033-10",
+        "po:4500012093-10",
+        "po:4500012147-10",
+        "po:4500012237-10",
+        "po:4500012283-10",
+        "po:4500012360-10",
+        "po:4500012425-10",
+        "po:4500012472-10",
+        "po:4500012551-10",
+        "po:4500012651-10",
+        "po:4500012660-10",
+        "po:4500012784-10",
+        "po:4500012784-20",
+        "po:4500012828-10",
+        "po:4500012868-10",
+        "po:4500012956-10",
+        "po:4500013017-10",
+        "po:4500013077-10",
+        "po:4500013138-10",
+        "po:4500013203-10",
+        "po:4500013269-10",
+        "po:4500013313-10",
+        "po:4500013370-10",
+        "po:4500013451-10",
+        "po:4500013515-10",
+        "po:4500013591-10",
+        "po:4500013646-10",
+        "po:4500013725-10",
+        "po:4500013787-10",
+        "po:4500013851-10",
+        "po:4500013964-10",
+        "po:4500013987-10",
+        "po:4500014027-10",
+        "po:4500014147-10",
+        "po:4500014147-20",
+        "po:4500014213-10",
+        "po:4500014318-10",
+        "po:4500014337-10",
+        "po:4500014383-10",
+        "po:4500014436-10",
+        "table:suppliers",
+        "table:parts",
+        "table:supplier_intel",
+        "table:negotiation_history",
+        "table:news",
+        "table:scorecards",
+        "table:contracts",
+        "table:spend_cube",
+        "table:documents",
+        "table:should_cost",
+        "table:quotes",
+        "table:forecasts",
+        "table:sourcing",
+        "table:cost_drivers",
+        "table:rfqs",
+        "table:po_lines",
+        "table:goods_receipts",
+        "table:quality_notifications",
+        "table:price_conditions",
+        "table:invoices",
+        "table:contract_clauses",
+        "table:forecast_history_lines",
+        "table:index_series",
+        "table:index_values"
+      ],
+      "local_pages_checked": 130
+    },
+    {
+      "case_id": "case:P18",
+      "status": "passed",
+      "collection": {
+        "version": "research-collection-v1",
+        "tables": {
+          "suppliers": {
+            "status": "complete",
+            "source_table": "suppliers",
+            "expected_rows": 1,
+            "loaded_rows": 1,
+            "scope": {
+              "id": [
+                "sup:70740"
+              ]
+            },
+            "retained_rows": 1
+          },
+          "parts": {
+            "status": "complete",
+            "source_table": "parts",
+            "expected_rows": 1,
+            "loaded_rows": 1,
+            "scope": {
+              "id": [
+                "part:370010"
+              ]
+            },
+            "retained_rows": 1
+          },
+          "supplier_intel": {
+            "status": "complete",
+            "source_table": "supplier_intel",
+            "expected_rows": 1,
+            "loaded_rows": 1,
+            "scope": {
+              "supplier_id": [
+                "sup:70740"
+              ]
+            },
+            "retained_rows": 1
+          },
+          "negotiation_history": {
+            "status": "complete",
+            "source_table": "negotiation_history",
+            "expected_rows": 12,
+            "loaded_rows": 12,
+            "scope": {
+              "supplier_id": [
+                "sup:70740"
+              ]
+            },
+            "retained_rows": 12
+          },
+          "news": {
+            "status": "complete",
+            "source_table": "news",
+            "expected_rows": 1,
+            "loaded_rows": 1,
+            "scope": {
+              "supplier_id": [
+                "sup:70740"
+              ]
+            },
+            "retained_rows": 1
+          },
+          "scorecards": {
+            "status": "complete",
+            "source_table": "scorecards",
+            "expected_rows": 9,
+            "loaded_rows": 9,
+            "scope": {
+              "supplier_id": [
+                "sup:70740"
+              ]
+            },
+            "retained_rows": 9
+          },
+          "contracts": {
+            "status": "complete",
+            "source_table": "contracts",
+            "expected_rows": 1,
+            "loaded_rows": 1,
+            "scope": {
+              "supplier_id": [
+                "sup:70740"
+              ]
+            },
+            "retained_rows": 1
+          },
+          "spend_cube": {
+            "status": "complete",
+            "source_table": "spend_cube",
+            "expected_rows": 3,
+            "loaded_rows": 3,
+            "scope": {
+              "supplier_id": [
+                "sup:70740"
+              ]
+            },
+            "retained_rows": 3
+          },
+          "documents": {
+            "status": "complete",
+            "source_table": "documents",
+            "expected_rows": 8,
+            "loaded_rows": 8,
+            "scope": {
+              "supplier_id": [
+                "sup:70740"
+              ]
+            },
+            "retained_rows": 8
+          },
+          "should_cost": {
+            "status": "complete",
+            "source_table": "should_cost",
+            "expected_rows": 0,
+            "loaded_rows": 0,
+            "scope": {
+              "part_id": [
+                "part:370010"
+              ]
+            },
+            "retained_rows": 0
+          },
+          "quotes": {
+            "status": "filtered_by_case",
+            "source_table": "quotes",
+            "expected_rows": 5,
+            "loaded_rows": 5,
+            "scope": {
+              "part_id": [
+                "part:370010"
+              ]
+            },
+            "retained_rows": 1,
+            "excluded_refs": [
+              "quote:7100064",
+              "quote:7100065",
+              "quote:7200008",
+              "quote:7300008"
+            ],
+            "reason": "P18 permits only case-authorized quotations as competitor evidence"
+          },
+          "forecasts": {
+            "status": "complete",
+            "source_table": "forecasts",
+            "expected_rows": 12,
+            "loaded_rows": 12,
+            "scope": {
+              "part_id": [
+                "part:370010"
+              ]
+            },
+            "retained_rows": 12
+          },
+          "sourcing": {
+            "status": "complete",
+            "source_table": "sourcing",
+            "expected_rows": 2,
+            "loaded_rows": 2,
+            "scope": {
+              "part_id": [
+                "part:370010"
+              ]
+            },
+            "retained_rows": 2
+          },
+          "cost_drivers": {
+            "status": "complete",
+            "source_table": "cost_drivers",
+            "expected_rows": 3,
+            "loaded_rows": 3,
+            "scope": {
+              "part_id": [
+                "part:370010"
+              ]
+            },
+            "retained_rows": 3
+          },
+          "rfqs": {
+            "status": "complete",
+            "source_table": "rfqs",
+            "expected_rows": 3,
+            "loaded_rows": 3,
+            "scope": {
+              "part_id": [
+                "part:370010"
+              ]
+            },
+            "retained_rows": 3
+          },
+          "po_lines": {
+            "status": "complete",
+            "source_table": "po_lines",
+            "expected_rows": 72,
+            "loaded_rows": 72,
+            "scope": {
+              "supplier_id": [
+                "sup:70740"
+              ],
+              "part_id": [
+                "part:370010"
+              ]
+            },
+            "retained_rows": 72
+          },
+          "goods_receipts": {
+            "status": "complete",
+            "source_table": "goods_receipts",
+            "expected_rows": 77,
+            "loaded_rows": 77,
+            "scope": {
+              "supplier_id": [
+                "sup:70740"
+              ],
+              "part_id": [
+                "part:370010"
+              ]
+            },
+            "retained_rows": 77
+          },
+          "quality_notifications": {
+            "status": "complete",
+            "source_table": "quality_notifications",
+            "expected_rows": 8,
+            "loaded_rows": 8,
+            "scope": {
+              "supplier_id": [
+                "sup:70740"
+              ],
+              "part_id": [
+                "part:370010"
+              ]
+            },
+            "retained_rows": 8
+          },
+          "price_conditions": {
+            "status": "complete",
+            "source_table": "price_conditions",
+            "expected_rows": 6,
+            "loaded_rows": 6,
+            "scope": {
+              "supplier_id": [
+                "sup:70740"
+              ],
+              "part_id": [
+                "part:370010"
+              ]
+            },
+            "retained_rows": 6
+          },
+          "invoices": {
+            "status": "complete",
+            "source_table": "invoices",
+            "expected_rows": 77,
+            "loaded_rows": 77,
+            "scope": {
+              "supplier_id": [
+                "sup:70740"
+              ]
+            },
+            "retained_rows": 77
+          },
+          "contract_clauses": {
+            "status": "complete",
+            "source_table": "contract_clauses",
+            "expected_rows": 7,
+            "loaded_rows": 7,
+            "scope": {
+              "contract_id": [
+                "ctr:4600070740"
+              ]
+            },
+            "retained_rows": 7
+          },
+          "forecast_history_lines": {
+            "status": "complete",
+            "source_table": "forecast_lines",
+            "expected_rows": 144,
+            "loaded_rows": 144,
+            "scope": {
+              "fc_id": [
+                "fc:370010@2023-12",
+                "fc:370010@2024-03",
+                "fc:370010@2024-06",
+                "fc:370010@2024-09",
+                "fc:370010@2024-12",
+                "fc:370010@2025-03",
+                "fc:370010@2025-06",
+                "fc:370010@2025-09",
+                "fc:370010@2025-12",
+                "fc:370010@2026-03",
+                "fc:370010@2026-06",
+                "fc:370010@2026-09"
+              ]
+            },
+            "retained_rows": 144
+          },
+          "index_series": {
+            "status": "complete",
+            "source_table": "index_series",
+            "expected_rows": 3,
+            "loaded_rows": 3,
+            "scope": {
+              "id": [
+                "AS-14404",
+                "LCI-C",
+                "PPI-C2431"
+              ]
+            },
+            "retained_rows": 3
+          },
+          "index_values": {
+            "status": "complete",
+            "source_table": "index_values",
+            "expected_rows": 203,
+            "loaded_rows": 203,
+            "scope": {
+              "series_id": [
+                "AS-14404",
+                "LCI-C",
+                "PPI-C2431"
+              ]
+            },
+            "retained_rows": 203
+          }
+        },
+        "sunday_release_loaded": false,
+        "scope_note": "Supplier account context and case-part records. Historical quotes are not automatically authorized live alternatives. Forecasts are not commitments.",
+        "fact_count": 165,
+        "document_count": 10,
+        "issues": []
+      },
+      "table_row_counts": {
+        "suppliers": 1,
+        "parts": 1,
+        "supplier_intel": 1,
+        "negotiation_history": 12,
+        "news": 1,
+        "scorecards": 9,
+        "contracts": 1,
+        "spend_cube": 3,
+        "documents": 8,
+        "should_cost": 0,
+        "quotes": 1,
+        "forecasts": 12,
+        "sourcing": 2,
+        "cost_drivers": 3,
+        "rfqs": 3,
+        "po_lines": 72,
+        "goods_receipts": 77,
+        "quality_notifications": 8,
+        "price_conditions": 6,
+        "invoices": 77,
+        "contract_clauses": 7,
+        "forecast_history_lines": 144,
+        "index_series": 3,
+        "index_values": 203,
+        "forecast_lines": 12
+      },
+      "transport": {
+        "version": "evidence-transport-v6-latest-forecasts",
+        "max_local_reads": 2,
+        "complete_source_count": 191,
+        "raw_payload_chars": 204425,
+        "selected_fact_count": 40,
+        "availability_note": "Deferred records remain accessible through retrieve_evidence. No arbitrary queries.",
+        "collection_issues": [],
+        "delivery_counts": {
+          "full": 85,
+          "partial": 1,
+          "deferred": 129
+        },
+        "partial_refs": [
+          "table:forecast_history_lines"
+        ],
+        "unretrievable_refs": [],
+        "retained_pages": 0,
+        "delivered_payload_chars": 82753
+      },
+      "payload_sha256": "3980c1adf6ba0e10da1d4f7c8d088a519125243c17a566ed3469d2ff57f62b04",
+      "verified_source_refs": [
+        "sup:70740",
+        "part:370010",
+        "doc:20260922-70740-P18",
+        "ctr:4600070740",
+        "sc:70740@2026Q3",
+        "quote:7200018",
+        "news:20260619-14",
+        "sc:70740@2024Q3",
+        "sc:70740@2024Q4",
+        "sc:70740@2025Q1",
+        "sc:70740@2025Q2",
+        "sc:70740@2025Q3",
+        "sc:70740@2025Q4",
+        "sc:70740@2026Q1",
+        "sc:70740@2026Q2",
+        "ctr:4600070740#2.1",
+        "ctr:4600070740#3.1",
+        "ctr:4600070740#3.2",
+        "ctr:4600070740#4.1",
+        "ctr:4600070740#5.1",
+        "ctr:4600070740#6.1",
+        "ctr:4600070740#8.1",
+        "doc:20251009-70740-N",
+        "doc:20260514-70740-M6",
+        "doc:20260601-70740-M4",
+        "doc:20260812-70740-M3",
+        "doc:20260813-70740-M2",
+        "doc:20260904-70740-M1",
+        "doc:20260916-70740-M5",
+        "idx:AS-14404@2025-09",
+        "idx:AS-14404@2026-09",
+        "idx:LCI-C@2025-06",
+        "idx:LCI-C@2026-06",
+        "idx:PPI-C2431@2025-08",
+        "idx:PPI-C2431@2026-08",
+        "idx:AS-14404@2026-06",
+        "idx:PPI-C2431@2026-05",
+        "po:4500010012-10",
+        "po:4500010072-10",
+        "po:4500010141-10",
+        "po:4500010223-10",
+        "po:4500010278-10",
+        "po:4500010338-10",
+        "po:4500010394-10",
+        "po:4500010472-10",
+        "po:4500010546-10",
+        "po:4500010603-10",
+        "po:4500010697-10",
+        "po:4500010719-10",
+        "po:4500010783-10",
+        "po:4500010846-10",
+        "po:4500010910-10",
+        "po:4500010974-10",
+        "po:4500011045-10",
+        "po:4500011107-10",
+        "po:4500011150-10",
+        "po:4500011255-10",
+        "po:4500011304-10",
+        "po:4500011304-20",
+        "po:4500011369-10",
+        "po:4500011429-10",
+        "po:4500011489-10",
+        "po:4500011569-10",
+        "po:4500011657-10",
+        "po:4500011700-10",
+        "po:4500011743-10",
+        "po:4500011873-10",
+        "po:4500011888-10",
+        "po:4500011978-10",
+        "po:4500012017-10",
+        "po:4500012076-10",
+        "po:4500012151-10",
+        "po:4500012214-10",
+        "po:4500012284-10",
+        "po:4500012369-10",
+        "po:4500012419-10",
+        "po:4500012475-10",
+        "po:4500012546-10",
+        "po:4500012591-10",
+        "po:4500012638-10",
+        "po:4500012803-10",
+        "po:4500012803-20",
+        "po:4500012808-10",
+        "po:4500012863-10",
+        "po:4500012947-10",
+        "po:4500012994-10",
+        "po:4500013112-10",
+        "po:4500013136-10",
+        "po:4500013189-10",
+        "po:4500013280-10",
+        "po:4500013336-10",
+        "po:4500013373-10",
+        "po:4500013456-10",
+        "po:4500013520-10",
+        "po:4500013617-10",
+        "po:4500013638-10",
+        "po:4500013730-10",
+        "po:4500013762-10",
+        "po:4500013829-10",
+        "po:4500013900-10",
+        "po:4500013967-10",
+        "po:4500014022-10",
+        "po:4500014078-10",
+        "po:4500014140-10",
+        "po:4500014239-10",
+        "po:4500014287-10",
+        "po:4500014292-10",
+        "po:4500014355-10",
+        "po:4500014427-10",
+        "fc:370010@2026-09",
+        "fc:370010@2026-06",
+        "fc:370010@2026-03",
+        "fc:370010@2025-12",
+        "fc:370010@2025-09",
+        "fc:370010@2025-06",
+        "fc:370010@2025-03",
+        "fc:370010@2024-12",
+        "fc:370010@2024-09",
+        "fc:370010@2024-06",
+        "fc:370010@2024-03",
+        "fc:370010@2023-12",
+        "idx:AS-14404@2025-06",
+        "idx:AS-14404@2025-07",
+        "idx:AS-14404@2025-08",
+        "idx:AS-14404@2025-10",
+        "idx:AS-14404@2025-11",
+        "idx:AS-14404@2025-12",
+        "idx:AS-14404@2026-01",
+        "idx:AS-14404@2026-02",
+        "idx:AS-14404@2026-03",
+        "idx:AS-14404@2026-04",
+        "idx:AS-14404@2026-05",
+        "idx:AS-14404@2026-07",
+        "idx:AS-14404@2026-08",
+        "idx:PPI-C2431@2025-06",
+        "idx:PPI-C2431@2025-07",
+        "idx:PPI-C2431@2025-09",
+        "idx:PPI-C2431@2025-10",
+        "idx:PPI-C2431@2025-11",
+        "idx:PPI-C2431@2025-12",
+        "idx:PPI-C2431@2026-01",
+        "idx:PPI-C2431@2026-02",
+        "idx:PPI-C2431@2026-03",
+        "idx:PPI-C2431@2026-04",
+        "idx:PPI-C2431@2026-06",
+        "idx:PPI-C2431@2026-07",
+        "idx:LCI-C@2025-07",
+        "idx:LCI-C@2025-08",
+        "idx:LCI-C@2025-09",
+        "idx:LCI-C@2025-10",
+        "idx:LCI-C@2025-11",
+        "idx:LCI-C@2025-12",
+        "idx:LCI-C@2026-01",
+        "idx:LCI-C@2026-02",
+        "idx:LCI-C@2026-03",
+        "idx:LCI-C@2026-04",
+        "idx:LCI-C@2026-05",
+        "buyer-record:p18:fy2026-account-invoices",
+        "buyer-record:p18:fy2026-part-receipts",
+        "inv:5105005073",
+        "inv:5105005125",
+        "po:4500013392-10",
+        "po:4500013482-10",
+        "po:4500014391-10",
+        "po:4500014455-10",
+        "buyer-record:p18:scorecard-method",
+        "table:suppliers",
+        "table:parts",
+        "table:supplier_intel",
+        "table:negotiation_history",
+        "table:news",
+        "table:scorecards",
+        "table:contracts",
+        "table:spend_cube",
+        "table:documents",
+        "table:should_cost",
+        "table:quotes",
+        "table:forecasts",
+        "table:sourcing",
+        "table:cost_drivers",
+        "table:rfqs",
+        "table:po_lines",
+        "table:goods_receipts",
+        "table:quality_notifications",
+        "table:price_conditions",
+        "table:invoices",
+        "table:contract_clauses",
+        "table:forecast_history_lines",
+        "table:index_series",
+        "table:index_values",
+        "table:forecast_lines"
+      ],
+      "local_pages_checked": 196
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "hosted_responses": 1245,
+  "cases": {
+    "case:P02": 42,
+    "case:D01": 200,
+    "case:P04": 41,
+    "case:P18": 184,
+    "case:P08": 63,
+    "case:P10": 127,
+    "case:P07": 47,
+    "case:P03": 64,
+    "case:P05": 72,
+    "case:D02": 263,
+    "case:P01": 89,
+    "case:P11": 53
+  },
+  "finality": {
+    "open_bargaining": {
+      "observations": 1218,
+      "sessions": 374,
+      "supplier_exits": 5,
+      "mean_quote_gain": 0.036316153072288145
+    },
+    "after_finality": {
+      "observations": 27,
+      "sessions": 23,
+      "supplier_exits": 16,
+      "mean_quote_gain": 0.0022443272127159537
+    }
+  },
+  "limits": "Descriptive associations under different strategies and suppliers; no causal estimates. Finality examples include failed actions and must never be imitated automatically."
+}

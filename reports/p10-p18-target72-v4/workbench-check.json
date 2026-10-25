@@ -1,0 +1,20 @@
+{
+  "server_port": 8765,
+  "registered_model_unchanged": true,
+  "default_mode": "shadow",
+  "visible_completed_runs": [
+    {
+      "id": "9df3224f93944364945f1f90875450f8",
+      "status": "completed",
+      "case_id": "case:P18",
+      "official_score": 68.45646477287704
+    },
+    {
+      "id": "1687718033874e4eb42e937fb9b81d18",
+      "status": "completed",
+      "case_id": "case:P10",
+      "official_score": 68.64691970606857
+    }
+  ],
+  "active_jobs": {}
+}

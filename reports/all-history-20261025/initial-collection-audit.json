@@ -1,0 +1,34 @@
+{
+  "sets": {
+    "sandbox": {
+      "listed": 119,
+      "fetched": 119,
+      "cached": 0
+    },
+    "practice": {
+      "listed": 275,
+      "fetched": 275,
+      "cached": 0
+    },
+    "final": {
+      "listed": 0,
+      "fetched": 0,
+      "cached": 0
+    }
+  },
+  "errors": [],
+  "new_sessions_started": 0,
+  "method": "GET only",
+  "practice_before": {
+    "used": 275,
+    "left": 325,
+    "limit": 600,
+    "resets_at": "2026-10-25T11:19:44.936916+00:00"
+  },
+  "practice_after": {
+    "used": 276,
+    "left": 324,
+    "limit": 600,
+    "resets_at": "2026-10-25T11:19:44.936916+00:00"
+  }
+}

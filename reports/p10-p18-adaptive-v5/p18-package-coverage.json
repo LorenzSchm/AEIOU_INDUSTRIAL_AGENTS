@@ -1,0 +1,450 @@
+{
+  "note": "Public advertised quotes, not necessarily standing or accepted. Different wording/terms confound comparisons.",
+  "rows": [
+    {
+      "payment_days": 14,
+      "deadband": 0.0,
+      "months": 24,
+      "sessions": 7,
+      "min_quoted_price": 5.1,
+      "best_observations": [
+        {
+          "session": "6b801e9ad1d2b247",
+          "price": 5.1,
+          "status": "final_offer"
+        },
+        {
+          "session": "d3589bba414c4783",
+          "price": 5.1,
+          "status": "final_offer"
+        },
+        {
+          "session": "39778afa2e3aba34",
+          "price": 5.3,
+          "status": "final_offer"
+        }
+      ]
+    },
+    {
+      "payment_days": 14,
+      "deadband": 0.0,
+      "months": 36,
+      "sessions": 15,
+      "min_quoted_price": 5.1,
+      "best_observations": [
+        {
+          "session": "0efe335f89f9b93e",
+          "price": 5.1,
+          "status": "open"
+        },
+        {
+          "session": "0efe335f89f9b93e",
+          "price": 5.1,
+          "status": "agreed"
+        },
+        {
+          "session": "4a39ae4ddfcdfec8",
+          "price": 5.1,
+          "status": "final_offer"
+        }
+      ]
+    },
+    {
+      "payment_days": 14,
+      "deadband": 3.0,
+      "months": 24,
+      "sessions": 1,
+      "min_quoted_price": 5.5,
+      "best_observations": [
+        {
+          "session": "dff877d1a6fd9336",
+          "price": 5.5,
+          "status": "final_offer"
+        },
+        {
+          "session": "dff877d1a6fd9336",
+          "price": 5.6,
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "payment_days": 14,
+      "deadband": 3.0,
+      "months": 36,
+      "sessions": 6,
+      "min_quoted_price": 5.1,
+      "best_observations": [
+        {
+          "session": "0878e87ccf1628cb",
+          "price": 5.1,
+          "status": "final_offer"
+        },
+        {
+          "session": "4f826008fc2063e7",
+          "price": 5.1,
+          "status": "final_offer"
+        },
+        {
+          "session": "4f826008fc2063e7",
+          "price": 5.1,
+          "status": "agreed"
+        }
+      ]
+    },
+    {
+      "payment_days": 14,
+      "deadband": 5.0,
+      "months": 24,
+      "sessions": 3,
+      "min_quoted_price": 5.2,
+      "best_observations": [
+        {
+          "session": "6b801e9ad1d2b247",
+          "price": 5.2,
+          "status": "final_offer"
+        },
+        {
+          "session": "d3589bba414c4783",
+          "price": 5.2,
+          "status": "final_offer"
+        },
+        {
+          "session": "60fb3d6a7a3f9d52",
+          "price": 5.6,
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "payment_days": 14,
+      "deadband": 5.0,
+      "months": 36,
+      "sessions": 8,
+      "min_quoted_price": 5.1,
+      "best_observations": [
+        {
+          "session": "2bd47bd7387bbac9",
+          "price": 5.1,
+          "status": "agreed"
+        },
+        {
+          "session": "2bd47bd7387bbac9",
+          "price": 5.1,
+          "status": "agreed"
+        },
+        {
+          "session": "79b058a1b9f92e69",
+          "price": 5.1,
+          "status": "final_offer"
+        }
+      ]
+    },
+    {
+      "payment_days": 30,
+      "deadband": 0.0,
+      "months": 24,
+      "sessions": 15,
+      "min_quoted_price": 5.3,
+      "best_observations": [
+        {
+          "session": "c9512f043959492c",
+          "price": 5.3,
+          "status": "final_offer"
+        },
+        {
+          "session": "0878e87ccf1628cb",
+          "price": 5.4,
+          "status": "open"
+        },
+        {
+          "session": "134ee6c0ba3ec8b2",
+          "price": 5.4,
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "payment_days": 30,
+      "deadband": 0.0,
+      "months": 36,
+      "sessions": 27,
+      "min_quoted_price": 5.1,
+      "best_observations": [
+        {
+          "session": "7dc55b70c8aa902a",
+          "price": 5.1,
+          "status": "final_offer"
+        },
+        {
+          "session": "7dc55b70c8aa902a",
+          "price": 5.2,
+          "status": "open"
+        },
+        {
+          "session": "15731f1c455a8032",
+          "price": 5.3,
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "payment_days": 30,
+      "deadband": 5.0,
+      "months": 24,
+      "sessions": 8,
+      "min_quoted_price": 5.4,
+      "best_observations": [
+        {
+          "session": "c9512f043959492c",
+          "price": 5.4,
+          "status": "open"
+        },
+        {
+          "session": "4bbbc4aa31b8be25",
+          "price": 5.5,
+          "status": "open"
+        },
+        {
+          "session": "4bbbc4aa31b8be25",
+          "price": 5.5,
+          "status": "final_offer"
+        }
+      ]
+    },
+    {
+      "payment_days": 30,
+      "deadband": 5.0,
+      "months": 36,
+      "sessions": 23,
+      "min_quoted_price": 5.1,
+      "best_observations": [
+        {
+          "session": "1152e9ab0e9472f2",
+          "price": 5.1,
+          "status": "final_offer"
+        },
+        {
+          "session": "1152e9ab0e9472f2",
+          "price": 5.1,
+          "status": "agreed"
+        },
+        {
+          "session": "15731f1c455a8032",
+          "price": 5.1,
+          "status": "final_offer"
+        }
+      ]
+    },
+    {
+      "payment_days": 45,
+      "deadband": 0.0,
+      "months": 24,
+      "sessions": 1,
+      "min_quoted_price": 5.6,
+      "best_observations": [
+        {
+          "session": "22c36e12ddecc013",
+          "price": 5.6,
+          "status": "open"
+        },
+        {
+          "session": "22c36e12ddecc013",
+          "price": 5.6,
+          "status": "open"
+        },
+        {
+          "session": "22c36e12ddecc013",
+          "price": 5.6,
+          "status": "final_offer"
+        }
+      ]
+    },
+    {
+      "payment_days": 45,
+      "deadband": 5.0,
+      "months": 36,
+      "sessions": 1,
+      "min_quoted_price": 5.2,
+      "best_observations": [
+        {
+          "session": "43b2b1e8c9dc9119",
+          "price": 5.2,
+          "status": "final_offer"
+        }
+      ]
+    },
+    {
+      "payment_days": 60,
+      "deadband": 0.0,
+      "months": 24,
+      "sessions": 3,
+      "min_quoted_price": 5.3,
+      "best_observations": [
+        {
+          "session": "571f6bfb1e672608",
+          "price": 5.3,
+          "status": "final_offer"
+        },
+        {
+          "session": "c9512f043959492c",
+          "price": 5.4,
+          "status": "open"
+        },
+        {
+          "session": "2e53d7c24e9db555",
+          "price": 5.6,
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "payment_days": 60,
+      "deadband": 0.0,
+      "months": 36,
+      "sessions": 1,
+      "min_quoted_price": 5.5,
+      "best_observations": [
+        {
+          "session": "27d14cdac3e28c82",
+          "price": 5.5,
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "payment_days": 60,
+      "deadband": 3.0,
+      "months": 24,
+      "sessions": 1,
+      "min_quoted_price": 5.6,
+      "best_observations": [
+        {
+          "session": "9a5e8bbd3a626a18",
+          "price": 5.6,
+          "status": "open"
+        },
+        {
+          "session": "9a5e8bbd3a626a18",
+          "price": 5.6,
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "payment_days": 60,
+      "deadband": 5.0,
+      "months": 24,
+      "sessions": 3,
+      "min_quoted_price": 5.5,
+      "best_observations": [
+        {
+          "session": "9a5e8bbd3a626a18",
+          "price": 5.5,
+          "status": "agreed"
+        },
+        {
+          "session": "9a5e8bbd3a626a18",
+          "price": 5.5,
+          "status": "agreed"
+        },
+        {
+          "session": "c9512f043959492c",
+          "price": 5.5,
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "payment_days": 60,
+      "deadband": 5.0,
+      "months": 36,
+      "sessions": 26,
+      "min_quoted_price": 5.2,
+      "best_observations": [
+        {
+          "session": "27d14cdac3e28c82",
+          "price": 5.2,
+          "status": "final_offer"
+        },
+        {
+          "session": "b3a3237fd298e3af",
+          "price": 5.2,
+          "status": "final_offer"
+        },
+        {
+          "session": "0878e87ccf1628cb",
+          "price": 5.3,
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "payment_days": 90,
+      "deadband": 0.0,
+      "months": 24,
+      "sessions": 2,
+      "min_quoted_price": 5.6,
+      "best_observations": [
+        {
+          "session": "60fb3d6a7a3f9d52",
+          "price": 5.6,
+          "status": "open"
+        },
+        {
+          "session": "60fb3d6a7a3f9d52",
+          "price": 5.6,
+          "status": "open"
+        },
+        {
+          "session": "60fb3d6a7a3f9d52",
+          "price": 5.6,
+          "status": "final_offer"
+        }
+      ]
+    },
+    {
+      "payment_days": 90,
+      "deadband": 5.0,
+      "months": 24,
+      "sessions": 1,
+      "min_quoted_price": 5.7,
+      "best_observations": [
+        {
+          "session": "4bbbc4aa31b8be25",
+          "price": 5.7,
+          "status": "open"
+        },
+        {
+          "session": "4bbbc4aa31b8be25",
+          "price": 5.8,
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "payment_days": 90,
+      "deadband": 5.0,
+      "months": 36,
+      "sessions": 7,
+      "min_quoted_price": 5.2,
+      "best_observations": [
+        {
+          "session": "15731f1c455a8032",
+          "price": 5.2,
+          "status": "final_offer"
+        },
+        {
+          "session": "9bd511c7b2de3173",
+          "price": 5.2,
+          "status": "final_offer"
+        },
+        {
+          "session": "cf06835c2813556a",
+          "price": 5.2,
+          "status": "final_offer"
+        }
+      ]
+    }
+  ]
+}

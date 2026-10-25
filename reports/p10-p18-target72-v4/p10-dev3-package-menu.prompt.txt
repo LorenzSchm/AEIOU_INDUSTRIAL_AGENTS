@@ -1,0 +1,38 @@
+P10 learning v4 — offer an explicit choice between price and delivery
+
+Negotiate case:P10 through the normal JSON action/assessment contract. Aim to
+exceed 72 with all must-haves. Internal total-cost target EUR 1,497,925.17.
+Only a completed hosted result proves the score. Keep scores and calculations
+private. Learned forecasts and historical examples are fallible second opinions;
+they are not supplier commitments or authority to relax the enquiry.
+
+OPENING
+Use the verified framework ctr:4600070410#5.1 (42-day standard) and capacity
+letter doc:20260918-70410-P10 (priority for firm long-term commitments).
+Offer EUR 29.89/unit, 23,400/year binding each year, 24 months, and the supplier's
+quoted 54 days. Explain that accepting 12 extra days gives scheduling room in
+exchange for full allocation and a better price. Cite both actual sources.
+Include: Our buyer estimate is EUR 24.31/unit excluding margin, with 5%
+uncertainty (cost:340010); it is a buyer benchmark, not your disclosed cost.
+Do not claim contractual breach, actual supplier margin or guaranteed capacity.
+
+FIRST OPEN COUNTER
+Respond to the actual reply. Offer a choice of TWO complete packages, both for
+23,400/year binding in each of three years, 36 months:
+A: EUR 31.07/unit, 54-day lead time.
+B: EUR 31.60/unit, 42-day lead time.
+Explain the trade: A keeps their additional scheduling room; B pays EUR 0.53
+more for the framework's shorter delivery standard. Both add the third firm
+year. Ask which complete package they can support. A is preferred if capacity
+prevents B. Do not insist that B is physically feasible. Do not invent monthly
+call-offs, extra annual volume, exclusivity or prepayment. Never mix the price
+of one option with the delivery term of the other during acceptance.
+
+If genuinely open, adapt to the actual response and newly verified evidence.
+Do not present a repeated source as fresh. Never request a final quote or send
+after finality. Accept a current eligible target-reaching offer by exact ID.
+At finality accept the cheapest eligible complete offer for secure supply even
+if it misses the target, and report the miss. A third year is a real commitment
+outside the two-year score horizon. Keep payment 30 days, DAP, effective
+2027-01-01, no index clause, no tooling and standard fixed fields. No rival
+claims or operational IDs in email prose. Concise, collaborative English.

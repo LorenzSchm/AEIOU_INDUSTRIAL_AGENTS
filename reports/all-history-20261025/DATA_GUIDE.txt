@@ -1,0 +1,75 @@
+AEIOU negotiation training collection — 25 October 2026
+
+The archive covers accessible project histories, archived local benchmarks,
+hosted sandbox/practice sessions owned by the configured Arena account, report
+snapshots, and the downloaded buyer data package plus Sunday release. A source
+that was never recorded and is no longer exposed by the API cannot be recovered.
+
+conversations.jsonl
+  One deduplicated session with public buyer case, supplier threads, available
+  chronological timeline, prompt/model metadata and original source hashes.
+  Hosted identity is the server session ID. Local identity uses the run ID because
+  independent local simulators reuse sim1. Completed server records take priority
+  over potentially unsent local requests. Public result traces restore missing
+  visible turns; private server reasons and model reasoning are excluded.
+
+decisions.jsonl and decisions-{train,validation,test}.jsonl
+  One recorded buyer action with only the preceding visible conversation. Where
+  chronology can be verified, input.threads contains the prefixes across suppliers.
+  Otherwise input.thread_prefix contains one thread and context_scope explicitly
+  marks incomplete portfolio context. These rows support analysis or reviewed
+  imitation-data preparation; a recorded action is not automatically a good action.
+  Timeouts and known verification fixtures are not authored training decisions.
+  Business evidence can be joined using the case and source IDs, at its original
+  cutoff. Do not attach all Sunday material to old practice decisions.
+
+responses.jsonl
+  Observed buyer-package/supplier-response pairs. x/v and history features use
+  preceding state; y contains the subsequent observed outcome. Failed and terminal
+  interactions remain visible. Local simulation versus hosted origin is explicit.
+  Terminal counters are risk examples and are excluded from the two generic
+  open-bargaining response predictors. No unchosen action receives an invented label.
+
+outcomes.jsonl
+  Observed final scores, agreements and must-have checks with provenance, separate
+  from model inputs. Local scores are synthetic and must not be pooled with official
+  Arena scores. Missing results are missing, not fabricated no-deal outcomes.
+
+Splits and evaluation
+  Chat examples use a deterministic whole-trajectory 80/10/10 split; duplicate
+  trajectories stay together. This is same-case development data. Generic response
+  models use connected case/supplier holdouts, including local auxiliary rows when
+  forming those groups. Focused P10/P18 models use chronological whole-session
+  partitions and time-bounded background data. Historical splits already examined
+  during development are not new independent tests. Frozen prompt evaluations are
+  separate from the final all-observation refit.
+
+Business knowledge
+  business-records.jsonl preserves every exported table row and its base/Sunday
+  origin. documents.jsonl contains source text; facts.jsonl contains citable facts.
+  These are knowledge inputs, not invented dialogues or supervised outcomes.
+  prompt-archive.jsonl retains distinct known prompt texts with hashes and sources.
+  Sunday adds six news items, three letters and a purchasing memo. Index series
+  remain frozen at September 2026. Historical practice/sandbox keep base evidence.
+
+Models and runtime
+  Training produces portable local response-model weights, not updated Claude or
+  GPT foundation-model weights. Mixed-data models, focused/general/tactical models
+  and simple baselines are compared explicitly. Models cannot authorize purchases,
+  relax limits or make a nonbinding offer acceptable. Training does not silently
+  register a new default. Existing shadow/advisory controls retain their behavior.
+
+Reproduction (from the repository root; choose unused output folders)
+  uv run arena data
+  uv run python -m aeiou.training_corpus --collect-remote --output data/local/arena-archive-NEXT
+  uv run python -m aeiou.training_corpus --output data/local/training-corpus-NEXT --sources data/local reports tmp --fixture-manifest reports/all-history-20261025/verification-fixtures.json
+  uv run python scripts/export_training_evidence.py --output data/local/training-evidence-NEXT
+  uv run python -m aeiou.corpus_training --corpus data/local/training-corpus-NEXT --output data/local/training-corpus-model-NEXT
+  uv run --with-requirements requirements-learning.txt python -m aeiou.tactical_training --sources data/local/training-corpus-NEXT/hosted-runs --output data/local/custom-p10-p18-NEXT
+
+Optional new paid-model sandbox comparison (plan only unless --run is added):
+  uv run python scripts/evaluate_history_prompt.py --baseline reports/all-history-20261025/baseline-best-observed.txt --candidate prompts/negomate-history-sunday-v2.txt --output reports/history-prompt-NEXT --max-sessions 12
+
+Use --exclude-evaluations ID ... when creating a frozen training snapshot before
+an experiment completes. Every collected session remains in the final archive.
+The collector uses GET requests only and never opens, advances or closes sessions.

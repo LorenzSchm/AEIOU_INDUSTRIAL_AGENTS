@@ -69,7 +69,12 @@ def index():
 
 @app.get("/api/status")
 def status():
+    from .custom_model import model_status
+    from .final_status import final_runner_status
+
     return {
+        "final_runner": final_runner_status(),
+        "custom_model": model_status(),
         **model_settings(),
         "models": [
             {
@@ -421,7 +426,8 @@ class PlayRequest(BaseModel):
     case_id: str = Field(max_length=100)
     mode: str = Field(pattern="^(local|hosted)$")
     agent: str = Field(
-        default="original", pattern="^(baseline|guarded|adaptive|claude|original|strategic|strategic-policy)$"
+        default="original",
+        pattern="^(baseline|guarded|adaptive|claude|original|strategic|strategic-policy|custom-p10-p18)$",
     )
     opponent: str = Field(default="auto", max_length=50)
     # Seconds between local exchanges, so a demo audience can watch the pipeline move.
@@ -438,7 +444,17 @@ def dispatch(job_id, fn):
 
 @app.post("/api/play", status_code=202)
 def launch(body: PlayRequest):
-    if body.mode == "local" or body.agent in {"claude", "original", "strategic"}:
+    if body.agent == "custom-p10-p18":
+        from .custom_agent import validate_custom_case
+        from .custom_model import model_status
+
+        try:
+            validate_custom_case(body.case_id)
+        except ValueError as exc:
+            raise HTTPException(422, str(exc)) from exc
+        if not model_status()["available"]:
+            raise HTTPException(409, "Train and register the P10/P18 custom model before launching")
+    if body.mode == "local" or body.agent in {"claude", "original", "strategic", "custom-p10-p18"}:
         validate_buyer()
     if body.mode == "hosted" and not os.environ.get("ARENA_API_KEY"):
         raise HTTPException(409, "Set ARENA_API_KEY in .env")

@@ -26,6 +26,7 @@ import { useWorkbench, type Scope } from "@/store"
 
 const agents = [
   { value: "original", label: "Your prompt · buyer walk-aways disabled" },
+  { value: "custom-p10-p18", label: "Experimental P10/P18 · separate strategy + forecasts" },
   { value: "strategic", label: "Strategic planner · selected buyer model" },
   { value: "strategic-policy", label: "Strategic policy · deterministic buyer" },
   { value: "claude", label: "Earlier rewrite · Claude + economic guards" },
@@ -63,6 +64,9 @@ export function LaunchDialog() {
 
   const choices =
     mode === "local" ? cases.local : cases.hosted.filter((c) => c.hosted)
+  const customAvailable = !!status?.custom_model?.available &&
+    !!status.custom_model.cases.includes(caseId)
+  const customBlocked = agent === "custom-p10-p18" && !customAvailable
 
   // Reset the form from the preset each time the dialog opens.
   useEffect(() => {
@@ -194,13 +198,27 @@ export function LaunchDialog() {
               </SelectTrigger>
               <SelectContent>
                 {agents.map((a) => (
-                  <SelectItem key={a.value} value={a.value}>
+                  <SelectItem key={a.value} value={a.value} disabled={a.value === "custom-p10-p18" && !customAvailable}>
                     {a.label}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </Field>
+
+          {agent === "custom-p10-p18" && (
+            <p className="text-sm text-muted-foreground">
+              {customBlocked
+                ? "Choose P10 or P18 with a registered custom model."
+                : `Uses a separate buyer strategy and forecasts trained on ${status?.custom_model?.training_examples} response examples. Better outcomes have not been demonstrated. Choose “Your prompt” to keep your strategy; saved case limits remain active here.`}
+            </p>
+          )}
+          {customAvailable && status?.custom_model?.built_in && agent !== "baseline" && agent !== "custom-p10-p18" && (
+            <p className="text-sm text-muted-foreground">
+              Learned forecasts are recorded for evaluation only. They are not sent to the buyer model
+              and do not change its prompt or package choices.
+            </p>
+          )}
 
           {mode === "local" && (
             <Field id="launch-opponent" label="Local opponent">
@@ -252,7 +270,7 @@ export function LaunchDialog() {
             <Button type="button" variant="outline" onClick={closeLaunch}>
               Cancel
             </Button>
-            <Button type="submit" disabled={submitting || !caseId}>
+            <Button type="submit" disabled={submitting || !caseId || customBlocked}>
               {submitting ? <Loader2 className="animate-spin" /> : null}
               Launch negotiation <ArrowUpRight />
             </Button>

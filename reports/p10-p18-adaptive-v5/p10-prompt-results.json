@@ -1,0 +1,26 @@
+{
+  "active_scope": "P10 only; P18 dropped by the user",
+  "prompt_tests": [
+    {
+      "trial": "p10-preparation-i04",
+      "change": "Compact source-based planning prep added to fixed v32 ladder",
+      "score": 69.42748149085908,
+      "terms": "31.40 / 54 days / 23400 / 36 months"
+    },
+    {
+      "trial": "p10-adaptive-i05",
+      "change": "Planner chooses concession sequence",
+      "score": 67.08579613648755,
+      "terms": "31.70 / 54 days / 23400 / 36 months",
+      "observed_sequence": [
+        "30.30 / 36 months",
+        "supplier31.90 / 36 months",
+        "30.60 / 36 months",
+        "supplier31.70 final"
+      ]
+    }
+  ],
+  "decision": "Do not promote free-form planner. Keep staged commitment as the current stronger reference.",
+  "caveat": "Exploratory runs with sequentially refitted weights; prompt effects are not isolated.",
+  "next_model_study": "Evaluate accepted-deal final-cost regression for P10 separately from agreement probability. The unconditional terminal gain study failed its class-support/performance gates. Conditional price estimates must not imply acceptance and must remain bounded by observed support."
+}

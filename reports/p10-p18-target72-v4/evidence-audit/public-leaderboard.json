@@ -1,0 +1,103 @@
+{
+  "set": "practice",
+  "cases": 10,
+  "window": null,
+  "teams": [
+    {
+      "team_name": "Clooless",
+      "played": 10,
+      "total": 83.7,
+      "deals": 10,
+      "rounds": 49,
+      "rank": 1
+    },
+    {
+      "team_name": "winsortf",
+      "played": 10,
+      "total": 83.0,
+      "deals": 10,
+      "rounds": 46,
+      "rank": 2
+    },
+    {
+      "team_name": "\ud83c\udf5cJanteiros",
+      "played": 10,
+      "total": 81.1,
+      "deals": 10,
+      "rounds": 40,
+      "rank": 3
+    },
+    {
+      "team_name": "\ud83d\udd27 Hack It",
+      "played": 10,
+      "total": 81.0,
+      "deals": 10,
+      "rounds": 49,
+      "rank": 4
+    },
+    {
+      "team_name": "csee-base",
+      "played": 10,
+      "total": 80.6,
+      "deals": 10,
+      "rounds": 50,
+      "rank": 5
+    },
+    {
+      "team_name": "RGV GmbH",
+      "played": 10,
+      "total": 80.6,
+      "deals": 10,
+      "rounds": 63,
+      "rank": 6
+    },
+    {
+      "team_name": "TeamHoldout",
+      "played": 10,
+      "total": 80.2,
+      "deals": 10,
+      "rounds": 55,
+      "rank": 7
+    },
+    {
+      "team_name": "ProcuDeal",
+      "played": 10,
+      "total": 78.6,
+      "deals": 10,
+      "rounds": 47,
+      "rank": 8
+    },
+    {
+      "team_name": "certivity",
+      "played": 10,
+      "total": 78.1,
+      "deals": 10,
+      "rounds": 52,
+      "rank": 9
+    },
+    {
+      "team_name": "Mutun",
+      "played": 10,
+      "total": 76.9,
+      "deals": 10,
+      "rounds": 52,
+      "rank": 10
+    },
+    {
+      "team_name": "AEIOU",
+      "played": 10,
+      "total": 76.0,
+      "deals": 10,
+      "rounds": 42,
+      "rank": 11
+    },
+    {
+      "team_name": "42Planets",
+      "played": 10,
+      "total": 75.7,
+      "deals": 10,
+      "rounds": 46,
+      "rank": 12
+    }
+  ]
+}

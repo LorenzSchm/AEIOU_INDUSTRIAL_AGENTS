@@ -1,0 +1,33 @@
+{
+  "sha256": "ea0fad8e0ec15aee87dd05c094667a5f7f3d6960d38b9db413992def280d4970",
+  "new_hosted_sessions": 0,
+  "historical_templates": [
+    {
+      "session": "9791e46c219b1888",
+      "conditional_cost": {
+        "status": "conditional_advice",
+        "expected_final_cost_given_agreement": 1530869.99,
+        "validation_mae_eur": 8223.56,
+        "meaning": "Historical estimate conditional on agreement and continuation policy. Not acceptance probability, not a binding quote, not causal evidence, and not transferable to an edited proposal. Validation error is descriptive, not a confidence interval."
+      }
+    },
+    {
+      "session": "df9c0afd95745b3c",
+      "conditional_cost": {
+        "status": "conditional_advice",
+        "expected_final_cost_given_agreement": 1515482.56,
+        "validation_mae_eur": 8223.56,
+        "meaning": "Historical estimate conditional on agreement and continuation policy. Not acceptance probability, not a binding quote, not causal evidence, and not transferable to an edited proposal. Validation error is descriptive, not a confidence interval."
+      }
+    },
+    {
+      "session": "9f33a1a869f4a609",
+      "conditional_cost": {
+        "status": "conditional_advice",
+        "expected_final_cost_given_agreement": 1516190.19,
+        "validation_mae_eur": 8223.56,
+        "meaning": "Historical estimate conditional on agreement and continuation policy. Not acceptance probability, not a binding quote, not causal evidence, and not transferable to an edited proposal. Validation error is descriptive, not a confidence interval."
+      }
+    }
+  ]
+}

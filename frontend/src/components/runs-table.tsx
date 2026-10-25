@@ -19,7 +19,7 @@ export function runOutcome(r: RunSummary) {
   return r.result?.deal ? "Deal reached" : "No deal"
 }
 
-export function RunsTable({ rows, title = "Negotiations", compact }: { rows: RunSummary[]; title?: string; compact?: boolean }) {
+export function RunsTable({ rows, title = "Negotiations", compact, emptyMessage }: { rows: RunSummary[]; title?: string; compact?: boolean; emptyMessage?: string }) {
   const { caseTitle, cases } = useWorkbench()
   return (
     <Card className="gap-0 overflow-hidden py-0 shadow-xs">
@@ -37,7 +37,7 @@ export function RunsTable({ rows, title = "Negotiations", compact }: { rows: Run
         </CardAction>
       </CardHeader>
       {rows.length === 0 ? (
-        <Empty>No negotiations in this environment yet. Launch a case to get started.</Empty>
+        <Empty>{emptyMessage ?? "No negotiations in this environment yet. Launch a case to get started."}</Empty>
       ) : (
         <Table>
           <TableHeader className="bg-muted/60">
@@ -62,10 +62,10 @@ export function RunsTable({ rows, title = "Negotiations", compact }: { rows: Run
                 <TableRow
                   key={r.id}
                   tabIndex={0}
-                  onClick={() => go(`run/${r.id}`)}
-                  onKeyDown={e => e.key === "Enter" && go(`run/${r.id}`)}
+                  onClick={() => go(`${r.mode === "final" ? "final/" : ""}run/${r.id}`)}
+                  onKeyDown={e => e.key === "Enter" && go(`${r.mode === "final" ? "final/" : ""}run/${r.id}`)}
                   className="group h-10 cursor-pointer hover:bg-orange-50/60"
-                  aria-label={`Open ${caseTitle(r.case_id)}`}
+                  aria-label={`Open ${r.title ?? caseTitle(r.case_id)}`}
                 >
                   <TableCell className="pl-4">
                     <div className="flex items-center gap-2.5">
@@ -73,12 +73,12 @@ export function RunsTable({ rows, title = "Negotiations", compact }: { rows: Run
                         {r.result?.deal ? <CircleCheck className="size-3.5 text-emerald-600" /> : <Repeat className="size-3.5" />}
                       </span>
                       <div className="min-w-0">
-                        <div className="max-w-[300px] truncate font-medium">{caseTitle(r.case_id)}</div>
+                        <div className="max-w-[300px] truncate font-medium">{r.title ?? caseTitle(r.case_id)}</div>
                         <div className="font-mono text-xs text-muted-foreground">{r.case_id}</div>
                       </div>
                     </div>
                   </TableCell>
-                  <TableCell className="text-muted-foreground">{r.opponent ? (cases.opponents[r.opponent.replace("language:", "")]?.name ?? human(r.opponent)) : "Tacto practice"}</TableCell>
+                  <TableCell className="text-muted-foreground">{r.opponent ? (cases.opponents[r.opponent.replace("language:", "")]?.name ?? human(r.opponent)) : r.mode === "final" ? "Tacto final" : "Tacto practice"}</TableCell>
                   <TableCell className="text-muted-foreground">{agentLabel(r.agent)}</TableCell>
                   <TableCell>
                     <StatusBadge tone={runTone(r.status, r.result?.deal)}>{runOutcome(r)}</StatusBadge>

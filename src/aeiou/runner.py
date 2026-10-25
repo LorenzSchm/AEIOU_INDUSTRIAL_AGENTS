@@ -400,6 +400,10 @@ class RecordingTable(RemoteTable):
 
 
 def make_agent(name, pkg=None, tactic="prepared"):
+    if name == "custom-p10-p18":
+        from .custom_agent import CustomBuyer
+
+        return CustomBuyer(pkg or package(), make_backend(max_tokens=12000))
     if name == "baseline":
         return NaiveAgent()
     if name in {"strategic", "strategic-policy"}:
@@ -453,6 +457,10 @@ def finish_run(run, agent, result, started):
 
 
 def hosted_play(case_id, name="original", run=None, client=None, tactic="prepared"):
+    if name == "custom-p10-p18":
+        from .custom_agent import validate_custom_case
+
+        validate_custom_case(case_id)
     run = run or new_run(case_id, "hosted", name)
     save_run(run)
     started = time.monotonic()

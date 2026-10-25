@@ -1,0 +1,16 @@
+{
+  "package": {
+    "sha256": "9dead3218333be9e4b845706bfcbbbed6488f12457fae2b79afd72936856884c",
+    "file_count": 286,
+    "matched": 286,
+    "different": [],
+    "missing": []
+  },
+  "release-sunday": {
+    "sha256": "e708cfaf20483873c10e9343119640b8e11ff62af2c4e8195431cb7b0243b5bd",
+    "file_count": 8,
+    "matched": 8,
+    "different": [],
+    "missing": []
+  }
+}

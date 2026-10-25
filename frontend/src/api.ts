@@ -5,7 +5,20 @@ export type Job = {
   case_id?: string
 }
 
+export type FinalRunnerStatus = {
+  state: "not_started" | "starting" | "waiting" | "running" | "stopped" | "unknown" | "completed" | "error"
+  message: string
+  started_at?: string
+  last_activity_at?: string | null
+  model?: string
+  prompt_revision?: string
+  sunday_release?: boolean
+  parallel?: number | null
+  waves?: number | null
+}
+
 export type Status = {
+  final_runner?: FinalRunnerStatus
   model: string
   provider: "anthropic" | "openai"
   effort: string
@@ -19,6 +32,15 @@ export type Status = {
   facts: number
   tables: Record<string, unknown>
   sunday_release: boolean
+  custom_model?: {
+    available: boolean
+    cases: string[]
+    training_examples?: number
+    training_sessions?: number
+    built_in?: boolean
+    default_mode?: "shadow" | "advisory"
+    general_training_examples?: number | null
+  }
   jobs: Record<string, Job>
 }
 
@@ -93,7 +115,9 @@ export type RunMetrics = {
 export type RunSummary = {
   id: string
   case_id: string
-  mode: "local" | "hosted"
+  mode: "local" | "hosted" | "final"
+  title?: string | null
+  wave?: number | null
   agent: string
   opponent?: string
   created_at: string
@@ -134,6 +158,18 @@ export type Run = RunSummary & {
 }
 
 export type Decision = {
+  learned_response_support?: {
+    status: string
+    mode?: "shadow" | "advisory"
+    reason?: string | null
+    suppliers: Record<string, {
+      status: string
+      reason?: string
+      preferred_menu?: string[] | null
+      business_records?: { source_count: number; cutoff: string }
+      menus: { status: string; candidate_ids: string[]; predictions?: Record<string, number> }[]
+    }>
+  } | null
   supplier_id: string
   source: string
   action: string
@@ -243,7 +279,7 @@ export type Deal = {
   case_id: string
   title: string
   type?: string
-  mode: "local" | "hosted"
+  mode: "local" | "hosted" | "final"
   agent: string
   opponent?: string
   status: RunSummary["status"]

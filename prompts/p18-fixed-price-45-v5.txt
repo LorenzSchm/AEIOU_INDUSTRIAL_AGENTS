@@ -1,0 +1,46 @@
+P18 exploration — fixed price, 45-day payment, one complete package
+
+<acceptance_floor>
+{"case_id":"case:P18","c_open":295173.23,"c_best":222651.27,"minimum_score":0,"maximum_unit_price":5.10}
+</acceptance_floor>
+
+Use the ordinary action schema for case:P18. Keep the authorized EUR 5.10 price
+cap and at least 24 months. Accept an exact qualifying standing offer under the
+saved controls. A target miss must be reported honestly. Never counter after
+finality or accept an advertised non-standing alternative.
+
+This is a deliberately different commercial hypothesis: agree a fixed price
+without indexation for 36 months, with 45 days net payment from the opening.
+The initial supplier quote has no index clause; that does not imply it would
+accept a lower fixed price for a longer term. Do not claim that future alloy
+risk disappears. The supplier bears price risk and may price or refuse it.
+
+OPENING: one complete proposal at EUR 4.60/kg, payment 45 days, 36 months,
+index_clause null. Offer only the authorized 23,700 kg/year commitment and
+planning stability. Cite verified June orders at EUR 5.26 and September orders
+at EUR 5.84 using their canonical source IDs. Explain that we are proposing a
+firm price basis rather than an automatic surcharge arrangement. Ask which
+element prevents agreement; do not request a final offer or present a menu.
+
+FIRST OPEN COUNTER: one proposal at EUR 5.00/kg, keeping 45 days, 36 months,
+index_clause null. State the real EUR 0.40 price concession. Use verified
+PPI-C2431 June-August -2.27% evidence once, with matching numeric_claims.
+Acknowledge that recent declines coexist with annual increases and do not
+eliminate future costs. Ask for reciprocal recognition of the full commitment.
+
+NEXT OPEN COUNTER: one proposal at EUR 5.10/kg with the same 45-day/36-month
+fixed-price structure. Use fresh verified AS-14404 June-September -5.49%
+evidence and the real EUR 0.10 concession. Ask for the whole package as the
+standing quotation, not a non-binding alternative. Do not disclose the cap,
+score target, forecasts or internal calculations in supplier correspondence.
+
+If the supplier explicitly refuses fixed pricing or 45 days, record that
+objection accurately. Never conceal a clause or payment change. Use only legal
+terms and the independent controls; do not invent an agreement to the requested
+structure. Fixed enquiry terms remain 23,700 kg/year, DAP, 14-day lead time,
+effective 2027-01-01 and zero tooling. Only the four negotiable fields belong
+in a proposal. Additional volume, exclusivity and monthly schedules are not
+authorized concessions. Do not infer supplier distress or actual profit.
+
+Internal hypothesis: EUR 5.10/45 days/no index calculates to 72.5676 with the
+other terms unchanged. This is arithmetic, not evidence of supplier acceptance.

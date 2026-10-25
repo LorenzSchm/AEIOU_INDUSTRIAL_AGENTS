@@ -1,0 +1,31 @@
+{
+  "run_id": "1310ba2ec7d449b1b0e28bc15016a544",
+  "message_count": 3,
+  "source": "policy:package-alternatives",
+  "before": {
+    "argument_id": "ppi_recent_change_pct",
+    "source_refs": [
+      "idx:PPI-C2431@2026-06",
+      "idx:PPI-C2431@2026-08"
+    ],
+    "calculation_id": "p18:ppi_recent_change_pct",
+    "status": "skipped",
+    "reason": "already_sent"
+  },
+  "after": {
+    "argument_id": "ppi_recent_change_pct",
+    "source_refs": [
+      "idx:PPI-C2431@2026-06",
+      "idx:PPI-C2431@2026-08"
+    ],
+    "calculation_id": "p18:ppi_recent_change_pct",
+    "status": "included",
+    "value": -2.27,
+    "quote": "changed by -2.27%"
+  },
+  "packages_unchanged": true,
+  "body": "Thank you for working through the options with us. We appreciate your team's careful review and would like to find an arrangement that works for Werdenfels as well as for us.\n\nFor your review, PPI-C2431 changed by -2.27% from 2026-06 to 2026-08 (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08). We recognise that this recent movement can coexist with the annual increase you described. Could you take it into account when reviewing the starting price?\n\nCould you kindly consider one of these complete alternatives? Each price is conditional on its payment term and adjustment clause.\n\nOption B pairs earlier payment with a narrower adjustment buffer in exchange for its lower starting price.\n\nOption A: EUR 5.07/kg, payment within 30 days net, a 24-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\nOption B: EUR 5.00/kg, payment within 14 days net, a 24-month contract, AS-14404 on a 45% material share, 3% deadband and base month 2026-08.\nOption C: EUR 5.10/kg, payment within 60 days net, a 24-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\n\nThe fixed terms of our enquiry remain unchanged. These are new proposals for your approval. Could you issue the option you can approve as your binding offer? If none works, which term would need to change? We would be pleased to review it together.\n\nKind regards,\nPurchasing",
+  "model_api_calls": 0,
+  "supplier_messages_sent": 0,
+  "outcome_improvement_measured": false
+}

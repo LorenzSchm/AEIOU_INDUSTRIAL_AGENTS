@@ -1,0 +1,6 @@
+{
+  "authorization": "User authorized more runs, any cases useful, and model improvement after every iteration.",
+  "method": "Sequential hosted run, official result review, model refit using newly observed public exchanges; subsequent runs use the updated candidate. Historical tests are development measurements, not a new holdout.",
+  "initial_batch_limit": 12,
+  "promotion": "No default registry update without outcome evidence."
+}

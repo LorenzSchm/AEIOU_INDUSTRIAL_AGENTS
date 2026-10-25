@@ -1,0 +1,14 @@
+{
+  "revision": "v2",
+  "cases": [
+    "case:D01",
+    "case:D02"
+  ],
+  "repeats": 3,
+  "total_new_sessions": 6,
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "prompt_sha256": "6ff6ffc802337ae85fd2de20012e4909b88268a25274908167fecc0587351204",
+  "stage": "adaptive development after v1 first D02 result; not independent validation",
+  "change": "Preserve successful prompt backbone; distinguish supplier finality from portfolio decision and prohibit acceptance-plus-counteroffer."
+}

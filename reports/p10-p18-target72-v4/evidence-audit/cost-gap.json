@@ -1,0 +1,124 @@
+{
+  "P10": {
+    "actual_price": 31.4,
+    "actual_official_score": 69.42748149085908,
+    "actual_c_deal": 1513452.0,
+    "local_c_deal": 1513452.0,
+    "local_breakdown": {
+      "price": 1469520.0,
+      "uncovered_need": 0.0,
+      "fallback_risk": 0.0,
+      "payment_terms": 9796.8,
+      "freight": 0.0,
+      "late_delivery": 28800,
+      "quality": 5335.2,
+      "tooling": 0.0,
+      "index_clause": 0.0,
+      "index_risk": 0.0,
+      "relationship": 0.0
+    },
+    "score_denominator": 603565.29,
+    "cost_at_72": 1497925.1712,
+    "gap_eur_to_72": 15526.828800000018,
+    "boundaries": [
+      {
+        "lead_time_days": 35,
+        "max_cent_price_above_72": 31.68,
+        "cost": 1497843.36,
+        "calculated_score": 72.01355465619963,
+        "requires_new_supplier_agreement": true
+      },
+      {
+        "lead_time_days": 42,
+        "max_cent_price_above_72": 31.68,
+        "cost": 1497843.36,
+        "calculated_score": 72.01355465619963,
+        "requires_new_supplier_agreement": true
+      },
+      {
+        "lead_time_days": 54,
+        "max_cent_price_above_72": 31.07,
+        "cost": 1497905.04,
+        "calculated_score": 72.00333538066775,
+        "requires_new_supplier_agreement": true
+      },
+      {
+        "lead_time_days": 56,
+        "max_cent_price_above_72": 30.96,
+        "cost": 1497522.72,
+        "calculated_score": 72.06667898347831,
+        "requires_new_supplier_agreement": true
+      }
+    ],
+    "estimate_gap": {
+      "buyer_estimate": 24.31,
+      "uncertainty_pct": 5,
+      "price_minus_estimate": 7.09,
+      "markup_on_estimate_pct": 29.164952694364455,
+      "margin_using_estimate_pct": 22.579617834394906,
+      "not_actual_supplier_profit": true
+    },
+    "price_cent_value_eur": 471.12000000011176,
+    "price_cent_value_points": 0.07805617847906922,
+    "missing_standard_quality_cost_if_omitted": 5335.2
+  },
+  "P18": {
+    "actual_price": 5.1,
+    "actual_official_score": 68.45646477287704,
+    "actual_c_deal": 245527.26,
+    "local_c_deal": 245527.26,
+    "local_breakdown": {
+      "price": 241739.99999999997,
+      "uncovered_need": 0.0,
+      "fallback_risk": 0.0,
+      "payment_terms": 1611.5999999999997,
+      "freight": 0.0,
+      "late_delivery": 0,
+      "quality": 0.0,
+      "tooling": 0.0,
+      "index_clause": 1087.8299999999992,
+      "index_risk": 1087.83,
+      "relationship": 0.0
+    },
+    "score_denominator": 72521.95999999999,
+    "cost_at_72": 242957.41879999998,
+    "gap_eur_to_72": 2569.8412000000244,
+    "boundaries": [
+      {
+        "payment_days": 14,
+        "max_cent_price_above_72": 5.02,
+        "cost": 242521.89,
+        "calculated_score": 72.60054747555081,
+        "requires_new_supplier_agreement": true
+      },
+      {
+        "payment_days": 30,
+        "max_cent_price_above_72": 5.04,
+        "cost": 242638.7,
+        "calculated_score": 72.4394790212509,
+        "requires_new_supplier_agreement": true
+      },
+      {
+        "payment_days": 45,
+        "max_cent_price_above_72": 5.06,
+        "cost": 242802.08,
+        "calculated_score": 72.21419553470425,
+        "requires_new_supplier_agreement": true
+      },
+      {
+        "payment_days": 60,
+        "max_cent_price_above_72": 5.07,
+        "cost": 242480.86,
+        "calculated_score": 72.65712344233388,
+        "requires_new_supplier_agreement": true
+      },
+      {
+        "payment_days": 90,
+        "max_cent_price_above_72": 5.11,
+        "cost": 242779.17,
+        "calculated_score": 72.24578596607148,
+        "requires_new_supplier_agreement": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "cases": [
+    "case:D01",
+    "case:D02"
+  ],
+  "repeats": 3,
+  "variants": [
+    "baseline-best-observed",
+    "negomate-history-sunday-v1"
+  ],
+  "total_new_sessions": 12,
+  "set": "sandbox",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "primary_metric": "official score, paired by case and repetition; execution failures count zero in all-attempt mean",
+  "promotion": "no default promotion from exploratory demo evidence",
+  "prompt_hashes": {
+    "baseline-best-observed.txt": "c5bb6461abe8c47fb8312ca0c55baf3dcca829fabd8ee265d2eaf55dfba54f20",
+    "negomate-history-sunday-v1.txt": "77e531a90f74a082f38a5bf77a43a9fb666e9853686bb682022158604eff61f4"
+  }
+}

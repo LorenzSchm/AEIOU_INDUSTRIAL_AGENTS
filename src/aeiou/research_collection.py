@@ -1,5 +1,7 @@
 """Complete, scoped reads from the frozen buyer dataset, with coverage accounting."""
 
+import csv
+
 VERSION = "research-collection-v1"
 PAGE_ROWS = 200
 
@@ -74,6 +76,35 @@ def collect_tables(case, pkg):
     series = sorted({r["series_id"] for r in tables.get("cost_drivers", [])})
     load("index_series", [("id", series)])
     load("index_values", [("series_id", series)])
+    # The Sunday CSVs are outside SQLite. Merge full text for eligible final cases;
+    # facts.json alone contains headlines/metadata and loses the commercial details.
+    if case.get("set") == "final" and getattr(pkg, "release", None):
+        from .retrieval import evidence_cutoff
+
+        cutoff = evidence_cutoff(case, pkg)[:10]
+        for name in ("news", "documents"):
+            path = pkg.release / "data" / f"{name}.csv"
+            if not path.is_file():
+                continue
+            with path.open(encoding="utf-8", newline="") as handle:
+                additions = [
+                    row
+                    for row in csv.DictReader(handle)
+                    if (not row.get("supplier_id") or row["supplier_id"] in suppliers)
+                    and row.get("date")
+                    and row["date"] <= cutoff
+                ]
+            existing = {r["id"] for r in tables.get(name, [])}
+            additions = [r for r in additions if r["id"] not in existing]
+            tables.setdefault(name, []).extend(additions)
+            entry = coverage.setdefault(name, {})
+            entry.update(
+                status="complete",
+                source_table=name,
+                release_rows=len(additions),
+                expected_rows=len(tables[name]),
+                loaded_rows=len(tables[name]),
+            )
     return tables, {
         "version": VERSION,
         "tables": coverage,

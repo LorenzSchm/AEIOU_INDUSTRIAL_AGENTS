@@ -94,28 +94,32 @@ def list_runs(limit=200):
                 continue
         out.append(
             {
-                k: r[k]
-                for k in (
-                    "id",
-                    "case_id",
-                    "mode",
-                    "agent",
-                    "created_at",
-                    "status",
-                    "result",
-                    "error",
-                    "metrics",
-                    "opponent",
-                    "model",
-                    "prompt",
-                    "seed",
-                    "supplier_version",
-                    "supplier_model",
-                    "supplier_metrics",
-                    "failure_origin",
-                    "history",
-                )
-                if k in r
+                "title": (r.get("case") or {}).get("title"),
+                "wave": (r.get("case") or {}).get("wave"),
+                **{
+                    k: r[k]
+                    for k in (
+                        "id",
+                        "case_id",
+                        "mode",
+                        "agent",
+                        "created_at",
+                        "status",
+                        "result",
+                        "error",
+                        "metrics",
+                        "opponent",
+                        "model",
+                        "prompt",
+                        "seed",
+                        "supplier_version",
+                        "supplier_model",
+                        "supplier_metrics",
+                        "failure_origin",
+                        "history",
+                    )
+                    if k in r
+                },
             }
         )
     return sorted(out, key=lambda r: (r["created_at"], r["id"]), reverse=True)

@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react"
 
 export type Route =
-  | { page: "overview" | "pipeline" | "negotiations" | "evidence" }
+  | { page: "overview" | "pipeline" | "negotiations" | "evidence" | "final" }
   | { page: "evaluations"; tab: "local" | "hosted" | "prompts" }
-  | { page: "replay"; runId: string; from?: "evaluations" }
+  | { page: "replay"; runId: string; from?: "evaluations" | "final" }
 
 // Hash routes stay compatible with links in the README (#prompts, #run/<id>).
 function parse(hash: string): Route {
   const h = hash.replace(/^#\/?/, "")
+  if (h.startsWith("final/run/"))
+    return { page: "replay", runId: decodeURIComponent(h.slice("final/run/".length)), from: "final" }
   if (h.startsWith("evaluations/run/"))
     return { page: "replay", runId: decodeURIComponent(h.slice("evaluations/run/".length)), from: "evaluations" }
   if (h.startsWith("run/"))
@@ -23,7 +25,7 @@ function parse(hash: string): Route {
           : "local",
     }
   }
-  if (h === "negotiations" || h === "evidence" || h === "pipeline")
+  if (h === "negotiations" || h === "evidence" || h === "pipeline" || h === "final")
     return { page: h }
   return { page: "overview" }
 }

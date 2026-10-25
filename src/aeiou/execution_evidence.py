@@ -2,6 +2,7 @@
 
 import copy
 import math
+import re
 
 from .execution_policy import controlled_source
 from .package_sequence import stage_from_action
@@ -98,11 +99,14 @@ def apply_menu_evidence(action, payload, events, policy):
         return action, {**audit, "reason": reason}
 
     # The sent transcript, rather than mutable in-memory counters, is the ledger.
-    # Match a cited argument or its series and ISO window in a buyer paraphrase.
+    # A series and dates scattered across unrelated claims do not establish that
+    # this window was sent (e.g. annual PPI + recent AS + a clause base month).
     for message in events:
         body = message.get("body", "")
+        statements = re.split(r"[.!?;](?:\s|$)|\n+", body)
         if message.get("from") == "buyer" and (
-            all(ref in body for ref in refs) or all(token in body for token in (series, start, end))
+            all(ref in body for ref in refs)
+            or any(all(token in statement for token in (series, start, end)) for statement in statements)
         ):
             return skip("already_sent")
 

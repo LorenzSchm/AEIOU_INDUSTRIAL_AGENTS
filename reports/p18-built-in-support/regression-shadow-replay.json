@@ -1,0 +1,3066 @@
+{
+  "session_id": "dff877d1a6fd9336",
+  "case_id": "case:P18",
+  "model_sha256": "26f80b6ee0c9ea0e75cde8026124cb5ad617eab71cbcbcae4feaf2733a507f49",
+  "training_examples": 230,
+  "training_sessions": 97,
+  "routes": {
+    "case:P10": {
+      "direct_cost_improved": {
+        "scope": "focused",
+        "method": "ridge",
+        "strength": 0.75,
+        "validation_mse": 0.019019189368258624
+      },
+      "quoted_cost_gain": {
+        "scope": "focused",
+        "method": "forest",
+        "strength": 1.0,
+        "validation_mse": 0.000115333741622388
+      },
+      "supplier_exit": {
+        "scope": "focused",
+        "method": "forest",
+        "strength": 1.0,
+        "validation_mse": 0.0011768615397006509
+      },
+      "package_matched": {
+        "scope": "focused",
+        "method": "prior",
+        "strength": 0.0,
+        "validation_mse": 0.0
+      }
+    },
+    "case:P18": {
+      "direct_cost_improved": {
+        "scope": "focused",
+        "method": "forest",
+        "strength": 1.0,
+        "validation_mse": 0.03426127133267038
+      },
+      "quoted_cost_gain": {
+        "scope": "focused",
+        "method": "forest",
+        "strength": 0.75,
+        "validation_mse": 0.0001589480104409875
+      },
+      "supplier_exit": {
+        "scope": "focused",
+        "method": "forest",
+        "strength": 1.0,
+        "validation_mse": 0.0
+      },
+      "package_matched": {
+        "scope": "focused",
+        "method": "forest",
+        "strength": 1.0,
+        "validation_mse": 0.014551306888392821
+      }
+    }
+  },
+  "test_metrics": null,
+  "general_data_comparison": {
+    "case:P10": {
+      "direct_cost_improved": {
+        "selected": "focused_context",
+        "active": "focused",
+        "promotion_reason": "insufficient_target_support",
+        "variants": {
+          "focused": {
+            "validation": {
+              "macro_mse": 0.019019189368258624,
+              "macro_mae": 0.11063652035245451,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.019019189368258624,
+                  "mae": 0.11063652035245451,
+                  "sessions": 10,
+                  "examples": 21
+                }
+              }
+            },
+            "context_enabled": false,
+            "test": {
+              "macro_mse": 0.005570786959999261,
+              "macro_mae": 0.07169574809770424,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.005570786959999261,
+                  "mae": 0.07169574809770424,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          },
+          "focused_context": {
+            "validation": {
+              "macro_mse": 0.017852212234338267,
+              "macro_mae": 0.09845173754856332,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.017852212234338267,
+                  "mae": 0.09845173754856332,
+                  "sessions": 10,
+                  "examples": 21
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "ridge",
+              "strength": 1.0,
+              "validation_mse": 0.017852212234338267
+            },
+            "test": {
+              "macro_mse": 0.0018226667518801234,
+              "macro_mae": 0.03913461721044491,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.0018226667518801234,
+                  "mae": 0.03913461721044491,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          },
+          "specialist_context": {
+            "validation": {
+              "macro_mse": 0.018273775290298618,
+              "macro_mae": 0.10907914085435512,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.018273775290298618,
+                  "mae": 0.10907914085435512,
+                  "sessions": 10,
+                  "examples": 21
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "ridge",
+              "strength": 0.75,
+              "validation_mse": 0.018273775290298618
+            },
+            "test": {
+              "macro_mse": 0.005735184961271909,
+              "macro_mae": 0.0715878982939275,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.005735184961271909,
+                  "mae": 0.0715878982939275,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          },
+          "general_history": {
+            "validation": {
+              "macro_mse": 0.01990838420843022,
+              "macro_mae": 0.07914040082090269,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.01990838420843022,
+                  "mae": 0.07914040082090269,
+                  "sessions": 10,
+                  "examples": 21
+                }
+              }
+            },
+            "context_enabled": false,
+            "selection": {
+              "method": "ridge",
+              "strength": 1.0,
+              "validation_mse": 0.01990838420843022
+            },
+            "test": {
+              "macro_mse": 0.00011270516987126481,
+              "macro_mae": 0.008964826178998825,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.00011270516987126481,
+                  "mae": 0.008964826178998825,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          },
+          "general_history_context": {
+            "validation": {
+              "macro_mse": 0.023101373854313406,
+              "macro_mae": 0.09936299817533914,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.023101373854313406,
+                  "mae": 0.09936299817533914,
+                  "sessions": 10,
+                  "examples": 21
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "ridge",
+              "strength": 1.0,
+              "validation_mse": 0.023101373854313406
+            },
+            "test": {
+              "macro_mse": 0.0008631980221493765,
+              "macro_mae": 0.02767116054103167,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.0008631980221493765,
+                  "mae": 0.02767116054103167,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          }
+        },
+        "heldout_mse_improvement": 0.6728170068308688
+      },
+      "quoted_cost_gain": {
+        "selected": "focused",
+        "active": "focused",
+        "promotion_reason": "no_validation_gain",
+        "variants": {
+          "focused": {
+            "validation": {
+              "macro_mse": 0.000115333741622388,
+              "macro_mae": 0.0077666672099148334,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.000115333741622388,
+                  "mae": 0.0077666672099148334,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            },
+            "context_enabled": false,
+            "test": {
+              "macro_mse": 7.50322884916494e-05,
+              "macro_mae": 0.006915412920816282,
+              "by_case": {
+                "case:P10": {
+                  "mse": 7.50322884916494e-05,
+                  "mae": 0.006915412920816282,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          },
+          "focused_context": {
+            "validation": {
+              "macro_mse": 0.0001585727705958187,
+              "macro_mae": 0.009794203294388414,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.0001585727705958187,
+                  "mae": 0.009794203294388414,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "forest",
+              "strength": 1.0,
+              "validation_mse": 0.0001585727705958187
+            },
+            "test": {
+              "macro_mse": 0.00013661552421532176,
+              "macro_mae": 0.009802227232222335,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.00013661552421532176,
+                  "mae": 0.009802227232222335,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          },
+          "specialist_context": {
+            "validation": {
+              "macro_mse": 0.00014084366079687385,
+              "macro_mae": 0.008301305964373656,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.00014084366079687385,
+                  "mae": 0.008301305964373656,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "forest",
+              "strength": 1.0,
+              "validation_mse": 0.00014084366079687385
+            },
+            "test": {
+              "macro_mse": 7.698748742593524e-05,
+              "macro_mae": 0.007011122675324423,
+              "by_case": {
+                "case:P10": {
+                  "mse": 7.698748742593524e-05,
+                  "mae": 0.007011122675324423,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          },
+          "general_history": {
+            "validation": {
+              "macro_mse": 0.00019856833774965386,
+              "macro_mae": 0.010512772049776454,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.00019856833774965386,
+                  "mae": 0.010512772049776454,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            },
+            "context_enabled": false,
+            "selection": {
+              "method": "forest",
+              "strength": 1.0,
+              "validation_mse": 0.00019856833774965386
+            },
+            "test": {
+              "macro_mse": 0.0001161918424272513,
+              "macro_mae": 0.009173312552019284,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.0001161918424272513,
+                  "mae": 0.009173312552019284,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          },
+          "general_history_context": {
+            "validation": {
+              "macro_mse": 0.00022986664085465882,
+              "macro_mae": 0.01284489749415799,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.00022986664085465882,
+                  "mae": 0.01284489749415799,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "ridge",
+              "strength": 1.0,
+              "validation_mse": 0.00022986664085465882
+            },
+            "test": {
+              "macro_mse": 0.0003813786325819233,
+              "macro_mae": 0.01842850766064001,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.0003813786325819233,
+                  "mae": 0.01842850766064001,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          }
+        },
+        "heldout_mse_improvement": 0.0
+      },
+      "supplier_exit": {
+        "selected": "general_history_context",
+        "active": "focused",
+        "promotion_reason": "insufficient_target_support",
+        "variants": {
+          "focused": {
+            "validation": {
+              "macro_mse": 0.0023523480157503543,
+              "macro_mae": 0.03413953103274216,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.0023523480157503543,
+                  "mae": 0.03413953103274216,
+                  "sessions": 10,
+                  "examples": 21
+                }
+              }
+            },
+            "context_enabled": false,
+            "test": {
+              "macro_mse": 4.738607377884322e-05,
+              "macro_mae": 0.004832318635467608,
+              "by_case": {
+                "case:P10": {
+                  "mse": 4.738607377884322e-05,
+                  "mae": 0.004832318635467608,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          },
+          "focused_context": {
+            "validation": {
+              "macro_mse": 0.0018266628641926974,
+              "macro_mae": 0.030140939545658958,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.0018266628641926974,
+                  "mae": 0.030140939545658958,
+                  "sessions": 10,
+                  "examples": 21
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "forest",
+              "strength": 1.0,
+              "validation_mse": 0.0018266628641926974
+            },
+            "test": {
+              "macro_mse": 5.300901240784245e-05,
+              "macro_mae": 0.005143066285945505,
+              "by_case": {
+                "case:P10": {
+                  "mse": 5.300901240784245e-05,
+                  "mae": 0.005143066285945505,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          },
+          "specialist_context": {
+            "validation": {
+              "macro_mse": 0.005805834658867993,
+              "macro_mae": 0.050441122574617074,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.005805834658867993,
+                  "mae": 0.050441122574617074,
+                  "sessions": 10,
+                  "examples": 21
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "ridge",
+              "strength": 1.0,
+              "validation_mse": 0.005805834658867993
+            },
+            "test": {
+              "macro_mse": 0.00036800643822846246,
+              "macro_mae": 0.012520277116254084,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.00036800643822846246,
+                  "mae": 0.012520277116254084,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          },
+          "general_history": {
+            "validation": {
+              "macro_mse": 0.0035804792574204306,
+              "macro_mae": 0.02118363545035376,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.0035804792574204306,
+                  "mae": 0.02118363545035376,
+                  "sessions": 10,
+                  "examples": 21
+                }
+              }
+            },
+            "context_enabled": false,
+            "selection": {
+              "method": "ridge",
+              "strength": 1.0,
+              "validation_mse": 0.0035804792574204306
+            },
+            "test": {
+              "macro_mse": 1.5856546387430888e-06,
+              "macro_mae": 0.0002815718947927055,
+              "by_case": {
+                "case:P10": {
+                  "mse": 1.5856546387430888e-06,
+                  "mae": 0.0002815718947927055,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          },
+          "general_history_context": {
+            "validation": {
+              "macro_mse": 0.0009737800935357036,
+              "macro_mae": 0.022290637266376107,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.0009737800935357036,
+                  "mae": 0.022290637266376107,
+                  "sessions": 10,
+                  "examples": 21
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "forest",
+              "strength": 1.0,
+              "validation_mse": 0.0009737800935357036
+            },
+            "test": {
+              "macro_mse": 0.00028649227304040616,
+              "macro_mae": 0.012088000350736056,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.00028649227304040616,
+                  "mae": 0.012088000350736056,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          }
+        },
+        "heldout_mse_improvement": -5.045917084785326
+      },
+      "package_matched": {
+        "selected": "focused",
+        "active": "focused",
+        "promotion_reason": "no_validation_gain",
+        "variants": {
+          "focused": {
+            "validation": {
+              "macro_mse": 0.0,
+              "macro_mae": 0.0,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.0,
+                  "mae": 0.0,
+                  "sessions": 10,
+                  "examples": 21
+                }
+              }
+            },
+            "context_enabled": false,
+            "test": {
+              "macro_mse": 0.0,
+              "macro_mae": 0.0,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.0,
+                  "mae": 0.0,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          },
+          "focused_context": {
+            "validation": {
+              "macro_mse": 0.00010012492651381544,
+              "macro_mae": 0.00978835978835979,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.00010012492651381544,
+                  "mae": 0.00978835978835979,
+                  "sessions": 10,
+                  "examples": 21
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "history",
+              "strength": 0.0,
+              "validation_mse": 0.00010012492651381544
+            },
+            "test": {
+              "macro_mse": 0.00012503847337642351,
+              "macro_mae": 0.010964912280701754,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.00012503847337642351,
+                  "mae": 0.010964912280701754,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          },
+          "specialist_context": {
+            "validation": {
+              "macro_mse": 0.0,
+              "macro_mae": 0.0,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.0,
+                  "mae": 0.0,
+                  "sessions": 10,
+                  "examples": 21
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "prior",
+              "strength": 0.0,
+              "validation_mse": 0.0
+            },
+            "test": {
+              "macro_mse": 0.0,
+              "macro_mae": 0.0,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.0,
+                  "mae": 0.0,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          },
+          "general_history": {
+            "validation": {
+              "macro_mse": 0.0002566296396508841,
+              "macro_mae": 0.007827258346243569,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.0002566296396508841,
+                  "mae": 0.007827258346243569,
+                  "sessions": 10,
+                  "examples": 21
+                }
+              }
+            },
+            "context_enabled": false,
+            "selection": {
+              "method": "forest",
+              "strength": 1.0,
+              "validation_mse": 0.0002566296396508841
+            },
+            "test": {
+              "macro_mse": 3.41603604361134e-05,
+              "macro_mae": 0.005505324642314191,
+              "by_case": {
+                "case:P10": {
+                  "mse": 3.41603604361134e-05,
+                  "mae": 0.005505324642314191,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          },
+          "general_history_context": {
+            "validation": {
+              "macro_mse": 0.00012861338959424277,
+              "macro_mae": 0.0064764173986296145,
+              "by_case": {
+                "case:P10": {
+                  "mse": 0.00012861338959424277,
+                  "mae": 0.0064764173986296145,
+                  "sessions": 10,
+                  "examples": 21
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "forest",
+              "strength": 1.0,
+              "validation_mse": 0.00012861338959424277
+            },
+            "test": {
+              "macro_mse": 2.6077289887824474e-05,
+              "macro_mae": 0.003980633453414307,
+              "by_case": {
+                "case:P10": {
+                  "mse": 2.6077289887824474e-05,
+                  "mae": 0.003980633453414307,
+                  "sessions": 10,
+                  "examples": 20
+                }
+              }
+            }
+          }
+        },
+        "heldout_mse_improvement": 0.0
+      }
+    },
+    "case:P18": {
+      "direct_cost_improved": {
+        "selected": "focused",
+        "active": "focused",
+        "promotion_reason": "no_validation_gain",
+        "variants": {
+          "focused": {
+            "validation": {
+              "macro_mse": 0.03426127133267038,
+              "macro_mae": 0.13530982504158265,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.03426127133267038,
+                  "mae": 0.13530982504158265,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            },
+            "context_enabled": false,
+            "test": {
+              "macro_mse": 0.02607281883990016,
+              "macro_mae": 0.08906953620661072,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.02607281883990016,
+                  "mae": 0.08906953620661072,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          },
+          "focused_context": {
+            "validation": {
+              "macro_mse": 0.03860034173236434,
+              "macro_mae": 0.14692798132183912,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.03860034173236434,
+                  "mae": 0.14692798132183912,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "history",
+              "strength": 0.0,
+              "validation_mse": 0.03860034173236434
+            },
+            "test": {
+              "macro_mse": 0.03356791892836174,
+              "macro_mae": 0.12459378280101975,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.03356791892836174,
+                  "mae": 0.12459378280101975,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          },
+          "specialist_context": {
+            "validation": {
+              "macro_mse": 0.03669512107791878,
+              "macro_mae": 0.1362248955580122,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.03669512107791878,
+                  "mae": 0.1362248955580122,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "forest",
+              "strength": 1.0,
+              "validation_mse": 0.03669512107791878
+            },
+            "test": {
+              "macro_mse": 0.02412047087393987,
+              "macro_mae": 0.07821376082344302,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.02412047087393987,
+                  "mae": 0.07821376082344302,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          },
+          "general_history": {
+            "validation": {
+              "macro_mse": 0.05492027148480665,
+              "macro_mae": 0.19921962843595103,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.05492027148480665,
+                  "mae": 0.19921962843595103,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            },
+            "context_enabled": false,
+            "selection": {
+              "method": "history",
+              "strength": 0.0,
+              "validation_mse": 0.05492027148480665
+            },
+            "test": {
+              "macro_mse": 0.0554676481834775,
+              "macro_mae": 0.20242400356481846,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.0554676481834775,
+                  "mae": 0.20242400356481846,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          },
+          "general_history_context": {
+            "validation": {
+              "macro_mse": 0.05492027148480665,
+              "macro_mae": 0.19921962843595103,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.05492027148480665,
+                  "mae": 0.19921962843595103,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "history",
+              "strength": 0.0,
+              "validation_mse": 0.05492027148480665
+            },
+            "test": {
+              "macro_mse": 0.0554676481834775,
+              "macro_mae": 0.20242400356481846,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.0554676481834775,
+                  "mae": 0.20242400356481846,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          }
+        },
+        "heldout_mse_improvement": 0.0
+      },
+      "quoted_cost_gain": {
+        "selected": "focused_context",
+        "active": "focused",
+        "promotion_reason": "heldout_regression",
+        "variants": {
+          "focused": {
+            "validation": {
+              "macro_mse": 0.0001589480104409875,
+              "macro_mae": 0.010799929006364558,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.0001589480104409875,
+                  "mae": 0.010799929006364558,
+                  "sessions": 10,
+                  "examples": 30
+                }
+              }
+            },
+            "context_enabled": false,
+            "test": {
+              "macro_mse": 0.00011306327445355426,
+              "macro_mae": 0.009378318533158705,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.00011306327445355426,
+                  "mae": 0.009378318533158705,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          },
+          "focused_context": {
+            "validation": {
+              "macro_mse": 5.587668472721713e-05,
+              "macro_mae": 0.006567463232081308,
+              "by_case": {
+                "case:P18": {
+                  "mse": 5.587668472721713e-05,
+                  "mae": 0.006567463232081308,
+                  "sessions": 10,
+                  "examples": 30
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "ridge",
+              "strength": 0.75,
+              "validation_mse": 5.587668472721713e-05
+            },
+            "test": {
+              "macro_mse": 0.00015711602697989936,
+              "macro_mae": 0.008448076146279192,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.00015711602697989936,
+                  "mae": 0.008448076146279192,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          },
+          "specialist_context": {
+            "validation": {
+              "macro_mse": 0.0001270641411808567,
+              "macro_mae": 0.009974683900688137,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.0001270641411808567,
+                  "mae": 0.009974683900688137,
+                  "sessions": 10,
+                  "examples": 30
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "forest",
+              "strength": 0.75,
+              "validation_mse": 0.0001270641411808567
+            },
+            "test": {
+              "macro_mse": 0.00011439678125687829,
+              "macro_mae": 0.00935830244518872,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.00011439678125687829,
+                  "mae": 0.00935830244518872,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          },
+          "general_history": {
+            "validation": {
+              "macro_mse": 0.00030241354946374373,
+              "macro_mae": 0.01584811669306272,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.00030241354946374373,
+                  "mae": 0.01584811669306272,
+                  "sessions": 10,
+                  "examples": 30
+                }
+              }
+            },
+            "context_enabled": false,
+            "selection": {
+              "method": "ridge",
+              "strength": 0.75,
+              "validation_mse": 0.00030241354946374373
+            },
+            "test": {
+              "macro_mse": 0.00023186649833260219,
+              "macro_mae": 0.01428113813561848,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.00023186649833260219,
+                  "mae": 0.01428113813561848,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          },
+          "general_history_context": {
+            "validation": {
+              "macro_mse": 0.0002102445741305116,
+              "macro_mae": 0.013231467578423814,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.0002102445741305116,
+                  "mae": 0.013231467578423814,
+                  "sessions": 10,
+                  "examples": 30
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "ridge",
+              "strength": 0.75,
+              "validation_mse": 0.0002102445741305116
+            },
+            "test": {
+              "macro_mse": 0.00018256666982539797,
+              "macro_mae": 0.012691047230624627,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.00018256666982539797,
+                  "mae": 0.012691047230624627,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          }
+        },
+        "heldout_mse_improvement": -0.3896291942653909
+      },
+      "supplier_exit": {
+        "selected": "focused",
+        "active": "focused",
+        "promotion_reason": "no_validation_gain",
+        "variants": {
+          "focused": {
+            "validation": {
+              "macro_mse": 0.0,
+              "macro_mae": 0.0,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.0,
+                  "mae": 0.0,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            },
+            "context_enabled": false,
+            "test": {
+              "macro_mse": 0.0,
+              "macro_mae": 0.0,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.0,
+                  "mae": 0.0,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          },
+          "focused_context": {
+            "validation": {
+              "macro_mse": 3.671332227465779e-06,
+              "macro_mae": 0.0009137357658012955,
+              "by_case": {
+                "case:P18": {
+                  "mse": 3.671332227465779e-06,
+                  "mae": 0.0009137357658012955,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "forest",
+              "strength": 1.0,
+              "validation_mse": 3.671332227465779e-06
+            },
+            "test": {
+              "macro_mse": 1.0319721456160097e-06,
+              "macro_mae": 0.0004735157104108724,
+              "by_case": {
+                "case:P18": {
+                  "mse": 1.0319721456160097e-06,
+                  "mae": 0.0004735157104108724,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          },
+          "specialist_context": {
+            "validation": {
+              "macro_mse": 0.0,
+              "macro_mae": 0.0,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.0,
+                  "mae": 0.0,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "forest",
+              "strength": 1.0,
+              "validation_mse": 0.0
+            },
+            "test": {
+              "macro_mse": 0.0,
+              "macro_mae": 0.0,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.0,
+                  "mae": 0.0,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          },
+          "general_history": {
+            "validation": {
+              "macro_mse": 0.0027206911959270254,
+              "macro_mae": 0.01033372185094443,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.0027206911959270254,
+                  "mae": 0.01033372185094443,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            },
+            "context_enabled": false,
+            "selection": {
+              "method": "ridge",
+              "strength": 1.0,
+              "validation_mse": 0.0027206911959270254
+            },
+            "test": {
+              "macro_mse": 9.282314984900488e-05,
+              "macro_mae": 0.003184906362584655,
+              "by_case": {
+                "case:P18": {
+                  "mse": 9.282314984900488e-05,
+                  "mae": 0.003184906362584655,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          },
+          "general_history_context": {
+            "validation": {
+              "macro_mse": 1.2035342894162476e-06,
+              "macro_mae": 0.0005915862082407082,
+              "by_case": {
+                "case:P18": {
+                  "mse": 1.2035342894162476e-06,
+                  "mae": 0.0005915862082407082,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "forest",
+              "strength": 1.0,
+              "validation_mse": 1.2035342894162476e-06
+            },
+            "test": {
+              "macro_mse": 3.084786681467981e-06,
+              "macro_mae": 0.0007123786763526703,
+              "by_case": {
+                "case:P18": {
+                  "mse": 3.084786681467981e-06,
+                  "mae": 0.0007123786763526703,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          }
+        },
+        "heldout_mse_improvement": 0.0
+      },
+      "package_matched": {
+        "selected": "focused",
+        "active": "focused",
+        "promotion_reason": "no_validation_gain",
+        "variants": {
+          "focused": {
+            "validation": {
+              "macro_mse": 0.028131179573314832,
+              "macro_mae": 0.048981704044310515,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.028131179573314832,
+                  "mae": 0.048981704044310515,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            },
+            "context_enabled": false,
+            "test": {
+              "macro_mse": 0.07580980426586326,
+              "macro_mae": 0.09638831487016888,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.07580980426586326,
+                  "mae": 0.09638831487016888,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          },
+          "focused_context": {
+            "validation": {
+              "macro_mse": 0.02972325511415057,
+              "macro_mae": 0.0510270301117671,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.02972325511415057,
+                  "mae": 0.0510270301117671,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "forest",
+              "strength": 1.0,
+              "validation_mse": 0.02972325511415057
+            },
+            "test": {
+              "macro_mse": 0.07733124408984483,
+              "macro_mae": 0.09763744657362865,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.07733124408984483,
+                  "mae": 0.09763744657362865,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          },
+          "specialist_context": {
+            "validation": {
+              "macro_mse": 0.029718121040430222,
+              "macro_mae": 0.047242670225015465,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.029718121040430222,
+                  "mae": 0.047242670225015465,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "forest",
+              "strength": 1.0,
+              "validation_mse": 0.029718121040430222
+            },
+            "test": {
+              "macro_mse": 0.0652109022790138,
+              "macro_mae": 0.0910368588775249,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.0652109022790138,
+                  "mae": 0.0910368588775249,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          },
+          "general_history": {
+            "validation": {
+              "macro_mse": 0.032128822357595406,
+              "macro_mae": 0.06853078879819646,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.032128822357595406,
+                  "mae": 0.06853078879819646,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            },
+            "context_enabled": false,
+            "selection": {
+              "method": "forest",
+              "strength": 0.25,
+              "validation_mse": 0.032128822357595406
+            },
+            "test": {
+              "macro_mse": 0.09362166685954411,
+              "macro_mae": 0.1268120343667161,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.09362166685954411,
+                  "mae": 0.1268120343667161,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          },
+          "general_history_context": {
+            "validation": {
+              "macro_mse": 0.03222544494723505,
+              "macro_mae": 0.06787528816994898,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.03222544494723505,
+                  "mae": 0.06787528816994898,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            },
+            "context_enabled": true,
+            "selection": {
+              "method": "forest",
+              "strength": 0.25,
+              "validation_mse": 0.03222544494723505
+            },
+            "test": {
+              "macro_mse": 0.09325934281414577,
+              "macro_mae": 0.12560232204188218,
+              "by_case": {
+                "case:P18": {
+                  "mse": 0.09325934281414577,
+                  "mae": 0.12560232204188218,
+                  "sessions": 10,
+                  "examples": 31
+                }
+              }
+            }
+          }
+        },
+        "heldout_mse_improvement": 0.0
+      }
+    }
+  },
+  "decisions": [
+    {
+      "supplier_id": "sup:70740",
+      "message_count": 1,
+      "supplier_status": "open",
+      "support": {
+        "status": "advisory_only",
+        "reason": null,
+        "role": "Additional evidence for comparison; no execution authority",
+        "model_sha256": "26f80b6ee0c9ea0e75cde8026124cb5ad617eab71cbcbcae4feaf2733a507f49",
+        "guidance": "learned_response_support is an optional internal second opinion on proposed menus.\nCombine it with sourced evidence, observed supplier signals and exact package costs.\nIts forecasts describe the next quote, not final score, supplier private cost or binding\nacceptance. Never cite forecasts to the supplier. A predicted match never makes an offer\neligible. Protocol, authorized execution controls and evidence validation always take\npriority. Abstained or unsupported estimates provide no decision evidence. Historical\nvalidation errors are descriptive, not confidence intervals. Candidate forecasts use\nneutral placeholder wording and do not evaluate your actual email or evidence. Do not\ntransfer a forecast to an amended package. A low risk estimate cannot override finality.\nBusiness-record summaries are internal context, not ready-to-send claims. Source and\nvalidate any outgoing number through the independent evidence/calculation path.",
+        "suppliers": {
+          "sup:70740": {
+            "status": "advisory_only",
+            "menus": [
+              {
+                "candidate_ids": [
+                  "A"
+                ],
+                "predictions": {
+                  "quoted_cost_gain": 0.05981008241292041
+                },
+                "domain": {
+                  "supported": true,
+                  "reasons": [],
+                  "out_of_range_features": []
+                },
+                "status": "advisory_only"
+              },
+              {
+                "candidate_ids": [
+                  "B"
+                ],
+                "predictions": {
+                  "quoted_cost_gain": 0.06131525079051335
+                },
+                "domain": {
+                  "supported": true,
+                  "reasons": [],
+                  "out_of_range_features": []
+                },
+                "status": "advisory_only"
+              },
+              {
+                "candidate_ids": [
+                  "C"
+                ],
+                "predictions": {
+                  "quoted_cost_gain": 0.0602250394345532
+                },
+                "domain": {
+                  "supported": true,
+                  "reasons": [],
+                  "out_of_range_features": []
+                },
+                "status": "advisory_only"
+              },
+              {
+                "candidate_ids": [
+                  "A",
+                  "B"
+                ],
+                "predictions": {
+                  "quoted_cost_gain": 0.059637469874779046
+                },
+                "domain": {
+                  "supported": true,
+                  "reasons": [],
+                  "out_of_range_features": []
+                },
+                "status": "advisory_only"
+              },
+              {
+                "candidate_ids": [
+                  "A",
+                  "C"
+                ],
+                "predictions": {
+                  "quoted_cost_gain": 0.05912151375343187
+                },
+                "domain": {
+                  "supported": true,
+                  "reasons": [],
+                  "out_of_range_features": []
+                },
+                "status": "advisory_only"
+              },
+              {
+                "candidate_ids": [
+                  "B",
+                  "C"
+                ],
+                "predictions": {
+                  "quoted_cost_gain": 0.05988517015238446
+                },
+                "domain": {
+                  "supported": true,
+                  "reasons": [],
+                  "out_of_range_features": []
+                },
+                "status": "advisory_only"
+              },
+              {
+                "candidate_ids": [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "predictions": {},
+                "domain": {
+                  "supported": false,
+                  "reasons": [
+                    "outside_observed_feature_ranges"
+                  ],
+                  "out_of_range_features": [
+                    "package_2_price_gap",
+                    "package_2_direct_cost_gap"
+                  ]
+                },
+                "status": "abstained"
+              }
+            ],
+            "excluded_candidates": [],
+            "signals": {
+              "live": true,
+              "status": "open",
+              "tone": "courteous",
+              "stance": "negotiating",
+              "authority": "unspecified",
+              "withdrawal_risk_signal": "unknown",
+              "risk_basis": "Explicit finality or terminal status; qualitative signal, not a calibrated probability.",
+              "rounds_left": 10,
+              "rounds_note": "Remaining API sends are not a promise that the supplier will continue.",
+              "evidence": [
+                {
+                  "signal": "courtesy",
+                  "source_ref": "message:sup:70740:0",
+                  "quote": "Dear customer,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe are delighted to present our competitive quote"
+                }
+              ],
+              "primary_price_history": [
+                {
+                  "unit_price": 6.1,
+                  "source_ref": "message:sup:70740:0"
+                }
+              ],
+              "latest_primary_price_movement": null,
+              "live_objections": [],
+              "latest_stated_cost_drivers": [
+                {
+                  "series": "AS-14404",
+                  "annual_change_pct": 5.9,
+                  "stated_cost_share_pct": 45.0,
+                  "conditional_contribution_pp": 2.655
+                },
+                {
+                  "series": "LCI-C",
+                  "annual_change_pct": 2.7,
+                  "stated_cost_share_pct": 5.0,
+                  "conditional_contribution_pp": 0.135
+                },
+                {
+                  "series": "PPI-C2431",
+                  "annual_change_pct": 12.3,
+                  "stated_cost_share_pct": 38.0,
+                  "conditional_contribution_pp": 4.674
+                }
+              ],
+              "previously_cited_refs": [],
+              "supplier_questions": []
+            },
+            "business_records": {
+              "cutoff": "2026-09-30",
+              "values": {
+                "order_price": 5.448631907308378,
+                "order_volume": 22440,
+                "order_price_change": 0.06375227686703089,
+                "otd_rate": 0.81,
+                "quality_ppm_log": 0.34965075614664803,
+                "equity_ratio": 0.39299999999999996,
+                "credit_change": 0.0,
+                "annual_index_change": 0.06959221556110694,
+                "quarter_index_change": -0.03126856463221047,
+                "contract_payment_days": 30
+              },
+              "sha256": "30415c7eee8909b010940e5d08c4b3b71e4c696c1f874645806026148d59e022",
+              "source_refs": [
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013112-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013136-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013189-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013280-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013336-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013373-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013456-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013520-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013617-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013638-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013730-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013762-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013829-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013900-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013967-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014022-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014078-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014140-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014239-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014287-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014292-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014355-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014427-10"
+                },
+                {
+                  "table": "scorecards",
+                  "ref": "sc:70740@2026Q3"
+                },
+                {
+                  "table": "supplier_intel",
+                  "ref": "sup:70740"
+                },
+                {
+                  "table": "contracts",
+                  "ref": "ctr:4600070740"
+                },
+                {
+                  "table": "cost_drivers",
+                  "ref": "sup:70740"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:AS-14404@2025-09"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:AS-14404@2026-06"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:AS-14404@2026-09"
+                },
+                {
+                  "table": "cost_drivers",
+                  "ref": "sup:70740"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:PPI-C2431@2025-08"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:PPI-C2431@2026-05"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:PPI-C2431@2026-08"
+                }
+              ],
+              "source_count": 34,
+              "meaning": "Frozen buyer records, not supplier private costs or guaranteed response predictors. Index weights are buyer estimates; supplier scorecards cover the supplier account."
+            },
+            "training_routes": {
+              "direct_cost_improved": {
+                "selected": "focused",
+                "active": "focused",
+                "promotion_reason": "no_validation_gain"
+              },
+              "quoted_cost_gain": {
+                "selected": "focused_context",
+                "active": "focused",
+                "promotion_reason": "heldout_regression"
+              },
+              "supplier_exit": {
+                "selected": "focused",
+                "active": "focused",
+                "promotion_reason": "no_validation_gain"
+              },
+              "package_matched": {
+                "selected": "focused",
+                "active": "focused",
+                "promotion_reason": "no_validation_gain"
+              }
+            },
+            "packages": [
+              {
+                "id": "A",
+                "terms": {
+                  "unit_price": 5.0,
+                  "index_clause": null,
+                  "payment_days": 90,
+                  "contract_months": 24
+                },
+                "direct_cost": 235420.0
+              },
+              {
+                "id": "B",
+                "terms": {
+                  "unit_price": 4.92,
+                  "index_clause": null,
+                  "payment_days": 14,
+                  "contract_months": 24
+                },
+                "direct_cost": 235591.9
+              },
+              {
+                "id": "C",
+                "terms": {
+                  "unit_price": 4.97,
+                  "index_clause": null,
+                  "payment_days": 60,
+                  "contract_months": 24
+                },
+                "direct_cost": 235578.0
+              }
+            ],
+            "economic_order": [
+              "A",
+              "C",
+              "B"
+            ],
+            "reliability": {
+              "direct_cost_improved": {
+                "validation_support": {
+                  "examples": 31,
+                  "label_counts": {
+                    "1": 30,
+                    "0": 1
+                  },
+                  "discrimination_evaluable": true
+                },
+                "validation_mae": 0.13530982504158265,
+                "validation_sessions": 10,
+                "validation_class_sessions": {
+                  "0": 1,
+                  "1": 10
+                },
+                "usable_for_comparison": false,
+                "calibrated_probability": false
+              },
+              "quoted_cost_gain": {
+                "validation_support": {
+                  "examples": 30,
+                  "label_counts": null,
+                  "discrimination_evaluable": true
+                },
+                "validation_mae": 0.010799929006364558,
+                "validation_sessions": 10,
+                "validation_class_sessions": null,
+                "usable_for_comparison": true,
+                "calibrated_probability": false
+              },
+              "supplier_exit": {
+                "validation_support": {
+                  "examples": 31,
+                  "label_counts": {
+                    "0": 30,
+                    "1": 1
+                  },
+                  "discrimination_evaluable": true
+                },
+                "validation_mae": 0.0,
+                "validation_sessions": 10,
+                "validation_class_sessions": {
+                  "0": 10,
+                  "1": 1
+                },
+                "usable_for_comparison": false,
+                "calibrated_probability": false
+              },
+              "package_matched": {
+                "validation_support": {
+                  "examples": 31,
+                  "label_counts": {
+                    "0": 30,
+                    "1": 1
+                  },
+                  "discrimination_evaluable": true
+                },
+                "validation_mae": 0.048981704044310515,
+                "validation_sessions": 10,
+                "validation_class_sessions": {
+                  "0": 10,
+                  "1": 1
+                },
+                "usable_for_comparison": false,
+                "calibrated_probability": false
+              }
+            },
+            "unsupported_targets": [
+              "direct_cost_improved",
+              "supplier_exit",
+              "package_matched"
+            ],
+            "signal_evidence": [
+              {
+                "signal": "competition",
+                "text": "We are delighted to present our competitive quote for your requirements",
+                "polarity": 1
+              }
+            ],
+            "meaning": "Next observed response to this whole menu. Package match is not binding acceptance; cost gain is a fraction of the prior direct cost, not final score.",
+            "business_context": {
+              "used_by_supported_targets": false,
+              "sha256": "30415c7eee8909b010940e5d08c4b3b71e4c696c1f874645806026148d59e022",
+              "cutoff": "2026-09-30",
+              "source_count": 34
+            },
+            "preferred_menu": null,
+            "comparison": "insufficient_supported_separation"
+          }
+        },
+        "elapsed_ms": 4.385,
+        "mode": "shadow"
+      },
+      "forecast_in_buyer_input": false,
+      "supported_menus": 6
+    },
+    {
+      "supplier_id": "sup:70740",
+      "message_count": 3,
+      "supplier_status": "open",
+      "support": {
+        "status": "advisory_only",
+        "reason": null,
+        "role": "Additional evidence for comparison; no execution authority",
+        "model_sha256": "26f80b6ee0c9ea0e75cde8026124cb5ad617eab71cbcbcae4feaf2733a507f49",
+        "guidance": "learned_response_support is an optional internal second opinion on proposed menus.\nCombine it with sourced evidence, observed supplier signals and exact package costs.\nIts forecasts describe the next quote, not final score, supplier private cost or binding\nacceptance. Never cite forecasts to the supplier. A predicted match never makes an offer\neligible. Protocol, authorized execution controls and evidence validation always take\npriority. Abstained or unsupported estimates provide no decision evidence. Historical\nvalidation errors are descriptive, not confidence intervals. Candidate forecasts use\nneutral placeholder wording and do not evaluate your actual email or evidence. Do not\ntransfer a forecast to an amended package. A low risk estimate cannot override finality.\nBusiness-record summaries are internal context, not ready-to-send claims. Source and\nvalidate any outgoing number through the independent evidence/calculation path.",
+        "suppliers": {
+          "sup:70740": {
+            "status": "advisory_only",
+            "menus": [
+              {
+                "candidate_ids": [
+                  "A"
+                ],
+                "predictions": {},
+                "domain": {
+                  "supported": false,
+                  "reasons": [
+                    "outside_observed_feature_ranges"
+                  ],
+                  "out_of_range_features": [
+                    "package_0_index_risk_delta"
+                  ]
+                },
+                "status": "abstained"
+              },
+              {
+                "candidate_ids": [
+                  "B"
+                ],
+                "predictions": {},
+                "domain": {
+                  "supported": false,
+                  "reasons": [
+                    "outside_observed_feature_ranges"
+                  ],
+                  "out_of_range_features": [
+                    "package_0_index_risk_delta"
+                  ]
+                },
+                "status": "abstained"
+              },
+              {
+                "candidate_ids": [
+                  "C"
+                ],
+                "predictions": {},
+                "domain": {
+                  "supported": false,
+                  "reasons": [
+                    "outside_observed_feature_ranges"
+                  ],
+                  "out_of_range_features": [
+                    "package_0_index_risk_delta"
+                  ]
+                },
+                "status": "abstained"
+              },
+              {
+                "candidate_ids": [
+                  "A",
+                  "B"
+                ],
+                "predictions": {},
+                "domain": {
+                  "supported": false,
+                  "reasons": [
+                    "outside_observed_feature_ranges"
+                  ],
+                  "out_of_range_features": [
+                    "package_0_index_risk_delta",
+                    "package_1_index_risk_delta"
+                  ]
+                },
+                "status": "abstained"
+              },
+              {
+                "candidate_ids": [
+                  "A",
+                  "C"
+                ],
+                "predictions": {},
+                "domain": {
+                  "supported": false,
+                  "reasons": [
+                    "outside_observed_feature_ranges"
+                  ],
+                  "out_of_range_features": [
+                    "package_0_index_risk_delta",
+                    "package_1_index_risk_delta"
+                  ]
+                },
+                "status": "abstained"
+              },
+              {
+                "candidate_ids": [
+                  "B",
+                  "C"
+                ],
+                "predictions": {},
+                "domain": {
+                  "supported": false,
+                  "reasons": [
+                    "outside_observed_feature_ranges"
+                  ],
+                  "out_of_range_features": [
+                    "package_0_index_risk_delta",
+                    "package_1_index_risk_delta"
+                  ]
+                },
+                "status": "abstained"
+              },
+              {
+                "candidate_ids": [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "predictions": {},
+                "domain": {
+                  "supported": false,
+                  "reasons": [
+                    "outside_observed_feature_ranges"
+                  ],
+                  "out_of_range_features": [
+                    "package_0_index_risk_delta",
+                    "package_1_index_risk_delta"
+                  ]
+                },
+                "status": "abstained"
+              }
+            ],
+            "excluded_candidates": [],
+            "signals": {
+              "live": true,
+              "status": "open",
+              "tone": "unspecified",
+              "stance": "negotiating",
+              "authority": "unspecified",
+              "withdrawal_risk_signal": "unknown",
+              "risk_basis": "Explicit finality or terminal status; qualitative signal, not a calibrated probability.",
+              "rounds_left": 9,
+              "rounds_note": "Remaining API sends are not a promise that the supplier will continue.",
+              "evidence": [],
+              "primary_price_history": [
+                {
+                  "unit_price": 6.1,
+                  "source_ref": "message:sup:70740:0"
+                },
+                {
+                  "unit_price": 5.7,
+                  "source_ref": "message:sup:70740:2"
+                }
+              ],
+              "latest_primary_price_movement": -0.4,
+              "live_objections": [],
+              "latest_stated_cost_drivers": [],
+              "previously_cited_refs": [],
+              "supplier_questions": []
+            },
+            "business_records": {
+              "cutoff": "2026-09-30",
+              "values": {
+                "order_price": 5.448631907308378,
+                "order_volume": 22440,
+                "order_price_change": 0.06375227686703089,
+                "otd_rate": 0.81,
+                "quality_ppm_log": 0.34965075614664803,
+                "equity_ratio": 0.39299999999999996,
+                "credit_change": 0.0,
+                "annual_index_change": 0.06959221556110694,
+                "quarter_index_change": -0.03126856463221047,
+                "contract_payment_days": 30
+              },
+              "sha256": "30415c7eee8909b010940e5d08c4b3b71e4c696c1f874645806026148d59e022",
+              "source_refs": [
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013112-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013136-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013189-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013280-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013336-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013373-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013456-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013520-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013617-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013638-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013730-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013762-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013829-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013900-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013967-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014022-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014078-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014140-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014239-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014287-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014292-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014355-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014427-10"
+                },
+                {
+                  "table": "scorecards",
+                  "ref": "sc:70740@2026Q3"
+                },
+                {
+                  "table": "supplier_intel",
+                  "ref": "sup:70740"
+                },
+                {
+                  "table": "contracts",
+                  "ref": "ctr:4600070740"
+                },
+                {
+                  "table": "cost_drivers",
+                  "ref": "sup:70740"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:AS-14404@2025-09"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:AS-14404@2026-06"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:AS-14404@2026-09"
+                },
+                {
+                  "table": "cost_drivers",
+                  "ref": "sup:70740"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:PPI-C2431@2025-08"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:PPI-C2431@2026-05"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:PPI-C2431@2026-08"
+                }
+              ],
+              "source_count": 34,
+              "meaning": "Frozen buyer records, not supplier private costs or guaranteed response predictors. Index weights are buyer estimates; supplier scorecards cover the supplier account."
+            },
+            "training_routes": {
+              "direct_cost_improved": {
+                "selected": "focused",
+                "active": "focused",
+                "promotion_reason": "no_validation_gain"
+              },
+              "quoted_cost_gain": {
+                "selected": "focused_context",
+                "active": "focused",
+                "promotion_reason": "heldout_regression"
+              },
+              "supplier_exit": {
+                "selected": "focused",
+                "active": "focused",
+                "promotion_reason": "no_validation_gain"
+              },
+              "package_matched": {
+                "selected": "focused",
+                "active": "focused",
+                "promotion_reason": "no_validation_gain"
+              }
+            },
+            "packages": [
+              {
+                "id": "A",
+                "terms": {
+                  "unit_price": 5.03,
+                  "index_clause": null,
+                  "payment_days": 90,
+                  "contract_months": 24
+                },
+                "direct_cost": 236832.52
+              },
+              {
+                "id": "B",
+                "terms": {
+                  "unit_price": 4.95,
+                  "index_clause": null,
+                  "payment_days": 14,
+                  "contract_months": 24
+                },
+                "direct_cost": 237028.44
+              },
+              {
+                "id": "C",
+                "terms": {
+                  "unit_price": 5.0,
+                  "index_clause": null,
+                  "payment_days": 60,
+                  "contract_months": 24
+                },
+                "direct_cost": 237000.0
+              }
+            ],
+            "economic_order": [
+              "A",
+              "C",
+              "B"
+            ],
+            "reliability": {
+              "direct_cost_improved": {
+                "validation_support": {
+                  "examples": 31,
+                  "label_counts": {
+                    "1": 30,
+                    "0": 1
+                  },
+                  "discrimination_evaluable": true
+                },
+                "validation_mae": 0.13530982504158265,
+                "validation_sessions": 10,
+                "validation_class_sessions": {
+                  "0": 1,
+                  "1": 10
+                },
+                "usable_for_comparison": false,
+                "calibrated_probability": false
+              },
+              "quoted_cost_gain": {
+                "validation_support": {
+                  "examples": 30,
+                  "label_counts": null,
+                  "discrimination_evaluable": true
+                },
+                "validation_mae": 0.010799929006364558,
+                "validation_sessions": 10,
+                "validation_class_sessions": null,
+                "usable_for_comparison": true,
+                "calibrated_probability": false
+              },
+              "supplier_exit": {
+                "validation_support": {
+                  "examples": 31,
+                  "label_counts": {
+                    "0": 30,
+                    "1": 1
+                  },
+                  "discrimination_evaluable": true
+                },
+                "validation_mae": 0.0,
+                "validation_sessions": 10,
+                "validation_class_sessions": {
+                  "0": 10,
+                  "1": 1
+                },
+                "usable_for_comparison": false,
+                "calibrated_probability": false
+              },
+              "package_matched": {
+                "validation_support": {
+                  "examples": 31,
+                  "label_counts": {
+                    "0": 30,
+                    "1": 1
+                  },
+                  "discrimination_evaluable": true
+                },
+                "validation_mae": 0.048981704044310515,
+                "validation_sessions": 10,
+                "validation_class_sessions": {
+                  "0": 10,
+                  "1": 1
+                },
+                "usable_for_comparison": false,
+                "calibrated_probability": false
+              }
+            },
+            "unsupported_targets": [
+              "direct_cost_improved",
+              "supplier_exit",
+              "package_matched"
+            ],
+            "signal_evidence": [],
+            "meaning": "Next observed response to this whole menu. Package match is not binding acceptance; cost gain is a fraction of the prior direct cost, not final score.",
+            "business_context": {
+              "used_by_supported_targets": false,
+              "sha256": "30415c7eee8909b010940e5d08c4b3b71e4c696c1f874645806026148d59e022",
+              "cutoff": "2026-09-30",
+              "source_count": 34
+            },
+            "preferred_menu": null,
+            "comparison": "insufficient_supported_separation"
+          }
+        },
+        "elapsed_ms": 7.22,
+        "mode": "shadow"
+      },
+      "forecast_in_buyer_input": false,
+      "supported_menus": 0
+    },
+    {
+      "supplier_id": "sup:70740",
+      "message_count": 5,
+      "supplier_status": "open",
+      "support": {
+        "status": "advisory_only",
+        "reason": null,
+        "role": "Additional evidence for comparison; no execution authority",
+        "model_sha256": "26f80b6ee0c9ea0e75cde8026124cb5ad617eab71cbcbcae4feaf2733a507f49",
+        "guidance": "learned_response_support is an optional internal second opinion on proposed menus.\nCombine it with sourced evidence, observed supplier signals and exact package costs.\nIts forecasts describe the next quote, not final score, supplier private cost or binding\nacceptance. Never cite forecasts to the supplier. A predicted match never makes an offer\neligible. Protocol, authorized execution controls and evidence validation always take\npriority. Abstained or unsupported estimates provide no decision evidence. Historical\nvalidation errors are descriptive, not confidence intervals. Candidate forecasts use\nneutral placeholder wording and do not evaluate your actual email or evidence. Do not\ntransfer a forecast to an amended package. A low risk estimate cannot override finality.\nBusiness-record summaries are internal context, not ready-to-send claims. Source and\nvalidate any outgoing number through the independent evidence/calculation path.",
+        "suppliers": {
+          "sup:70740": {
+            "status": "advisory_only",
+            "menus": [
+              {
+                "candidate_ids": [
+                  "A"
+                ],
+                "predictions": {},
+                "domain": {
+                  "supported": false,
+                  "reasons": [
+                    "outside_observed_feature_ranges"
+                  ],
+                  "out_of_range_features": [
+                    "package_0_index_risk_delta"
+                  ]
+                },
+                "status": "abstained"
+              },
+              {
+                "candidate_ids": [
+                  "B"
+                ],
+                "predictions": {},
+                "domain": {
+                  "supported": false,
+                  "reasons": [
+                    "outside_observed_feature_ranges"
+                  ],
+                  "out_of_range_features": [
+                    "package_0_index_risk_delta"
+                  ]
+                },
+                "status": "abstained"
+              },
+              {
+                "candidate_ids": [
+                  "C"
+                ],
+                "predictions": {},
+                "domain": {
+                  "supported": false,
+                  "reasons": [
+                    "outside_observed_feature_ranges"
+                  ],
+                  "out_of_range_features": [
+                    "package_0_index_risk_delta"
+                  ]
+                },
+                "status": "abstained"
+              },
+              {
+                "candidate_ids": [
+                  "A",
+                  "B"
+                ],
+                "predictions": {},
+                "domain": {
+                  "supported": false,
+                  "reasons": [
+                    "outside_observed_feature_ranges"
+                  ],
+                  "out_of_range_features": [
+                    "package_0_index_risk_delta",
+                    "package_1_index_risk_delta"
+                  ]
+                },
+                "status": "abstained"
+              },
+              {
+                "candidate_ids": [
+                  "A",
+                  "C"
+                ],
+                "predictions": {},
+                "domain": {
+                  "supported": false,
+                  "reasons": [
+                    "outside_observed_feature_ranges"
+                  ],
+                  "out_of_range_features": [
+                    "package_0_index_risk_delta",
+                    "package_1_index_risk_delta"
+                  ]
+                },
+                "status": "abstained"
+              },
+              {
+                "candidate_ids": [
+                  "B",
+                  "C"
+                ],
+                "predictions": {},
+                "domain": {
+                  "supported": false,
+                  "reasons": [
+                    "outside_observed_feature_ranges"
+                  ],
+                  "out_of_range_features": [
+                    "package_0_index_risk_delta",
+                    "package_1_index_risk_delta"
+                  ]
+                },
+                "status": "abstained"
+              },
+              {
+                "candidate_ids": [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "predictions": {},
+                "domain": {
+                  "supported": false,
+                  "reasons": [
+                    "outside_observed_feature_ranges"
+                  ],
+                  "out_of_range_features": [
+                    "package_0_index_risk_delta",
+                    "package_1_index_risk_delta"
+                  ]
+                },
+                "status": "abstained"
+              }
+            ],
+            "excluded_candidates": [],
+            "signals": {
+              "live": true,
+              "status": "open",
+              "tone": "courteous",
+              "stance": "negotiating",
+              "authority": "unspecified",
+              "withdrawal_risk_signal": "unknown",
+              "risk_basis": "Explicit finality or terminal status; qualitative signal, not a calibrated probability.",
+              "rounds_left": 8,
+              "rounds_note": "Remaining API sends are not a promise that the supplier will continue.",
+              "evidence": [
+                {
+                  "signal": "courtesy",
+                  "source_ref": "message:sup:70740:4",
+                  "quote": "ebot as follows. We value our partnership and always aim to support your operations with our extensive inventory and dedicated service. We ap"
+                }
+              ],
+              "primary_price_history": [
+                {
+                  "unit_price": 6.1,
+                  "source_ref": "message:sup:70740:0"
+                },
+                {
+                  "unit_price": 5.7,
+                  "source_ref": "message:sup:70740:2"
+                },
+                {
+                  "unit_price": 5.7,
+                  "source_ref": "message:sup:70740:4"
+                }
+              ],
+              "latest_primary_price_movement": 0.0,
+              "live_objections": [],
+              "latest_stated_cost_drivers": [],
+              "previously_cited_refs": [],
+              "supplier_questions": []
+            },
+            "business_records": {
+              "cutoff": "2026-09-30",
+              "values": {
+                "order_price": 5.448631907308378,
+                "order_volume": 22440,
+                "order_price_change": 0.06375227686703089,
+                "otd_rate": 0.81,
+                "quality_ppm_log": 0.34965075614664803,
+                "equity_ratio": 0.39299999999999996,
+                "credit_change": 0.0,
+                "annual_index_change": 0.06959221556110694,
+                "quarter_index_change": -0.03126856463221047,
+                "contract_payment_days": 30
+              },
+              "sha256": "30415c7eee8909b010940e5d08c4b3b71e4c696c1f874645806026148d59e022",
+              "source_refs": [
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013112-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013136-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013189-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013280-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013336-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013373-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013456-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013520-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013617-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013638-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013730-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013762-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013829-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013900-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013967-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014022-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014078-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014140-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014239-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014287-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014292-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014355-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014427-10"
+                },
+                {
+                  "table": "scorecards",
+                  "ref": "sc:70740@2026Q3"
+                },
+                {
+                  "table": "supplier_intel",
+                  "ref": "sup:70740"
+                },
+                {
+                  "table": "contracts",
+                  "ref": "ctr:4600070740"
+                },
+                {
+                  "table": "cost_drivers",
+                  "ref": "sup:70740"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:AS-14404@2025-09"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:AS-14404@2026-06"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:AS-14404@2026-09"
+                },
+                {
+                  "table": "cost_drivers",
+                  "ref": "sup:70740"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:PPI-C2431@2025-08"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:PPI-C2431@2026-05"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:PPI-C2431@2026-08"
+                }
+              ],
+              "source_count": 34,
+              "meaning": "Frozen buyer records, not supplier private costs or guaranteed response predictors. Index weights are buyer estimates; supplier scorecards cover the supplier account."
+            },
+            "training_routes": {
+              "direct_cost_improved": {
+                "selected": "focused",
+                "active": "focused",
+                "promotion_reason": "no_validation_gain"
+              },
+              "quoted_cost_gain": {
+                "selected": "focused_context",
+                "active": "focused",
+                "promotion_reason": "heldout_regression"
+              },
+              "supplier_exit": {
+                "selected": "focused",
+                "active": "focused",
+                "promotion_reason": "no_validation_gain"
+              },
+              "package_matched": {
+                "selected": "focused",
+                "active": "focused",
+                "promotion_reason": "no_validation_gain"
+              }
+            },
+            "packages": [
+              {
+                "id": "A",
+                "terms": {
+                  "unit_price": 5.09,
+                  "index_clause": null,
+                  "payment_days": 90,
+                  "contract_months": 24
+                },
+                "direct_cost": 239657.56
+              },
+              {
+                "id": "B",
+                "terms": {
+                  "unit_price": 5.0,
+                  "index_clause": null,
+                  "payment_days": 14,
+                  "contract_months": 24
+                },
+                "direct_cost": 239422.67
+              },
+              {
+                "id": "C",
+                "terms": {
+                  "unit_price": 5.06,
+                  "index_clause": null,
+                  "payment_days": 60,
+                  "contract_months": 24
+                },
+                "direct_cost": 239844.0
+              }
+            ],
+            "economic_order": [
+              "B",
+              "A",
+              "C"
+            ],
+            "reliability": {
+              "direct_cost_improved": {
+                "validation_support": {
+                  "examples": 31,
+                  "label_counts": {
+                    "1": 30,
+                    "0": 1
+                  },
+                  "discrimination_evaluable": true
+                },
+                "validation_mae": 0.13530982504158265,
+                "validation_sessions": 10,
+                "validation_class_sessions": {
+                  "0": 1,
+                  "1": 10
+                },
+                "usable_for_comparison": false,
+                "calibrated_probability": false
+              },
+              "quoted_cost_gain": {
+                "validation_support": {
+                  "examples": 30,
+                  "label_counts": null,
+                  "discrimination_evaluable": true
+                },
+                "validation_mae": 0.010799929006364558,
+                "validation_sessions": 10,
+                "validation_class_sessions": null,
+                "usable_for_comparison": true,
+                "calibrated_probability": false
+              },
+              "supplier_exit": {
+                "validation_support": {
+                  "examples": 31,
+                  "label_counts": {
+                    "0": 30,
+                    "1": 1
+                  },
+                  "discrimination_evaluable": true
+                },
+                "validation_mae": 0.0,
+                "validation_sessions": 10,
+                "validation_class_sessions": {
+                  "0": 10,
+                  "1": 1
+                },
+                "usable_for_comparison": false,
+                "calibrated_probability": false
+              },
+              "package_matched": {
+                "validation_support": {
+                  "examples": 31,
+                  "label_counts": {
+                    "0": 30,
+                    "1": 1
+                  },
+                  "discrimination_evaluable": true
+                },
+                "validation_mae": 0.048981704044310515,
+                "validation_sessions": 10,
+                "validation_class_sessions": {
+                  "0": 10,
+                  "1": 1
+                },
+                "usable_for_comparison": false,
+                "calibrated_probability": false
+              }
+            },
+            "unsupported_targets": [
+              "direct_cost_improved",
+              "supplier_exit",
+              "package_matched"
+            ],
+            "signal_evidence": [],
+            "meaning": "Next observed response to this whole menu. Package match is not binding acceptance; cost gain is a fraction of the prior direct cost, not final score.",
+            "business_context": {
+              "used_by_supported_targets": false,
+              "sha256": "30415c7eee8909b010940e5d08c4b3b71e4c696c1f874645806026148d59e022",
+              "cutoff": "2026-09-30",
+              "source_count": 34
+            },
+            "preferred_menu": null,
+            "comparison": "insufficient_supported_separation"
+          }
+        },
+        "elapsed_ms": 12.023,
+        "mode": "shadow"
+      },
+      "forecast_in_buyer_input": false,
+      "supported_menus": 0
+    },
+    {
+      "supplier_id": "sup:70740",
+      "message_count": 7,
+      "supplier_status": "final_offer",
+      "support": {
+        "status": "advisory_only",
+        "reason": null,
+        "role": "Additional evidence for comparison; no execution authority",
+        "model_sha256": "26f80b6ee0c9ea0e75cde8026124cb5ad617eab71cbcbcae4feaf2733a507f49",
+        "guidance": "learned_response_support is an optional internal second opinion on proposed menus.\nCombine it with sourced evidence, observed supplier signals and exact package costs.\nIts forecasts describe the next quote, not final score, supplier private cost or binding\nacceptance. Never cite forecasts to the supplier. A predicted match never makes an offer\neligible. Protocol, authorized execution controls and evidence validation always take\npriority. Abstained or unsupported estimates provide no decision evidence. Historical\nvalidation errors are descriptive, not confidence intervals. Candidate forecasts use\nneutral placeholder wording and do not evaluate your actual email or evidence. Do not\ntransfer a forecast to an amended package. A low risk estimate cannot override finality.\nBusiness-record summaries are internal context, not ready-to-send claims. Source and\nvalidate any outgoing number through the independent evidence/calculation path.",
+        "suppliers": {
+          "sup:70740": {
+            "status": "skipped",
+            "menus": [],
+            "excluded_candidates": [],
+            "signals": {
+              "live": true,
+              "status": "final_offer",
+              "tone": "courteous",
+              "stance": "final",
+              "authority": "unspecified",
+              "withdrawal_risk_signal": "high",
+              "risk_basis": "Explicit finality or terminal status; qualitative signal, not a calibrated probability.",
+              "rounds_left": 7,
+              "rounds_note": "Remaining API sends are not a promise that the supplier will continue.",
+              "evidence": [
+                {
+                  "signal": "courtesy",
+                  "source_ref": "message:sup:70740:6",
+                  "quote": "Dear customer,\n\nThank you for your ongoing partnership with Blankstahl Werdenfels GmbH. In response to your improved offer, w"
+                },
+                {
+                  "signal": "final_language",
+                  "source_ref": "message:sup:70740:6",
+                  "quote": "el on AS-14404. \n\nThis is our final offer (letztes Angebot). Please decide. Please note that this offer remains valid for 7 days. We apprecia"
+                },
+                {
+                  "signal": "base_cost_objection",
+                  "source_ref": "message:sup:70740:6",
+                  "quote": "e this short-term easing, our base price must still reflect the overall elevated cost level compared to the previous year. Furthermore, our "
+                }
+              ],
+              "primary_price_history": [
+                {
+                  "unit_price": 6.1,
+                  "source_ref": "message:sup:70740:0"
+                },
+                {
+                  "unit_price": 5.7,
+                  "source_ref": "message:sup:70740:2"
+                },
+                {
+                  "unit_price": 5.7,
+                  "source_ref": "message:sup:70740:4"
+                },
+                {
+                  "unit_price": 5.5,
+                  "source_ref": "message:sup:70740:6"
+                }
+              ],
+              "latest_primary_price_movement": -0.2,
+              "live_objections": [
+                "base_cost_objection"
+              ],
+              "latest_stated_cost_drivers": [],
+              "previously_cited_refs": [],
+              "supplier_questions": [],
+              "interpretation": "Polite wording coexists with a final position; it does not lower the risk."
+            },
+            "business_records": {
+              "cutoff": "2026-09-30",
+              "values": {
+                "order_price": 5.448631907308378,
+                "order_volume": 22440,
+                "order_price_change": 0.06375227686703089,
+                "otd_rate": 0.81,
+                "quality_ppm_log": 0.34965075614664803,
+                "equity_ratio": 0.39299999999999996,
+                "credit_change": 0.0,
+                "annual_index_change": 0.06959221556110694,
+                "quarter_index_change": -0.03126856463221047,
+                "contract_payment_days": 30
+              },
+              "sha256": "30415c7eee8909b010940e5d08c4b3b71e4c696c1f874645806026148d59e022",
+              "source_refs": [
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013112-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013136-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013189-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013280-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013336-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013373-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013456-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013520-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013617-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013638-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013730-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013762-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013829-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013900-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500013967-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014022-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014078-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014140-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014239-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014287-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014292-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014355-10"
+                },
+                {
+                  "table": "po_lines",
+                  "ref": "po:4500014427-10"
+                },
+                {
+                  "table": "scorecards",
+                  "ref": "sc:70740@2026Q3"
+                },
+                {
+                  "table": "supplier_intel",
+                  "ref": "sup:70740"
+                },
+                {
+                  "table": "contracts",
+                  "ref": "ctr:4600070740"
+                },
+                {
+                  "table": "cost_drivers",
+                  "ref": "sup:70740"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:AS-14404@2025-09"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:AS-14404@2026-06"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:AS-14404@2026-09"
+                },
+                {
+                  "table": "cost_drivers",
+                  "ref": "sup:70740"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:PPI-C2431@2025-08"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:PPI-C2431@2026-05"
+                },
+                {
+                  "table": "index_values",
+                  "ref": "idx:PPI-C2431@2026-08"
+                }
+              ],
+              "source_count": 34,
+              "meaning": "Frozen buyer records, not supplier private costs or guaranteed response predictors. Index weights are buyer estimates; supplier scorecards cover the supplier account."
+            },
+            "training_routes": {
+              "direct_cost_improved": {
+                "selected": "focused",
+                "active": "focused",
+                "promotion_reason": "no_validation_gain"
+              },
+              "quoted_cost_gain": {
+                "selected": "focused_context",
+                "active": "focused",
+                "promotion_reason": "heldout_regression"
+              },
+              "supplier_exit": {
+                "selected": "focused",
+                "active": "focused",
+                "promotion_reason": "no_validation_gain"
+              },
+              "package_matched": {
+                "selected": "focused",
+                "active": "focused",
+                "promotion_reason": "no_validation_gain"
+              }
+            },
+            "reason": "execution_controls_take_priority"
+          }
+        },
+        "elapsed_ms": 0.332,
+        "mode": "shadow"
+      },
+      "forecast_in_buyer_input": false,
+      "supported_menus": 0,
+      "controller_stop": "FINAL_OFFER_OUTSIDE_LIMITS"
+    }
+  ],
+  "new_arena_sessions": 0,
+  "model_api_calls": 0,
+  "limitation": "Historical integration replay, including training observations; no outcome improvement claim."
+}

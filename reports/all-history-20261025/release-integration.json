@@ -1,0 +1,75 @@
+{
+  "probe": "Offline supplier-scoped fixture for release integration, not an actual final negotiation",
+  "loaded_release": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/data/release-sunday",
+  "new_fact_ids": 10,
+  "final_source_refs": [
+    "doc:20261016-70170-S12",
+    "doc:20261023-HPW-MEMO",
+    "news:20261014-S11",
+    "news:20261021-S17"
+  ],
+  "historical_release_refs": [],
+  "full_news_rows": [
+    {
+      "id": "news:20261014-S11",
+      "date": "2026-10-14",
+      "supplier_id": "sup:70170",
+      "topic": "credit_downgrade",
+      "headline": "Bank tightens credit line for Sl\u00e9v\u00e1rna Vrbensk\u00fd s.r.o.",
+      "body": "The start-up of the new moulding line at Sl\u00e9v\u00e1rna Vrbensk\u00fd s.r.o. has run over budget; its house bank has cut the company's credit line, a regional business paper reports. Customers are being asked for faster payment.",
+      "source": "Gie\u00dferei-Rundschau S\u00fcd"
+    },
+    {
+      "id": "news:20261021-S17",
+      "date": "2026-10-21",
+      "supplier_id": "",
+      "topic": "market",
+      "headline": "Water utilities push pump tenders into 2027",
+      "body": "German water utilities have postponed several pump station tenders into the first half of 2027; pump makers expect a slow winter and a busy spring.",
+      "source": "Zulieferer Report"
+    }
+  ],
+  "query_results": [
+    {
+      "id": "3daee0c9ceccedad937c",
+      "source_id": "news:20261014-S11",
+      "text": "Bank tightens credit line for Sl\u00e9v\u00e1rna Vrbensk\u00fd s.r.o.\nThe start-up of the new moulding line at Sl\u00e9v\u00e1rna Vrbensk\u00fd s.r.o. has run over budget; its house bank has cut the company's credit line, a regional business paper reports. Customers are being asked for faster payment.",
+      "supplier_id": "sup:70170",
+      "date": "2026-10-14",
+      "shareable": false,
+      "kind": "verbatim_source",
+      "method": "bm25+concepts"
+    },
+    {
+      "id": "355f7ea24cd808db2c7d",
+      "source_id": "doc:20261023-HPW-MEMO",
+      "text": "Supplier letters received: Sl\u00e9v\u00e1rna Vrbensk\u00fd s.r.o. (Payment terms for stainless castings); Gie\u00dferei Pfaffenreuth GmbH (Our liquidity and your call-offs); Metallbau Steinfelder KG (Steel for 2027). Index series are unchanged (frozen at reference month 2026-09).",
+      "supplier_id": null,
+      "date": "2026-10-23",
+      "shareable": false,
+      "kind": "verbatim_source",
+      "method": "bm25+concepts"
+    },
+    {
+      "id": "ed2f3733cad8f751ff24",
+      "source_id": "doc:20260210-70170-M1",
+      "text": "Could you pay our invoices within 10 days? In return we would grant a cash discount.",
+      "supplier_id": "sup:70170",
+      "date": "2026-02-10",
+      "shareable": false,
+      "kind": "verbatim_source",
+      "method": "bm25+concepts"
+    },
+    {
+      "id": "986ffcd093aa8bfb336f",
+      "source_id": "doc:20261016-70170-S12",
+      "text": "the start-up of our new moulding line has tied up more cash than we planned, and our bank is watching our figures closely. To keep alloy material flowing we kindly ask our customers to pay within 10 days from November. We are working hard on the porosity issue and will report on our corrective actions.",
+      "supplier_id": "sup:70170",
+      "date": "2026-10-16",
+      "shareable": true,
+      "kind": "verbatim_source",
+      "method": "bm25+concepts"
+    }
+  ],
+  "new_sessions": 0
+}

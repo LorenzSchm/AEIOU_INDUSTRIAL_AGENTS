@@ -1,0 +1,7 @@
+{
+  "active_case": "case:P10",
+  "authorization": "User authorized additional P10 experiments and model improvement after every iteration; later explicitly dropped P18.",
+  "batch_cap": 6,
+  "hypothesis": "Preserve both delivery flexibility and third year until the second proposal; compare with previously tested upfront54-day concession.",
+  "limitations": "Adaptive exploratory trial, not randomized or frozen validation."
+}

@@ -1,0 +1,10 @@
+{
+  "package": {
+    "url": "/v1/data/package.zip"
+  },
+  "release-sunday": {
+    "public": true,
+    "at": "2026-10-25T07:00:00+00:00",
+    "url": "/v1/data/release-sunday.zip"
+  }
+}

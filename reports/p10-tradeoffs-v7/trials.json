@@ -1,0 +1,63 @@
+{
+  "authorized_total": 12,
+  "authorized_per_case": 6,
+  "target": 72,
+  "validation_reserved_per_case": 3,
+  "trials": [
+    {
+      "trial": "p10-delivery-i09",
+      "case_id": "case:P10",
+      "phase": "diagnostic",
+      "mode": "advisory",
+      "status": "completed",
+      "run_id": "bdf153fc780041d8827414e283c43ecd",
+      "model_sha256": "c74970b50a78749a8fb59f422d3dea11714013e4fad430d1df9f1cfef5ab5e23",
+      "prompt": {
+        "variant": "learning-v4",
+        "strategy_revision": "p10-delivery-i09",
+        "strategy_sha256": "71244f426d3974be0d2a99cbbd850f67e10e1f699c0601b00ed1236e919c9362",
+        "transport_sha256": "558d91563c81d2b7083ca1149bede27ab43b1e8bc711f1af772b76fdeb655eb1",
+        "system_sha256": "3d0a7a91cf7b1fdd6f5979e544e2ab5ed5dcacdd3d63d119f9ffe9e6eb3078a2",
+        "protocol_version": "faithful-v18-closing-cost-comparison",
+        "required_repeats": 0,
+        "enforce_reference_tactics": false,
+        "response_support_mode": "advisory",
+        "assessment_version": "supplier-assessment-v2-source-labels"
+      },
+      "candidate_fingerprint": {
+        "model_sha256": "c74970b50a78749a8fb59f422d3dea11714013e4fad430d1df9f1cfef5ab5e23",
+        "system_sha256": "3d0a7a91cf7b1fdd6f5979e544e2ab5ed5dcacdd3d63d119f9ffe9e6eb3078a2",
+        "policy_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "settings": {
+          "model": "claude-opus-5-5",
+          "provider": "anthropic",
+          "effort": "high",
+          "speed": "fast"
+        },
+        "max_tokens": 12000,
+        "timeout": 50,
+        "buyer_source_sha256": "aa33203440b36a7d2858de700d311884fa07060f61ec6e36da2c6d03d75f3769",
+        "reference_data_sha256": "8eec2f8802af9cf3d20ebbc939dc9dbe3d4b82df076d32d95e8d73a283616053"
+      },
+      "created_at": "2026-10-25T11:02:43.042206+00:00",
+      "score": 68.64691970606857,
+      "deal": true,
+      "must_haves_ok": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.5
+      },
+      "session_id": "ce34449c6742a38d",
+      "elapsed_s": 131.04
+    }
+  ]
+}

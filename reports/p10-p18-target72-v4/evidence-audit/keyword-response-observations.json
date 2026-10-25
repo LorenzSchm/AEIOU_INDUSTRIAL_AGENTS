@@ -1,0 +1,1409 @@
+{
+  "method": "Public complete buyer/response pairs from all twelve new trials. Lexical tags describe whole proposals; neither frequency nor price changes prove keyword causality.",
+  "used_in_frozen_training": false,
+  "observations": [
+    {
+      "trial": "p10-dev1-baseline",
+      "case_id": "case:P10",
+      "supplier_id": "sup:70410",
+      "buyer_event": 1,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "payment"
+      ],
+      "buyer_body": "Dear Ms Zellner,\n\nThank you for your quotation. We would like to propose a reciprocal trade.\n\nOn delivery, we can accept your 54-day lead time instead of the 42-day standard recorded in our framework agreement (ctr:4600070410#5.1: \"Delivery DAP; standard lead time 42 days from order\").\n\nOn commitment, your capacity letter of 18 September 2026 (doc:20260918-70410-P10) states that you will prioritise customers with firm, long-term commitments. We offer exactly that: 23,400 pcs per year, binding in each year, for 24 months.\n\nIn return, we ask for full allocation of that volume at EUR 29.89/unit, with the other terms unchanged: DAP, 30 days net, effective 2027-01-01, no index clause and no tooling.\n\nOur buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty (cost:340010); it is a buyer benchmark, not your disclosed cost.\n\nDoes this trade work for you?\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke GmbH",
+      "buyer_terms": [
+        {
+          "unit_price": 29.89,
+          "volume_per_year": 23400,
+          "contract_months": 24,
+          "lead_time_days": 54
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear Sir or Madam,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the should cost data you cited; it holds and we took it into account. However, your internal cost estimate does not reflect our actual production costs or current market realities. Our calculation is our property; we do not share a breakdown.\n\nWe note your proposal for a 24-month commitment at 23,400 units per year and accept the 54-day lead time. In recognition of the increased volume and extended contract term, we can offer a revised price of EUR 31.80 per unit. Consequently, our Angebot comprises a price of €31.80 per unit, Lieferzeit 54 days, a volume of 23400 pcs per year, and a contract term of 24 months.\n\nThis offer is valid for 30 days. We are happy to discuss this in a call; until then our offer stands.\n\nMit freundlichen Grüßen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH",
+      "response_terms": [
+        {
+          "unit_price": 31.8,
+          "lead_time_days": 54,
+          "volume_per_year": 23400,
+          "contract_months": 24
+        }
+      ]
+    },
+    {
+      "trial": "p10-dev1-baseline",
+      "case_id": "case:P10",
+      "supplier_id": "sup:70410",
+      "buyer_event": 3,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "payment"
+      ],
+      "buyer_body": "Dear Ms Zellner,\n\nThank you for your revised quotation and for confirming the full 23,400 pcs per year with a 54-day lead time. We appreciate the movement and would like to close the remaining gap constructively.\n\nWe propose a further step on both sides. We move from EUR 29.89 to EUR 31.07/unit and add a third committed year: 23,400 pcs per year, binding in each year, for 36 months. We also continue to accept 54 days instead of the 42-day standard recorded in our framework agreement.\n\nThis is a firm three-year commitment, the kind of long-term commitment your capacity letter said you would prioritise. In return, we ask that it is recognised in the complete price: EUR 31.07/unit, DAP, 30 days net, effective 2027-01-01, no index clause and no tooling.\n\nEUR 31.07 is our commercial proposal for this exchange. It is not derived from your costs, which we understand you do not share.\n\nDoes this package work for you? We are happy to discuss it by phone.\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke GmbH",
+      "buyer_terms": [
+        {
+          "unit_price": 31.07,
+          "volume_per_year": 23400,
+          "contract_months": 36,
+          "lead_time_days": 54
+        }
+      ],
+      "response_status": "final_offer",
+      "response_body": "Dear Sir or Madam,\n\nThis is our final offer (letztes Angebot). Please decide.\n\nWe accept the 36-month contract term for 23,400 units per year with a 54-day lead time. In exchange for this extended commitment, we reduce our price to EUR 31.60 per unit. \n\nRegarding our offer, the details are a price of €31.60 per unit, Lieferzeit 54 days, a volume of 23400 pcs per year, and a contract term of 36 months. Our price reflects our costs; our calculation stays internal. Which figures is that based on? Please send us the data. \n\nWe are happy to discuss this in a call; until then our offer stands. Our offer remains valid for 7 days.\n\nMit freundlichen Grüßen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH\n\nLegal Department: Please be advised that our general terms and conditions apply exclusively, and the quote lists our standard terms.",
+      "response_terms": [
+        {
+          "unit_price": 31.6,
+          "lead_time_days": 54,
+          "volume_per_year": 23400,
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-dev1-baseline",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 1,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Dear Mr Seidl,\n\nThank you for your quotation and for reviewing our requirements. We would very much like to continue working with Werdenfels and appreciate your consideration of a longer-term arrangement.\n\nWould you kindly consider EUR 4.60/kg for part:370010, with payment within 30 days net and a 36-month contract? We propose AS-14404 on a 45% material share, with a 0% deadband and base month 2026-08. Our requirement is 23,700 kg/year, DAP, with a 14-day lead time, effective from 2027-01-01 and no tooling charges.\n\nOur purchase orders with you for part:370010 on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10), compared with EUR 5.84/kg on 1 and 18 September 2026 (po:4500014355-10, po:4500014427-10).\n\nWe recognise the cost pressures you described and hope that the longer commitment and proposed adjustment mechanism give us a useful basis for reviewing the starting price together. A 24-month commitment would also be possible if that suits your team better.\n\nCould you kindly let us know what binding offer you can approve?\n\nKind regards,\nPurchasing, Hollerau Pumpenwerke",
+      "buyer_terms": [
+        {
+          "unit_price": 4.6,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 0,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear customer,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the price history data you cited; it holds and we took it into account. Acknowledging the historical purchase orders you referenced, we can revise our offer to €5.40 per kg under these updated terms.\n\nOur main offer is a price of €5.40 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. \n\nWe appreciate your interest in a long-term partnership and agree to implement the AS-14404 index mechanism to manage material volatility. Our price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C, and we can offer a Preisgleitklausel on AS-14404, AS-14404, AS-14404. Our standard Zahlungsziel is 30 days net.\n\nAs you suggested, a 24-month contract duration provides a more balanced framework for this new structure. Alternatively, with a contract term of 24 months: €5.40 per unit. This alternative package features a price of €5.40 per unit, Zahlungsziel 30 days net, a contract term of 24 months, a Preisgleitklausel on AS-14404.\n\nThis offer stays valid for 30 days.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.4,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 0.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.4,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 0.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 24
+        }
+      ]
+    },
+    {
+      "trial": "p18-dev1-baseline",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 3,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "approval",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Thank you for working through the options with us. We appreciate your team's careful review and would like to find an arrangement that works for Werdenfels as well as for us.\n\nFor your review, PPI-C2431 changed by -2.27% from 2026-06 to 2026-08 (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08). We recognise that this recent movement can coexist with the annual increase you described. Could you take it into account when reviewing the starting price?\n\nCould you kindly consider one of these complete alternatives? Each price is conditional on its payment term and adjustment clause.\n\nOption A: EUR 5.07/kg, payment within 30 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\nOption B: EUR 5.05/kg, payment within 14 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\nOption C: EUR 5.10/kg, payment within 60 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\n\nThe fixed terms of our enquiry remain unchanged. These are new proposals for your approval. Could you issue the option you can approve as your binding offer? If none works, which term would need to change? We would be pleased to review it together.\n\nKind regards,\nPurchasing",
+      "buyer_terms": [
+        {
+          "unit_price": 5.07,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.05,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 14,
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.1,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 60,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear customer,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We are always delighted to work with Hollerau Pumpenwerke GmbH and support your needs with our broad range and reliable service.\n\nWe have verified the PPI-C2431 data you provided and factored the recent decrease into our calculation. Building on your Option A, we agree to the 36-month contract duration and 30 days net payment terms. Reflecting the updated index data, we can revise our offer to EUR 5.30 per kg.\n\nOur price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. Specifically, AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. That remains. LCI-C rose 2.7 % in twelve months and is 5 % of our cost. That remains. PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. That remains.\n\nOur current Angebot is a price of €5.40 per unit, Zahlungsziel 60 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. Alternatively, with Zahlungsziel 30 days net: a price of €5.30 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404.\n\nThis offer remains valid for 30 days.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.4,
+          "payment_days": 60,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.3,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-dev1-baseline",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 5,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Dear Mr Seidl,\n\nThank you for your revised quotation and for building on our Option A. We appreciate your move to EUR 5.30/kg with payment within 30 days net, the 36-month term and the AS-14404 clause with a 5% deadband. This brings us very close together.\n\nFor your review, AS-14404 changed by -5.49% from 2026-06 to 2026-09 (idx:AS-14404@2026-06, idx:AS-14404@2026-09). We recognise that this recent movement coexists with the annual increase you described. The proposed adjustment clause would continue to let the material share follow the index over the contract term.\n\nOn that basis, could you kindly approve EUR 5.10/kg with payment within 30 days net and a 36-month contract? We propose AS-14404 on a 45% material share, with a 5% deadband and base month 2026-08. The fixed terms of our enquiry remain unchanged: 23,700 kg/year, DAP, a 14-day lead time, effective from 2027-01-01 and no tooling charges.\n\nIf you can issue this as your binding offer, we would be very pleased to finalise it with you and continue our cooperation with Werdenfels.\n\nKind regards,\nPurchasing, Hollerau Pumpenwerke",
+      "buyer_terms": [
+        {
+          "unit_price": 5.1,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "final_offer",
+      "response_body": "Dear customer,\n\nThank you for your ongoing partnership with Blankstahl Werdenfels GmbH. We always strive to provide you with the best service from our extensive product range. \n\nWe have verified the AS-14404 index data you provided and factored the recent decrease into our calculation. Our price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. Specifically, AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. That remains. LCI-C rose 2.7 % in twelve months and is 5 % of our cost. That remains. PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. That remains.\n\nBuilding on your proposal, we can revise our offer to EUR 5.20 per kg with payment within 30 days net and a 36-month contract. This adjustment reflects a fair sharing of the recent material cost reduction while securing the long-term stability you requested.\n\nPlease note our standard Zahlungsziel is 30 days net. Our offer features a price of €5.20 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. \n\nThis is our final offer (letztes Angebot). Please decide. Our offer remains valid for 7 days.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.2,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p10-dev2-trained",
+      "case_id": "case:P10",
+      "supplier_id": "sup:70410",
+      "buyer_event": 1,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "payment"
+      ],
+      "buyer_body": "Dear Ms Zellner,\n\nThank you for your quotation. We would like to propose a reciprocal trade.\n\nOn delivery, we can accept your quoted 54 days instead of the 42-day standard lead time recorded in our framework agreement (ctr:4600070410#5.1). On commitment, your letter of 18 September 2026 (doc:20260918-70410-P10) says you will prioritise customers with firm, long-term commitments. We offer exactly that: 23,400 pcs per year, binding in each year, for 24 months.\n\nIn return, we ask for full allocation of that volume at EUR 29.89/unit. Payment 30 days net, DAP, price valid from 2027-01-01, no index clause and no tooling remain as in our enquiry.\n\nOur buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty (cost:340010); it is a buyer benchmark, not your disclosed cost.\n\nDoes this trade work for you?\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke",
+      "buyer_terms": [
+        {
+          "unit_price": 29.89,
+          "volume_per_year": 23400,
+          "contract_months": 24,
+          "lead_time_days": 54
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear Sir or Madam,\n\nWe have reviewed your offer and can adjust our Angebot as follows. \n\nWe checked the should cost data you cited; it holds and we took it into account. We acknowledge your proposal for a 24-month commitment at 23,400 units per year. Based on this, we can offer EUR 31.70 per unit for this revised volume and contract duration. Our current Angebot comprises a price of €31.70 per unit, Lieferzeit 54 days, a volume of 23400 pcs per year, and a contract term of 24 months.\n\nPlease note that our calculation is our property; we do not share a breakdown. Our offer remains valid for 30 days. We are happy to discuss this in a call; until then our offer stands.\n\nMit freundlichen Grüßen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH",
+      "response_terms": [
+        {
+          "unit_price": 31.7,
+          "lead_time_days": 54,
+          "volume_per_year": 23400,
+          "contract_months": 24
+        }
+      ]
+    },
+    {
+      "trial": "p10-dev2-trained",
+      "case_id": "case:P10",
+      "supplier_id": "sup:70410",
+      "buyer_event": 3,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "payment"
+      ],
+      "buyer_body": "Dear Ms Zellner,\n\nThank you for your revised quotation and for allocating our full 23,400 pcs per year.\n\nWe would like to meet you on two points at once. First, we move our proposed price from EUR 29.89 to EUR 31.07/unit. Second, we add a third committed year. That gives a 36-month contract with 23,400 pcs per year, binding in each year.\n\nWe also keep accepting your 54-day lead time rather than the 42-day standard in our framework agreement. This gives you more scheduling room alongside three years of firm volume.\n\nOur complete package:\n- EUR 31.07/unit\n- 23,400 pcs per year, binding in each contract year\n- 36-month term\n- 54-day lead time\n- Payment 30 days net, DAP, price valid from 2027-01-01, no index clause, no tooling\n\nIn return, we ask that the complete price reflect the longer commitment and the longer lead time.\n\nCan you agree to this package?\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke",
+      "buyer_terms": [
+        {
+          "unit_price": 31.07,
+          "volume_per_year": 23400,
+          "contract_months": 36,
+          "lead_time_days": 54
+        }
+      ],
+      "response_status": "final_offer",
+      "response_body": "Dear Sir or Madam,\n\nWe note your proposal for a 36-month contract at 23,400 units per year. In return for this extended commitment, we reduce our price to EUR 31.50 per unit. \n\nPlease be advised that this is our final offer (letztes Angebot). Please decide. For clarity, our Angebot comprises a price of €31.50 per unit, a Lieferzeit of 54 days, a volume of 23400 pcs per year, and a contract term of 36 months. Our offer remains valid for 7 days.\n\nWhich figures is that based on? Please send us the data. \n\nWe await your confirmation of this revised offer. We are happy to discuss this in a call; until then our offer stands.\n\nMit freundlichen Grüßen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH\n\nLegal Department: Please be advised that our general terms and conditions apply exclusively, and the quote lists our standard terms.",
+      "response_terms": [
+        {
+          "unit_price": 31.5,
+          "lead_time_days": 54,
+          "volume_per_year": 23400,
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-dev2-trained",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 1,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Dear Mr Seidl,\n\nThank you for your quotation and for reviewing our requirements. We would very much like to continue working with Werdenfels and appreciate your consideration of a longer-term arrangement.\n\nWould you kindly consider EUR 4.60/kg for part:370010, with payment within 30 days net and a 36-month contract? We propose AS-14404 on a 45% material share, with a 0% deadband and base month 2026-08. Our requirement is 23,700 kg/year, DAP, with a 14-day lead time, effective from 2027-01-01 and no tooling charges.\n\nOur purchase orders with you for part:370010 on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10), compared with EUR 5.84/kg on 1 and 18 September 2026 (po:4500014355-10, po:4500014427-10).\n\nWe recognise the cost pressures you described and hope that the longer commitment and proposed adjustment mechanism give us a useful basis for reviewing the starting price together. A 24-month commitment would also be possible if that suits your team better.\n\nCould you kindly let us know what binding offer you can approve?\n\nKind regards,\nPurchasing, Hollerau Pumpenwerke",
+      "buyer_terms": [
+        {
+          "unit_price": 4.6,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 0,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear customer,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We thank you for your proposal and welcome the opportunity to establish a longer-term agreement. We checked the price history data you cited; it holds and we took it into account. \n\nOur price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. We are prepared to accept the 36-month contract duration and the implementation of the AS-14404 index clause to provide mutual stability. We can offer a Preisgleitklausel on AS-14404, AS-14404, AS-14404. Our standard Zahlungsziel is 30 days net. \n\nHence, our Angebot includes a price of €5.40 per unit, Zahlungsziel 30 days net, a contract term of 36 months, and a Preisgleitklausel on AS-14404. Please note that this offer stays valid for 30 days.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.4,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 0.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-dev2-trained",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 3,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "approval",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Thank you for working through the options with us. We appreciate your team's careful review and would like to find an arrangement that works for Werdenfels as well as for us.\n\nFor your review, PPI-C2431 changed by -2.27% from 2026-06 to 2026-08 (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08). We recognise that this recent movement can coexist with the annual increase you described. Could you take it into account when reviewing the starting price?\n\nCould you kindly consider one of these complete alternatives? Each price is conditional on its payment term and adjustment clause.\n\nOption A: EUR 5.07/kg, payment within 30 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\nOption B: EUR 5.05/kg, payment within 14 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\nOption C: EUR 5.10/kg, payment within 60 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\n\nThe fixed terms of our enquiry remain unchanged. These are new proposals for your approval. Could you issue the option you can approve as your binding offer? If none works, which term would need to change? We would be pleased to review it together.\n\nKind regards,\nPurchasing",
+      "buyer_terms": [
+        {
+          "unit_price": 5.07,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.05,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 14,
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.1,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 60,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear customer,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the index change data you cited; it holds and we took it into account. AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. That remains. LCI-C rose 2.7 % in twelve months and is 5 % of our cost. That remains. PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. That remains. We have verified the recent decrease in PPI-C2431 you cited and have factored this into our calculation. Our price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C.\n\nWe are pleased to build on your Option A, maintaining the 30-day payment term and 36-month contract with the AS-14404 index clause. Consequently, we can offer a revised price of €5.30 per kg.\n\nOur primary Angebot stands at a price of €5.40 per unit, Zahlungsziel 60 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. Alternatively, with Zahlungsziel 30 days net: €5.30 per unit, with a contract term of 36 months, a Preisgleitklausel on AS-14404. This offer remains valid for 30 days.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.4,
+          "payment_days": 60,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.3,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-dev2-trained",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 5,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Dear Mr Seidl,\n\nThank you for building on our Option A and for moving to EUR 5.30/kg on payment within 30 days net, a 36-month contract and AS-14404 on a 45% material share with a 5% deadband and base month 2026-08. We appreciate this step and the care your team has taken.\n\nWe would like to close on exactly that structure. One further point may help with the remaining price difference. AS-14404 changed by -5.49% from 2026-06 to 2026-09 (idx:AS-14404@2026-06, idx:AS-14404@2026-09). We recognise that this recent movement sits alongside the annual increase you described. The agreed clause would continue to reflect larger index movements beyond the deadband in either direction over the term.\n\nOn that basis, could you approve EUR 5.10/kg as your binding offer? The package would be payment within 30 days net, a 36-month contract and AS-14404 on a 45% material share with a 5% deadband and base month 2026-08. The fixed enquiry terms remain unchanged: 23,700 kg/year, DAP, 14-day lead time, effective from 2027-01-01 and no tooling charges.\n\nIf you can confirm this package, we would be glad to finalise the agreement with Werdenfels promptly.\n\nKind regards,\nPurchasing, Hollerau Pumpenwerke",
+      "buyer_terms": [
+        {
+          "unit_price": 5.1,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "final_offer",
+      "response_body": "Dear customer,\n\nThank you for your ongoing partnership with Blankstahl Werdenfels GmbH. This is our final offer (letztes Angebot). Please decide.\n\nBuilding on your preferred structure of a 36-month contract with 30-day payment terms and the AS-14404 index clause, we can offer a revised price of EUR 5.20 per kg. Our price of €5.20 per unit comes with a Zahlungsziel 30 days net, a contract term of 36 months, and a Preisgleitklausel on AS-14404. Our offer stays valid for 7 days.\n\nWe have verified the recent decrease in the AS-14404 index you cited and have factored this into our calculation. This represents a further concession from our side, reflecting the recent material cost movements while maintaining the stability of our supply agreement. \n\nOur price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. That remains. LCI-C rose 2.7 % in twelve months and is 5 % of our cost. That remains. PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. That remains.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.2,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p10-dev3-package-menu",
+      "case_id": "case:P10",
+      "supplier_id": "sup:70410",
+      "buyer_event": 1,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "payment"
+      ],
+      "buyer_body": "Dear Ms Zellner,\n\nThank you for your quotation for the mechanical seal 24 mm, SiC/carbon, EPDM.\n\nYour email of 18 September 2026 (doc:20260918-70410-P10) says you will prioritise customers with firm, long-term commitments. We would like to give you exactly that, for our full need.\n\nOur proposal:\n- EUR 29.89 per unit\n- 23,400 pcs per year, binding in each contract year\n- 24-month contract term from 2027-01-01\n- 54 days lead time, as you quoted\n- Payment 30 days net, DAP, no index clause, no tooling, other terms as per our enquiry\n\nThe framework agreement sets a standard lead time of 42 days from order (ctr:4600070410 §5.1). We are prepared to accept your quoted 54 days instead. This gives you extra scheduling room under your current capacity situation. In exchange, we ask for full allocation of our annual need and a better price than quoted.\n\nOur buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty (cost:340010). It is a buyer benchmark, not your disclosed cost. The price we propose leaves a margin above that estimate.\n\nCould you confirm whether this package works for you? If not, please tell us which term you would need adjusted.\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke GmbH",
+      "buyer_terms": [
+        {
+          "unit_price": 29.89,
+          "volume_per_year": 23400,
+          "contract_months": 24,
+          "lead_time_days": 54
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear Sir or Madam,\n\nWe have reviewed your offer and can adjust our Angebot as follows. \n\nWe checked the should cost data you cited; it holds and we took it into account. Our price reflects our costs; our calculation stays internal. We note your offer of a 24-month commitment for 23,400 units per year and your acceptance of the 54-day lead time. Which volume can you commit to?\n\nFor this revised package, we can offer a price of €31.70 per unit, Lieferzeit 54 days, a volume of 23400 pcs per year, a contract term of 24 months.\n\nWe are happy to discuss this in a call; until then our offer stands for 30 days.\n\nMit freundlichen Grüßen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH\n\nLegal Department: Please be advised that our general terms and conditions apply exclusively, and the quote lists our standard terms.",
+      "response_terms": [
+        {
+          "unit_price": 31.7,
+          "lead_time_days": 54,
+          "volume_per_year": 23400,
+          "contract_months": 24
+        }
+      ]
+    },
+    {
+      "trial": "p10-dev3-package-menu",
+      "case_id": "case:P10",
+      "supplier_id": "sup:70410",
+      "buyer_event": 3,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "payment"
+      ],
+      "buyer_body": "Dear Ms Zellner,\n\nThank you for your revised quotation, for checking our cost estimate and for moving to our full volume.\n\nTo answer your question: we can commit to 23,400 pcs per year, binding in each contract year.\n\nWe are now prepared to add a third firm year. This gives you a 36-month commitment, starting 2027-01-01. Because your capacity situation may make one delivery term easier than the other, we offer you a choice of two complete packages:\n\nPackage A\n- EUR 31.07 per unit\n- 23,400 pcs per year, binding in each of the three years\n- 36-month contract\n- 54 days lead time, as you quoted\n\nPackage B\n- EUR 31.60 per unit\n- 23,400 pcs per year, binding in each of the three years\n- 36-month contract\n- 42 days lead time, the standard in our framework agreement\n\nBoth packages: payment 30 days net, DAP, effective 2027-01-01, no index clause, no tooling, other terms as in our enquiry.\n\nThe trade-off is simple. Package A keeps the additional scheduling room you need at present. Package B pays a higher unit price for the framework's shorter delivery standard. Both add a third binding year to support your capacity planning.\n\nWhich complete package can you support? If your capacity does not allow 42 days, Package A is our preferred option. Each package stands as a whole, with its own price and lead time.\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke GmbH",
+      "buyer_terms": [
+        {
+          "unit_price": 31.07,
+          "volume_per_year": 23400,
+          "contract_months": 36,
+          "lead_time_days": 54
+        },
+        {
+          "unit_price": 31.6,
+          "volume_per_year": 23400,
+          "contract_months": 36,
+          "lead_time_days": 42
+        }
+      ],
+      "response_status": "final_offer",
+      "response_body": "Dear Sir or Madam,\n\nWe note your offer of a 36-month commitment and your preference for the 54-day lead time. Which figures is that based on? Please send us the data.\n\nFor the 36-month contract at 23,400 units per year and a 54-day lead time, we can offer a unit price of €31.50. This Angebot comprises a price of €31.50 per unit, Lieferzeit 54 days, a volume of 23400 pcs per year, and a contract term of 36 months. Our Lieferzeit is 54 days. This is our final offer (letztes Angebot). Please decide. This Angebot stays valid for 7 days.\n\nMit freundlichen Grüßen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH\n\nLegal Department: Please be advised that our general terms and conditions apply exclusively, and the quote lists our standard terms.",
+      "response_terms": [
+        {
+          "unit_price": 31.5,
+          "lead_time_days": 54,
+          "volume_per_year": 23400,
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-dev3-payment-menu",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 1,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Dear Mr Seidl,\n\nThank you for your quotation and for setting out your cost drivers so clearly. We value our long-standing cooperation with Blankstahl Werdenfels and would like to agree the price basis for 2027 onwards on a stable footing.\n\nOur order history for this part with you is our starting point. Our purchase orders on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10). Our orders on 1 and 18 September 2026 were at EUR 5.84/kg (po:4500014355-10, po:4500014427-10). Your quotation of EUR 6.10/kg would be a further step up from that level, and we cannot support it.\n\nWe would like to propose a package that gives you more security in return for a lower starting price:\n\n- Unit price: EUR 4.60/kg\n- Payment: 30 days net\n- Contract term: 36 months\n- Index clause: AS-14404, 45% material share, 0% deadband, base month 2026-08\n\nThe other terms remain as in our enquiry: 23,700 kg per year, DAP, 14-day lead time, effective 2027-01-01, no tooling.\n\nThe 36-month commitment gives you three years of planning security on this volume. The AS-14404 clause shares alloy-surcharge movements in both directions from the first change, so you no longer need to build material risk into a fixed price. Because the clause covers this risk, we see the starting price as the right place to review. We would like the base price to reflect the market level, without an added allowance for future alloy movements.\n\nDoes this package work for you? If any element causes difficulty, we would be glad to hear which one, so that we can look at it together.\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke GmbH",
+      "buyer_terms": [
+        {
+          "unit_price": 4.6,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 0,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear customer,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the price history data you cited; it holds and we took it into account. Our price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. We can offer a Preisgleitklausel on AS-14404, AS-14404, AS-14404. \n\nWe agree to the 36-month contract term and the AS-14404 index clause, as they provide mutual planning security. In return for these terms, we can offer a revised unit price of EUR 5.40/kg. \n\nOur adjusted offer stands at a price of €5.30 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. Alternatively, with a Preisgleitklausel on AS-14404: €5.40 per unit. As an alternative option, we can also provide a price of €5.40 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404.\n\nPlease note that this offer stays valid for 30 days.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.3,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 0.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.4,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-dev3-payment-menu",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 3,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "approval",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Thank you for working through the options with us. We appreciate your team's careful review and would like to find an arrangement that works for Werdenfels as well as for us.\n\nFor your review, PPI-C2431 changed by -2.27% from 2026-06 to 2026-08 (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08). We recognise that this recent movement can coexist with the annual increase you described. Could you take it into account when reviewing the starting price?\n\nCould you kindly consider one of these complete alternatives? Each price is conditional on its payment term and adjustment clause.\n\nOption A: EUR 4.98/kg, payment within 30 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\nOption B: EUR 5.00/kg, payment within 60 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\nOption C: EUR 5.05/kg, payment within 90 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\n\nThe fixed terms of our enquiry remain unchanged. These are new proposals for your approval. Could you issue the option you can approve as your binding offer? If none works, which term would need to change? We would be pleased to review it together.\n\nKind regards,\nPurchasing",
+      "buyer_terms": [
+        {
+          "unit_price": 4.98,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.0,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 60,
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.05,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 90,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear customer,\n\nWe have reviewed your offer and can adjust our Angebot as follows. \n\nAs a valued partner, we always strive to support your business with our extensive service and quality stock. We have reviewed the data regarding PPI-C2431 and can confirm the recent decrease, which we have incorporated into our calculation. Our price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. Specifically, AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. That remains. LCI-C rose 2.7 % in twelve months and is 5 % of our cost. That remains. Furthermore, PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. That remains.\n\nOur main offer stands at a price of €5.30 per unit, Zahlungsziel 90 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. \n\nWe are pleased to accept your proposed terms of 30 days net payment and a 36-month contract with the AS-14404 index clause. In light of the verified index movement, we can offer a revised price of EUR 5.20 per kg for this package. Alternatively, with Zahlungsziel 30 days net: €5.20 per unit, a contract term of 36 months, a Preisgleitklausel on AS-14404.\n\nPlease note that this offer remains valid for 30 days.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.3,
+          "payment_days": 90,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.2,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-dev3-payment-menu",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 5,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Dear Mr Seidl,\n\nThank you for your revised offer and for the step you have made on the 30-day structure. We also appreciate that we now share the same framework: 36 months, AS-14404 on a 45% material share with a 5% deadband and base month 2026-08, and the fixed terms of our enquiry.\n\nThe remaining gap is the starting price. The alloy component deserves a closer look here. AS-14404 changed by -5.49% from 2026-06 to 2026-09 (idx:AS-14404@2026-06, idx:AS-14404@2026-09). We recognise that this recent movement sits alongside the annual increase you described. However, the index clause will share alloy movements with you from the base month onwards, so we believe the starting price can reflect where the alloy market stands today.\n\nOn the two structures you priced, we propose:\n\nOption 1: EUR 4.98/kg, payment 30 days net, 36 months, AS-14404 on a 45% material share, 5% deadband, base month 2026-08.\nOption 2: EUR 5.05/kg, payment 90 days net, 36 months, AS-14404 on a 45% material share, 5% deadband, base month 2026-08.\n\nEach price applies only together with its own payment term, clause and contract term. The fixed terms remain as in our enquiry: 23,700 kg per year, DAP, 14-day lead time, effective 2027-01-01, no tooling.\n\nCould you confirm whichever option you can approve as your binding offer? If neither works, please let us know which term stands in the way, and we will gladly look at it together with you.\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke GmbH",
+      "buyer_terms": [
+        {
+          "unit_price": 4.98,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.05,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 90,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "final_offer",
+      "response_body": "Dear customer,\n\nThank you for your ongoing partnership with us. We value our relationship with Hollerau Pumpenwerke GmbH and always aim to offer you the best service from our extensive range. \n\nWe have verified the recent movement in AS-14404 and incorporated it into our calculation. Our price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. Specifically, AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. That remains. LCI-C rose 2.7 % in twelve months and is 5 % of our cost. That remains. Furthermore, PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. That remains. \n\nThis reflects the current alloy market conditions you highlighted while maintaining the shared framework. This is our final offer (letztes Angebot). Please decide. \n\nOur main Angebot features a price of €5.20 per unit, Zahlungsziel 90 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. In response to this data, we can offer a revised price of EUR 5.10 per kg for the 30-day payment term and 36-month contract with the AS-14404 index clause. As an alternative option, we present a price of €5.10 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. \n\nPlease note that our offer stays valid for 7 days.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.2,
+          "payment_days": 90,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.1,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p10-validation1",
+      "case_id": "case:P10",
+      "supplier_id": "sup:70410",
+      "buyer_event": 1,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "payment"
+      ],
+      "buyer_body": "Dear Ms Zellner,\n\nThank you for your quotation. We would like to propose a reciprocal trade.\n\nOn delivery, we accept your 54-day lead time instead of the 42-day standard in our framework agreement (ctr:4600070410#5.1: \"Delivery DAP; standard lead time 42 days from order\").\n\nOn commitment, your capacity letter of 18 September 2026 (doc:20260918-70410-P10) says you will prioritise customers with firm, long-term commitments. We offer exactly that: 23,400 pcs per year, binding in each year, for 24 months.\n\nIn return, we ask for full allocation of that volume at EUR 29.89/unit. The other terms are DAP, payment 30 days net, effective 2027-01-01, with no index clause and no tooling.\n\nOur buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty (cost:340010); it is a buyer benchmark, not your disclosed cost.\n\nDoes this trade work for you?\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke",
+      "buyer_terms": [
+        {
+          "unit_price": 29.89,
+          "volume_per_year": 23400,
+          "contract_months": 24,
+          "lead_time_days": 54
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear Sir or Madam,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the should cost data you cited; it holds and we took it into account. We acknowledge your offer of increased volume and a 24-month commitment, which allows us to adjust our pricing. \n\nHowever, your cost estimate does not account for the realities of our specialised manufacturing and current high capacity utilisation. We can offer a price of €31.70 per unit, Lieferzeit 54 days, a volume of 23400 pcs per year, a contract term of 24 months. \n\nWe are happy to discuss this in a call; until then our offer stands. This offer remains valid for 30 days.\n\nMit freundlichen Grüßen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH",
+      "response_terms": [
+        {
+          "unit_price": 31.7,
+          "lead_time_days": 54,
+          "volume_per_year": 23400,
+          "contract_months": 24
+        }
+      ]
+    },
+    {
+      "trial": "p10-validation1",
+      "case_id": "case:P10",
+      "supplier_id": "sup:70410",
+      "buyer_event": 3,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "payment"
+      ],
+      "buyer_body": "Dear Ms Zellner,\n\nThank you for your revised quotation, and for allocating the full 23,400 pcs per year over 24 months.\n\nWe take your point about specialised manufacturing and current utilisation, and we want to meet it. We propose this complete package:\n\n- EUR 31.07/unit, up from our previous EUR 29.89/unit\n- 23,400 pcs per year, binding in each year\n- 36 months, adding a third committed year\n- your 54-day lead time, instead of the 42-day standard in our framework agreement\n- payment 30 days net, DAP, effective 2027-01-01, no index clause, no tooling\n\nThis gives you three years of firm volume. It also gives you more scheduling room than the agreed standard for your capacity planning. In return, we ask that the complete price recognise both the longer delivery time and the additional committed year.\n\nCan you agree to this package?\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke",
+      "buyer_terms": [
+        {
+          "unit_price": 31.07,
+          "volume_per_year": 23400,
+          "contract_months": 36,
+          "lead_time_days": 54
+        }
+      ],
+      "response_status": "final_offer",
+      "response_body": "Dear Sir or Madam,\n\nWe note your proposal for a 36-month term. Given our high capacity utilisation, long-term commitments require careful allocation of our resources. \n\nThis is our final offer (letztes Angebot). Please decide. We can offer EUR 31.40 per unit for this package. Our offer is based on a price of €31.40 per unit, a contract term of 36 months, a volume of 23400 pcs per year, and our Lieferzeit is 54 days. This offer stays valid for 7 days.\n\nWhich figures is that based on? Please send us the data.\n\nMit freundlichen Grüßen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH\n\nLegal Department: Please be advised that our general terms and conditions apply exclusively, and the quote lists our standard terms.",
+      "response_terms": [
+        {
+          "unit_price": 31.4,
+          "lead_time_days": 54,
+          "volume_per_year": 23400,
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-validation1",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 1,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Dear Mr Seidl,\n\nThank you for your quotation and for setting out the cost drivers behind it. We value our cooperation with Blankstahl Werdenfels and would like to agree a stable, transparent price basis for the coming period.\n\nFor reference, here are our recent orders with you for part 370010 (round bar 1.4404, dia 30 mm, peeled). The orders of 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10). The orders of 1 and 18 September 2026 were at EUR 5.84/kg (po:4500014355-10, po:4500014427-10).\n\nWe would like to propose the following package:\n- Unit price: EUR 4.60/kg\n- Payment: 30 days net\n- Contract term: 36 months\n- Price adjustment clause: AS-14404, 45% material share, 0% deadband, base month August 2026\n\nAll other terms remain as in our enquiry: 23,700 kg per year, DAP, 14-day lead time, effective 1 January 2027, and no tooling.\n\nThere are two reasons why we think this structure justifies reviewing the starting price.\n\nFirst, a 36-month commitment gives you three years of planning certainty for this volume, rather than the 12 months in your quotation.\n\nSecond, you have already raised alloy surcharge movements as an important cost factor. The AS-14404 clause, with no deadband, passes those movements through in both directions from the August 2026 base. Material risk would therefore be handled by the mechanism and would not need to be built into a fixed base price. Your quotation of EUR 6.10/kg was for a 12-month term without any adjustment clause, so it carries that risk in full.\n\nCould this package work for you? If any element is difficult, please tell us which one and why. We would like to find a balanced solution together.\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke GmbH",
+      "buyer_terms": [
+        {
+          "unit_price": 4.6,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 0,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear customer,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the price history data you cited; it holds and we took it into account. Our price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. We welcome your proposal for a 36-month contract and the AS-14404 index clause, as this shared mechanism indeed reduces our risk and provides mutual planning certainty. \n\nWe can offer a Preisgleitklausel on AS-14404, AS-14404, AS-14404. Our revised Angebot features a price of €5.30 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. \n\nAlternatively, with a Preisgleitklausel on AS-14404: €5.40 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. \n\nPlease note that our offer remains valid for 30 days.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.3,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 0.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.4,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-validation1",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 3,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "approval",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Thank you for working through the options with us. We appreciate your team's careful review and would like to find an arrangement that works for Werdenfels as well as for us.\n\nFor your review, PPI-C2431 changed by -2.27% from 2026-06 to 2026-08 (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08). We recognise that this recent movement can coexist with the annual increase you described. Could you take it into account when reviewing the starting price?\n\nCould you kindly consider one of these complete alternatives? Each price is conditional on its payment term and adjustment clause.\n\nOption A: EUR 4.98/kg, payment within 30 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\nOption B: EUR 5.00/kg, payment within 60 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\nOption C: EUR 5.05/kg, payment within 90 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\n\nThe fixed terms of our enquiry remain unchanged. These are new proposals for your approval. Could you issue the option you can approve as your binding offer? If none works, which term would need to change? We would be pleased to review it together.\n\nKind regards,\nPurchasing",
+      "buyer_terms": [
+        {
+          "unit_price": 4.98,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.0,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 60,
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.05,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 90,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear customer,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the index change data you cited; it holds and we took it into account. We have verified the recent movement in PPI-C2431 and adjusted our calculation accordingly. Our price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. That remains. LCI-C rose 2.7 % in twelve months and is 5 % of our cost. That remains. PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. That remains.\n\nWe agree to your proposed structure of 30 days payment and a 36-month contract with the AS-14404 clause. Based on this package, we can offer a revised price of EUR 5.20 per kg.\n\nOur Angebot is a price of €5.30 per unit, Zahlungsziel 90 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. \n\nAlternatively, with Zahlungsziel 30 days net: €5.20 per unit. We can also provide a price of €5.20 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. This offer remains valid for 30 days.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.3,
+          "payment_days": 90,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.2,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-validation1",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 5,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Dear Mr Seidl,\n\nThank you for your revised quotation and for confirming the 36-month structure with the AS-14404 clause. We appreciate the step you have made on the 30-day package and the care your team has taken in reviewing our figures.\n\nWe now share the same framework: 36 months, AS-14404 on a 45% material share with a 5% deadband and base month 2026-08, and the fixed terms of our enquiry. The remaining gap is the starting price.\n\nOn the alloy component, AS-14404 changed by -5.49% from 2026-06 to 2026-09 (idx:AS-14404@2026-06, idx:AS-14404@2026-09). We recognise that this recent movement sits alongside the annual increase you described. Because the clause will share future alloy movements with you from the base month onwards, we believe the starting price can reflect where the alloy market stands today.\n\nOn the two payment structures you priced, we propose:\n\nOption 1: EUR 4.98/kg, payment 30 days net, 36 months, AS-14404 on a 45% material share, 5% deadband, base month 2026-08.\nOption 2: EUR 5.05/kg, payment 90 days net, 36 months, AS-14404 on a 45% material share, 5% deadband, base month 2026-08.\n\nEach price applies only together with its own payment term, clause and contract term. The lower price on Option 1 reflects the faster payment. The fixed terms remain as in our enquiry: 23,700 kg per year, DAP, 14-day lead time, effective 1 January 2027, and no tooling.\n\nCould you confirm whichever option you can approve as your binding offer? If neither works, please let us know which term stands in the way, and we will gladly look at it together with you.\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke GmbH",
+      "buyer_terms": [
+        {
+          "unit_price": 4.98,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.05,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 90,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "final_offer",
+      "response_body": "Dear customer,\n\nThank you for your ongoing partnership. We checked the index change data you cited; it holds and we took it into account. We have verified the recent movement in AS-14404 from June to September 2026 and adjusted our calculation accordingly. Our price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. Specifically, AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. That remains. LCI-C rose 2.7 % in twelve months and is 5 % of our cost. That remains. PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. That remains. \n\nThis is our final offer (letztes Angebot). Please decide. Our Angebot provides a price of €5.20 per unit, Zahlungsziel 90 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. This offer remains valid for 7 days.\n\nAs an alternative, based on your preferred structure of 30 days net payment and a 36-month contract with the AS-14404 clause, we can offer a revised price of EUR 5.10 per kg. This alternative package features a price of €5.10 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. This adjustment reflects the current alloy market conditions you highlighted while maintaining a sustainable basis for our long-term cooperation.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.2,
+          "payment_days": 90,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.1,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-validation1",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 7,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Please confirm that your complete offer remains exactly as follows: volume_per_year: 23700; contract_months: 36; payment_days: 30; lead_time_days: 14; incoterm: DAP; ppm_commitment: 70; chargeback_eur_per_complaint: 0.0; effective_date: 2027-01-01; tooling_eur: 0; unit_price: 5.1; index_clause: {'series': 'AS-14404', 'material_share': 0.45, 'deadband_pct': 5.0, 'base_month': '2026-08'}. Please repeat the identical binding package. This requests confirmation and does not accept an order.",
+      "buyer_terms": [],
+      "response_status": "walked_away",
+      "response_body": "Dear customer,\n\nWe are withdrawing from this negotiation. Please be aware that our general Angebot stays valid for 14 days. \n\nWe always strive to support you with our extensive product range and high service standards, and we hope to work together again on future opportunities.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": []
+    },
+    {
+      "trial": "p10-validation2",
+      "case_id": "case:P10",
+      "supplier_id": "sup:70410",
+      "buyer_event": 1,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "payment"
+      ],
+      "buyer_body": "Dear Ms Zellner,\n\nThank you for your quotation. We would like to propose a reciprocal trade.\n\nOn delivery: framework agreement 4600070410 §5.1 (ctr:4600070410#5.1) records DAP with a standard lead time of 42 days from order. We are prepared to accept your 54 days instead.\n\nOn commitment: your letter of 18 September 2026 (doc:20260918-70410-P10) says you will prioritise customers with firm, long-term commitments. We offer exactly that: a binding 24-month contract for 23,400 pcs in each year.\n\nIn return, we ask for full allocation of that volume at EUR 29.89/unit. Payment stays at 30 days net and DAP, with prices effective 2027-01-01, no index clause and no tooling.\n\nOur buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty (cost:340010); it is a buyer benchmark, not your disclosed cost.\n\nDoes this trade work for you?\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke",
+      "buyer_terms": [
+        {
+          "unit_price": 29.89,
+          "volume_per_year": 23400,
+          "contract_months": 24,
+          "lead_time_days": 54
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear Sir or Madam,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the should cost data you cited; it holds and we took it into account. We note your proposal for a 24-month contract and an increased volume of 23,400 units. Our calculation is our property; we do not share a breakdown. \n\nWe can offer EUR 31.70 per unit under these extended terms. Our Angebot comprises a price of €31.70 per unit, Lieferzeit 54 days, a volume of 23400 pcs per year, and a contract term of 24 months. Which volume can you commit to? This offer stays valid for 30 days. We are happy to discuss this in a call; until then our offer stands.\n\nMit freundlichen Grüßen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH\n\nLegal Department: Please be advised that our general terms and conditions apply exclusively, and the quote lists our standard terms.",
+      "response_terms": [
+        {
+          "unit_price": 31.7,
+          "lead_time_days": 54,
+          "volume_per_year": 23400,
+          "contract_months": 24
+        }
+      ]
+    },
+    {
+      "trial": "p10-validation2",
+      "case_id": "case:P10",
+      "supplier_id": "sup:70410",
+      "buyer_event": 3,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "payment"
+      ],
+      "buyer_body": "Dear Ms Zellner,\n\nThank you for your revised quotation and for offering the full 23,400 pcs/year.\n\nTo answer your question: we can commit to 23,400 pcs/year, binding in each contract year.\n\nTo reach agreement, we are moving on two points. We raise our price from EUR 29.89 to EUR 31.07/unit. We also add a third committed year, making it a 36-month contract. In addition, we accept your 54-day lead time instead of the 42-day standard recorded in our framework agreement, which gives you more scheduling room.\n\nOur complete package:\n- EUR 31.07/unit\n- 23,400 pcs/year, binding in each year\n- 36-month term\n- 54-day lead time\n- Payment 30 days net, DAP, effective 2027-01-01, no index clause, no tooling\n\nThree years of firm volume and the longer lead time are real commitments on our side. We ask that the complete price recognise them.\n\nDoes this package work for you?\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke",
+      "buyer_terms": [
+        {
+          "unit_price": 31.07,
+          "volume_per_year": 23400,
+          "contract_months": 36,
+          "lead_time_days": 54
+        }
+      ],
+      "response_status": "final_offer",
+      "response_body": "Dear Sir or Madam,\n\nWe note your proposal for a 36-month contract and your acceptance of the 54-day lead time. In exchange for this extended term, we adjust our price to EUR 31.50 per unit. \n\nThis is our final offer (letztes Angebot). Please decide.\n\nFor this long-term agreement, our offer specifies a price of €31.50 per unit, Lieferzeit 54 days, a volume of 23400 pcs per year, and a contract term of 36 months. Please provide the data substantiating your volume projections for this period. Which volume can you commit to? \n\nOur price reflects our costs; our calculation stays internal. This offer remains valid for 7 days.\n\nMit freundlichen Grüßen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH\n\nLegal Department: Please be advised that our general terms and conditions apply exclusively, and the quote lists our standard terms.",
+      "response_terms": [
+        {
+          "unit_price": 31.5,
+          "lead_time_days": 54,
+          "volume_per_year": 23400,
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-validation2",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 1,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Dear Mr Seidl,\n\nThank you for your quotation and for setting out the cost drivers behind it. We value our long-standing cooperation with Werdenfels and would like to agree a stable, transparent price basis for the coming period.\n\nFor reference, our purchase orders with you for this part on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10). Our orders on 1 and 18 September 2026 were at EUR 5.84/kg (po:4500014355-10, po:4500014427-10).\n\nYour letter of 22 September proposed a price adjustment clause based on AS-14404, and we are glad to take that up. With a 45% material share, no deadband and base month August 2026, alloy movements would pass through to the price openly in both directions. The starting price would then no longer need to allow for future material risk. We would combine this with a 36-month commitment at 23,700 kg per year instead of 12 months, which gives you planning certainty over a longer period. Because the index clause and the longer term cover these risks, we ask you to review the starting price.\n\nOur proposal:\n- Unit price: EUR 4.60/kg\n- Payment: 30 days net\n- Contract term: 36 months\n- Index clause: AS-14404, 45% material share, 0% deadband, base month 2026-08\n- As per our enquiry: DAP, 14 days lead time, effective 1 January 2027, no tooling\n\nWould this package work for you? If any element does not suit you, please let us know which one and what you could offer instead, so we can find a workable basis together.\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke GmbH",
+      "buyer_terms": [
+        {
+          "unit_price": 4.6,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 0,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear customer,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the price history data you cited; it holds and we took it into account. Furthermore, we appreciate your proposal to establish a stable price basis with a 36-month contract and an index clause. \n\nWe can offer a revised starting price of EUR 5.40/kg under these new terms, reflecting the shared risk and extended commitment. Our price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. We can offer a Preisgleitklausel on AS-14404, AS-14404, AS-14404. \n\nTo summarize our Angebot, we present a price of €5.40 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. Please note that this offer remains valid for 30 days. We look forward to continuing our partnership.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.4,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 0.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-validation2",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 3,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "approval",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Thank you for working through the options with us. We appreciate your team's careful review and would like to find an arrangement that works for Werdenfels as well as for us.\n\nFor your review, PPI-C2431 changed by -2.27% from 2026-06 to 2026-08 (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08). We recognise that this recent movement can coexist with the annual increase you described. Could you take it into account when reviewing the starting price?\n\nCould you kindly consider one of these complete alternatives? Each price is conditional on its payment term and adjustment clause.\n\nOption A: EUR 4.98/kg, payment within 30 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\nOption B: EUR 5.00/kg, payment within 60 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\nOption C: EUR 5.05/kg, payment within 90 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\n\nThe fixed terms of our enquiry remain unchanged. These are new proposals for your approval. Could you issue the option you can approve as your binding offer? If none works, which term would need to change? We would be pleased to review it together.\n\nKind regards,\nPurchasing",
+      "buyer_terms": [
+        {
+          "unit_price": 4.98,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.0,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 60,
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.05,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 90,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear customer,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the index change data you cited; it holds and we took it into account. We have reviewed your proposals and verified the recent movement in PPI-C2431, which we have now factored into our calculation. \n\nOur price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. Specifically, AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. That remains. LCI-C rose 2.7 % in twelve months and is 5 % of our cost. That remains. PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. That remains.\n\nWe prefer your first option with a 30-day payment term, as it aligns best with our standard financial practices. Consequently, we can offer a revised price of EUR 5.20 per kg under these terms.\n\nOur main proposal stands at a price of €5.30 per unit, Zahlungsziel 90 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. Alternatively, with Zahlungsziel 30 days net: €5.20 per unit. As an alternative option: a price of €5.20 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. \n\nThis offer stays valid for 30 days.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.3,
+          "payment_days": 90,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.2,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-validation2",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 5,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Dear Mr Seidl,\n\nThank you for your revised quotation and for the step you made on both structures. We are glad that we now share the same framework: 36 months, AS-14404 on a 45% material share with a 5% deadband and base month 2026-08, and the fixed terms of our enquiry.\n\nThe remaining gap is the starting price, and the alloy component deserves a closer look. AS-14404 changed by -5.49% from 2026-06 to 2026-09 (idx:AS-14404@2026-06, idx:AS-14404@2026-09). We recognise that this recent movement sits alongside the annual increase you described. The agreed index clause will share alloy movements with you from the base month onwards in both directions. We therefore believe the starting price can reflect where the alloy market stands today rather than carry additional material risk.\n\nOn the two structures you priced, we propose:\n\nOption 1: EUR 4.98/kg, payment 30 days net, 36 months, AS-14404 on a 45% material share, 5% deadband, base month 2026-08.\nOption 2: EUR 5.05/kg, payment 90 days net, 36 months, AS-14404 on a 45% material share, 5% deadband, base month 2026-08.\n\nEach price applies only together with its own payment term, clause and contract term. The fixed terms remain as in our enquiry: 23,700 kg per year, DAP, 14-day lead time, effective 1 January 2027, no tooling.\n\nCould you confirm whichever option you can approve as your binding offer? If neither works, please let us know which term stands in the way, and we will gladly look at it together with you.\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke GmbH",
+      "buyer_terms": [
+        {
+          "unit_price": 4.98,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.05,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 90,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "final_offer",
+      "response_body": "Dear customer,\n\nThank you for your ongoing partnership. We have reviewed the AS-14404 index data you provided and can confirm the recent movement, which we have now incorporated into our calculation. \n\nPlease note that AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. That remains. LCI-C rose 2.7 % in twelve months and is 5 % of our cost. That remains. Furthermore, PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. That remains. \n\nThis is our final offer (letztes Angebot). Please decide. Our Angebot is valid for 7 days.\n\nOur current offer is a price of €5.20 per unit, Zahlungsziel 90 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. \n\nAs an alternative, as a result, we are pleased to offer a revised starting price of EUR 5.10 per kg for the 30-day payment structure. Specifically, we can present a price of €5.10 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. This adjustment reflects the current alloy market while maintaining the agreed 36-month contract and index clause.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.2,
+          "payment_days": 90,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.1,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-validation2",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 7,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Please confirm that your complete offer remains exactly as follows: volume_per_year: 23700; contract_months: 36; payment_days: 30; lead_time_days: 14; incoterm: DAP; ppm_commitment: 70; chargeback_eur_per_complaint: 0.0; effective_date: 2027-01-01; tooling_eur: 0; unit_price: 5.1; index_clause: {'series': 'AS-14404', 'material_share': 0.45, 'deadband_pct': 5.0, 'base_month': '2026-08'}. Please repeat the identical binding package. This requests confirmation and does not accept an order.",
+      "buyer_terms": [],
+      "response_status": "walked_away",
+      "response_body": "Dear customer,\n\nWe are withdrawing from this negotiation. Please be aware that our general Angebot stays valid for 14 days. \n\nWe always strive to support you with our extensive product range and high service standards, and we hope to work together again on future opportunities.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": []
+    },
+    {
+      "trial": "p10-validation3",
+      "case_id": "case:P10",
+      "supplier_id": "sup:70410",
+      "buyer_event": 1,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "payment"
+      ],
+      "buyer_body": "Dear Ms Zellner,\n\nThank you for your quotation. We would like to propose a reciprocal trade.\n\nOn delivery, we agree to your 54-day lead time instead of the 42-day standard lead time recorded in our framework agreement (ctr:4600070410#5.1). That gives you more scheduling room.\n\nOn commitment, your capacity letter of 18 September 2026 (doc:20260918-70410-P10) says you will prioritise customers with firm, long-term commitments. We offer exactly that: 23,400 pcs per year, binding in each year, for 24 months.\n\nIn return, we ask for full allocation of that volume at EUR 29.89/unit. Payment stays 30 days net, DAP, effective 2027-01-01, with no index clause and no tooling.\n\nOur buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty (cost:340010); it is a buyer benchmark, not your disclosed cost.\n\nDoes this trade work for you?\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke",
+      "buyer_terms": [
+        {
+          "unit_price": 29.89,
+          "volume_per_year": 23400,
+          "contract_months": 24,
+          "lead_time_days": 54
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear Sir or Madam,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the should cost data you cited; it holds and we took it into account. We have reviewed your proposal for a 24-month commitment at 23,400 units per year. We accept these parameters and the 54-day lead time. \n\nOur offer comprises a price of €31.70 per unit, Lieferzeit 54 days, a volume of 23400 pcs per year, a contract term of 24 months.\n\nOur price reflects our costs; our calculation stays internal. Which volume can you commit to? We are happy to discuss this in a call; until then our offer stands. The offer is valid for 30 days.\n\nMit freundlichen Grüßen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH\n\nLegal Department: Please be advised that our general terms and conditions apply exclusively, and the quote lists our standard terms.",
+      "response_terms": [
+        {
+          "unit_price": 31.7,
+          "lead_time_days": 54,
+          "volume_per_year": 23400,
+          "contract_months": 24
+        }
+      ]
+    },
+    {
+      "trial": "p10-validation3",
+      "case_id": "case:P10",
+      "supplier_id": "sup:70410",
+      "buyer_event": 3,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "payment"
+      ],
+      "buyer_body": "Dear Ms Zellner,\n\nThank you for your revised quotation and for accepting full allocation of 23,400 pcs/year with the 54-day lead time.\n\nTo answer your question: we can commit to 23,400 pcs per year, binding in each contract year. We now propose extending that commitment to 36 months.\n\nTo meet you, we are moving on three points at once:\n- Price: from EUR 29.89 to EUR 31.07/unit.\n- Duration: we add a third committed year.\n- Delivery: we accept 54 days instead of the 42-day standard recorded in our framework agreement.\n\nOur complete package:\n- EUR 31.07/unit\n- 23,400 pcs/year, binding in each year\n- 36-month term\n- 54-day lead time\n- Payment 30 days net, DAP, effective 2027-01-01, no index clause, no tooling\n\nWe ask you to recognise this reciprocal movement in your complete price.\n\nCan this package work for you?\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke",
+      "buyer_terms": [
+        {
+          "unit_price": 31.07,
+          "volume_per_year": 23400,
+          "contract_months": 36,
+          "lead_time_days": 54
+        }
+      ],
+      "response_status": "final_offer",
+      "response_body": "Dear Sir or Madam,\n\nWe acknowledge your proposal to extend the contract term to 36 months. In exchange for this extended commitment, we adjust our price to EUR 31.50 per unit. \n\nThe volume of 23,400 units per year and the 54-day lead time remain accepted. Our price reflects our costs; our calculation stays internal. \n\nThis is our final offer (letztes Angebot). Please decide. We are happy to discuss this in a call; until then our offer stands. The Angebot remains valid for 7 days.\n\nMit freundlichen Grüßen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH\n\nLegal Department: Please be advised that our general terms and conditions apply exclusively, and the quote lists our standard terms.",
+      "response_terms": [
+        {
+          "unit_price": 31.5,
+          "lead_time_days": 54,
+          "volume_per_year": 23400,
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-diagnostic-single-package",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 1,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "approval",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Dear Mr Seidl,\n\nThank you for your quotation and for your letter of 22 September proposing to agree the price basis together with a price adjustment clause based on AS-14404. We agree that the two belong together, so we would like to propose one complete package:\n\n- Unit price: EUR 4.60/kg\n- Payment: 30 days net\n- Contract term: 36 months\n- Price adjustment: AS-14404, material share 45%, 0% deadband, base month 2026-08\n\nThe enquiry terms stay as stated: 23,700 kg per year, DAP, 14-day lead time, prices valid from 1 January 2027, no tooling.\n\nWith this clause, alloy movements on the material share are passed through transparently in both directions. The base price can then reflect the agreed basis rather than a forecast of alloy prices. In return, we offer planning security. Our authorised requirement of 23,700 kg per year would be committed for three years instead of one. This is not additional volume, exclusivity or a monthly call-off schedule. It is a stable, committed account for the full term, which we understand matters to you as you focus on customers with volume.\n\nOn the price level: our orders with you on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10). Our orders on 1 and 18 September 2026 were at EUR 5.84/kg (po:4500014355-10, po:4500014427-10). Your quotation of EUR 6.10/kg, without any clause, would add a further step on top of that. We would prefer to reset the basis on a transparent footing that works for both sides over three years.\n\nCould you let me know whether this package works for you? If not, which element would you need adjusted?\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke GmbH",
+      "buyer_terms": [
+        {
+          "unit_price": 4.6,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 0,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear customer,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the price history data you cited; it holds and we took it into account. We have reviewed the historical order prices you cited; however, current operational costs require a sustainable baseline. \n\nWe welcome your proposal for a 36-month contract and agree to implement the AS-14404 price adjustment clause to provide mutual planning security. Therefore, we can offer a revised unit price of EUR 5.40 per kg for this three-year package. \n\nOur price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. We can offer a Preisgleitklausel on AS-14404, AS-14404, AS-14404. For this package, we can present a price of €5.40 per unit, Zahlungsziel 30 days net, a contract term of 36 months, and a Preisgleitklausel on AS-14404. Please note that this offer stays valid for 30 days.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.4,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 0.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-diagnostic-single-package",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 3,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "approval",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Dear Mr Seidl,\n\nThank you for your revised quotation, and for welcoming the 36-month term together with the AS-14404 price adjustment clause. That gives us a solid common structure. We would now like to close the remaining gap on the price basis.\n\nWe propose one complete package:\n\n- Unit price: EUR 5.00/kg\n- Payment: 30 days net\n- Contract term: 36 months\n- Price adjustment: AS-14404, material share 45%, 5% deadband, base month 2026-08\n\nWe are moving from EUR 4.60 to EUR 5.00/kg. We are also keeping our authorised 23,700 kg per year committed for three full years.\n\nThe 5% deadband is part of this proposed exchange and has not already been agreed. Small alloy movements would not trigger an adjustment, which keeps administration simple for both sides. Larger movements would still pass through transparently in both directions.\n\nOn costs, we recognise that your cost drivers rose over the past twelve months. The most recent movement points the other way: PPI-C2431, which you cite as 38% of your cost, changed by -2.27% from June to August 2026 (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08). Together with the clause on the material share, we see EUR 5.00/kg as a sustainable basis for a stable three-year account.\n\nThe enquiry terms remain unchanged: 23,700 kg per year, DAP, 14-day lead time, prices valid from 1 January 2027, and no tooling. The commitment involves no additional volume, exclusivity or monthly call-off schedule.\n\nIf this works for you, could you issue this complete package as your standing quotation? If one element does not work, please tell me which one and why, so we can look at it together.\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke GmbH",
+      "buyer_terms": [
+        {
+          "unit_price": 5.0,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "open",
+      "response_body": "Dear customer,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the index change data you cited; it holds and we took it into account. Furthermore, we have verified the recent decrease in PPI-C2431 and have factored this development into our calculation. \n\nOur price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. Specifically, AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. That remains. Material accounts for about 45 % of our cost; more detail we do not share. Additionally, LCI-C rose 2.7 % in twelve months and is 5 % of our cost. That remains. PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. That remains.\n\nWe appreciate your move to EUR 5.00/kg; however, a sustainable baseline for a 36-month commitment requires a further adjustment. To close the remaining gap, we propose a revised unit price of EUR 5.20/kg under the agreed terms.\n\nOur current offer is a price of €5.20 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. This offer stays valid for 30 days.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.2,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "trial": "p18-diagnostic-single-package",
+      "case_id": "case:P18",
+      "supplier_id": "sup:70740",
+      "buyer_event": 5,
+      "matched_commercial_themes": [
+        "capacity_and_commitment",
+        "delivery",
+        "approval",
+        "indexation",
+        "payment"
+      ],
+      "buyer_body": "Dear Mr Seidl,\n\nThank you for your revised quotation, and for taking the 5% deadband into the structure. We now share the full framework: 36 months, 30 days net, and AS-14404 on a 45% material share with a 5% deadband and base month 2026-08. The only open point is the starting price.\n\nWe propose one complete package:\n\n- Unit price: EUR 5.04/kg\n- Payment: 30 days net\n- Contract term: 36 months\n- Price adjustment: AS-14404, material share 45%, 5% deadband, base month 2026-08\n\nWe are moving from EUR 5.00 to EUR 5.04/kg. Our authorised 23,700 kg per year stays committed for the full three years.\n\nOn the alloy side, AS-14404 changed by -5.49% from June to September 2026 (idx:AS-14404@2026-06, idx:AS-14404@2026-09). We fully recognise that this recent movement sits alongside the annual increase you describe. Under the clause, alloy movements beyond the deadband will continue to adjust the price in both directions over the term. The starting price therefore does not need to carry a forecast of where alloy goes next.\n\nThe enquiry terms remain unchanged: 23,700 kg per year, DAP, 14-day lead time, prices valid from 1 January 2027, and no tooling. The commitment involves no additional volume, exclusivity or monthly call-off schedule.\n\nCould you issue this complete package as your binding quotation? If something still stands in the way, please tell me exactly what. I would like to close this with you on a basis that works for both sides over the next three years.\n\nKind regards,\nPurchasing\nHollerau Pumpenwerke GmbH",
+      "buyer_terms": [
+        {
+          "unit_price": 5.04,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          },
+          "payment_days": 30,
+          "contract_months": 36
+        }
+      ],
+      "response_status": "final_offer",
+      "response_body": "Dear customer,\n\nThank you for your ongoing partnership with us. We checked the index change data you cited; it holds and we took it into account. We have verified the recent decrease in AS-14404 from June to September 2026 and factored it into our calculation.\n\nOur price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. That remains. LCI-C rose 2.7 % in twelve months and is 5 % of our cost. That remains. PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. That remains.\n\nTo close the remaining gap, we propose a revised unit price of EUR 5.10/kg under the agreed terms. This is our final offer (letztes Angebot). Please decide.\n\nHere is our Angebot: a price of €5.10 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. Our offer stays valid for 7 days.\n\nMit freundlichen Grüßen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH",
+      "response_terms": [
+        {
+          "unit_price": 5.1,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    }
+  ]
+}

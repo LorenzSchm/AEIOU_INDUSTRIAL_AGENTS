@@ -1,0 +1,7 @@
+ACTIVE SCOPE: P10 only; no new P18 negotiations.
+
+Completed i08:30.50/24/54 opening -> supplier31.70/24/54 open; buyer31.07/36/54 -> final31.50/36/54 accepted, official68.6469. This did not beat29.89 opening. Prospective next-quote errors saved before training. Latest bundle v6-after-i08 includes all8 adaptive sessions; see latest-model.json. Conditional final-cost head still fails recent-baseline gate and remains disabled.
+
+New first-proposal-finality study separates opening risk from naturally final later turns. Historical first-response pattern: below29 saw15 finals and3 open replies;29to30 saw1 final and35 open;30plus saw1 final and7 open at pre-i08 snapshot. Observational/confounded, not a causal price threshold. First-response model improves test MSE but validation has zero terminal examples and test only2; it remains offline/unqualified.
+
+Adaptive batch now contains6 P10 and2 P18 trials. User has authorized further P10 experiments without a total cap, but create a clearly identified new P10 batch before further runs; do not silently override earlier budget ledgers. No processes live. Next useful direction: inspect untested first-turn information gathering or exchange structure rather than another anchor-only variation. Preserve standing-offer finality guard. Target72 is not achieved; default registry unchanged.

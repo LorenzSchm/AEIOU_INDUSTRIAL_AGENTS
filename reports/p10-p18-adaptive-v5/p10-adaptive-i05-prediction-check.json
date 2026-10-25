@@ -1,0 +1,42 @@
+{
+  "session_id": "9791e46c219b1888",
+  "case_id": "case:P10",
+  "excluded_steps": {
+    "action_only_close": 1
+  },
+  "models": [
+    {
+      "path": "data/local/custom-p10-p18-v5-after-i04/model.json",
+      "sha256": "394f3a337980da187850e4231ec32954c14abe8699be5b9b879f7a60b58e60a5",
+      "supported_predictions": 2,
+      "mae": 0.014065639563894058,
+      "mse": 0.00030734649039734633,
+      "predictions": [
+        {
+          "turn": 1,
+          "actual_gain": 0.20464982166189152,
+          "predicted_gain": 0.18011975310946854,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        },
+        {
+          "turn": 3,
+          "actual_gain": 0.006130351956528468,
+          "predicted_gain": 0.009731562531893598,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        }
+      ]
+    }
+  ],
+  "method": "Actual sent email, public prefix only; session excluded from each model's corpus.",
+  "limitation": "One session is noisy evidence. Abstentions are reported, not assigned zero error."
+}

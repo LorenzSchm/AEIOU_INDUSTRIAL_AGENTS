@@ -1,0 +1,814 @@
+{
+  "authorized_total": 12,
+  "authorized_per_case": 6,
+  "target": 72,
+  "validation_reserved_per_case": 3,
+  "trials": [
+    {
+      "trial": "p10-dev1-baseline",
+      "case_id": "case:P10",
+      "phase": "development",
+      "mode": "shadow",
+      "status": "completed",
+      "run_id": "4c938d333bbd4652a0f23bf3918cb5d1",
+      "model_sha256": "5f8d1427edc41f96b79d60b74dc9374d307da118ea1c3657a213072a70f082af",
+      "prompt": {
+        "variant": "learning-v4",
+        "strategy_revision": "p10-dev1-baseline",
+        "strategy_sha256": "b2218cdaa89c46a32baaa9d1b6b6bbed1cb09629bbfd6547baea7a6e211e81cb",
+        "transport_sha256": "1fec9a0532dc78257222332c24bc703e1b9dd788f3c0f8af9a07837ccd32d32c",
+        "system_sha256": "a8e311e7539005a11700c8aa2cf17d0cff8eb5517a6239034a0bd8212eb3f636",
+        "protocol_version": "faithful-v18-closing-cost-comparison",
+        "required_repeats": 0,
+        "enforce_reference_tactics": false,
+        "response_support_mode": "shadow",
+        "assessment_version": "supplier-assessment-v2-source-labels"
+      },
+      "created_at": "2026-10-25T09:06:52.615230+00:00",
+      "score": 67.86635792127808,
+      "deal": true,
+      "must_haves_ok": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.6
+      },
+      "session_id": "a8d7270ea7b60048",
+      "elapsed_s": 57.21
+    },
+    {
+      "trial": "p18-dev1-baseline",
+      "case_id": "case:P18",
+      "phase": "development",
+      "mode": "shadow",
+      "status": "failed",
+      "run_id": "e006171a0f654704a13d37658e6fe903",
+      "model_sha256": "5f8d1427edc41f96b79d60b74dc9374d307da118ea1c3657a213072a70f082af",
+      "prompt": {
+        "variant": "learning-v4",
+        "strategy_revision": "p18-dev1-baseline",
+        "strategy_sha256": "c96d5bb0dcbb944132d0708812f6deb343cc8f4ff587d2ab035984f9ca8c38f3",
+        "transport_sha256": "694128d280daababdc86c99c7d485c152eddd2864559d98728cdcbdbdba9febb",
+        "system_sha256": "5b00d525b6024fcd18e8e9af4483027d1255095ed3ad249ac47ed8bcb6c233a7",
+        "protocol_version": "faithful-v18-closing-cost-comparison",
+        "required_repeats": 0,
+        "enforce_reference_tactics": false,
+        "response_support_mode": "shadow",
+        "assessment_version": "supplier-assessment-v2-source-labels",
+        "acceptance_floor": {
+          "case_id": "case:P18",
+          "c_open": 295173.23,
+          "c_best": 222651.27,
+          "minimum_score": 0.0,
+          "maximum_unit_price": 5.1
+        },
+        "execution_policy": {
+          "case_id": "case:P18",
+          "accept_eligible_offers": true,
+          "closing_price": 5.1,
+          "maximum_unit_price": 5.1,
+          "maximum_total_cost": 295173.23,
+          "minimum_contract_months": 24,
+          "one_final_counter": false,
+          "adapt_closing_price_to_budget": true,
+          "early_package_alternatives": {
+            "after_buyer_proposals": 1,
+            "packages": [
+              {
+                "unit_price": 5.07,
+                "payment_days": 30,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                }
+              },
+              {
+                "unit_price": 5.05,
+                "payment_days": 14,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                }
+              },
+              {
+                "unit_price": 5.1,
+                "payment_days": 60,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                }
+              }
+            ]
+          },
+          "menu_evidence_argument": "ppi_recent_change_pct",
+          "stop_after_nonqualifying_final": true
+        }
+      },
+      "created_at": "2026-10-25T09:06:52.619562+00:00",
+      "score": 0.0,
+      "error": "NegotiationBlocked: FINAL_OFFER_OUTSIDE_LIMITS",
+      "session_id": "134ee6c0ba3ec8b2",
+      "elapsed_s": 40.06,
+      "deal": false,
+      "must_haves_ok": null,
+      "outcome_source": "official_cleanup"
+    },
+    {
+      "trial": "p10-dev2-trained",
+      "case_id": "case:P10",
+      "phase": "development",
+      "mode": "advisory",
+      "status": "completed",
+      "run_id": "085daad69af841358de1682850d7f5d5",
+      "model_sha256": "5f8d1427edc41f96b79d60b74dc9374d307da118ea1c3657a213072a70f082af",
+      "prompt": {
+        "variant": "learning-v4",
+        "strategy_revision": "p10-dev2-trained",
+        "strategy_sha256": "b2218cdaa89c46a32baaa9d1b6b6bbed1cb09629bbfd6547baea7a6e211e81cb",
+        "transport_sha256": "f2d0e819c34c1fa711db11cdded0705f84937441d80a5b276ea91d74db6de449",
+        "system_sha256": "5b3ff0058ce5908c948e90293a6e6810e137240b805e84ce61931899dac8cc22",
+        "protocol_version": "faithful-v18-closing-cost-comparison",
+        "required_repeats": 0,
+        "enforce_reference_tactics": false,
+        "response_support_mode": "advisory",
+        "assessment_version": "supplier-assessment-v2-source-labels"
+      },
+      "created_at": "2026-10-25T09:08:22.763340+00:00",
+      "score": 68.64691970606857,
+      "deal": true,
+      "must_haves_ok": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.5
+      },
+      "session_id": "7c8665c87f3534b8",
+      "elapsed_s": 59.6
+    },
+    {
+      "trial": "p18-dev2-trained",
+      "case_id": "case:P18",
+      "phase": "development",
+      "mode": "advisory",
+      "status": "failed",
+      "run_id": "14ff526bf2aa4b59b8c37bf9e8950ae8",
+      "model_sha256": "5f8d1427edc41f96b79d60b74dc9374d307da118ea1c3657a213072a70f082af",
+      "prompt": {
+        "variant": "learning-v4",
+        "strategy_revision": "p18-dev2-trained",
+        "strategy_sha256": "c96d5bb0dcbb944132d0708812f6deb343cc8f4ff587d2ab035984f9ca8c38f3",
+        "transport_sha256": "f8d139cf92d11100bfc583056c5ff330227b341ade695109c75cc6a9c74fad00",
+        "system_sha256": "0295d92ec494a826afca61fae9f3c1888afb8c246200ac634d9d76147ce73cb5",
+        "protocol_version": "faithful-v18-closing-cost-comparison",
+        "required_repeats": 0,
+        "enforce_reference_tactics": false,
+        "response_support_mode": "advisory",
+        "assessment_version": "supplier-assessment-v2-source-labels",
+        "acceptance_floor": {
+          "case_id": "case:P18",
+          "c_open": 295173.23,
+          "c_best": 222651.27,
+          "minimum_score": 0.0,
+          "maximum_unit_price": 5.1
+        },
+        "execution_policy": {
+          "case_id": "case:P18",
+          "accept_eligible_offers": true,
+          "closing_price": 5.1,
+          "maximum_unit_price": 5.1,
+          "maximum_total_cost": 295173.23,
+          "minimum_contract_months": 24,
+          "one_final_counter": false,
+          "adapt_closing_price_to_budget": true,
+          "early_package_alternatives": {
+            "after_buyer_proposals": 1,
+            "packages": [
+              {
+                "unit_price": 5.07,
+                "payment_days": 30,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                }
+              },
+              {
+                "unit_price": 5.05,
+                "payment_days": 14,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                }
+              },
+              {
+                "unit_price": 5.1,
+                "payment_days": 60,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                }
+              }
+            ]
+          },
+          "menu_evidence_argument": "ppi_recent_change_pct",
+          "stop_after_nonqualifying_final": true
+        }
+      },
+      "created_at": "2026-10-25T09:08:22.778405+00:00",
+      "score": 0.0,
+      "error": "NegotiationBlocked: FINAL_OFFER_OUTSIDE_LIMITS",
+      "session_id": "120675aa08808ef0",
+      "elapsed_s": 80.47,
+      "deal": false,
+      "must_haves_ok": null,
+      "outcome_source": "official_cleanup"
+    },
+    {
+      "trial": "p10-dev3-package-menu",
+      "case_id": "case:P10",
+      "phase": "development",
+      "mode": "advisory",
+      "status": "completed",
+      "run_id": "b5d129ad8d0c4f09a2af5b3d77a980d7",
+      "model_sha256": "5f8d1427edc41f96b79d60b74dc9374d307da118ea1c3657a213072a70f082af",
+      "prompt": {
+        "variant": "learning-v4",
+        "strategy_revision": "p10-dev3-package-menu",
+        "strategy_sha256": "f390485867c4e14e7f9f5603a5056609ca01edb36b28bd058209be840c9f7549",
+        "transport_sha256": "f2d0e819c34c1fa711db11cdded0705f84937441d80a5b276ea91d74db6de449",
+        "system_sha256": "56da0e059f845d1964a6be610a2754205de3170dacfd72639e827c43ebe1ee2a",
+        "protocol_version": "faithful-v18-closing-cost-comparison",
+        "required_repeats": 0,
+        "enforce_reference_tactics": false,
+        "response_support_mode": "advisory",
+        "assessment_version": "supplier-assessment-v2-source-labels"
+      },
+      "created_at": "2026-10-25T09:17:10.460700+00:00",
+      "score": 68.64691970606857,
+      "deal": true,
+      "must_haves_ok": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.5
+      },
+      "session_id": "b61803b088436fdf",
+      "elapsed_s": 57.05
+    },
+    {
+      "trial": "p18-dev3-payment-menu",
+      "case_id": "case:P18",
+      "phase": "development",
+      "mode": "advisory",
+      "status": "failed",
+      "run_id": "d0edbe83e0ac487c9fd4e7145c57bef6",
+      "model_sha256": "5f8d1427edc41f96b79d60b74dc9374d307da118ea1c3657a213072a70f082af",
+      "prompt": {
+        "variant": "learning-v4",
+        "strategy_revision": "p18-dev3-payment-menu",
+        "strategy_sha256": "02914c20d759e5224a8fb7ab11d4e6b62ae4e9a1ba23c7be103bf08f5d7bf802",
+        "transport_sha256": "f8d139cf92d11100bfc583056c5ff330227b341ade695109c75cc6a9c74fad00",
+        "system_sha256": "b301c90b81edd71a33a037ec22dc298827a961e99ed010b31bbd4a4532ffb1d5",
+        "protocol_version": "faithful-v18-closing-cost-comparison",
+        "required_repeats": 0,
+        "enforce_reference_tactics": false,
+        "response_support_mode": "advisory",
+        "assessment_version": "supplier-assessment-v2-source-labels",
+        "acceptance_floor": {
+          "case_id": "case:P18",
+          "c_open": 295173.23,
+          "c_best": 222651.27,
+          "minimum_score": 0.0,
+          "maximum_unit_price": 5.1
+        },
+        "execution_policy": {
+          "case_id": "case:P18",
+          "accept_eligible_offers": true,
+          "closing_price": 5.1,
+          "maximum_unit_price": 5.1,
+          "maximum_total_cost": 295173.23,
+          "minimum_contract_months": 24,
+          "one_final_counter": false,
+          "adapt_closing_price_to_budget": true,
+          "early_package_alternatives": {
+            "after_buyer_proposals": 1,
+            "packages": [
+              {
+                "unit_price": 4.98,
+                "payment_days": 30,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                }
+              },
+              {
+                "unit_price": 5.0,
+                "payment_days": 60,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                }
+              },
+              {
+                "unit_price": 5.05,
+                "payment_days": 90,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                }
+              }
+            ]
+          },
+          "menu_evidence_argument": "ppi_recent_change_pct",
+          "stop_after_nonqualifying_final": true
+        }
+      },
+      "created_at": "2026-10-25T09:17:10.465308+00:00",
+      "score": 0.0,
+      "error": "NegotiationBlocked: FINAL_OFFER_OUTSIDE_LIMITS",
+      "session_id": "9bd511c7b2de3173",
+      "elapsed_s": 123.06,
+      "deal": false,
+      "must_haves_ok": null,
+      "outcome_source": "official_cleanup"
+    },
+    {
+      "trial": "p10-validation1",
+      "case_id": "case:P10",
+      "phase": "validation",
+      "mode": "advisory",
+      "status": "completed",
+      "run_id": "a9d78cc85e434b2ea27ff59ce1340ebb",
+      "model_sha256": "162ef7d80bc60c6fa1c2926260ef63012b7f101a0da492c999f3c00fa47e50c3",
+      "prompt": {
+        "variant": "learning-v4",
+        "strategy_revision": "p10-validation1",
+        "strategy_sha256": "b2218cdaa89c46a32baaa9d1b6b6bbed1cb09629bbfd6547baea7a6e211e81cb",
+        "transport_sha256": "558d91563c81d2b7083ca1149bede27ab43b1e8bc711f1af772b76fdeb655eb1",
+        "system_sha256": "8aafe27f7299383568c8328e9300089c4dd935505fb2fbd7eecb7f46b424f559",
+        "protocol_version": "faithful-v18-closing-cost-comparison",
+        "required_repeats": 0,
+        "enforce_reference_tactics": false,
+        "response_support_mode": "advisory",
+        "assessment_version": "supplier-assessment-v2-source-labels"
+      },
+      "candidate_fingerprint": {
+        "model_sha256": "162ef7d80bc60c6fa1c2926260ef63012b7f101a0da492c999f3c00fa47e50c3",
+        "system_sha256": "8aafe27f7299383568c8328e9300089c4dd935505fb2fbd7eecb7f46b424f559",
+        "policy_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "settings": {
+          "model": "claude-opus-5-5",
+          "provider": "anthropic",
+          "effort": "high",
+          "speed": "fast"
+        },
+        "max_tokens": 12000,
+        "timeout": 50,
+        "buyer_source_sha256": "62c7ee602979c3e7e72e5e06a6e8b56ed31446415640f83ee01c6ade17692744",
+        "reference_data_sha256": "8eec2f8802af9cf3d20ebbc939dc9dbe3d4b82df076d32d95e8d73a283616053"
+      },
+      "created_at": "2026-10-25T09:24:46.800209+00:00",
+      "score": 69.42748149085908,
+      "deal": true,
+      "must_haves_ok": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.4
+      },
+      "session_id": "ccdd5a7eb09a13e8",
+      "elapsed_s": 80.5
+    },
+    {
+      "trial": "p18-validation1",
+      "case_id": "case:P18",
+      "phase": "validation",
+      "mode": "advisory",
+      "status": "completed",
+      "run_id": "6fc0fe2748664c3da75ebbd54aabe778",
+      "model_sha256": "162ef7d80bc60c6fa1c2926260ef63012b7f101a0da492c999f3c00fa47e50c3",
+      "prompt": {
+        "variant": "learning-v4",
+        "strategy_revision": "p18-validation1",
+        "strategy_sha256": "285904d3a773e87a4877b6b2761a621e645ee7b5f33f7e38d04e21a85201f77d",
+        "transport_sha256": "d34f4d881c5bf82252dad46b6d1b4a49ea893cfdfadc167d1dc4bc434e8085e1",
+        "system_sha256": "e77d51057cbb7893aee32b9186237dbb5f8e389ec06060035723ef28332879ec",
+        "protocol_version": "faithful-v18-closing-cost-comparison",
+        "required_repeats": 0,
+        "enforce_reference_tactics": false,
+        "response_support_mode": "advisory",
+        "assessment_version": "supplier-assessment-v2-source-labels",
+        "acceptance_floor": {
+          "case_id": "case:P18",
+          "c_open": 295173.23,
+          "c_best": 222651.27,
+          "minimum_score": 0.0,
+          "maximum_unit_price": 5.1
+        },
+        "execution_policy": {
+          "case_id": "case:P18",
+          "accept_eligible_offers": true,
+          "closing_price": 5.1,
+          "maximum_unit_price": 5.1,
+          "maximum_total_cost": 295173.23,
+          "minimum_contract_months": 24,
+          "one_final_counter": false,
+          "adapt_closing_price_to_budget": true,
+          "early_package_alternatives": {
+            "after_buyer_proposals": 1,
+            "packages": [
+              {
+                "unit_price": 4.98,
+                "payment_days": 30,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                }
+              },
+              {
+                "unit_price": 5.0,
+                "payment_days": 60,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                }
+              },
+              {
+                "unit_price": 5.05,
+                "payment_days": 90,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                }
+              }
+            ]
+          },
+          "menu_evidence_argument": "ppi_recent_change_pct",
+          "stop_after_nonqualifying_final": true
+        }
+      },
+      "candidate_fingerprint": {
+        "model_sha256": "162ef7d80bc60c6fa1c2926260ef63012b7f101a0da492c999f3c00fa47e50c3",
+        "system_sha256": "e77d51057cbb7893aee32b9186237dbb5f8e389ec06060035723ef28332879ec",
+        "policy_sha256": "071309aa4f5c069b17befb29dfb89dd6f6028a93d1a81a9b47503aaf096d72c5",
+        "settings": {
+          "model": "claude-opus-5-5",
+          "provider": "anthropic",
+          "effort": "high",
+          "speed": "fast"
+        },
+        "max_tokens": 12000,
+        "timeout": 50,
+        "buyer_source_sha256": "62c7ee602979c3e7e72e5e06a6e8b56ed31446415640f83ee01c6ade17692744",
+        "reference_data_sha256": "8eec2f8802af9cf3d20ebbc939dc9dbe3d4b82df076d32d95e8d73a283616053"
+      },
+      "created_at": "2026-10-25T09:24:47.840879+00:00",
+      "score": 0.0,
+      "deal": false,
+      "must_haves_ok": null,
+      "terms": null,
+      "session_id": "15731f1c455a8032",
+      "elapsed_s": 147.27
+    },
+    {
+      "trial": "p10-validation2",
+      "case_id": "case:P10",
+      "phase": "validation",
+      "mode": "advisory",
+      "status": "completed",
+      "run_id": "a6bb3a0ef3de482093191e0325fe5b38",
+      "model_sha256": "162ef7d80bc60c6fa1c2926260ef63012b7f101a0da492c999f3c00fa47e50c3",
+      "prompt": {
+        "variant": "learning-v4",
+        "strategy_revision": "p10-validation2",
+        "strategy_sha256": "b2218cdaa89c46a32baaa9d1b6b6bbed1cb09629bbfd6547baea7a6e211e81cb",
+        "transport_sha256": "558d91563c81d2b7083ca1149bede27ab43b1e8bc711f1af772b76fdeb655eb1",
+        "system_sha256": "8aafe27f7299383568c8328e9300089c4dd935505fb2fbd7eecb7f46b424f559",
+        "protocol_version": "faithful-v18-closing-cost-comparison",
+        "required_repeats": 0,
+        "enforce_reference_tactics": false,
+        "response_support_mode": "advisory",
+        "assessment_version": "supplier-assessment-v2-source-labels"
+      },
+      "candidate_fingerprint": {
+        "model_sha256": "162ef7d80bc60c6fa1c2926260ef63012b7f101a0da492c999f3c00fa47e50c3",
+        "system_sha256": "8aafe27f7299383568c8328e9300089c4dd935505fb2fbd7eecb7f46b424f559",
+        "policy_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "settings": {
+          "model": "claude-opus-5-5",
+          "provider": "anthropic",
+          "effort": "high",
+          "speed": "fast"
+        },
+        "max_tokens": 12000,
+        "timeout": 50,
+        "buyer_source_sha256": "62c7ee602979c3e7e72e5e06a6e8b56ed31446415640f83ee01c6ade17692744",
+        "reference_data_sha256": "8eec2f8802af9cf3d20ebbc939dc9dbe3d4b82df076d32d95e8d73a283616053"
+      },
+      "created_at": "2026-10-25T09:26:21.081734+00:00",
+      "score": 68.64691970606857,
+      "deal": true,
+      "must_haves_ok": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.5
+      },
+      "session_id": "12be88d0edc8d64d",
+      "elapsed_s": 73.13
+    },
+    {
+      "trial": "p18-validation2",
+      "case_id": "case:P18",
+      "phase": "validation",
+      "mode": "advisory",
+      "status": "completed",
+      "run_id": "625064ba8f4d4bca80943ced33489124",
+      "model_sha256": "162ef7d80bc60c6fa1c2926260ef63012b7f101a0da492c999f3c00fa47e50c3",
+      "prompt": {
+        "variant": "learning-v4",
+        "strategy_revision": "p18-validation2",
+        "strategy_sha256": "285904d3a773e87a4877b6b2761a621e645ee7b5f33f7e38d04e21a85201f77d",
+        "transport_sha256": "d34f4d881c5bf82252dad46b6d1b4a49ea893cfdfadc167d1dc4bc434e8085e1",
+        "system_sha256": "e77d51057cbb7893aee32b9186237dbb5f8e389ec06060035723ef28332879ec",
+        "protocol_version": "faithful-v18-closing-cost-comparison",
+        "required_repeats": 0,
+        "enforce_reference_tactics": false,
+        "response_support_mode": "advisory",
+        "assessment_version": "supplier-assessment-v2-source-labels",
+        "acceptance_floor": {
+          "case_id": "case:P18",
+          "c_open": 295173.23,
+          "c_best": 222651.27,
+          "minimum_score": 0.0,
+          "maximum_unit_price": 5.1
+        },
+        "execution_policy": {
+          "case_id": "case:P18",
+          "accept_eligible_offers": true,
+          "closing_price": 5.1,
+          "maximum_unit_price": 5.1,
+          "maximum_total_cost": 295173.23,
+          "minimum_contract_months": 24,
+          "one_final_counter": false,
+          "adapt_closing_price_to_budget": true,
+          "early_package_alternatives": {
+            "after_buyer_proposals": 1,
+            "packages": [
+              {
+                "unit_price": 4.98,
+                "payment_days": 30,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                }
+              },
+              {
+                "unit_price": 5.0,
+                "payment_days": 60,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                }
+              },
+              {
+                "unit_price": 5.05,
+                "payment_days": 90,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                }
+              }
+            ]
+          },
+          "menu_evidence_argument": "ppi_recent_change_pct",
+          "stop_after_nonqualifying_final": true
+        }
+      },
+      "candidate_fingerprint": {
+        "model_sha256": "162ef7d80bc60c6fa1c2926260ef63012b7f101a0da492c999f3c00fa47e50c3",
+        "system_sha256": "e77d51057cbb7893aee32b9186237dbb5f8e389ec06060035723ef28332879ec",
+        "policy_sha256": "071309aa4f5c069b17befb29dfb89dd6f6028a93d1a81a9b47503aaf096d72c5",
+        "settings": {
+          "model": "claude-opus-5-5",
+          "provider": "anthropic",
+          "effort": "high",
+          "speed": "fast"
+        },
+        "max_tokens": 12000,
+        "timeout": 50,
+        "buyer_source_sha256": "62c7ee602979c3e7e72e5e06a6e8b56ed31446415640f83ee01c6ade17692744",
+        "reference_data_sha256": "8eec2f8802af9cf3d20ebbc939dc9dbe3d4b82df076d32d95e8d73a283616053"
+      },
+      "created_at": "2026-10-25T09:26:34.623845+00:00",
+      "score": 0.0,
+      "deal": false,
+      "must_haves_ok": null,
+      "terms": null,
+      "session_id": "cf06835c2813556a",
+      "elapsed_s": 126.76
+    },
+    {
+      "trial": "p10-validation3",
+      "case_id": "case:P10",
+      "phase": "validation",
+      "mode": "advisory",
+      "status": "completed",
+      "run_id": "1687718033874e4eb42e937fb9b81d18",
+      "model_sha256": "162ef7d80bc60c6fa1c2926260ef63012b7f101a0da492c999f3c00fa47e50c3",
+      "prompt": {
+        "variant": "learning-v4",
+        "strategy_revision": "p10-validation3",
+        "strategy_sha256": "b2218cdaa89c46a32baaa9d1b6b6bbed1cb09629bbfd6547baea7a6e211e81cb",
+        "transport_sha256": "558d91563c81d2b7083ca1149bede27ab43b1e8bc711f1af772b76fdeb655eb1",
+        "system_sha256": "8aafe27f7299383568c8328e9300089c4dd935505fb2fbd7eecb7f46b424f559",
+        "protocol_version": "faithful-v18-closing-cost-comparison",
+        "required_repeats": 0,
+        "enforce_reference_tactics": false,
+        "response_support_mode": "advisory",
+        "assessment_version": "supplier-assessment-v2-source-labels"
+      },
+      "candidate_fingerprint": {
+        "model_sha256": "162ef7d80bc60c6fa1c2926260ef63012b7f101a0da492c999f3c00fa47e50c3",
+        "system_sha256": "8aafe27f7299383568c8328e9300089c4dd935505fb2fbd7eecb7f46b424f559",
+        "policy_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "settings": {
+          "model": "claude-opus-5-5",
+          "provider": "anthropic",
+          "effort": "high",
+          "speed": "fast"
+        },
+        "max_tokens": 12000,
+        "timeout": 50,
+        "buyer_source_sha256": "62c7ee602979c3e7e72e5e06a6e8b56ed31446415640f83ee01c6ade17692744",
+        "reference_data_sha256": "8eec2f8802af9cf3d20ebbc939dc9dbe3d4b82df076d32d95e8d73a283616053"
+      },
+      "created_at": "2026-10-25T09:40:01.082936+00:00",
+      "score": 68.64691970606857,
+      "deal": true,
+      "must_haves_ok": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.5
+      },
+      "session_id": "84844c483752f549",
+      "elapsed_s": 71.18
+    },
+    {
+      "trial": "p18-diagnostic-single-package",
+      "case_id": "case:P18",
+      "phase": "diagnostic",
+      "mode": "advisory",
+      "status": "completed",
+      "run_id": "9df3224f93944364945f1f90875450f8",
+      "model_sha256": "162ef7d80bc60c6fa1c2926260ef63012b7f101a0da492c999f3c00fa47e50c3",
+      "prompt": {
+        "variant": "learning-v4",
+        "strategy_revision": "p18-diagnostic-single-package",
+        "strategy_sha256": "242821b2e7fbe09093daa779ba76aac41d1a144cba5863ef8960ca53e6480f05",
+        "transport_sha256": "d34f4d881c5bf82252dad46b6d1b4a49ea893cfdfadc167d1dc4bc434e8085e1",
+        "system_sha256": "3ac4dfd6cb4e77fa8581a2169ceb5684b97ef293ec7b9ce796641f42c4cdeb5d",
+        "protocol_version": "faithful-v18-closing-cost-comparison",
+        "required_repeats": 0,
+        "enforce_reference_tactics": false,
+        "response_support_mode": "advisory",
+        "assessment_version": "supplier-assessment-v2-source-labels",
+        "acceptance_floor": {
+          "case_id": "case:P18",
+          "c_open": 295173.23,
+          "c_best": 222651.27,
+          "minimum_score": 0.0,
+          "maximum_unit_price": 5.1
+        },
+        "execution_policy": {
+          "case_id": "case:P18",
+          "accept_eligible_offers": true,
+          "closing_price": 5.1,
+          "maximum_unit_price": 5.1,
+          "maximum_total_cost": 295173.23,
+          "minimum_contract_months": 24,
+          "one_final_counter": false,
+          "adapt_closing_price_to_budget": true,
+          "stop_after_nonqualifying_final": true
+        }
+      },
+      "candidate_fingerprint": {
+        "model_sha256": "162ef7d80bc60c6fa1c2926260ef63012b7f101a0da492c999f3c00fa47e50c3",
+        "system_sha256": "3ac4dfd6cb4e77fa8581a2169ceb5684b97ef293ec7b9ce796641f42c4cdeb5d",
+        "policy_sha256": "d4f27a641ac5e44dc5670de32b63cd49b6c5d827b7cc1d510edc3aee1604e0a8",
+        "settings": {
+          "model": "claude-opus-5-5",
+          "provider": "anthropic",
+          "effort": "high",
+          "speed": "fast"
+        },
+        "max_tokens": 12000,
+        "timeout": 50,
+        "buyer_source_sha256": "62c7ee602979c3e7e72e5e06a6e8b56ed31446415640f83ee01c6ade17692744",
+        "reference_data_sha256": "8eec2f8802af9cf3d20ebbc939dc9dbe3d4b82df076d32d95e8d73a283616053"
+      },
+      "created_at": "2026-10-25T09:42:01.542892+00:00",
+      "score": 68.45646477287704,
+      "deal": true,
+      "must_haves_ok": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 14,
+        "volume_per_year": 23700,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 70,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 5.1
+      },
+      "session_id": "1152e9ab0e9472f2",
+      "elapsed_s": 127.15
+    }
+  ]
+}

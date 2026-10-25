@@ -1,0 +1,53 @@
+{
+  "session_id": "71b9078a6144f80b",
+  "case_id": "case:P18",
+  "excluded_steps": {
+    "action_only_close": 1
+  },
+  "models": [
+    {
+      "path": "data/local/custom-p10-p18-v5-after-i02/model.json",
+      "sha256": "487ea5fafe7c36bbd994db8924092a941f8436a8950750793cfc0c9e18d89c5f",
+      "supported_predictions": 3,
+      "mae": 0.00618894920985798,
+      "mse": 9.215598929412076e-05,
+      "predictions": [
+        {
+          "turn": 1,
+          "actual_gain": 0.09975189823277662,
+          "predicted_gain": 0.1006802105154513,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        },
+        {
+          "turn": 3,
+          "actual_gain": 0.04955911120624564,
+          "predicted_gain": 0.032992352338987195,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        },
+        {
+          "turn": 5,
+          "actual_gain": 0.019230769230769166,
+          "predicted_gain": 0.020302545710409983,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        }
+      ]
+    }
+  ],
+  "method": "Actual sent email, public prefix only; session excluded from each model's corpus.",
+  "limitation": "One session is noisy evidence. Abstentions are reported, not assigned zero error."
+}

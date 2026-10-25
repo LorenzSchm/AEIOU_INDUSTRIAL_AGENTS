@@ -1,0 +1,3 @@
+User supplied NegoMate preparation prompt. Retained objectives, evidence-based counterparty assessment, explicit reciprocal concessions and adaptation. Replaced prolonged-negotiation objective, redundant opening-price question, exhaustive SWOT/scoring and written thought-process requests with a bounded decision brief, exact complete-package costs and independent closing controls.
+
+P10 i04 uses the same v32 commercial schedule as i02, adding this preparation layer. Model weights have been updated after every intervening iteration as requested, so this is an exploratory comparison, not an isolated causal prompt test. Next clean prompt comparison should hold model weights fixed while any post-run retraining is saved separately.

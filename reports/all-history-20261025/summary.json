@@ -1,0 +1,2071 @@
+{
+  "conversations_excluding_verification": 1615,
+  "archive": {
+    "schema": "aeiou-all-negotiations-v2",
+    "created_at": "2026-10-25T11:33:37.527277+00:00",
+    "roots": [
+      "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/data/local",
+      "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/reports",
+      "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/tmp"
+    ],
+    "files_scanned": 9556,
+    "sessions": 1629,
+    "by_source": {
+      "hosted_practice": 280,
+      "hosted_sandbox": 137,
+      "local_simulation": 1080,
+      "local_language": 118,
+      "verification_fixture": 14
+    },
+    "split_sessions": {
+      "train": 1302,
+      "validation": 179,
+      "test": 148
+    },
+    "messages": 18227,
+    "decision_examples": 7251,
+    "decision_context_scopes": {
+      "single thread only; global ordering unavailable; incomplete for portfolio imitation": 5994,
+      "chronological conversation prefixes across all supplier threads": 1257
+    },
+    "response_examples": 6342,
+    "response_examples_by_source": {
+      "hosted": 1355,
+      "local": 4987
+    },
+    "duplicate_copies": 464,
+    "excluded": {
+      "derived_training_file": 7044,
+      "action_only_close": 319,
+      "message_without_package": 587,
+      "verification_fixture_session": 14,
+      "missing_response": 3
+    },
+    "conflicting_sessions": [
+      "hosted:0076eea8b7e72e7b",
+      "hosted:0efe335f89f9b93e",
+      "hosted:0f07b3512c84ef3b",
+      "hosted:17fb96c3d83b45c5",
+      "hosted:1bf2abced055b579",
+      "hosted:2ace6b53471c4a62",
+      "hosted:2e53d7c24e9db555",
+      "hosted:4bbbc4aa31b8be25",
+      "hosted:5919bb36f6f2f0a2",
+      "hosted:60fb3d6a7a3f9d52",
+      "hosted:6b801e9ad1d2b247",
+      "hosted:7c4d33a504249fe7",
+      "hosted:97ab7583112e4169",
+      "hosted:9a5e8bbd3a626a18",
+      "hosted:9c6fb1daad222564",
+      "hosted:a55aa7ae9a426aef",
+      "hosted:c23381f0ef7c47d5",
+      "hosted:c305fe3adb6ca87a",
+      "hosted:d366345e9f20e479",
+      "hosted:d75477601888fbc7",
+      "hosted:daeab57552d9d9ff",
+      "hosted:db51343ed43a1af2",
+      "hosted:e182a449519d0e67",
+      "hosted:e768e89ccadd59f2",
+      "hosted:eb6e2bc2d9fe34da",
+      "hosted:f11389e943937ace",
+      "hosted:f48f459c8299a22e",
+      "hosted:f4bb9e63e89efb06"
+    ],
+    "reserved_prospective_sessions": [],
+    "split_policy": "80/10/10 whole-trajectory hash; same-supplier development, not unseen-case proof",
+    "training_policy": "All observed actions retained, including failures. Outcomes separate. Simulations labeled. No preference pairs fabricated. No provider fine-tuning upload. No private reasoning included."
+  },
+  "knowledge": {
+    "tables": {
+      "contract_clauses": 280,
+      "contracts": 46,
+      "cost_drivers": 166,
+      "documents": 208,
+      "forecast_lines": 8640,
+      "forecasts": 720,
+      "goods_receipts": 5580,
+      "index_series": 33,
+      "index_values": 2258,
+      "invoices": 5578,
+      "negotiation_history": 300,
+      "news": 39,
+      "parts": 60,
+      "po_lines": 5400,
+      "price_conditions": 339,
+      "quality_notifications": 1033,
+      "quotes": 108,
+      "rfqs": 47,
+      "scorecards": 414,
+      "should_cost": 28,
+      "sourcing": 90,
+      "spend_cube": 1137,
+      "supplier_intel": 46,
+      "suppliers": 447,
+      "sunday:documents": 4,
+      "sunday:news": 6
+    },
+    "business_records": 33007,
+    "facts": 10366,
+    "documents": 303,
+    "sunday_refs": [
+      "doc:20261013-70340-S15",
+      "doc:20261016-70170-S12",
+      "doc:20261019-70190-S13",
+      "doc:20261023-HPW-MEMO",
+      "news:20261014-S11",
+      "news:20261015-S14",
+      "news:20261017-S19",
+      "news:20261020-S16",
+      "news:20261021-S17",
+      "news:20261022-S18"
+    ],
+    "errors": [],
+    "policy": "Knowledge/retrieval corpus, not invented conversation targets. Dated context in response training stays at the original case cutoff. Sunday evidence is final-only."
+  },
+  "prompt_experiments": {
+    "experiments": [
+      {
+        "variant": "a",
+        "id": "6aea1a4eda814b5c88d3ba06c27723a8",
+        "status": "completed",
+        "completed": 6,
+        "attempted": 6,
+        "failures": 0,
+        "official_mean": 63.56287042386358,
+        "all_attempt_mean_failure_zero": 63.56287042386358,
+        "case_means": {
+          "case:D01": 85.69527680979527,
+          "case:D02": 41.43046403793188
+        },
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "prompt": {
+          "variant": "eval",
+          "strategy_revision": "eval-prompt-v2",
+          "strategy_sha256": "c5bb6461abe8c47fb8312ca0c55baf3dcca829fabd8ee265d2eaf55dfba54f20",
+          "transport_sha256": "1fec9a0532dc78257222332c24bc703e1b9dd788f3c0f8af9a07837ccd32d32c",
+          "system_sha256": "171c2106d546e6521ca3edda63e8b67f3049afc6eea85a09ae1efde22d26a344",
+          "protocol_version": "faithful-v18-closing-cost-comparison",
+          "required_repeats": 0,
+          "enforce_reference_tactics": false,
+          "response_support_mode": "shadow",
+          "assessment_version": "supplier-assessment-v2-source-labels"
+        },
+        "sandbox_sessions_started": 6,
+        "practice_sessions_started": 0,
+        "rows": [
+          {
+            "case_id": "case:D01",
+            "title": "Pump housing PH-100: the foundry wants +8.8 %",
+            "repeat": 1,
+            "status": "completed",
+            "score": 0.9088683115898096,
+            "run_id": "20fb25073a3941f59c00e249be26fbd4",
+            "session_id": "91ee8ccd54eda25d"
+          },
+          {
+            "case_id": "case:D02",
+            "title": "New stainless pump shaft SH-220: award one of two suppliers",
+            "repeat": 1,
+            "status": "completed",
+            "score": 0.42834591385754894,
+            "run_id": "1c1b58b9facf47efbe95e389322bb514",
+            "session_id": "41141f7c8d7d9666"
+          },
+          {
+            "case_id": "case:D01",
+            "title": "Pump housing PH-100: the foundry wants +8.8 %",
+            "repeat": 2,
+            "status": "completed",
+            "score": 0.838832419100059,
+            "run_id": "5906b42ba72a4061827f24c401a06fe1",
+            "session_id": "90e4fe2f16caa361"
+          },
+          {
+            "case_id": "case:D02",
+            "title": "New stainless pump shaft SH-220: award one of two suppliers",
+            "repeat": 2,
+            "status": "completed",
+            "score": 0.3651600963354381,
+            "run_id": "66332d577d8d4940903772049e2b5b55",
+            "session_id": "50e87118389c813f"
+          },
+          {
+            "case_id": "case:D01",
+            "title": "Pump housing PH-100: the foundry wants +8.8 %",
+            "repeat": 3,
+            "status": "completed",
+            "score": 0.8231575736039897,
+            "run_id": "516a92bed8cb465d9d30b9e8ca6708c5",
+            "session_id": "076452bbba5bc9ea"
+          },
+          {
+            "case_id": "case:D02",
+            "title": "New stainless pump shaft SH-220: award one of two suppliers",
+            "repeat": 3,
+            "status": "completed",
+            "score": 0.4494079109449694,
+            "run_id": "598e4e838c27437987ab02d1dd5ced18",
+            "session_id": "927da6fb911b2c46"
+          }
+        ]
+      },
+      {
+        "variant": "b",
+        "id": "f218f19047344bc1973ec697458f32b4",
+        "status": "completed",
+        "completed": 6,
+        "attempted": 6,
+        "failures": 0,
+        "official_mean": 54.559227916686105,
+        "all_attempt_mean_failure_zero": 54.559227916686105,
+        "case_means": {
+          "case:D01": 79.97411911940307,
+          "case:D02": 29.14433671396915
+        },
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "prompt": {
+          "variant": "eval",
+          "strategy_revision": "eval-prompt-v2",
+          "strategy_sha256": "77e531a90f74a082f38a5bf77a43a9fb666e9853686bb682022158604eff61f4",
+          "transport_sha256": "1fec9a0532dc78257222332c24bc703e1b9dd788f3c0f8af9a07837ccd32d32c",
+          "system_sha256": "d01619ffcd290221fd0629dd529c7aef68cb3f23160db7bfc62f2f77b14b23a9",
+          "protocol_version": "faithful-v18-closing-cost-comparison",
+          "required_repeats": 0,
+          "enforce_reference_tactics": false,
+          "response_support_mode": "shadow",
+          "assessment_version": "supplier-assessment-v2-source-labels"
+        },
+        "sandbox_sessions_started": 6,
+        "practice_sessions_started": 0,
+        "rows": [
+          {
+            "case_id": "case:D01",
+            "title": "Pump housing PH-100: the foundry wants +8.8 %",
+            "repeat": 1,
+            "status": "completed",
+            "score": 0.7869485610655068,
+            "run_id": "b490bea61f7b4a68838430f25ab9175a",
+            "session_id": "170ab62de5e4f7ce"
+          },
+          {
+            "case_id": "case:D02",
+            "title": "New stainless pump shaft SH-220: award one of two suppliers",
+            "repeat": 1,
+            "status": "completed",
+            "score": 0.2598504583786359,
+            "run_id": "14a2bc451bfb45419e05487f3159f9d2",
+            "session_id": "56d8bbee0279f2e8"
+          },
+          {
+            "case_id": "case:D01",
+            "title": "Pump housing PH-100: the foundry wants +8.8 %",
+            "repeat": 2,
+            "status": "completed",
+            "score": 0.8061375062582925,
+            "run_id": "82b64019c22c41ce8dcd57a40f748a6d",
+            "session_id": "d636bdd316acb744"
+          },
+          {
+            "case_id": "case:D02",
+            "title": "New stainless pump shaft SH-220: award one of two suppliers",
+            "repeat": 2,
+            "status": "completed",
+            "score": 0.2598504583786359,
+            "run_id": "81f8dab5ae3644bbab2812e0ba8a59d0",
+            "session_id": "911cbf09c2a9e5db"
+          },
+          {
+            "case_id": "case:D01",
+            "title": "Pump housing PH-100: the foundry wants +8.8 %",
+            "repeat": 3,
+            "status": "completed",
+            "score": 0.8061375062582925,
+            "run_id": "75aca34f0b974ce8a9775b031b15a011",
+            "session_id": "4cead6cf62e8bf5d"
+          },
+          {
+            "case_id": "case:D02",
+            "title": "New stainless pump shaft SH-220: award one of two suppliers",
+            "repeat": 3,
+            "status": "completed",
+            "score": 0.35462918466180265,
+            "run_id": "61dc9143867c4ef8aac8f89d692ddbe8",
+            "session_id": "3b7c1a63286cac76"
+          }
+        ]
+      },
+      {
+        "variant": "v2",
+        "id": "5490fd9e437d422d8544c09a50ed6021",
+        "status": "completed",
+        "completed": 6,
+        "attempted": 6,
+        "failures": 0,
+        "official_mean": 61.290468661035575,
+        "all_attempt_mean_failure_zero": 61.29046866103557,
+        "case_means": {
+          "case:D01": 83.95873956246196,
+          "case:D02": 38.622197759609186
+        },
+        "model": "claude-opus-5-5",
+        "effort": "medium",
+        "prompt": {
+          "variant": "eval",
+          "strategy_revision": "eval-prompt-v2",
+          "strategy_sha256": "6ff6ffc802337ae85fd2de20012e4909b88268a25274908167fecc0587351204",
+          "transport_sha256": "1fec9a0532dc78257222332c24bc703e1b9dd788f3c0f8af9a07837ccd32d32c",
+          "system_sha256": "3f684bf3dfcca444690dfd8f7661044f957b217feafde09a272136c30216b352",
+          "protocol_version": "faithful-v18-closing-cost-comparison",
+          "required_repeats": 0,
+          "enforce_reference_tactics": false,
+          "response_support_mode": "shadow",
+          "assessment_version": "supplier-assessment-v2-source-labels"
+        },
+        "sandbox_sessions_started": 6,
+        "practice_sessions_started": 0,
+        "rows": [
+          {
+            "case_id": "case:D01",
+            "title": "Pump housing PH-100: the foundry wants +8.8 %",
+            "repeat": 1,
+            "status": "completed",
+            "score": 0.7803190012213002,
+            "run_id": "25792930c195437cb746b9fba5ec0ddb",
+            "session_id": "5fba79443ed480c1"
+          },
+          {
+            "case_id": "case:D02",
+            "title": "New stainless pump shaft SH-220: award one of two suppliers",
+            "repeat": 1,
+            "status": "completed",
+            "score": 0.34409809924801765,
+            "run_id": "6256ab004dfc400f9f28dd9ab00d0055",
+            "session_id": "d03d710116155d51"
+          },
+          {
+            "case_id": "case:D01",
+            "title": "Pump housing PH-100: the foundry wants +8.8 %",
+            "repeat": 2,
+            "status": "completed",
+            "score": 0.8555506451391356,
+            "run_id": "e2f887ad41f64e51914199ce8d132625",
+            "session_id": "9f1adfc17ed1c994"
+          },
+          {
+            "case_id": "case:D02",
+            "title": "New stainless pump shaft SH-220: award one of two suppliers",
+            "repeat": 2,
+            "status": "completed",
+            "score": 0.407283916770129,
+            "run_id": "804a111415334e3aba879d9b3d001429",
+            "session_id": "f8b7ffcec5459a5d"
+          },
+          {
+            "case_id": "case:D01",
+            "title": "Pump housing PH-100: the foundry wants +8.8 %",
+            "repeat": 3,
+            "status": "completed",
+            "score": 0.882892540513423,
+            "run_id": "b6cb6e4e0adf4c3facba5178c77a29ae",
+            "session_id": "df916ce1c816592e"
+          },
+          {
+            "case_id": "case:D02",
+            "title": "New stainless pump shaft SH-220: award one of two suppliers",
+            "repeat": 3,
+            "status": "completed",
+            "score": 0.407283916770129,
+            "run_id": "02ed2c80111e4df7954c978be87e11e5",
+            "session_id": "3eb47970eaf51dd4"
+          }
+        ]
+      }
+    ],
+    "interpretation": "Fresh stochastic sandbox runs on a matched case/repeat plan. V2 was adapted after the first v1 D02 result, so this is exploratory development. No automatic default promotion."
+  },
+  "mixed_response_training": {
+    "rows": 6164,
+    "by_source": {
+      "hosted": 1305,
+      "local": 4859
+    },
+    "groups": 12,
+    "folds": [
+      {
+        "group": "case:case:D01",
+        "hosted_training": 1069,
+        "mixed_training": 5928,
+        "test": 236
+      },
+      {
+        "group": "case:case:D02",
+        "hosted_training": 1026,
+        "mixed_training": 5885,
+        "test": 279
+      },
+      {
+        "group": "case:case:P01",
+        "hosted_training": 1190,
+        "mixed_training": 6032,
+        "test": 115
+      },
+      {
+        "group": "case:case:P02",
+        "hosted_training": 1263,
+        "mixed_training": 6116,
+        "test": 42
+      },
+      {
+        "group": "case:case:P03",
+        "hosted_training": 1241,
+        "mixed_training": 6090,
+        "test": 64
+      },
+      {
+        "group": "case:case:P04",
+        "hosted_training": 1264,
+        "mixed_training": 6107,
+        "test": 41
+      },
+      {
+        "group": "case:case:P05",
+        "hosted_training": 1237,
+        "mixed_training": 6092,
+        "test": 68
+      },
+      {
+        "group": "case:case:P07",
+        "hosted_training": 1258,
+        "mixed_training": 6106,
+        "test": 47
+      },
+      {
+        "group": "case:case:P08",
+        "hosted_training": 1242,
+        "mixed_training": 6094,
+        "test": 63
+      },
+      {
+        "group": "case:case:P10",
+        "hosted_training": 1181,
+        "mixed_training": 6030,
+        "test": 124
+      },
+      {
+        "group": "case:case:P11",
+        "hosted_training": 1252,
+        "mixed_training": 6101,
+        "test": 53
+      },
+      {
+        "group": "case:case:P18",
+        "hosted_training": 1132,
+        "mixed_training": 5983,
+        "test": 173
+      }
+    ],
+    "comparisons": {
+      "package_matched": {
+        "hosted_only": {
+          "macro_brier": 0.07958154953343526,
+          "macro_log_loss": 0.3147896063961483,
+          "groups": {
+            "case:case:D01": {
+              "brier": 0.02701781219900567,
+              "log_loss": 0.12366880727395557
+            },
+            "case:case:D02": {
+              "brier": 0.012948773936671938,
+              "log_loss": 0.08192127987427893
+            },
+            "case:case:P01": {
+              "brier": 0.018775152359911604,
+              "log_loss": 0.13919845277170254
+            },
+            "case:case:P02": {
+              "brier": 0.5683765552526229,
+              "log_loss": 2.122732718472272
+            },
+            "case:case:P03": {
+              "brier": 0.0487287530698471,
+              "log_loss": 0.2103249385549691
+            },
+            "case:case:P04": {
+              "brier": 0.010074160286003253,
+              "log_loss": 0.06467915233532112
+            },
+            "case:case:P05": {
+              "brier": 0.057998183706619084,
+              "log_loss": 0.22458407766734886
+            },
+            "case:case:P07": {
+              "brier": 0.030794212730000554,
+              "log_loss": 0.11414741683799527
+            },
+            "case:case:P08": {
+              "brier": 0.024783275753150952,
+              "log_loss": 0.1306186310955313
+            },
+            "case:case:P10": {
+              "brier": 0.003177136109555285,
+              "log_loss": 0.03936332614698459
+            },
+            "case:case:P11": {
+              "brier": 0.058838183594791635,
+              "log_loss": 0.23874152593277864
+            },
+            "case:case:P18": {
+              "brier": 0.09346639540304315,
+              "log_loss": 0.28749494979064144
+            }
+          }
+        },
+        "hosted_plus_local": {
+          "macro_brier": 0.07542781768587214,
+          "macro_log_loss": 0.26097136735967835,
+          "groups": {
+            "case:case:D01": {
+              "brier": 0.030496775028045486,
+              "log_loss": 0.13951500434292066
+            },
+            "case:case:D02": {
+              "brier": 0.013245174489682359,
+              "log_loss": 0.07674338061579455
+            },
+            "case:case:P01": {
+              "brier": 0.04667271639906747,
+              "log_loss": 0.22190757880377915
+            },
+            "case:case:P02": {
+              "brier": 0.47507737775479236,
+              "log_loss": 1.3519704754864785
+            },
+            "case:case:P03": {
+              "brier": 0.06753378371768999,
+              "log_loss": 0.2670082204403133
+            },
+            "case:case:P04": {
+              "brier": 0.012906634300674631,
+              "log_loss": 0.06400728585928693
+            },
+            "case:case:P05": {
+              "brier": 0.05956842333659031,
+              "log_loss": 0.2212111432159716
+            },
+            "case:case:P07": {
+              "brier": 0.03132987436502873,
+              "log_loss": 0.1141765812928255
+            },
+            "case:case:P08": {
+              "brier": 0.023704898191555225,
+              "log_loss": 0.11792371369257153
+            },
+            "case:case:P10": {
+              "brier": 0.019538912795798672,
+              "log_loss": 0.09794882301381166
+            },
+            "case:case:P11": {
+              "brier": 0.056768552207839496,
+              "log_loss": 0.22632857624146288
+            },
+            "case:case:P18": {
+              "brier": 0.06829068964370098,
+              "log_loss": 0.23291562531092375
+            }
+          }
+        },
+        "base_rate": {
+          "macro_brier": 0.07357153582135971,
+          "macro_log_loss": 0.319076766845409,
+          "groups": {
+            "case:case:D01": {
+              "brier": 0.029072722070358804,
+              "log_loss": 0.14863482004897388
+            },
+            "case:case:D02": {
+              "brier": 0.014790775651515762,
+              "log_loss": 0.10774239029966315
+            },
+            "case:case:P01": {
+              "brier": 0.006535618405251716,
+              "log_loss": 0.0842985201165289
+            },
+            "case:case:P02": {
+              "brier": 0.574674912046313,
+              "log_loss": 2.223552143910793
+            },
+            "case:case:P03": {
+              "brier": 0.040771458489027634,
+              "log_loss": 0.1824515156204164
+            },
+            "case:case:P04": {
+              "brier": 0.006535618405251716,
+              "log_loss": 0.0842985201165289
+            },
+            "case:case:P05": {
+              "brier": 0.05610786855804366,
+              "log_loss": 0.22723116540092902
+            },
+            "case:case:P07": {
+              "brier": 0.03502072327328308,
+              "log_loss": 0.16579178628692823
+            },
+            "case:case:P08": {
+              "brier": 0.02031533410953936,
+              "log_loss": 0.12351000278958968
+            },
+            "case:case:P10": {
+              "brier": 0.006535618405251716,
+              "log_loss": 0.0842985201165289
+            },
+            "case:case:P11": {
+              "brier": 0.058754059872087955,
+              "log_loss": 0.23500987436459198
+            },
+            "case:case:P18": {
+              "brier": 0.03374372057039213,
+              "log_loss": 0.16210194307343587
+            }
+          }
+        }
+      },
+      "direct_cost_improved": {
+        "hosted_only": {
+          "macro_brier": 0.18081151382161334,
+          "macro_log_loss": 0.5449988531948734,
+          "groups": {
+            "case:case:D01": {
+              "brier": 0.12053532410805883,
+              "log_loss": 0.40138781849870164
+            },
+            "case:case:D02": {
+              "brier": 0.18633198438446305,
+              "log_loss": 0.5562709474403577
+            },
+            "case:case:P01": {
+              "brier": 0.17691090640423934,
+              "log_loss": 0.543637882667483
+            },
+            "case:case:P02": {
+              "brier": 0.11627906320332247,
+              "log_loss": 0.4064877002579294
+            },
+            "case:case:P03": {
+              "brier": 0.3285787918624012,
+              "log_loss": 0.9116497259432279
+            },
+            "case:case:P04": {
+              "brier": 0.4091619773857489,
+              "log_loss": 1.2044518281880459
+            },
+            "case:case:P05": {
+              "brier": 0.2317690076938021,
+              "log_loss": 0.6529836017680151
+            },
+            "case:case:P07": {
+              "brier": 0.08486038095119461,
+              "log_loss": 0.29713858460369885
+            },
+            "case:case:P08": {
+              "brier": 0.14119549919371577,
+              "log_loss": 0.41915783654832794
+            },
+            "case:case:P10": {
+              "brier": 0.030677991510523608,
+              "log_loss": 0.14310369712581253
+            },
+            "case:case:P11": {
+              "brier": 0.22640485355758172,
+              "log_loss": 0.658450240506896
+            },
+            "case:case:P18": {
+              "brier": 0.11703238560430859,
+              "log_loss": 0.3452663747899843
+            }
+          }
+        },
+        "hosted_plus_local": {
+          "macro_brier": 0.17367814666441858,
+          "macro_log_loss": 0.5393017965967779,
+          "groups": {
+            "case:case:D01": {
+              "brier": 0.11617232280745422,
+              "log_loss": 0.3923085518035932
+            },
+            "case:case:D02": {
+              "brier": 0.19690006407609398,
+              "log_loss": 0.5976250825718372
+            },
+            "case:case:P01": {
+              "brier": 0.15254956962516358,
+              "log_loss": 0.48361923252985994
+            },
+            "case:case:P02": {
+              "brier": 0.07520087261042957,
+              "log_loss": 0.29440422528662885
+            },
+            "case:case:P03": {
+              "brier": 0.3598420849782478,
+              "log_loss": 0.9906767247301311
+            },
+            "case:case:P04": {
+              "brier": 0.4479653811086465,
+              "log_loss": 1.3887088427267646
+            },
+            "case:case:P05": {
+              "brier": 0.27228618201267735,
+              "log_loss": 0.7778961059861733
+            },
+            "case:case:P07": {
+              "brier": 0.0507345122081564,
+              "log_loss": 0.21060252165329665
+            },
+            "case:case:P08": {
+              "brier": 0.08693521200511183,
+              "log_loss": 0.30162841768691123
+            },
+            "case:case:P10": {
+              "brier": 0.031191434391653,
+              "log_loss": 0.14525907119337803
+            },
+            "case:case:P11": {
+              "brier": 0.217163179677767,
+              "log_loss": 0.6321393872855625
+            },
+            "case:case:P18": {
+              "brier": 0.07719694447162188,
+              "log_loss": 0.25675339570719796
+            }
+          }
+        },
+        "base_rate": {
+          "macro_brier": 0.1830738693573449,
+          "macro_log_loss": 0.557206120357656,
+          "groups": {
+            "case:case:D01": {
+              "brier": 0.10391290991283547,
+              "log_loss": 0.3773033571399368
+            },
+            "case:case:D02": {
+              "brier": 0.19006209546032687,
+              "log_loss": 0.5683953433674381
+            },
+            "case:case:P01": {
+              "brier": 0.15778430797497217,
+              "log_loss": 0.4961271877757087
+            },
+            "case:case:P02": {
+              "brier": 0.09594716376798441,
+              "log_loss": 0.35992545029527334
+            },
+            "case:case:P03": {
+              "brier": 0.3855684106806407,
+              "log_loss": 1.0232698395228406
+            },
+            "case:case:P04": {
+              "brier": 0.3999366333585677,
+              "log_loss": 1.0578790097768451
+            },
+            "case:case:P05": {
+              "brier": 0.2549256789404206,
+              "log_loss": 0.7160363773739918
+            },
+            "case:case:P07": {
+              "brier": 0.08497289050651566,
+              "log_loss": 0.336066233628484
+            },
+            "case:case:P08": {
+              "brier": 0.1076099408560567,
+              "log_loss": 0.3853856656340786
+            },
+            "case:case:P10": {
+              "brier": 0.08477902624383504,
+              "log_loss": 0.33564561035064233
+            },
+            "case:case:P11": {
+              "brier": 0.22723269668204046,
+              "log_loss": 0.6526077960532164
+            },
+            "case:case:P18": {
+              "brier": 0.10415467790394299,
+              "log_loss": 0.37783157337341733
+            }
+          }
+        }
+      }
+    },
+    "deployment": "offline_only",
+    "model_fits": 52,
+    "limitation": "Historical development; local synthetic scores never replace official scores. Group exclusion prevents same case/supplier leakage. No causal policy improvement claimed."
+  },
+  "tactical_training": {
+    "version": "p10-p18-response-v4-tactics",
+    "corpus": {
+      "excluded_files": {},
+      "recovered": [],
+      "unique_sessions": 417,
+      "duplicate_log_copies": 0,
+      "excluded_steps": {
+        "action_only_close": 319,
+        "message_without_package": 57
+      },
+      "examples": 1355,
+      "by_case": {
+        "case:P01": 117,
+        "case:P04": 41,
+        "case:P05": 72,
+        "case:P07": 47,
+        "case:P02": 42,
+        "case:P08": 63,
+        "case:P10": 127,
+        "case:P03": 64,
+        "case:P11": 53,
+        "case:P18": 184,
+        "case:D01": 241,
+        "case:D02": 304
+      },
+      "usable_sessions": 397,
+      "sha256": "ae15dba720cd325068b5eef730eb25716f0de0984cb1f8ec903928bc1e02dd3a",
+      "observed_post_final_examples": 50,
+      "data_policy": "Visible messages and observed responses only; no server reasons, private scores or future evidence. Final-offer counters are observed risk examples, never instructions to over-negotiate."
+    },
+    "comparisons": {
+      "case:P10": {
+        "direct_cost_improved": {
+          "incumbent_route": "focused",
+          "active_tactical": "incumbent",
+          "promotion_reason": "no_validation_gain_over_incumbent",
+          "variants": {
+            "focused": {
+              "validation": {
+                "macro_mse": 0.026882730963976992,
+                "macro_mae": 0.10045888706802521,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.026882730963976992,
+                    "mae": 0.10045888706802521,
+                    "sessions": 14,
+                    "examples": 27
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.0032907974447010163,
+                "macro_mae": 0.03714396813218393,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0032907974447010163,
+                    "mae": 0.03714396813218393,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              }
+            },
+            "incumbent": {
+              "validation": {
+                "macro_mse": 0.026882730963976992,
+                "macro_mae": 0.10045888706802521,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.026882730963976992,
+                    "mae": 0.10045888706802521,
+                    "sessions": 14,
+                    "examples": 27
+                  }
+                }
+              },
+              "context_enabled": false,
+              "test": {
+                "macro_mse": 0.0032907974447010163,
+                "macro_mae": 0.03714396813218393,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0032907974447010163,
+                    "mae": 0.03714396813218393,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              }
+            },
+            "case_tactics": {
+              "validation": {
+                "macro_mse": 0.03358792041981081,
+                "macro_mae": 0.11264629217080724,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.03358792041981081,
+                    "mae": 0.11264629217080724,
+                    "sessions": 14,
+                    "examples": 27
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.012417880287509366,
+                "macro_mae": 0.06411912677228562,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.012417880287509366,
+                    "mae": 0.06411912677228562,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              },
+              "selection": {
+                "method": "ridge",
+                "strength": 0.75,
+                "validation_mse": 0.03358792041981081
+              }
+            },
+            "pooled_tactics": {
+              "validation": {
+                "macro_mse": 0.02720179989639753,
+                "macro_mae": 0.06615661500734886,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.02720179989639753,
+                    "mae": 0.06615661500734886,
+                    "sessions": 14,
+                    "examples": 27
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.04443820519467643,
+                "macro_mae": 0.09241384999527273,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.04443820519467643,
+                    "mae": 0.09241384999527273,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              },
+              "selection": {
+                "method": "forest",
+                "strength": 1.0,
+                "validation_mse": 0.02720179989639753
+              }
+            },
+            "general_tactics": {
+              "validation": {
+                "macro_mse": 0.037652163337997764,
+                "macro_mae": 0.11401750143251516,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.037652163337997764,
+                    "mae": 0.11401750143251516,
+                    "sessions": 14,
+                    "examples": 27
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.023940400342767013,
+                "macro_mae": 0.08769261758949044,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.023940400342767013,
+                    "mae": 0.08769261758949044,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              },
+              "selection": {
+                "method": "forest",
+                "strength": 1.0,
+                "validation_mse": 0.037652163337997764
+              }
+            }
+          }
+        },
+        "quoted_cost_gain": {
+          "incumbent_route": "focused",
+          "active_tactical": "incumbent",
+          "promotion_reason": "heldout_regression_against_incumbent",
+          "variants": {
+            "focused": {
+              "validation": {
+                "macro_mse": 0.0001435144894458784,
+                "macro_mae": 0.009091187165078844,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0001435144894458784,
+                    "mae": 0.009091187165078844,
+                    "sessions": 14,
+                    "examples": 26
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.00015265167381142144,
+                "macro_mae": 0.007373804630716416,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.00015265167381142144,
+                    "mae": 0.007373804630716416,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              }
+            },
+            "incumbent": {
+              "validation": {
+                "macro_mse": 0.0001435144894458784,
+                "macro_mae": 0.009091187165078844,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0001435144894458784,
+                    "mae": 0.009091187165078844,
+                    "sessions": 14,
+                    "examples": 26
+                  }
+                }
+              },
+              "context_enabled": false,
+              "test": {
+                "macro_mse": 0.00015265167381142144,
+                "macro_mae": 0.007373804630716416,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.00015265167381142144,
+                    "mae": 0.007373804630716416,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              }
+            },
+            "case_tactics": {
+              "validation": {
+                "macro_mse": 0.00037764020339377995,
+                "macro_mae": 0.014837816945588611,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.00037764020339377995,
+                    "mae": 0.014837816945588611,
+                    "sessions": 14,
+                    "examples": 26
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 9.241326352278043e-05,
+                "macro_mae": 0.007385888693401704,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 9.241326352278043e-05,
+                    "mae": 0.007385888693401704,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              },
+              "selection": {
+                "method": "ridge",
+                "strength": 1.0,
+                "validation_mse": 0.00037764020339377995
+              }
+            },
+            "pooled_tactics": {
+              "validation": {
+                "macro_mse": 0.00010844798844254888,
+                "macro_mae": 0.007310871375222577,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.00010844798844254888,
+                    "mae": 0.007310871375222577,
+                    "sessions": 14,
+                    "examples": 26
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.00019858561850942725,
+                "macro_mae": 0.008290283661381372,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.00019858561850942725,
+                    "mae": 0.008290283661381372,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              },
+              "selection": {
+                "method": "forest",
+                "strength": 1.0,
+                "validation_mse": 0.00010844798844254888
+              }
+            },
+            "general_tactics": {
+              "validation": {
+                "macro_mse": 0.0001617643994868473,
+                "macro_mae": 0.009027081528018151,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0001617643994868473,
+                    "mae": 0.009027081528018151,
+                    "sessions": 14,
+                    "examples": 26
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.0005040222533975917,
+                "macro_mae": 0.014517060231025057,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0005040222533975917,
+                    "mae": 0.014517060231025057,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              },
+              "selection": {
+                "method": "forest",
+                "strength": 1.0,
+                "validation_mse": 0.0001617643994868473
+              }
+            }
+          }
+        },
+        "supplier_exit": {
+          "incumbent_route": "focused",
+          "active_tactical": "incumbent",
+          "promotion_reason": "insufficient_target_support",
+          "variants": {
+            "focused": {
+              "validation": {
+                "macro_mse": 0.0006482797718449432,
+                "macro_mae": 0.010710935389617576,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0006482797718449432,
+                    "mae": 0.010710935389617576,
+                    "sessions": 14,
+                    "examples": 27
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.0004097211555312636,
+                "macro_mae": 0.007262840234135502,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0004097211555312636,
+                    "mae": 0.007262840234135502,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              }
+            },
+            "incumbent": {
+              "validation": {
+                "macro_mse": 0.0006482797718449432,
+                "macro_mae": 0.010710935389617576,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0006482797718449432,
+                    "mae": 0.010710935389617576,
+                    "sessions": 14,
+                    "examples": 27
+                  }
+                }
+              },
+              "context_enabled": false,
+              "test": {
+                "macro_mse": 0.0004097211555312636,
+                "macro_mae": 0.007262840234135502,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0004097211555312636,
+                    "mae": 0.007262840234135502,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              }
+            },
+            "case_tactics": {
+              "validation": {
+                "macro_mse": 0.026603810925561074,
+                "macro_mae": 0.07407378558544582,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.026603810925561074,
+                    "mae": 0.07407378558544582,
+                    "sessions": 14,
+                    "examples": 27
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.0024932647194103484,
+                "macro_mae": 0.027627874394084297,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0024932647194103484,
+                    "mae": 0.027627874394084297,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              },
+              "selection": {
+                "method": "ridge",
+                "strength": 0.5,
+                "validation_mse": 0.026603810925561074
+              }
+            },
+            "pooled_tactics": {
+              "validation": {
+                "macro_mse": 0.0006117234987757723,
+                "macro_mae": 0.009810348315509492,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0006117234987757723,
+                    "mae": 0.009810348315509492,
+                    "sessions": 14,
+                    "examples": 27
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.0002824218990703486,
+                "macro_mae": 0.006000029895848196,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0002824218990703486,
+                    "mae": 0.006000029895848196,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              },
+              "selection": {
+                "method": "forest",
+                "strength": 1.0,
+                "validation_mse": 0.0006117234987757723
+              }
+            },
+            "general_tactics": {
+              "validation": {
+                "macro_mse": 0.0004218204938113681,
+                "macro_mae": 0.012106972346455207,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0004218204938113681,
+                    "mae": 0.012106972346455207,
+                    "sessions": 14,
+                    "examples": 27
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.0001722391958256097,
+                "macro_mae": 0.005093116532260878,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0001722391958256097,
+                    "mae": 0.005093116532260878,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              },
+              "selection": {
+                "method": "forest",
+                "strength": 1.0,
+                "validation_mse": 0.0004218204938113681
+              }
+            }
+          }
+        },
+        "package_matched": {
+          "incumbent_route": "focused",
+          "active_tactical": "incumbent",
+          "promotion_reason": "no_validation_gain_over_incumbent",
+          "variants": {
+            "focused": {
+              "validation": {
+                "macro_mse": 0.0,
+                "macro_mae": 0.0,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0,
+                    "mae": 0.0,
+                    "sessions": 14,
+                    "examples": 27
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.0,
+                "macro_mae": 0.0,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0,
+                    "mae": 0.0,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              }
+            },
+            "incumbent": {
+              "validation": {
+                "macro_mse": 0.0,
+                "macro_mae": 0.0,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0,
+                    "mae": 0.0,
+                    "sessions": 14,
+                    "examples": 27
+                  }
+                }
+              },
+              "context_enabled": false,
+              "test": {
+                "macro_mse": 0.0,
+                "macro_mae": 0.0,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0,
+                    "mae": 0.0,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              }
+            },
+            "case_tactics": {
+              "validation": {
+                "macro_mse": 0.0,
+                "macro_mae": 0.0,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0,
+                    "mae": 0.0,
+                    "sessions": 14,
+                    "examples": 27
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.0,
+                "macro_mae": 0.0,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 0.0,
+                    "mae": 0.0,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              },
+              "selection": {
+                "method": "prior",
+                "strength": 0.0,
+                "validation_mse": 0.0
+              }
+            },
+            "pooled_tactics": {
+              "validation": {
+                "macro_mse": 1.3560308032466027e-05,
+                "macro_mae": 0.00234175386514939,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 1.3560308032466027e-05,
+                    "mae": 0.00234175386514939,
+                    "sessions": 14,
+                    "examples": 27
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 6.795524886953398e-07,
+                "macro_mae": 0.00048343780588098784,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 6.795524886953398e-07,
+                    "mae": 0.00048343780588098784,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              },
+              "selection": {
+                "method": "forest",
+                "strength": 1.0,
+                "validation_mse": 1.3560308032466027e-05
+              }
+            },
+            "general_tactics": {
+              "validation": {
+                "macro_mse": 9.449120557200433e-05,
+                "macro_mae": 0.007903314317710025,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 9.449120557200433e-05,
+                    "mae": 0.007903314317710025,
+                    "sessions": 14,
+                    "examples": 27
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 8.091854138681082e-05,
+                "macro_mae": 0.007668845910787658,
+                "by_case": {
+                  "case:P10": {
+                    "mse": 8.091854138681082e-05,
+                    "mae": 0.007668845910787658,
+                    "sessions": 15,
+                    "examples": 28
+                  }
+                }
+              },
+              "selection": {
+                "method": "forest",
+                "strength": 1.0,
+                "validation_mse": 9.449120557200433e-05
+              }
+            }
+          }
+        }
+      },
+      "case:P18": {
+        "direct_cost_improved": {
+          "incumbent_route": "focused",
+          "active_tactical": "incumbent",
+          "promotion_reason": "insufficient_target_support",
+          "variants": {
+            "focused": {
+              "validation": {
+                "macro_mse": 0.011399585837947809,
+                "macro_mae": 0.07626820599193652,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.011399585837947809,
+                    "mae": 0.07626820599193652,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.04646123989132327,
+                "macro_mae": 0.11031562199149986,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.04646123989132327,
+                    "mae": 0.11031562199149986,
+                    "sessions": 13,
+                    "examples": 39
+                  }
+                }
+              }
+            },
+            "incumbent": {
+              "validation": {
+                "macro_mse": 0.011399585837947809,
+                "macro_mae": 0.07626820599193652,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.011399585837947809,
+                    "mae": 0.07626820599193652,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "context_enabled": false,
+              "test": {
+                "macro_mse": 0.04646123989132327,
+                "macro_mae": 0.11031562199149986,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.04646123989132327,
+                    "mae": 0.11031562199149986,
+                    "sessions": 13,
+                    "examples": 39
+                  }
+                }
+              }
+            },
+            "case_tactics": {
+              "validation": {
+                "macro_mse": 0.0021451175563216556,
+                "macro_mae": 0.033667852872143494,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.0021451175563216556,
+                    "mae": 0.033667852872143494,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.024453025930778752,
+                "macro_mae": 0.06099376521873603,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.024453025930778752,
+                    "mae": 0.06099376521873603,
+                    "sessions": 13,
+                    "examples": 39
+                  }
+                }
+              },
+              "selection": {
+                "method": "forest",
+                "strength": 1.0,
+                "validation_mse": 0.0021451175563216556
+              }
+            },
+            "pooled_tactics": {
+              "validation": {
+                "macro_mse": 0.006238263237308005,
+                "macro_mae": 0.06292978686691003,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.006238263237308005,
+                    "mae": 0.06292978686691003,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.02687712961551511,
+                "macro_mae": 0.07879249692974286,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.02687712961551511,
+                    "mae": 0.07879249692974286,
+                    "sessions": 13,
+                    "examples": 39
+                  }
+                }
+              },
+              "selection": {
+                "method": "forest",
+                "strength": 1.0,
+                "validation_mse": 0.006238263237308005
+              }
+            },
+            "general_tactics": {
+              "validation": {
+                "macro_mse": 0.032832222437630704,
+                "macro_mae": 0.13910665674487066,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.032832222437630704,
+                    "mae": 0.13910665674487066,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.050529336682991824,
+                "macro_mae": 0.14194202423830243,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.050529336682991824,
+                    "mae": 0.14194202423830243,
+                    "sessions": 13,
+                    "examples": 39
+                  }
+                }
+              },
+              "selection": {
+                "method": "ridge",
+                "strength": 1.0,
+                "validation_mse": 0.032832222437630704
+              }
+            }
+          }
+        },
+        "quoted_cost_gain": {
+          "incumbent_route": "focused",
+          "active_tactical": "case_tactics",
+          "promotion_reason": "passed_development_gate",
+          "variants": {
+            "focused": {
+              "validation": {
+                "macro_mse": 8.169410834466026e-05,
+                "macro_mae": 0.00643839313821613,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 8.169410834466026e-05,
+                    "mae": 0.00643839313821613,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.0002553367975454287,
+                "macro_mae": 0.010283443616245575,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.0002553367975454287,
+                    "mae": 0.010283443616245575,
+                    "sessions": 13,
+                    "examples": 38
+                  }
+                }
+              }
+            },
+            "incumbent": {
+              "validation": {
+                "macro_mse": 8.169410834466026e-05,
+                "macro_mae": 0.00643839313821613,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 8.169410834466026e-05,
+                    "mae": 0.00643839313821613,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "context_enabled": false,
+              "test": {
+                "macro_mse": 0.0002553367975454287,
+                "macro_mae": 0.010283443616245575,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.0002553367975454287,
+                    "mae": 0.010283443616245575,
+                    "sessions": 13,
+                    "examples": 38
+                  }
+                }
+              }
+            },
+            "case_tactics": {
+              "validation": {
+                "macro_mse": 4.995597180721668e-05,
+                "macro_mae": 0.005804426186385278,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 4.995597180721668e-05,
+                    "mae": 0.005804426186385278,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.00018707201840821946,
+                "macro_mae": 0.010145607779927377,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.00018707201840821946,
+                    "mae": 0.010145607779927377,
+                    "sessions": 13,
+                    "examples": 38
+                  }
+                }
+              },
+              "selection": {
+                "method": "ridge",
+                "strength": 1.0,
+                "validation_mse": 4.995597180721668e-05
+              }
+            },
+            "pooled_tactics": {
+              "validation": {
+                "macro_mse": 6.014393968411661e-05,
+                "macro_mae": 0.0057539633806262536,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 6.014393968411661e-05,
+                    "mae": 0.0057539633806262536,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.0003551042857211242,
+                "macro_mae": 0.012054306671382665,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.0003551042857211242,
+                    "mae": 0.012054306671382665,
+                    "sessions": 13,
+                    "examples": 38
+                  }
+                }
+              },
+              "selection": {
+                "method": "forest",
+                "strength": 1.0,
+                "validation_mse": 6.014393968411661e-05
+              }
+            },
+            "general_tactics": {
+              "validation": {
+                "macro_mse": 0.00020077688060008648,
+                "macro_mae": 0.010959710701838819,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.00020077688060008648,
+                    "mae": 0.010959710701838819,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.000167824150467099,
+                "macro_mae": 0.01016170705078086,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.000167824150467099,
+                    "mae": 0.01016170705078086,
+                    "sessions": 13,
+                    "examples": 38
+                  }
+                }
+              },
+              "selection": {
+                "method": "ridge",
+                "strength": 1.0,
+                "validation_mse": 0.00020077688060008648
+              }
+            }
+          }
+        },
+        "supplier_exit": {
+          "incumbent_route": "focused",
+          "active_tactical": "incumbent",
+          "promotion_reason": "no_validation_gain_over_incumbent",
+          "variants": {
+            "focused": {
+              "validation": {
+                "macro_mse": 0.0,
+                "macro_mae": 0.0,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.0,
+                    "mae": 0.0,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.0,
+                "macro_mae": 0.0,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.0,
+                    "mae": 0.0,
+                    "sessions": 13,
+                    "examples": 39
+                  }
+                }
+              }
+            },
+            "incumbent": {
+              "validation": {
+                "macro_mse": 0.0,
+                "macro_mae": 0.0,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.0,
+                    "mae": 0.0,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "context_enabled": false,
+              "test": {
+                "macro_mse": 0.0,
+                "macro_mae": 0.0,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.0,
+                    "mae": 0.0,
+                    "sessions": 13,
+                    "examples": 39
+                  }
+                }
+              }
+            },
+            "case_tactics": {
+              "validation": {
+                "macro_mse": 0.0,
+                "macro_mae": 0.0,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.0,
+                    "mae": 0.0,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.0,
+                "macro_mae": 0.0,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.0,
+                    "mae": 0.0,
+                    "sessions": 13,
+                    "examples": 39
+                  }
+                }
+              },
+              "selection": {
+                "method": "forest",
+                "strength": 1.0,
+                "validation_mse": 0.0
+              }
+            },
+            "pooled_tactics": {
+              "validation": {
+                "macro_mse": 3.097237691359182e-06,
+                "macro_mae": 0.0008248167300055917,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 3.097237691359182e-06,
+                    "mae": 0.0008248167300055917,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 8.694466702279233e-08,
+                "macro_mae": 6.677350427350439e-05,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 8.694466702279233e-08,
+                    "mae": 6.677350427350439e-05,
+                    "sessions": 13,
+                    "examples": 39
+                  }
+                }
+              },
+              "selection": {
+                "method": "forest",
+                "strength": 1.0,
+                "validation_mse": 3.097237691359182e-06
+              }
+            },
+            "general_tactics": {
+              "validation": {
+                "macro_mse": 1.9645410952663465e-08,
+                "macro_mae": 2.336034802386744e-05,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 1.9645410952663465e-08,
+                    "mae": 2.336034802386744e-05,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 1.0902611120838935e-06,
+                "macro_mae": 0.00032744968300718445,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 1.0902611120838935e-06,
+                    "mae": 0.00032744968300718445,
+                    "sessions": 13,
+                    "examples": 39
+                  }
+                }
+              },
+              "selection": {
+                "method": "forest",
+                "strength": 1.0,
+                "validation_mse": 1.9645410952663465e-08
+              }
+            }
+          }
+        },
+        "package_matched": {
+          "incumbent_route": "focused",
+          "active_tactical": "incumbent",
+          "promotion_reason": "no_validation_gain_over_incumbent",
+          "variants": {
+            "focused": {
+              "validation": {
+                "macro_mse": 0.09213584730997146,
+                "macro_mae": 0.10419205995511498,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.09213584730997146,
+                    "mae": 0.10419205995511498,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.011158360415996533,
+                "macro_mae": 0.03883344289950961,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.011158360415996533,
+                    "mae": 0.03883344289950961,
+                    "sessions": 13,
+                    "examples": 39
+                  }
+                }
+              }
+            },
+            "incumbent": {
+              "validation": {
+                "macro_mse": 0.09213584730997146,
+                "macro_mae": 0.10419205995511498,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.09213584730997146,
+                    "mae": 0.10419205995511498,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "context_enabled": false,
+              "test": {
+                "macro_mse": 0.011158360415996533,
+                "macro_mae": 0.03883344289950961,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.011158360415996533,
+                    "mae": 0.03883344289950961,
+                    "sessions": 13,
+                    "examples": 39
+                  }
+                }
+              }
+            },
+            "case_tactics": {
+              "validation": {
+                "macro_mse": 0.09923369762829147,
+                "macro_mae": 0.10789163439824766,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.09923369762829147,
+                    "mae": 0.10789163439824766,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.009525592300527819,
+                "macro_mae": 0.03532034295507481,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.009525592300527819,
+                    "mae": 0.03532034295507481,
+                    "sessions": 13,
+                    "examples": 39
+                  }
+                }
+              },
+              "selection": {
+                "method": "forest",
+                "strength": 1.0,
+                "validation_mse": 0.09923369762829147
+              }
+            },
+            "pooled_tactics": {
+              "validation": {
+                "macro_mse": 0.10474419604195304,
+                "macro_mae": 0.12238678514117728,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.10474419604195304,
+                    "mae": 0.12238678514117728,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.009452054462075622,
+                "macro_mae": 0.06600921786239791,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.009452054462075622,
+                    "mae": 0.06600921786239791,
+                    "sessions": 13,
+                    "examples": 39
+                  }
+                }
+              },
+              "selection": {
+                "method": "ridge",
+                "strength": 1.0,
+                "validation_mse": 0.10474419604195304
+              }
+            },
+            "general_tactics": {
+              "validation": {
+                "macro_mse": 0.1017267013720057,
+                "macro_mae": 0.15520610647925462,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.1017267013720057,
+                    "mae": 0.15520610647925462,
+                    "sessions": 12,
+                    "examples": 36
+                  }
+                }
+              },
+              "test": {
+                "macro_mse": 0.0034366066301454593,
+                "macro_mae": 0.058622577819006386,
+                "by_case": {
+                  "case:P18": {
+                    "mse": 0.0034366066301454593,
+                    "mae": 0.058622577819006386,
+                    "sessions": 13,
+                    "examples": 39
+                  }
+                }
+              },
+              "selection": {
+                "method": "prior",
+                "strength": 0.0,
+                "validation_mse": 0.1017267013720057
+              }
+            }
+          }
+        }
+      }
+    },
+    "model_path": "data/local/custom-p10-p18-all-history-20261025-final/model.json",
+    "model_sha256": "efeddee63d06f36a79cde24a282558a7e9bd7022bf250a8c7f666ee3c1ce9ed7",
+    "limitation": "Historical predictive development only; prospective outcome trials remain required."
+  },
+  "default_model_promoted": false,
+  "default_prompt_changed": false,
+  "foundation_model_fine_tuned": false
+}

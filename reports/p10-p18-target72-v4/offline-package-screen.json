@@ -1,0 +1,286 @@
+{
+  "case:P10": {
+    "supported": 36,
+    "tested": 36,
+    "top": [
+      {
+        "terms": {
+          "unit_price": 29.89,
+          "contract_months": 24,
+          "lead_time_days": 54,
+          "volume_per_year": 23400
+        },
+        "gain": 0.20929354647830342,
+        "own_cost": 1442312.88,
+        "own_cost_without_supplier_defaults": 1436977.68
+      },
+      {
+        "terms": {
+          "unit_price": 30.5,
+          "contract_months": 24,
+          "lead_time_days": 54,
+          "volume_per_year": 23400
+        },
+        "gain": 0.209262111270515,
+        "own_cost": 1471051.2,
+        "own_cost_without_supplier_defaults": 1465716.0
+      },
+      {
+        "terms": {
+          "unit_price": 29.89,
+          "contract_months": 36,
+          "lead_time_days": 54,
+          "volume_per_year": 23400
+        },
+        "gain": 0.20925944759085885,
+        "own_cost": 1442312.88,
+        "own_cost_without_supplier_defaults": 1436977.68
+      },
+      {
+        "terms": {
+          "unit_price": 30.5,
+          "contract_months": 36,
+          "lead_time_days": 54,
+          "volume_per_year": 23400
+        },
+        "gain": 0.20922801238307043,
+        "own_cost": 1471051.2,
+        "own_cost_without_supplier_defaults": 1465716.0
+      },
+      {
+        "terms": {
+          "unit_price": 30.9,
+          "contract_months": 36,
+          "lead_time_days": 54,
+          "volume_per_year": 23400
+        },
+        "gain": 0.20853524782094512,
+        "own_cost": 1489896.0,
+        "own_cost_without_supplier_defaults": 1484560.8
+      },
+      {
+        "terms": {
+          "unit_price": 31.0,
+          "contract_months": 36,
+          "lead_time_days": 54,
+          "volume_per_year": 23400
+        },
+        "gain": 0.20853524782094512,
+        "own_cost": 1494607.2,
+        "own_cost_without_supplier_defaults": 1489272.0
+      },
+      {
+        "terms": {
+          "unit_price": 31.07,
+          "contract_months": 36,
+          "lead_time_days": 54,
+          "volume_per_year": 23400
+        },
+        "gain": 0.20853524782094512,
+        "own_cost": 1497905.04,
+        "own_cost_without_supplier_defaults": 1492569.84
+      },
+      {
+        "terms": {
+          "unit_price": 28.4,
+          "contract_months": 24,
+          "lead_time_days": 54,
+          "volume_per_year": 23400
+        },
+        "gain": 0.20841551659445162,
+        "own_cost": 1372116.0,
+        "own_cost_without_supplier_defaults": 1366780.8
+      },
+      {
+        "terms": {
+          "unit_price": 28.4,
+          "contract_months": 36,
+          "lead_time_days": 54,
+          "volume_per_year": 23400
+        },
+        "gain": 0.20838141770700705,
+        "own_cost": 1372116.0,
+        "own_cost_without_supplier_defaults": 1366780.8
+      },
+      {
+        "terms": {
+          "unit_price": 30.9,
+          "contract_months": 24,
+          "lead_time_days": 54,
+          "volume_per_year": 23400
+        },
+        "gain": 0.2077098097994704,
+        "own_cost": 1489896.0,
+        "own_cost_without_supplier_defaults": 1484560.8
+      }
+    ],
+    "cost_note": "Corrected after evaluation to include opening supplier standard terms. Original screening cost is retained. Prediction gains are unchanged and are not final scores."
+  },
+  "case:P18": {
+    "supported": 110,
+    "tested": 144,
+    "top": [
+      {
+        "terms": {
+          "unit_price": 4.6,
+          "payment_days": 14,
+          "contract_months": 36,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        },
+        "gain": 0.10217291703073754,
+        "own_cost": 222231.21,
+        "own_cost_without_supplier_defaults": 222231.21
+      },
+      {
+        "terms": {
+          "unit_price": 4.6,
+          "payment_days": 14,
+          "contract_months": 36,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 3,
+            "base_month": "2026-08"
+          }
+        },
+        "gain": 0.10130441881704474,
+        "own_cost": 224193.57,
+        "own_cost_without_supplier_defaults": 224193.57
+      },
+      {
+        "terms": {
+          "unit_price": 4.6,
+          "payment_days": 30,
+          "contract_months": 36,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        },
+        "gain": 0.10073437375179765,
+        "own_cost": 221455.96,
+        "own_cost_without_supplier_defaults": 221455.96
+      },
+      {
+        "terms": {
+          "unit_price": 4.6,
+          "payment_days": 30,
+          "contract_months": 36,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 3,
+            "base_month": "2026-08"
+          }
+        },
+        "gain": 0.09986587553810486,
+        "own_cost": 223418.32,
+        "own_cost_without_supplier_defaults": 223418.32
+      },
+      {
+        "terms": {
+          "unit_price": 4.6,
+          "payment_days": 14,
+          "contract_months": 36,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 0,
+            "base_month": "2026-08"
+          }
+        },
+        "gain": 0.09975394399772815,
+        "own_cost": 227137.11,
+        "own_cost_without_supplier_defaults": 227137.11
+      },
+      {
+        "terms": {
+          "unit_price": 4.8,
+          "payment_days": 14,
+          "contract_months": 36,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        },
+        "gain": 0.09909095667807682,
+        "own_cost": 231893.44,
+        "own_cost_without_supplier_defaults": 231893.44
+      },
+      {
+        "terms": {
+          "unit_price": 4.6,
+          "payment_days": 30,
+          "contract_months": 36,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 0,
+            "base_month": "2026-08"
+          }
+        },
+        "gain": 0.09831540071878826,
+        "own_cost": 226361.86,
+        "own_cost_without_supplier_defaults": 226361.86
+      },
+      {
+        "terms": {
+          "unit_price": 4.8,
+          "payment_days": 14,
+          "contract_months": 36,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 3,
+            "base_month": "2026-08"
+          }
+        },
+        "gain": 0.09819905868690623,
+        "own_cost": 233941.12,
+        "own_cost_without_supplier_defaults": 233941.12
+      },
+      {
+        "terms": {
+          "unit_price": 4.6,
+          "payment_days": 60,
+          "contract_months": 36,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        },
+        "gain": 0.0980371063946116,
+        "own_cost": 220002.36,
+        "own_cost_without_supplier_defaults": 220002.36
+      },
+      {
+        "terms": {
+          "unit_price": 4.8,
+          "payment_days": 30,
+          "contract_months": 36,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        },
+        "gain": 0.09765937559957963,
+        "own_cost": 231084.48,
+        "own_cost_without_supplier_defaults": 231084.48
+      }
+    ],
+    "cost_note": "Corrected after evaluation to include opening supplier standard terms. Original screening cost is retained. Prediction gains are unchanged and are not final scores."
+  }
+}

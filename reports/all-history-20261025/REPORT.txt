@@ -1,0 +1,35 @@
+AEIOU — consolidated history, Sunday evidence and training — 25 October 2026
+
+Collected 1,615 negotiations, plus 14 separately labeled verification fixtures.
+Archive: 18,227 messages; 7,251 buyer decision examples; 6,342 response examples.
+Sources: {"hosted_practice": 280, "hosted_sandbox": 137, "local_language": 118, "local_simulation": 1080, "verification_fixture": 14}
+Knowledge: 33,007 business rows, 10,366 citable facts, 303 source documents.
+Sunday release: six news items, three supplier letters and one purchasing memo. September indices are unchanged.
+Source hashes, duplicate handling, temporal boundaries and incomplete context are recorded in the manifests.
+
+Prompt comparison — official sandbox scores / 100, three repetitions per case:
+  Strongest observed baseline: 63.56; D01 85.70, D02 41.43; 6/6 completed, 0 failures.
+  Rebuilt NegoMate v1: 54.56; D01 79.97, D02 29.14; 6/6 completed, 0 failures.
+  Rebuilt NegoMate v2: 61.29; D01 83.96, D02 38.62; 6/6 completed, 0 failures.
+V2 preserves more of the successful preparation framework and distinguishes one supplier's finality from an open multi-supplier competition.
+These small stochastic demo comparisons do not prove final-case performance. The active default prompt is unchanged.
+Sandbox experiments compare prompt text; the newly trained response models stayed offline.
+
+Generic response training: 6,164 open-bargaining examples, 12 held-out case/supplier groups, 52 fitted models.
+Brier error (lower is better), hosted-only / hosted-plus-local / base-rate:
+  package_matched: 0.079582 / 0.075428 / 0.073572
+  direct_cost_improved: 0.180812 / 0.173678 / 0.183074
+Focused/general/tactical refit: 1,355 hosted exchanges from 397 usable sessions were evaluated.
+Historical predictive gates retain an incumbent when an alternative regresses; policy gains remain unproven.
+The final refit includes the newly completed conversations. Earlier frozen artifacts remain separate.
+Artifacts contain local response-model weights; no Claude/GPT foundation-model fine-tuning or training upload occurred.
+No response-model default was promoted. Registered model selection and execution limits are unchanged.
+
+Validation: full suite 978 passed, 10 skipped, 3 expected failures; added corpus/chronology/release tests passed separately. See validation logs.
+The collector uses GET only. New negotiations in this task were sandbox evaluations; no practice or final sessions were started by these experiments.
+See DATA_GUIDE.txt for schemas, limitations and reproduction commands.
+
+Final corpus: /Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/data/local/training-corpus-20261025-final
+Final tactical model: /Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/data/local/custom-p10-p18-all-history-20261025-final/model.json
+Final mixed-data models: /Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/data/local/training-corpus-model-20261025-final/models.json
+Rebuilt prompt: /Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/prompts/negomate-history-sunday-v2.txt

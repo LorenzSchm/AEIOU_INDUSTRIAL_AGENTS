@@ -1,0 +1,58 @@
+P18 learning v4 — price payment alternatives early with a common index clause
+
+<acceptance_floor>
+{"case_id":"case:P18","c_open":295173.23,"c_best":222651.27,"minimum_score":0,"maximum_unit_price":5.10}
+</acceptance_floor>
+
+Negotiate case:P18 / sup:70740 / part:370010 using the normal JSON action and
+assessment contract. Aim to exceed 72 with all must-haves, without relaxing the
+EUR 5.10/kg ceiling. Keep scores, cost comparisons and experiment history private.
+An eligible offer at or below the cap, at least 24 months, is accepted immediately
+by exact live ID even if below target. Historical quotes are not current offers.
+Learned forecasts and examples supplement current evidence; they are uncertain.
+
+Fixed enquiry: 23,700 kg/year, DAP, 14-day lead time, effective 2027-01-01,
+zero tooling. Propose only unit_price, payment_days, contract_months, index_clause.
+No extra volume, exclusivity, side payments or invented services. Keep a warm,
+respectful tone toward Mr Seidl and Werdenfels. Do not infer financial distress.
+
+OPENING
+Offer EUR 4.60/kg, 30 days net, 36 months, AS-14404 / 45% material share /
+0% deadband / base 2026-08. Cite the verified orders for this part and supplier:
+2 and 17 June 2026 at EUR 5.26/kg (po:4500014022-10, po:4500014078-10), and
+1 and 18 September at EUR 5.84/kg (po:4500014355-10, po:4500014427-10).
+Do not invent a derived change. Explain the longer commitment and index mechanism
+as a basis for reviewing the starting price. Ask whether the package works.
+
+EARLY PAYMENT MENU — CODE SENDS AFTER ONE BUYER PROPOSAL
+A: EUR 4.98/kg, 30 days.
+B: EUR 5.00/kg, 60 days.
+C: EUR 5.05/kg, 90 days.
+All use the supplier-quoted 24/36-month duration and AS-14404 / 45% / 5% /
+base 2026-08. Each price is conditional on its payment term. A offers faster
+cash in return for a lower price; the higher prices on B and C compensate for
+longer credit. Longer credit is not a supplier concession from us. These are
+new proposals, not accepted terms. Code supplies checked PPI evidence:
+PPI-C2431 132.1 -> 129.1, June-August 2026, -2.27%
+(idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08).
+
+NEXT OPEN REPLY
+Read which structures the supplier actually priced or explicitly rejected.
+Use the fresh verified AS-14404 June-September change of -5.49%
+(idx:AS-14404@2026-06, idx:AS-14404@2026-09) for the remaining gap.
+On its cheapest quoted structure, propose A/B/C's corresponding price above;
+do not immediately give away the full EUR 5.10 cap. If genuinely still open,
+adapt the price within the cap to obtain a binding complete quote. A 90-day
+option may rise to EUR 5.10; a shorter-payment option should retain a lower
+price to cover our financing cost. Do not force an expressly rejected structure
+or introduce a new deadband late. Do not repeat evidence as if new.
+Recent index declines coexist with annual increases; do not allege double
+charging, a known supplier floor or undisclosed cost. Verify source records and
+include matching numeric_claims for derived assertions. Do not demand private
+margins or repeat an approval request after authority is confirmed.
+
+FINALITY
+An eligible package within the saved limits is accepted exactly. A final with
+none stops under policy; no counter, confirmation request or polite decline.
+Validity boilerplate does not reopen a terminal session. Keep calculations and
+training examples private. Never send historical offer IDs or internal handles.

@@ -1,0 +1,263 @@
+{
+  "experiments": [
+    {
+      "variant": "a",
+      "id": "6aea1a4eda814b5c88d3ba06c27723a8",
+      "status": "completed",
+      "completed": 6,
+      "attempted": 6,
+      "failures": 0,
+      "official_mean": 63.56287042386358,
+      "all_attempt_mean_failure_zero": 63.56287042386358,
+      "case_means": {
+        "case:D01": 85.69527680979527,
+        "case:D02": 41.43046403793188
+      },
+      "model": "claude-opus-5-5",
+      "effort": "medium",
+      "prompt": {
+        "variant": "eval",
+        "strategy_revision": "eval-prompt-v2",
+        "strategy_sha256": "c5bb6461abe8c47fb8312ca0c55baf3dcca829fabd8ee265d2eaf55dfba54f20",
+        "transport_sha256": "1fec9a0532dc78257222332c24bc703e1b9dd788f3c0f8af9a07837ccd32d32c",
+        "system_sha256": "171c2106d546e6521ca3edda63e8b67f3049afc6eea85a09ae1efde22d26a344",
+        "protocol_version": "faithful-v18-closing-cost-comparison",
+        "required_repeats": 0,
+        "enforce_reference_tactics": false,
+        "response_support_mode": "shadow",
+        "assessment_version": "supplier-assessment-v2-source-labels"
+      },
+      "sandbox_sessions_started": 6,
+      "practice_sessions_started": 0,
+      "rows": [
+        {
+          "case_id": "case:D01",
+          "title": "Pump housing PH-100: the foundry wants +8.8 %",
+          "repeat": 1,
+          "status": "completed",
+          "score": 0.9088683115898096,
+          "run_id": "20fb25073a3941f59c00e249be26fbd4",
+          "session_id": "91ee8ccd54eda25d"
+        },
+        {
+          "case_id": "case:D02",
+          "title": "New stainless pump shaft SH-220: award one of two suppliers",
+          "repeat": 1,
+          "status": "completed",
+          "score": 0.42834591385754894,
+          "run_id": "1c1b58b9facf47efbe95e389322bb514",
+          "session_id": "41141f7c8d7d9666"
+        },
+        {
+          "case_id": "case:D01",
+          "title": "Pump housing PH-100: the foundry wants +8.8 %",
+          "repeat": 2,
+          "status": "completed",
+          "score": 0.838832419100059,
+          "run_id": "5906b42ba72a4061827f24c401a06fe1",
+          "session_id": "90e4fe2f16caa361"
+        },
+        {
+          "case_id": "case:D02",
+          "title": "New stainless pump shaft SH-220: award one of two suppliers",
+          "repeat": 2,
+          "status": "completed",
+          "score": 0.3651600963354381,
+          "run_id": "66332d577d8d4940903772049e2b5b55",
+          "session_id": "50e87118389c813f"
+        },
+        {
+          "case_id": "case:D01",
+          "title": "Pump housing PH-100: the foundry wants +8.8 %",
+          "repeat": 3,
+          "status": "completed",
+          "score": 0.8231575736039897,
+          "run_id": "516a92bed8cb465d9d30b9e8ca6708c5",
+          "session_id": "076452bbba5bc9ea"
+        },
+        {
+          "case_id": "case:D02",
+          "title": "New stainless pump shaft SH-220: award one of two suppliers",
+          "repeat": 3,
+          "status": "completed",
+          "score": 0.4494079109449694,
+          "run_id": "598e4e838c27437987ab02d1dd5ced18",
+          "session_id": "927da6fb911b2c46"
+        }
+      ]
+    },
+    {
+      "variant": "b",
+      "id": "f218f19047344bc1973ec697458f32b4",
+      "status": "completed",
+      "completed": 6,
+      "attempted": 6,
+      "failures": 0,
+      "official_mean": 54.559227916686105,
+      "all_attempt_mean_failure_zero": 54.559227916686105,
+      "case_means": {
+        "case:D01": 79.97411911940307,
+        "case:D02": 29.14433671396915
+      },
+      "model": "claude-opus-5-5",
+      "effort": "medium",
+      "prompt": {
+        "variant": "eval",
+        "strategy_revision": "eval-prompt-v2",
+        "strategy_sha256": "77e531a90f74a082f38a5bf77a43a9fb666e9853686bb682022158604eff61f4",
+        "transport_sha256": "1fec9a0532dc78257222332c24bc703e1b9dd788f3c0f8af9a07837ccd32d32c",
+        "system_sha256": "d01619ffcd290221fd0629dd529c7aef68cb3f23160db7bfc62f2f77b14b23a9",
+        "protocol_version": "faithful-v18-closing-cost-comparison",
+        "required_repeats": 0,
+        "enforce_reference_tactics": false,
+        "response_support_mode": "shadow",
+        "assessment_version": "supplier-assessment-v2-source-labels"
+      },
+      "sandbox_sessions_started": 6,
+      "practice_sessions_started": 0,
+      "rows": [
+        {
+          "case_id": "case:D01",
+          "title": "Pump housing PH-100: the foundry wants +8.8 %",
+          "repeat": 1,
+          "status": "completed",
+          "score": 0.7869485610655068,
+          "run_id": "b490bea61f7b4a68838430f25ab9175a",
+          "session_id": "170ab62de5e4f7ce"
+        },
+        {
+          "case_id": "case:D02",
+          "title": "New stainless pump shaft SH-220: award one of two suppliers",
+          "repeat": 1,
+          "status": "completed",
+          "score": 0.2598504583786359,
+          "run_id": "14a2bc451bfb45419e05487f3159f9d2",
+          "session_id": "56d8bbee0279f2e8"
+        },
+        {
+          "case_id": "case:D01",
+          "title": "Pump housing PH-100: the foundry wants +8.8 %",
+          "repeat": 2,
+          "status": "completed",
+          "score": 0.8061375062582925,
+          "run_id": "82b64019c22c41ce8dcd57a40f748a6d",
+          "session_id": "d636bdd316acb744"
+        },
+        {
+          "case_id": "case:D02",
+          "title": "New stainless pump shaft SH-220: award one of two suppliers",
+          "repeat": 2,
+          "status": "completed",
+          "score": 0.2598504583786359,
+          "run_id": "81f8dab5ae3644bbab2812e0ba8a59d0",
+          "session_id": "911cbf09c2a9e5db"
+        },
+        {
+          "case_id": "case:D01",
+          "title": "Pump housing PH-100: the foundry wants +8.8 %",
+          "repeat": 3,
+          "status": "completed",
+          "score": 0.8061375062582925,
+          "run_id": "75aca34f0b974ce8a9775b031b15a011",
+          "session_id": "4cead6cf62e8bf5d"
+        },
+        {
+          "case_id": "case:D02",
+          "title": "New stainless pump shaft SH-220: award one of two suppliers",
+          "repeat": 3,
+          "status": "completed",
+          "score": 0.35462918466180265,
+          "run_id": "61dc9143867c4ef8aac8f89d692ddbe8",
+          "session_id": "3b7c1a63286cac76"
+        }
+      ]
+    },
+    {
+      "variant": "v2",
+      "id": "5490fd9e437d422d8544c09a50ed6021",
+      "status": "completed",
+      "completed": 6,
+      "attempted": 6,
+      "failures": 0,
+      "official_mean": 61.290468661035575,
+      "all_attempt_mean_failure_zero": 61.29046866103557,
+      "case_means": {
+        "case:D01": 83.95873956246196,
+        "case:D02": 38.622197759609186
+      },
+      "model": "claude-opus-5-5",
+      "effort": "medium",
+      "prompt": {
+        "variant": "eval",
+        "strategy_revision": "eval-prompt-v2",
+        "strategy_sha256": "6ff6ffc802337ae85fd2de20012e4909b88268a25274908167fecc0587351204",
+        "transport_sha256": "1fec9a0532dc78257222332c24bc703e1b9dd788f3c0f8af9a07837ccd32d32c",
+        "system_sha256": "3f684bf3dfcca444690dfd8f7661044f957b217feafde09a272136c30216b352",
+        "protocol_version": "faithful-v18-closing-cost-comparison",
+        "required_repeats": 0,
+        "enforce_reference_tactics": false,
+        "response_support_mode": "shadow",
+        "assessment_version": "supplier-assessment-v2-source-labels"
+      },
+      "sandbox_sessions_started": 6,
+      "practice_sessions_started": 0,
+      "rows": [
+        {
+          "case_id": "case:D01",
+          "title": "Pump housing PH-100: the foundry wants +8.8 %",
+          "repeat": 1,
+          "status": "completed",
+          "score": 0.7803190012213002,
+          "run_id": "25792930c195437cb746b9fba5ec0ddb",
+          "session_id": "5fba79443ed480c1"
+        },
+        {
+          "case_id": "case:D02",
+          "title": "New stainless pump shaft SH-220: award one of two suppliers",
+          "repeat": 1,
+          "status": "completed",
+          "score": 0.34409809924801765,
+          "run_id": "6256ab004dfc400f9f28dd9ab00d0055",
+          "session_id": "d03d710116155d51"
+        },
+        {
+          "case_id": "case:D01",
+          "title": "Pump housing PH-100: the foundry wants +8.8 %",
+          "repeat": 2,
+          "status": "completed",
+          "score": 0.8555506451391356,
+          "run_id": "e2f887ad41f64e51914199ce8d132625",
+          "session_id": "9f1adfc17ed1c994"
+        },
+        {
+          "case_id": "case:D02",
+          "title": "New stainless pump shaft SH-220: award one of two suppliers",
+          "repeat": 2,
+          "status": "completed",
+          "score": 0.407283916770129,
+          "run_id": "804a111415334e3aba879d9b3d001429",
+          "session_id": "f8b7ffcec5459a5d"
+        },
+        {
+          "case_id": "case:D01",
+          "title": "Pump housing PH-100: the foundry wants +8.8 %",
+          "repeat": 3,
+          "status": "completed",
+          "score": 0.882892540513423,
+          "run_id": "b6cb6e4e0adf4c3facba5178c77a29ae",
+          "session_id": "df916ce1c816592e"
+        },
+        {
+          "case_id": "case:D02",
+          "title": "New stainless pump shaft SH-220: award one of two suppliers",
+          "repeat": 3,
+          "status": "completed",
+          "score": 0.407283916770129,
+          "run_id": "02ed2c80111e4df7954c978be87e11e5",
+          "session_id": "3eb47970eaf51dd4"
+        }
+      ]
+    }
+  ],
+  "interpretation": "Fresh stochastic sandbox runs on a matched case/repeat plan. V2 was adapted after the first v1 D02 result, so this is exploratory development. No automatic default promotion."
+}

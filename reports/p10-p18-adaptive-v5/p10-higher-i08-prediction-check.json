@@ -1,0 +1,66 @@
+{
+  "session_id": "551d4efcad2e29e8",
+  "case_id": "case:P10",
+  "excluded_steps": {
+    "action_only_close": 1
+  },
+  "models": [
+    {
+      "path": "data/local/custom-p10-p18-v6-after-i07/model.json",
+      "sha256": "2284a10b19d8a7941494738df63ebb234431141850b8491e0331323582cf637e",
+      "supported_predictions": 2,
+      "mae": 0.0035326467705085467,
+      "mse": 1.6319120991485935e-05,
+      "predictions": [
+        {
+          "turn": 1,
+          "actual_gain": 0.2095255981837918,
+          "predicted_gain": 0.20403348011053307,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        },
+        {
+          "turn": 3,
+          "actual_gain": 0.006168164978774439,
+          "predicted_gain": 0.00774134044653281,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        }
+      ],
+      "conditional_cost": {
+        "supported_predictions": 0,
+        "mae_eur": null,
+        "predictions": [
+          {
+            "turn": 1,
+            "forecast": {
+              "status": "unavailable",
+              "reason": "no_qualified_conditional_model"
+            },
+            "actual_accepted_cost": 1518163.2,
+            "terminal_label": "accepted"
+          },
+          {
+            "turn": 3,
+            "forecast": {
+              "status": "unavailable",
+              "reason": "no_qualified_conditional_model"
+            },
+            "actual_accepted_cost": 1518163.2,
+            "terminal_label": "accepted"
+          }
+        ]
+      }
+    }
+  ],
+  "method": "Actual sent email, public prefix only; session excluded from each model's corpus.",
+  "limitation": "One session is noisy evidence. Abstentions are reported, not assigned zero error."
+}

@@ -1,4 +1,4 @@
-import { BookOpen, FlaskConical, KanbanSquare, LayoutDashboard, Swords } from "lucide-react"
+import { BookOpen, Flag, FlaskConical, KanbanSquare, LayoutDashboard, Swords } from "lucide-react"
 import { toast } from "sonner"
 
 import { api } from "@/api"
@@ -24,6 +24,7 @@ import { useWorkbench } from "@/store"
 
 const nav = [
   { page: "overview", label: "Overview", icon: LayoutDashboard },
+  { page: "final", label: "Live final", icon: Flag },
   { page: "pipeline", label: "Deal pipeline", icon: KanbanSquare },
   { page: "negotiations", label: "Negotiations", icon: Swords },
   { page: "evidence", label: "Evidence library", icon: BookOpen },
@@ -66,7 +67,7 @@ function ModelPicker() {
 
 export function AppSidebar({ route }: { route: Route }) {
   const { runs } = useWorkbench()
-  const active = route.page === "replay" ? "negotiations" : route.page
+  const active = route.page === "replay" ? route.from ?? "negotiations" : route.page
   const running = runs.filter(r => r.status === "running").length
   return (
     <Sidebar collapsible="icon">

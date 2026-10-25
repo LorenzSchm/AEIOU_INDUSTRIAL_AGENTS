@@ -115,7 +115,7 @@ function Row({ label, value }: { label: string; value: React.ReactNode }) {
   )
 }
 
-export function Replay({ runId, from }: { runId: string; from?: "evaluations" }) {
+export function Replay({ runId, from }: { runId: string; from?: "evaluations" | "final" }) {
   const { caseTitle, cases } = useWorkbench()
   const [run, setRun] = useState<Run>()
   const [error, setError] = useState("")
@@ -156,8 +156,8 @@ export function Replay({ runId, from }: { runId: string; from?: "evaluations" })
   }, [runId])
 
   const back = (
-    <Button variant="ghost" size="sm" className="-ml-2 w-fit text-muted-foreground" onClick={() => go(from === "evaluations" ? "evaluations" : "negotiations")}>
-      <ArrowLeft /> Back to {from === "evaluations" ? "evaluations" : "negotiations"}
+    <Button variant="ghost" size="sm" className="-ml-2 w-fit text-muted-foreground" onClick={() => go(from ?? "negotiations")}>
+      <ArrowLeft /> Back to {from === "final" ? "live final" : from ?? "negotiations"}
     </Button>
   )
   if (error && !run)
@@ -275,7 +275,7 @@ export function Replay({ runId, from }: { runId: string; from?: "evaluations" })
                 <Row label="Alternative" value={(result ? result.c_alt : liveAlternative) == null ? "None" : eur(result ? result.c_alt : liveAlternative)} />
                 <Row label="Best attainable" value={result?.c_best == null ? "Revealed at end" : eur(result.c_best)} />
               </div>
-              <p className="text-xs leading-relaxed text-muted-foreground">{result ? run.mode === "hosted" ? "Official case result from Tacto. " : "Recorded simulation result. " : "Opening estimate uses the lowest valid supplier opening. "}{threads.length > 1 && "This case baseline can differ from the selected supplier’s opening quote."}</p>
+              <p className="text-xs leading-relaxed text-muted-foreground">{result ? run.mode !== "local" ? "Official case result from Tacto. " : "Recorded simulation result. " : "Opening estimate uses the lowest valid supplier opening. "}{threads.length > 1 && "This case baseline can differ from the selected supplier’s opening quote."}</p>
               {result?.must_haves_ok != null && <p className="flex items-center gap-1.5 text-sm">
                 {result?.must_haves_ok === false ? <CircleX className="size-4 text-red-600" /> : <CircleCheck className="size-4 text-emerald-600" />}
                 {result?.must_haves_ok === true ? "All must-haves satisfied" : result?.must_haves_ok === false ? "Must-have violation" : "Must-haves checked before acceptance"}

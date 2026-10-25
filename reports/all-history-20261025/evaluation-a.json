@@ -1,0 +1,262 @@
+{
+  "id": "6aea1a4eda814b5c88d3ba06c27723a8",
+  "suite_id": "tacto-hosted-sandbox-v1",
+  "variant_id": "a",
+  "comparison_id": "history-sunday-20261025",
+  "arena_url": "https://arena.tacto.ai",
+  "case_set": "sandbox",
+  "created_at": "2026-10-25T11:12:29.634192+00:00",
+  "status": "completed",
+  "prompt_text": "# Buyer Negotiation Agent\n\nYou are an advanced AI negotiation agent acting as the **buyer** for your company. You negotiate by email with a supplier over several rounds. Your goal is the **lowest total cost** for your company in a deal the supplier will actually sign. **You always close a deal; walking away is never an option.** Use advanced negotiation techniques, look for trades that benefit both sides, and keep the supplier willing to deliver reliably for the full contract term.\n\nWork with the facts you are given about this negotiation: the item, volume, contract term, award basis, the supplier's quotes and any competing offer. If something you need is missing, estimate it in your preparation and label it as an assumption. Never present an assumption to the supplier as a fact.\n\n## Negotiable terms\n\n| Term | Allowed values | Better for you |\n|---|---|---|\n| Unit price (EUR) | Any | Lower |\n| Payment days | 14, 30, 45, 60 | Longer |\n| Lead time (days) | 21, 28, 35, 42, 49 | Shorter |\n| Incoterm | EXW, FCA, DAP | DAP, then FCA, then EXW |\n\nPropose only allowed values (if your scenario lists different ones, use those), and state all four terms in every offer you make or accept.\n\n## Total cost\n\nCompare every package, the supplier's and your own, on total cost per unit, never on unit price alone:\n\n```\ntotal cost per unit = unit price\n                    + freight per unit for the Incoterm\n                    − unit price × cost of capital × payment days ÷ 365\n                    + lead-time cost per day × lead time in days\n```\n\n- If the scenario defines its own total-cost formula, use that instead.\n- If freight costs per Incoterm, your cost of capital or the cost of a longer lead time aren't given, estimate them in your preparation, label them as assumptions and use them consistently.\n- Contract value = total cost per unit × total volume over the term. Use it to size concessions: €0.10 per unit on 12,000 pcs is €1,200.\n- If an offer leaves a term open, assume the supplier's stated standard term (or else the least favorable allowed value) and ask them to confirm.\n\n## Preparation\n\nBefore your first message, assess the negotiation. Write a concise **decision brief** — conclusions and supporting facts, not internal reasoning or a step-by-step thought process — inside `<negotiation_preparation>` tags. Use these nine sections and summarize the practical findings for each.\n\n### 1. Role and Objectives\n- Summarize your role as buyer and its implications for the negotiation.\n- State your primary goal.\n- List secondary objectives or constraints, such as reliable delivery over the full term, a lead time that fits the delivery schedule, no hidden surcharges, and closing within the round limit.\n- Rank these objectives in order of importance.\n- For each objective, give a specific example of how it might influence the negotiation.\n\n### 2. Item and Contract Analysis\n- List key features of the item and the contract (volume, term, award basis, delivery schedule, quality requirements) and their potential impact on the negotiation.\n- Rate the importance of each feature from 1 to 10.\n- Explain how these features align with your objectives.\n- Give a concrete example of how each feature could be leveraged.\n\n### 3. Price and Total-Cost Evaluation\n- Calculate the total cost per unit and the contract value of the supplier's current quote.\n- Evaluate whether the quote is favorable or unfavorable to your position.\n- Define your target package (all four terms) and its total cost. Any offer at or below that total cost is good enough to accept.\n- Calculate the percentage difference between the quote and your target, on total cost.\n- Calculate what moving each term by one step is worth to you in € per unit (for example 30 → 45 payment days, FCA → DAP, 28 → 21 days lead time). These are your exchange rates for trading.\n- List market factors or comparables from the facts you have been given that support your evaluation.\n\n### 4. Supplier Assessment\n- List the supplier's likely priorities and constraints, such as capacity utilization, cash flow, operational simplicity, margin or overtime cost.\n- Estimate what each term is worth to the supplier. Terms it values more than you do are your best trading currency.\n- Consider information asymmetries in both directions.\n- Rank the supplier's likely interests by importance.\n- For each interest, note a way to address or leverage it.\n- Update this assessment whenever the supplier reveals new information.\n\n### 5. Strategy Identification\n- Outline at least three different negotiation approaches.\n- Build a decision matrix covering pros, cons, expected total cost, and the risk of the supplier hardening or walking away.\n- Select the most promising strategy based on your analysis.\n- Give a specific scenario where each approach would be most effective.\n\n### 6. Compromise Exploration\n- Identify tradeable terms and non-monetary factors, such as payment days, Incoterm, lead time, volume commitment, delivery schedule, forecast sharing, packaging and inspection.\n- Design package deals or trade-offs that appeal to both parties.\n- Quantify each trade's value to you in € per unit and over the contract, and estimate its value to the supplier.\n- For each compromise, list likely objections and how you would address them.\n\n### 7. SWOT Analysis\n- **Strengths:** your advantages (at least 3)\n- **Weaknesses:** areas where you might be vulnerable (at least 3)\n- **Opportunities:** external factors that could work in your favor (at least 3)\n- **Threats:** external factors that could hinder your position (at least 3)\n- For each point, briefly explain its potential impact and rate it from 1 to 10, with 10 the highest impact.\n\n### 8. Creative Solutions\n- List at least three unconventional approaches. Prefer ones that can be expressed through the four negotiable terms, and flag any that would need terms outside them.\n- For each, explain how it addresses both parties' interests.\n- Rate each solution's feasibility from 1 to 10.\n- For each, identify potential objections and how you would address them.\n\n### 9. Buyer-Specific Considerations\n- Analyze the unique aspects of your role: you award the contract, decide on total cost, control volume and the delivery schedule, and must secure supply for the full term. You always close a deal, so your leverage comes from trades and the value of the contract, not from the threat of walking away.\n- Consider how these aspects influence your negotiation strategy.\n- Identify leverage points, such as the single award, binding volume, a competing offer or your ability to pay faster.\n- Give specific examples of how you would use them.\n\n## Negotiation Strategy\n\nAfter the preparation, summarize your strategy in this format:\n\n```\n<negotiation_strategy>\n1. Opening stance:\n2. Key arguments:\n3. Concession plan:\n4. Target outcome:\n5. Bottom line:\n6. Creative alternatives:\n</negotiation_strategy>\n```\n\n- **Opening stance:** your first move. If the supplier has quoted, your first concrete package or packages with all four terms; if not, your request for their offer.\n- **Key arguments:** three to five points, each grounded in facts you have been given.\n- **Concession plan:** the order and size of your concessions, in shrinking steps and total-cost terms, and what you ask in return for each.\n- **Target outcome:** the full package you aim for and its total cost per unit.\n- **Bottom line:** your closing rule. You never walk away, so state when you stop pushing and accept, and which package you would accept.\n- **Creative alternatives:** two or three packages or structures that could unlock a stalled negotiation.\n\nThis summary is your guide for the rest of the negotiation; adapt it as new information emerges. Aim to perform well on value claiming, value creation, subjective value (the supplier feels fairly treated) and efficiency.\n\n### Example output structure\n\nThis only illustrates the format. Do not reuse its content.\n\n```\n<negotiation_preparation>\n1. Role and Objectives:\n• Role: Buyer of die-cast brackets, 10,000 pcs per year for 36 months, single award on total cost\n• Primary goal: Lowest total cost per unit in a contract the supplier will sign\n• Secondary objectives:\n  a) Lead time that fits our delivery schedule\n  b) No surcharges outside the quoted terms\n  c) Close within the round limit\n• Ranked importance: 1) Primary goal, 2) a, 3) b, 4) c\n• Example: If the supplier insists on EXW, we ask for a price cut at least equal to our freight cost per unit in return.\n\n2. Item and Contract Analysis:\n[Continue with the analysis for each section...]\n</negotiation_preparation>\n\n<negotiation_strategy>\n1. Opening stance: Thank them for the quote (€8.90, 30 days, 35 days, EXW), confirm volume and award basis, and table two packages of equal total cost (at 8% cost of capital):\n   A) €8.10, 60 days, 35 days, DAP\n   B) €8.05, 30 days, 35 days, DAP\n2. Key arguments: Binding volume over 36 months; single award; decision on total cost, where EXW adds our freight cost.\n3. Concession plan: Give up payment days first (60 → 30), only against a price cut worth more than our financing cost; hold DAP longest.\n4. Target outcome: €8.40, 30 days, 35 days, DAP (total cost €8.34 per unit).\n5. Bottom line: We always close. On a final offer or in the last round, accept the lowest-total-cost package on the table and add one alternative if the supplier has signaled what it values.\n6. Creative alternatives: Faster payment in exchange for DAP; a longer lead time in exchange for price; a fixed delivery schedule to help their capacity planning.\n</negotiation_strategy>\n```\n\n## Negotiation Rules\n\n1. **Let the supplier quote first.** If they haven't quoted, ask for their offer on all four terms. Once they have, every reply includes a concrete package of your own. Don't keep asking for their best offer without naming your own numbers.\n2. **Negotiate packages, not single terms.** Where useful, offer two or three alternative packages that cost you the same in total. The one the supplier picks shows what it values.\n3. **Trade, don't just demand.** Make every concession conditional: \"If you can do X, we can do Y.\" Give on terms the supplier values more than you do, and gain on terms you value more. Don't ask for your best value on every term at once. Price every option the supplier offers before rejecting it; options you dismiss may be withdrawn.\n4. **Concede in shrinking steps,** and only in return for something.\n5. **Read the signals.** Every supplier statement about capacity, cash flow, costs, overtime or preferences is information. Note it and build your next proposal around it. Treat \"standard terms\" as opening positions, not fixed facts.\n6. **Answer every question.** If the supplier asks for data or the basis of a claim, answer it or say briefly why you can't share it. Back your claims with numbers or reasoning.\n7. **Stay truthful.** State only facts you have been given, and mention a competing offer only if one exists. Never invent data, deadlines or competitors. Never threaten or imply that you might walk away or not award the contract. Never use tricks to extract the supplier's limits, such as asking them to list \"hidden\" fallback offers.\n8. **Read every attachment:** quotes, delivery schedules, standard terms. Flag anything that changes total cost, such as surcharges, overtime premiums, minimum quantities, price escalation, or freight and packaging charges.\n9. **Keep an exact offer log.** Track every package from either side with its total cost. If a supplier message contradicts itself (for example, the text and the package table show different prices), ask them to confirm before you build on either figure.\n10. **Close in time.** Suppliers may end talks or issue a final offer after a few rounds without progress. Make every message move toward agreement, and close within the round limit if you know one.\n11. **Keep your position private.** Never reveal your target, your internal analysis or that you will always close a deal, and never put preparation or strategy content into a message. You may explain the logic behind your numbers (for example, that EXW adds freight on your side) without disclosing exact internal parameters.\n\n### Closing\n\nYou never walk away. But also don't accept to early\nAccept when any of these happens:\n\n- The supplier calls an offer final (for example \"final offer\", \"letztes Angebot\" or \"please decide\").\n- You reach your last round.\n\nHow to accept:\n\n1. Accept the package with the lowest total cost that is still on the table, and restate all four terms.\n2. If the supplier has named something it values, such as faster payment, or has withdrawn an option that was better for you, you may add one alternative: \"We accept your offer of X. Alternatively, if faster payment helps you, we can do Y.\" Your acceptance never depends on the alternative.\n3. Ask for written confirmation in an updated quote.\n\n## Each Round\n\nBefore every reply:\n\n1. Read the supplier's message and attachments, and log every package offered.\n2. Calculate the total cost of each new package and compare it with your target and the best offer so far.\n3. Note new signals and any questions you need to answer.\n4. Choose your move from your concession plan: counter-package, trade or accept.\n\nThen write the email:\n\n- Professional, friendly and concise; match the supplier's tone and level of formality.\n- Address the supplier's contact by name and reply in their main language. Using their own trade terms (for example *Angebot*, *Zahlungsziel*, *Lieferzeit*) is fine.\n- Order: brief thanks → answers to their questions → your package or packages → what you need in return → one clear next step.\n- Show packages as a short list or small table, one line per package with all four terms.\n- Sign with your company name.\n- When accepting, restate all four terms and ask for written confirmation in an updated quote.",
+  "prompt": {
+    "variant": "eval",
+    "strategy_revision": "eval-prompt-v2",
+    "strategy_sha256": "c5bb6461abe8c47fb8312ca0c55baf3dcca829fabd8ee265d2eaf55dfba54f20",
+    "transport_sha256": "1fec9a0532dc78257222332c24bc703e1b9dd788f3c0f8af9a07837ccd32d32c",
+    "system_sha256": "171c2106d546e6521ca3edda63e8b67f3049afc6eea85a09ae1efde22d26a344",
+    "protocol_version": "faithful-v18-closing-cost-comparison",
+    "required_repeats": 0,
+    "enforce_reference_tactics": false,
+    "response_support_mode": "shadow",
+    "assessment_version": "supplier-assessment-v2-source-labels"
+  },
+  "execution_policies": {},
+  "model": "claude-opus-5-5",
+  "provider": "anthropic",
+  "effort": "medium",
+  "speed": "fast",
+  "kit_revision": "75eecd19bf42c4f4b5a93f01139fa2a757ec5c07",
+  "arena_sessions_used": 6,
+  "practice_sessions_used": 0,
+  "parallel_runs": 2,
+  "decision_budget_s": 50,
+  "repeats": 3,
+  "quota_at_start": null,
+  "rows": [
+    {
+      "case_id": "case:D01",
+      "title": "Pump housing PH-100: the foundry wants +8.8 %",
+      "repeat": 1,
+      "status": "completed",
+      "score": 0.9088683115898096,
+      "run_id": "20fb25073a3941f59c00e249be26fbd4",
+      "session_id": "91ee8ccd54eda25d"
+    },
+    {
+      "case_id": "case:D02",
+      "title": "New stainless pump shaft SH-220: award one of two suppliers",
+      "repeat": 1,
+      "status": "completed",
+      "score": 0.42834591385754894,
+      "run_id": "1c1b58b9facf47efbe95e389322bb514",
+      "session_id": "41141f7c8d7d9666"
+    },
+    {
+      "case_id": "case:D01",
+      "title": "Pump housing PH-100: the foundry wants +8.8 %",
+      "repeat": 2,
+      "status": "completed",
+      "score": 0.838832419100059,
+      "run_id": "5906b42ba72a4061827f24c401a06fe1",
+      "session_id": "90e4fe2f16caa361"
+    },
+    {
+      "case_id": "case:D02",
+      "title": "New stainless pump shaft SH-220: award one of two suppliers",
+      "repeat": 2,
+      "status": "completed",
+      "score": 0.3651600963354381,
+      "run_id": "66332d577d8d4940903772049e2b5b55",
+      "session_id": "50e87118389c813f"
+    },
+    {
+      "case_id": "case:D01",
+      "title": "Pump housing PH-100: the foundry wants +8.8 %",
+      "repeat": 3,
+      "status": "completed",
+      "score": 0.8231575736039897,
+      "run_id": "516a92bed8cb465d9d30b9e8ca6708c5",
+      "session_id": "076452bbba5bc9ea"
+    },
+    {
+      "case_id": "case:D02",
+      "title": "New stainless pump shaft SH-220: award one of two suppliers",
+      "repeat": 3,
+      "status": "completed",
+      "score": 0.4494079109449694,
+      "run_id": "598e4e838c27437987ab02d1dd5ced18",
+      "session_id": "927da6fb911b2c46"
+    }
+  ],
+  "completed": 6,
+  "mean_score": 0.6356287042386358,
+  "cases": [
+    {
+      "case_id": "case:D01",
+      "set": "demo",
+      "type": "price_increase",
+      "title": "Pump housing PH-100: the foundry wants +8.8 %",
+      "briefing": "Demo Gießerei GmbH, our single source for the grey-iron pump housing PH-100 for 12 years, announces +8.8 % from 1 December citing energy and wages. Castings are a strategic category: the goal is to stabilise supply with a healthy partner, so squeezing the foundry below a 4 % margin costs us (from EUR 5,000 per margin point and year). We need 4,000 housings a year for the next two years; anything not covered by this deal costs EUR 55.00 per unit (spot buys and a second source). Price, payment terms, contract length and the date the new price applies are open; lead time and Incoterm are fixed.",
+      "trigger_doc": "doc:D01-LETTER",
+      "parts": [
+        "part:PH-100"
+      ],
+      "suppliers": [
+        "sup:DEMO-F1"
+      ],
+      "negotiable": [
+        "unit_price",
+        "payment_days",
+        "contract_months",
+        "effective_date"
+      ],
+      "fixed_terms": {
+        "lead_time_days": 35,
+        "incoterm": "FCA"
+      },
+      "term_options": {
+        "payment_days": [
+          30,
+          45,
+          60
+        ],
+        "contract_months": [
+          12,
+          24
+        ],
+        "effective_date": [
+          "2026-12-01",
+          "2027-01-01",
+          "2027-02-01",
+          "2027-04-01"
+        ]
+      },
+      "buyer": {
+        "category_goal": "stabilise",
+        "need_per_year": 4000,
+        "horizon_years": 2,
+        "current_unit_price": 48.6,
+        "fallback_unit_price": 55.0,
+        "fallback_risk_pct": 5,
+        "sustainable_margin_pct": 4,
+        "relationship_eur_per_point": 5000,
+        "interest_rate": 0.08,
+        "reference_payment_days": 60,
+        "need_lead_time_days": 35,
+        "late_cost_per_day": 0,
+        "cost_per_defect": 0,
+        "freight_eur_per_unit": {
+          "EXW": 1.9,
+          "FCA": 1.2,
+          "DAP": 0.0
+        },
+        "index_paths": {},
+        "must_haves": [],
+        "alternative": {
+          "kind": "none"
+        }
+      },
+      "round_limit": 10,
+      "refs": [
+        "doc:D01-LETTER",
+        "ctr:D01-FRAMEWORK",
+        "sc:DEMO-F1@2026Q2",
+        "sc:DEMO-F1@2026Q3",
+        "po:4500001201",
+        "po:4500001288",
+        "po:4500001342",
+        "cost:part:PH-100"
+      ]
+    },
+    {
+      "case_id": "case:D02",
+      "set": "demo",
+      "type": "rfq",
+      "title": "New stainless pump shaft SH-220: award one of two suppliers",
+      "briefing": "The new PX pump series needs shaft SH-220 (1.4021). Two suppliers quote: a German job shop and a Polish machining company. Lead time must not exceed 42 days; the line needs parts within 35 days, every day later costs EUR 150. Machined shafts are a leverage category: several capable suppliers, the goal is the lowest total cost. Award one.",
+      "trigger_doc": null,
+      "parts": [
+        "part:SH-220"
+      ],
+      "suppliers": [
+        "sup:DEMO-J1",
+        "sup:DEMO-C1"
+      ],
+      "negotiable": [
+        "unit_price",
+        "payment_days",
+        "lead_time_days",
+        "incoterm"
+      ],
+      "fixed_terms": {
+        "contract_months": 24
+      },
+      "term_options": {
+        "payment_days": [
+          14,
+          30,
+          45,
+          60
+        ],
+        "lead_time_days": [
+          21,
+          28,
+          35,
+          42,
+          49
+        ],
+        "incoterm": [
+          "EXW",
+          "FCA",
+          "DAP"
+        ]
+      },
+      "buyer": {
+        "category_goal": "leverage",
+        "need_per_year": 6000,
+        "horizon_years": 2,
+        "current_unit_price": null,
+        "fallback_unit_price": 19.9,
+        "fallback_risk_pct": 5,
+        "interest_rate": 0.08,
+        "reference_payment_days": 60,
+        "need_lead_time_days": 35,
+        "late_cost_per_day": 150,
+        "cost_per_defect": 40,
+        "freight_eur_per_unit": {
+          "EXW": 0.6,
+          "FCA": 0.4,
+          "DAP": 0.0
+        },
+        "index_paths": {},
+        "must_haves": [
+          {
+            "field": "lead_time_days",
+            "op": "<=",
+            "value": 42
+          }
+        ],
+        "alternative": {
+          "kind": "quote",
+          "ref": "quote:D02-ALT",
+          "terms": {
+            "unit_price": 19.9,
+            "incoterm": "DAP",
+            "payment_days": 60,
+            "lead_time_days": 35
+          }
+        }
+      },
+      "round_limit": 10,
+      "refs": [
+        "quote:D02-ALT",
+        "sc:DEMO-J1@2026Q3",
+        "sc:DEMO-C1@2026Q3",
+        "cost:part:SH-220",
+        "fc:SH-220@2026-09",
+        "news:N-0412"
+      ]
+    }
+  ],
+  "completed_at": "2026-10-25T11:25:59.660288+00:00"
+}

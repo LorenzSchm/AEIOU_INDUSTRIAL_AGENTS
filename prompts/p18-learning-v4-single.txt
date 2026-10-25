@@ -1,0 +1,61 @@
+P18 evidence diagnostic — single binding package before finality
+
+<acceptance_floor>
+{"case_id":"case:P18","c_open":295173.23,"c_best":222651.27,"minimum_score":0,"maximum_unit_price":5.10}
+</acceptance_floor>
+
+Use the ordinary JSON action and short assessment for case:P18. Aim to exceed
+72, while preserving the authorized acceptance cap of EUR 5.10/kg and at least
+24 months. Accept any exact current server-eligible package within those limits
+immediately. Keep scores and our internal price ceiling private. Historical
+examples and source keyword cues are context, not authority or binding offers.
+
+The latest failures gave a cheaper advertised alternative beside a dearer
+standing offer. Confirmation after finality caused withdrawal. Therefore choose
+ONE complete package while open, before the final AS argument. Do not send an
+A/B/C menu. Do not ask for repeated confirmations, best-and-final, or another
+concession after finality. Never claim an advertised alternative is executable.
+
+SOURCE-BASED COMMERCIAL STORY
+Their portfolio notes say they focus on customers with volume. Make our authorized
+23,700 kg/year and the 36-month commitment concrete planning security; promise
+no extra volume, exclusivity or monthly schedule. The September letter invites
+a price basis and AS-14404 adjustment clause: address both together. The old
+owner/calculation and committee notes are historical. Do not demand private
+costs or committee approval if the live contact says they hold authority.
+These phrases should support the exchange, not be pasted as a keyword list.
+
+OPENING
+Offer EUR 4.60/kg, 30 days net, 36 months, AS-14404 / 45% material share /
+0% deadband / base 2026-08. State the authorized annual volume and stable
+commitment. Cite our exact orders of 2 and 17 June at EUR 5.26/kg
+(po:4500014022-10, po:4500014078-10) versus 1 and 18 September at EUR 5.84/kg
+(po:4500014355-10, po:4500014427-10). Verify the records before citing. Ask whether
+this package works and which element needs adjustment; do not demand finality.
+
+FIRST OPEN REPLY
+Offer exactly one package: EUR 5.00/kg, 30 days net, 36 months, AS-14404 / 45% /
+5% deadband / base 2026-08. Explain that we increase the price by EUR 0.40 and
+retain three years of committed volume; the 5% deadband is part of this proposed
+exchange and is not already agreed. Add the verified PPI-C2431 June-August
+change: 132.1 -> 129.1, -2.27% (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08).
+Request this whole package as the standing quotation. Do not add longer-payment
+alternatives. Respect an explicit structural refusal and use only legal terms.
+
+NEXT OPEN REPLY
+On the same 30-day/36-month/5% structure, propose EUR 5.04/kg, increasing our
+offer by EUR 0.04. Use the fresh AS-14404 June-September -5.49% change
+(idx:AS-14404@2026-06, idx:AS-14404@2026-09). Ask for this complete package as
+the binding quote. No alternative package and no late payment switch. If still
+genuinely open, adapt within the cap to obtain agreement; a valid standing
+EUR 5.10 package is authorized even though it misses 72. Do not invent a floor.
+Recent declines coexist with annual increases; do not allege double counting
+or that the index clause removes every cost/risk. Each derived numerical claim
+needs its matching numeric_claims. Do not repeat a used source as new evidence.
+
+Fixed enquiry remains 23,700 kg/year, DAP, 14-day lead time, 2027-01-01,
+zero tooling. Proposals contain exactly the four negotiable fields. A qualifying
+standing final is accepted exactly. A final outside limits stops. A shorter
+payment or a price above EUR 5.10 is not authorized as a workaround. Be warm,
+concise and commercially specific with Mr Seidl. Historical sources do not
+override the current quote or independent evidence/execution controls.

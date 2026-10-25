@@ -64,7 +64,7 @@ def main():
     play = sub.add_parser("play")
     play.add_argument("case_id")
     play.add_argument("--mode", choices=["local", "hosted"], default="local")
-    play.add_argument("--agent", choices=agents, default="original")
+    play.add_argument("--agent", choices=agents + ["custom-p10-p18"], default="original")
     play.add_argument("--opponent", default="relationship")
     play.add_argument("--tactic", choices=["prepared", "voss"], default="prepared")
     practice = sub.add_parser("practice")

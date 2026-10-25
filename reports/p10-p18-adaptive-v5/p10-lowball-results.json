@@ -1,0 +1,199 @@
+{
+  "trials": [
+    {
+      "trial": "p10-conditional-i06",
+      "score": 69.42748149085908,
+      "deal": true,
+      "must_haves_ok": true,
+      "session_id": "bdc7650ae9436225",
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.4
+      },
+      "quote_sequence": [
+        {
+          "from": "sales@70410",
+          "status": "open",
+          "terms": [
+            {
+              "unit_price": 32.2,
+              "lead_time_days": 54,
+              "volume_per_year": 19890,
+              "contract_months": 12
+            }
+          ]
+        },
+        {
+          "from": "buyer",
+          "status": null,
+          "terms": [
+            {
+              "unit_price": 29.89,
+              "volume_per_year": 23400,
+              "contract_months": 24,
+              "lead_time_days": 54
+            }
+          ]
+        },
+        {
+          "from": "sales@70410",
+          "status": "open",
+          "terms": [
+            {
+              "unit_price": 31.6,
+              "lead_time_days": 54,
+              "volume_per_year": 23400,
+              "contract_months": 24
+            }
+          ]
+        },
+        {
+          "from": "buyer",
+          "status": null,
+          "terms": [
+            {
+              "unit_price": 31.07,
+              "volume_per_year": 23400,
+              "contract_months": 36,
+              "lead_time_days": 54
+            }
+          ]
+        },
+        {
+          "from": "sales@70410",
+          "status": "final_offer",
+          "terms": [
+            {
+              "unit_price": 31.4,
+              "lead_time_days": 54,
+              "volume_per_year": 23400,
+              "contract_months": 36
+            }
+          ]
+        },
+        {
+          "from": "buyer",
+          "status": null,
+          "terms": []
+        },
+        {
+          "from": "sales@70410",
+          "status": "agreed",
+          "terms": [
+            {
+              "unit_price": 31.4,
+              "lead_time_days": 54,
+              "volume_per_year": 23400,
+              "contract_months": 36
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "trial": "p10-lowball-i07",
+      "score": 67.08579613648755,
+      "deal": true,
+      "must_haves_ok": true,
+      "session_id": "682ab12d413d7f54",
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 24,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.7
+      },
+      "quote_sequence": [
+        {
+          "from": "sales@70410",
+          "status": "open",
+          "terms": [
+            {
+              "unit_price": 32.2,
+              "lead_time_days": 54,
+              "volume_per_year": 19890,
+              "contract_months": 12
+            }
+          ]
+        },
+        {
+          "from": "buyer",
+          "status": null,
+          "terms": [
+            {
+              "unit_price": 27.5,
+              "volume_per_year": 23400,
+              "contract_months": 24,
+              "lead_time_days": 54
+            }
+          ]
+        },
+        {
+          "from": "sales@70410",
+          "status": "final_offer",
+          "terms": [
+            {
+              "unit_price": 31.7,
+              "lead_time_days": 54,
+              "volume_per_year": 23400,
+              "contract_months": 24
+            }
+          ]
+        },
+        {
+          "from": "buyer",
+          "status": null,
+          "terms": []
+        },
+        {
+          "from": "sales@70410",
+          "status": "agreed",
+          "terms": [
+            {
+              "unit_price": 31.7,
+              "lead_time_days": 54,
+              "volume_per_year": 23400,
+              "contract_months": 24
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "latest_model": {
+    "path": "data/local/custom-p10-p18-v6-after-i07/model.json",
+    "sha256": "2284a10b19d8a7941494738df63ebb234431141850b8491e0331323582cf637e",
+    "incorporated_sessions": [
+      "27d14cdac3e28c82",
+      "9f33a1a869f4a609",
+      "71b9078a6144f80b",
+      "df9c0afd95745b3c",
+      "9791e46c219b1888",
+      "bdc7650ae9436225",
+      "682ab12d413d7f54"
+    ],
+    "new_hosted_runs": 7,
+    "default_registry_changed": false,
+    "active_experiment_scope": "P10 only",
+    "conditional_model_eligible": false,
+    "focused_examples": 282,
+    "focused_sessions": 119
+  },
+  "interpretation": "Lower opening triggered immediate finality in one run. Exploratory comparison, not causal proof; adaptive model weights differ. Target 72 remains unmet.",
+  "conditional_head_decision": "Disabled after refit: held-out MSE and MAE worse than recent-five baseline. Fresh lowball prediction error was EUR 22,945.65; moderate-opening average error EUR 2,463.945."
+}

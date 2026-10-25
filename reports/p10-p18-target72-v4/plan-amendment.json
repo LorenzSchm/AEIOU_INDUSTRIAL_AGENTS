@@ -1,0 +1,22 @@
+{
+  "recorded_at": "2026-10-25T09:52:21.214113+00:00",
+  "original_plan": "3 development and 3 frozen validation sessions per case; 12 total.",
+  "amendment": "The final P18 slot became a source-linked keyword / single-package diagnostic.",
+  "reason": "User asked to analyze missing evidence, repeated P18 no-deal behaviour, the P10 gap, and commercial keywords.",
+  "allocation": {
+    "case:P10": {
+      "development": 3,
+      "validation": 3,
+      "diagnostic": 0
+    },
+    "case:P18": {
+      "development": 3,
+      "validation": 2,
+      "diagnostic": 1
+    }
+  },
+  "authorized_total_unchanged": 12,
+  "freeze_manifest_preserved": true,
+  "diagnostic_trial": "p18-diagnostic-single-package",
+  "post_validation_implementation": "Automatic bounded keyword cues in ResponseSupport; offline tested, no fresh hosted test."
+}

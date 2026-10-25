@@ -1,0 +1,93 @@
+{
+  "session_id": "27d14cdac3e28c82",
+  "case_id": "case:P18",
+  "excluded_steps": {},
+  "models": [
+    {
+      "path": "data/local/custom-p10-p18-v4-frozen/model.json",
+      "sha256": "162ef7d80bc60c6fa1c2926260ef63012b7f101a0da492c999f3c00fa47e50c3",
+      "supported_predictions": 3,
+      "mae": 0.014784793423821309,
+      "mse": 0.00036070700760002856,
+      "predictions": [
+        {
+          "turn": 1,
+          "actual_gain": 0.08896870491948065,
+          "predicted_gain": 0.10086633836045265,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        },
+        {
+          "turn": 3,
+          "actual_gain": 0.05738333406777412,
+          "predicted_gain": 0.026770122560025575,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        },
+        {
+          "turn": 5,
+          "actual_gain": 0.0188679245283019,
+          "predicted_gain": 0.02071145985104528,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "data/local/custom-p10-p18-v5-seed/model.json",
+      "sha256": "f82c3af432231c6d770c023c88c632910a12e052f95fee9ceff055cebe7dcf23",
+      "supported_predictions": 3,
+      "mae": 0.014469423857176358,
+      "mse": 0.0003299030578209664,
+      "predictions": [
+        {
+          "turn": 1,
+          "actual_gain": 0.08896870491948065,
+          "predicted_gain": 0.10106207077471242,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        },
+        {
+          "turn": 3,
+          "actual_gain": 0.05738333406777412,
+          "predicted_gain": 0.02843776592294695,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        },
+        {
+          "turn": 5,
+          "actual_gain": 0.0188679245283019,
+          "predicted_gain": 0.021237262099772034,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        }
+      ]
+    }
+  ],
+  "method": "Actual sent email, public prefix only; session excluded from each model's corpus.",
+  "limitation": "One session is noisy evidence. Abstentions are reported, not assigned zero error."
+}

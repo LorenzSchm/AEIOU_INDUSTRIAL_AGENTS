@@ -1,0 +1,77 @@
+{
+  "path": "data/local/custom-p10-p18-v6-after-i08/model.json",
+  "sha256": "c74970b50a78749a8fb59f422d3dea11714013e4fad430d1df9f1cfef5ab5e23",
+  "incorporated_sessions": [
+    "27d14cdac3e28c82",
+    "9f33a1a869f4a609",
+    "71b9078a6144f80b",
+    "df9c0afd95745b3c",
+    "9791e46c219b1888",
+    "bdc7650ae9436225",
+    "682ab12d413d7f54",
+    "551d4efcad2e29e8"
+  ],
+  "new_hosted_runs": 8,
+  "default_registry_changed": false,
+  "active_experiment_scope": "P10 only",
+  "conditional_model_eligible": false,
+  "focused_examples": 284,
+  "focused_sessions": 120,
+  "general_corpus": {
+    "excluded_files": {
+      "simulation_or_diagnostic_summary": 1284
+    },
+    "recovered": [
+      {
+        "session_id": "17fb96c3d83b45c5",
+        "source": "reports/p18-behavior-analysis/sessions/7b36383226f24699bcb62d037ae76770.json",
+        "previous_messages": 1,
+        "recovered_messages": 3
+      }
+    ],
+    "unique_sessions": 270,
+    "duplicate_log_copies": 59,
+    "excluded_steps": {
+      "action_only_close": 178,
+      "message_without_package": 58,
+      "missing_response": 3,
+      "transport_or_unpaired_response": 6
+    },
+    "examples": 786,
+    "by_case": {
+      "case:P01": 41,
+      "case:P04": 13,
+      "case:P05": 25,
+      "case:P07": 17,
+      "case:P02": 16,
+      "case:P08": 20,
+      "case:P10": 110,
+      "case:P03": 26,
+      "case:P11": 21,
+      "case:P18": 174,
+      "case:D01": 158,
+      "case:D02": 165
+    },
+    "usable_sessions": 250,
+    "sha256": "6ff25115f6c59a54f38db148fe6b1578d442e2a39dfafa3dc20dd5a33869c9ed",
+    "observed_post_final_examples": 25,
+    "data_policy": "Visible messages and observed responses only; no server reasons, private scores or future evidence. Final-offer counters are observed risk examples, never instructions to over-negotiate."
+  },
+  "opening_finality_study": {
+    "path": "data/local/custom-p10-p18-v6-opening-finality-i08-audited/report.json",
+    "eligible": false,
+    "class_support": {
+      "train": {
+        "1": 15,
+        "0": 22
+      },
+      "validation": {
+        "0": 12
+      },
+      "test": {
+        "0": 11,
+        "1": 2
+      }
+    }
+  }
+}

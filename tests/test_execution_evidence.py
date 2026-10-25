@@ -164,6 +164,21 @@ def test_annual_supplier_claim_does_not_hide_unused_recent_window(first_reply):
     assert a.decisions[-1]["execution_evidence"]["status"] == "included"
 
 
+def test_scattered_series_and_dates_do_not_suppress_unused_evidence(first_reply):
+    case, sid, threads = first_reply
+    # Regression from the failed custom run: annual PPI, a different AS window,
+    # and the clause base month together falsely matched an already-sent PPI claim.
+    threads[sid][1]["body"] = (
+        "We accept that AS-14404 and PPI-C2431 rose over twelve months. "
+        "AS-14404 changed by -5.49% from 2026-06 to 2026-09.\n\n"
+        "Our alternative includes an AS-14404 clause with base month 2026-08."
+    )
+    a = agent()
+    move = a.decide(case, threads)
+    assert "PPI-C2431 changed by -2.27% from 2026-06 to 2026-08" in move["message"]["body"]
+    assert a.decisions[-1]["execution_evidence"]["status"] == "included"
+
+
 def test_eligible_acceptance_still_precedes_evidence(first_reply):
     case, sid, threads = first_reply
     threads[sid][-1]["term_sheets"][0]["terms"] = {

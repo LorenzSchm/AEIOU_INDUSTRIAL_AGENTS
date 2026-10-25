@@ -167,6 +167,10 @@ def local_play(
     pace=0.0,
     backend_factory=None,
 ):
+    if name == "custom-p10-p18":
+        from .custom_agent import validate_custom_case
+
+        validate_custom_case(case_id)
     from .research import package
 
     pkg = pkg or package()

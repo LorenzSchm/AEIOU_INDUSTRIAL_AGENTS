@@ -14,11 +14,13 @@ import { Evidence } from "@/pages/evidence"
 import { Negotiations } from "@/pages/negotiations"
 import { Overview } from "@/pages/overview"
 import { Pipeline } from "@/pages/pipeline"
+import { FinalRunnerBanner, LiveFinal } from "@/pages/live-final"
 import { Replay } from "@/pages/replay"
 import { useWorkbench, WorkbenchProvider } from "@/store"
 
 const titles: Record<Route["page"], string> = {
   overview: "Overview",
+  final: "Live final",
   pipeline: "Deal pipeline",
   negotiations: "Negotiations",
   evidence: "Evidence library",
@@ -41,6 +43,8 @@ function Page({ route }: { route: Route }) {
     )
   if (!ready) return <Loading>Loading your negotiation workbench…</Loading>
   switch (route.page) {
+    case "final":
+      return <LiveFinal />
     case "pipeline":
       return <Pipeline />
     case "negotiations":
@@ -75,8 +79,8 @@ function Shell() {
                 <>
                   <BreadcrumbSeparator />
                   <BreadcrumbItem>
-                    <BreadcrumbLink href={route.from === "evaluations" ? "#evaluations" : "#negotiations"}>
-                      {route.from === "evaluations" ? "Evaluations" : "Negotiations"}
+                    <BreadcrumbLink href={`#${route.from ?? "negotiations"}`}>
+                      {route.from === "final" ? "Live final" : route.from === "evaluations" ? "Evaluations" : "Negotiations"}
                     </BreadcrumbLink>
                   </BreadcrumbItem>
                 </>
@@ -92,6 +96,7 @@ function Shell() {
           </Badge>
         </header>
         <main className="mx-auto w-full max-w-[1500px] flex-1 space-y-5 p-6">
+          {route.page !== "final" && <FinalRunnerBanner />}
           <Page route={route} />
         </main>
         <footer className="mx-6 flex justify-between border-t py-4 text-xs text-muted-foreground">

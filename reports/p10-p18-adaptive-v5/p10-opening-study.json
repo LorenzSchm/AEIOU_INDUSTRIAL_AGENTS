@@ -1,0 +1,248 @@
+{
+  "observations": [
+    {
+      "session_id": "12be88d0edc8d64d",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.5,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "246d2761779ccacf",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.4,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "2ace6b53471c4a62",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.3,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "2fae1510f0f20ff1",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.5,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "46a813081be7af08",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.4,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "4dcdd3a15d00f456",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.5,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "682ab12d413d7f54",
+      "opening_price": 27.5,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.7,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 24
+      }
+    },
+    {
+      "session_id": "7c8665c87f3534b8",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.5,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "84844c483752f549",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.5,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "97ab7583112e4169",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.4,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "9f33a1a869f4a609",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.4,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "a55aa7ae9a426aef",
+      "opening_price": 28.4,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.4,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "a8d7270ea7b60048",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.6,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "b61803b088436fdf",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.5,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "bdc7650ae9436225",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.4,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "bff984abf4cf2299",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.4,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "c305fe3adb6ca87a",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.4,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "ccdd5a7eb09a13e8",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.4,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "d366345e9f20e479",
+      "opening_price": 29.89,
+      "last_status": "final_offer",
+      "last_terms": {
+        "unit_price": 31.5,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "df9c0afd95745b3c",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.4,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "e768e89ccadd59f2",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.4,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    },
+    {
+      "session_id": "f4bb9e63e89efb06",
+      "opening_price": 29.89,
+      "last_status": "agreed",
+      "last_terms": {
+        "unit_price": 31.5,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36
+      }
+    }
+  ],
+  "hypothesis": "Test higher opening30.50 while preserving24-to36-month concession and54-day lead time. Higher staged openings at54days absent from this corpus.",
+  "limitation": "Observational history; wording and model versions vary."
+}

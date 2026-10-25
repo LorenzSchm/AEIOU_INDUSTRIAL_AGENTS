@@ -1,0 +1,48 @@
+{
+  "session_id": "682ab12d413d7f54",
+  "case_id": "case:P10",
+  "excluded_steps": {
+    "action_only_close": 1
+  },
+  "models": [
+    {
+      "path": "data/local/custom-p10-p18-v6-after-i06/model.json",
+      "sha256": "b1eec0f7e2836f08041da47f76552b07725bb3d559ccca3dd614a49c6c5fb546",
+      "supported_predictions": 1,
+      "mae": 0.013636798926921156,
+      "mse": 0.00018596228497327801,
+      "predictions": [
+        {
+          "turn": 1,
+          "actual_gain": 0.2095255981837918,
+          "predicted_gain": 0.19588879925687064,
+          "status": "advisory_only",
+          "domain": {
+            "supported": true,
+            "reasons": [],
+            "out_of_range_features": []
+          }
+        }
+      ],
+      "conditional_cost": {
+        "supported_predictions": 1,
+        "mae_eur": 22945.649999999907,
+        "predictions": [
+          {
+            "turn": 1,
+            "forecast": {
+              "status": "conditional_advice",
+              "expected_final_cost_given_agreement": 1550531.25,
+              "validation_mae_eur": 8223.56,
+              "meaning": "Historical estimate conditional on agreement and continuation policy. Not acceptance probability, not a binding quote, not causal evidence, and not transferable to an edited proposal. Validation error is descriptive, not a confidence interval."
+            },
+            "actual_accepted_cost": 1527585.6,
+            "terminal_label": "accepted"
+          }
+        ]
+      }
+    }
+  ],
+  "method": "Actual sent email, public prefix only; session excluded from each model's corpus.",
+  "limitation": "One session is noisy evidence. Abstentions are reported, not assigned zero error."
+}
