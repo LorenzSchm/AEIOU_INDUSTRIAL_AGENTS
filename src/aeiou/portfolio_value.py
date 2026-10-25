@@ -7,31 +7,6 @@ from arena_kit.cost import closing_terms, total_cost
 from .optimizer import valid_terms
 
 
-def fixed_price_first(case, events):
-    """Test a sustainable fixed-price opening before offering costly index risk.
-
-    This is a one-message discovery step, not a ban on indexed agreements.
-    Once the supplier has responded to a buyer proposal, ordinary compensated
-    risk exploration resumes. Existing indexed quotes and other categories keep
-    their current policy. No case IDs or post-run scoring inputs are used.
-    """
-    return bool(
-        case["buyer"].get("category_goal") in {"stabilise", "secure_supply"}
-        and case["buyer"].get("index_risk_pct", 0) > 0
-        and "index_clause" in case["negotiable"]
-        and None in case.get("term_options", {}).get("index_clause", [])
-        and events
-        and events[-1].get("status") == "open"
-        and not any(m.get("from") == "buyer" for m in events)
-        and any(
-            s.get("terms", {}).get("unit_price") is not None
-            and "index_clause" in s.get("terms", {})
-            and s["terms"]["index_clause"] is None
-            for s in events[-1].get("term_sheets", [])
-        )
-    )
-
-
 def sensitivity_cost(case, terms, standard, scenarios):
     weight = sum(s["weight"] for s in scenarios)
     return sum(s["weight"] * total_cost(case, terms, standard, s) for s in scenarios) / weight

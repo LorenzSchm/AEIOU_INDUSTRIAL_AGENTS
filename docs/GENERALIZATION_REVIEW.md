@@ -1764,3 +1764,27 @@ decisions, only the P02 opening changes;56 remain identical. All four latest-P08
 decisions remain identical. Full mocked-model replay attempts to reintroduce
 the previous indexed option; the actual outgoing message retains357.94/14/null
 with zero fallbacks. These are local checks, not evidence of hosted acceptance.
+
+### P02 fixed-price-first hosted outcome: not retained
+
+The single authorized sessiond83771ef99f87c7b (runtimed517b95, local run
+b184d1378b164f85a7acbef269b161cc) scored59.4358, below the60.6569 record by
+1.2210points. The first actual message correctly offered357.94/14days/null.
+The supplier rejected that price and countered369.52/14/null. The next controlled
+menu restored index exploration, offering357.77/14 with CU-NOTATION share20%,
+deadband5%,base2026-08; the supplier immediately accepted that indexed package.
+The model did not introduce or select amended terms in either buyer turn.
+
+Total scored cost2254722.58EUR is578.20 above the record. Higher base spend and
+financing/index risk outweighed the6203.06EUR reduction in relationship penalty.
+The scenario's hypothetical fixed-price score was not realized: the supplier
+did not accept the required price without risk sharing. One observation cannot
+prove this policy is generally worse, but it supplies no reason to replace the
+existing successful opening. The three production files were restored
+byte-for-byte to02cb64e, preserving the prior P02/P05/P08 behavior and P04 guard;
+the experiment-only test was removed. The tested experiment remains in Git
+history atd517b95 for reproducibility. No further hosted attempt was started.
+
+Usage:one session (quota183->184),2 model calls,10814 input/158 output tokens,
+51.48seconds,zero errors or fallbacks. Team best unchanged. Dashboard report:
+data/local/evaluations/practice-p02-d517b95/report.json.
