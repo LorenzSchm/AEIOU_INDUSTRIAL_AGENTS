@@ -1470,3 +1470,29 @@ passed. No hosted validation of the corrected retained runtime has been made.
 Exactly one creation/session, quota 152 -> 153, team best map unchanged. Two
 model calls, 12982 input/204 output tokens, no errors/fallbacks, 63.62 seconds.
 Report: data/local/evaluations/practice-p08-a9213ac/report.json. No further run.
+
+
+## Conditional indexed settlement from observed supplier movement
+
+The prior indexed policy reaches the same 5.45 outcome after buyer bids of 5.18
+and 5.25. Try a distinct closing act rather than another incremental distant
+anchor. Preserve the opening and first reciprocal counter. After at least two
+buyer offers, if the latest two supplier quotes improve on identical indexed
+terms, request a further discount equal to half that observed supplier price
+step (round down to cents). Require leverage category, a previously proposed
+indexed structure, a bid above existing comparable buyer bids, legal terms,
+external cost ceiling and strictly lower cost than the cheapest current quote.
+No stored case ID, record price, hidden floor, or hidden opponent utility is used.
+
+Keep A/B internally. If the validated settlement candidate is actually selected,
+send only that complete package with a truthful conditional willingness to close.
+Do not add deadlines, off-sheet promises, historical quote evidence or repeated
+cost claims. Terminal supplier offers are never reopened. The preceding request
+verb-boundary correction stays in place.
+
+60 focused tests pass; Ruff clean; all 57 protected P01-P05 archived decisions
+match. P08 archived replay retains 4.96/4.87/4.91 opening and 5.08 first indexed
+counter, then proposes one 5.43/payment90/duration24/deadband5 package from the
+observed 5.57 -> 5.48 seller step. Existing final-offer acceptance is unchanged.
+This verifies the action, not supplier acceptance or score gain. One hosted P08
+attempt is authorized; no session-creation retry or second hosted attempt.

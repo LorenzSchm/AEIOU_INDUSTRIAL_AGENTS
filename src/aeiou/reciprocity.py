@@ -1,6 +1,7 @@
 """Recover from repeated packages using observed counters, never hidden floors."""
 
 import copy
+import math
 import re
 
 from arena_kit.cost import closing_terms, total_cost
@@ -120,6 +121,37 @@ def responsive_packages(case, events, packages, standard, cost, ceiling):
     counters = sorted(quotes, key=cost) if date_menu else [min(indexed_quotes, key=cost)] if indexed_quotes else [quote]
     for counter in counters:
         comparable = [p for p in previous if same_structure(p, counter)]
+        # Late in a productive indexed negotiation, make one credible closing
+        # proposal instead of another distant anchor. Infer the requested final
+        # discount from the seller's last like-for-like concession, not a stored
+        # challenge score or an assumed supplier floor.
+        if counter in indexed_quotes and len(buyers) >= 2 and comparable:
+            earlier = next(
+                (m for m in reversed(events[:-1]) if m.get("from") != "buyer" and m.get("term_sheets")),
+                {},
+            )
+            peers = [
+                {f: full.get(f) for f in case["negotiable"]}
+                for s in earlier.get("term_sheets", [])
+                for full in [closing_terms(case, s.get("terms", {}), standard)]
+            ]
+            peers = [q for q in peers if valid_terms(case, q) and same_structure(q, counter)]
+            if peers:
+                seller_step = min(q["unit_price"] for q in peers) - counter["unit_price"]
+                price = math.floor((counter["unit_price"] - max(0.01, seller_step / 2)) * 100 + 1e-8) / 100
+                terms = {**counter, "unit_price": price}
+                current = max(
+                    (p["terms"]["unit_price"] for p in packages if same_structure(p["terms"], terms)),
+                    default=max(p["unit_price"] for p in comparable),
+                )
+                if seller_step > 0.02 and price > current and allowed(terms):
+                    insert(
+                        terms,
+                        "Conditional settlement after observed indexed concessions",
+                        index_settlement=True,
+                        seller_step=round(seller_step, 6),
+                    )
+                    continue
         if (len(buyers) >= 2 or counter in indexed_quotes) and comparable:
             last_price = max(p["unit_price"] for p in comparable)
             gap = counter["unit_price"] - last_price

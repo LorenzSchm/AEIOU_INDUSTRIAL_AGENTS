@@ -166,3 +166,55 @@ def test_index_reciprocity_requires_observed_structure_and_safe_movement(change)
         packages[2] = {**packages[2], "terms": {**packages[2]["terms"], "unit_price": 21}}
         packages[2]["cost"] = total_cost(case, packages[2]["terms"])
     assert responsive_packages(case, events, packages, {}, lambda t: total_cost(case, t), ceiling) == packages
+
+
+def settlement_scenario():
+    case, events, packages = indexed_scenario()
+    prior_buyer = copy.deepcopy(events[0])
+    prior_buyer["term_sheets"][2]["terms"]["unit_price"] = 20.5
+    seller = copy.deepcopy(events[-1])
+    seller["term_sheets"][0]["terms"]["unit_price"] = 23
+    return case, events + [prior_buyer, seller], packages
+
+
+def test_index_settlement_prices_observed_concession_and_keeps_contract():
+    case, events, packages = settlement_scenario()
+    before = copy.deepcopy((events, packages))
+    result = responsive_packages(case, events, packages, {}, lambda t: total_cost(case, t), float("inf"))
+    assert before == (events, packages)
+    assert result[:2] == packages[:2]
+    close = result[2]
+    assert close["index_settlement"] and close["seller_step"] == 0.5
+    assert close["terms"]["unit_price"] == 22.75
+    assert same_structure(close["terms"], events[-1]["term_sheets"][0]["terms"])
+    assert close["cost"] < close["standing_cost"]
+
+
+@pytest.mark.parametrize(
+    "change", ["terminal", "no_concession", "worsening", "different_terms", "ceiling", "non_leverage"]
+)
+def test_index_settlement_needs_productive_comparable_history_and_budget(change):
+    case, events, packages = settlement_scenario()
+    ceiling = float("inf")
+    if change == "terminal":
+        events[-1]["status"] = "final_offer"
+    elif change == "no_concession":
+        events[-1]["term_sheets"][0]["terms"]["unit_price"] = 23.5
+    elif change == "worsening":
+        events[-1]["term_sheets"][0]["terms"]["unit_price"] = 24
+    elif change == "different_terms":
+        events[1]["term_sheets"][0]["terms"]["payment_days"] = 21
+    elif change == "ceiling":
+        ceiling = total_cost(case, {**packages[2]["terms"], "unit_price": 22})
+    elif change == "non_leverage":
+        case["buyer"]["category_goal"] = "stabilise"
+    result = responsive_packages(case, events, packages, {}, lambda t: total_cost(case, t), ceiling)
+    assert not any(p.get("index_settlement") for p in result)
+
+
+def test_index_settlement_does_not_round_requested_discount_away():
+    case, events, packages = settlement_scenario()
+    events[1]["term_sheets"][0]["terms"]["unit_price"] = 23.59
+    events[-1]["term_sheets"][0]["terms"]["unit_price"] = 23.50
+    result = responsive_packages(case, events, packages, {}, lambda t: total_cost(case, t), float("inf"))
+    assert result[2]["terms"]["unit_price"] == 23.45

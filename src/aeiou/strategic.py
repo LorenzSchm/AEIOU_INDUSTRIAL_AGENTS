@@ -553,6 +553,30 @@ class StrategicNegotiator(Negotiator):
                     },
                 }
         sheets = move["message"].get("term_sheets", [])
+        settlement = next(
+            (
+                p
+                for p in offers.get(sid, [])
+                if p.get("index_settlement") and any(s["terms"] == p["terms"] for s in sheets)
+            ),
+            None,
+        )
+        if settlement:
+            # Only an already-validated offer can become the closing request.
+            # Keep alternatives in internal planning, but make the commitment
+            # unambiguous to the supplier. No off-sheet promises or fake deadline.
+            sheets = [{"terms": settlement["terms"]}]
+            move["message"]["term_sheets"] = sheets
+            move["message"]["body"] = (
+                "Thank you for the price movement. We have moved closer to your latest quote "
+                "and retained its index clause and all other commercial terms. "
+                "We are ready to conclude on the complete package below if you can approve it. "
+                "Could you confirm this package so we can finish the negotiation?"
+            )
+            self.support[sid]["outbound_settlement"] = {
+                "terms": copy.deepcopy(settlement["terms"]),
+                "seller_step": settlement["seller_step"],
+            }
         if sheets:
             if answer := fixed_commitment_answer(case, threads[sid]):
                 move["message"]["body"] += "\n\n" + answer
