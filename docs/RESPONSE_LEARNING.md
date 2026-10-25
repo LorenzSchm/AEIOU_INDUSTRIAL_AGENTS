@@ -617,3 +617,36 @@ a final EUR134.20 offer, which was accepted. Score1.0 was not reached. The remai
 reported benchmark cost gap is EUR14,881.75; it is not a prediction of attainable
 savings. This single exploratory result does not isolate causality or generalize
 to all renewal negotiations. Artifacts: `data/local/practice-p01-renewal-focus-v1/`.
+
+## P4 intermediate-payment experiment: failed
+
+Revision `4a76f72` adds an isolated `FinancingBridgeNegotiator`, with no production
+factory registration. Comparable same-message cash/credit quotes support a request
+for an intermediate legal payment term and next longer commitment. The proposed
+complete cost must improve on the quoted packages by at least the saving from a
+one-cent unit-price reduction. It preserves prior concessions, coverage and A;
+no challenge IDs, historical winning prices or benchmark targets enter the rule.
+
+38 focused tests passed. Replay proposed EUR4.88,45-day payment,36months after
+the supplier's EUR4.87/14-day and EUR4.94/90-day quotes, and preserved checked
+P2/P5/P11 decisions. No model training or P18 work was performed.
+
+One hosted attempt, session `f9529f49198d3481`, run
+`949fbdec9ddf40d3bd09ca11781df06b`, ended **without a deal: score0**. The existing
+personal best **86.0445** remained unchanged. The new EUR4.88/45-day package was
+sent, alongside A and an extra planner-generated EUR4.80/60-day/36-month option.
+The supplier countered at EUR4.90,45days,36months with status open and a statement
+that this was its best price for that structure. Our next message repeated
+EUR4.88 alongside aggressive90-day options atEUR4.14 andEUR4.30. The supplier
+then withdrew. There was no transport failure or invalid acceptance attempt.
+
+The experimental proposal therefore did not secure the hoped-for saving, and
+the continuation policy failed to secure the intermediate counteroffer. Its
+presence would not have beaten the historical record anyway. The extra planner
+option also limits causal attribution to the intended payment exchange alone.
+Do not promote this variant or call it a score improvement. It remains isolated.
+
+Three Claude calls,15,921input/355output tokens,35.28seconds; zero errors/fallbacks.
+Quota229 to230 used, one exclusive creation marker and one new session. No repeat
+attempt was made. Full failed transcript, model/source snapshot, preflight and
+HTML report: `data/local/practice-p04-financing-v1/`.
