@@ -1835,3 +1835,76 @@ The full experiment remains reproducible in commitff91fb6. No second attempt.
 Usage:quota188->189,one model call,5583input/88output tokens,24.16seconds,
 zero errors or fallbacks. Team best unchanged. Dashboard report:
 data/local/evaluations/practice-p02-ff91fb6/report.json.
+
+## P02 exhaustive feedback audit: identify the cost curve before another attempt
+
+Read-only audit of all15 existing P02 sessions:14 deals and one no-deal.
+No hosted session or paid model call was created. Production remains unchanged.
+Artifacts:data/local/challenge-opportunity-audit/p2-feedback-calibration.json,
+p2-all-sessions.json, P02-extra-*.json, p2-fixed-premium-history.json.
+
+The published relationship-cost equation can be inverted from returned scoring
+breakdowns. For penaltyR, rateK=31920 and sustainable marginm=0.5, let y=R/K.
+The effective margin gap is sqrt(10*y) for y<=2.5, else y+2.5. Effective margin
+is m-gap. A30-day deal matches the documented supplier standard payment, so its
+cash value equals its unit price on these otherwise fixed terms. This identifies
+effective full cost=price*(1-margin/100). A14-day result then identifies the
+financing coefficient from cash value=price*(1+rate*16/360).
+
+Using only sessions1e745f97548f6156 and4e5b27c736731d8e gives effective full cost
+367.6000005EUR and financing0.06600006. These are reconstructed scoring parameters
+under the published model and zero-extra-cost assumption, not independently
+verified supplier accounts. No hidden endpoint or private configuration was read.
+The production priors remain374.95EUR and12%; those assumptions explain much of
+the disagreement between our proposed prices and realized scores.
+
+Validation uses the other12 deals, including14/30/45/90-day payments, fixed
+pricing, and3%/5% deadbands. Reconstructed total costs match within0.02EUR,
+consistent with component rounding. This validates cost reconstruction for the
+observed scenario; it does not estimate acceptance probabilities or prove that
+the parameters apply to another challenge or a future arena revision.
+
+Counterfactual minima from the reconstructed model, holding the CU clause at
+20%share/5%deadband/base2026-08 and respecting legal payment choices:
+
+| Payment days | Price near cost minimum | Conditional score |
+|---|---:|---:|
+|14|356.28|60.75|
+|30|357.33|63.41|
+|45|358.32|65.92|
+|60|359.32|68.45|
+|90|361.33|73.54|
+
+These prices are numerical optima, not accepted offers or runtime constants.
+Our60.66 record is already within0.10points of the14-day indexed optimum.
+Additional tiny price discounts on that structure cannot yield a large gain.
+Among all published indexed options, the5%deadband dominates smaller deadbands
+in scored buyer cost on otherwise identical terms. Consequently, under this
+reconstruction, index-preserving price/payment tuning cannot reach80-90points.
+
+New acceptance evidence found in the previously uninspected older session
+d9cc8b3ea2f46733: the supplier accepted353.50/30days with the identical5% CU
+clause. That scored54.48 because the supplier-health penalty offset the lower
+purchase price. The latest paired-payment run accepted360.04/30 on the same
+clause and scored59.12. A target near357.33/30 lies between two previously
+accepted prices on the same structure. This strengthens the case for a focused
+30-day test but does not guarantee repeat acceptance or the calculated score.
+An older45-day agreement exists at355 with3%deadband; changing to5% is a new
+risk allocation and must not be presented as an already accepted structure.
+
+Fixed pricing has the larger conditional upside:360.04/30/null reconstructs to
+96.28points;361/30/null to92.83;362/30/null to88.14. However, older transcripts
+already show repeated refusals of fixed offers around362.44/14 and362.44/60.
+Thus simply offering a fixed premium is not an untried breakthrough. A fixed
+deal at those levels needs genuinely new acceptance evidence or a changed
+negotiation approach. The latest contradictory prose preferring fixed pricing
+does not override the actually indexed executable term sheet.
+
+Recommended sequence: first correct cost calibration as a separately validated
+feedback-derived model, keeping public priors for unseen cases and checking held-
+out results before using updated estimates. Next evaluate the30-day indexed
+structure around its reconstructed minimum, then more ambitious payment terms
+if the supplier supports them. Do not embedP02 identifiers, effective costs, or
+winning prices in the generic agent. Post-run calibration on a known challenge
+is adaptation to that challenge, not evidence of generalization to unseen ones.
+No new runtime policy, hosted attempt, or claimed score improvement in this audit.
