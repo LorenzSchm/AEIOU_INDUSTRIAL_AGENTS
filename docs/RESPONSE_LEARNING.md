@@ -796,3 +796,45 @@ Artifacts: `data/local/practice-p03-payment-focus-v1/`; campaign ledger and winn
 profile: `data/local/p03-record-campaign.json`. This is one winning observation,
 not evidence of repeatability or a verified overall hackathon record. Keep the
 variant opt-in and retain the other track baselines.
+
+## First ten-attempt campaign completed; additional budget authorized
+
+The resumed first campaign used its remaining eight attempts. None exceeded its
+prior account best. All eight completed with valid deals, zero provider errors
+and zero fallbacks: 24 Claude calls, 123,265 input and 1,908 output tokens.
+
+| Attempt | Track / isolated experiment | Score | Best before |
+| --- | --- | ---: | ---: |
+| 3 | P11, quality/liability focus from opening | 61.9591 | 70.3207 |
+| 4 | P10, delivery focus and half-gap response | 64.7294 | 70.2080 |
+| 5 | P11, same focus and half-gap response | 61.9591 | 70.3207 |
+| 6 | P10, public current-price opening floor | 67.0711 | 70.2080 |
+| 7 | P1, April price start / 14-day payment | 58.4688 | 73.8751 |
+| 8 | P7, 36-month / 90-day focus | 72.7504 | 72.7504 |
+| 9 | P3, 36-month / 90-day focus and half-gap response | 89.9834 | 89.9834 |
+| 10 | P8, 36-month indexed focus | 49.4670 | 62.4556 |
+
+P11 held EUR 45.50 through four further counters. P7 followed the same price
+sequence despite greater buyer concessions and an extra contract year. P3 again
+quoted EUR 433.08 and repeated it after EUR 427.87, yielding the same 89.9834.
+P1's delayed increase required EUR 139.30, offsetting the delay's financing benefit.
+P10's less aggressive opening avoided an immediate final offer, but did not beat
+its established record. These adaptive single runs cannot establish causality.
+
+`StructureFocusedNegotiator` remains opt-in; do not replace the successful
+profiles with it. It checks legal complete terms and live-quote/alternative cost
+ceilings, preserves prior comparable concessions, and discards stale scenario
+metadata after changing commercial terms. Optional reciprocal movement uses only
+live comparable quotes; its one-half gap is a policy setting, not an inferred
+acceptance threshold. Revisions: `100248b`, `707421b`, `c2d62e6`.
+23 focused regression tests passed; Ruff passed. Results and audit:
+`data/local/record-campaign-continuation/report.html` and `report.json`.
+
+The user subsequently authorized **ten additional attempts**, extending the
+overall ledger cap from ten to twenty. The next experiments preserve successful
+openings and test a single small closing counter only while the quote remains
+open. `closing_probe.py` never reopens a final offer, honors explicit final-offer
+wording/deadlines and previous concessions, and allows only one use per supplier.
+It requires lower direct cost and caps modeled downside at 0.25%; a standing
+offer can still be lost. This is explicit experimental risk, not a guaranteed
+improvement. The production factory and P18 remain untouched.

@@ -143,19 +143,28 @@ def focused_structure(
 class StructureFocusedNegotiator(LearnedPortfolioNegotiator):
     """Explicit runner configuration; does not replace any production strategy."""
 
-    def __init__(self, *args, focus_terms, response_fraction=0, current_price_opening=False, **kwargs):
+    def __init__(
+        self,
+        *args,
+        focus_terms,
+        response_fraction=0,
+        current_price_opening=False,
+        allow_multiple_suppliers=False,
+        **kwargs,
+    ):
         super().__init__(*args, **kwargs)
         if not 0 <= response_fraction <= 0.5:
             raise ValueError("Response fraction must be between zero and one half")
         self.focus_terms = dict(focus_terms)
         self.response_fraction = response_fraction
         self.current_price_opening = current_price_opening
+        self.allow_multiple_suppliers = allow_multiple_suppliers
         self.focused_suppliers = set()
 
     def packages(self, case, threads):
         offers = super().packages(case, threads)
         self.focused_suppliers = set()
-        if len(case["suppliers"]) != 1:
+        if len(case["suppliers"]) != 1 and not self.allow_multiple_suppliers:
             return offers
         for sid, packages in offers.items():
             standard = standard_terms(threads[sid])
