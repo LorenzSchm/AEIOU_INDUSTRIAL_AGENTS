@@ -1643,3 +1643,35 @@ next intervention by the archived responses.
 Priority: validate the qualified recent-trend evidence with the existing economic
 policy before mixing in a new bundle generator. No additional hosted attempt was
 started during this deep audit; no claim that the record has been beaten.
+
+
+## Hosted validation of qualified recent-trend evidence (4501c53)
+
+Exactly one authorized P08 session, fdc49a5f7a54a49b, completed at **62.4556**.
+The team best updated from59.1487 to62.4556: +3.3069 points. This is +5.4119
+points over the retained57.0437 baseline. The final deal is5.40EUR/unit,
+90-day payment,24-month duration, AS-14404 share45%,deadband5%,base2026-08.
+Total cost1026228.96EUR;5806.18 below the previous record and9502.12 below the
+retained baseline. All must-haves satisfied.
+
+Opening and first supplier counter match the retained trajectory: buyer
+4.96/4.87/4.91, supplier main5.57. At the second buyer turn, proposals remain
+4.99/4.90/5.08, with the qualified -5.49% June-September alloy-index change.
+The arena marked the claim verified. The supplier replied that hedged costs
+were unchanged but countered at5.43 instead of the prior5.48. The following
+buyer indexed bid was5.17, computed by the unchanged reciprocity policy from
+that better quote; supplier final5.40. Other terms match the baseline. No
+rejected historical quote or settlement-bid experiment was reinstated.
+
+Retain the implementation. This single successful observation establishes a
+new recorded best; it does not isolate the causal effect of the evidence or
+prove repeatability, especially given the supplier's contrary prose. Three
+model calls,20774input/285output tokens,76.48seconds; no errors, provider
+fallbacks, or transport failures. Five empty model proposals were rejected;
+the controlled policy continued normally. Existing local validation remains
+69tests and57 unchanged protected P01-P05 replay decisions.
+
+One creation marker/session. Shared quota170->172 includes P10 session
+1c4283985ba41054, opened58.30seconds after ours, confirmed by a read-only
+session-list audit; this task did not create or modify it. No second P08 run.
+Report:data/local/evaluations/practice-p08-4501c53/report.json.
