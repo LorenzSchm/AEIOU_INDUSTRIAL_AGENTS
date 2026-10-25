@@ -759,3 +759,40 @@ promote the current experimental variant on this result. No additional attempt
 was made. Four Claude calls, 22,710 input/327 output tokens, 42.28 seconds; zero
 errors/fallbacks. Practice usage 237→238, with exactly one new P3 session in the
 session audit. Artifacts: `data/local/practice-p03-payment-extension-v1/`.
+
+## P3 record campaign: 90-day opening focus succeeded
+
+The user authorized up to ten attempts. The campaign counted the just-completed
+83.0077 trial as attempt one, leaving at most nine additional sessions. Attempt
+two, revision `24e46c7`, achieved a new personal best **89.9834**, up from
+**86.2062** (+3.7772 points). The campaign stopped with eight attempts unused.
+
+`PaymentFocusedNegotiator` is another explicit opt-in subclass; no production
+factory or other track variant was changed. It requests the longest legal
+payment period from the opening, retaining full quantity/horizon coverage and
+the original case options. Its experimental opening envelope is the current
+quote/alternative complete-cost ceiling rather than the old cash-anchor envelope.
+If ordinary packages cannot remain below that ceiling, it can make a bounded
+counter on a current quote already using the target payment. It preserves prior
+concessions and final offers; the planner cannot add a cash fallback. No case ID,
+known winning price, hidden benchmark cost or changed model weight enters it.
+
+Six focused tests and an opening planner/selector replay passed. The live opening
+offered EUR 422.66/90 days/36 months and EUR 415.13/90 days/24 months. The supplier
+countered at EUR 433.08/90 days/36 months. After one EUR 430.91 counter, the supplier
+repeated EUR 433.08; the controller accepted the current quote. Final full cost
+**EUR 3,942,826.22**, versus EUR 3,955,565.46 for the old record: **EUR 12,739.24**
+saved. The higher unit price is outweighed by the financing benefit. All must-haves
+passed; scoring horizon and required annual quantity were unchanged.
+
+Session `088a1043abce3a20`, run `7554585a35184a4982de6fb5256a1702`. The server's
+`best_after` confirmed the new personal record. Two Claude calls, 10,045 input /
+155 output tokens, 48.92 seconds, no errors or fallbacks. Practice usage 240→241;
+the audit shows exactly one new P3 session for this trial. Other team usage between
+trials is not counted as our campaign attempts. Across the two campaign trials:
+six calls, 32,755 input / 482 output tokens. No third attempt was started.
+
+Artifacts: `data/local/practice-p03-payment-focus-v1/`; campaign ledger and winning
+profile: `data/local/p03-record-campaign.json`. This is one winning observation,
+not evidence of repeatability or a verified overall hackathon record. Keep the
+variant opt-in and retain the other track baselines.
