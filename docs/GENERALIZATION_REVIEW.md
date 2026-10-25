@@ -1954,3 +1954,24 @@ Usage:one session, quota192->193,49.23seconds,zero buyer-model calls, errors or
 fallbacks. No production-agent change and no further attempt. Experiment source
 copies are saved indata/local/practice-p02-calibrated60-138c98c/. Dashboard report:
 data/local/evaluations/practice-p02-calibrated60-138c98c/report.json.
+
+### Targeted90-day P02 validation: new record73.5404
+
+Exactly one further authorized session59918c6c33b577e6, local run
+1c84bc6436ed4aa39b74c1c226e77f6b, accepted361.33EUR with90-day payment and the
+same CU-NOTATION20%share/5%deadband/base2026-08 clause. All must-haves passed.
+Local preflight verified legal terms, message consistency and matched-quote
+acceptance. The live opening and final result confirm the exact target.
+
+Realized score73.5404 sets a new team best, up5.0911points from68.4493. Total
+cost2248043.59EUR is2410.82 below the preceding record. The prospective cost was
+2248043.62EUR, a0.03EUR difference consistent with rounded feedback inputs.
+The team-best result confirms the update. This is near the reconstructed optimum
+over the available indexed terms; materially higher targets require a different
+risk structure, not merely another price/payment adjustment on this clause.
+
+Usage:one session, quota194->195,55.67seconds,zero buyer-model calls, errors or
+fallbacks. The hosted supplier remains model-driven; one acceptance does not
+establish repeatability. No production-agent modification or additional attempt.
+Experiment source copies:data/local/practice-p02-calibrated90-a9b8e88/.
+Dashboard:data/local/evaluations/practice-p02-calibrated90-a9b8e88/report.json.
