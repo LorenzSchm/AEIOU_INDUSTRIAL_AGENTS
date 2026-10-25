@@ -1788,3 +1788,28 @@ history atd517b95 for reproducibility. No further hosted attempt was started.
 Usage:one session (quota183->184),2 model calls,10814 input/158 output tokens,
 51.48seconds,zero errors or fallbacks. Team best unchanged. Dashboard report:
 data/local/evaluations/practice-p02-d517b95/report.json.
+
+## Paired indexed-payment discovery
+
+The user authorized exactly one further P02 attempt. Keep the existing fixed
+anchor and indexed14-day option. A new first-contact comparison adds the nearest
+longer legal payment option on the identical index structure. Scope: strategic
+supply categories with an existing indexed candidate and a free portfolio slot.
+No challenge identity, historical price, or inferred private financing rate is
+used. Complete point-model cost cannot exceed the existing indexed option or the
+existing0.5% standing-quote envelope; direct and weighted sensitivity costs must
+beat an executable quote. The added option may have higher sensitivity cost than
+the incumbent: this is bounded exploration, not proven domination.
+
+A strictly direct-cost-neutral30-day option failed the existing supplier-health
+cost guard locally. The full-cost search instead produces360.04/30days alongside
+356.68/14days with exactly the same CU clause, plus357.94/14days/fixed. The paired
+menu is protected from model amendment or deduplication; ordinary behavior
+resumes after the opening. The message asks for both payment quotations if the
+supplier counters. It makes no claim about the supplier's actual financing rate.
+
+Validation:56 focused tests pass, Ruff clean. Only the P02 opening changes in57
+archived P01-P05 decisions; the other56 and all four latest-P08 decisions remain
+identical. Full mocked-model replay confirms all three actual outgoing packages
+survive an attempted model price replacement, with zero fallbacks. Acceptance
+and realized score improvement remain untested at this preparation stage.

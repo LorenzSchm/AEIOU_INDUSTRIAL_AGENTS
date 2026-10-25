@@ -31,6 +31,7 @@ from .grounding import (
 from .negotiation_state import supplier_state
 from .opponent_model import learn_beliefs, predicted_choices
 from .optimizer import alternative_cost, estimate, evaluate, safe_close
+from .payment_discovery import paired_payment
 from .reciprocity import responsive_packages
 from .retrieval import evidence_cards, evidence_cutoff
 from .scenario_planner import plan_packages
@@ -176,6 +177,15 @@ class StrategicNegotiator(Negotiator):
                 standard,
                 lambda terms, std=standard, model=supplier: total_cost(case, terms, std, model),
                 ceiling,
+            )
+            plan["packages"] = paired_payment(
+                case,
+                threads[sid],
+                plan["packages"],
+                standard,
+                lambda terms, std=standard, model=supplier: total_cost(case, terms, std, model),
+                ceiling,
+                self.intelligence.get("economic_sensitivities", {}).get(sid, {}).get("scenarios", []),
             )
             if plan["packages"] and "effective_date" in case["negotiable"]:
                 reference = plan["packages"][0]["terms"]
@@ -557,6 +567,13 @@ class StrategicNegotiator(Negotiator):
                 }
         sheets = move["message"].get("term_sheets", [])
         if sheets:
+            if any(p.get("paired_payment_probe") for p in offers.get(sid, [])):
+                move["message"]["body"] += (
+                    "\n\nThe two indexed options retain the same material protection and differ only in "
+                    "price and payment timing. Please compare them as complete alternatives. "
+                    "Which can you authorize? If you need to counter, please quote both payment options "
+                    "on the same index terms so we can evaluate the exchange."
+                )
             if any(
                 p.get("renewal_settlement_probe") and any(s["terms"] == p["terms"] for s in sheets)
                 for p in offers.get(sid, [])
