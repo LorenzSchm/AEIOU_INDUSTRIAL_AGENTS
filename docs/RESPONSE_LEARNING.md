@@ -738,3 +738,24 @@ module tests passed again afterward. Full planner/learned-selector replay on the
 archived P3 prefix emitted EUR 433.07/90 days from the EUR 430.15/30-day and
 EUR 431.61/60-day pair, alongside A. Opening behavior had no experimental probe.
 Model weights are unchanged. The user authorized one hosted P3 attempt.
+
+The attempt at revision `6d5b2bc` completed with a deal but no record: **83.0077**
+versus the existing **86.2062** (-3.1986 points). Session `e1ee605771664ac7`, run
+`f54b93a4ebb44f628ddc08cc6c2646bf`. Final terms: EUR 428.41, 14-day payment,
+24 months, 4,580 units/year; total cost EUR 3,966,353.28. Must-haves passed.
+
+The experimental rule activated **zero times**. Both opening packages requested
+14-day payment. The supplier quoted only that structure after opening and held
+it through the next two replies. Later buyer menus requested longer payment
+while also demanding a discount, without eliciting comparable priced alternatives.
+In the fourth message, A offered the standing EUR 428.41 cash price for 24 months;
+the supplier accepted it before the payment exchange could develop. This does
+not test acceptance of the locally proposed compensated 90-day offer.
+
+Before another hosted attempt, develop and locally check an early quote-discovery
+step: request comparable prices on payment alternatives without also asking for
+a price reduction or supplying an immediately acceptable cash fallback. Do not
+promote the current experimental variant on this result. No additional attempt
+was made. Four Claude calls, 22,710 input/327 output tokens, 42.28 seconds; zero
+errors/fallbacks. Practice usage 237→238, with exactly one new P3 session in the
+session audit. Artifacts: `data/local/practice-p03-payment-extension-v1/`.
