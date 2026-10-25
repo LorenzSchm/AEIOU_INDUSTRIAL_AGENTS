@@ -11,11 +11,13 @@ import math
 
 from arena_kit.cost import closing_terms
 from arena_kit.docs import standard_terms
-from arena_kit.play import latest
+from arena_kit.play import latest, moves_left
 
 from .economic_beliefs import total_cost
 from .learned_portfolio import LearnedPortfolioNegotiator
 from .optimizer import alternative_cost, estimate, valid_terms
+from .reciprocity import same_structure
+from .settlement import FIRM_CLOSE
 
 
 def memory_cost_evidence(case, intelligence, sid):
@@ -113,21 +115,131 @@ def memory_opening(case, threads, memory, intelligence, discount):
     }
 
 
+def retained_memory_counter(case, threads, anchor, intelligence, price_step=0):
+    sid = anchor["supplier_id"]
+    events = threads.get(sid, [])
+    if not events:
+        return None
+    message = latest(events)
+    if message.get("status") != "open" or moves_left(case, events) <= 2 or FIRM_CLOSE.search(message.get("body", "")):
+        return None
+    std = standard_terms(events)
+    current = next(iter(message.get("term_sheets", [])), {})
+    full = closing_terms(case, current.get("terms", {}), std)
+    quote = {f: full.get(f) for f in case["negotiable"]}
+    terms = copy.deepcopy(anchor["terms"])
+    if not 0 <= price_step <= 0.01:
+        return None
+    terms["unit_price"] = round(
+        min(anchor["reference_price"], terms["unit_price"] + anchor["reference_price"] * price_step), 2
+    )
+    if not same_structure(terms, quote) or not quote.get("unit_price"):
+        return None
+    history = [s["terms"] for m in events if m.get("from") == "buyer" for s in m.get("term_sheets", [])]
+    if not any(p == anchor["terms"] for p in history):
+        return None  # Never hold an anchor that was not actually sent.
+    floor = max((p["unit_price"] for p in history if same_structure(p, terms)), default=0)
+    if terms["unit_price"] < floor or terms["unit_price"] >= quote["unit_price"]:
+        return None
+    validation = copy.deepcopy(case)
+    for field, value in anchor.get("observed_supplier_terms", {}).items():
+        if field != "lead_time_days" or quote.get(field) != value:
+            return None
+        if value not in validation["term_options"][field]:
+            validation["term_options"][field].append(value)
+    if not valid_terms(validation, terms):
+        return None
+    supplier = estimate(case, sid, std, intelligence)
+    modeled = total_cost(case, terms, std, supplier)
+    quote_cost = total_cost(case, quote, std, supplier)
+    direct, quote_direct = total_cost(case, terms, std), total_cost(case, quote, std)
+    if (
+        not all(math.isfinite(v) and v > 0 for v in [modeled, quote_cost, direct, quote_direct])
+        or modeled > min(quote_cost * 1.0025, alternative_cost(case))
+        or direct >= quote_direct
+    ):
+        return None
+    return {
+        "supplier_id": sid,
+        "terms": terms,
+        "reference_quote": current.get("term_sheet_id"),
+        "modeled_cost": modeled,
+    }
+
+
 class MemoryOpeningNegotiator(LearnedPortfolioNegotiator):
-    def __init__(self, *args, memory_run, memory_discount=0.002, include_cost_evidence=False, **kwargs):
+    def __init__(
+        self,
+        *args,
+        memory_run,
+        memory_discount=0.002,
+        include_cost_evidence=False,
+        followthrough_counters=0,
+        followthrough_step=0,
+        **kwargs,
+    ):
         super().__init__(*args, **kwargs)
         if not 0 <= memory_discount <= 0.02:
             raise ValueError("Memory opening discount must be between zero and two percent")
         self.memory_run = copy.deepcopy(memory_run)
         self.memory_discount = memory_discount
         self.include_cost_evidence = include_cost_evidence
+        if type(followthrough_counters) is not int or not 0 <= followthrough_counters <= 2:
+            raise ValueError("At most two explicit follow-through counters")
+        self.followthrough_counters = followthrough_counters
+        if not 0 <= followthrough_step <= 0.005:
+            raise ValueError("Follow-through step must be between zero and 0.5 percent")
+        self.followthrough_step = followthrough_step
+        self.memory_anchor = None
+        self.followthrough_used = 0
+
+    def prepare(self, case):
+        super().prepare(case)
+        self.memory_anchor = None
+        self.followthrough_used = 0
 
     def decide(self, case, threads):
         if self.case_id != case["case_id"]:
             self.prepare(case)
+        if self.memory_anchor and self.followthrough_used < self.followthrough_counters:
+            counter = retained_memory_counter(
+                case,
+                threads,
+                self.memory_anchor,
+                self.intelligence,
+                self.followthrough_step * (self.followthrough_used + 1),
+            )
+            if counter:
+                self.followthrough_used += 1
+                move = {
+                    "supplier_id": counter["supplier_id"],
+                    "message": {
+                        "subject": "Re: " + case["title"],
+                        "body": (
+                            "Thank you for reviewing our proposal. We can keep the complete commercial "
+                            "commitment below. Could you approve our proposed price on these same terms? "
+                            "The price remains conditional on the whole package; please confirm your binding offer."
+                            "\n\nExecutable package: " + json.dumps(counter["terms"], ensure_ascii=False)
+                        ),
+                        "term_sheets": [{"terms": counter["terms"]}],
+                    },
+                }
+                self.decisions.append(
+                    {
+                        "supplier_id": counter["supplier_id"],
+                        "source": "bounded historical-structure follow-through",
+                        "action": "send",
+                        "elapsed_s": 0,
+                        "memory_followthrough": counter,
+                        "actual_sent_terms": copy.deepcopy(move["message"]["term_sheets"]),
+                    }
+                )
+                self.runtime_context = {}
+                return move
         offer = memory_opening(case, threads, self.memory_run, self.intelligence, self.memory_discount)
         if offer is None:
             return super().decide(case, threads)
+        self.memory_anchor = copy.deepcopy(offer)
         terms = copy.deepcopy(offer["terms"])
         move = {
             "supplier_id": offer["supplier_id"],

@@ -2,7 +2,7 @@ import copy
 import json
 
 from aeiou.config import data_root
-from aeiou.memory_opening import memory_cost_evidence, memory_opening
+from aeiou.memory_opening import memory_cost_evidence, memory_opening, retained_memory_counter
 
 
 def example():
@@ -102,3 +102,29 @@ def test_confirmed_live_supplier_lead_time_is_preserved_without_changing_cost_ca
     c["buyer"]["must_haves"].append({"field": "lead_time_days", "op": "<=", "value": 42})
     m["case"] = copy.deepcopy(c)
     assert memory_opening(c, t, m, {}, 0.002) is None
+
+
+def test_followthrough_holds_only_the_sent_structure_and_respects_firm_closure():
+    c, t, m = example()
+    anchor = memory_opening(c, t, m, {}, 0.002)
+    sid = anchor["supplier_id"]
+    assert retained_memory_counter(c, t, anchor, {}) is None
+    t[sid].append({"from": "buyer", "term_sheets": [{"terms": anchor["terms"]}]})
+    reply = {
+        "from": "seller",
+        "status": "open",
+        "term_sheets": [{"term_sheet_id": "q1", "terms": {**anchor["terms"], "unit_price": 5.6}}],
+    }
+    t[sid].append(reply)
+    assert retained_memory_counter(c, t, anchor, {})["terms"] == anchor["terms"]
+    stepped = retained_memory_counter(c, t, anchor, {}, 0.002)
+    assert stepped["terms"]["unit_price"] > anchor["terms"]["unit_price"]
+    assert stepped["terms"]["unit_price"] <= anchor["reference_price"]
+    reply["term_sheets"][0]["terms"]["contract_months"] = 36
+    assert retained_memory_counter(c, t, anchor, {}) is None
+    reply["term_sheets"][0]["terms"]["contract_months"] = 24
+    reply["body"] = "This is our final offer."
+    assert retained_memory_counter(c, t, anchor, {}) is None
+    reply["body"] = ""
+    reply["status"] = "final_offer"
+    assert retained_memory_counter(c, t, anchor, {}) is None
