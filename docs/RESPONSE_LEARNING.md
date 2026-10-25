@@ -336,3 +336,95 @@ Artifacts: `data/local/practice-remaining-five-learned-v1/` contains all five
 runs, frozen model and source snapshots, creation markers, quota audit and the
 HTML/JSON reports. Dashboard copy:
 `data/local/evaluations/practice-remaining-five-learned-v1/report.json`.
+
+## Value-model upgrade: complete packages, observable signals, magnitude and exits
+
+The next user request was to improve the model. Implemented a separate offline
+model in `response_value.py` and `response_value_features.py`; the production
+factory and the P5-record experiment remain unchanged. No Arena session or model
+API call was used. The prior model artifact was not modified.
+
+Inputs grow from30 to86 features: the original22 and8 prefix-history features,
+10 evidence-backed literal business signals,4 context/cost-exposure features,
+and3 canonical complete-package slots with14 fields each. Slots preserve the
+association between price, payment, date, duration, lead time, volume, quality,
+chargeback, tooling, freight, index exposure and total direct cost. Reordering
+a menu does not change the representation; swapping payment terms between two
+different prices does. More than3 packages fails explicitly, without truncation.
+
+Signals include quick payment, free capacity, capacity pressure, internal approval,
+competition, acknowledgment of evidence and closing warnings. Matched clauses
+and polarity are retained for auditing; basic negation prevents explicit denials
+from being counted as positive signals. This deterministic phrase extractor is
+not a general semantic model and cannot resolve all ambiguous or quoted language.
+No supplier/case identity, private cost, final score or future reply enters inputs.
+
+Three prediction heads:
+
+- `direct_cost_improved`: retain the original label for an exact old-model comparison.
+- `quoted_cost_gain`: signed `(previous_primary_cost - next_primary_cost) /
+  previous_primary_cost`, using the standard terms visible in the prefix. The
+  primary quote is used rather than treating every alternative as executable.
+  Worsening quotes have negative labels; gains are not clipped. Private supplier
+  relationship penalties are unknown and excluded, so this is not final utility.
+- `supplier_exit`: observed next response `walked_away` or `no_bid`. Stale quote
+  sheets on exits never provide a gain label. No next quote means missing gain,
+  not a fabricated zero or a fabricated loss. This does not predict every possible
+  later failure or execution error.
+
+The frozen706-step corpus includes224 usable sessions from229 archived sessions
+and12 connected challenge/supplier groups. There are704 gain labels and only2
+supplier exits, in2 groups. Final model selection is trained solely on this
+archive; the latest10 test sessions are excluded from fitting. Estimator/shrinkage
+selection uses3 inner whole-group folds within each outer leave-one-group-out
+evaluation. Fixed candidates: training prior, observed-prefix history, forest on
+the old30 features, forest on86 features and shallow boosted trees on86 features.
+Candidates and shrinkage grid were fixed before inspecting their outer results.
+
+| Target | Nested selected MSE | Strongest comparator | Interpretation |
+| --- | ---: | ---: | --- |
+| Immediate progress | 0.162142 | old-feature forest0.156690 | 3.48% worse than strongest comparator;1.62% better than prior refinement0.164806 |
+| Signed quoted-cost gain | 0.001757 | old-feature forest0.001728 | 1.71% worse;50.92% less error than constant prior0.003580 |
+| Supplier exit | 0.00227504 | history0.00227489 | Rare events; insufficient evidence for operational risk estimates |
+
+None passes the predeclared predictive gate (at least8 groups,5 positive groups,
+5% improvement over the strongest baseline, positive95% group-bootstrap lower
+bound). We did not select whichever outer-test candidate scored best after seeing
+the results. Final full-archive choices are old-feature forest at50% strength for
+progress, rich boosted model at100% for gain, and prefix history for exits. These
+all-data choices differ from some outer-fold selections; outer metrics evaluate
+the selection procedure. Empirical90th-percentile absolute errors are descriptive
+residual references, not confidence guarantees for untried offers.
+
+Additional diagnostic: all32 usable steps from the latest10 hosted test sessions
+were replayed locally, with no fitting or candidate selection on those outcomes.
+The feature design did follow earlier inspection of these runs, so this is NOT a
+fresh sealed holdout. Progress Brier error0.176460 vs previous0.176709 (0.14% lower).
+Gain MSE0.001204 vs old-feature forest0.001439 (16.29% lower) and training-prior
+0.004252 (71.68% lower). The rich forest's diagnostic MSE0.000992 was better still,
+but we did not switch to it after seeing this check. There were no exits in these
+10 sessions, so low exit Brier error is not evidence of useful risk detection.
+
+`live_row()` constructs identical features using only an observed prefix and a
+proposed menu, with current outcomes explicitly missing. Every recent replay
+input matched the training extractor, and predictions matched within1e-12
+floating-point tolerance. `forecast()` returns predictions, signal evidence,
+residual references, predictive gates and an explicit `retain_incumbent` decision.
+It cannot authorize a changed offer, acceptance or a broader action policy.
+Training causal acceptance/clarification/supplier-switch decisions still needs
+better action coverage and prospective action-selection logging; these menu logs
+do not identify those unobserved outcomes.
+
+Validation:23 focused tests across value/refinement/portfolio modules, including
+9 value-model tests. They cover package association/order invariance, negation,
+future-label isolation, signed gain, stale sheets on exits, session isolation,
+group-balanced metrics, nested split separation, serialization, one-class targets,
+live/training parity and unchanged closing protections. Ruff checks pass.
+
+Artifacts: `data/local/response-value-v1/` contains the trained trusted
+`model.joblib`, full nested report, predictions, enriched frozen dataset, source
+snapshots and recent diagnostic. The old P5 artifact and production remain intact.
+
+```powershell
+.venv/Scripts/python.exe -m aeiou.response_value --dependency-root data/local/learning-deps --dataset data/local/response-neural-v1/dataset.json --runs data/local/response-corpus-expanded/runs --previous data/local/response-refinement-v2/predictions.json --output data/local/response-value-new
+```
