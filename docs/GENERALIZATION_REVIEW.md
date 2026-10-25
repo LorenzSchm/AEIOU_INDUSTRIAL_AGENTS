@@ -1975,3 +1975,63 @@ fallbacks. The hosted supplier remains model-driven; one acceptance does not
 establish repeatability. No production-agent modification or additional attempt.
 Experiment source copies:data/local/practice-p02-calibrated90-a9b8e88/.
 Dashboard:data/local/evaluations/practice-p02-calibrated90-a9b8e88/report.json.
+## P01 payment portfolio experiment (2026-10-25)
+
+The user authorized one hosted P01 attempt after a local price/payment comparison.
+The prior team record is 70.5890 at EUR134.50,14-day payment,January2027.
+Read-only retrieval found14 historical P01 sessions,12 completed deals. Two
+positive relationship penalties occur at the same date/payment structure; they
+constrain effective cost relative to financing but cannot identify the interest
+rate independently. Under the published cost model, a nonnegative rate grid
+from0% to30% leaves0%-10.5% compatible with all12 completed deal costs within
+EUR0.10. This is a sensitivity range, not independently measured supplier finance.
+
+The explicit experiment compares EUR133.50/30days and EUR134.50/60days, both
+effective January2027. Conditional scores at the compatible model endpoints are
+84.89-87.56 and83.67-90.07 respectively; acceptance is not established by this
+calculation. Historical60-day acceptance concerned an earlier start and higher
+price, so it establishes feasibility of the payment term, not the new package.
+
+The isolated local policy uses a respectful two-package message, increases prices
+by at mostEUR0.35 per turn, keeps proposed concessions at leastEUR500 better than
+the previous record across the model endpoints, and preserves the January date.
+It accepts a currently quoted package at a conservative calculated80-point target
+or closes near the round limit. The target is a closing heuristic, not a promised
+hosted score. There are no buyer-model calls. Production code and P02/P05 logic
+remain unchanged; this known-case calibration is not an unseen-case improvement.
+
+Local checks cover legal openings, both matching-quote acceptances, bounded
+concessions, retained January start, deadline closure and refusal of P02 input.
+Artifacts: data/local/challenge-opportunity-audit/p1-package-sensitivity.json,
+p1-preflight.json; data/local/p1_payment_experiment.py and the single-attempt
+runner run_practice_p01-payment-2b5da17.py. The runner has an exclusive creation
+marker and no session-creation retries.
+
+### P01 outcome: no deal; experimental terminal-state defect corrected locally
+
+Session12721d3ce4bd4e68, run8cd326b1011c438693db6ac9f7e99733 ended without a deal,
+score0. The supplier quoted only30-day terms, reducing137.50 to136.10 with a
+January start. That final package still calculated to about58.32points, below
+the archived70.59 record: the proposed30/60-day exchange was not accepted.
+
+The immediate cause of the zero score was an implementation error in the isolated
+experimental policy: it checked status `final` rather than Arena `final_offer`.
+The supplier declared final offers at rounds6 and7; the experiment sent another
+counter and the supplier withdrew at round8. This was an avoidable closing bug,
+not evidence that an agreement was impossible. The existing generic production
+policy was not changed or used for the experimental closing decision.
+
+The local experiment now recognizes both spellings. Replaying both captured
+final-offer prefixes selects acceptance of the actual standing offer IDs. A
+regression check covers both status values at a price that does not meet the
+aspirational target. These local replays establish the repair, not a recovered
+hosted deal. The original executed source remains in the run folder. No second
+attempt was started and this experiment is not promoted to production.
+
+Elapsed203.92seconds; zero buyer-model calls. API-error metrics are zero but do
+not measure the policy defect described above. Exactly one P01 session was
+created. Shared quota196->198 includes a separate P10 session2ace6b53471c4a62,
+started106.8seconds later. P01 best remains70.5890; P02/P05 production behavior
+is unchanged. Dashboard: practice-p01-payment-2b5da17. Before another P01 trial,
+prioritize supplier acceptance evidence and retain reliable final-offer closure;
+the cost calculation alone does not establish a negotiable frontier.
