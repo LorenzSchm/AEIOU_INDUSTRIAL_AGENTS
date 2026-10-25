@@ -149,6 +149,11 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
                 terms["unit_price"] = round(terms["unit_price"], 2)
             if not valid_terms(case, terms):
                 raise ValueError("Illegal terms or unmet must-have")
+            if any(
+                p.get("renewal_settlement_probe") and same_structure(terms, p["terms"]) and terms != p["terms"]
+                for p in candidates
+            ):
+                raise ValueError("Cannot replace the controller's bounded renewal settlement price")
             if not compensated_date(case, terms, anchor["terms"], std):
                 raise ValueError("Earlier effective date is not compensated in direct contractual cost")
             if limits.get("quoted_fallback_resubmission_allowed") is False:
@@ -233,7 +238,9 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
     # Preference weights are only a relative ranking. Never label them agreement probabilities.
     weights = predicted_choices(case, admitted, belief, std)
     chosen = max(zip(admitted, weights, strict=True), key=lambda p: (p[1], -p[0]["cost"]))[0]
-    fallback = next((p for p in candidates if p.get("payment_frontier_probe") and p["id"] != anchor["id"]), None)
+    fallback = next((p for p in candidates if p.get("renewal_settlement_probe") and p["id"] != anchor["id"]), None)
+    if fallback is None:
+        fallback = next((p for p in candidates if p.get("payment_frontier_probe") and p["id"] != anchor["id"]), None)
     if fallback is None:
         fallback = next((p for p in candidates if p.get("responsive_probe") and p["id"] != anchor["id"]), None)
     if fallback is None:

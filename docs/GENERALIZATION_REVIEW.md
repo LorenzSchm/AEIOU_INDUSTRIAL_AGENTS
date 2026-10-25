@@ -1696,3 +1696,29 @@ Validation:38 focused tests pass, Ruff clean. Archived replay changes only the
 third buyer move in three P04 transcripts, generating4.93/90days/36months. All
 45 non-P04 historical P01/P02/P03/P05 decisions and nine other P04 decisions
 remain identical. Hosted acceptance remains untested at this preparation stage.
+
+### P04 hosted outcome and planner correction
+
+The single authorized session2e42cc15d52e73de (runtimee57ff6c, local run
+b75b613183b04d6092bc9424c7924e64) matched86.0445. The agreement was4.94EUR,
+90days,36months; modeled cost196852.67EUR, unchanged from the24-month record
+because the scoring horizon is two years. This did not beat the record.
+
+Crucially, the intended4.93 settlement was not sent. The model proposed4.50 on
+the same36-month structure; the admission guard treated a lower buyer cost as
+acceptable and deduplication removed the controlled settlement candidate. The
+supplier rejected the larger cut, held4.94 and accepted36months. This result
+cannot establish whether the intended one-cent request would have worked.
+
+The follow-up fix protects a tagged renewal settlement from same-structure price
+replacement and reserves it alongside any independently admitted other-structure
+proposal.65 focused tests pass, Ruff clean. Full local replay of the actual4.50
+model amendment rejects it, sends4.93/90/36 and includes the conditional exchange
+explanation with zero fallbacks. No second hosted attempt was made; the fixed
+version remains unvalidated against the hosted supplier.
+
+Hosted usage:3 model calls,16384 input/267 output tokens,21.77seconds,no errors
+or provider fallbacks. Shared practice quota178->180 includes a concurrent P10
+session35a5770e82579d48 opened20.19seconds after this task's one P04 session.
+Read-only audit saved indata/local/practice-p04-e57ff6c/sessions-after-audit.json.
+Report:data/local/evaluations/practice-p04-e57ff6c/report.json.
