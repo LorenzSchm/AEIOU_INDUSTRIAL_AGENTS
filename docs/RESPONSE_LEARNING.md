@@ -101,3 +101,74 @@ of supplier acceptance and refusal at comparable states. Keep entire unseen
 supplier/scenario families sealed for the next evaluation. Do not launch a batch
 of paid Arena attempts just to increase training-set size. Do not fine-tune a
 language model on all successful transcripts and treat every message as optimal.
+
+## Larger text-and-terms neural model: completed experiment
+
+The user explicitly requested a larger model despite the first negative result.
+We expanded the source archive before testing it. A read-only GET exporter fetched
+143 additional completed practice sessions, retaining86 locally recorded sessions
+(including sandbox runs). The archive contains229 unique sessions;224 yield706
+clean paired steps across the same12 challenge groups. There are27 immediate
+package matches and568 direct-cost improvements. Fourteen proposals after a
+terminal state and one missing response are excluded. Practice usage was204 both
+before and after the export. No new negotiations or model API calls occurred.
+
+The new predictor is a CPU multilayer perceptron with256 and64 hidden neurons,
+ReLU activations, two output probabilities and546,754 trainable parameters. It
+trains for60 fixed epochs using regularization and group/session sample weights.
+Inputs combine the existing22 numeric/public-signal features with up to2048
+TF-IDF word and two-word features from the conversation prefix, including the
+outgoing offer. This is a response classifier, not a pretrained generative LLM.
+
+Only training-fold text fits each vocabulary and numeric scaler. The next supplier
+reply, result and future attachments are excluded from input. Identifiers, numeric
+prices, email addresses and credential-like strings are removed from the text;
+relative numeric terms remain explicit features. Natural-language names can still
+occur in bodies, which is one reason entire supplier groups remain held out.
+
+All competitors are retrained on the same expanded data and identical held-out
+groups: the original small numeric model, training-fold base rate, similar-state
+retrieval, and a regularized linear text+terms model. Architecture, seed741 and
+60-epoch budget were fixed before seeing these scores; no test-score search was
+performed. There is no random message-level train/test split or random early-
+stopping validation split. Earlier experiments already inspected these challenge
+families, so this remains diagnostic grouped validation, not a sealed prospective
+test.
+
+Session-then-group-averaged Brier errors on the expanded archive:
+
+| Target | Larger neural | Small numeric | Base rate | Retrieval | Linear text+terms |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Package matched | 0.074780 | 0.077387 | 0.068139 | **0.068039** | 0.088444 |
+| Direct cost improved | 0.204919 | 0.185655 | **0.176349** | 0.178566 | 0.218257 |
+
+The neural model slightly beats the small trained model for package matching,
+and its log-loss for this target also improves. However, Brier error is9.91%
+higher than the strongest baseline. Direct-cost prediction error is16.20% higher
+than its strongest baseline. Exploratory baseline-minus-neural Brier intervals
+are[-0.02206,0.00465] and[-0.07770,0.02126]. Neither passes the existing gate.
+These are prediction metrics, not Arena score changes. No weights are promoted
+to the production agent, and P2/P5 remain unchanged.
+
+The larger archive alone changes the evaluation distribution; numbers from the
+first86-session experiment must not be treated as a controlled before/after
+comparison. The table above provides the comparable same-data baselines.
+
+Reproduction (optional isolated dependencies; the application runtime is untouched):
+
+```powershell
+.venv/Scripts/python.exe -m pip install --target data/local/learning-deps -r requirements-learning.txt
+.venv/Scripts/python.exe -m aeiou.response_archive --output data/local/response-corpus-expanded
+.venv/Scripts/python.exe -m aeiou.response_neural --dependency-root data/local/learning-deps --runs data/local/response-corpus-expanded/runs --output data/local/response-neural-new
+```
+
+The exporter only reads existing sessions. To freeze the exact measured corpus,
+reuse the saved archive rather than fetching newly completed sessions. Optional
+library versions are pinned in requirements-learning.txt. The deployed runtime
+has no imports of these experiment modules.
+
+Artifacts: `data/local/response-neural-v1/` includes the trusted locally generated
+model.joblib, model metadata, full report, prediction rows and dataset. Only load
+trusted pickle/joblib files. The original smaller model remains available.
+Seventeen tests cover both pipelines, including prefix truncation, redaction,
+training-only vocabulary/scaling and a saved neural-model prediction roundtrip.
