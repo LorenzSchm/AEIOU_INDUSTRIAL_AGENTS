@@ -532,3 +532,25 @@ This is a new personal record, not a verified overall competition record or a
 causal estimate from repeated paired trials. No second attempt was started.
 Artifacts: `data/local/practice-p11-observed-v1/`, including source/model snapshot,
 preflight replay, full transcript, result, quota audit and HTML report.
+
+## P11 follow-up: two-percent counter
+
+Revision `3ac04bb` changes only the observed-quote discount request from one to
+two percent. Nine targeted tests passed; local comparison against the frozen
+previous rule changed only the last open P11 decision (EUR45.05 to EUR44.59).
+Earlier P11 and checked P2/P5 decisions were unchanged. No retraining occurred.
+
+Exactly one hosted attempt, session `18888ab201021651`, run
+`9058e21bc3884b17b264836c4018354f`: the EUR44.59 proposal was sent, but the supplier
+countered with a final EUR45.00 offer at1500ppm and zero complaint charges. The
+agent accepted. Score **70.3207**, up **0.8362 points** from69.4845, a new personal
+record. All other final terms match the prior deal; buyer cost fell another
+EUR795 to EUR750,718.50. The supplier's claim that EUR45.00 is its bottom line is
+an observed statement, not proof of an absolute reservation price.
+
+Four Claude calls,25,577input/337output tokens,39.38seconds, no fallbacks or
+provider errors. Quota226 to227 used; one creation request and one new session.
+No P10 attempt or further P11 attempt was started. Artifacts and HTML report:
+`data/local/practice-p11-observed-v2/`. The smaller marginal gain and final-offer
+response support prioritizing the P10 price/delivery trade next, rather than
+repeatedly increasing this discount request.
