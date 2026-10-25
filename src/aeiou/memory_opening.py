@@ -38,11 +38,30 @@ def memory_opening(case, threads, memory, intelligence, discount):
     ):
         return None
     terms = {f: result.get("terms", {}).get(f) for f in case["negotiable"]}
-    if not valid_terms(case, terms):
+    # The API permits supplier standard values in addition to term_options.
+    # Preserve an off-grid value only if it is BOTH in the prior confirmed deal
+    # and explicitly present in this supplier's current structured quote. Do
+    # not infer arbitrary values from prose or reuse a withdrawn quote.
+    validation_case = copy.deepcopy(case)
+    observed_terms = {}
+    for field, value in terms.items():
+        options = validation_case.get("term_options", {}).get(field)
+        if (
+            field == "lead_time_days"
+            and options
+            and value not in options
+            and any(
+                field in s.get("terms", {}) and s["terms"][field] == value
+                for s in latest(threads[sid]).get("term_sheets", [])
+            )
+        ):
+            options.append(copy.deepcopy(value))
+            observed_terms[field] = value
+    if not valid_terms(validation_case, terms):
         return None
     reference = terms["unit_price"]
     terms["unit_price"] = round(reference * (1 - discount), 2)
-    if not valid_terms(case, terms):
+    if not valid_terms(validation_case, terms):
         return None
     std = standard_terms(threads[sid])
     supplier = estimate(case, sid, std, intelligence)
@@ -57,9 +76,10 @@ def memory_opening(case, threads, memory, intelligence, discount):
     return {
         "supplier_id": sid,
         "terms": terms,
-        "reference_run_id": memory.get("id"),
+        "reference_run_id": memory.get("id") or memory.get("session_id"),
         "reference_price": reference,
         "discount": discount,
+        "observed_supplier_terms": observed_terms,
         "modeled_cost": cost,
         "ceiling": ceiling,
         "limitation": "Known-context historical anchor; previous acceptance does not guarantee a new deal.",
