@@ -124,43 +124,7 @@ def responsive_packages(case, events, packages, standard, cost, ceiling):
             last_price = max(p["unit_price"] for p in comparable)
             gap = counter["unit_price"] - last_price
             if gap > 0.02:
-                step = max(0.01, gap * 0.25)
-                momentum = {}
-                if counter in indexed_quotes and len(buyers) >= 2:
-                    bids = [
-                        max(
-                            (s["terms"]["unit_price"] for s in b["term_sheets"] if same_structure(s["terms"], counter)),
-                            default=None,
-                        )
-                        for b in buyers[-2:]
-                    ]
-                    prior_reply = next((e for e in reversed(events[:-1]) if e.get("from") != "buyer"), {})
-                    prior_quotes = [
-                        {f: full.get(f) for f in case["negotiable"]}
-                        for s in prior_reply.get("term_sheets", [])
-                        for full in [closing_terms(case, s.get("terms", {}), standard)]
-                    ]
-                    old_price = min((q["unit_price"] for q in prior_quotes if same_structure(q, counter)), default=None)
-                    if (
-                        all(v is not None for v in bids)
-                        and bids[-1] == last_price
-                        and bids[-1] > bids[-2]
-                        and old_price is not None
-                        and old_price - counter["unit_price"] >= max(0.01, old_price * 0.001)
-                    ):
-                        # Do not prematurely shrink a concession the supplier
-                        # just reciprocated. Never cross half the remaining gap.
-                        continued = min(gap * 0.5, max(step, bids[-1] - bids[-2]))
-                        if continued > step:
-                            step = continued
-                            momentum = {
-                                "reciprocal_momentum": {
-                                    "previous_buyer_step": bids[-1] - bids[-2],
-                                    "supplier_step": old_price - counter["unit_price"],
-                                    "gap_fraction_cap": 0.5,
-                                }
-                            }
-                terms = {**counter, "unit_price": round(last_price + step, 2)}
+                terms = {**counter, "unit_price": round(last_price + max(0.01, gap * 0.25), 2)}
                 # Never replace today's planned bid with a smaller concession.
                 current = max(
                     (p["terms"]["unit_price"] for p in packages if same_structure(p["terms"], terms)),
@@ -171,7 +135,6 @@ def responsive_packages(case, events, packages, standard, cost, ceiling):
                         terms,
                         "Reciprocal step on observed supplier terms",
                         **({"index_reciprocity": True} if counter in indexed_quotes else {}),
-                        **momentum,
                     )
 
     # With a declared price restriction, start from the longest payment option

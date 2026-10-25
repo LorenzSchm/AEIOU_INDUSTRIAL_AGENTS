@@ -1400,3 +1400,18 @@ Ruff clean; all 57 protected P01-P05 historical decisions identical. P08 replay
 opening and first counter unchanged; third indexed bid becomes 5.25 instead of
 5.18, and final-offer acceptance is unchanged. This does not predict supplier
 acceptance. One further hosted P08 attempt is authorized; no creation retries.
+
+
+Outcome (065988d): sole session c56c919309755adc scored **57.04**, identical to
+the retained 80410b4 policy, 2.11 points below the 59.15 record. The rule activated:
+actual third indexed bid 5.25, preceding buyer step 0.17, supplier response 0.09.
+Final supplier price remained 5.45/payment90/duration24/deadband5%, cost 1035731.08.
+Extra buyer concession produced no observed benefit. This is not proof of a hidden
+supplier floor or general impossibility of further improvement.
+
+Revert reciprocal-momentum runtime/tests to 4d143d9. Exact src/tests diff against
+that baseline is empty, preserving the quarter-gap indexed policy AND the tested
+rejected-advertised-alternative recovery. Experiment remains in Git history.
+No further attempt. Three calls, 19774 input / 303 output tokens, no errors or
+fallbacks, 24.56 seconds. One creation request/marker/session, quota 148 -> 149,
+best map unchanged. Report: data/local/evaluations/practice-p08-065988d/report.json.
