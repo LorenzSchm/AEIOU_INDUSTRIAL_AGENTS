@@ -585,3 +585,35 @@ No further attempt was made. Artifacts: `data/local/practice-p10-delivery-v1/`.
 The result confirms use of the intended trade but does not establish superior
 overall policy performance or eliminate delivery penalties. Keep the historical
 record baseline; do not label this revision a record-beating P10 solution.
+
+## P1 renewal-focus experiment
+
+The user reported another team's1.0 score; their deal terms and transcript were
+not available or independently verified. Our own previous runs switched between
+November, January and April dates and sometimes received an expensive April
+primary quote with a cheaper alternative that could not be executed.
+
+Revision `5d63aa9` adds an isolated `RenewalFocusedNegotiator`, not registered in
+the production factory. One explicitly referenced supplier contract determines
+the earliest permitted renewal date after expiry. Outgoing portfolios focus on
+that date; if it disappears from the ordinary portfolio, a bounded cost-improving
+counter to a live quote can preserve it. No case/supplier ID or winning price is
+hard-coded. No model training occurred. Crucially, the original term options and
+cost horizon remain unchanged: restricting the case options themselves would
+incorrectly change the published cost function's horizon start.
+
+13 tests passed. Replay kept the checked P1 proposals on January1 and left the
+checked P2/P5/P11 decisions unchanged. One hosted practice attempt followed:
+
+- Session `f27ff9824bd334a2`, run `35240d8857984c0cafdd966c14167a90`.
+- New personal best **73.8751**, previously70.5890: **+3.2862 points**.
+- Deal EUR134.20,14-day payment, January1,2027; remaining terms unchanged from
+  the prior personal-best EUR134.50 deal. Total cost EUR1,111,697.53, downEUR1,871.93.
+- Five Claude calls,28,230input/443output tokens,154.69seconds; no provider errors,
+  fallbacks or transport recovery events. Quota228 to229, one new session.
+
+The actual final counter was EUR133.55 on January terms; supplier responded with
+a final EUR134.20 offer, which was accepted. Score1.0 was not reached. The remaining
+reported benchmark cost gap is EUR14,881.75; it is not a prediction of attainable
+savings. This single exploratory result does not isolate causality or generalize
+to all renewal negotiations. Artifacts: `data/local/practice-p01-renewal-focus-v1/`.
