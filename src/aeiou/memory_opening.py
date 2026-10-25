@@ -163,6 +163,7 @@ def retained_memory_counter(case, threads, anchor, intelligence, price_step=0):
         "supplier_id": sid,
         "terms": terms,
         "reference_quote": current.get("term_sheet_id"),
+        "previous_price": floor,
         "modeled_cost": modeled,
     }
 
@@ -211,13 +212,20 @@ class MemoryOpeningNegotiator(LearnedPortfolioNegotiator):
             )
             if counter:
                 self.followthrough_used += 1
+                movement = (
+                    f"We can increase our price offer from EUR {counter['previous_price']:.2f} "
+                    f"to EUR {counter['terms']['unit_price']:.2f} while keeping the other terms below. "
+                    if counter["terms"]["unit_price"] > counter["previous_price"]
+                    else "We can keep the complete commercial commitment below. "
+                )
                 move = {
                     "supplier_id": counter["supplier_id"],
                     "message": {
                         "subject": "Re: " + case["title"],
                         "body": (
-                            "Thank you for reviewing our proposal. We can keep the complete commercial "
-                            "commitment below. Could you approve our proposed price on these same terms? "
+                            "Thank you for reviewing our proposal. "
+                            + movement
+                            + "Could you approve our proposed price on these same terms? "
                             "The price remains conditional on the whole package; please confirm your binding offer."
                             "\n\nExecutable package: " + json.dumps(counter["terms"], ensure_ascii=False)
                         ),
