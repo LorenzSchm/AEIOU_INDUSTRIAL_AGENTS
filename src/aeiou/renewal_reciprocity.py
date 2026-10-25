@@ -10,6 +10,7 @@ from arena_kit.play import latest, moves_left
 from .economic_beliefs import total_cost
 from .optimizer import alternative_cost, valid_terms
 from .reciprocity import same_structure
+from .renewal_focus import focused_renewal_case
 from .strategic import StrategicNegotiator
 
 
@@ -48,7 +49,8 @@ class RenewalReciprocityNegotiator(StrategicNegotiator):
     """Not registered in the default factory; reference is supplied by the trial."""
 
     def __init__(self, *args, reference_run, reserve_final_step=False,
-                 max_bids=5, early_fraction=0.25, closing_fraction=0.5, **kwargs):
+                 max_bids=5, early_fraction=0.25, closing_fraction=0.5,
+                 explain_renewal_basis=False, **kwargs):
         super().__init__(*args, **kwargs)
         if type(max_bids) is not int or not 5 <= max_bids <= 8:
             raise ValueError("Experimental bid limit must be five to eight")
@@ -59,6 +61,7 @@ class RenewalReciprocityNegotiator(StrategicNegotiator):
         self.max_bids = max_bids
         self.early_fraction = early_fraction
         self.closing_fraction = closing_fraction
+        self.explain_renewal_basis = explain_renewal_basis
 
     def decide(self, case, threads):
         if case["case_id"] != "case:P01":
@@ -92,6 +95,19 @@ class RenewalReciprocityNegotiator(StrategicNegotiator):
                              for s in current.get("term_sheets", [])):
                 return super().decide(case, threads)
             message = {"subject": "Re: " + case["title"], "body": source["body"], "term_sheets": sheets}
+            if self.explain_renewal_basis and not prior:
+                _, basis = focused_renewal_case(case, self.pkg)
+                if basis and basis["selected_effective_date"] == "2027-01-01":
+                    message["body"] += (
+                        "\n\nFor clarity on timing: the existing framework term runs until "
+                        f"{basis['contract_valid_to']} ({basis['contract_ref']}). Our proposed "
+                        "1 January start is the next contractual renewal date. Please distinguish "
+                        "that renewal timing from the new concession we offer through accelerated "
+                        "14-day payment, and reflect the cash-flow benefit in the renewal price. "
+                        "We would like to continue the relationship on a complete, workable package."
+                    )
+                    message["refs"] = [basis["contract_ref"]]
+                    audit["renewal_basis"] = basis
         else:
             if self.reserve_final_step and len(prior) >= self.max_bids:
                 return self.close(case, threads)
