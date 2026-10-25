@@ -428,3 +428,45 @@ snapshots and recent diagnostic. The old P5 artifact and production remain intac
 ```powershell
 .venv/Scripts/python.exe -m aeiou.response_value --dependency-root data/local/learning-deps --dataset data/local/response-neural-v1/dataset.json --runs data/local/response-corpus-expanded/runs --previous data/local/response-refinement-v2/predictions.json --output data/local/response-value-new
 ```
+
+## One authorized value-controlled P10 trial
+
+The user requested one track on which the new model might beat a record. Added
+`ValuePortfolioNegotiator`, an opt-in experimental subclass with no production
+registration. It ranks existing admitted menus by the selected gain head, requires
+a0.005 predicted gain advantage (fraction of prior quoted cost), and rejects menus
+with a predicted progress-probability drop greater than0.05. These fixed exploratory
+bounds are not confidence guarantees. Anchor/protected probes and existing final
+offer/deadline closure are preserved. The poorly supported exit head is not used
+to authorize risks. Activation requires `experimental=True`; model metadata and
+the failed predictive gates are unchanged. Eight new selector tests plus seven
+previous portfolio tests passed before the trial.
+
+Local replay of ten archived openings found changed actual proposals on P5 and
+P10. Chose P10: the new selection removes the more expensive36-month package B,
+leaving24-month A/C packages at27.69/42-day and26.97/56-day terms. Predicted primary
+cost gain moves from0.172087 to0.183752, while predicted progress changes from
+0.890442 to0.888320. Track selection is exploratory, not a reliable estimate of
+record-breaking probability. No model retraining or threshold sweep preceded it.
+
+One hosted attempt on commit `98cf03b`, session `a0cb3e6d1895c62f`, run
+`a2bb1836b76c497ea78456bcb0db79ac`:
+
+- Score64.7294 vs historical best70.2080: **-5.4786 points**. Previous learned-menu
+  P10 run scored56.2462, so this is8.4832 points higher; these are unpaired outcomes.
+- Deal: EUR31.90,23,400units/year,24months,56-day lead time,30-day payment,DAP.
+- Direct cost EUR1,541,808, including EUR33,600 late-delivery cost.
+- The outgoing menu actually changed to A/C. Controller and message guard each
+  logged the same change; this is one intervention, not two independent changes.
+- Supplier immediately returned `final_offer`, rejecting the requested prices
+  but offering full volume and24months. The incumbent closing rule accepted it.
+- One Claude call,4,021input and85output tokens,16.5seconds, no model/planner or
+  transport errors. Quota223→224; one creation marker and one new session in audit.
+
+This did not beat the record. The delivery penalty suggests studying the joint
+price/delivery response, not assuming a cheaper unit price makes a superior deal.
+The same price at a shorter lead time was NOT offered, so removing the penalty
+in a cost calculation would only be a hypothetical, not a missed available deal.
+The prior production strategy and P5 record artifact remain untouched. No second
+attempt was started. Artifacts: `data/local/practice-p10-value-v1/`, with frozen
+model, source, preflight, complete run, quota audit and HTML/JSON reports.
