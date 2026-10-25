@@ -172,3 +172,70 @@ model.joblib, model metadata, full report, prediction rows and dataset. Only loa
 trusted pickle/joblib files. The original smaller model remains available.
 Seventeen tests cover both pipelines, including prefix truncation, redaction,
 training-only vocabulary/scaling and a saved neural-model prediction roundtrip.
+
+## Refined training: better predictions, still below deployment evidence threshold
+
+Following the user's request to improve the model, we inspected the prior errors.
+For example, the neural model averaged0.931 probability of a direct-cost improvement
+on P4, while only11 of31 recorded responses improved direct cost. That is a diagnostic
+on already observed data, not a newly sealed evaluation.
+
+The refinement adds8 prefix-feedback features to the original22: prior response
+count, smoothed progress frequency, latest progress, last-two progress, stagnation
+streak, prior package-match frequency, latest match and missing-history indicator.
+Only response outcomes already visible before the outgoing offer may enter these
+features. A previous response from the same conversation is available at inference
+time; the current or future response is not. Tests explicitly mutate future labels
+to verify that they cannot change the current feature vector. Sessions and supplier
+threads cannot share feedback accidentally.
+
+Estimator choice and probability shrinkage use nested groups. For each of12 outer
+held-out challenge/supplier groups, the remaining groups are split into3 inner
+folds. A fixed set compares a base rate, a smoothed conversation-history estimate,
+regularized logistic regression, shallow boosted trees and128 randomized trees.
+Predictions can shrink toward the training-fold prior at fixed strengths25/50/75/100%.
+Only inner out-of-group predictions select the estimator and strength; outer labels
+are never available for these choices. Numeric preprocessing is training-only.
+No further model search was performed after seeing the following outer scores.
+
+Comparison on the exact same706 examples and same outer groups as the neural run:
+
+| Target | Previous neural | Refined selection | Strongest simple comparator |
+| --- | ---: | ---: | ---: |
+| Package matched | 0.074780 | 0.069031 | history0.067764 |
+| Direct cost improved | 0.204919 | **0.164806** | history0.174697 |
+
+These are session-then-group-averaged Brier errors, not Arena points. The refined
+procedure reduces error7.69% and19.58% relative to the previous neural model.
+Against the newly included simple history comparator, package matching is1.87%
+worse, while direct-cost prediction is5.66% better. The latter's exploratory95%
+group-bootstrap error-difference interval[-0.00555,0.02545] includes zero. The
+package-match interval[-0.00334,0.00059] also includes zero. Neither target passes
+the existing full deployment-evidence gate. The gate was not relaxed to promote it.
+
+Fitting the final offline artifact on all data selects the history estimator for
+package matching and a50% randomized-forest /50% prior blend for cost progress.
+This full-data selection is distinct from the differing choices made inside each
+outer evaluation fold; reported errors assess the selection procedure. Reliability
+bins, every inner split and every outer choice are retained in the report.
+
+Artifacts: `data/local/response-refinement-v2/` (report.html, report.json,
+predictions.json, model.json and trusted local model.joblib). The v1 run emitted
+numeric roundoff warnings in the library's weighted variance for constant features.
+We replaced that normalization with an explicitly nonnegative centered variance
+calculation, added a regression test and repeated the identical experiment. V2
+has the same model selections and Brier results to floating-point precision; no
+hyperparameter or feature changes were made for that repeat. Both reports remain.
+
+Twenty-four focused tests pass. No training API, upload, dependency change or Arena
+attempt was needed in this refinement. Production/P2/P5 behavior remains untouched.
+The next validation of policy effectiveness still needs evidence beyond repeatedly
+inspecting these same challenge families; these numbers support better response
+prediction, not a demonstrated increase in negotiation scores.
+
+```powershell
+.venv/Scripts/python.exe -m aeiou.response_refinement --dependency-root data/local/learning-deps --dataset data/local/response-neural-v1/dataset.json --previous-predictions data/local/response-neural-v1/predictions.json --output data/local/response-refinement-new
+```
+
+Method references: [nested model-selection evaluation](https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html)
+and [probability evaluation and calibration](https://scikit-learn.org/stable/modules/calibration.html).
