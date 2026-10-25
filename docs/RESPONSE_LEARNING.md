@@ -716,3 +716,25 @@ Detailed local artifacts: `data/local/all-runs-review-v1/` contains the manifest
 aggregate audit, prefix replays, record-path checks, data-quality counts and HTML
 report. Archived outcomes are used only after replay decisions for comparison;
 the runtime policy does not consume session results, benchmark costs or case IDs.
+
+## P3 compensated payment-extension experiment
+
+`PaymentExtensionNegotiator` is an explicit experimental subclass, not registered
+in the production factory. A comparable current cash/credit quote pair supplies
+a price-per-day secant. It compensates the next permitted extension by at most
+30 days and twice the observed span, rounded upward to cents. No case ID, winning
+price or benchmark cost enters the policy. The original case/horizon is unchanged.
+
+Admission requires lower published direct cost, lower complete cost across nine
+quote-implied financing/production-cost sensitivities, and no more than 0.25%
+downside under the existing point model; the alternative ceiling still applies.
+It preserves prior comparable concessions and terminal/closing handling. Once
+admitted, the experiment sends only A and the protected exchange, so an extra
+planner proposal cannot silently introduce an executable fallback. It relies on
+comparable quote terms rather than a particular supplier's wording.
+
+38 focused tests passed before the wording-independent refinement; its seven
+module tests passed again afterward. Full planner/learned-selector replay on the
+archived P3 prefix emitted EUR 433.07/90 days from the EUR 430.15/30-day and
+EUR 431.61/60-day pair, alongside A. Opening behavior had no experimental probe.
+Model weights are unchanged. The user authorized one hosted P3 attempt.
