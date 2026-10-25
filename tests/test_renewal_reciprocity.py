@@ -4,6 +4,7 @@ import json
 import pytest
 
 from aeiou.config import data_root
+from aeiou.early_start_exchange import early_start_exchange
 from aeiou.renewal_reciprocity import RenewalReciprocityNegotiator, bounded_reciprocal_bid
 
 
@@ -85,3 +86,20 @@ def test_rejects_unbounded_experimental_configuration():
                      {"closing_fraction": float("nan")}, {"early_fraction": 0.8}):
         with pytest.raises(ValueError):
             RenewalReciprocityNegotiator(None, reference_run={}, **settings)
+
+
+def test_earlier_date_requires_compensating_price_cut_and_preserves_inputs():
+    case, events = example()
+    quote = events[-1]["term_sheets"][0]["terms"]
+    quote["unit_price"] = 134.00
+    before = copy.deepcopy((case, events))
+    trade = early_start_exchange(case, events, quote)
+    assert trade["terms"]["effective_date"] == "2026-11-01"
+    assert trade["terms"]["unit_price"] < 133
+    assert trade["proposed_cost"] < trade["reference_cost"]
+    assert (case, events) == before
+    events[-1]["status"] = "final_offer"
+    assert early_start_exchange(case, events, quote) is None
+    events[-1]["status"] = "open"
+    case["term_options"]["effective_date"].remove("2026-11-01")
+    assert early_start_exchange(case, events, quote) is None
