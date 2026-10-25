@@ -166,3 +166,54 @@ def test_index_reciprocity_requires_observed_structure_and_safe_movement(change)
         packages[2] = {**packages[2], "terms": {**packages[2]["terms"], "unit_price": 21}}
         packages[2]["cost"] = total_cost(case, packages[2]["terms"])
     assert responsive_packages(case, events, packages, {}, lambda t: total_cost(case, t), ceiling) == packages
+
+
+def momentum_scenario():
+    case, events, packages = indexed_scenario()
+    first = responsive_packages(case, events, packages, {}, lambda t: total_cost(case, t), float("inf"))
+    buyer = {"from": "buyer", "term_sheets": [{"terms": copy.deepcopy(p["terms"])} for p in first]}
+    seller = copy.deepcopy(events[-1])
+    seller["term_sheets"][0]["terms"]["unit_price"] = 23
+    events += [buyer, seller]
+    packages = copy.deepcopy(packages)
+    packages[2]["terms"]["unit_price"] = 20.6
+    packages[2]["cost"] = total_cost(case, packages[2]["terms"])
+    return case, events, packages
+
+
+def test_continue_reciprocated_index_step_without_changing_terms_or_anchor():
+    case, events, packages = momentum_scenario()
+    result = responsive_packages(case, events, packages, {}, lambda t: total_cost(case, t), float("inf"))
+    assert result[:2] == packages[:2]
+    assert result[2]["terms"]["unit_price"] == 21.5
+    assert result[2]["reciprocal_momentum"]["previous_buyer_step"] == 1
+    assert same_structure(result[2]["terms"], packages[2]["terms"])
+    assert result[2]["cost"] < result[2]["standing_cost"]
+
+
+def test_reciprocal_momentum_never_crosses_midpoint_of_remaining_gap():
+    case, events, packages = momentum_scenario()
+    events[-1]["term_sheets"][0]["terms"]["unit_price"] = 21
+    result = responsive_packages(case, events, packages, {}, lambda t: total_cost(case, t), float("inf"))
+    assert result[2]["terms"]["unit_price"] == 20.75
+
+
+@pytest.mark.parametrize("change", ["stall", "increase", "changed_terms", "buyer_backwards"])
+def test_unreciprocated_or_incomparable_moves_do_not_enable_momentum(change):
+    case, events, packages = momentum_scenario()
+    if change == "stall":
+        events[-1]["term_sheets"][0]["terms"]["unit_price"] = 23.5
+    elif change == "increase":
+        events[-1]["term_sheets"][0]["terms"]["unit_price"] = 24
+    elif change == "changed_terms":
+        events[1]["term_sheets"][0]["terms"]["contract_months"] = 30
+    else:
+        events[-2]["term_sheets"][-1]["terms"]["unit_price"] = 19.4
+    result = responsive_packages(case, events, packages, {}, lambda t: total_cost(case, t), float("inf"))
+    assert not any(p.get("reciprocal_momentum") for p in result)
+
+
+def test_external_ceiling_blocks_reciprocal_momentum():
+    case, events, packages = momentum_scenario()
+    result = responsive_packages(case, events, packages, {}, lambda t: total_cost(case, t), packages[2]["cost"])
+    assert result == packages

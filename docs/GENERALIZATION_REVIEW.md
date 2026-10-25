@@ -1379,3 +1379,24 @@ alternatives and expensive-primary rejection. Ruff clean. Negotiation policy
 files match 14b0eda exactly; its 57 protected P01-P05 replays remain applicable.
 The new recovery is locally tested, not tested with an additional paid run.
 Report: data/local/evaluations/practice-p08-5ceddad/report.json.
+
+
+## Sustain a verified reciprocal step, bounded by the remaining gap
+
+The retained P08 run moved the indexed bid 4.91 -> 5.08 and received a same-term
+supplier reduction 5.57 -> 5.48. Its next bid shrank to 5.18 before the final 5.45.
+Test preserving the previous buyer step only after a meaningful same-structure
+supplier concession. Require two consecutive comparable buyer bids that actually
+increased and a comparable prior supplier quote; changing terms or a stalled/
+increased seller price does not qualify. Cap movement at half the remaining gap,
+retain the existing quarter-gap minimum, A/B, external ceiling and terminal guards.
+No case IDs, record prices or new payment/index concessions enter the rule.
+
+161 focused checks passed across the runs: 137 other regressions and 24 reciprocity
+tests. Two initial fixture failures were shared-object aliasing in the newly
+constructed synthetic history, corrected by copying the planned packages; all
+24 reciprocity tests then pass. Production policy was unchanged by that fix.
+Ruff clean; all 57 protected P01-P05 historical decisions identical. P08 replay
+opening and first counter unchanged; third indexed bid becomes 5.25 instead of
+5.18, and final-offer acceptance is unchanged. This does not predict supplier
+acceptance. One further hosted P08 attempt is authorized; no creation retries.
