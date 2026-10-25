@@ -47,10 +47,18 @@ def bounded_reciprocal_bid(case, events, cap, fraction=0.25):
 class RenewalReciprocityNegotiator(StrategicNegotiator):
     """Not registered in the default factory; reference is supplied by the trial."""
 
-    def __init__(self, *args, reference_run, reserve_final_step=False, **kwargs):
+    def __init__(self, *args, reference_run, reserve_final_step=False,
+                 max_bids=5, early_fraction=0.25, closing_fraction=0.5, **kwargs):
         super().__init__(*args, **kwargs)
+        if type(max_bids) is not int or not 5 <= max_bids <= 8:
+            raise ValueError("Experimental bid limit must be five to eight")
+        if not 0 < early_fraction <= 0.5 or not 0 < closing_fraction <= 0.5:
+            raise ValueError("Concession fractions must be positive and at most half the gap")
         self.reference = copy.deepcopy(reference_run)
         self.reserve_final_step = reserve_final_step
+        self.max_bids = max_bids
+        self.early_fraction = early_fraction
+        self.closing_fraction = closing_fraction
 
     def decide(self, case, threads):
         if case["case_id"] != "case:P01":
@@ -85,13 +93,13 @@ class RenewalReciprocityNegotiator(StrategicNegotiator):
                 return super().decide(case, threads)
             message = {"subject": "Re: " + case["title"], "body": source["body"], "term_sheets": sheets}
         else:
-            if self.reserve_final_step and len(prior) >= 5:
+            if self.reserve_final_step and len(prior) >= self.max_bids:
                 return self.close(case, threads)
             cap = max(s["terms"]["unit_price"] for m in reference_bids for s in m["term_sheets"]
                       if s["terms"].get("payment_days") == 14
                       and s["terms"].get("effective_date") == "2027-01-01")
-            fraction = 0.25
-            if self.reserve_final_step and len(prior) == 4:
+            fraction = self.early_fraction
+            if self.reserve_final_step and len(prior) >= 4:
                 result = self.reference.get("result") or {}
                 agreed = result.get("terms", {})
                 if (
@@ -100,10 +108,10 @@ class RenewalReciprocityNegotiator(StrategicNegotiator):
                     or agreed.get("effective_date") != "2027-01-01"
                 ):
                     return self.close(case, threads)
-                # A single larger closing exchange, still strictly cheaper than
-                # the historical agreement and the current comparable quote.
+                # Bounded closing exchanges, still strictly cheaper than the
+                # historical agreement and the current comparable quote.
                 cap = round(agreed["unit_price"] - 0.01, 2)
-                fraction = 0.5
+                fraction = self.closing_fraction
             counter = bounded_reciprocal_bid(case, events, cap, fraction)
             if not counter:
                 return self.close(case, threads)

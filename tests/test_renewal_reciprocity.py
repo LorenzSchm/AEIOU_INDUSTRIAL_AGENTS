@@ -4,7 +4,7 @@ import json
 import pytest
 
 from aeiou.config import data_root
-from aeiou.renewal_reciprocity import bounded_reciprocal_bid
+from aeiou.renewal_reciprocity import RenewalReciprocityNegotiator, bounded_reciprocal_bid
 
 
 def example():
@@ -68,3 +68,20 @@ def test_larger_final_step_stays_below_quote_and_historical_agreement():
     for fraction in (0, -1, 0.6, float("nan")):
         with pytest.raises(ValueError):
             bounded_reciprocal_bid(case, events, 134.19, fraction)
+
+
+def test_open_quote_can_receive_another_counter_but_deadline_reserves_close():
+    case, events = example()
+    events[0]["term_sheets"][0]["terms"]["unit_price"] = 133.85
+    events[-1]["term_sheets"][0]["terms"]["unit_price"] = 134.00
+    bid = bounded_reciprocal_bid(case, events, 133.99, 0.5)
+    assert 133.85 < bid["terms"]["unit_price"] < 134.00
+    events[:0] = [copy.deepcopy(events[0]) for _ in range(7)]
+    assert bounded_reciprocal_bid(case, events, 133.99, 0.5) is None
+
+
+def test_rejects_unbounded_experimental_configuration():
+    for settings in ({"max_bids": 9}, {"max_bids": True}, {"early_fraction": 0},
+                     {"closing_fraction": float("nan")}, {"early_fraction": 0.8}):
+        with pytest.raises(ValueError):
+            RenewalReciprocityNegotiator(None, reference_run={}, **settings)
