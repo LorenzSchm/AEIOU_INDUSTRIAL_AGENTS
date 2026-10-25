@@ -66,7 +66,7 @@ def liability_response(case, events, packages, standard, cost, ceiling):
         live = [q for q in live_quotes if same_structure(q, terms)]
         # Retain the discovered option, but do not bid up toward a stale quote.
         # Only a fresh counter on this structure permits the settlement step.
-        target = round(quote["unit_price"] - max(0.01, quote["unit_price"] * 0.01), 2) if live else terms["unit_price"]
+        target = round(quote["unit_price"] - max(0.01, quote["unit_price"] * 0.02), 2) if live else terms["unit_price"]
         bid = {**terms, "unit_price": max(target, terms["unit_price"], max(p["unit_price"] for p in prior))}
         if not valid_terms(case, bid) or cost(bid) >= min(ceiling, cost(quote)) - 0.01:
             continue

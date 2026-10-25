@@ -51,7 +51,7 @@ def test_only_a_live_comparable_counter_allows_bounded_settlement():
         {"from": "supplier", "status": "open", "term_sheets": [{"terms": {**packages[1]["terms"], "unit_price": 45.5}}]}
     ]
     result = apply(case, events, packages)
-    assert result[1]["terms"]["unit_price"] == 45.05
+    assert result[1]["terms"]["unit_price"] == 44.59
     assert result[1]["cost"] < result[1]["standing_cost"]
 
 
@@ -104,4 +104,4 @@ def test_unseen_supplier_and_shifted_prices_do_not_depend_on_track_identity():
     for p in packages:
         p["terms"]["unit_price"] += 10
     result = apply(case, events, packages)
-    assert result[1]["terms"]["unit_price"] == 55.44
+    assert result[1]["terms"]["unit_price"] == 54.88
