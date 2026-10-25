@@ -1,0 +1,78 @@
+{
+"doc:20261013-70340-S15": {
+"asked_pct": null,
+"asked_price": null,
+"date": "2026-10-13",
+"days": null,
+"effective_date": null,
+"supplier": "sup:70340",
+"title": "Steel for 2027",
+"type": "letter"
+},
+"doc:20261016-70170-S12": {
+"asked_pct": null,
+"asked_price": null,
+"date": "2026-10-16",
+"days": null,
+"effective_date": null,
+"supplier": "sup:70170",
+"title": "Payment terms for stainless castings",
+"type": "letter"
+},
+"doc:20261019-70190-S13": {
+"asked_pct": null,
+"asked_price": null,
+"date": "2026-10-19",
+"days": null,
+"effective_date": null,
+"supplier": "sup:70190",
+"title": "Our liquidity and your call-offs",
+"type": "letter"
+},
+"doc:20261023-HPW-MEMO": {
+"asked_pct": null,
+"asked_price": null,
+"date": "2026-10-23",
+"days": null,
+"effective_date": null,
+"supplier": null,
+"title": "Market memo, October 2026",
+"type": "memo"
+},
+"news:20261014-S11": {
+"date": "2026-10-14",
+"headline": "Bank tightens credit line for Slévárna Vrbenský s.r.o.",
+"supplier": "sup:70170",
+"topic": "credit_downgrade"
+},
+"news:20261015-S14": {
+"date": "2026-10-15",
+"headline": "Heating maker cancels foundry orders at Gießerei Pfaffenreuth GmbH",
+"supplier": "sup:70190",
+"topic": "customer_loss"
+},
+"news:20261017-S19": {
+"date": "2026-10-17",
+"headline": "Kugellager-Vertrieb Inntal GmbH loses a large distribution contract",
+"supplier": "sup:70640",
+"topic": "free_capacity"
+},
+"news:20261020-S16": {
+"date": "2026-10-20",
+"headline": "Obrábění Kraslin s.r.o. puts its turning shop on short-time work",
+"supplier": "sup:70270",
+"topic": "short_time_work"
+},
+"news:20261021-S17": {
+"date": "2026-10-21",
+"headline": "Water utilities push pump tenders into 2027",
+"supplier": null,
+"topic": "market"
+},
+"news:20261022-S18": {
+"date": "2026-10-22",
+"headline": "Kabelwerk Rhönsberg GmbH opens a cable recycling line",
+"supplier": "sup:70560",
+"topic": "noise"
+}
+}

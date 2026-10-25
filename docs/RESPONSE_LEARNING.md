@@ -470,3 +470,32 @@ in a cost calculation would only be a hypothetical, not a missed available deal.
 The prior production strategy and P5 record artifact remain untouched. No second
 attempt was started. Artifacts: `data/local/practice-p10-value-v1/`, with frozen
 model, source, preflight, complete run, quota audit and HTML/JSON reports.
+
+## Sunday release integration (25 October 2026)
+
+Installed the official eight-file Sunday release under `data/release-sunday/`.
+Archive SHA256: `e708cfaf20483873c10e9343119640b8e11ff62af2c4e8195431cb7b0243b5bd`.
+The ten additional source IDs are factual context, not negotiation outcomes;
+no model weights were retrained and no synthetic response labels were created.
+
+Research now merges full release news bodies and letters with the base package.
+Relevant supplier and global context reaches the strategic planner, with internal
+memos excluded from supplier-facing evidence cards. Supplier letters and relevant
+news can be cited through the existing exact-excerpt guard; the recycling article
+marked as noise is excluded from release planning and retrieval. Material-cover
+dates remain part of the quotation rather than implying immediate cost changes.
+
+Explicit case `as_of` dates take precedence. Final cases (`set=hidden` in the API,
+or `final`) can use the installed release through 23 October; historical practice,
+sandbox and unspecified cases retain the 30 September cutoff. Retrieval corpus
+statistics also respect that cutoff, preventing future documents from changing
+historical rankings. The original database and index series remain untouched.
+New processes load the release automatically; an already-running dashboard caches
+its package and needs a restart to load this code and data.
+
+Validation: 13 release-specific tests passed, including the actual planner call
+and outgoing-message guard. Across five relevant test files, 75 tests passed and
+two existing simulation score assertions failed identically on committed baseline
+`e498de8`. Ten archived hosted openings were also replayed locally: all ten actions
+matched with and without release activation. This checks compatibility, not a
+live score improvement. No Arena sessions or model API calls were used.

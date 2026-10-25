@@ -13,8 +13,17 @@ from collections import Counter
 DATA_CUTOFF = "2026-09-30"
 
 
-def evidence_cutoff(case):
-    return case.get("as_of") or DATA_CUTOFF
+def evidence_cutoff(case, pkg=None):
+    """Explicit historical dates win. Final cases can use the installed release.
+
+    Never use wall-clock time or advance practice/sandbox scenarios implicitly.
+    The API identifies live-final cases with set='hidden'.
+    """
+    if case.get("as_of"):
+        return case["as_of"]
+    if case.get("set") in {"hidden", "final"} and getattr(pkg, "release_as_of", None):
+        return max(DATA_CUTOFF, pkg.release_as_of)
+    return DATA_CUTOFF
 
 
 CONCEPTS = {
@@ -80,7 +89,10 @@ class HybridEvidenceIndex:
     def from_package(cls, pkg):
         documents = []
         for ref, fact in pkg.facts.items():
-            if not ref.startswith("doc:"):
+            release_news = ref.startswith("news:") and ref in getattr(pkg, "release_ids", ())
+            if not ref.startswith("doc:") and not release_news:
+                continue
+            if fact.get("topic") == "noise":
                 continue
             try:
                 text = pkg.document(ref)
@@ -93,7 +105,7 @@ class HybridEvidenceIndex:
                     "supplier_id": fact.get("supplier"),
                     "part_id": fact.get("part"),
                     "date": fact.get("date"),
-                    "type": fact.get("type"),
+                    "type": "news" if release_news else fact.get("type"),
                 }
             )
         return cls(documents)
@@ -102,8 +114,13 @@ class HybridEvidenceIndex:
         if not 1 <= limit <= 20 or not suppliers:
             raise ValueError("Search requires supplier scope and limit between 1 and 20")
         words, concepts = tokens(query), concept_vector(query)
+        # Future releases must not change historical ranking through BM25's
+        # corpus statistics, even when their individual hits are filtered out.
+        corpus = [c for c in self.chunks if not cutoff or not c.get("date") or c["date"] <= cutoff]
+        df = Counter(word for c in corpus for word in c["counts"])
+        average_length = sum(sum(c["counts"].values()) for c in corpus) / max(1, len(corpus))
         ranked = []
-        for chunk in self.chunks:
+        for chunk in corpus:
             if chunk.get("supplier_id") not in suppliers:
                 continue
             if parts and chunk.get("part_id") and chunk["part_id"] not in parts:
@@ -114,10 +131,8 @@ class HybridEvidenceIndex:
             lexical = 0.0
             for word in words:
                 frequency = chunk["counts"].get(word, 0)
-                idf = math.log(1 + (len(self.chunks) - self.df[word] + 0.5) / (self.df[word] + 0.5))
-                lexical += (
-                    idf * frequency * 2.2 / (frequency + 1.2 * (0.25 + 0.75 * length / max(1, self.average_length)))
-                )
+                idf = math.log(1 + (len(corpus) - df[word] + 0.5) / (df[word] + 0.5))
+                lexical += idf * frequency * 2.2 / (frequency + 1.2 * (0.25 + 0.75 * length / max(1, average_length)))
             semantic = cosine(concepts, chunk["concepts"])
             dense = (
                 cosine(query_vector, self.vectors[chunk["chunk_id"]])
@@ -165,7 +180,7 @@ def evidence_cards(hits, intelligence):
         text = approved or hit["text"]
         # Internal notes may inform private planning, but are never quoted to a seller.
         shareable = (
-            hit.get("type") == "letter"
+            hit.get("type") in {"letter", "news"}
             and approved is not None
             and len(text) <= 450
             and not re.search(

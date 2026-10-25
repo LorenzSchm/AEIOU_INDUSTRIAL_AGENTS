@@ -16,12 +16,13 @@ def decision_research(case, pkg, query, supplier_id=None, limit=6):
         raise ValueError("Supplier must belong to the current case")
     scope = [supplier_id] if supplier_id else case["suppliers"]
     intelligence = research(case, pkg)
-    hits = pkg.evidence_index().search(query, scope, case["parts"], cutoff=evidence_cutoff(case), limit=limit)
+    hits = pkg.evidence_index().search(query, scope, case["parts"], cutoff=evidence_cutoff(case, pkg), limit=limit)
     return {
         "query": query,
         "case_id": case["case_id"],
         "supplier_scope": scope,
-        "as_of": evidence_cutoff(case),
+        "as_of": evidence_cutoff(case, pkg),
+        "private_planning_evidence": intelligence.get("release_context", []),
         "evidence_cards": evidence_cards(hits, intelligence),
         "cost_driver_indices": intelligence["indices"],
         "should_cost_estimates": intelligence["estimates"],

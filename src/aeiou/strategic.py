@@ -279,6 +279,16 @@ class StrategicNegotiator(Negotiator):
                 s["terms"] for m in threads[sid] if m.get("from") == "buyer" for s in m.get("term_sheets", [])
             ][-9:],
         }
+        context = [r for r in self.intelligence.get("release_context", []) if r["supplier_id"] in {None, sid}]
+        if context:
+            payload["private_planning_evidence"] = context
+            payload["private_evidence_rule"] = (
+                "Use this dated evidence only to plan legal term exchanges. Do not quote internal memos or "
+                "copy this field into the supplier message. Cite only available_evidence_ids. "
+                "Cash pressure may support faster permitted payment, not invented cost floors; spare capacity "
+                "does not justify unneeded volume. Fixed-price material cover limits market pass-through "
+                "in both directions."
+            )
         return json.dumps(payload, ensure_ascii=False, default=str)
 
     def guard(self, case, threads, data, candidates):
@@ -476,7 +486,7 @@ class StrategicNegotiator(Negotiator):
                 f"{case['title']} {self.support[sid]['strategy']['name']} "
                 "costs payment cash volume fixed material capacity approval"
             )
-            hits = self._index.search(query, [sid], case["parts"], cutoff=evidence_cutoff(case), limit=6)
+            hits = self._index.search(query, [sid], case["parts"], cutoff=evidence_cutoff(case, self.pkg), limit=6)
             self._cards = evidence_cards(hits, self.intelligence)
             # A newly retrieved document must also be known to the inherited
             # citation guard; only package-backed references enter this set.
