@@ -1741,3 +1741,26 @@ Usage:exactly one session (shared quota180->181),3 model calls,16384input and
 241output tokens,38.39seconds,zero errors or fallbacks. No additional runtime
 change or hosted attempt. Dashboard report:
 data/local/evaluations/practice-p04-7dd653e/report.json.
+
+## Fixed-price-first discovery for strategic indexed supplies
+
+The user authorized one P02 attempt following the cross-challenge review. Its
+best indexed agreement scored60.6569 and included17434.52EUR of index risk.
+The experiment tests the existing357.94/14days/fixed-price anchor before offering
+the356.68 indexed alternative. No lower price or supplier-health assumption is
+introduced; the production acceptance and cost models remain unchanged.
+
+The rule is generic: stabilise/secure_supply category, positive published index
+risk, a legal null clause, and an explicit fixed-price supplier opening. Only
+the first buyer message is restricted to fixed-price candidates. Following a
+supplier response, ordinary compensated index exploration resumes. The proposal
+schema exposes the restriction and the admission guard rejects model attempts to
+reintroduce index risk. It does not affect indexed-only quotations, mandatory
+clauses, other categories, or terminal offers. The message asks for the concrete
+risk obstacle if fixed pricing cannot be approved.
+
+Validation:56 focused tests passed and Ruff clean. Of57 archived P01-P05
+decisions, only the P02 opening changes;56 remain identical. All four latest-P08
+decisions remain identical. Full mocked-model replay attempts to reintroduce
+the previous indexed option; the actual outgoing message retains357.94/14/null
+with zero fallbacks. These are local checks, not evidence of hosted acceptance.

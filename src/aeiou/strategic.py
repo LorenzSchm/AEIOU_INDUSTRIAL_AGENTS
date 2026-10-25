@@ -31,6 +31,7 @@ from .grounding import (
 from .negotiation_state import supplier_state
 from .opponent_model import learn_beliefs, predicted_choices
 from .optimizer import alternative_cost, estimate, evaluate, safe_close
+from .portfolio_value import fixed_price_first
 from .reciprocity import responsive_packages
 from .retrieval import evidence_cards, evidence_cutoff
 from .scenario_planner import plan_packages
@@ -177,6 +178,10 @@ class StrategicNegotiator(Negotiator):
                 lambda terms, std=standard, model=supplier: total_cost(case, terms, std, model),
                 ceiling,
             )
+            if fixed_price_first(case, threads[sid]):
+                fixed = [p for p in plan["packages"] if p["terms"].get("index_clause") is None]
+                if fixed:
+                    plan["packages"] = fixed
             if plan["packages"] and "effective_date" in case["negotiable"]:
                 reference = plan["packages"][0]["terms"]
                 plan["packages"] = [
@@ -557,6 +562,13 @@ class StrategicNegotiator(Negotiator):
                 }
         sheets = move["message"].get("term_sheets", [])
         if sheets:
+            if fixed_price_first(case, threads[sid]) and all(s["terms"].get("index_clause") is None for s in sheets):
+                move["message"]["body"] += (
+                    "\n\nPlease first review the fixed-price package below. It provides a defined price "
+                    "for the stated contract period; any payment concession is conditional on that complete "
+                    "package. If you cannot approve fixed pricing, please identify the price-risk obstacle "
+                    "so we can assess a compensated alternative."
+                )
             if any(
                 p.get("renewal_settlement_probe") and any(s["terms"] == p["terms"] for s in sheets)
                 for p in offers.get(sid, [])

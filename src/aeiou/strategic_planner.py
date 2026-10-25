@@ -12,7 +12,7 @@ from .contract_tradeoffs import compensated_date
 from .economic_beliefs import total_cost
 from .opponent_model import predicted_choices
 from .optimizer import alternative_cost, estimate, evaluate, valid_terms
-from .portfolio_value import risk_exchange_ceiling, sensitivity_cost
+from .portfolio_value import fixed_price_first, risk_exchange_ceiling, sensitivity_cost
 from .reciprocity import same_structure
 
 PLANNER_SYSTEM = """You are the buyer's strategic negotiation planner. Minimize COMPLETE
@@ -78,6 +78,7 @@ def proposal_limits(case, threads, sid, candidates, intelligence):
         "same_structure_anchor_expected_cost": anchor_expected,
         "max_portfolio_expected_cost": anchor_expected * 1.0025 if anchor_expected is not None else None,
         "price_only_concessions_allowed": closing,
+        "index_exploration_allowed": not fixed_price_first(case, threads[sid]),
     }
     if "effective_date" in case["negotiable"]:
         limits["earlier_effective_date"] = {
@@ -149,6 +150,8 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
                 terms["unit_price"] = round(terms["unit_price"], 2)
             if not valid_terms(case, terms):
                 raise ValueError("Illegal terms or unmet must-have")
+            if terms.get("index_clause") is not None and not limits["index_exploration_allowed"]:
+                raise ValueError("First test the fixed-price package before introducing index risk")
             if any(
                 p.get("renewal_settlement_probe") and same_structure(terms, p["terms"]) and terms != p["terms"]
                 for p in candidates
