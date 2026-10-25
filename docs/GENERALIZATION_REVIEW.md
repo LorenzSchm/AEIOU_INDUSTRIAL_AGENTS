@@ -1722,3 +1722,22 @@ or provider fallbacks. Shared practice quota178->180 includes a concurrent P10
 session35a5770e82579d48 opened20.19seconds after this task's one P04 session.
 Read-only audit saved indata/local/practice-p04-e57ff6c/sessions-after-audit.json.
 Report:data/local/evaluations/practice-p04-e57ff6c/report.json.
+
+### P04 retest with protected settlement (7dd653e)
+
+One subsequently authorized hosted attempt, session9ef7ff68c4542ef3 and local
+run8ad3cf5728d346c184072461b5fb908a, again scored86.0445. This time the actual
+third buyer message included4.93EUR/90days/36months with the explicit conditional
+commitment exchange. The planner attempted a replacement but the new guard
+rejected it. The supplier explicitly countered at4.94/90/36 as its final offer;
+the controller accepted. Total cost196852.67EUR and team best are unchanged.
+
+This validates the fix's execution, not a score improvement. The one-cent
+duration trade was tested and refused in this observation; it does not prove a
+private reservation price or rule out different payment structures. Repeating
+this same trade without new evidence is not supported by the result.
+
+Usage:exactly one session (shared quota180->181),3 model calls,16384input and
+241output tokens,38.39seconds,zero errors or fallbacks. No additional runtime
+change or hosted attempt. Dashboard report:
+data/local/evaluations/practice-p04-7dd653e/report.json.
