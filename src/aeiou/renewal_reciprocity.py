@@ -27,8 +27,11 @@ def bounded_reciprocal_bid(case, events, cap, fraction=0.25):
     if not valid_terms(case, quote):
         return None
     previous = [
-        s["terms"] for m in events if m.get("from") == "buyer"
-        for s in m.get("term_sheets", []) if same_structure(s["terms"], quote)
+        s["terms"]
+        for m in events
+        if m.get("from") == "buyer"
+        for s in m.get("term_sheets", [])
+        if same_structure(s["terms"], quote)
     ]
     if not previous:
         return None
@@ -48,9 +51,17 @@ def bounded_reciprocal_bid(case, events, cap, fraction=0.25):
 class RenewalReciprocityNegotiator(StrategicNegotiator):
     """Not registered in the default factory; reference is supplied by the trial."""
 
-    def __init__(self, *args, reference_run, reserve_final_step=False,
-                 max_bids=5, early_fraction=0.25, closing_fraction=0.5,
-                 explain_renewal_basis=False, **kwargs):
+    def __init__(
+        self,
+        *args,
+        reference_run,
+        reserve_final_step=False,
+        max_bids=5,
+        early_fraction=0.25,
+        closing_fraction=0.5,
+        explain_renewal_basis=False,
+        **kwargs,
+    ):
         super().__init__(*args, **kwargs)
         if type(max_bids) is not int or not 5 <= max_bids <= 8:
             raise ValueError("Experimental bid limit must be five to eight")
@@ -77,8 +88,9 @@ class RenewalReciprocityNegotiator(StrategicNegotiator):
         if current.get("status") != "open" or moves_left(case, events) <= 2:
             return self.close(case, threads)
         prior = [m for m in events if m.get("from") == "buyer" and m.get("term_sheets")]
-        reference_bids = [m for m in self.reference["threads"][sid]
-                          if m.get("from") == "buyer" and m.get("term_sheets")]
+        reference_bids = [
+            m for m in self.reference["threads"][sid] if m.get("from") == "buyer" and m.get("term_sheets")
+        ]
         audit = {"phase": "reference opening", "source_run": self.reference.get("id")}
         if len(prior) < 2:
             # Preserve the successful opening and first payment exchange only.
@@ -87,12 +99,16 @@ class RenewalReciprocityNegotiator(StrategicNegotiator):
             if not all(valid_terms(case, s["terms"]) for s in sheets):
                 return super().decide(case, threads)
             standard = standard_terms(events)
-            live_cost = min((total_cost(case, closing_terms(case, s["terms"], standard), standard)
-                             for s in current.get("term_sheets", [])), default=float("inf"))
+            live_cost = min(
+                (
+                    total_cost(case, closing_terms(case, s["terms"], standard), standard)
+                    for s in current.get("term_sheets", [])
+                ),
+                default=float("inf"),
+            )
             if any(total_cost(case, s["terms"], standard) >= live_cost for s in sheets):
                 return self.close(case, threads)
-            if prior and any(s["terms"].get("effective_date") != "2027-01-01"
-                             for s in current.get("term_sheets", [])):
+            if prior and any(s["terms"].get("effective_date") != "2027-01-01" for s in current.get("term_sheets", [])):
                 return super().decide(case, threads)
             message = {"subject": "Re: " + case["title"], "body": source["body"], "term_sheets": sheets}
             if self.explain_renewal_basis and not prior:
@@ -111,9 +127,12 @@ class RenewalReciprocityNegotiator(StrategicNegotiator):
         else:
             if self.reserve_final_step and len(prior) >= self.max_bids:
                 return self.close(case, threads)
-            cap = max(s["terms"]["unit_price"] for m in reference_bids for s in m["term_sheets"]
-                      if s["terms"].get("payment_days") == 14
-                      and s["terms"].get("effective_date") == "2027-01-01")
+            cap = max(
+                s["terms"]["unit_price"]
+                for m in reference_bids
+                for s in m["term_sheets"]
+                if s["terms"].get("payment_days") == 14 and s["terms"].get("effective_date") == "2027-01-01"
+            )
             fraction = self.early_fraction
             if self.reserve_final_step and len(prior) >= 4:
                 result = self.reference.get("result") or {}
@@ -140,16 +159,30 @@ class RenewalReciprocityNegotiator(StrategicNegotiator):
                 f"to EUR {counter['terms']['unit_price']:.2f}, keeping payment at 14 days and "
                 "the start on 1 January 2027. This is a further step from us, conditional on "
                 "the complete package. Could you reciprocate with your closest workable price "
-                "on these same terms so we can conclude?\n\nExecutable package: "
-                + json.dumps(counter["terms"])
+                "on these same terms so we can conclude?\n\nExecutable package: " + json.dumps(counter["terms"])
             )
-            message = {"subject": "Reciprocal step towards the renewal", "body": body,
-                       "term_sheets": [{"terms": counter["terms"]}]}
-            audit = {"phase": "bounded reciprocal concession", "cap": cap,
-                     "gap_fraction": fraction, "reserve_final_step": self.reserve_final_step, **counter}
+            message = {
+                "subject": "Reciprocal step towards the renewal",
+                "body": body,
+                "term_sheets": [{"terms": counter["terms"]}],
+            }
+            audit = {
+                "phase": "bounded reciprocal concession",
+                "cap": cap,
+                "gap_fraction": fraction,
+                "reserve_final_step": self.reserve_final_step,
+                **counter,
+            }
         move = {"supplier_id": sid, "message": message}
-        self.decisions.append({"supplier_id": sid, "action": "send", "elapsed_s": 0,
-                               "source": "explicit renewal reciprocity trial", "reciprocity_trial": audit,
-                               "actual_sent_terms": copy.deepcopy(message["term_sheets"])})
+        self.decisions.append(
+            {
+                "supplier_id": sid,
+                "action": "send",
+                "elapsed_s": 0,
+                "source": "explicit renewal reciprocity trial",
+                "reciprocity_trial": audit,
+                "actual_sent_terms": copy.deepcopy(message["term_sheets"]),
+            }
+        )
         self.runtime_context = {}
         return move

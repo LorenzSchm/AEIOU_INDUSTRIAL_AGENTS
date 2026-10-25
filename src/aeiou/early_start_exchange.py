@@ -41,8 +41,12 @@ def early_start_exchange(case, events, reference_terms):
     terms["unit_price"] = round(low - 0.10, 2)
     if not valid_terms(case, terms) or total_cost(case, terms, standard) >= ceiling:
         return None
-    return {"terms": terms, "reference_cost": ceiling,
-            "proposed_cost": total_cost(case, terms, standard), "previous_terms": quote}
+    return {
+        "terms": terms,
+        "reference_cost": ceiling,
+        "proposed_cost": total_cost(case, terms, standard),
+        "previous_terms": quote,
+    }
 
 
 class EarlyStartExchangeNegotiator(RenewalReciprocityNegotiator):
@@ -63,29 +67,46 @@ class EarlyStartExchangeNegotiator(RenewalReciprocityNegotiator):
             return super().decide(case, threads)
         if self.case_id != case["case_id"]:
             self.prepare(case)
-        if (self.exchange_followup and self.last_exchange
-                and len(prior) == self.exchange_after + 1):
-            counter = bounded_reciprocal_bid(case, events,
-                                            round(self.last_exchange["terms"]["unit_price"] + 0.09, 2), 0.5)
-            if (counter and counter["terms"].get("effective_date") == "2026-11-01"
-                    and counter["terms"].get("payment_days") == 14
-                    and total_cost(case, counter["terms"], standard_terms(events))
-                    < self.last_exchange["reference_cost"]):
-                message = {"subject": "Closing the earlier-start package", "body": (
-                    "Dear Mr Brandlhuber,\n\nThank you for pricing the earlier implementation. "
-                    f"We can increase our proposed price from EUR {counter['previous_price']:.2f} "
-                    f"to EUR {counter['terms']['unit_price']:.2f}, keeping the 1 November start "
-                    "and 14-day payment. If you can issue a binding quote on this complete "
-                    "package, we are ready to accept it as our next action.\n\nExecutable package: "
-                    + json.dumps(counter["terms"])), "term_sheets": [{"terms": counter["terms"]}]}
-                self.decisions.append({"supplier_id": sid, "action": "send", "elapsed_s": 0,
-                                       "source": "bounded date-exchange followup", "date_followup": counter,
-                                       "actual_sent_terms": copy.deepcopy(message["term_sheets"])})
+        if self.exchange_followup and self.last_exchange and len(prior) == self.exchange_after + 1:
+            counter = bounded_reciprocal_bid(
+                case, events, round(self.last_exchange["terms"]["unit_price"] + 0.09, 2), 0.5
+            )
+            if (
+                counter
+                and counter["terms"].get("effective_date") == "2026-11-01"
+                and counter["terms"].get("payment_days") == 14
+                and total_cost(case, counter["terms"], standard_terms(events)) < self.last_exchange["reference_cost"]
+            ):
+                message = {
+                    "subject": "Closing the earlier-start package",
+                    "body": (
+                        "Dear Mr Brandlhuber,\n\nThank you for pricing the earlier implementation. "
+                        f"We can increase our proposed price from EUR {counter['previous_price']:.2f} "
+                        f"to EUR {counter['terms']['unit_price']:.2f}, keeping the 1 November start "
+                        "and 14-day payment. If you can issue a binding quote on this complete "
+                        "package, we are ready to accept it as our next action.\n\nExecutable package: "
+                        + json.dumps(counter["terms"])
+                    ),
+                    "term_sheets": [{"terms": counter["terms"]}],
+                }
+                self.decisions.append(
+                    {
+                        "supplier_id": sid,
+                        "action": "send",
+                        "elapsed_s": 0,
+                        "source": "bounded date-exchange followup",
+                        "date_followup": counter,
+                        "actual_sent_terms": copy.deepcopy(message["term_sheets"]),
+                    }
+                )
                 self.runtime_context = {}
                 return {"supplier_id": sid, "message": message}
             return self.close(case, threads)
-        trade = (early_start_exchange(case, events, self.reference["result"]["terms"])
-                 if len(prior) == self.exchange_after else None)
+        trade = (
+            early_start_exchange(case, events, self.reference["result"]["terms"])
+            if len(prior) == self.exchange_after
+            else None
+        )
         if not trade:
             return self.close(case, threads)
         self.last_exchange = copy.deepcopy(trade)
@@ -99,10 +120,23 @@ class EarlyStartExchangeNegotiator(RenewalReciprocityNegotiator):
             "We appreciate your work with us and would be ready to conclude on that basis.\n\n"
             "Executable package: " + json.dumps(trade["terms"])
         )
-        move = {"supplier_id": sid, "message": {"subject": "Earlier implementation for a lower price",
-                "body": body, "term_sheets": [{"terms": trade["terms"]}]}}
-        self.decisions.append({"supplier_id": sid, "action": "send", "elapsed_s": 0,
-                               "source": "explicit earlier-start exchange", "early_start_exchange": trade,
-                               "actual_sent_terms": copy.deepcopy(move["message"]["term_sheets"])})
+        move = {
+            "supplier_id": sid,
+            "message": {
+                "subject": "Earlier implementation for a lower price",
+                "body": body,
+                "term_sheets": [{"terms": trade["terms"]}],
+            },
+        }
+        self.decisions.append(
+            {
+                "supplier_id": sid,
+                "action": "send",
+                "elapsed_s": 0,
+                "source": "explicit earlier-start exchange",
+                "early_start_exchange": trade,
+                "actual_sent_terms": copy.deepcopy(move["message"]["term_sheets"]),
+            }
+        )
         self.runtime_context = {}
         return move

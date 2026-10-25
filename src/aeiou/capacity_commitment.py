@@ -55,7 +55,8 @@ class CapacityCommitmentNegotiator(StrategicNegotiator):
         )
         body = (
             "Dear Ms Zellner,\n\nOur capacity commitment addresses your request for firm, long-term "
-            "planning in your 18 September capacity letter (doc:20260918-70410-P10). " + stage
+            "planning in your 18 September capacity letter (doc:20260918-70410-P10). "
+            + stage
             + "We accept your quoted 54-day lead time, rather than the 42-day framework standard "
             "(ctr:4600070410#5.1), in exchange for full allocation and the proposed price.\n\n"
             "Here is the planning basis: the September forecast shared with suppliers covers 21,310 "
@@ -72,14 +73,24 @@ class CapacityCommitmentNegotiator(StrategicNegotiator):
             "All fixed terms remain DAP, payment 30 days, effective 2027-01-01, no index or tooling. "
             "Could you authorize the complete package below?\n\n" + json.dumps(terms)
         )
-        move = {"supplier_id": sid, "message": {
-            "subject": "Firm allocation and substantiated volume commitment",
-            "body": body,
-            "refs": ["doc:20260918-70410-P10", "fc:340010@2026-09", "cost:340010", "ctr:4600070410"],
-            "term_sheets": [{"terms": terms}],
-        }}
-        self.decisions.append({"supplier_id": sid, "source": "explicit staged capacity experiment",
-                               "action": "send", "elapsed_s": 0, "stage": len(sent) + 1,
-                               "actual_sent_terms": copy.deepcopy(move["message"]["term_sheets"])})
+        move = {
+            "supplier_id": sid,
+            "message": {
+                "subject": "Firm allocation and substantiated volume commitment",
+                "body": body,
+                "refs": ["doc:20260918-70410-P10", "fc:340010@2026-09", "cost:340010", "ctr:4600070410"],
+                "term_sheets": [{"terms": terms}],
+            },
+        }
+        self.decisions.append(
+            {
+                "supplier_id": sid,
+                "source": "explicit staged capacity experiment",
+                "action": "send",
+                "elapsed_s": 0,
+                "stage": len(sent) + 1,
+                "actual_sent_terms": copy.deepcopy(move["message"]["term_sheets"]),
+            }
+        )
         self.runtime_context = {}
         return move

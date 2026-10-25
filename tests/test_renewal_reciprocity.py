@@ -13,8 +13,7 @@ def example():
     terms = {"unit_price": 132.27, "payment_days": 14, "effective_date": "2027-01-01"}
     events = [
         {"from": "buyer", "term_sheets": [{"terms": terms}]},
-        {"from": "seller", "status": "open", "round": 2,
-         "term_sheets": [{"terms": {**terms, "unit_price": 135.50}}]},
+        {"from": "seller", "status": "open", "round": 2, "term_sheets": [{"terms": {**terms, "unit_price": 135.50}}]},
     ]
     return case, events
 
@@ -82,8 +81,13 @@ def test_open_quote_can_receive_another_counter_but_deadline_reserves_close():
 
 
 def test_rejects_unbounded_experimental_configuration():
-    for settings in ({"max_bids": 9}, {"max_bids": True}, {"early_fraction": 0},
-                     {"closing_fraction": float("nan")}, {"early_fraction": 0.8}):
+    for settings in (
+        {"max_bids": 9},
+        {"max_bids": True},
+        {"early_fraction": 0},
+        {"closing_fraction": float("nan")},
+        {"early_fraction": 0.8},
+    ):
         with pytest.raises(ValueError):
             RenewalReciprocityNegotiator(None, reference_run={}, **settings)
 
