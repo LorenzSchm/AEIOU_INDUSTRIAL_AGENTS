@@ -13,8 +13,10 @@ from .reciprocity import same_structure
 from .strategic import StrategicNegotiator
 
 
-def bounded_reciprocal_bid(case, events, cap):
-    """Move a quarter of a live comparable gap, within an explicit price cap."""
+def bounded_reciprocal_bid(case, events, cap, fraction=0.25):
+    """Move a bounded share of a live comparable gap within an explicit cap."""
+    if not 0 < fraction <= 0.5:
+        raise ValueError("Concessions must be positive and at most half the gap")
     if latest(events).get("status") != "open" or moves_left(case, events) <= 2:
         return None
     sheets = latest(events).get("term_sheets", [])
@@ -30,7 +32,7 @@ def bounded_reciprocal_bid(case, events, cap):
     if not previous:
         return None
     last = max(p["unit_price"] for p in previous)
-    price = min(cap, round(last + max(0.01, (quote["unit_price"] - last) * 0.25), 2))
+    price = min(cap, round(last + max(0.01, (quote["unit_price"] - last) * fraction), 2))
     if not last < price < quote["unit_price"]:
         return None
     terms = {**quote, "unit_price": price}
@@ -45,9 +47,10 @@ def bounded_reciprocal_bid(case, events, cap):
 class RenewalReciprocityNegotiator(StrategicNegotiator):
     """Not registered in the default factory; reference is supplied by the trial."""
 
-    def __init__(self, *args, reference_run, **kwargs):
+    def __init__(self, *args, reference_run, reserve_final_step=False, **kwargs):
         super().__init__(*args, **kwargs)
         self.reference = copy.deepcopy(reference_run)
+        self.reserve_final_step = reserve_final_step
 
     def decide(self, case, threads):
         if case["case_id"] != "case:P01":
@@ -82,10 +85,26 @@ class RenewalReciprocityNegotiator(StrategicNegotiator):
                 return super().decide(case, threads)
             message = {"subject": "Re: " + case["title"], "body": source["body"], "term_sheets": sheets}
         else:
+            if self.reserve_final_step and len(prior) >= 5:
+                return self.close(case, threads)
             cap = max(s["terms"]["unit_price"] for m in reference_bids for s in m["term_sheets"]
                       if s["terms"].get("payment_days") == 14
                       and s["terms"].get("effective_date") == "2027-01-01")
-            counter = bounded_reciprocal_bid(case, events, cap)
+            fraction = 0.25
+            if self.reserve_final_step and len(prior) == 4:
+                result = self.reference.get("result") or {}
+                agreed = result.get("terms", {})
+                if (
+                    not result.get("deal")
+                    or agreed.get("payment_days") != 14
+                    or agreed.get("effective_date") != "2027-01-01"
+                ):
+                    return self.close(case, threads)
+                # A single larger closing exchange, still strictly cheaper than
+                # the historical agreement and the current comparable quote.
+                cap = round(agreed["unit_price"] - 0.01, 2)
+                fraction = 0.5
+            counter = bounded_reciprocal_bid(case, events, cap, fraction)
             if not counter:
                 return self.close(case, threads)
             if counter["terms"].get("payment_days") != 14 or counter["terms"].get("effective_date") != "2027-01-01":
@@ -102,7 +121,8 @@ class RenewalReciprocityNegotiator(StrategicNegotiator):
             )
             message = {"subject": "Reciprocal step towards the renewal", "body": body,
                        "term_sheets": [{"terms": counter["terms"]}]}
-            audit = {"phase": "bounded reciprocal concession", "cap": cap, **counter}
+            audit = {"phase": "bounded reciprocal concession", "cap": cap,
+                     "gap_fraction": fraction, "reserve_final_step": self.reserve_final_step, **counter}
         move = {"supplier_id": sid, "message": message}
         self.decisions.append({"supplier_id": sid, "action": "send", "elapsed_s": 0,
                                "source": "explicit renewal reciprocity trial", "reciprocity_trial": audit,

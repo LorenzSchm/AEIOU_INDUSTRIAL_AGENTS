@@ -1,6 +1,8 @@
 import copy
 import json
 
+import pytest
+
 from aeiou.config import data_root
 from aeiou.renewal_reciprocity import bounded_reciprocal_bid
 
@@ -52,3 +54,17 @@ def test_uses_highest_prior_comparable_bid_and_rejects_illegal_terms():
     assert bounded_reciprocal_bid(case, events, 133.55)["previous_price"] == 133.20
     events[-1]["term_sheets"][0]["terms"]["payment_days"] = 999
     assert bounded_reciprocal_bid(case, events, 133.55) is None
+
+
+def test_larger_final_step_stays_below_quote_and_historical_agreement():
+    case, events = example()
+    events[0]["term_sheets"][0]["terms"]["unit_price"] = 133.51
+    events[-1]["term_sheets"][0]["terms"]["unit_price"] = 134.20
+    terms = bounded_reciprocal_bid(case, events, 134.19, 0.5)["terms"]
+    assert terms["unit_price"] == 133.85
+    assert terms["unit_price"] < 134.20
+    events[-1]["term_sheets"][0]["terms"]["unit_price"] = 140
+    assert bounded_reciprocal_bid(case, events, 134.19, 0.5)["terms"]["unit_price"] == 134.19
+    for fraction in (0, -1, 0.6, float("nan")):
+        with pytest.raises(ValueError):
+            bounded_reciprocal_bid(case, events, 134.19, fraction)
