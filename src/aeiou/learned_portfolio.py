@@ -23,7 +23,10 @@ def menu_variants(packages, original):
     required.update(
         i
         for i in original
-        if any(available[i].get(flag) for flag in ("renewal_settlement_probe", "retained_concession", "feedback_probe"))
+        if any(
+            available[i].get(flag)
+            for flag in ("renewal_settlement_probe", "retained_concession", "feedback_probe", "observed_tradeoff")
+        )
     )
     variants = [list(original)]
     for size in range(1, min(3, len(packages)) + 1):

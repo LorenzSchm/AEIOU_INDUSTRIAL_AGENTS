@@ -29,6 +29,7 @@ from .grounding import (
     rival_quote_cards,
 )
 from .negotiation_state import supplier_state
+from .observed_tradeoffs import liability_response
 from .opponent_model import learn_beliefs, predicted_choices
 from .optimizer import alternative_cost, estimate, evaluate, safe_close
 from .reciprocity import responsive_packages
@@ -177,6 +178,14 @@ class StrategicNegotiator(Negotiator):
                 lambda terms, std=standard, model=supplier: total_cost(case, terms, std, model),
                 ceiling,
             )
+            plan["packages"] = liability_response(
+                case,
+                threads[sid],
+                plan["packages"],
+                standard,
+                lambda terms, std=standard, model=supplier: total_cost(case, terms, std, model),
+                ceiling,
+            )
             if plan["packages"] and "effective_date" in case["negotiable"]:
                 reference = plan["packages"][0]["terms"]
                 plan["packages"] = [
@@ -216,6 +225,11 @@ class StrategicNegotiator(Negotiator):
                             or p.get("responsive_probe")
                         ]
                     )
+                )[:3]
+            protected = [p["id"] for p in plan["packages"] if p.get("observed_tradeoff")]
+            if protected:
+                controller["candidate_ids"] = list(
+                    dict.fromkeys([plan["packages"][0]["id"], *protected, *controller.get("candidate_ids", [])])
                 )[:3]
             self.support[sid]["controller"] = controller
             self.support[sid]["plan"] = plan
