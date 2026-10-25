@@ -239,3 +239,54 @@ prediction, not a demonstrated increase in negotiation scores.
 
 Method references: [nested model-selection evaluation](https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html)
 and [probability evaluation and calibration](https://scikit-learn.org/stable/modules/calibration.html).
+
+## Authorized hosted test: one attempt each P1–P5
+
+On 2026-10-25 the user requested one run on tracks 1–5. An isolated runner used
+commit `826f408` and the trusted refinement-v2 artifact (SHA256
+`660351c1b7f6f6a25c9bbf5c08efcead84442533743629ba844917090a243447`).
+The learned adapter ranks menus of already admitted packages by predicted next
+direct-cost progress; it cannot invent terms or override terminal/deadline closing.
+Seven focused adapter tests passed before the hosted batch. Production factory
+and existing agent behavior remain unchanged; the adapter was injected only in
+this experiment process. The existing Claude planner remained active.
+
+| Track | Score / 100 | Historical team best before | Difference | Session |
+| --- | ---: | ---: | ---: | --- |
+| P1 | 56.7740 | 70.5890 | -13.8150 | ed752082eceee03e |
+| P2 | 60.6569 | 73.5404 | -12.8835 | aa6353dd06573733 |
+| P3 | 83.0077 | 86.2062 | -3.1986 | e5dc0c5d39faaa07 |
+| P4 | 86.0445 | 86.0445 | 0.0000 | 59edca498616ef20 |
+| P5 | **92.3787** | 82.0453 | **+10.3334** | 3f3e05748d75ab8f |
+
+All five completed with deals and valid must-haves. Mean across the five tracks:
+75.7723. Quota moved from 206 to 211; all five newly listed sessions match the
+per-track one-request creation markers. There were no replacement sessions.
+Buyer usage: 17 Claude calls, 95,767 input tokens and 1,571 output tokens. No
+planner fallbacks or model-selection errors were recorded. P1 did have a transport
+rejection: accepting alternative `offer:70110-5-a` returned HTTP 422; recovery
+excluded that alternative and accepted the primary April offer at EUR 139.50.
+Its body had offered EUR 134.10 for November, but that alternative could not be
+accepted via its term-sheet ID. This is an execution limitation, not evidence
+that the model's predicted progress probability was correct.
+
+P2 and P3 had no learned menu changes. P2's historical best came from a separate
+90-day calibrated strategy, whereas this general agent accepted 14-day terms.
+P4 changed menus but tied its record. P5 accepted supplier 70250 at EUR 27.00,
+14 days payment, 35 days lead time, 24 months, DAP. The winning supplier's menus
+were NOT changed by the learned selector: its only actually guarded menu change
+was for supplier 70240 (A/B/C to A). Repeated controller audits for supplier 70240
+while considering other suppliers must not be counted as distinct sent changes.
+The final P5 concession cited free capacity and quick payment. Thus the new P5
+record is real, but cannot be attributed to the learned model from this run.
+
+This is not a paired experiment and historical maxima are not controls. One run
+per track cannot estimate variance or disentangle model selection, Claude choices,
+supplier variability and deadline timing. The challenge families appeared in the
+training archive; this does not establish unseen-challenge generalization. The
+adapter remains experimental rather than replacing the production agent.
+
+Local artifacts: `data/local/practice-p01-p05-learned-v1/` contains the five raw
+runs, runner/adapter/model snapshots, creation markers, quota audit, JSON and HTML
+reports. The dashboard copy is
+`data/local/evaluations/practice-p01-p05-learned-v1/report.json`.
