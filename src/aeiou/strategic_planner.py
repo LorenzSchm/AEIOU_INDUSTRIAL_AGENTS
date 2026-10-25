@@ -111,13 +111,6 @@ def admit_proposals(case, threads, sid, candidates, intelligence, data, belief):
     if not isinstance(proposals, list) or len(proposals) > 2:
         trace["rejected"].append("At most two proposal objects")
         return candidates, trace
-    if any(p.get("paired_payment_probe") for p in candidates):
-        # Preserve A/B and the single diagnostic comparison as one controlled
-        # menu. A model amendment must not silently remove or reprice either leg.
-        trace["submitted"] = copy.deepcopy(proposals)
-        if proposals:
-            trace["rejected"].append("Paired-payment discovery preserves the complete controller menu")
-        return candidates, trace
     std = standard_terms(events)
     supplier = estimate(case, sid, std, intelligence)
     cost = lambda terms: total_cost(case, terms, std, supplier)  # noqa: E731

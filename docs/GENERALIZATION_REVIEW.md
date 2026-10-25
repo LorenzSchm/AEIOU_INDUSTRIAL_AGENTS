@@ -1813,3 +1813,25 @@ archived P01-P05 decisions; the other56 and all four latest-P08 decisions remain
 identical. Full mocked-model replay confirms all three actual outgoing packages
 survive an attempted model price replacement, with zero fallbacks. Acceptance
 and realized score improvement remain untested at this preparation stage.
+
+### Paired-payment P02 outcome: executed, not retained
+
+Exactly one session1e745f97548f6156 (runtimeff91fb6, local run
+07150f7048144d9f82455da8bfda6865) scored59.1155, below the60.6569 record by
+1.5414points. All three intended packages were sent. The supplier accepted the
+new360.04/30day option with the same CU-NOTATION clause. One prose sentence said
+it preferred fixed pricing, but its executable term sheet and final result both
+included the index clause; the result must not be represented as a fixed deal.
+
+Total cost2254874.28EUR is729.90 above the record. Versus that record, base spend
+increased20529.60EUR and index risk164.24EUR. Payment cost fell7611.81EUR and
+relationship penalty fell12352.12EUR. The longer-payment trade was executable,
+but this premium outweighed the modeled benefits. This is not evidence that
+every longer-payment package is worse or that any untested lower price is accepted.
+
+The experiment is not retained. Restored strategic.py and strategic_planner.py
+byte-for-byte to50844bb; removed only the new experiment module and its tests.
+The full experiment remains reproducible in commitff91fb6. No second attempt.
+Usage:quota188->189,one model call,5583input/88output tokens,24.16seconds,
+zero errors or fallbacks. Team best unchanged. Dashboard report:
+data/local/evaluations/practice-p02-ff91fb6/report.json.
