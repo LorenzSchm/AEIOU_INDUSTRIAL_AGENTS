@@ -1908,3 +1908,28 @@ if the supplier supports them. Do not embedP02 identifiers, effective costs, or
 winning prices in the generic agent. Post-run calibration on a known challenge
 is adaptation to that challenge, not evidence of generalization to unseen ones.
 No new runtime policy, hosted attempt, or claimed score improvement in this audit.
+
+### Targeted calibrated P02 validation: new record63.4143
+
+The user authorized exactly one attempt at the identified357.33EUR/30-day
+indexed target. Session8b1f59e3ddcaa10e, local run13c30b9c5a174cd587e9c0cc67061fda,
+accepted that exact package with CU-NOTATION share20%,5%deadband,base2026-08.
+All must-haves passed. Actual cost2252838.64EUR matches the prospective local
+calculation to the cent. Actual score63.4143 matches the prospective score and
+sets a new team record, up2.7574points from60.6569. Total cost is1305.74EUR below
+the previous record. The team-best endpoint confirms the update.
+
+This was an explicit known-case experiment, not a hard-coded production change.
+The separate local agent sends one reviewed target opening, validates legality
+and refuses other case identities; subsequent decisions use the standard agent.
+Local preflight checked exact sent terms, matched-quote acceptance and wrong-case
+refusal. The archived actual message confirms the target was sent unmodified.
+The supplier accepted immediately, so no buyer LLM call was needed. This does
+not mean the hosted supplier was deterministic or that repetition is guaranteed.
+
+Usage:exactly one session, quota190->191,33.30seconds,zero buyer-model calls,
+errors or fallbacks. No second attempt and no production strategy modification.
+Experiment source copies are saved alongside the run in
+data/local/practice-p02-calibrated-6afe043/experiment-agent.py and
+experiment-runner.py. Dashboard report:
+data/local/evaluations/practice-p02-calibrated-6afe043/report.json.
