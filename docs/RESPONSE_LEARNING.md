@@ -240,9 +240,9 @@ prediction, not a demonstrated increase in negotiation scores.
 Method references: [nested model-selection evaluation](https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html)
 and [probability evaluation and calibration](https://scikit-learn.org/stable/modules/calibration.html).
 
-## Authorized hosted test: one attempt each P1â€“P5
+## Authorized hosted test: one attempt each P1–P5
 
-On 2026-10-25 the user requested one run on tracks 1â€“5. An isolated runner used
+On 2026-10-25 the user requested one run on tracks 1–5. An isolated runner used
 commit `826f408` and the trusted refinement-v2 artifact (SHA256
 `660351c1b7f6f6a25c9bbf5c08efcead84442533743629ba844917090a243447`).
 The learned adapter ranks menus of already admitted packages by predicted next
@@ -295,7 +295,7 @@ reports. The dashboard copy is
 
 The follow-up request authorized one attempt on each of the other five hosted
 tracks. Availability preflight established that these are P07, P08, P10, P11 and
-P18; P06 and P09 are not hosted. An initial P06â€“P10 preflight stopped before any
+P18; P06 and P09 are not hosted. An initial P06–P10 preflight stopped before any
 session creation. The actual batch used commit `0f7a9e8`, unchanged adapter code
 and the same refinement-v2 model hash as above. No strategy changes or retraining
 were made between the two batches.
@@ -461,7 +461,7 @@ One hosted attempt on commit `98cf03b`, session `a0cb3e6d1895c62f`, run
 - Supplier immediately returned `final_offer`, rejecting the requested prices
   but offering full volume and24months. The incumbent closing rule accepted it.
 - One Claude call,4,021input and85output tokens,16.5seconds, no model/planner or
-  transport errors. Quota223â†’224; one creation marker and one new session in audit.
+  transport errors. Quota223→224; one creation marker and one new session in audit.
 
 This did not beat the record. The delivery penalty suggests studying the joint
 price/delivery response, not assuming a cheaper unit price makes a superior deal.
@@ -705,7 +705,7 @@ For the next record-seeking experiment, prioritize the **P3 payment exchange**.
 Its archived best is 86.2062 with EUR 431.61/60 days; EUR 428.40/14 days scores 83.0349
 despite the lower unit price. Current proposals should therefore price a legal
 payment extension from observed comparable quotes instead of repeating an
-unsupported price discount. The observed 30-to-60-day pair EUR 430.15â†’431.61 gives
+unsupported price discount. The observed 30-to-60-day pair EUR 430.15→431.61 gives
 an illustrative 90-day price of EUR 433.07 under a linear extrapolation. That would
 reduce published direct cost by EUR 13,072.54 versus EUR 431.61/60 days, but neither
 acceptance nor relationship cost at those new terms is established. This is a
@@ -757,7 +757,7 @@ step: request comparable prices on payment alternatives without also asking for
 a price reduction or supplying an immediately acceptable cash fallback. Do not
 promote the current experimental variant on this result. No additional attempt
 was made. Four Claude calls, 22,710 input/327 output tokens, 42.28 seconds; zero
-errors/fallbacks. Practice usage 237â†’238, with exactly one new P3 session in the
+errors/fallbacks. Practice usage 237→238, with exactly one new P3 session in the
 session audit. Artifacts: `data/local/practice-p03-payment-extension-v1/`.
 
 ## P3 record campaign: 90-day opening focus succeeded
@@ -787,7 +787,7 @@ passed; scoring horizon and required annual quantity were unchanged.
 
 Session `088a1043abce3a20`, run `7554585a35184a4982de6fb5256a1702`. The server's
 `best_after` confirmed the new personal record. Two Claude calls, 10,045 input /
-155 output tokens, 48.92 seconds, no errors or fallbacks. Practice usage 240â†’241;
+155 output tokens, 48.92 seconds, no errors or fallbacks. Practice usage 240→241;
 the audit shows exactly one new P3 session for this trial. Other team usage between
 trials is not counted as our campaign attempts. Across the two campaign trials:
 six calls, 32,755 input / 482 output tokens. No third attempt was started.
