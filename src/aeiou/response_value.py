@@ -305,7 +305,7 @@ Lower is better. Each session and supplier group receives balanced weight.</p>
 <p>Estimator and shrinkage are chosen inside three inner group folds. Historic version comparison uses identical
 examples and outer groups. No live policy is enabled.</p>
 <p>Previous model progress error:
-{scores['direct_cost_improved']['methods']['previous_refined']['macro_mse']:.6f}.
+{scores["direct_cost_improved"]["methods"]["previous_refined"]["macro_mse"]:.6f}.
 The selected model improves on that version, but not on the stronger old-feature forest baseline shown above.</p>
 <p>Capabilities added: signed concession size, complete price/term associations, evidence-backed business signals,
 and explicitly separate supplier-exit labels. A smaller predictive error is not proof of a higher Arena score.</p>
