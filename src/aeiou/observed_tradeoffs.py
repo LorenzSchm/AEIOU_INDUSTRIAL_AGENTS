@@ -87,3 +87,66 @@ def liability_response(case, events, packages, standard, cost, ceiling):
                 standing_cost=cost(quote),
             )
     return result
+
+
+def delivery_response(case, events, packages, standard, cost, ceiling):
+    """Counter on a cheaper quoted delivery package, not an inferred service premium.
+
+    A supplier can bundle duration with delivery. Compare complete package costs
+    rather than attributing the price difference to a single issue. Preserve A;
+    any longer commitment must already be present in the controlled portfolio.
+    """
+    fields = set(case["negotiable"])
+    if (
+        case["buyer"].get("category_goal") != "secure_supply"
+        or not {"unit_price", "lead_time_days", "contract_months", "volume_per_year"} <= fields
+        or len(packages) < 2
+        or latest(events).get("status") != "open"
+        or not any(m.get("from") == "buyer" for m in events)
+    ):
+        return packages
+    quotes = []
+    for sheet in latest(events).get("term_sheets", []):
+        full = closing_terms(case, sheet.get("terms", {}), standard)
+        terms = {f: full.get(f) for f in case["negotiable"]}
+        if valid_terms(case, terms) and terms["volume_per_year"] >= case["buyer"]["need_per_year"]:
+            quotes.append(terms)
+    need = case["buyer"]["need_lead_time_days"]
+    timely = [q for q in quotes if q["lead_time_days"] <= need]
+    late = [q for q in quotes if q["lead_time_days"] > need]
+    if not timely or not late:
+        return packages
+    quote = min(late, key=cost)
+    if cost(quote) >= min(cost(q) for q in timely) - 0.01:
+        return packages
+    slot = next((p for p in reversed(packages) if p["id"] != "A" and p["terms"]["lead_time_days"] > need), None)
+    if slot is None:
+        return packages
+    previous = [s["terms"] for m in events if m.get("from") == "buyer" for s in m.get("term_sheets", [])]
+    durations = sorted(
+        {p["terms"]["contract_months"] for p in packages if p["terms"]["contract_months"] > quote["contract_months"]}
+    )
+    terms = {**quote, "contract_months": durations[0] if durations else quote["contract_months"]}
+    terms["unit_price"] = max(
+        round(quote["unit_price"] * 0.98, 2),
+        max((p["unit_price"] for p in previous if same_structure(p, terms)), default=0),
+    )
+    if (
+        not valid_terms(case, terms)
+        or terms["contract_months"] < case["buyer"]["horizon_years"] * 12
+        or cost(terms) >= min(ceiling, *(cost(q) for q in quotes)) - 0.01
+    ):
+        return packages
+    result = copy.deepcopy(packages)
+    selected = next(p for p in result if p["id"] == slot["id"])
+    selected.update(
+        terms=terms,
+        cost=cost(terms),
+        observed_tradeoff=True,
+        label="Observed lower-cost delivery schedule with conditional commitment",
+        reference_quote=quote,
+        standing_cost=cost(quote),
+        observed_tradeoff_evidence={"timely_quotes": timely, "lower_cost_late_quote": quote},
+        issue="delivery_flex",
+    )
+    return result

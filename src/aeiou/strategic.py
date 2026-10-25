@@ -29,7 +29,7 @@ from .grounding import (
     rival_quote_cards,
 )
 from .negotiation_state import supplier_state
-from .observed_tradeoffs import liability_response
+from .observed_tradeoffs import delivery_response, liability_response
 from .opponent_model import learn_beliefs, predicted_choices
 from .optimizer import alternative_cost, estimate, evaluate, safe_close
 from .reciprocity import responsive_packages
@@ -179,6 +179,14 @@ class StrategicNegotiator(Negotiator):
                 ceiling,
             )
             plan["packages"] = liability_response(
+                case,
+                threads[sid],
+                plan["packages"],
+                standard,
+                lambda terms, std=standard, model=supplier: total_cost(case, terms, std, model),
+                ceiling,
+            )
+            plan["packages"] = delivery_response(
                 case,
                 threads[sid],
                 plan["packages"],
