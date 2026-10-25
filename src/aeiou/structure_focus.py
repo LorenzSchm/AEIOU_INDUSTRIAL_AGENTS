@@ -1,6 +1,5 @@
 """Opt-in controlled experiments that hold selected legal commercial terms fixed."""
 
-import copy
 import json
 import math
 
@@ -14,7 +13,9 @@ from .optimizer import alternative_cost, estimate, valid_terms
 from .reciprocity import same_structure
 
 
-def focused_structure(case, events, packages, standard, supplier, focus, response_fraction=0):
+def focused_structure(
+    case, events, packages, standard, supplier, focus, response_fraction=0, current_price_opening=False
+):
     """Explore a declared structure below current quote and alternative costs.
 
     No extra volume, reduced horizon coverage, illegal field or retracted prior
@@ -90,8 +91,23 @@ def focused_structure(case, events, packages, standard, supplier, focus, respons
             return [min(options, key=lambda p: p["cost"])]
     for p in packages:
         terms = {**p["terms"], **focus}
+        reference = case["buyer"].get("current_unit_price")
+        use_reference = current_price_opening and not history and type(reference) in (int, float) and reference > 0
+        if use_reference:
+            terms["unit_price"] = max(terms["unit_price"], reference)
         if allowed(terms):
-            options.append({**copy.deepcopy(p), "terms": terms, "cost": cost(terms), "structure_focus": True})
+            # Previous scenario costs and probe bounds describe the old terms.
+            # Do not expose them as if they priced this changed contract.
+            option = {
+                "id": p["id"],
+                "terms": terms,
+                "cost": cost(terms),
+                "structure_focus": True,
+                "label": "Cost-checked focused commercial package",
+            }
+            if use_reference:
+                option.update(observed_tradeoff=True, opening_price_reference=reference)
+            options.append(option)
     if not options:
         for q in quotes:
             if not all(q.get(f) == v for f, v in focus.items()):
@@ -127,12 +143,13 @@ def focused_structure(case, events, packages, standard, supplier, focus, respons
 class StructureFocusedNegotiator(LearnedPortfolioNegotiator):
     """Explicit runner configuration; does not replace any production strategy."""
 
-    def __init__(self, *args, focus_terms, response_fraction=0, **kwargs):
+    def __init__(self, *args, focus_terms, response_fraction=0, current_price_opening=False, **kwargs):
         super().__init__(*args, **kwargs)
         if not 0 <= response_fraction <= 0.5:
             raise ValueError("Response fraction must be between zero and one half")
         self.focus_terms = dict(focus_terms)
         self.response_fraction = response_fraction
+        self.current_price_opening = current_price_opening
         self.focused_suppliers = set()
 
     def packages(self, case, threads):
@@ -150,6 +167,7 @@ class StructureFocusedNegotiator(LearnedPortfolioNegotiator):
                 estimate(case, sid, standard, self.intelligence),
                 self.focus_terms,
                 self.response_fraction,
+                self.current_price_opening,
             )
             if not revised or not all(p.get("structure_focus") for p in revised):
                 continue

@@ -86,3 +86,18 @@ def test_reciprocal_move_uses_live_comparable_quote_and_never_future_prices():
     assert result[0]["response_fraction"] == 0.5
     e[-1]["status"] = "final_offer"
     assert focused_structure(c, e, p, {}, None, focus, 0.5) == p
+
+
+def test_current_price_opening_is_explicit_and_keeps_economic_guard():
+    c, e, p = scenario()
+    c["buyer"]["current_unit_price"] = 44
+    p[0]["scenario_costs"] = {"base": 1}
+    focus = {"ppm_commitment": 1500, "chargeback_eur_per_complaint": 0}
+    out = focused_structure(c, e, p, {}, None, focus, current_price_opening=True)
+    assert out[0]["terms"]["unit_price"] == 44
+    assert out[0]["opening_price_reference"] == 44
+    assert out[0]["observed_tradeoff"]
+    assert "scenario_costs" not in out[0]
+    assert apply(c, e, p)[0]["terms"]["unit_price"] == 40
+    c["buyer"]["current_unit_price"] = 100
+    assert focused_structure(c, e, p, {}, None, focus, current_price_opening=True) == p
