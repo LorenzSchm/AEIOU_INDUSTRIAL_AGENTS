@@ -1675,3 +1675,24 @@ One creation marker/session. Shared quota170->172 includes P10 session
 1c4283985ba41054, opened58.30seconds after ours, confirmed by a read-only
 session-list audit; this task did not create or modify it. No second P08 run.
 Report:data/local/evaluations/practice-p08-4501c53/report.json.
+
+## Routine renewal closing experiment after the P08 record
+
+The user authorized one hosted P04 attempt following the cross-challenge audit.
+The previous P04 record is86.0445; reducing4.94 to4.93 on otherwise identical
+terms would yield100 under that run's normalization. This is an offline
+counterfactual, not evidence that the supplier will approve it.
+
+The implementation does not embed that price or challenge identity. After at
+least two buyer turns, explicit pricing resistance and a repeated executable
+quote, a routine-category renewal can offer the nearest longer legal contract
+duration for one currency tick below the live quote. The complete package must
+improve buyer cost, respect the external ceiling and prior concessions, and may
+not repeat an already-proposed package. Final offers are never reopened. The
+message explicitly exchanges the additional commitment for the small discount;
+annual volume is not increased or promised outside the term sheet.
+
+Validation:38 focused tests pass, Ruff clean. Archived replay changes only the
+third buyer move in three P04 transcripts, generating4.93/90days/36months. All
+45 non-P04 historical P01/P02/P03/P05 decisions and nine other P04 decisions
+remain identical. Hosted acceptance remains untested at this preparation stage.

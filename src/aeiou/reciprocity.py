@@ -137,6 +137,37 @@ def responsive_packages(case, events, packages, standard, cost, ceiling):
                         **({"index_reciprocity": True} if counter in indexed_quotes else {}),
                     )
 
+    # A routine renewal can stall because every counter still asks for a large
+    # price cut. After repeated quotes and explicit resistance, exchange the
+    # nearest longer legal commitment for one currency tick of price movement.
+    # Use only the live quote, never a challenge ID or historical winning price.
+    if (
+        requested
+        and len(buyers) >= 2
+        and case["buyer"].get("category_goal") == "routine"
+        and "contract_months" in case["negotiable"]
+    ):
+        prior_quotes = [
+            closing_terms(case, s.get("terms", {}), standard)
+            for m in events[:-1]
+            if m.get("from") != "buyer"
+            for s in m.get("term_sheets", [])
+        ]
+        unchanged = any(all(p.get(f) == v for f, v in quote.items()) for p in prior_quotes)
+        durations = sorted(
+            d for d in case.get("term_options", {}).get("contract_months", []) if d > quote.get("contract_months", 0)
+        )
+        if unchanged and durations:
+            terms = {**quote, "contract_months": durations[0], "unit_price": round(quote["unit_price"] - 0.01, 2)}
+            if terms not in previous and allowed(terms):
+                insert(
+                    terms,
+                    "Longer commitment for a minimal closing discount",
+                    renewal_settlement_probe=True,
+                    reference_quote=quote,
+                )
+                return result
+
     # With a declared price restriction, start from the longest payment option
     # already quoted on each identical contract. Restarting from the cheap cash
     # option merely asks for a discount on terms the supplier has already priced.

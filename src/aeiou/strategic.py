@@ -557,6 +557,16 @@ class StrategicNegotiator(Negotiator):
                 }
         sheets = move["message"].get("term_sheets", [])
         if sheets:
+            if any(
+                p.get("renewal_settlement_probe") and any(s["terms"] == p["terms"] for s in sheets)
+                for p in offers.get(sid, [])
+            ):
+                move["message"]["body"] += (
+                    "\n\nThe longer-contract option builds on your latest quoted price and payment terms. "
+                    "We offer the additional contract commitment in exchange for the small price reduction "
+                    "shown in that package, with the same annual quantity. Could you approve this complete "
+                    "exchange as a basis for closing?"
+                )
             if answer := fixed_commitment_answer(case, threads[sid]):
                 move["message"]["body"] += "\n\n" + answer
             if rationale := package_rationale([s["terms"] for s in sheets]):
