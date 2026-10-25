@@ -146,9 +146,39 @@ def evidence_requested(events):
 
 def communication_evidence(cards, events):
     """Keep inflation in research; do not volunteer it as a standalone discount claim."""
+    cards = [c for c in cards if c.get("window") != "recent_quarter" or requests_price_evidence(events)]
     if evidence_requested(events):
         return cards
     return [c for c in cards if not (c.get("kind") == "computed_index" and (c.get("change_pct") or 0) > 0)]
+
+
+def requests_price_evidence(events):
+    reply = next((m.get("body", "") for m in reversed(events) if m.get("from") != "buyer"), "")
+    return any(
+        re.search(
+            r"\b(?:please|could you|can you|would you|kindly|we ask you to)\b.{0,35}"
+            r"\b(?:provide|share|send|cite|substantiate|support)\b.{0,90}\b(?:data|figures|sources|evidence)\b",
+            sentence,
+            re.I,
+        )
+        and not re.search(r"\b(?:do not|don't|no need|not necessary)\b", sentence, re.I)
+        for sentence in re.split(r"[.!?\n]", reply)
+    )
+
+
+def requested_recent_evidence(cards, events, sid):
+    if not requests_price_evidence(events) or not any(m.get("from") == "buyer" for m in events):
+        return None
+    available = [
+        c
+        for c in cards
+        if c.get("window") == "recent_quarter"
+        and c.get("kind") == "computed_index"
+        and c.get("shareable")
+        and c.get("supplier_id") in {None, sid}
+        and c.get("change_pct", 0) < 0
+    ]
+    return max(available, key=lambda c: c.get("weight", 0))["id"] if available else None
 
 
 def responsive_act(
@@ -268,6 +298,8 @@ def next_evidence_ids(cards, threads, sid):
     from .agent import ID_RE
 
     events = threads.get(sid, [])
+    if recent := requested_recent_evidence(fresh_evidence_cards(cards, threads), events, sid):
+        return [recent]
     prices = [
         sheet["terms"]["unit_price"]
         for message in events

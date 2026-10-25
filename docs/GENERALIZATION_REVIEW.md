@@ -1516,3 +1516,130 @@ Quota159->161 is shared-team usage: our runner created exactly one P08 session;
 read-only session audit confirms P10 sessionb75995e7ee098d4c opened1.39seconds
 after ours. We did not create or modify that other session. Team best map was
 unchanged. Report:data/local/evaluations/practice-p08-0e8119e/report.json.
+
+
+## Deep P08 audit: overlooked evidence windows and coupled contract search
+
+Scope: all 15 completed P08 sessions in the shared-team session list as of this
+analysis, including the actual 59.1487 record thread and documented post-run
+backoffice explanations. Only read-only GETs; no extra session or model call.
+Archived source: data/local/p08-deep-research/. The last authorized experiment
+was 0e8119e, score57.0437; it did not beat the record. Runtime reverted to aaefcbc
+before the evidence improvement described below.
+
+### Finding 1: annual-only evidence hides recent reversals
+
+research() formerly derived just the longest available <=12-month change for
+each cost driver. All three P08 annual drivers rise, so the communications filter
+suppresses them unless requested. The underlying public buyer data also shows:
+
+| Series | Fixed latest three-month window | Values | Change | Annual change |
+|---|---|---|---|---|
+| AS-14404 | June-September2026 | 3182.6744 -> 3007.8019 | -5.4945% | +5.9193% |
+| PPI-C2431 | May-August2026 | 131.9 -> 129.1 | -2.1228% | +12.2609% |
+
+Both are valid recent reversals, not evidence of an annual decline or lower
+supplier total cost. Do not equate a market series with the supplier's hedged
+purchase cost. The different end months reflect series publication schedules.
+The relevant citable pairs are idx:AS-14404@2026-06 / idx:AS-14404@2026-09 and
+idx:PPI-C2431@2026-05 / idx:PPI-C2431@2026-08. The final text rounds alloy to
+-5.49%, correcting the early commentary's approximate -5.50%.
+
+Implemented a general evidence path: use the exact latest three-month window
+within the case's evidence cutoff, require valid positive finite observations,
+a positive exact twelve-month change and a negative recent change, and reject
+stale endpoints. No peak-selection scan, case ID, supplier ID, or score target.
+Scope is leverage cases negotiating index clauses. Keep annual evidence in
+research. A new card carries the two exact refs and qualifications that the
+annual change remains positive and the movement does not establish lower total
+cost or reprice already-covered material.
+
+Release this card only for a supplier request for supporting data. Once a buyer
+counter exists, select one fresh relevant card, prioritizing the published cost
+driver weight. Existing fresh-source filtering prevents reuse. The opening cover
+letter retains priority. Controller prices, contract terms and acceptance are
+unchanged. One requested argument is more interpretable than combining new
+pricing, several documents and a different contract in the same experiment.
+
+Validation:69 focused tests pass across the relevant modules (68 in initial run,
+then the added stale-series regression; all17 new evidence tests rerun). Ruff
+clean. All57 protected P01-P05 historical decisions match the prior baseline.
+Archived P08 replay preserves every economic offer and final acceptance while
+adding the qualified -5.49% statement to the response to a price-data request.
+A mock planner selecting no evidence is correctly given this requested factual
+response with no rejection/fallback. Hosted benefit is UNTESTED.
+
+### Finding 2: our contract search has structural blind spots
+
+Across all15 sessions, buyers proposed19 distinct non-price combinations out of
+60 legal index/payment/duration combinations; suppliers quoted12 distinct ones.
+Counts describe coverage, not the number of economically sensible deals. The
+record closed at5.26/payment45/duration36/deadband0, cost1032035.14. Its buyer
+actually proposed a fixed-price45-day/36-month package; the supplier added its
+required index. The record's own historical quote was also marked irrelevant,
+so that classification alone cannot explain the failed41.89 experiment.
+
+commercial_shapes() crosses index clauses and payment choices while keeping the
+base contract duration. merge_portfolio() can drop every new index probe when
+any existing alternative already has a different index from A. Separate cash,
+index and duration trials therefore do not exhaust their interactions. Existing
+cash/continuity exploration has further specific initiation gates. The latest
+indexed45-day/36-month branches have not been directly proposed by our buyer.
+This is a plausible search limitation, not proof of supplier preference synergy.
+
+Public-cost boundaries to BEAT the59.1487 record (same other terms,36months):
+
+| Payment | Deadband | Highest cent price below record cost |
+|---|---|---|
+| 45 | 0% | 5.25 |
+| 45 | 3% | 5.32 |
+| 45 | 5% | 5.37 |
+| 90 | 0% | 5.31 |
+| 90 | 3% | 5.38 |
+| 90 | 5% | 5.43 |
+
+These are arithmetic thresholds, NOT offers known to be acceptable. The total
+cost gap between retained57.04 and record59.15 is3695.94EUR. Merely finding a
+lower sticker price does not win: financing and index risk must also be priced.
+Full60-shape audit:data/local/p08-deep-research/coverage-and-boundaries.json.
+Do not copy these post-run thresholds into live policy. Next structural work
+should enumerate coupled legal shapes, keep the proven indexed fallback, select
+a genuinely different cost-compensated combination by observable preferences,
+and record exclusions. Test that separately from the new evidence window.
+
+### Finding 3: citation validity is narrower than local existence
+
+The official API's quote rule admits a quote of THIS CASE (refs or alternative)
+or another supplier's live session offer. quote:7300008 is real and same-part,
+but is outside that admissible quote set. The historical-quote experiment's
+irrelevant result is therefore consistent with the documented evidence contract;
+its wording alone is not the issue. Local known-ID validation is necessary but
+not sufficient. The removed historical-quote feature remains removed. Raw meeting
+notes/owner references are not numeric checks, and the supplier repeatedly refused
+further cost breakdowns; another authority request is not supported as a high-value
+next intervention by the archived responses.
+
+### Research used and applicability
+
+- Arena's own rules/FAQ: term sheets bind; evidence verification and effectiveness
+  differ; post-run threads/backoffice are the permitted diagnostic sources.
+  https://arena.tacto.ai/faq and docs/arena/api.md, What counts.
+- Leonardelli et al.(2019), six MESO experiments: diverse equivalent package
+  choices can improve economic and relational outcomes. Supports deliberate
+  bundle diversity, not arbitrary extra alternatives or guaranteed P08 gains.
+  https://research.monash.edu/en/publications/multiple-equivalent-simultaneous-offers-mesos-reduce-the-negotiat/
+- Ito, Klein and Hattori(2006): issue interactions can defeat approaches designed
+  for independent attributes. Motivates checking coupled search; their mediator
+  protocol cannot simply be transplanted into this arena.
+  https://cdn.aaai.org/AAAI/2006/AAAI06-372.pdf
+- Baarslag et al.(2016), opponent-modeling survey: distinguish what a supplier
+  wants from what its bidding strategy does; do not infer a reservation price
+  from repeated offers alone. https://link.springer.com/article/10.1007/s10458-015-9309-1
+- Xia et al.(ACL2024), OG-Narrator: deterministic offer generation plus an LLM
+  narrator improves buyer bargaining in their benchmark. Supports retaining our
+  numerical controller; larger models alone are not a demonstrated fix here.
+  https://aclanthology.org/2024.findings-acl.213/
+
+Priority: validate the qualified recent-trend evidence with the existing economic
+policy before mixing in a new bundle generator. No additional hosted attempt was
+started during this deep audit; no claim that the record has been beaten.

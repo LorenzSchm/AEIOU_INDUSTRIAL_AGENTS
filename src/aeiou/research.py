@@ -1,6 +1,7 @@
 """Retrieve the supplier's situation, not just the references listed in a case."""
 
 import json
+import math
 import threading
 from datetime import date
 
@@ -44,6 +45,65 @@ class ResearchPackage(DataPackage):
 
 def package():
     return ResearchPackage(data_root())
+
+
+def recent_index_reversals(case, pkg, annual_indices):
+    """Fixed three-month window, never a retrospectively selected price peak.
+
+    Keep the annual rise visible. A recent market decline neither proves lower
+    total supplier costs nor reprices a supplier's already-covered materials.
+    """
+    from .retrieval import evidence_cutoff
+
+    if case["buyer"].get("category_goal") != "leverage" or "index_clause" not in case["negotiable"]:
+        return []
+    cutoff = evidence_cutoff(case)[:7]
+    result = []
+    for annual in annual_indices:
+        series = annual["series"]
+        points = {
+            f["month"]: (ref, f["value"])
+            for ref, f in pkg.facts.items()
+            if ref.startswith("idx:")
+            and f.get("series") == series
+            and isinstance(f.get("month"), str)
+            and f["month"] <= cutoff
+            and type(f.get("value")) in (float, int)
+            and math.isfinite(f["value"])
+            and f["value"] > 0
+        }
+        if not points:
+            continue
+        end = max(points)
+        number = int(end[:4]) * 12 + int(end[5:]) - 1
+        cutoff_number = int(cutoff[:4]) * 12 + int(cutoff[5:]) - 1
+        if cutoff_number - number > 12:
+            continue  # The arena's evidence contract rejects stale end points.
+        month = lambda n: f"{n // 12:04d}-{n % 12 + 1:02d}"  # noqa: E731
+        start, year_start = month(number - 3), month(number - 12)
+        if start not in points or year_start not in points:
+            continue
+        change = (points[end][1] / points[start][1] - 1) * 100
+        year_change = (points[end][1] / points[year_start][1] - 1) * 100
+        if change >= -0.005 or year_change <= 0:
+            continue
+        refs = [points[start][0], points[end][0]]
+        result.append(
+            {
+                "series": series,
+                "window": "recent_quarter",
+                "weight": annual["weight"],
+                "change_pct": round(change, 4),
+                "annual_change_pct": round(year_change, 4),
+                "refs": refs,
+                "claim": (
+                    f"{series} changed {change:+.2f}% from {start} to {end} ({refs[0]}, {refs[1]}). "
+                    "This is the latest three-month change, while the twelve-month change remains positive. "
+                    "It does not establish a fall in your total cost or reprice materials already covered."
+                ),
+            }
+        )
+    return result
 
 
 def research(case, pkg):
@@ -135,4 +195,15 @@ def research(case, pkg):
                 }
             )
             facts[start_ref], facts[end_ref] = start, end
-    return {"facts": facts, "documents": docs, "tables": rows, "indices": indices, "estimates": estimates}
+    recent = recent_index_reversals(case, pkg, indices)
+    for index in recent:
+        for ref in index["refs"]:
+            facts[ref] = pkg.lookup(ref)
+    return {
+        "facts": facts,
+        "documents": docs,
+        "tables": rows,
+        "indices": indices,
+        "recent_indices": recent,
+        "estimates": estimates,
+    }

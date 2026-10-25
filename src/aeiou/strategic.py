@@ -24,6 +24,7 @@ from .grounding import (
     material_cover_evidence,
     next_evidence_ids,
     package_rationale,
+    requested_recent_evidence,
     responsive_act,
     rival_quote_cards,
 )
@@ -325,6 +326,8 @@ class StrategicNegotiator(Negotiator):
                     # Keep the qualification in the verbatim excerpt; do not let
                     # a restatement of the supplier's ask displace counter-evidence.
                     data = {**data, "evidence_ids": [cover]}
+                elif recent := requested_recent_evidence(self._cards, threads[sid], sid):
+                    data = {**data, "evidence_ids": [recent]}
                 data = responsive_act(
                     data,
                     threads[sid],

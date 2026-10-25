@@ -186,16 +186,17 @@ def evidence_cards(hits, intelligence):
                 "method": hit["method"],
             }
         )
-    for index in intelligence.get("indices", []):
+    for index in intelligence.get("indices", []) + intelligence.get("recent_indices", []):
         cards.append(
             {
-                "id": "index:" + index["series"],
+                "id": "index:" + index["series"] + (":" + index["window"] if index.get("window") else ""),
                 "source_ids": index["refs"],
                 "text": index["claim"],
                 "shareable": True,
                 "kind": "computed_index",
                 "change_pct": index.get("change_pct"),
                 "supplier_id": None,
+                **({"window": index["window"], "weight": index["weight"]} if index.get("window") else {}),
             }
         )
     return cards
