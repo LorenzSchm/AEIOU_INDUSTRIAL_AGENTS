@@ -1933,3 +1933,24 @@ Experiment source copies are saved alongside the run in
 data/local/practice-p02-calibrated-6afe043/experiment-agent.py and
 experiment-runner.py. Dashboard report:
 data/local/evaluations/practice-p02-calibrated-6afe043/report.json.
+
+### Targeted60-day P02 validation: new record68.4493
+
+Exactly one subsequent authorized session4f557078fac4cf54, local run
+b9b0afca99884a9eada1a8dd1ae91aec, accepted359.32EUR with60-day payment and the
+same CU-NOTATION20%share/5%deadband/base2026-08 clause. All must-haves passed.
+The original30-day experiment was preserved; the new opening explicitly proposed
+60days rather than falsely describing it as the supplier's standard payment.
+Local preflight checked legality, exact message/term consistency and acceptance
+of a matching supplier quote. The recorded live message and final terms match.
+
+Realized score68.4493 is a new team best, up5.0350points over63.4143. Total cost
+2250454.41EUR is2384.23 below the preceding record. The prospective reconstructed
+cost was2250454.43EUR, a0.02EUR difference consistent with observed rounding.
+The team-best result confirms the update. The supplier accepted the opening,
+requiring zero buyer-model API calls; this does not establish repeatability.
+
+Usage:one session, quota192->193,49.23seconds,zero buyer-model calls, errors or
+fallbacks. No production-agent change and no further attempt. Experiment source
+copies are saved indata/local/practice-p02-calibrated60-138c98c/. Dashboard report:
+data/local/evaluations/practice-p02-calibrated60-138c98c/report.json.
