@@ -1,0 +1,54 @@
+import copy
+import json
+
+from aeiou.config import data_root
+from aeiou.renewal_reciprocity import bounded_reciprocal_bid
+
+
+def example():
+    case = json.loads((data_root() / "cases/practice/P01.json").read_text(encoding="utf-8"))
+    terms = {"unit_price": 132.27, "payment_days": 14, "effective_date": "2027-01-01"}
+    events = [
+        {"from": "buyer", "term_sheets": [{"terms": terms}]},
+        {"from": "seller", "status": "open", "round": 2,
+         "term_sheets": [{"terms": {**terms, "unit_price": 135.50}}]},
+    ]
+    return case, events
+
+
+def test_moves_on_comparable_quote_without_waiting_for_repetition():
+    case, events = example()
+    before = copy.deepcopy((case, events))
+    bid = bounded_reciprocal_bid(case, events, 133.55)
+    assert bid["terms"]["unit_price"] == 133.08
+    assert bid["terms"]["payment_days"] == 14
+    assert (case, events) == before
+
+
+def test_cap_limits_concession_and_stops_without_repeating():
+    case, events = example()
+    events[0]["term_sheets"][0]["terms"]["unit_price"] = 133.50
+    assert bounded_reciprocal_bid(case, events, 133.55)["terms"]["unit_price"] == 133.55
+    events[0]["term_sheets"][0]["terms"]["unit_price"] = 133.55
+    assert bounded_reciprocal_bid(case, events, 133.55) is None
+
+
+def test_does_not_counter_final_or_better_quote_or_uncomparable_terms():
+    case, events = example()
+    events[-1]["status"] = "final_offer"
+    assert bounded_reciprocal_bid(case, events, 133.55) is None
+    events[-1]["status"] = "open"
+    events[-1]["term_sheets"][0]["terms"]["unit_price"] = 132.00
+    assert bounded_reciprocal_bid(case, events, 133.55) is None
+    events[-1]["term_sheets"][0]["terms"].update(unit_price=135.5, payment_days=90)
+    assert bounded_reciprocal_bid(case, events, 133.55) is None
+
+
+def test_uses_highest_prior_comparable_bid_and_rejects_illegal_terms():
+    case, events = example()
+    previous = copy.deepcopy(events[0])
+    previous["term_sheets"][0]["terms"]["unit_price"] = 133.20
+    events.insert(0, previous)
+    assert bounded_reciprocal_bid(case, events, 133.55)["previous_price"] == 133.20
+    events[-1]["term_sheets"][0]["terms"]["payment_days"] = 999
+    assert bounded_reciprocal_bid(case, events, 133.55) is None
