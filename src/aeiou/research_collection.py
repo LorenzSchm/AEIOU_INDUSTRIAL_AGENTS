@@ -39,31 +39,48 @@ def collect_tables(case, pkg):
         if len(rows) != expected:
             raise ValueError(f"Incomplete buyer data: {table}: expected {expected}, loaded {len(rows)}")
         tables[name] = rows
-        coverage[name] = {"status": "complete", "source_table": table, "expected_rows": expected,
-                          "loaded_rows": len(rows), "scope": dict(filters)}
+        coverage[name] = {
+            "status": "complete",
+            "source_table": table,
+            "expected_rows": expected,
+            "loaded_rows": len(rows),
+            "scope": dict(filters),
+        }
 
     load("suppliers", [("id", suppliers)])
     load("parts", [("id", parts)])
-    for table in ("supplier_intel", "negotiation_history", "news", "scorecards", "contracts", "spend_cube",
-                  "documents"):
+    for table in (
+        "supplier_intel",
+        "negotiation_history",
+        "news",
+        "scorecards",
+        "contracts",
+        "spend_cube",
+        "documents",
+    ):
         load(table, [("supplier_id", suppliers)])
     for table in ("should_cost", "quotes", "forecasts", "sourcing", "cost_drivers", "rfqs"):
         load(table, [("part_id", parts)])
     for table in ("po_lines", "goods_receipts", "quality_notifications", "price_conditions"):
         load(table, [("supplier_id", suppliers), ("part_id", parts)])
     if parts and "po_lines" in schema:
-        load("invoices", [("supplier_id", suppliers)], extra=(
-            f'po_line_id IN (SELECT id FROM po_lines WHERE part_id IN ({",".join("?" for _ in parts)}))', parts))
+        load(
+            "invoices",
+            [("supplier_id", suppliers)],
+            extra=(f"po_line_id IN (SELECT id FROM po_lines WHERE part_id IN ({','.join('?' for _ in parts)}))", parts),
+        )
     load("contract_clauses", [("contract_id", [r["id"] for r in tables.get("contracts", [])])])
-    load("forecast_history_lines", [("fc_id", [r["id"] for r in tables.get("forecasts", [])])],
-         source="forecast_lines")
+    load("forecast_history_lines", [("fc_id", [r["id"] for r in tables.get("forecasts", [])])], source="forecast_lines")
     series = sorted({r["series_id"] for r in tables.get("cost_drivers", [])})
     load("index_series", [("id", series)])
     load("index_values", [("series_id", series)])
-    return tables, {"version": VERSION, "tables": coverage,
-                    "sunday_release_loaded": bool(getattr(pkg, "release", None)),
-                    "scope_note": "Supplier account context and case-part records. Historical quotes are not "
-                                  "automatically authorized live alternatives. Forecasts are not commitments."}
+    return tables, {
+        "version": VERSION,
+        "tables": coverage,
+        "sunday_release_loaded": bool(getattr(pkg, "release", None)),
+        "scope_note": "Supplier account context and case-part records. Historical quotes are not "
+        "automatically authorized live alternatives. Forecasts are not commitments.",
+    }
 
 
 def reconcile_collection(intelligence):

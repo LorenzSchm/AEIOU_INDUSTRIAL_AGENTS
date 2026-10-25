@@ -43,10 +43,14 @@ def arena(monkeypatch, tmp_path):
                 return httpx.Response(200, json={"practice": {"left": state["left"], "limit": 200, "used": 100}})
             if path == "/v1/sessions":
                 if request.method == "GET":
-                    return httpx.Response(200, json=[
-                        {"session_id": sid, "status": s["status"]} for sid, s in state["sessions"].items()
-                        if request.url.params["set"] == "practice"
-                    ])
+                    return httpx.Response(
+                        200,
+                        json=[
+                            {"session_id": sid, "status": s["status"]}
+                            for sid, s in state["sessions"].items()
+                            if request.url.params["set"] == "practice"
+                        ],
+                    )
                 case_id = json.loads(request.content)["case_id"]
                 case = next(c for c in cases if c["case_id"] == case_id)
                 sid = f"test-{len(state['sessions'])}"
@@ -54,10 +58,24 @@ def arena(monkeypatch, tmp_path):
                 state["left"] -= 1
                 terms = {k: v[0] for k, v in case["term_options"].items()}
                 terms["unit_price"] = 45
-                return httpx.Response(200, json={"session_id": sid, "case": case, "threads": {
-                    supplier: [{"from": supplier, "status": "final_offer", "attachments": [],
-                                "term_sheets": [{"term_sheet_id": f"offer:{sid}", "terms": terms}]}]
-                    for supplier in case["suppliers"]}})
+                return httpx.Response(
+                    200,
+                    json={
+                        "session_id": sid,
+                        "case": case,
+                        "threads": {
+                            supplier: [
+                                {
+                                    "from": supplier,
+                                    "status": "final_offer",
+                                    "attachments": [],
+                                    "term_sheets": [{"term_sheet_id": f"offer:{sid}", "terms": terms}],
+                                }
+                            ]
+                            for supplier in case["suppliers"]
+                        },
+                    },
+                )
             sid = path.split("/")[3]
             session = state["sessions"][sid]
             if path.endswith("/walk_away"):
@@ -87,9 +105,14 @@ def arena(monkeypatch, tmp_path):
             payload = json.loads(user)
             suppliers = payload["protocol_state"]["suppliers"]
             supplier, info = next(iter(suppliers.items()))
-            return json.dumps({"supplier_id": supplier, "action": "accept",
-                               "term_sheet_id": info["eligible_offer_ids"][0],
-                               **assessment_fields(payload, supplier)})
+            return json.dumps(
+                {
+                    "supplier_id": supplier,
+                    "action": "accept",
+                    "term_sheet_id": info["eligible_offer_ids"][0],
+                    **assessment_fields(payload, supplier),
+                }
+            )
 
     monkeypatch.setattr(eval_suite, "sandbox_client", factory)
     return factory, Buyer, state
@@ -130,9 +153,13 @@ def test_practice_ui_api_uses_exact_prompt_and_official_scores(arena, monkeypatc
 
 def test_invalid_plan_and_quota_never_open_sessions(arena, monkeypatch):
     _, _, state = arena
-    for payload in [{"prompt": " "}, {"prompt": "x", "repeats": 0},
-                    {"prompt": "x", "case_ids": []}, {"prompt": "x", "case_ids": ["case:P99"]},
-                    {"prompt": "x", "case_ids": ["case:P01", "case:P01"]}]:
+    for payload in [
+        {"prompt": " "},
+        {"prompt": "x", "repeats": 0},
+        {"prompt": "x", "case_ids": []},
+        {"prompt": "x", "case_ids": ["case:P99"]},
+        {"prompt": "x", "case_ids": ["case:P01", "case:P01"]},
+    ]:
         assert WEB.post("/api/eval-suite/practice", json=payload).status_code in (409, 422)
     state["left"] = 9
     assert WEB.post("/api/eval-suite/practice", json={"prompt": "x"}).status_code == 409
@@ -196,8 +223,13 @@ def test_full_arena_or_capacity_race_waits_and_can_be_stopped(monkeypatch, racin
 
 def test_abandoned_cleanup_only_closes_our_stopped_tests(arena):
     factory, _, state = arena
-    for status, mode in [("cancelled", "practice"), ("failed", "sandbox"), ("running", "practice"),
-                         ("completed", "practice"), ("cancelled", "final")]:
+    for status, mode in [
+        ("cancelled", "practice"),
+        ("failed", "sandbox"),
+        ("running", "practice"),
+        ("completed", "practice"),
+        ("cancelled", "final"),
+    ]:
         row = new_run("case:P01", "hosted", "eval")
         row.update(status=status, case_set=mode, session_id=row["id"], evaluation_id="test")
         state["sessions"][row["id"]] = {"status": "open"}

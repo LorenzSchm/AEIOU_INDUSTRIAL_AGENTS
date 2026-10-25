@@ -31,17 +31,23 @@ class Model:
         assert self.terms is not None, "Acceptance, early menu and final stop must not call the model"
         payload = json.loads(user)
         self.payloads.append(payload)
-        return json.dumps({
-            "supplier_id": SID, "action": "send",
-            "body": "Thank you. Could you approve the attached complete proposal?",
-            "term_sheets": [self.terms], **assessment_fields(payload, SID),
-        })
+        return json.dumps(
+            {
+                "supplier_id": SID,
+                "action": "send",
+                "body": "Thank you. Could you approve the attached complete proposal?",
+                "term_sheets": [self.terms],
+                **assessment_fields(payload, SID),
+            }
+        )
 
 
 def agent(backend):
-    return PromptLabAgent(package(), backend, PromptSpec(
-        "v23-recovery-offline", STRATEGY, assessment_enabled=True,
-        execution_policy=copy.deepcopy(POLICY)))
+    return PromptLabAgent(
+        package(),
+        backend,
+        PromptSpec("v23-recovery-offline", STRATEGY, assessment_enabled=True, execution_policy=copy.deepcopy(POLICY)),
+    )
 
 
 @pytest.mark.parametrize("through", [1, 5])
@@ -68,7 +74,8 @@ def test_checked_early_menu_survives_recovery():
     a = agent(Model())
     move = a.decide(case, threads)
     assert [s["terms"] for s in move["message"]["term_sheets"]] == [
-        {**p, "contract_months": 36} for p in POLICY["early_package_alternatives"]["packages"]]
+        {**p, "contract_months": 36} for p in POLICY["early_package_alternatives"]["packages"]
+    ]
     assert a.decisions[-1]["source"] == "policy:package-alternatives"
     assert a.decisions[-1]["execution_evidence"]["status"] == "included"
     assert a.decisions[-1]["numeric_checks"][0]["calculation_id"] == "p18:ppi_recent_change_pct"
@@ -92,6 +99,5 @@ def test_synthetic_qualifying_offer_is_accepted_before_menu_or_final_stop(throug
     offer = threads[SID][-1]["term_sheets"][0]
     offer["terms"] = {**POLICY["early_package_alternatives"]["packages"][2], "contract_months": 36}
     a = agent(Model())
-    assert a.decide(case, threads)["message"]["action"] == {
-        "type": "accept", "term_sheet_id": offer["term_sheet_id"]}
+    assert a.decide(case, threads)["message"]["action"] == {"type": "accept", "term_sheet_id": offer["term_sheet_id"]}
     assert a.decisions[-1]["source"] == "policy:accept"

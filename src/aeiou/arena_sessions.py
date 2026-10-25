@@ -74,6 +74,9 @@ def cleanup_abandoned(client):
     with CLEANUP_LOCK:
         for path in (state_root() / "runs").glob("*.json"):
             run = json.loads(path.read_text())
-            if (run.get("evaluation_id") and run.get("status") in ("cancelled", "failed")
-                    and run.get("remote_cleanup", {}).get("status") != "ended"):
+            if (
+                run.get("evaluation_id")
+                and run.get("status") in ("cancelled", "failed")
+                and run.get("remote_cleanup", {}).get("status") != "ended"
+            ):
                 close_owned_session(client, run)

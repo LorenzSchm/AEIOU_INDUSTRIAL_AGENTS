@@ -11,10 +11,24 @@ from aeiou.research import package
 
 def fixture():
     case = json.loads((ROOT / "data/package/cases/practice/P10.json").read_text())
-    events = [{"from": "sales@70410", "status": "open", "body": "Our quoted delivery time is 54 days.",
-               "term_sheets": [{"term_sheet_id": "offer:70410-0", "terms": {
-                   "unit_price": 32.2, "volume_per_year": 19890, "contract_months": 12,
-                   "lead_time_days": 54}}]}]
+    events = [
+        {
+            "from": "sales@70410",
+            "status": "open",
+            "body": "Our quoted delivery time is 54 days.",
+            "term_sheets": [
+                {
+                    "term_sheet_id": "offer:70410-0",
+                    "terms": {
+                        "unit_price": 32.2,
+                        "volume_per_year": 19890,
+                        "contract_months": 12,
+                        "lead_time_days": 54,
+                    },
+                }
+            ],
+        }
+    ]
     return case, events
 
 
@@ -52,8 +66,9 @@ def test_observed_default_does_not_override_must_haves_or_leak_to_another_suppli
     assert 54 not in case_with_supplier_defaults(case, other)["term_options"]["lead_time_days"]
     case["buyer"]["must_haves"].append({"field": "lead_time_days", "op": "<=", "value": 42})
     expanded = case_with_supplier_defaults(case, events)
-    assert not valid_terms(expanded, {"unit_price": 31, "volume_per_year": 23400,
-                                      "contract_months": 24, "lead_time_days": 54})
+    assert not valid_terms(
+        expanded, {"unit_price": 31, "volume_per_year": 23400, "contract_months": 24, "lead_time_days": 54}
+    )
 
 
 def test_default_reaches_actual_model_input_and_send_validation():
@@ -66,8 +81,12 @@ def test_default_reaches_actual_model_input_and_send_validation():
     rows = payload["price_plan"]["suppliers"]["sup:70410"]["capacity_opening_tradeoffs"]
     assert any(r["terms"]["lead_time_days"] == 54 for r in rows)
     terms = {"unit_price": 31, "volume_per_year": 23400, "contract_months": 24, "lead_time_days": 54}
-    action = {"supplier_id": "sup:70410", "action": "send", "body": "Please retain the quoted 54 days.",
-              "term_sheets": [terms]}
+    action = {
+        "supplier_id": "sup:70410",
+        "action": "send",
+        "body": "Please retain the quoted 54 days.",
+        "term_sheets": [terms],
+    }
     sent = agent.contract(case, threads, action)
     assert sent["message"]["term_sheets"][0]["terms"]["lead_time_days"] == 54
     action["term_sheets"][0] = {**terms, "lead_time_days": 53}
@@ -83,12 +102,19 @@ def test_candidate_selector_uses_the_same_supplier_options_as_the_rendered_menu(
 
     def candidates(supplier_case, *args):
         days = 54 if 54 in supplier_case["term_options"]["lead_time_days"] else 56
-        return [{"id": "A", "terms": {"unit_price": 31, "volume_per_year": 23400,
-                                      "contract_months": 24, "lead_time_days": days}}]
+        return [
+            {
+                "id": "A",
+                "terms": {"unit_price": 31, "volume_per_year": 23400, "contract_months": 24, "lead_time_days": days},
+            }
+        ]
 
     monkeypatch.setattr("aeiou.prompt_protocol.candidate_packages", candidates)
     shown = json.loads(agent.render_lab(case, threads))["candidate_packages"]["sup:70410"][0]["terms"]
-    sent = agent.contract(case, threads, {"supplier_id": "sup:70410", "action": "send",
-                                         "body": "We propose package A.", "candidate_ids": ["A"]})
+    sent = agent.contract(
+        case,
+        threads,
+        {"supplier_id": "sup:70410", "action": "send", "body": "We propose package A.", "candidate_ids": ["A"]},
+    )
     assert shown == sent["message"]["term_sheets"][0]["terms"]
     assert shown["lead_time_days"] == 54

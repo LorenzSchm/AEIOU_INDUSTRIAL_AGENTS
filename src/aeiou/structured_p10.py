@@ -58,7 +58,8 @@ class StructuredP10Client:
             raise ValueError("Unexpected P10 supplier/part scope")
         pkg = self.pkg.for_case(case)
         self._sessions[opened["session_id"]] = {
-            "case": case, "offer_id": opened["opening"]["sup:70410"]["offer_id"],
+            "case": case,
+            "offer_id": opened["opening"]["sup:70410"]["offer_id"],
             "facts": {ref: pkg.lookup(ref) for ref in ("cost:340010", "sc:70410@2026Q3")},
         }
         return opened
@@ -79,8 +80,13 @@ class StructuredP10Client:
             raise ValueError("Structured P10 does not silently discard separate refs or attachments")
         if re.search(r"<negotiation_(preparation|strategy)>", body):
             raise ValueError("Private preparation cannot be transmitted")
-        move = {"type": "offer", "offer_id": state["offer_id"], "terms": copy.deepcopy(sheets[0]["terms"]),
-                "claims": public_claims(body, state["facts"]), "text": body}
+        move = {
+            "type": "offer",
+            "offer_id": state["offer_id"],
+            "terms": copy.deepcopy(sheets[0]["terms"]),
+            "claims": public_claims(body, state["facts"]),
+            "text": body,
+        }
         receipt = {"session_id": session_id, "supplier_id": supplier_id, "move": copy.deepcopy(move)}
         self.wire.append(receipt)
         reply = self.client.move(session_id, supplier_id, move)
@@ -94,10 +100,18 @@ class StructuredP10Client:
             raise ValueError("Structured reply and authoritative standing offer are inconsistent")
         if reply.get("alternatives"):
             raise ValueError("Structured P10 experiment does not silently discard supplier alternatives")
-        sheets = [] if reply.get("status") in {"walked_away", "no_bid"} else [
-            {"term_sheet_id": reply["offer_id"], "terms": copy.deepcopy(reply["terms"])}]
-        return {"from": supplier_id, "body": reply["text"], "status": reply["status"],
-                "term_sheets": sheets, "signals": copy.deepcopy(reply.get("signals", {})),
-                "claim_results": copy.deepcopy(reply.get("claim_results", [])),
-                "missing_fields": copy.deepcopy(reply.get("missing_fields", [])),
-                "source_transport": "documented-structured-move"}
+        sheets = (
+            []
+            if reply.get("status") in {"walked_away", "no_bid"}
+            else [{"term_sheet_id": reply["offer_id"], "terms": copy.deepcopy(reply["terms"])}]
+        )
+        return {
+            "from": supplier_id,
+            "body": reply["text"],
+            "status": reply["status"],
+            "term_sheets": sheets,
+            "signals": copy.deepcopy(reply.get("signals", {})),
+            "claim_results": copy.deepcopy(reply.get("claim_results", [])),
+            "missing_fields": copy.deepcopy(reply.get("missing_fields", [])),
+            "source_transport": "documented-structured-move",
+        }

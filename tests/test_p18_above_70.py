@@ -17,8 +17,11 @@ STRATEGY = (ROOT / "prompts/p18-diagnostic-v15.txt").read_text()
 
 
 def agent(backend=None):
-    return PromptLabAgent(package(), backend or NeverCall(), PromptSpec(
-        "p18-above-70", STRATEGY, assessment_enabled=True, execution_policy=copy.deepcopy(POLICY)))
+    return PromptLabAgent(
+        package(),
+        backend or NeverCall(),
+        PromptSpec("p18-above-70", STRATEGY, assessment_enabled=True, execution_policy=copy.deepcopy(POLICY)),
+    )
 
 
 def offer(price, deadband=0, days=14, status="open"):
@@ -42,8 +45,15 @@ def test_strict_floor_matches_config_and_old_598_offer_continues():
             assert payload["protocol_state"]["suppliers"][sid]["legal_actions"] == ["send"]
             terms = copy.deepcopy(threads[sid][-1]["term_sheets"][0]["terms"])
             terms["unit_price"] = 4.83
-            return json.dumps({"supplier_id": sid, "action": "send", "body": "Thank you. Please consider this package.",
-                               "term_sheets": [terms], **assessment_fields(payload, sid)})
+            return json.dumps(
+                {
+                    "supplier_id": sid,
+                    "action": "send",
+                    "body": "Thank you. Please consider this package.",
+                    "term_sheets": [terms],
+                    **assessment_fields(payload, sid),
+                }
+            )
 
     buyer = Buyer()
     a = agent(buyer)
@@ -57,8 +67,9 @@ def test_strict_floor_matches_config_and_old_598_offer_continues():
         a.contract(case, threads, {"supplier_id": sid, "action": "accept", "term_sheet_id": "offer:current"})
 
 
-@pytest.mark.parametrize("price,deadband,days", [(4.94, 0, 14), (5.01, 3, 14), (5.05, 5, 14),
-                                               (5.10, 5, 60), (5.10, 5, 90)])
+@pytest.mark.parametrize(
+    "price,deadband,days", [(4.94, 0, 14), (5.01, 3, 14), (5.05, 5, 14), (5.10, 5, 60), (5.10, 5, 90)]
+)
 def test_qualifying_package_accepts_exact_offer_without_model(price, deadband, days):
     case, sid, threads = offer(price, deadband, days)
     a = agent()
@@ -76,8 +87,9 @@ def test_one_cent_above_package_limit_cannot_be_accepted_or_proposed(price, dead
         a.contract(case, threads, {"supplier_id": sid, "action": "accept", "term_sheet_id": "offer:current"})
     terms = threads[sid][-1]["term_sheets"][0]["terms"]
     with pytest.raises(ContractError, match="complete-cost"):
-        a.contract(case, threads, {"supplier_id": sid, "action": "send", "body": "Our proposal.",
-                                   "term_sheets": [terms]})
+        a.contract(
+            case, threads, {"supplier_id": sid, "action": "send", "body": "Our proposal.", "term_sheets": [terms]}
+        )
 
 
 def test_final_with_zero_deadband_gets_affordable_counter_not_509():
@@ -85,7 +97,9 @@ def test_final_with_zero_deadband_gets_affordable_counter_not_509():
     a = agent()
     move = a.decide(case, threads)
     assert move["message"]["term_sheets"][0]["terms"] == {
-        **threads[sid][-1]["term_sheets"][0]["terms"], "unit_price": 4.94}
+        **threads[sid][-1]["term_sheets"][0]["terms"],
+        "unit_price": 4.94,
+    }
     plan = a.decisions[-1]["price_plan"]["offers"][0]
     assert plan["budget_ceiling_package"]["estimated_score"] > 70
     assert {70, 70.01} <= {b["score"] for b in plan["benchmark_price_limits"]}

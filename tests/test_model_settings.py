@@ -19,11 +19,19 @@ def test_dashboard_selection_reaches_anthropic_request(monkeypatch, tmp_path, mo
 
     def respond(request):
         requests.append(json.loads(request.content))
-        return httpx.Response(200, json={
-            "id": "msg_fixture", "type": "message", "role": "assistant", "model": model,
-            "content": [{"type": "text", "text": "Ready"}], "stop_reason": "end_turn", "stop_sequence": None,
-            "usage": {"input_tokens": 1, "output_tokens": 1},
-        })
+        return httpx.Response(
+            200,
+            json={
+                "id": "msg_fixture",
+                "type": "message",
+                "role": "assistant",
+                "model": model,
+                "content": [{"type": "text", "text": "Ready"}],
+                "stop_reason": "end_turn",
+                "stop_sequence": None,
+                "usage": {"input_tokens": 1, "output_tokens": 1},
+            },
+        )
 
     sdk = anthropic.Anthropic(api_key="test-only", http_client=httpx.Client(transport=httpx.MockTransport(respond)))
     monkeypatch.setattr("aeiou.agent.anthropic.Anthropic", lambda **kwargs: sdk)

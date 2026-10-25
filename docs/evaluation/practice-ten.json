@@ -1,0 +1,251 @@
+{
+  "title": "Ten hosted practice cases \u2014 one run each",
+  "created_at": "2026-10-24T16:58:44.617938+00:00",
+  "commit": "43e785758b58475ebb7b6a7479ae6ef2b46d4c22",
+  "model": "claude-sonnet-5-5",
+  "agent": "strategic",
+  "scope": "practice",
+  "planned_runs": 10,
+  "case_ids": [
+    "case:P01",
+    "case:P02",
+    "case:P03",
+    "case:P04",
+    "case:P05",
+    "case:P07",
+    "case:P08",
+    "case:P10",
+    "case:P11",
+    "case:P18"
+  ],
+  "summary": {
+    "reported_scores": 10,
+    "mean_reported_score": 0.4871243664709327,
+    "all_ten_mean": 0.4871243664709327,
+    "failures": 1,
+    "deals": 9
+  },
+  "totals": {
+    "calls": 56,
+    "errors": 0,
+    "fallbacks": 3,
+    "input_tokens": 330655,
+    "output_tokens": 4708
+  },
+  "practice_before": {
+    "used": 38,
+    "left": 162,
+    "limit": 200,
+    "resets_at": "2026-10-25T11:19:44.936916+00:00"
+  },
+  "practice_after": {
+    "used": 48,
+    "left": 152,
+    "limit": 200,
+    "resets_at": "2026-10-25T11:19:44.936916+00:00"
+  },
+  "start_audit": {
+    "requests": 10,
+    "unique_cases": 10,
+    "unique_sessions": 10,
+    "repetitions": 0
+  },
+  "findings": [
+    "P05 failed when accepting a stale offer ID after supplier thread timeouts; final Arena result is zero, included in the ten-case mean.",
+    "P01 required three guard fallbacks for unknown, private or wrong-supplier evidence.",
+    "One run per case does not measure repeat variability or prove improvement over the prior agent."
+  ],
+  "limitation": "One run per case, no reruns or cherry-picking. Cross-case average is not an estimate of LLM variability or a controlled before/after comparison.",
+  "runs": [
+    {
+      "case_id": "case:P01",
+      "type": "price_increase",
+      "run_id": "279982529160411a8acdb00877549930",
+      "session_id": "c06e299b50e281d2",
+      "status": "completed",
+      "error": null,
+      "metrics": {
+        "elapsed_s": 160.17,
+        "fallbacks": 3,
+        "calls": 7,
+        "errors": 0,
+        "input_tokens": 44850,
+        "output_tokens": 578
+      },
+      "score": 0.5629485730977981,
+      "deal": true,
+      "must_haves_ok": true
+    },
+    {
+      "case_id": "case:P02",
+      "type": "price_increase",
+      "run_id": "a64297b7fbaf4f1faf4817c76010f031",
+      "session_id": "931fe6142a3be6c7",
+      "status": "completed",
+      "error": null,
+      "metrics": {
+        "elapsed_s": 143.81,
+        "fallbacks": 0,
+        "calls": 6,
+        "errors": 0,
+        "input_tokens": 30902,
+        "output_tokens": 505
+      },
+      "score": 0.15698901705979842,
+      "deal": true,
+      "must_haves_ok": true
+    },
+    {
+      "case_id": "case:P03",
+      "type": "renewal",
+      "run_id": "26decbeaec4842dda0fb4a90912017cb",
+      "session_id": "09df5eccd77f7d30",
+      "status": "completed",
+      "error": null,
+      "metrics": {
+        "elapsed_s": 169.08,
+        "fallbacks": 0,
+        "calls": 7,
+        "errors": 0,
+        "input_tokens": 43525,
+        "output_tokens": 584
+      },
+      "score": 0.8303494116836398,
+      "deal": true,
+      "must_haves_ok": true
+    },
+    {
+      "case_id": "case:P04",
+      "type": "renewal",
+      "run_id": "617eb727153449959bd18e0ef0d5e368",
+      "session_id": "687f6d4320d75ae8",
+      "status": "completed",
+      "error": null,
+      "metrics": {
+        "elapsed_s": 80.38,
+        "fallbacks": 0,
+        "calls": 5,
+        "errors": 0,
+        "input_tokens": 22926,
+        "output_tokens": 398
+      },
+      "score": 0.8604451426623068,
+      "deal": true,
+      "must_haves_ok": true
+    },
+    {
+      "case_id": "case:P05",
+      "type": "rfq",
+      "run_id": "dc56f81465324046b75d0418071bded9",
+      "session_id": "f734633be2b69b76",
+      "status": "failed",
+      "error": "ArenaError: not a standing offer in this session",
+      "metrics": {
+        "elapsed_s": 225.17,
+        "fallbacks": 0,
+        "calls": 9,
+        "errors": 0,
+        "input_tokens": 81170,
+        "output_tokens": 795
+      },
+      "score": 0.0,
+      "deal": false,
+      "must_haves_ok": null
+    },
+    {
+      "case_id": "case:P07",
+      "type": "bundling",
+      "run_id": "b89194bb19e7449895aadb5b55ff0ded",
+      "session_id": "5f0b6986bfb35248",
+      "status": "completed",
+      "error": null,
+      "metrics": {
+        "elapsed_s": 117.45,
+        "fallbacks": 0,
+        "calls": 5,
+        "errors": 0,
+        "input_tokens": 26085,
+        "output_tokens": 406
+      },
+      "score": 0.7015303329236482,
+      "deal": true,
+      "must_haves_ok": true
+    },
+    {
+      "case_id": "case:P08",
+      "type": "raw_material",
+      "run_id": "7dfdfcf86dd04fd9937c51d0c8bf514e",
+      "session_id": "8d4107c21d82f89a",
+      "status": "completed",
+      "error": null,
+      "metrics": {
+        "elapsed_s": 141.34,
+        "fallbacks": 0,
+        "calls": 5,
+        "errors": 0,
+        "input_tokens": 24202,
+        "output_tokens": 411
+      },
+      "score": 0.49305428158831976,
+      "deal": true,
+      "must_haves_ok": true
+    },
+    {
+      "case_id": "case:P10",
+      "type": "capacity",
+      "run_id": "ca1f4f03c573426e95db6caab6bd18b5",
+      "session_id": "8c28af207d2b41a9",
+      "status": "completed",
+      "error": null,
+      "metrics": {
+        "elapsed_s": 37.55,
+        "fallbacks": 0,
+        "calls": 1,
+        "errors": 0,
+        "input_tokens": 5838,
+        "output_tokens": 64
+      },
+      "score": 0.6472939820644754,
+      "deal": true,
+      "must_haves_ok": true
+    },
+    {
+      "case_id": "case:P11",
+      "type": "quality",
+      "run_id": "dd7bfcb1904f4e7280ac9a9a5a1184d1",
+      "session_id": "8743a9564765e3c9",
+      "status": "completed",
+      "error": null,
+      "metrics": {
+        "elapsed_s": 154.59,
+        "fallbacks": 0,
+        "calls": 6,
+        "errors": 0,
+        "input_tokens": 25844,
+        "output_tokens": 473
+      },
+      "score": 0.2123835613672062,
+      "deal": true,
+      "must_haves_ok": true
+    },
+    {
+      "case_id": "case:P18",
+      "type": "raw_material",
+      "run_id": "f5f1c4bef8b54610871c2a158275d6e2",
+      "session_id": "aae0a64fb6b759db",
+      "status": "completed",
+      "error": null,
+      "metrics": {
+        "elapsed_s": 114.41,
+        "fallbacks": 0,
+        "calls": 5,
+        "errors": 0,
+        "input_tokens": 25313,
+        "output_tokens": 494
+      },
+      "score": 0.40624936226213415,
+      "deal": true,
+      "must_haves_ok": true
+    }
+  ]
+}

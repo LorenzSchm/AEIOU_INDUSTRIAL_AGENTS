@@ -26,6 +26,8 @@ import { useWorkbench, type Scope } from "@/store"
 
 const agents = [
   { value: "original", label: "Your prompt · buyer walk-aways disabled" },
+  { value: "strategic", label: "Strategic planner · selected buyer model" },
+  { value: "strategic-policy", label: "Strategic policy · deterministic buyer" },
   { value: "claude", label: "Earlier rewrite · Claude + economic guards" },
   { value: "adaptive", label: "AEIOU · deterministic adaptive policy" },
   { value: "baseline", label: "Upstream naive baseline" },
@@ -129,7 +131,7 @@ export function LaunchDialog() {
 
   const note =
     mode === "local"
-      ? "Every local supplier uses Claude and consumes Anthropic credits, including tests with a policy buyer. No arena sessions are used."
+      ? "Local suppliers use model API credits, including tests with a policy buyer. No arena sessions are used."
       : "Buyer calls use your selected model provider. Hosted sessions count against your practice quota."
 
   return (

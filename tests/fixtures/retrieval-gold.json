@@ -1,0 +1,6 @@
+[
+  {"query":"packaging returnable boxes cardboard", "suppliers":["sup:70270"], "cutoff":"2026-09-30", "expected_ids":["doc:20251211-70270-N"]},
+  {"query":"sales director small accounts customers volume", "suppliers":["sup:70270"], "cutoff":"2026-09-30", "expected_ids":["doc:20260223-70270-M2"]},
+  {"query":"renewed ISO 9001 certificate", "suppliers":["sup:70360"], "cutoff":"2026-09-30", "expected_ids":["doc:20251212-70360-N"]},
+  {"query":"new contact colleague inside sales", "suppliers":["sup:70340"], "cutoff":"2026-09-30", "expected_ids":["doc:20251009-70340-N"]}
+]

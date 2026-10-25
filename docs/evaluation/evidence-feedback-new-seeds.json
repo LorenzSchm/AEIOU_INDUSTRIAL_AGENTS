@@ -1,0 +1,5545 @@
+{
+  "created_at": "2026-10-24T14:27:53.636627+00:00",
+  "arena_sessions_used": 0,
+  "conditions": {
+    "agents": [
+      "adaptive",
+      "strategic-policy",
+      "strategic-policy:no-grounded-language"
+    ],
+    "seeds": [
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114
+    ],
+    "case_ids": [
+      "case:S01",
+      "case:S02",
+      "case:S03",
+      "case:T01",
+      "case:T02"
+    ],
+    "opponents": [
+      "scripted",
+      "hardliner",
+      "cashflow",
+      "relationship",
+      "index_skeptic",
+      "adversarial"
+    ],
+    "repeats": 1,
+    "supplier_mode": "scripted",
+    "supplier_models": [
+      null
+    ],
+    "buyer_model": null,
+    "writer_instruction_hashes": {
+      "adaptive": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "strategic-policy": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "strategic-policy:no-grounded-language": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "planned_sessions": 900
+  },
+  "summary": {
+    "adaptive": {
+      "mean_score": 0.9759961261791267,
+      "median_score": 1.0,
+      "p10_score": 0.9039240627063719,
+      "sessions": 300,
+      "failures": 0,
+      "must_have_violations": 0,
+      "decision_p95_s": 0.016,
+      "message_timeouts": 0,
+      "llm_calls": 0,
+      "llm_errors": 0,
+      "fallbacks": 0,
+      "supplier_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "strategic-policy": {
+      "mean_score": 0.9821076605304514,
+      "median_score": 1.0,
+      "p10_score": 0.9123162307163738,
+      "sessions": 300,
+      "failures": 0,
+      "must_have_violations": 0,
+      "decision_p95_s": 0.047,
+      "message_timeouts": 0,
+      "llm_calls": 0,
+      "llm_errors": 0,
+      "fallbacks": 0,
+      "supplier_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "strategic-policy:no-grounded-language": {
+      "mean_score": 0.9759961261791267,
+      "median_score": 1.0,
+      "p10_score": 0.9039240627063719,
+      "sessions": 300,
+      "failures": 0,
+      "must_have_violations": 0,
+      "decision_p95_s": 0.047,
+      "message_timeouts": 0,
+      "llm_calls": 0,
+      "llm_errors": 0,
+      "fallbacks": 0,
+      "supplier_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  "attempted_usage": {
+    "adaptive": {
+      "sessions": 300,
+      "buyer_calls": 0,
+      "supplier_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "strategic-policy": {
+      "sessions": 300,
+      "buyer_calls": 0,
+      "supplier_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "strategic-policy:no-grounded-language": {
+      "sessions": 300,
+      "buyer_calls": 0,
+      "supplier_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  "excluded_pairs": 0,
+  "paired_comparisons": {
+    "strategic-policy": {
+      "mean_case_delta": 0.006111534351324675,
+      "low_95": 0.002212352940826298,
+      "high_95": 0.00925773018882199,
+      "case_clusters": 5,
+      "bootstrap_samples": 1000,
+      "limitation": "Case-cluster bootstrap; few base cases produce limited evidence of generalization."
+    },
+    "strategic-policy:no-grounded-language": {
+      "mean_case_delta": 0.0,
+      "low_95": 0.0,
+      "high_95": 0.0,
+      "case_clusters": 5,
+      "bootstrap_samples": 1000,
+      "limitation": "Case-cluster bootstrap; few base cases produce limited evidence of generalization."
+    }
+  },
+  "rows": [
+    {
+      "case_id": "case:S01",
+      "opponent": "scripted",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "16a53fd1750648c7828c302a8ae6c2ed",
+        "strategic-policy": "98f31fe504584937983e3735fd80b49d",
+        "strategic-policy:no-grounded-language": "8174dce457434addba138274f24f8f1d"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "hardliner",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ed6795747d594fd0b5f5e7a1a3fd4647",
+        "strategic-policy": "99069e05ec5c47078af77a072d544fe6",
+        "strategic-policy:no-grounded-language": "ce018ada7daa4a47a70f428ffdd09c2b"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "cashflow",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ad7a9859a1774e04a59e2894f0414a6f",
+        "strategic-policy": "2c9b401c2e534012a9bd84134455b2cb",
+        "strategic-policy:no-grounded-language": "015337a64d754cceb3962bcbda2675cb"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "relationship",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "6563359b1c7748b8b0a445c4a814e16b",
+        "strategic-policy": "d93230d8172a41e1a7e0ec02d6b217eb",
+        "strategic-policy:no-grounded-language": "d1291d2774004ee087937d7f295efbe8"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "index_skeptic",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "cbff3667c2f44cb7a0fed23b3bc3a248",
+        "strategic-policy": "34131687ae7f40bda6753ab0328f2965",
+        "strategic-policy:no-grounded-language": "1540b068d5f7433f8d89ebe60128afba"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "adversarial",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "8206df0515c54aceaa5ae1a981a6d801",
+        "strategic-policy": "3a27f5cda7a64df2a35a4270f947ee0f",
+        "strategic-policy:no-grounded-language": "326db5c1390649d99e60b719b1af3ed9"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "scripted",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.990060959642776,
+        "strategic-policy": 0.990060959642776,
+        "strategic-policy:no-grounded-language": 0.990060959642776
+      },
+      "run_ids": {
+        "adaptive": "fa68e79eca6d4d9ca3540f5cb56a3d48",
+        "strategic-policy": "6afcb5d639e14ec09b0cbf029d467be0",
+        "strategic-policy:no-grounded-language": "d2d705764e7c4dc3a2edf8fc0b56e7d9"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "hardliner",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "50882e70f18d47ccab6bd79504086dc2",
+        "strategic-policy": "17a2efaa4ce448608f5a3f6209965757",
+        "strategic-policy:no-grounded-language": "b2cf8056eac54dc7a9beaaad3cc5294a"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "cashflow",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ec1523bedf844a129406a2c812fe1646",
+        "strategic-policy": "a6fbb15c9a78412387afe77e16179ceb",
+        "strategic-policy:no-grounded-language": "dc5818950e244bde9d859d84f2b6d2f1"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "relationship",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "19b0d99a081c46119f4cc612fda643fc",
+        "strategic-policy": "a441f45badd647399bbc18a46f8e4ff2",
+        "strategic-policy:no-grounded-language": "2961d6c73fa94efa93b2c85da026b249"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "index_skeptic",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ff7eead051024a2689c359f10c11b521",
+        "strategic-policy": "0c57db463d784157969a8039d2c5a4a6",
+        "strategic-policy:no-grounded-language": "2d0b4766cc274592bcf47e16a44a7812"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "adversarial",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "8da22bfa4f1345ff8b6fed812e6318ee",
+        "strategic-policy": "8afcd549a7dd4f88a6b2abbc4f96b4a2",
+        "strategic-policy:no-grounded-language": "36dfb1fc22494e7cb5d286d5eba87a2d"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "scripted",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ed27992d29454d3aa363f6bc9c400c06",
+        "strategic-policy": "48b056414778415d8c3955ea84748b98",
+        "strategic-policy:no-grounded-language": "4b455702bdeb4ec4a5c63c2b7f588962"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "hardliner",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "81f4972dff034f07978f1def3204dfa3",
+        "strategic-policy": "b150bbda26b44eedaad70967913c97d3",
+        "strategic-policy:no-grounded-language": "270b511f036045759bcd6fe56c4d8e67"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "cashflow",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "0e0cfa7e27d947048f3a3fc16130b641",
+        "strategic-policy": "bd0a180f9b8e47b1ab88642f3f68015e",
+        "strategic-policy:no-grounded-language": "4687791211134b2c8767d587e5ee17d8"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "relationship",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ef7d98f8c3f44fc08dc393c6129a25c1",
+        "strategic-policy": "bf5f88f0444043669a3d970c8ecb9ccc",
+        "strategic-policy:no-grounded-language": "d5103f88883d4f8b9f3c9dca665fc9ae"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "index_skeptic",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "7a075d1c686d4c44bce3d3fe6f952343",
+        "strategic-policy": "843234f20219494fbf14c5c7f0cc3f6d",
+        "strategic-policy:no-grounded-language": "755fc1109bd54fe3a80b47b34cb6c072"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "adversarial",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "a5c874e12d41416d811908c3e488cdf1",
+        "strategic-policy": "3d2986b1c0de42529c434b79c5b4608b",
+        "strategic-policy:no-grounded-language": "13a33276a2d74005acabef476e69818c"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "scripted",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "2eb8c319c57847099e924c5a224f34b2",
+        "strategic-policy": "dcbe529780cc428394f877b0f8154f08",
+        "strategic-policy:no-grounded-language": "bef81e27e26041b087ef31768bb4004d"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "hardliner",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "195c28a2025f4b9b89da918c8b0ab9d7",
+        "strategic-policy": "8cd8f5c5dfa549c4a2d3088d16ff0907",
+        "strategic-policy:no-grounded-language": "827bdbc39e714ae79e239047347ec619"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "cashflow",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "375c63a07d65427cbc7703f2322603c1",
+        "strategic-policy": "06b825a17d114eecbb83191f8456404d",
+        "strategic-policy:no-grounded-language": "06da1271a1784a97bef063f2b709bfa8"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "relationship",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "3407d510df184facb8cf68d631398e0e",
+        "strategic-policy": "5dfd205a188f48d09a09681ce24fea86",
+        "strategic-policy:no-grounded-language": "472d4f2fa6ef4f80a14b474a765a5333"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "index_skeptic",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "6c4f156c41d94ceda47f52a115e4df6b",
+        "strategic-policy": "17d540b4e64b4f1d963aabf96fd05d14",
+        "strategic-policy:no-grounded-language": "1b496c80d4c548b4a8e7bd6f250567a2"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "adversarial",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "54bb1305ee8647dfb4a6c6da6415cff1",
+        "strategic-policy": "e9ac348a72714ed9b9b0a948f048d0a1",
+        "strategic-policy:no-grounded-language": "4293f0e8ef1a45629d676144926a381d"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "scripted",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "5ec6f7c98b60405691e4395280e42388",
+        "strategic-policy": "777fb4bce5354f018158c90ed62e5948",
+        "strategic-policy:no-grounded-language": "f7f9438d0a954facb7ae1587358dc825"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "hardliner",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "24e7d432e7044560b80d449641e47213",
+        "strategic-policy": "083f75b0f1f346c0ba6b0f74e1674ba0",
+        "strategic-policy:no-grounded-language": "a06351cba8854292a4be9e87a29725f3"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "cashflow",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "dc7af940b74e4a6a9d3958053becb769",
+        "strategic-policy": "16090e4f1c9b4ac1b4e3474839afcc15",
+        "strategic-policy:no-grounded-language": "682afe88063846658b5c2d68e3f25f9d"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "relationship",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "3f38f4de3f354b5aa3d28d2bac1aeb84",
+        "strategic-policy": "b34f3ad4a7954032b06854575ece5a9d",
+        "strategic-policy:no-grounded-language": "8015295e7bc14de0be8a241c94dbf5d7"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "index_skeptic",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "daa6cb7fa7a349b9978006973d66d21b",
+        "strategic-policy": "8983fe7ed1cb4b1bb41f916a2dfc71a2",
+        "strategic-policy:no-grounded-language": "02d6a4b309c54e3c9172f520b5294049"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "adversarial",
+      "seed": 105,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "24ab61d11a9d4912ac8a695880ee5d42",
+        "strategic-policy": "85a9f7ae8d6547e68abdab92f5a779b7",
+        "strategic-policy:no-grounded-language": "eb4b8f227a3f456aa6317f51f3160b41"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "scripted",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "40229d278d014701bc030c7ed3ba1c65",
+        "strategic-policy": "41fb09ea07994794902f7a6c242955aa",
+        "strategic-policy:no-grounded-language": "540aea1bb302487e8bcaf078e13dd681"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "hardliner",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "d9e18f7a9edb410da534027cc5287574",
+        "strategic-policy": "ea7e248d8662457baf895c9a017345da",
+        "strategic-policy:no-grounded-language": "0c0fd1070b784213bdcc2442f4bf80cf"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "cashflow",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "5dd308ebc06e4a549b39e98b91b06e49",
+        "strategic-policy": "349f545a9ae94fa28e34d24194782aea",
+        "strategic-policy:no-grounded-language": "233c86a73f254c5185514e4f03003695"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "relationship",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "da6be3147b06480c8d2919e01fbb9516",
+        "strategic-policy": "7836728f45ba4ac6b7234ee1cada6e48",
+        "strategic-policy:no-grounded-language": "47c021e0321d4a4eae7aea5bff5b9051"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "index_skeptic",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "2451d1425d7f4ed1ac1c7d4e6a960dc4",
+        "strategic-policy": "8630be26b8a94414a28d9011986a4f41",
+        "strategic-policy:no-grounded-language": "d611fe6f926f4002a024638768794886"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "adversarial",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "08eff9090c194a8cb53ea0e205e79063",
+        "strategic-policy": "515971537bea4fffafb5408e423a2543",
+        "strategic-policy:no-grounded-language": "41ea82d203934b5db324db04a57dff1c"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "scripted",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.990060959642776,
+        "strategic-policy": 0.990060959642776,
+        "strategic-policy:no-grounded-language": 0.990060959642776
+      },
+      "run_ids": {
+        "adaptive": "f39d21956939442785f05e06d5a92399",
+        "strategic-policy": "ea083b1138ed46b380c8dc7fb0648958",
+        "strategic-policy:no-grounded-language": "8f24534dbbb142eeadedeef85abe4a99"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "hardliner",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "65e3bf82158c43d5b7dbbff994aa9c1c",
+        "strategic-policy": "bc20b9a00bc9481c9873af5cf5fff02a",
+        "strategic-policy:no-grounded-language": "9dc2a7c4e8e04ce48881f582753a4108"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "cashflow",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "eb86f03d1fcf4c33afcccbd39839fc73",
+        "strategic-policy": "27c6b8f2f2b04eec81ff0196e493fc5d",
+        "strategic-policy:no-grounded-language": "72190fb5a0de40959b2d4b1875ddac72"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "relationship",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "3641c59442db41e9a6036f225122d229",
+        "strategic-policy": "55a12d4c3acd41c19b85d5d1a27f28d4",
+        "strategic-policy:no-grounded-language": "6a912c337fec4be3975e001d66c4ed80"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "index_skeptic",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "5c6203f68e42463696e44738cbf70bec",
+        "strategic-policy": "a11276ef318542b3a507ffbc6b1952ad",
+        "strategic-policy:no-grounded-language": "fc1cde57d60f4a899dce83a42c3829fb"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "adversarial",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "6444e16c07b045b98401cad8cda84dec",
+        "strategic-policy": "8a20903f328d45c0b3ef95fae4d3b7bc",
+        "strategic-policy:no-grounded-language": "652e08a0c0e146bca46f48556276389a"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "scripted",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "5aefa14c6a1842c5abc3030dd1aa33b1",
+        "strategic-policy": "7b23882c01f94f4aa1306c3c64076f4d",
+        "strategic-policy:no-grounded-language": "444126234c3a4bf0902a8b7e9da08f7d"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "hardliner",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "191debe58c3c489dae538d711577b3a2",
+        "strategic-policy": "9b12fe92548349ab9ccd67ff8d8a506f",
+        "strategic-policy:no-grounded-language": "4a3bd02b355d47fbaec5ff6721494506"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "cashflow",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "9d12c13b7d7543f18af109d7f3d60697",
+        "strategic-policy": "4d0a0b61ba034e5e82d9e4906bb6f8a8",
+        "strategic-policy:no-grounded-language": "866ca26844ee44ae9d39071a81ecb3c9"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "relationship",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "9e585fd38df443caba765ebe872a1b0e",
+        "strategic-policy": "3cecb903021643fe82d02f3db9f3c761",
+        "strategic-policy:no-grounded-language": "8a2ad5a25335473eb5bfcebd1eb86048"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "index_skeptic",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "b1bcd9b1ee32439f94a1a5e77a514890",
+        "strategic-policy": "0381a891a3014957a8a8a853bbf8bb2c",
+        "strategic-policy:no-grounded-language": "41d596a2a1484a3696c5aa138660fdda"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "adversarial",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "8a26a329476e401a935fd306bf919dea",
+        "strategic-policy": "1f2a08a64d6345778e89a98deac0597c",
+        "strategic-policy:no-grounded-language": "7085c42194804bb4ad347a802235a685"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "scripted",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "8c30d2f3a33a45e1a808a22bac7cb11a",
+        "strategic-policy": "ed3dae8c2ca842fd8c12188e2470c888",
+        "strategic-policy:no-grounded-language": "b0257d74883143d5b15867529343dacd"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "hardliner",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "284c3583ce9d4a039e7e366e8e9f373d",
+        "strategic-policy": "459b7a52ee8242beae4c8a4955095084",
+        "strategic-policy:no-grounded-language": "a23ec667aef34e09ac8d24a650995b84"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "cashflow",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "e8133aea2b244bbd870160d5e5748001",
+        "strategic-policy": "8e259233ca004efc9bb0b98bd15290b7",
+        "strategic-policy:no-grounded-language": "64a5ebcad6ff46e5a112935e6ab65ff9"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "relationship",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "dade70a4ded9485f96c09b34c62c16ba",
+        "strategic-policy": "4f69e1f654e247cd810111ce93a6f24c",
+        "strategic-policy:no-grounded-language": "426aabd7835a49daafda6c42a92c0471"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "index_skeptic",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "5d35117888ef4550885d32310bb0483c",
+        "strategic-policy": "1d16204d6e244cf3a3d88f1144a3d391",
+        "strategic-policy:no-grounded-language": "f3f5b2379ce440669ebe46077961936f"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "adversarial",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "fa8adbf86722441682f335513d8efd50",
+        "strategic-policy": "908c20874d6a4714b9b4971a6a241bd3",
+        "strategic-policy:no-grounded-language": "0d114e3d6238481aa688fedf6a3ca095"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "scripted",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ed384847fffc4e0f9546466a80dd2628",
+        "strategic-policy": "c562d857c94046038fc9ebd268335db5",
+        "strategic-policy:no-grounded-language": "b35f016796b843d3a483f62425e2a4ad"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "hardliner",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ad1485e54e3542868523b1cb631cd1cf",
+        "strategic-policy": "15836f0d03254b46b4bf5fceb334639f",
+        "strategic-policy:no-grounded-language": "9e48c34b1368461981e2283dfb5bae42"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "cashflow",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "bf356dd2761e401593d0613fd7e74444",
+        "strategic-policy": "ebbd0e25d561426881effe9611a9cc06",
+        "strategic-policy:no-grounded-language": "a2fe8d04159745348a23b3d759c54b0c"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "relationship",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "46f842a614c74f839ffa3da571e0ccb5",
+        "strategic-policy": "7c08261d238c4ce480de80238b46e706",
+        "strategic-policy:no-grounded-language": "7869bbd61ee44a4ab273c014f98940ec"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "index_skeptic",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "52cfa7bd79a346ac83cdca8372abfe6a",
+        "strategic-policy": "3ea05660cba641c7bd3452e058243acd",
+        "strategic-policy:no-grounded-language": "16dd38270ba245bfb77e9c7e060b6b80"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "adversarial",
+      "seed": 106,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "4e2f685f761f436bb626898226df6211",
+        "strategic-policy": "250f677390834d80a932a5b32215e130",
+        "strategic-policy:no-grounded-language": "1c05cfc3f0d54200adbab7b7dfec92f0"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "scripted",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "f612502d77524cf6b27e8713cea384ad",
+        "strategic-policy": "2b6d5c20a4be45c08d0aba0867bd791c",
+        "strategic-policy:no-grounded-language": "3d457e7c39b84510aaffa9a30e24f0cf"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "hardliner",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8225414317145708,
+        "strategic-policy": 0.8225414317145708,
+        "strategic-policy:no-grounded-language": 0.8225414317145708
+      },
+      "run_ids": {
+        "adaptive": "d2228f9802544d1a9b0cfbb5f7f362e5",
+        "strategic-policy": "45d7ea47746e4292bf8cb5109961d81a",
+        "strategic-policy:no-grounded-language": "dd9a3e7f6e874bcebf4dcda277a62cdb"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "cashflow",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "049e804db5e247808141b84f3bc073e6",
+        "strategic-policy": "9285c9cbcfcb4844a3f59c460ed7c14c",
+        "strategic-policy:no-grounded-language": "70c8609842154f1cbef8ab2857e5b450"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "relationship",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ac805a38804648ab9fe4be2c9b92d030",
+        "strategic-policy": "cc8295fc7c2046a8b2a990f359811f1c",
+        "strategic-policy:no-grounded-language": "4ac37e33350f40bfae649ccc0e6eb33f"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "index_skeptic",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9119851262099299,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.9119851262099299
+      },
+      "run_ids": {
+        "adaptive": "ff166337a71e4bf4a3089623b98af921",
+        "strategic-policy": "b80564d16abe4306bcaed8fa03558c62",
+        "strategic-policy:no-grounded-language": "e90e29fd4e1f4754a4c448617479dd01"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "adversarial",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "b34fbfec187547abb43b58a30aac2b42",
+        "strategic-policy": "a0d0dfa4d2514ff0936709ab9c7b11a2",
+        "strategic-policy:no-grounded-language": "abace3adb0dd40bd89d3f6d5b450e613"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "scripted",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.990060959642776,
+        "strategic-policy": 0.990060959642776,
+        "strategic-policy:no-grounded-language": 0.990060959642776
+      },
+      "run_ids": {
+        "adaptive": "a5178d56bb3d44ef9f387f15bfc09e17",
+        "strategic-policy": "23df78457c7245088efb7ed61cce9bbf",
+        "strategic-policy:no-grounded-language": "3c9696c72e9a416d840c83fc656b8fb6"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "hardliner",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8201873826329663,
+        "strategic-policy": 0.8201873826329663,
+        "strategic-policy:no-grounded-language": 0.8201873826329663
+      },
+      "run_ids": {
+        "adaptive": "f9f7877201d0401a9a76c77f9e48e38f",
+        "strategic-policy": "5d3b8ab7569f4113b338544b2df3ef26",
+        "strategic-policy:no-grounded-language": "628748f3266047b99c32e82fd134e8d8"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "cashflow",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "056c079a2b1c4dd3bec1c31631f91bcc",
+        "strategic-policy": "30d00d5f9e874957a49352bed10f0773",
+        "strategic-policy:no-grounded-language": "c300d332535e4bb99a004a138c9b6a01"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "relationship",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "871d84713cdc45eabde76f7058cfb61f",
+        "strategic-policy": "b9be2811af1a45139084e5dbdbf8da90",
+        "strategic-policy:no-grounded-language": "8c975f0c90794598b14c35f58d1c84aa"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "index_skeptic",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9104848871319303,
+        "strategic-policy": 0.9104848871319303,
+        "strategic-policy:no-grounded-language": 0.9104848871319303
+      },
+      "run_ids": {
+        "adaptive": "b78bd05b6e24440b9a529858004169f7",
+        "strategic-policy": "4e22c341f1f94eb29fb7f811329ab72a",
+        "strategic-policy:no-grounded-language": "451266ce74294639ad143c478e060977"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "adversarial",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "b07a9264e3e1408496fd63f37a748f4f",
+        "strategic-policy": "2f0cf5ec4e7f404883e2e930f0db46d5",
+        "strategic-policy:no-grounded-language": "9849b34e6fb5446c8879e391ac77091f"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "scripted",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "648def49d9ed4c3a8e92babb7634a197",
+        "strategic-policy": "ea8bdbe069124d188044898a75cede4d",
+        "strategic-policy:no-grounded-language": "fc9e55c91646494e901fa48d23050c89"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "hardliner",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9051575891879846,
+        "strategic-policy": 0.9051575891879846,
+        "strategic-policy:no-grounded-language": 0.9051575891879846
+      },
+      "run_ids": {
+        "adaptive": "6fdf694258a14d1da4cee25be11b447c",
+        "strategic-policy": "0fc66ae8b5654474ad54af6340d2b92c",
+        "strategic-policy:no-grounded-language": "1760d0be769a4102905f6f028e910683"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "cashflow",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "e7d226b3f17f4410b02eeb0bef58b4c2",
+        "strategic-policy": "56674b3e19eb4710abf1240017b7a7f8",
+        "strategic-policy:no-grounded-language": "3bfa7eacb3904f63a6b067fe6c449c68"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "relationship",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "b403e1bc1042429fbde2e25f8b677a49",
+        "strategic-policy": "146397ac355f4a9ea19febb3f9eb028d",
+        "strategic-policy:no-grounded-language": "8e5f3d97fbc747579a6cc695dc6f6372"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "index_skeptic",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9466303601529298,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.9466303601529298
+      },
+      "run_ids": {
+        "adaptive": "0201738f66f64a428e6330fb74278e33",
+        "strategic-policy": "40b66a27a0b74a28baad0fa137ede34c",
+        "strategic-policy:no-grounded-language": "07e07c1b274b49c6888e476afd655397"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "adversarial",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "b1b0702433b243cd9288f4f0ba506cef",
+        "strategic-policy": "b681ef195d3343a5b5a3a6b82dd710d2",
+        "strategic-policy:no-grounded-language": "daebb3371f7f44f0ab575f76041d82ff"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "scripted",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "942c4f803d00492eb687867186a401b5",
+        "strategic-policy": "53523bfbf4694c498c212c63c574efc8",
+        "strategic-policy:no-grounded-language": "acc18318f75a452db4d572006f4751a4"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "hardliner",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.7726425972058772,
+        "strategic-policy": 0.7726425972058772,
+        "strategic-policy:no-grounded-language": 0.7726425972058772
+      },
+      "run_ids": {
+        "adaptive": "3ac2cc1f8c6644c3906e7bf667732da5",
+        "strategic-policy": "721621a9aeba41ab9ca6d7f3fffd8354",
+        "strategic-policy:no-grounded-language": "0a1089fe136e44de851070f6dff4f6ae"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "cashflow",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "c8f18b33c5164316b09de3014f04911f",
+        "strategic-policy": "f1d89d3500e9461ba239d3d4989091c3",
+        "strategic-policy:no-grounded-language": "60e0c4ebff184e989b6306b1be980890"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "relationship",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "a1c8a6dcfc604307949c031e71d7d452",
+        "strategic-policy": "00eb71aac23e4e699d636024ffd1ee40",
+        "strategic-policy:no-grounded-language": "e153a82418124f6fbadb58bf3ec7e22c"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "index_skeptic",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8942808446745011,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.8942808446745011
+      },
+      "run_ids": {
+        "adaptive": "407966c34c894841a10a9363f75552dc",
+        "strategic-policy": "e8a3849de279459cb02c66058388e613",
+        "strategic-policy:no-grounded-language": "991824b20e0543189d8a7a2dae194197"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "adversarial",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "cb969185665841b49cc8557f1c1145db",
+        "strategic-policy": "8fe6aa0b813449c8b640f68575a54184",
+        "strategic-policy:no-grounded-language": "0ea29712cd94442dbccecff43d4fb767"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "scripted",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "6577976d1e124008b7b9e51574efb94a",
+        "strategic-policy": "5706bf0c23684146bb9a3920f8561280",
+        "strategic-policy:no-grounded-language": "2aee69d4fc9345f7b58375ab2db5ce5d"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "hardliner",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9045317164199613,
+        "strategic-policy": 0.9045317164199613,
+        "strategic-policy:no-grounded-language": 0.9045317164199613
+      },
+      "run_ids": {
+        "adaptive": "a138c91d1a51471f88ebff787314f46f",
+        "strategic-policy": "82453a4b70bc4a6f94ff54c94794fb03",
+        "strategic-policy:no-grounded-language": "8b7a341290d640e59d1292d31eae77d0"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "cashflow",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "d6f522341fee47f9b197b0a1c1e1a25d",
+        "strategic-policy": "5814acbd6d3d4a18acb2d2456f3f34c2",
+        "strategic-policy:no-grounded-language": "4cfd3b4bf90b43b29baac781101aca12"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "relationship",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "e64a3e3b7749438eaef92eef37f3145c",
+        "strategic-policy": "1ea5da50eec04ca0a001e5727fe37426",
+        "strategic-policy:no-grounded-language": "90a031ccf53f4db39a6ba91d649b11e0"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "index_skeptic",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9463279192566737,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.9463279192566737
+      },
+      "run_ids": {
+        "adaptive": "2682fd30b9314464aa17f5b08cdf7740",
+        "strategic-policy": "281cf13f32bf4243a27715de9e736455",
+        "strategic-policy:no-grounded-language": "e70a46cb2f0146c4b055eedd606612f9"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "adversarial",
+      "seed": 107,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "96fc6f049ee3416988ec18d30f3eda9d",
+        "strategic-policy": "83dbc04bbd4e4754b8711ba7f3ed7cf1",
+        "strategic-policy:no-grounded-language": "351f613bf9c0447e90cfdd843d4984d0"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "scripted",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "06ad7bf7614e4ee890c160e6262a1d9b",
+        "strategic-policy": "9ecf971526604b579bec0de5c19dee48",
+        "strategic-policy:no-grounded-language": "db82855cb1504d8d897980f46b09378b"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "hardliner",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.7809649641887901,
+        "strategic-policy": 0.7809649641887901,
+        "strategic-policy:no-grounded-language": 0.7809649641887901
+      },
+      "run_ids": {
+        "adaptive": "db9ac84ace704d8bbd36978951510444",
+        "strategic-policy": "b9c18654ed33459f969fc0452cabfcb4",
+        "strategic-policy:no-grounded-language": "0256712bb53d4ecf841318e47bdbf4ba"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "cashflow",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "41c44452adf74badb2c8a0f660bbf360",
+        "strategic-policy": "0eaf252c755c40068cc46407dc2e1b5a",
+        "strategic-policy:no-grounded-language": "f2c8248ec1844721a0f5723e0fb5e718"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "relationship",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "a8d126f26f844801a8b2f9228e953ef9",
+        "strategic-policy": "91d0d28f7e2249cb96329331383be187",
+        "strategic-policy:no-grounded-language": "bfc301d45ad84e28af7ef8f6d2da4b6e"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "index_skeptic",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8763845525012064,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.8763845525012064
+      },
+      "run_ids": {
+        "adaptive": "2d4b925124214180bef6bff81af1b1fc",
+        "strategic-policy": "ce08f2da228d4f74873fa296251160b8",
+        "strategic-policy:no-grounded-language": "bf0183db80d8491c8af7fe3380de37a0"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "adversarial",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "f27758d0ee3741e1a239d84257b693d5",
+        "strategic-policy": "1fef822837f84885bf9bb13fedf18df3",
+        "strategic-policy:no-grounded-language": "bf7ad0f70c06450284bc8d793bf089ee"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "scripted",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.990060959642776,
+        "strategic-policy": 0.990060959642776,
+        "strategic-policy:no-grounded-language": 0.990060959642776
+      },
+      "run_ids": {
+        "adaptive": "77dbcd7d1c3849038e27cc02ee6e5f0f",
+        "strategic-policy": "b0e83f4434e04e2ca4066257d1df0201",
+        "strategic-policy:no-grounded-language": "185ed52b728e43ab95230f68c7171aa3"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "hardliner",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.7782078493314462,
+        "strategic-policy": 0.7782078493314462,
+        "strategic-policy:no-grounded-language": 0.7782078493314462
+      },
+      "run_ids": {
+        "adaptive": "5987812ade664518a1b82e541abd7989",
+        "strategic-policy": "31366f86a7ee4865b211b559a211ea27",
+        "strategic-policy:no-grounded-language": "326af17d7f7243288ea6b2218c00bf4c"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "cashflow",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "480aac0e08bd41d198c1675e16205145",
+        "strategic-policy": "1efb3e2139b2432f8f9c4c3db147a20f",
+        "strategic-policy:no-grounded-language": "16e61f003953473fb2239a51b922cc70"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "relationship",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ea13c19939eb4540a612fe807d94ad3a",
+        "strategic-policy": "66647675834348f282f4b690842cc1d1",
+        "strategic-policy:no-grounded-language": "d082e6a6951946548c2525a8219c62be"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "index_skeptic",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8743609192771636,
+        "strategic-policy": 0.8743609192771636,
+        "strategic-policy:no-grounded-language": 0.8743609192771636
+      },
+      "run_ids": {
+        "adaptive": "8f71917af746437d94a8a97320572e24",
+        "strategic-policy": "8d68e36969e94a4fb24186e34b0a3c3f",
+        "strategic-policy:no-grounded-language": "23201a03b0f64da3b6b4c660d6aff484"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "adversarial",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "27d10cbfade74637a95e54b5b3684c4e",
+        "strategic-policy": "a9d202d0be1b43faaddbc4315d0b8329",
+        "strategic-policy:no-grounded-language": "36d8059fd89e4515b0e9dc651c46f733"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "scripted",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ea66b655c4094f5d8707177009d1723c",
+        "strategic-policy": "d9e496fbe9bb46fca0401088071747af",
+        "strategic-policy:no-grounded-language": "2331a5b35217410ca561fbff2d8a076a"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "hardliner",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8799407594740972,
+        "strategic-policy": 0.8799407594740972,
+        "strategic-policy:no-grounded-language": 0.8799407594740972
+      },
+      "run_ids": {
+        "adaptive": "6edbe72a7ce74ef888d8bf5042609ba2",
+        "strategic-policy": "070aeaf2a84b47708c992bc927bc9fae",
+        "strategic-policy:no-grounded-language": "c26ce78a86cd48be885106ef224923d3"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "cashflow",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "33de001eac754f9b9b9b62a2672687fc",
+        "strategic-policy": "2400a6471385433db70a1cbd45a4475f",
+        "strategic-policy:no-grounded-language": "bba66905c89541588804c9753498ea8e"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "relationship",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9945959154852775,
+        "strategic-policy": 0.9945959154852775,
+        "strategic-policy:no-grounded-language": 0.9945959154852775
+      },
+      "run_ids": {
+        "adaptive": "a983a8d4ed01466b9727f5cdf8dd9627",
+        "strategic-policy": "22f2bf8eea1141288df35e4ce361ae60",
+        "strategic-policy:no-grounded-language": "ca5f3890c1c246e695d094ee91e1e73a"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "index_skeptic",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9238733791439022,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.9238733791439022
+      },
+      "run_ids": {
+        "adaptive": "574a5e1abbf5418d9055c9c9284e4329",
+        "strategic-policy": "882cad3f989e4e01a6f350df0f566478",
+        "strategic-policy:no-grounded-language": "ecf64a0ef1c244ae8572885c7bdbe33d"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "adversarial",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ed6693661428454587eec3d5018dad91",
+        "strategic-policy": "b0e86c1d7b7c40e5ba91308b21040980",
+        "strategic-policy:no-grounded-language": "9962dba6d7c745678caef3e6e4deb3f5"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "scripted",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "aade3fa7a0c14e35988b8aef344d5234",
+        "strategic-policy": "fbb5c03b95c141738e9696ea5926c514",
+        "strategic-policy:no-grounded-language": "b23aab4fe58e4ccd82f961e587c50f61"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "hardliner",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.7233075535136588,
+        "strategic-policy": 0.7233075535136588,
+        "strategic-policy:no-grounded-language": 0.7233075535136588
+      },
+      "run_ids": {
+        "adaptive": "ab1c260488ef474f960f39d71cdd7255",
+        "strategic-policy": "ad53e5d07de041889f7a83efbfd842f2",
+        "strategic-policy:no-grounded-language": "b9f73d656e8a4f8eb070e9c6d65fae85"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "cashflow",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "63a4c1e8b4634addb885ecf1b4905111",
+        "strategic-policy": "98850650724f47be9aee963a5b5fedce",
+        "strategic-policy:no-grounded-language": "ba397047c3034b0aaaef8b54525e0c3b"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "relationship",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "0648aa52ea5442a4902768f9fbf31b64",
+        "strategic-policy": "d2ca076b3e114dc08e8065ad60d1f4d2",
+        "strategic-policy:no-grounded-language": "49c3a32d48174946a17a9e60e77c2e4c"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "index_skeptic",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8526756912342317,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.8526756912342317
+      },
+      "run_ids": {
+        "adaptive": "ffdd9c44d1d34e1696fbb9533b5c84ac",
+        "strategic-policy": "5fcd68a6d489467a8b20244094e2cd28",
+        "strategic-policy:no-grounded-language": "2a99d2f0b74b4bf0b58cc459389966d0"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "adversarial",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "b9b8cbed616d48dbaaa211cab42ef519",
+        "strategic-policy": "260def98029d4db2b9362c2a50c22501",
+        "strategic-policy:no-grounded-language": "816c1d11d9404b88998fdd26244f1e23"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "scripted",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "b0f5712d70f94bed9a51154fa8973fa7",
+        "strategic-policy": "8f8b1c9c294848ebb50269c69a767302",
+        "strategic-policy:no-grounded-language": "73a5a616908641c284d4650c48503e48"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "hardliner",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8791706925582328,
+        "strategic-policy": 0.8791706925582328,
+        "strategic-policy:no-grounded-language": 0.8791706925582328
+      },
+      "run_ids": {
+        "adaptive": "b79c1a7080614aa8a36d4b621f39697e",
+        "strategic-policy": "f71ef9f0dd81412382403c5bfd75ce9e",
+        "strategic-policy:no-grounded-language": "94a25e8512304e999f841052bcfbbfd4"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "cashflow",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "7fa2ad8ef7384a479a5e337c780340c5",
+        "strategic-policy": "e9b9747c1fd64b7a8d520a3eb9a3615a",
+        "strategic-policy:no-grounded-language": "c374eb89b42647cd81d2a7b29cf8eb04"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "relationship",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9945742445368859,
+        "strategic-policy": 0.9945742445368859,
+        "strategic-policy:no-grounded-language": 0.9945742445368859
+      },
+      "run_ids": {
+        "adaptive": "cf4e2fe3fe0f4afc93674b1831cf8062",
+        "strategic-policy": "b6bce90c80be40979af4fa7f1d87ebaf",
+        "strategic-policy:no-grounded-language": "347486c08a6a4c278c41bd933e4900b7"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "index_skeptic",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.923452404769427,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.923452404769427
+      },
+      "run_ids": {
+        "adaptive": "11511dfbb73342fb9bef32867e1d72ea",
+        "strategic-policy": "4b17169abaed4f7894ec2cf7c7c5fd70",
+        "strategic-policy:no-grounded-language": "744ce84b60ff458481eb2ffaa80976e7"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "adversarial",
+      "seed": 108,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "c4f85d7e0949403389a28c53854d371f",
+        "strategic-policy": "57b23688368b4ec195c02af1e6814f4c",
+        "strategic-policy:no-grounded-language": "ac0a7d02474c4e76973f45fa990bd978"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "scripted",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "4c9f590c52ed4fc0884721f679aa2a34",
+        "strategic-policy": "0e3d9016749f4a7b942433f629c4ad9c",
+        "strategic-policy:no-grounded-language": "6a8481968f634088acd13edaeda817b0"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "hardliner",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8374025320471635,
+        "strategic-policy": 0.8374025320471635,
+        "strategic-policy:no-grounded-language": 0.8374025320471635
+      },
+      "run_ids": {
+        "adaptive": "7a0b58d697434092a857aa8ece7d7b35",
+        "strategic-policy": "e8829168af614a509fd34ba440f0af6d",
+        "strategic-policy:no-grounded-language": "919171d6518a42039d57c19dc336d77d"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "cashflow",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "92e74007a3a14464b7c880e21bb4e640",
+        "strategic-policy": "66219eadd0b04e1887adca7e53c485dd",
+        "strategic-policy:no-grounded-language": "7818c821cd214a2d9c5cbe35d9dfef45"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "relationship",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "23bfe93124114b37ab1dc3240c3d6b7d",
+        "strategic-policy": "1f3eff173ea94f6487fade4afccbdef9",
+        "strategic-policy:no-grounded-language": "52cd14ce43ef4ec69f9423417cb6dcc2"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "index_skeptic",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.924503228688835,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.924503228688835
+      },
+      "run_ids": {
+        "adaptive": "77dc84aa635e4c268cd0e58fe1e35941",
+        "strategic-policy": "300e313cdf964404a2fd3055cdd1fef7",
+        "strategic-policy:no-grounded-language": "224f3833578f41ceb173596e0d51a56e"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "adversarial",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "c369960b833e4a3cb4651b29934adad0",
+        "strategic-policy": "96aecd02a7bb48aa88a16db6e6b12b6b",
+        "strategic-policy:no-grounded-language": "be80dc9714cd446eb379270ab254ff94"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "scripted",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.990060959642776,
+        "strategic-policy": 0.990060959642776,
+        "strategic-policy:no-grounded-language": 0.990060959642776
+      },
+      "run_ids": {
+        "adaptive": "d1f15882a78d4b3aada4c3e8da4a2f3c",
+        "strategic-policy": "3d2df3d8bdc4467a9eb4e6196984e8e1",
+        "strategic-policy:no-grounded-language": "a5ed2ac73f0d4d96bf883e9f50b66f76"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "hardliner",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8352054505589364,
+        "strategic-policy": 0.8352054505589364,
+        "strategic-policy:no-grounded-language": 0.8352054505589364
+      },
+      "run_ids": {
+        "adaptive": "e1663ba0be2a4de19a26d82f01dabe42",
+        "strategic-policy": "e3f2b0694aef4823ad7e31f63167451e",
+        "strategic-policy:no-grounded-language": "54110d6ae4734617aa08a29b0554ce12"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "cashflow",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "8ec0699872e24e2a9e0d361a50603ff0",
+        "strategic-policy": "7792e4b166284a969773eec596e58603",
+        "strategic-policy:no-grounded-language": "5bc4211e6ce64539b7f2fb57d6974b51"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "relationship",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "a28d00df1dd948038617514e68c45c57",
+        "strategic-policy": "961af4f47d3c4c2fbf7e79c8955eea49",
+        "strategic-policy:no-grounded-language": "3ec2bdb6614644e8b31ef6cde9d7d1ea"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "index_skeptic",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9167978445408917,
+        "strategic-policy": 0.9167978445408917,
+        "strategic-policy:no-grounded-language": 0.9167978445408917
+      },
+      "run_ids": {
+        "adaptive": "a47e7c0191324aa4944fbfe3ed689391",
+        "strategic-policy": "0aecadb4f38a45e89c6753409647ee51",
+        "strategic-policy:no-grounded-language": "1bd7c60ca7194879b4673bde88fb2add"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "adversarial",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ead432328851479f9e733e704643bd03",
+        "strategic-policy": "dc66a4d141854861a18c0f4d19b1297a",
+        "strategic-policy:no-grounded-language": "2e9075f7a00240a689459389abb0563e"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "scripted",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "878312a862d4414cb6046cc5cfa29e4a",
+        "strategic-policy": "69e84cdc79674201b7fd5eec72803e1d",
+        "strategic-policy:no-grounded-language": "8eb6872320ff4d6ab55e1a67d1164e6a"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "hardliner",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9123162307163738,
+        "strategic-policy": 0.9123162307163738,
+        "strategic-policy:no-grounded-language": 0.9123162307163738
+      },
+      "run_ids": {
+        "adaptive": "ddbff4a47e084ace9ec001991024779d",
+        "strategic-policy": "a7a2a29e97f345678f4ec1a6133fadec",
+        "strategic-policy:no-grounded-language": "123cfec6d333452d8607b90abf024066"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "cashflow",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "6426850dcd5a452b923dea089ca363c4",
+        "strategic-policy": "67f72cf7095d411ea523b30ead76f82f",
+        "strategic-policy:no-grounded-language": "40be57f789c54c96b621bdcf3e4ab2a4"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "relationship",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "4100a592ff8147889505ba11f210d545",
+        "strategic-policy": "2412bced4e5f476e93f1943b2b1e279e",
+        "strategic-policy:no-grounded-language": "5493460f5e06420489ba6821ad92f418"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "index_skeptic",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9530582705120519,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.9530582705120519
+      },
+      "run_ids": {
+        "adaptive": "6faf87a8783342e79bb97f85da1a1a82",
+        "strategic-policy": "fc2f9441dd374e0eb94c329b5567c498",
+        "strategic-policy:no-grounded-language": "518d3f2cf1ce49808d1e157e3b6f0244"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "adversarial",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "514bfb6b7a194b32afcc4a07c6590d87",
+        "strategic-policy": "910b4f96c4c748d589770ed84ca65ca2",
+        "strategic-policy:no-grounded-language": "4266fa79281243e9a5289c820c51c29f"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "scripted",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "b400eda722154407820c1ed9cd81a613",
+        "strategic-policy": "af1822b884d44c59847fd0c75d7ae141",
+        "strategic-policy:no-grounded-language": "d415fc943069446e983edc9b49a0ceba"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "hardliner",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.7906170556967859,
+        "strategic-policy": 0.7906170556967859,
+        "strategic-policy:no-grounded-language": 0.7906170556967859
+      },
+      "run_ids": {
+        "adaptive": "86d85e8482074517aba503cd99581b28",
+        "strategic-policy": "b687121a88fe4131ad5b5e715acdf9f4",
+        "strategic-policy:no-grounded-language": "5c901b6695be410e81e5dfa4a0cd2992"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "cashflow",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "02a53f62b7f74952ad97300f342f091e",
+        "strategic-policy": "ec7d8589efd34f5982a947126aaa4486",
+        "strategic-policy:no-grounded-language": "ebec4c88a2014fdaa919405cc9411fee"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "relationship",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "a07cc45c90a44189b60cd11e60d57169",
+        "strategic-policy": "f23373987df64b8d9b73db3ce28a3384",
+        "strategic-policy:no-grounded-language": "5e8e65133c6648b784ec06a991e9d3de"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "index_skeptic",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9090667727021265,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.9090667727021265
+      },
+      "run_ids": {
+        "adaptive": "aa2437de4ff94ae3bd4cde6b390791f2",
+        "strategic-policy": "73e3c3ecb7434bffbb75775e713c6073",
+        "strategic-policy:no-grounded-language": "c6642ce870f746caa88e6a3af1ca05f1"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "adversarial",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "46d0979579d74817b9a5170f3aa27b7f",
+        "strategic-policy": "7b59af3b366b4a09b0168fa84ef8d87c",
+        "strategic-policy:no-grounded-language": "27a9080f6ce443efb9904235097476d2"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "scripted",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ea9bd17993f2415abc2b9db3ac68524f",
+        "strategic-policy": "30909cd308864bceacf75790e634dd80",
+        "strategic-policy:no-grounded-language": "150b7e1e39c34ed9a8158c6b9210f0f4"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "hardliner",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9117329917222572,
+        "strategic-policy": 0.9117329917222572,
+        "strategic-policy:no-grounded-language": 0.9117329917222572
+      },
+      "run_ids": {
+        "adaptive": "dec1708dd0e34435ad6fa8e2e327779c",
+        "strategic-policy": "5a45ca5bf35a49bb9fa3fce8dc78d13f",
+        "strategic-policy:no-grounded-language": "5b8ac21a3b204f0d88b1cfc49ed270e8"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "cashflow",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "0f7f1de7b29f4592ba367a45a58dcb0a",
+        "strategic-policy": "cb27c14a94bb495b9d1734172aadd069",
+        "strategic-policy:no-grounded-language": "e81472b1d18a441c8b35ae8c61ae1b88"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "relationship",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "f32d214ac797424094760374c9e4dac6",
+        "strategic-policy": "5f52f5ae2003455e81d74ea1119baa08",
+        "strategic-policy:no-grounded-language": "531d252fc7c44166b9dc07dc9fb1a407"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "index_skeptic",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.952790439373078,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.952790439373078
+      },
+      "run_ids": {
+        "adaptive": "907fdbb5831346a096c7de7495ba3c51",
+        "strategic-policy": "400e0eb921884fc99b8367e1a8d4ded3",
+        "strategic-policy:no-grounded-language": "e6420bab6e454c6d94fde38d17f69690"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "adversarial",
+      "seed": 109,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "cea080807e844f3383d2d6dbde786524",
+        "strategic-policy": "c007f2fcc9e349edbd7b9dfae505f75b",
+        "strategic-policy:no-grounded-language": "9bef6101e8734a5ab5fff2b2bd32d845"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "scripted",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "bb1653fbf50e44caafba2c63ab112a3d",
+        "strategic-policy": "92058316002c4bc99ef7b88baf706b8c",
+        "strategic-policy:no-grounded-language": "ac1af39e95c847bfa0c8fe6112c9830d"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "hardliner",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "7760f959a2c149caacc6b6051ec1b83e",
+        "strategic-policy": "69a29edef317463c91b08a16230f0bc8",
+        "strategic-policy:no-grounded-language": "23ef9b9c294243a0ab4e218ab8e6612e"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "cashflow",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "536cc0ffe3524618bcff9ad8d021e293",
+        "strategic-policy": "11cd37cc24614a4fb365602eee3a80a5",
+        "strategic-policy:no-grounded-language": "e5a658c667c443d68c1f261af624b78a"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "relationship",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "2f597ab8026d4da08c5b7a6c976ae9a1",
+        "strategic-policy": "277e426ff88f4f69b3c0c98ba017735c",
+        "strategic-policy:no-grounded-language": "733b0e696fa14470a657f369c71f2253"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "index_skeptic",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "4e26ee2682e743cba5831f8dc2cbd1dd",
+        "strategic-policy": "0ecdaf2bcb984daaaee706cabe295ffd",
+        "strategic-policy:no-grounded-language": "5a356f900a974c6fbc4fdf9d6abfaebc"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "adversarial",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "fb0a92799aa54341a7dcc50ccdc01d23",
+        "strategic-policy": "6fff5c70d241444d9dbbd08f2444bf4b",
+        "strategic-policy:no-grounded-language": "feeabb863bc940fc9f1c2c94f57ef65d"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "scripted",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.990060959642776,
+        "strategic-policy": 0.990060959642776,
+        "strategic-policy:no-grounded-language": 0.990060959642776
+      },
+      "run_ids": {
+        "adaptive": "dde4966218d441d0b8580be79fbf430a",
+        "strategic-policy": "6f5010fb88734d799a913823f6080715",
+        "strategic-policy:no-grounded-language": "3b2d95364fd248a786eea38162f017e2"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "hardliner",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "651642892f514c279fbf2b84eda2fd64",
+        "strategic-policy": "6a7d28ca99db45deade8b9124609fddb",
+        "strategic-policy:no-grounded-language": "24b8a9c08f954c58b064b8dd69342d0b"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "cashflow",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "b80495c2070c4362aaa2c6579469ed2e",
+        "strategic-policy": "d374dd0495194411b50483cbc6decbe8",
+        "strategic-policy:no-grounded-language": "ce0dc5737a6444de8c655f92d2cee1cd"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "relationship",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "2af24cfff341441db0f09b1e297a7d90",
+        "strategic-policy": "9260447bc1734fba9f4ce5f9b59cbfa5",
+        "strategic-policy:no-grounded-language": "2faa3873598947779c0514a5225cec28"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "index_skeptic",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "4db5e6c057224279a3e428a9f601e5eb",
+        "strategic-policy": "2af1de528c824e70a80a7ab48d8578ad",
+        "strategic-policy:no-grounded-language": "b6a2d1ec3b7a4e3da80682da5648b2b7"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "adversarial",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "a0545263bee942d9a3746b75011c4dad",
+        "strategic-policy": "9646ace43a084fe199ed838b61199240",
+        "strategic-policy:no-grounded-language": "e8f5414fca3248b3825e70e48d113f85"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "scripted",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "2ff473d4370d42ce82fae5991a81ba61",
+        "strategic-policy": "31225eeb89ed4fe194eb73fa27c20e79",
+        "strategic-policy:no-grounded-language": "1f9e3b8dfff5489a9c228e3034efc7ee"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "hardliner",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "7aaa8e9bc8ff4506b7675f0b15acfeff",
+        "strategic-policy": "1888d5556b8043919c5ff1ac7dd7a838",
+        "strategic-policy:no-grounded-language": "c441e62af3474126a6dbe09f3a1fbbfb"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "cashflow",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "3f36d81c53dc48cd8150a3d07ab5921e",
+        "strategic-policy": "9004c31fbed94f989df0d8221c350970",
+        "strategic-policy:no-grounded-language": "0b55b2fcf06f4f49a97aed090c8b7d40"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "relationship",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "490a7ba5612e440686768d0e3ddc2f24",
+        "strategic-policy": "dc3f544007bd4944bea7b1729d5ba0f1",
+        "strategic-policy:no-grounded-language": "0336eb01736e4b3781488f41b5fe6930"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "index_skeptic",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "676f294e1c364753b07ab84e5a0828f2",
+        "strategic-policy": "44e458b3f5684ce6896a1488ac9f0f81",
+        "strategic-policy:no-grounded-language": "1651b10472fb4796a9d4bca4a66d4eb7"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "adversarial",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "52187abfa41d49a4a8e0c5ac797d5f14",
+        "strategic-policy": "1956309c1fef41c0b3052badbd0fcffe",
+        "strategic-policy:no-grounded-language": "89be7d2194b34e4fb2419e73c5fc1e8f"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "scripted",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "15b5b4b147204cee8b387a6f41f0c6f0",
+        "strategic-policy": "9a1e8b13962e41e7af73d7cdfcaed65c",
+        "strategic-policy:no-grounded-language": "51fe7ac8c0aa47fd929c8a55519ad2de"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "hardliner",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "dd73a451bcec41b0b120b6b80abad1cc",
+        "strategic-policy": "8cfcb547f61f40cfa7a842798eedbb7c",
+        "strategic-policy:no-grounded-language": "83f960a351cc4cf5a642dcef2288b40c"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "cashflow",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "b630777f04eb451a9cf590506155da07",
+        "strategic-policy": "871643babb244b4583eadd88721f4017",
+        "strategic-policy:no-grounded-language": "54976e76b2a8453386a2bc8f0ea70325"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "relationship",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "d23c03b32fe24e5383a8c56310b2146f",
+        "strategic-policy": "a325c9fd6d234a13b64192b81b8662a4",
+        "strategic-policy:no-grounded-language": "f4ec845a8fde4a7bb9a9585bce980ea2"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "index_skeptic",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "407dd38b24dd4b2ca5fe7fa45a2305ec",
+        "strategic-policy": "aa7eddcc47db47d1889061bdb06073ff",
+        "strategic-policy:no-grounded-language": "88b3575269854f3897c9a143013e1f8b"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "adversarial",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "f2d0cabbbb7c4ba4b5f3c6d0dfa9027c",
+        "strategic-policy": "b949bbad1b46460bb8f8a2cf80566fdd",
+        "strategic-policy:no-grounded-language": "48d5ad28a861428bb53c35e9b39e5876"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "scripted",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "f7ab853a5a304300b99066c5f778f67a",
+        "strategic-policy": "0e221ab8f1ea4d8e8e21d05efc204473",
+        "strategic-policy:no-grounded-language": "08ae151359b74a2fb517a708990284e2"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "hardliner",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "0da27135de664784bf9416c20585558e",
+        "strategic-policy": "478467f456464ceaabb2415b31b979ca",
+        "strategic-policy:no-grounded-language": "80f39af2c4ad4cd7afb1e352849b8c1b"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "cashflow",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "95bc21f4fc2c42e582df71b806fb9120",
+        "strategic-policy": "e904705c7fdc4b52b43c036839dd1570",
+        "strategic-policy:no-grounded-language": "7019b2479d5743c0bad8490f8c90d1ca"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "relationship",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ca3edb4c41764aee9e5482647ef6b147",
+        "strategic-policy": "f1e13729793d455790cc1119ae917fb8",
+        "strategic-policy:no-grounded-language": "56773d4b2ffd4c89bffdc1905dcc1c89"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "index_skeptic",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "78b3fbb41f484a8cae6713fecfa99ed8",
+        "strategic-policy": "72b1455d75db4240ae9c4737d43f371b",
+        "strategic-policy:no-grounded-language": "97fbfaab2dc84cee922c3ecd2acd030e"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "adversarial",
+      "seed": 110,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "c9e4ec43e1e94c1f8085922b5ca9369a",
+        "strategic-policy": "e34688882677489fb35cecc62743d6da",
+        "strategic-policy:no-grounded-language": "f1cd7890eeb44422a9a79769b33d026f"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "scripted",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "40513f2cd43049be92e259f94c31f190",
+        "strategic-policy": "51bf564c8fac4c8287ff572f5066bb0e",
+        "strategic-policy:no-grounded-language": "3204311bff8b46f9a50b363720820fde"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "hardliner",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "4dde61fa067a406b920071e7b684c6a8",
+        "strategic-policy": "ede6a1602d52401d998f4bac981c42fd",
+        "strategic-policy:no-grounded-language": "9f8309d2a2954f73830b8319aa35ccd2"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "cashflow",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "a8215f81b8cb4834a51cb63a160592dc",
+        "strategic-policy": "05e523bce0a9404984cd6e7d23404f6d",
+        "strategic-policy:no-grounded-language": "8d900988899e4edd954526d8e2293f36"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "relationship",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "00f040f644c840dfb99dea554e8ed315",
+        "strategic-policy": "c8c4a27e71064f62a210064facded70f",
+        "strategic-policy:no-grounded-language": "20185255be77452b970359f94016c445"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "index_skeptic",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "a1201f1647a442f5bcfa1923e5ec67bf",
+        "strategic-policy": "898be6e0d460492b8bf56b17e03601d0",
+        "strategic-policy:no-grounded-language": "19711aa4292448fea700c0dfff12d3b2"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "adversarial",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "66d21bc62290431cb32f67b3e51d56ff",
+        "strategic-policy": "dcae92f675654672979a52f15570f516",
+        "strategic-policy:no-grounded-language": "e86cc7a0d71d40adb3536102121994d4"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "scripted",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.990060959642776,
+        "strategic-policy": 0.990060959642776,
+        "strategic-policy:no-grounded-language": 0.990060959642776
+      },
+      "run_ids": {
+        "adaptive": "d99ff14670fc487dba651bd4a124caf2",
+        "strategic-policy": "850165f7cfb74ee192bd88c12bd77e97",
+        "strategic-policy:no-grounded-language": "732e965504df4232af78eea88d328bda"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "hardliner",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "60e0052d0af847a1a6f82ca327cb8fe0",
+        "strategic-policy": "aba200b64253410fa904f6399fee01c8",
+        "strategic-policy:no-grounded-language": "70febcfe98d944289a1d2cd3b96e91e8"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "cashflow",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "a581ed5df88547e6a9a435bbac1999fe",
+        "strategic-policy": "0bba016a5386437fb23ab4b044b21d97",
+        "strategic-policy:no-grounded-language": "f1340878943640038161c9d219aea403"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "relationship",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "a97c5e0ac0944b6fb6fbbb4bc0b4ab01",
+        "strategic-policy": "73234559ccf647e599235f5eedd3899d",
+        "strategic-policy:no-grounded-language": "2d3e61000fff43a89852185a17ce5fe7"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "index_skeptic",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "95572ccf2e3b4f7bbd3a56646903f456",
+        "strategic-policy": "ceb2e851015042dcb836abbecad546cb",
+        "strategic-policy:no-grounded-language": "f3d8a9cd79a64d8f97e58045cc437f2c"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "adversarial",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "3e4665d2cab14cb1b060a0d140aee660",
+        "strategic-policy": "91e83fb9a8f4496298f3d61e63a90b8b",
+        "strategic-policy:no-grounded-language": "13f5ded1f1a442cdb119d3a35943ddef"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "scripted",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "df086609fb77468f982bedf7ca42830c",
+        "strategic-policy": "5e2af1a4aeee4229944d1d2c426ab77f",
+        "strategic-policy:no-grounded-language": "d90ff4cbdad144da8578049f8b2a3944"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "hardliner",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "30896d7984f84ba6911590890d8ed610",
+        "strategic-policy": "a5d8363b64b64eac81733d0d6ac34c09",
+        "strategic-policy:no-grounded-language": "f5803427424043c89e175e48365d59cf"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "cashflow",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "6c91ff08e5de47fd854d7a1c9cdae08a",
+        "strategic-policy": "7c4b928e18c340d3b5cc044387c1c33b",
+        "strategic-policy:no-grounded-language": "e0b5876a778648f890127db8e5c58fb7"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "relationship",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "016f6c4db8e540d0ac9998ce83fe3954",
+        "strategic-policy": "6186762d9e104d42a3766b2e756e9cc2",
+        "strategic-policy:no-grounded-language": "0d60d0ad96474478972442fec1c77fee"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "index_skeptic",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "805a04695b584cd6b9e8550dcb43fe6b",
+        "strategic-policy": "abf79ddbaef747549f0a2c8679db1e4c",
+        "strategic-policy:no-grounded-language": "de307699e98c419a847b02f2bc9db89d"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "adversarial",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "6edb7bd3668a45fe817d7100ef87cb48",
+        "strategic-policy": "af5e0b8b244647f492531e92559d49f9",
+        "strategic-policy:no-grounded-language": "7ca3f42612bf402598a16c8f3751c139"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "scripted",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "55b6a5619383419fbcd2ec0723ed7489",
+        "strategic-policy": "7e1103ab363f4fb0bc03d9eea4e2818f",
+        "strategic-policy:no-grounded-language": "8740a420f05940dea7a590e1e99a24dd"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "hardliner",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "479b03954b9e44beabe5b1f83dad480b",
+        "strategic-policy": "b955a8408e464c49bf64ce04ef16501c",
+        "strategic-policy:no-grounded-language": "24db1e3cef4448d6abb00ddaf285ec27"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "cashflow",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "d13bd050c0c441e7a2110f8d53895a8d",
+        "strategic-policy": "3fe78b64f33b4568a44e4190d3022f6c",
+        "strategic-policy:no-grounded-language": "bed6347b8529411d97bca2a647563754"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "relationship",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "954c969007e64eac86677ae3316d4985",
+        "strategic-policy": "5c9b838fefb9498e9d9c00aaa0bf6ed6",
+        "strategic-policy:no-grounded-language": "ab2b524b543d48ff898672499aa0ad01"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "index_skeptic",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "eeacc0f9b46a4449bac22c809b6568bb",
+        "strategic-policy": "f8ab7152cc294227b3e3002eaf024130",
+        "strategic-policy:no-grounded-language": "7eb7ba79fa8e4aceb456d51b9b75de49"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "adversarial",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "040d536a33404cf88d9d909aa419e047",
+        "strategic-policy": "cccef779214e4d4d80be1c37bd85f9c8",
+        "strategic-policy:no-grounded-language": "a2618300346e4049b0143daac3a4e877"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "scripted",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "34dc76a08aa24cdbb9aa651ef324dfac",
+        "strategic-policy": "fa5bddb60eee44498129dc9d5efa3e69",
+        "strategic-policy:no-grounded-language": "2e392da31a564b0695e838da78b3713d"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "hardliner",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "a2aea9a08ba3415492830b14715326f1",
+        "strategic-policy": "9f4251a98d194b18b62286dec5c1581e",
+        "strategic-policy:no-grounded-language": "8aaee9360ef54087b6af70fe859d3f04"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "cashflow",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "298db10f9f84429c8e8f21575d1316c6",
+        "strategic-policy": "661ff542def9452c87b586b22ad59943",
+        "strategic-policy:no-grounded-language": "6c0438e5e693486194088271e3356ce1"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "relationship",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "8cc02b904de948c49aa04dbe202a6375",
+        "strategic-policy": "92453438af644a3c9a03bbf0f3655379",
+        "strategic-policy:no-grounded-language": "32bde64c2c3640fb9613ee5a814494cf"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "index_skeptic",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "2c2a726a4aa442ccbdbade9bef5a0d6c",
+        "strategic-policy": "fd7d1c1afb6c4208b086d6e0eebe16df",
+        "strategic-policy:no-grounded-language": "0ac2d5cc53864f77a45239d46fa46917"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "adversarial",
+      "seed": 111,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "055e0aa1f1704166b60da04eefdbade9",
+        "strategic-policy": "02facc119320442295faf9e9c47a0847",
+        "strategic-policy:no-grounded-language": "97d9d31a4adf4151988fe36ed783abbd"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "scripted",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "5f27635232ff4863980bdcc4798e0d30",
+        "strategic-policy": "a68175cc2c454f0cb648a04e0ac18f46",
+        "strategic-policy:no-grounded-language": "dbfe9df86f7a45c485bcf9ba3899629e"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "hardliner",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9205574179582401,
+        "strategic-policy": 0.9205574179582401,
+        "strategic-policy:no-grounded-language": 0.9205574179582401
+      },
+      "run_ids": {
+        "adaptive": "de9c1671624a451288341f84705d8ae6",
+        "strategic-policy": "18d21fd13d5d49fba4d79c6f377d3b18",
+        "strategic-policy:no-grounded-language": "c2d2e3b0df6d4208881cee268a9f836b"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "cashflow",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "01ea3c236a984e8d9e0e6163caad192a",
+        "strategic-policy": "c0ba9d71c30e4d928a4dcfda9aa2d28a",
+        "strategic-policy:no-grounded-language": "19ca95b2a6da418c803f6e0771e4fc06"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "relationship",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "6587d4df059544ceabe0d507c3c39f24",
+        "strategic-policy": "8006384fe61a49f39c321db5a1e73179",
+        "strategic-policy:no-grounded-language": "0bb4413666a8441781ef8f3921a3a014"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "index_skeptic",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9926305878573153,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.9926305878573153
+      },
+      "run_ids": {
+        "adaptive": "bae9368b67624d86bef928d46c79a7b8",
+        "strategic-policy": "e58cc681c8ed48c9b3eae3500e401574",
+        "strategic-policy:no-grounded-language": "1fc70ec71d8d43d6b9cef624c9728a10"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "adversarial",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "9e716aace3bc422981943b7f8da05a8f",
+        "strategic-policy": "03da00ff666c4ac48aac139464f80ab0",
+        "strategic-policy:no-grounded-language": "c956c40e10414c36a0cb7744642298ec"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "scripted",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.990060959642776,
+        "strategic-policy": 0.990060959642776,
+        "strategic-policy:no-grounded-language": 0.990060959642776
+      },
+      "run_ids": {
+        "adaptive": "1803c6b23a034ce48259b7d950f955bf",
+        "strategic-policy": "02632eb0f32940119736c1f92c46c300",
+        "strategic-policy:no-grounded-language": "c933ff336ffe4c64aa27634597d9f90a"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "hardliner",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9193768501532773,
+        "strategic-policy": 0.9193768501532773,
+        "strategic-policy:no-grounded-language": 0.9193768501532773
+      },
+      "run_ids": {
+        "adaptive": "9964baa87fe542b9bc2d38808ce69f46",
+        "strategic-policy": "1cf77aa1a13742e9a7e35dd312b1a7fe",
+        "strategic-policy:no-grounded-language": "bd0f4cd22bf04cca83b1ed811fc9b229"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "cashflow",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "6b30dda834074cf2853301bebbcb558a",
+        "strategic-policy": "494b28d846c641bcb3676d12e539de30",
+        "strategic-policy:no-grounded-language": "3231139b04fd40ceb46c7982bbbf01f0"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "relationship",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "b8c8c7d9aba34bee883f2486543f339b",
+        "strategic-policy": "aaba996703864ee58196ae9c4f358478",
+        "strategic-policy:no-grounded-language": "1640f7eab0454aedb104a39880fa9ac0"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "index_skeptic",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9924940989731733,
+        "strategic-policy": 0.9924940989731733,
+        "strategic-policy:no-grounded-language": 0.9924940989731733
+      },
+      "run_ids": {
+        "adaptive": "2e80fc9c77d7448bb3998a1d607429ac",
+        "strategic-policy": "97f96435a03340969cca2de60d91650b",
+        "strategic-policy:no-grounded-language": "347bf06a62ca459bbc9a4b4b24f23471"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "adversarial",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ac73384eb33d4749a3a135f3e7159879",
+        "strategic-policy": "50ffe9c835f24e9086991e4428232341",
+        "strategic-policy:no-grounded-language": "e56efb294c9544c39855dfe0119c967e"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "scripted",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "1339ce463db84a3197b4ad58a6fea180",
+        "strategic-policy": "6a8d9d1e70b543f9ada717c825880952",
+        "strategic-policy:no-grounded-language": "cd32b71d13c64fdcabab8faf3441a300"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "hardliner",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9601907644061644,
+        "strategic-policy": 0.9601907644061644,
+        "strategic-policy:no-grounded-language": 0.9601907644061644
+      },
+      "run_ids": {
+        "adaptive": "127dae6713904c9fba2236206436724c",
+        "strategic-policy": "cef44d836bd7457ab8b0e77e867163a9",
+        "strategic-policy:no-grounded-language": "c1d6d887b25a4079bc1ed26fd6b23ef6"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "cashflow",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "d5f6de1957134dfba89ddab027133ea8",
+        "strategic-policy": "eef58f618d44408fb5946e00cb2da59b",
+        "strategic-policy:no-grounded-language": "43ef564410424fd5a7cfd4ad23425ee0"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "relationship",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "549debf946d4436bb5c806110831c1f6",
+        "strategic-policy": "23a384a1ad904b74930011d8fae1da0a",
+        "strategic-policy:no-grounded-language": "3251c402b41c448e9e0bf4b820ea79d9"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "index_skeptic",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.995681918566362,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.995681918566362
+      },
+      "run_ids": {
+        "adaptive": "ca0a04144d754504bf4dcae7ba299aba",
+        "strategic-policy": "1131b41095dc4347aadff40a09a3798f",
+        "strategic-policy:no-grounded-language": "b03c0abfd50e4faba8e06e5469d7cee7"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "adversarial",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "a6aedcab6e62486fa5f8d9aa6a57399f",
+        "strategic-policy": "c3c80636ec224edeb02651faa0879df3",
+        "strategic-policy:no-grounded-language": "31303fa772c94df789d977f8a8ed988f"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "scripted",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "f087b6632d6f485a9f6f18604da81e9b",
+        "strategic-policy": "bc6ac980239a49cf831ba7df63cdd71f",
+        "strategic-policy:no-grounded-language": "0dcad31b015d43969da8c83f17494dd3"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "hardliner",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8946921326838998,
+        "strategic-policy": 0.8946921326838998,
+        "strategic-policy:no-grounded-language": 0.8946921326838998
+      },
+      "run_ids": {
+        "adaptive": "6363b96bb8934657a8d1d2c91bc5d5a1",
+        "strategic-policy": "71c2198ea95342788db5c68ae599a654",
+        "strategic-policy:no-grounded-language": "b0e69143dcb045ac979817cd67814c18"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "cashflow",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "bcd1f4510ad84484b337e5064ef4737c",
+        "strategic-policy": "23088b9b89784a98981b8fec748c0169",
+        "strategic-policy:no-grounded-language": "2bbc58d05265492cbe1282fd04103e11"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "relationship",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "a46a745ce98a4ebd9ec6c9a1ebbcbf81",
+        "strategic-policy": "fe9786bee66b4e5f9c9741b255837340",
+        "strategic-policy:no-grounded-language": "02e2558fc09b4b79aca3cd6b8f4ac482"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "index_skeptic",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9909887473766537,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.9909887473766537
+      },
+      "run_ids": {
+        "adaptive": "1f87e409c8af453e89fdb10f14516fcc",
+        "strategic-policy": "6a49451c727c4068a0982c64c34e3d87",
+        "strategic-policy:no-grounded-language": "64ee0b0a899c4efd9f9303ff60a4423b"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "adversarial",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "83aadd230b684b45a1d065b009a6845a",
+        "strategic-policy": "176de5eaf0674d049b57664c3e0ddba9",
+        "strategic-policy:no-grounded-language": "ad6b4eda6d144df883ed60a03e5b71a1"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "scripted",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ea7691336a524debad9d8494f46f8ebf",
+        "strategic-policy": "5182f8f45f86447bbbd5641530ce6dfa",
+        "strategic-policy:no-grounded-language": "a5b5ddf3ed6a4e1380820c16decc183c"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "hardliner",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9599119758647515,
+        "strategic-policy": 0.9599119758647515,
+        "strategic-policy:no-grounded-language": 0.9599119758647515
+      },
+      "run_ids": {
+        "adaptive": "c9609cc46fad43de8e49891ec07ea8ba",
+        "strategic-policy": "f7262f4177394d378464d2c1b03d55fb",
+        "strategic-policy:no-grounded-language": "ccec1b1f368046d0870ace2feb753d22"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "cashflow",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "63251ed69ee74428b17d061133e14aee",
+        "strategic-policy": "770d73a47eea46588324bbd929f516fb",
+        "strategic-policy:no-grounded-language": "a5285e0b93714d8da5c2e0b14aaf2b96"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "relationship",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "05659bf3584f4770910a2323fdc18042",
+        "strategic-policy": "fd2c4cd687f44fff97b45bc9479539a3",
+        "strategic-policy:no-grounded-language": "8625df00538042b287cbfa43923497cb"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "index_skeptic",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9956561728600931,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.9956561728600931
+      },
+      "run_ids": {
+        "adaptive": "1fd61690b43044e098beacd480507694",
+        "strategic-policy": "d0e83995c98c4d9bb04a0d9990f3bf34",
+        "strategic-policy:no-grounded-language": "b6eab5ed35da490487e71bb6020d59b6"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "adversarial",
+      "seed": 112,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "87d5f52442f44c59a74c7f6dca1b928e",
+        "strategic-policy": "1dece6c575ec4968af8004315ab97bcc",
+        "strategic-policy:no-grounded-language": "1aaee50267274354836ef1b97db14d57"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "scripted",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "6c7708f6febb4d32b43b8cddff1c68e0",
+        "strategic-policy": "4fd1fffb74f147a09524e6ce72a6017b",
+        "strategic-policy:no-grounded-language": "3c9ded1004d84662941de139a69f2731"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "hardliner",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.749399123773161,
+        "strategic-policy": 0.749399123773161,
+        "strategic-policy:no-grounded-language": 0.749399123773161
+      },
+      "run_ids": {
+        "adaptive": "95612c3071874ce38516606124812757",
+        "strategic-policy": "9a4d8dd19a8c4802a7ebec5f0edb3e7f",
+        "strategic-policy:no-grounded-language": "a838c2e49d61439fa12aafd238cf6cb3"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "cashflow",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "5eccf8ca1ded420a8d3d8dfef69afd2f",
+        "strategic-policy": "fda6335953eb41a0ba1554e4f941c3f3",
+        "strategic-policy:no-grounded-language": "3dc2c3d66ca74d5da41ea42fa482cefd"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "relationship",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "a7bf0360551d4d34a32c6822afc250d5",
+        "strategic-policy": "09f5f9bd2acb4c25802ca1faf462630f",
+        "strategic-policy:no-grounded-language": "62ca861d88774e96af43b78ebc4a55b8"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "index_skeptic",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8487739641222583,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.8487739641222583
+      },
+      "run_ids": {
+        "adaptive": "7879bd71c3e846cd98839c9bdfbbec14",
+        "strategic-policy": "d119f52876fa412bb3e6d14c7ef817e7",
+        "strategic-policy:no-grounded-language": "bf27016fca9247f68a5353f56746fb42"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "adversarial",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "520b728752ae40b4ac39ad6c9f087a80",
+        "strategic-policy": "972ad0cfc87f461590cc3af8cc912590",
+        "strategic-policy:no-grounded-language": "f74056fb9b25427bb053d4ebc29290d9"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "scripted",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.990060959642776,
+        "strategic-policy": 0.990060959642776,
+        "strategic-policy:no-grounded-language": 0.990060959642776
+      },
+      "run_ids": {
+        "adaptive": "fd10128cb4d0488aadfb70150ca9e808",
+        "strategic-policy": "9b484b3e2f4c4707acfb419037ad3d71",
+        "strategic-policy:no-grounded-language": "3753c06fe9aa4ec5b183ebc041bfebd0"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "hardliner",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.7463733350457835,
+        "strategic-policy": 0.7463733350457835,
+        "strategic-policy:no-grounded-language": 0.7463733350457835
+      },
+      "run_ids": {
+        "adaptive": "39ef3aeaf80d4a408628722e3541315d",
+        "strategic-policy": "6b7c7f812b1e44828054bbe1a06b430e",
+        "strategic-policy:no-grounded-language": "18afd41d56124944ae2401a899308cb4"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "cashflow",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "10653a8460114c8f837f0abc1780f44e",
+        "strategic-policy": "15039757d553480cad4b832db4ce0428",
+        "strategic-policy:no-grounded-language": "92c141fe67734c01b4c58c5e733be936"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "relationship",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "d8710b72d71243528475b72427dddd2b",
+        "strategic-policy": "f44dcaaf9e53498ca3fccfb0d0f9cc06",
+        "strategic-policy:no-grounded-language": "48a9bddb6b104796ac6ae0be9fdf06ae"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "index_skeptic",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8463772738223525,
+        "strategic-policy": 0.8463772738223525,
+        "strategic-policy:no-grounded-language": 0.8463772738223525
+      },
+      "run_ids": {
+        "adaptive": "af9ce771100c43a4af6c3fd696dc6150",
+        "strategic-policy": "8119a06ac67048b781418f729532cb09",
+        "strategic-policy:no-grounded-language": "4adbe9cb83f34e0fbf9ff600724e6f40"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "adversarial",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "82ca54d245f1492fb9e131783c5f8d42",
+        "strategic-policy": "a50fc59730f94e618960916df36442c0",
+        "strategic-policy:no-grounded-language": "2430d8130d4841c086b257de442e3c37"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "scripted",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "5d218f204b554523ab7efc1421184e3b",
+        "strategic-policy": "1769872b9c10484e97621e411e06c443",
+        "strategic-policy:no-grounded-language": "ca0c8264f8e44e4e8408489b5ddbb425"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "hardliner",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8594185356663919,
+        "strategic-policy": 0.8594185356663919,
+        "strategic-policy:no-grounded-language": 0.8594185356663919
+      },
+      "run_ids": {
+        "adaptive": "a92374099e3d4367a7d6cfd6ec0f7524",
+        "strategic-policy": "f3cea16d06b847e29bb464fcb62678e3",
+        "strategic-policy:no-grounded-language": "5dba8f2c877c402cb710b5435516107a"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "cashflow",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "a77207f65f0d478da068facaeaf088f0",
+        "strategic-policy": "7c1a6f73934c4facba3380fc99efd64b",
+        "strategic-policy:no-grounded-language": "ebcaae9438f349e1b4a56090f316afb8"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "relationship",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9799310945486404,
+        "strategic-policy": 0.9799310945486404,
+        "strategic-policy:no-grounded-language": 0.9799310945486404
+      },
+      "run_ids": {
+        "adaptive": "6332295348054d0e9797fa57819c9462",
+        "strategic-policy": "e4019648395841249a7c4516c37907a0",
+        "strategic-policy:no-grounded-language": "d1db79f92c524389a9d67ddca5db28b1"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "index_skeptic",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9052206625604997,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.9052206625604997
+      },
+      "run_ids": {
+        "adaptive": "ac9ece7640aa4779897cf98714708166",
+        "strategic-policy": "20b2e3ed164c4a51be1bc4494e15e8c2",
+        "strategic-policy:no-grounded-language": "5d435d91d9b141b880c0f104b0880671"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "adversarial",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "a09648aa7834453789bc29ee93f43592",
+        "strategic-policy": "3c144a6a297946c28d966c9d923c494c",
+        "strategic-policy:no-grounded-language": "3fadf7b370d941f4a526bc09f4242d1f"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "scripted",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "73f82b419ee34ca8b99863420c7d7a53",
+        "strategic-policy": "3b1a73e7d7f7403eb8944abed14df458",
+        "strategic-policy:no-grounded-language": "0ace0ba6bb734a6aa0a559529d9ccbda"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "hardliner",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.6867642641622772,
+        "strategic-policy": 0.6867642641622772,
+        "strategic-policy:no-grounded-language": 0.6867642641622772
+      },
+      "run_ids": {
+        "adaptive": "be48cbfc036c46bf900bf8490b463230",
+        "strategic-policy": "acd30a4ffbaf4c4fb962b2afb1f1bcd4",
+        "strategic-policy:no-grounded-language": "1a27c01cf59b4f439397fd0cbe9d6db2"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "cashflow",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "cf6ef49ffd1f4bf4911577222a313fba",
+        "strategic-policy": "dec31fce546a42db8ca892bbb02889c2",
+        "strategic-policy:no-grounded-language": "254c7d5a0f33407982d52bc46397647e"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "relationship",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "5dab14f950ce43e99354b81b90ea41e9",
+        "strategic-policy": "c62a4ab6e0684ddda9ca8b713f7843dd",
+        "strategic-policy:no-grounded-language": "9b26d5d04cd14961af3a2bc4942e78cf"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "index_skeptic",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8208512531514164,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.8208512531514164
+      },
+      "run_ids": {
+        "adaptive": "709294b1279e4e4ba53c8671189d7c48",
+        "strategic-policy": "6595d43f2fe94d898d169e17dfa1f49f",
+        "strategic-policy:no-grounded-language": "f8236877501842de8c3526c17ce36bc2"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "adversarial",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "c843d5551a6a4965bc808c34d3c96f6c",
+        "strategic-policy": "2f63779087814538be428dd71830fb0f",
+        "strategic-policy:no-grounded-language": "d99fed422cc441f586e26dee76806af3"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "scripted",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "5340bc31896f422394f78ca999670fce",
+        "strategic-policy": "121bc2e516ac4000ad20437c87391463",
+        "strategic-policy:no-grounded-language": "1682dd8a4e5a43a68b23f223f53e3bb6"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "hardliner",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8585379993833421,
+        "strategic-policy": 0.8585379993833421,
+        "strategic-policy:no-grounded-language": 0.8585379993833421
+      },
+      "run_ids": {
+        "adaptive": "3d1cdf43988e4d638d6cb2d6b73773a6",
+        "strategic-policy": "c5f62da3aa734911bf3e409399adb7da",
+        "strategic-policy:no-grounded-language": "9705b8c5786f44b6aa4683da8377f0ad"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "cashflow",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "b5f2e030c78f44449d2bb04d52c09e5b",
+        "strategic-policy": "71c7ef99cae54d1f8e7252d960b56ae0",
+        "strategic-policy:no-grounded-language": "adc652f056534a29890b320946b33dfd"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "relationship",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9798518074251771,
+        "strategic-policy": 0.9798518074251771,
+        "strategic-policy:no-grounded-language": 0.9798518074251771
+      },
+      "run_ids": {
+        "adaptive": "90b9ce33e6604184a79c89ee76031bc3",
+        "strategic-policy": "d487f2784f704af7893620913eb63f64",
+        "strategic-policy:no-grounded-language": "2c510daf112b45659eb09af07b51ffae"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "index_skeptic",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9047071792928724,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.9047071792928724
+      },
+      "run_ids": {
+        "adaptive": "8004b9ca50f44123a30ca93b7a28e8a9",
+        "strategic-policy": "5476e7143835499aabbacf70e799cec2",
+        "strategic-policy:no-grounded-language": "e3b8be27e12d45c3a927e7aaee158378"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "adversarial",
+      "seed": 113,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "d7283d7afab64f6eb76611303e117e8f",
+        "strategic-policy": "0eab6d6d4ed9434987e8bef0f9083989",
+        "strategic-policy:no-grounded-language": "8f439f1424e3465d9cb764cf01772c58"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "scripted",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "d1fe652e971a48a581e001ffa5c10d22",
+        "strategic-policy": "1330dad8b8354a94a6927e6f5361bde1",
+        "strategic-policy:no-grounded-language": "ccb7f505b28d40ca84976e6f3d22f69a"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "hardliner",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8225414317145708,
+        "strategic-policy": 0.8225414317145708,
+        "strategic-policy:no-grounded-language": 0.8225414317145708
+      },
+      "run_ids": {
+        "adaptive": "83ff62cf2938427c9777c2535133a4cf",
+        "strategic-policy": "258bfc7aa4fb4a69a46e23f0294b86f1",
+        "strategic-policy:no-grounded-language": "65531830090f4408a8ee8c14c686e871"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "cashflow",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "c8f0b60cf25e4aea8a929b4af3e22ba7",
+        "strategic-policy": "f67ea4d6748f4ec599e1e792eb60d6de",
+        "strategic-policy:no-grounded-language": "77d56d8af39c4a348bef5418cd60b007"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "relationship",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "ce6770ed0d474a0fb942790dc081bbca",
+        "strategic-policy": "83b4bc6711444037a8093c3c778187c4",
+        "strategic-policy:no-grounded-language": "6a04810b55ab449ba1bc47e66ea75fbc"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "index_skeptic",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9119851262099299,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.9119851262099299
+      },
+      "run_ids": {
+        "adaptive": "06001f997f50474ebd3c01a41cbd3d55",
+        "strategic-policy": "7c96be101035435aa4489840e5548658",
+        "strategic-policy:no-grounded-language": "a48168cb228c47bdbf4b734c164dc21d"
+      }
+    },
+    {
+      "case_id": "case:S01",
+      "opponent": "adversarial",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "5c2d402d0e7f4a048e85d21679fb07d8",
+        "strategic-policy": "1959429b912840af8f4c5d467e2b57a0",
+        "strategic-policy:no-grounded-language": "4bd675435fb642878216c551507a1cc4"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "scripted",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.990060959642776,
+        "strategic-policy": 0.990060959642776,
+        "strategic-policy:no-grounded-language": 0.990060959642776
+      },
+      "run_ids": {
+        "adaptive": "46d01b060e7d44a091a1e62f5f05491b",
+        "strategic-policy": "2604ac5040f84403a47c9eae8874c026",
+        "strategic-policy:no-grounded-language": "7d686ed7a70f4bc99b702fa905e1b579"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "hardliner",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8201873826329663,
+        "strategic-policy": 0.8201873826329663,
+        "strategic-policy:no-grounded-language": 0.8201873826329663
+      },
+      "run_ids": {
+        "adaptive": "4bdd273f2776450fb4da8fc7c9c96c2a",
+        "strategic-policy": "0dbacbb24e224267adae2c16703e76c8",
+        "strategic-policy:no-grounded-language": "13dbcb14735447ef8f83b11f9db0823b"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "cashflow",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "02b4188a3ecb4373a6167f06ea4183bd",
+        "strategic-policy": "930a677f6e7d42eab963814d51d25e57",
+        "strategic-policy:no-grounded-language": "a1ff1ea574f849ae8042cd07d382df33"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "relationship",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "b23725ddfba54e38855d6487736d46bd",
+        "strategic-policy": "c8f88266b1364fe680a4355cc54520b9",
+        "strategic-policy:no-grounded-language": "9cf267bba4084557a6ba2d9efa0db6a5"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "index_skeptic",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9104848871319303,
+        "strategic-policy": 0.9104848871319303,
+        "strategic-policy:no-grounded-language": 0.9104848871319303
+      },
+      "run_ids": {
+        "adaptive": "b20c38e3455c4d0c9616ba2a33ffc903",
+        "strategic-policy": "833e34c6e224469c926a57e47a1f57d6",
+        "strategic-policy:no-grounded-language": "5ad99604cd014f64a4bee442eb1e0d94"
+      }
+    },
+    {
+      "case_id": "case:S02",
+      "opponent": "adversarial",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "6c869603de0e484da2e0bc614f440c4c",
+        "strategic-policy": "fd75cbfd639447a2a77ba72af895657f",
+        "strategic-policy:no-grounded-language": "d7bce0ed23ad492694e970934ae05c78"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "scripted",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "5dced99d6bb142c68ffe935da4a08b79",
+        "strategic-policy": "8c7e9d65aef5453998d53bb85e7703a4",
+        "strategic-policy:no-grounded-language": "881029ebd70f41a4bd3aa2428001aaaf"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "hardliner",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9039240627063719,
+        "strategic-policy": 0.9039240627063719,
+        "strategic-policy:no-grounded-language": 0.9039240627063719
+      },
+      "run_ids": {
+        "adaptive": "eff17cdefa9243d9a04fcc08ea73f32d",
+        "strategic-policy": "cc2bff5368f2467899433c3356f73d4d",
+        "strategic-policy:no-grounded-language": "790d85f405574832a24623aebfe8d02b"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "cashflow",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "e806259a1b554525b1814fd950352fc0",
+        "strategic-policy": "5607057434984abb8d58dec5846d677f",
+        "strategic-policy:no-grounded-language": "f1b24a43cf1f46228f9fcb0bec553967"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "relationship",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "e902eb8659a2441990a551fd3cfc1089",
+        "strategic-policy": "598a6b376fde4f93b45f986cad9829fc",
+        "strategic-policy:no-grounded-language": "87fee2228cc9433695c54e511ec1c1e2"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "index_skeptic",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9455213053878913,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.9455213053878913
+      },
+      "run_ids": {
+        "adaptive": "40d50662d67945b0a9adb6e8956bb601",
+        "strategic-policy": "aca72a8eea1f40bab09ffd221426b622",
+        "strategic-policy:no-grounded-language": "04de0c11de6b476d9cfd37c53a830f4c"
+      }
+    },
+    {
+      "case_id": "case:S03",
+      "opponent": "adversarial",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "018a42a5114e405db1518e0b16b7024c",
+        "strategic-policy": "fd9c469f840b4e768185cc0eb275e087",
+        "strategic-policy:no-grounded-language": "45e9785b5f9f41df87a055f3d8f7990d"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "scripted",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "1ad30a58030b4ed8b96e6549382c8af8",
+        "strategic-policy": "cd9b9831c08d4790a5079ca51dc6f474",
+        "strategic-policy:no-grounded-language": "93c2a8a5a45745be9a4cc8508cacff9e"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "hardliner",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.7726425972058772,
+        "strategic-policy": 0.7726425972058772,
+        "strategic-policy:no-grounded-language": 0.7726425972058772
+      },
+      "run_ids": {
+        "adaptive": "9584898afc214cb58210d2a8dedce534",
+        "strategic-policy": "e62a34a87aae4755b4b7c5228e6900fc",
+        "strategic-policy:no-grounded-language": "8f7e0ad4ea0a4fe598b7ff0f914841d8"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "cashflow",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "64ce2aad60b54682938c3ce75b576da1",
+        "strategic-policy": "66fe7f2fe0ef4ca6913e73f9f89d4bc7",
+        "strategic-policy:no-grounded-language": "6ed33037e06444768bc0e04a4e98cfc2"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "relationship",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "61ac30269e6948448a3f69f150dd1c47",
+        "strategic-policy": "8ccf96f8fb6c41d3a586d318041a42cf",
+        "strategic-policy:no-grounded-language": "3306c88bc7e747508d64211b2ad1e1ea"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "index_skeptic",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.8942808446745011,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.8942808446745011
+      },
+      "run_ids": {
+        "adaptive": "451875604fed4e078c28dc1133250596",
+        "strategic-policy": "196f2b372f974d278aaba847f59132e8",
+        "strategic-policy:no-grounded-language": "32347fa6266a4900889719a1adf8574a"
+      }
+    },
+    {
+      "case_id": "case:T01",
+      "opponent": "adversarial",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "dac7cea2902f4e95bc2c8018b3eaa560",
+        "strategic-policy": "ed7b0948b3e141e2ab70037837d7e738",
+        "strategic-policy:no-grounded-language": "06ae7fd03c7446de9a9f86b6d1afc362"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "scripted",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "6f8a19b9196545828b52521b229802e4",
+        "strategic-policy": "b3c7ea4d70cf407c97407f3127f96aa6",
+        "strategic-policy:no-grounded-language": "0bcf2b9322984409aa70a2470c4d6ec6"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "hardliner",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9032909195080463,
+        "strategic-policy": 0.9032909195080463,
+        "strategic-policy:no-grounded-language": 0.9032909195080463
+      },
+      "run_ids": {
+        "adaptive": "be06fe794885488a9b126b40e09204d7",
+        "strategic-policy": "edd0a933fb8f4858a6fa4ad8c9a88161",
+        "strategic-policy:no-grounded-language": "dc7d3f97b97b4468afdc1bbc53add97e"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "cashflow",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "8e4b0ded4661413798a0f22cf11df355",
+        "strategic-policy": "825deee80bb841448822fccc32dcd780",
+        "strategic-policy:no-grounded-language": "9398cf392677462cb1f26a01ac172ff7"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "relationship",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "4a9fe2e651db4f139921597b06087078",
+        "strategic-policy": "b73c2bb639ba4aba9b15226e060667ba",
+        "strategic-policy:no-grounded-language": "8e46ac75edc745039afbd8d9d0a1797e"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "index_skeptic",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 0.9452129433239111,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 0.9452129433239111
+      },
+      "run_ids": {
+        "adaptive": "1a346f1da1384be08c610dda517e20fd",
+        "strategic-policy": "65a2ded7dcf9423bac5274337bf7ab91",
+        "strategic-policy:no-grounded-language": "8a0fcd100bc9484bb17e7a8a1e295940"
+      }
+    },
+    {
+      "case_id": "case:T02",
+      "opponent": "adversarial",
+      "seed": 114,
+      "repeat": 0,
+      "supplier_model": null,
+      "excluded": false,
+      "scores": {
+        "adaptive": 1.0,
+        "strategic-policy": 1.0,
+        "strategic-policy:no-grounded-language": 1.0
+      },
+      "run_ids": {
+        "adaptive": "1d1bef1607b6434196a89e19c8efaeb0",
+        "strategic-policy": "f00c4b71c5d846328b6d4eb93c8c06cc",
+        "strategic-policy:no-grounded-language": "8277b3623b9b46e8a53631bae315bea2"
+      }
+    }
+  ],
+  "limitation": "Local synthetic evaluation. Seeds fix economics, not model outputs. No best-of-attempt selection."
+}

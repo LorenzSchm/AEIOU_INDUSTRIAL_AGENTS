@@ -4,8 +4,10 @@ import pytest
 
 from aeiou.structured_p10 import StructuredP10Client, public_claims
 
-FACTS = {"cost:340010": {"part": "part:340010", "price_unit": 1, "unit_cost": 24.31, "confidence_pct": 5},
-         "sc:70410@2026Q3": {"supplier": "sup:70410", "otd_pct": 79.5}}
+FACTS = {
+    "cost:340010": {"part": "part:340010", "price_unit": 1, "unit_cost": 24.31, "confidence_pct": 5},
+    "sc:70410@2026Q3": {"supplier": "sup:70410", "otd_pct": 79.5},
+}
 COST = "Our buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty (cost:340010)."
 SERVICE = "Supplier-wide on-time delivery was 79.5% (sc:70410@2026Q3)."
 TERMS = {"unit_price": 29.89, "volume_per_year": 23400, "contract_months": 24, "lead_time_days": 56}
@@ -19,8 +21,15 @@ def test_typed_claims_match_canonical_source_values():
     assert public_claims("We propose EUR 29.89; no evidence assertion.", FACTS) == []
 
 
-@pytest.mark.parametrize("body", [COST.replace("24.31", "23.00"), COST.replace("5%", "1%"),
-                                  SERVICE.replace("79.5%", "90%"), "Consider quote:unknown."])
+@pytest.mark.parametrize(
+    "body",
+    [
+        COST.replace("24.31", "23.00"),
+        COST.replace("5%", "1%"),
+        SERVICE.replace("79.5%", "90%"),
+        "Consider quote:unknown.",
+    ],
+)
 def test_wrong_numbers_and_unsupported_sources_are_not_rewritten(body):
     with pytest.raises(ValueError):
         public_claims(body, FACTS)
@@ -47,22 +56,43 @@ class Client:
         self.moves, self.closings = [], []
 
     def open_session(self, case_id):
-        return {"session_id": "session", "case": {"case_id": case_id, "suppliers": ["sup:70410"],
-                "parts": ["part:340010"], "negotiable": list(TERMS)},
-                "opening": {"sup:70410": {"offer_id": "offer:live-opening"}}}
+        return {
+            "session_id": "session",
+            "case": {
+                "case_id": case_id,
+                "suppliers": ["sup:70410"],
+                "parts": ["part:340010"],
+                "negotiable": list(TERMS),
+            },
+            "opening": {"sup:70410": {"offer_id": "offer:live-opening"}},
+        }
 
     def sessions(self, set_="practice"):
         return [{"session_id": "other-session", "status": "ended", "set": set_}]
 
     def move(self, session, supplier, move):
         self.moves.append(copy.deepcopy(move))
-        return {"offer_id": "offer:live-reply", "status": "open", "terms": TERMS,
-                "text": "Authoritative structured supplier text.", "claim_results": [{"result": "verified"}]}
+        return {
+            "offer_id": "offer:live-reply",
+            "status": "open",
+            "terms": TERMS,
+            "text": "Authoritative structured supplier text.",
+            "claim_results": [{"result": "verified"}],
+        }
 
     def thread(self, session, supplier):
-        return {"offer_id": "offer:live-reply", "status": "open", "messages": [
-            {"from": "sales@70410", "status": "open", "body": "Stale opening email.",
-             "term_sheets": [{"term_sheet_id": "offer:live-opening", "terms": TERMS}]}]}
+        return {
+            "offer_id": "offer:live-reply",
+            "status": "open",
+            "messages": [
+                {
+                    "from": "sales@70410",
+                    "status": "open",
+                    "body": "Stale opening email.",
+                    "term_sheets": [{"term_sheet_id": "offer:live-opening", "terms": TERMS}],
+                }
+            ],
+        }
 
     def send_message(self, session, supplier, message):
         self.closings.append(message)
@@ -90,8 +120,10 @@ def test_live_id_terms_and_exact_body_survive_translation_and_acceptance():
     assert client.closings == [accept]
 
 
-@pytest.mark.parametrize("patch", [{"body": "x" * 801}, {"term_sheets": []},
-                                   {"term_sheets": [{"terms": TERMS}] * 2}, {"refs": ["cost:340010"]}])
+@pytest.mark.parametrize(
+    "patch",
+    [{"body": "x" * 801}, {"term_sheets": []}, {"term_sheets": [{"terms": TERMS}] * 2}, {"refs": ["cost:340010"]}],
+)
 def test_invalid_transport_input_is_rejected_before_network_mutation(patch):
     client = Client()
     adapter = StructuredP10Client(client, Package())

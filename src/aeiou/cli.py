@@ -15,6 +15,7 @@ def main():
     serve = sub.add_parser("serve")
     serve.add_argument("--port", type=int, default=8765)
     bench = sub.add_parser("benchmark")
+    agents = ["baseline", "guarded", "adaptive", "claude", "original", "strategic", "strategic-policy"]
     bench.add_argument("--agent", choices=["adaptive", "guarded", "claude", "original"], default="original")
     bench.add_argument("--seeds", type=int, default=1)
     bench.add_argument("--label", default="local")
@@ -27,16 +28,50 @@ def main():
     compare.add_argument("--seed", type=int, default=71)
     compare.add_argument("--label", default="prompt-screen")
     compare.add_argument("--parallel", type=int, default=2)
+    evaluation = sub.add_parser("evaluate", help="Paired local evaluation, uncertainty intervals and ablations")
+    evaluation.add_argument("--agents", nargs="+", default=["adaptive", "strategic-policy"])
+    evaluation.add_argument("--seeds", nargs="+", type=int, default=[99, 100])
+    evaluation.add_argument("--cases", nargs="+")
+    evaluation.add_argument("--opponents", nargs="+")
+    evaluation.add_argument("--repeats", type=int, default=1)
+    evaluation.add_argument("--supplier", choices=["scripted", "language"], default="scripted")
+    evaluation.add_argument("--supplier-models", nargs="+", default=[None])
+    evaluation.add_argument("--buyer-model")
+    evaluation.add_argument("--allow-api", action="store_true")
+    evaluation.add_argument("--max-sessions", type=int, default=120)
+    evaluation.add_argument("--output")
+    evaluation.add_argument("--ablations", action="store_true", help="Add one disabled feature at a time")
+    optimize = sub.add_parser(
+        "optimize-writer", aliases=["optimize-strategy"], help="Bounded prompt search with disjoint case splits"
+    )
+    optimize.add_argument("--agent", choices=["strategic", "strategic-policy"], default="strategic")
+    optimize.add_argument("--rounds", type=int, default=2)
+    optimize.add_argument("--train", nargs="+", default=["case:S01", "case:S02", "case:T01"])
+    optimize.add_argument("--validation", nargs="+", default=["case:S03"])
+    optimize.add_argument("--test", nargs="+", default=["case:T02"])
+    optimize.add_argument("--opponents", nargs="+", default=["hardliner"])
+    optimize.add_argument("--supplier", choices=["scripted", "language"], default="scripted")
+    optimize.add_argument("--allow-api", action="store_true")
+    optimize.add_argument("--max-sessions", type=int, default=40)
+    optimize.add_argument("--output")
+    retrieve = sub.add_parser("research", help="Search case-scoped supplier evidence locally")
+    retrieve.add_argument("case_id")
+    retrieve.add_argument("query")
+    retrieve.add_argument("--supplier-id")
+    retrieval_eval = sub.add_parser("evaluate-retrieval", help="Measure recall on a labeled local query set")
+    retrieval_eval.add_argument("gold_file")
+    retrieval_eval.add_argument("--output", default="data/local/retrieval-evaluation.json")
     play = sub.add_parser("play")
     play.add_argument("case_id")
     play.add_argument("--mode", choices=["local", "hosted"], default="local")
-    play.add_argument("--agent", choices=["baseline", "guarded", "adaptive", "claude", "original"], default="original")
+    play.add_argument("--agent", choices=agents, default="original")
     play.add_argument("--opponent", default="relationship")
     play.add_argument("--tactic", choices=["prepared", "voss"], default="prepared")
     practice = sub.add_parser("practice")
     practice.add_argument("--parallel", type=int, default=3)
-    practice.add_argument("--agent", choices=["baseline", "adaptive", "claude", "original"],
-                          help="Explicitly opt into a legacy agent instead of an eval prompt")
+    practice.add_argument(
+        "--agent", choices=agents, help="Explicitly opt into a legacy agent instead of an eval prompt"
+    )
     practice_prompt = practice.add_mutually_exclusive_group()
     practice_prompt.add_argument("--prompt-file", help="UTF-8 prompt, using the eval suite's neutral controller")
     practice_prompt.add_argument("--eval-batch", help="Use the exact prompt and model saved in this eval batch")
@@ -45,7 +80,7 @@ def main():
     final = sub.add_parser("final")
     final.add_argument("--parallel", type=int, default=10)
     final.add_argument("--waves", type=int, default=5)
-    final.add_argument("--agent", choices=["original", "claude"], default="original")
+    final.add_argument("--agent", choices=agents[1:], default="original")
     sub.add_parser("doctor")
     sub.add_parser("report")
     replay = sub.add_parser(
@@ -89,6 +124,64 @@ def main():
         from .store import get_run
 
         print(json.dumps(verify_replay(get_run(a.run_id)), indent=2))
+    elif a.command == "evaluate":
+        from .evaluation import evaluate_matrix
+        from .strategy_policy import StrategicFeatures
+
+        labels = list(a.agents)
+        if a.ablations:
+            base = next((name for name in labels if name in {"strategic", "strategic-policy"}), None)
+            if base is None:
+                p.error("--ablations requires strategic or strategic-policy in --agents")
+            labels.extend(f"{base}:no-{field.replace('_', '-')}" for field in StrategicFeatures().metadata())
+        report = evaluate_matrix(
+            agents=labels,
+            seeds=a.seeds,
+            case_ids=a.cases,
+            opponents=a.opponents,
+            repeats=a.repeats,
+            supplier_mode=a.supplier,
+            supplier_models=a.supplier_models,
+            buyer_model=a.buyer_model,
+            allow_api=a.allow_api,
+            max_sessions=a.max_sessions,
+            output=a.output,
+        )
+        print(json.dumps({k: v for k, v in report.items() if k != "rows"}, indent=2))
+    elif a.command in {"optimize-writer", "optimize-strategy"}:
+        from .prompt_optimization import optimize_writer
+
+        report = optimize_writer(
+            target="strategy" if a.command == "optimize-strategy" else "writer",
+            train=a.train,
+            validation=a.validation,
+            test=a.test,
+            rounds=a.rounds,
+            agent=a.agent,
+            supplier_mode=a.supplier,
+            opponents=a.opponents,
+            allow_api=a.allow_api,
+            max_sessions=a.max_sessions,
+            output=a.output,
+        )
+        print(json.dumps(report, indent=2))
+    elif a.command == "research":
+        from .research import package
+        from .research_tools import decision_research
+        from .simulation import local_cases
+
+        pkg = package()
+        cases = {**pkg.cases, **local_cases()}
+        if a.case_id not in cases:
+            p.error("Unknown case")
+        print(json.dumps(decision_research(cases[a.case_id], pkg, a.query, a.supplier_id), indent=2))
+    elif a.command == "evaluate-retrieval":
+        from pathlib import Path
+
+        from .research_tools import evaluate_retrieval
+
+        gold = json.loads(Path(a.gold_file).read_text(encoding="utf-8"))
+        print(json.dumps(evaluate_retrieval(gold, a.output), indent=2))
     elif a.command == "report":
         from .hosted_evaluation import hosted_evaluation
 
@@ -142,8 +235,14 @@ def main():
             selected = [case["case_id"] for case in catalog["cases"][:limit]]
             if not selected:
                 p.error("Not enough quota or --max-sessions for the requested repeats")
-            report = prepare_evaluation(prompt, saved["model"] if saved else None, "practice",
-                                        case_ids=selected, repeats=a.repeats, catalog=catalog)
+            report = prepare_evaluation(
+                prompt,
+                saved["model"] if saved else None,
+                "practice",
+                case_ids=selected,
+                repeats=a.repeats,
+                catalog=catalog,
+            )
             if saved:
                 report.update({key: saved[key] for key in ("effort", "speed") if key in saved})
             report["parallel_runs"] = min(6, max(1, a.parallel))

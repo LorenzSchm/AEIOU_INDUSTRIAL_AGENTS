@@ -175,10 +175,9 @@ class PromptSpec:
         explicit = AcceptanceFloor.from_prompt(self.strategy)
         if explicit is not None or self.execution_policy is None:
             return explicit
-        return AcceptanceFloor.from_limits({
-            key: self.execution_policy.get(key)
-            for key in ("case_id", "maximum_total_cost", "maximum_unit_price")
-        })
+        return AcceptanceFloor.from_limits(
+            {key: self.execution_policy.get(key) for key in ("case_id", "maximum_total_cost", "maximum_unit_price")}
+        )
 
     @property
     def capacity_opening(self):
@@ -186,11 +185,14 @@ class PromptSpec:
 
     @property
     def transport(self):
-        return (TRANSPORT + (REFERENCE_TRANSPORT if self.enforce_reference_tactics else "")
-                + (ASSESSMENT_TRANSPORT if self.assessment_enabled else "")
-                + (EVIDENCE_TRANSPORT if self.assessment_enabled else "")
-                + (EXECUTION_TRANSPORT if self.execution_policy else "")
-                + (FLOOR_TRANSPORT if self.acceptance_floor else ""))
+        return (
+            TRANSPORT
+            + (REFERENCE_TRANSPORT if self.enforce_reference_tactics else "")
+            + (ASSESSMENT_TRANSPORT if self.assessment_enabled else "")
+            + (EVIDENCE_TRANSPORT if self.assessment_enabled else "")
+            + (EXECUTION_TRANSPORT if self.execution_policy else "")
+            + (FLOOR_TRANSPORT if self.acceptance_floor else "")
+        )
 
     @property
     def system(self):
@@ -283,16 +285,25 @@ class ContractError(ValueError):
 class PromptLabAgent(Negotiator):
     """Shared harness; deterministic closing is opt-in through saved user controls."""
 
+    # This harness owns its exact acceptance, confirmation and stopping policy.
+    # Generic hosted deadline/refresh hooks must not replace a selected action.
+    manages_execution = True
+
     def __init__(self, pkg, backend, spec):
         super().__init__(pkg, backend)
         self.spec = spec
         self.acceptance_floor = spec.acceptance_floor
         self.capacity_opening = spec.capacity_opening
-        self.execution_policy = (validate_policy(spec.execution_policy, self.acceptance_floor)
-                                 if spec.execution_policy else None)
-        if any((self.execution_policy or {}).get(k) for k in (
-                "menu_evidence_argument", "compromise_evidence_argument", "consistent_package_sequence")) \
-                and not spec.assessment_enabled:
+        self.execution_policy = (
+            validate_policy(spec.execution_policy, self.acceptance_floor) if spec.execution_policy else None
+        )
+        if (
+            any(
+                (self.execution_policy or {}).get(k)
+                for k in ("menu_evidence_argument", "compromise_evidence_argument", "consistent_package_sequence")
+            )
+            and not spec.assessment_enabled
+        ):
             raise ValueError("Execution evidence requires assessment and numeric-claim validation")
         # Audit only the request present in this prompt; never borrow text from another strategy.
         request = re.search(r"Please remind me.*?(?=\nIf they shared these 3 offers)", spec.strategy, re.S)
@@ -326,8 +337,9 @@ class PromptLabAgent(Negotiator):
         }
 
     def prepare(self, case):
-        if self.capacity_opening and (self.capacity_opening["case_id"] != case["case_id"]
-                                      or case.get("type") != "capacity"):
+        if self.capacity_opening and (
+            self.capacity_opening["case_id"] != case["case_id"] or case.get("type") != "capacity"
+        ):
             raise ValueError("Capacity opening settings belong to a different case")
         if self.acceptance_floor:
             self.acceptance_floor.check_case(case)
@@ -355,10 +367,12 @@ class PromptLabAgent(Negotiator):
                 offer["acceptance_eligible"] &= offer["meets_score_floor"] and offer["meets_unit_price_limit"]
                 if self.execution_policy:
                     offer["meets_execution_policy"] = package_allowed(
-                        case, offer["terms"], offer["cost"], floor, self.execution_policy)
+                        case, offer["terms"], offer["cost"], floor, self.execution_policy
+                    )
                     offer["acceptance_eligible"] &= offer["meets_execution_policy"]
-            supplier["eligible_offer_ids"] = [o["term_sheet_id"] for o in supplier["offers"]
-                                              if o["acceptance_eligible"]]
+            supplier["eligible_offer_ids"] = [
+                o["term_sheet_id"] for o in supplier["offers"] if o["acceptance_eligible"]
+            ]
             if not supplier["eligible_offer_ids"]:
                 supplier["legal_actions"] = [a for a in supplier["legal_actions"] if a != "accept"]
             if nonqualifying_final(case, supplier, floor, self.execution_policy):
@@ -372,48 +386,61 @@ class PromptLabAgent(Negotiator):
 
     def render_lab(self, case, threads):
         offers = {
-            sid: candidate_packages(case_with_supplier_defaults(case, threads[sid]), threads[sid], sid,
-                                    self.intelligence)
+            sid: candidate_packages(
+                case_with_supplier_defaults(case, threads[sid]), threads[sid], sid, self.intelligence
+            )
             for sid in live_threads(threads)
             if latest(threads[sid]).get("term_sheets")
         }
         if self.acceptance_floor:
-            offers = {sid: [p for p in packages if self.acceptance_floor.allows(p["cost"], p["terms"])]
-                      for sid, packages in offers.items()}
+            offers = {
+                sid: [p for p in packages if self.acceptance_floor.allows(p["cost"], p["terms"])]
+                for sid, packages in offers.items()
+            }
         payload = json.loads(super().render(case, threads, offers, evaluate(case, threads, self.intelligence)))
         # Five-repeat tactics need more than the production renderer's last four supplier replies.
         for sid, data in payload["threads"].items():
             data["messages"] = [
                 {k: m[k] for k in ("from", "body", "status", "term_sheets", "claim_results") if k in m}
-                | {
-                    "source_ref": message_ref(sid, index),
-                    "attachments": render_attachments(sid, index, m)
-                }
-                for index, m in enumerate(threads[sid]) if index >= len(threads[sid]) - 14
+                | {"source_ref": message_ref(sid, index), "attachments": render_attachments(sid, index, m)}
+                for index, m in enumerate(threads[sid])
+                if index >= len(threads[sid]) - 14
             ]
             data["consecutive_identical_supplier_offers"] = repetition_count(case, threads[sid])
         payload["protocol_state"] = self.decision_protocol_state(case, threads)
         catalog = source_attachment_catalog(self.intelligence)
         payload["source_attachments"] = {sid: catalog.get(sid, {}) for sid in threads}
         if self.acceptance_floor:
-            payload["acceptance_policy"] = {**self.acceptance_floor.metadata(),
-                                            "maximum_total_cost": float(self.acceptance_floor.max_cost)}
+            payload["acceptance_policy"] = {
+                **self.acceptance_floor.metadata(),
+                "maximum_total_cost": float(self.acceptance_floor.max_cost),
+            }
         payload["private_preparation"] = self.private_preparation
         if self.spec.assessment_enabled:
             payload["decision_context"] = build_context(case, threads, self.intelligence, self.supplier_assessments)
             records = prepare_evidence_payload(payload, self.intelligence, threads, self.spec.strategy)
             restore_reads(payload, records, self.evidence_cache)
             payload["supplier_signals"] = supplier_signals(case, threads)
-            payload["price_plan"] = price_plan(case, threads, payload["protocol_state"], self.acceptance_floor,
-                                               (self.execution_policy or {}).get("closing_price"),
-                                               (self.execution_policy or {}).get("minimum_contract_months"),
-                                               (self.capacity_opening or {}).get("opening_fraction", .85))
+            payload["price_plan"] = price_plan(
+                case,
+                threads,
+                payload["protocol_state"],
+                self.acceptance_floor,
+                (self.execution_policy or {}).get("closing_price"),
+                (self.execution_policy or {}).get("minimum_contract_months"),
+                (self.capacity_opening or {}).get("opening_fraction", 0.85),
+            )
         if self.execution_policy:
             payload["execution_policy"] = self.execution_policy
             if self.execution_policy.get("consistent_package_sequence"):
                 payload["package_sequence_state"] = sequence_plan(
-                    case, threads, payload["protocol_state"], self.acceptance_floor,
-                    self.execution_policy, payment_restriction)
+                    case,
+                    threads,
+                    payload["protocol_state"],
+                    self.acceptance_floor,
+                    self.execution_policy,
+                    payment_restriction,
+                )
         payload["initial_prices"] = {
             sid: next(
                 (
@@ -456,11 +483,16 @@ class PromptLabAgent(Negotiator):
             if any(s["eligible_offer_ids"] for s in state["suppliers"].values()):
                 raise ContractError("An eligible offer meets the score floor; choose an available action")
             reason = state["suppliers"][sid].get("policy_restriction", "ACCEPTANCE_SCORE_FLOOR_NOT_MET")
-            self.audit["terminal_limits"].append({"reason_code": reason,
-                                                  "source": "policy:final-offer-stop" if reason ==
-                                                  "FINAL_OFFER_OUTSIDE_LIMITS" else "policy:score-floor",
-                                                  "protocol_state": state,
-                                                  "maximum_total_cost": float(self.acceptance_floor.max_cost)})
+            self.audit["terminal_limits"].append(
+                {
+                    "reason_code": reason,
+                    "source": "policy:final-offer-stop"
+                    if reason == "FINAL_OFFER_OUTSIDE_LIMITS"
+                    else "policy:score-floor",
+                    "protocol_state": state,
+                    "maximum_total_cost": float(self.acceptance_floor.max_cost),
+                }
+            )
             raise NegotiationBlocked(reason)
         if kind == "walk_away":
             raise ContractError(
@@ -469,7 +501,8 @@ class PromptLabAgent(Negotiator):
         if kind == "accept":
             selected = self.selected_offer(case, events, action)
             if self.execution_policy and not package_allowed(
-                    case, selected["terms"], selected["cost"], self.acceptance_floor, self.execution_policy):
+                case, selected["terms"], selected["cost"], self.acceptance_floor, self.execution_policy
+            ):
                 raise ContractError("Acceptance violates the saved execution controls")
             if not selected["server_acceptance_available"]:
                 raise ContractError(
@@ -499,7 +532,8 @@ class PromptLabAgent(Negotiator):
             }
         state = protocol_state(case, threads, self.required_repeats, self.confirmation_targets)["suppliers"][sid]
         if kind in {"send", "confirm"} and nonqualifying_final(
-                case, state, self.acceptance_floor, self.execution_policy):
+            case, state, self.acceptance_floor, self.execution_policy
+        ):
             raise ContractError("Final offer does not meet the saved limits; further negotiation is disabled by policy")
         if kind == "confirm":
             selected = self.selected_offer(case, events, action)
@@ -531,14 +565,16 @@ class PromptLabAgent(Negotiator):
                 f"Recipient's own offer IDs {citations} are operational IDs, not rival-quote evidence. "
                 "Remove them from the email subject/body; say 'your quotation' or describe its terms. "
                 "Keep exact IDs only in structured accept/confirm selectors or private assessments. "
-                "The rejected message was not sent.")
+                "The rejected message was not sent."
+            )
         context = build_context(case, threads, self.intelligence, {})
         if citations := internal_evidence_citations(action, context["calculations"]):
             raise ContractError(
                 f"Local audit references {citations} are private calculation/retrieval IDs, "
                 "not supplier-verifiable source IDs. Keep them in private assessments and numeric_claims. "
                 "Describe the figure as our calculation and cite appropriate underlying canonical records "
-                "in the email, without inventing an external source. The rejected message was not sent.")
+                "in the email, without inventing an external source. The rejected message was not sent."
+            )
         supplier_case = case_with_supplier_defaults(case, events)
         sheets = action.get("term_sheets", [])
         if not sheets and action.get("candidate_ids"):
@@ -558,13 +594,17 @@ class PromptLabAgent(Negotiator):
                 )
             if self.acceptance_floor and not self.acceptance_floor.allows_unit_price(terms):
                 raise ContractError("ACCEPTANCE_UNIT_PRICE_LIMIT_EXCEEDED: do not propose a price above the user's cap")
-            if self.execution_policy and (self.execution_policy.get("adapt_closing_price_to_budget")
-                                          or self.execution_policy.get("early_package_alternatives")
-                                          or self.execution_policy.get("consistent_package_sequence")):
+            if self.execution_policy and (
+                self.execution_policy.get("adapt_closing_price_to_budget")
+                or self.execution_policy.get("early_package_alternatives")
+                or self.execution_policy.get("consistent_package_sequence")
+            ):
                 cost = total_cost(case, terms, standard_terms(events))
                 if not package_allowed(case, terms, cost, self.acceptance_floor, self.execution_policy):
-                    raise ContractError("Proposed package violates the saved complete-cost or duration limit; "
-                                        "use the package-specific affordable price or change permitted terms")
+                    raise ContractError(
+                        "Proposed package violates the saved complete-cost or duration limit; "
+                        "use the package-specific affordable price or change permitted terms"
+                    )
             checked.append({"terms": complete_offer(supplier_case, terms)})
         # Preserve exact wording, newlines, citations and tactics. No text rewrite or price policy.
         sources = None
@@ -620,7 +660,8 @@ class PromptLabAgent(Negotiator):
         if control and stage_from_action(control):
             control.update(controlled_assessment(control, payload["decision_context"]))
             control, execution_evidence = apply_menu_evidence(
-                control, payload, threads[control["supplier_id"]], self.execution_policy)
+                control, payload, threads[control["supplier_id"]], self.execution_policy
+            )
             if execution_evidence["status"] != "included":
                 execution_evidence["deferred_to_model"] = True
                 payload["execution_control_deferral"] = execution_evidence
@@ -631,7 +672,8 @@ class PromptLabAgent(Negotiator):
                 if execution_evidence is None:
                     action.update(controlled_assessment(action, payload["decision_context"]))
                     action, execution_evidence = apply_menu_evidence(
-                        action, payload, threads[action["supplier_id"]], self.execution_policy)
+                        action, payload, threads[action["supplier_id"]], self.execution_policy
+                    )
                 assessment, numeric_checks = validate_assessment(action, payload["decision_context"])
             move = self.contract(case, threads, action)
             source = controlled_source(action)
@@ -648,8 +690,11 @@ class PromptLabAgent(Negotiator):
                     raise BuyerDecisionTimeout("Buyer decision time budget exhausted; no validation retry was sent")
                 user = encode_payload(payload)
                 payload = json.loads(user)
-                receipt = {"message_index": {sid: len(ev) for sid, ev in threads.items()},
-                           "attempt": len(requests) + 1, **request_receipt(user)}
+                receipt = {
+                    "message_index": {sid: len(ev) for sid, ev in threads.items()},
+                    "attempt": len(requests) + 1,
+                    **request_receipt(user),
+                }
                 requests.append(receipt)
                 self.audit["model_requests"].append(receipt)
                 if hasattr(self.backend, "complete_before"):
@@ -687,7 +732,8 @@ class PromptLabAgent(Negotiator):
                         label_repairs.extend(repairs)
                         self.audit["assessment_label_repairs"].extend(
                             {"message_index": len(threads.get(action.get("supplier_id"), [])), **repair}
-                            for repair in repairs)
+                            for repair in repairs
+                        )
                         assessment, numeric_checks = validate_assessment(action, payload["decision_context"])
                     move = self.contract(case, threads, action)
                     break
@@ -702,15 +748,19 @@ class PromptLabAgent(Negotiator):
                             if action
                             else None,
                             "evidence": evidence_diagnostic(action, payload["decision_context"])
-                            if self.spec.assessment_enabled else [],
+                            if self.spec.assessment_enabled
+                            else [],
                         }
                     )
-                    self.audit["validation_failures"].append({
-                        "attempt": failures + 1, **self.last_rejections[-1],
-                        "evidence_reads": list(retrieval_log),
-                        "thread_lengths": {sid: len(events) for sid, events in threads.items()},
-                        "model_request": requests[-1],
-                    })
+                    self.audit["validation_failures"].append(
+                        {
+                            "attempt": failures + 1,
+                            **self.last_rejections[-1],
+                            "evidence_reads": list(retrieval_log),
+                            "thread_lengths": {sid: len(events) for sid, events in threads.items()},
+                            "model_request": requests[-1],
+                        }
+                    )
                     failures += 1
                     if failures >= 2:
                         raise ContractError("Two invalid outputs; no substitute strategy used") from exc

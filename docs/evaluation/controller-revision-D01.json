@@ -1,0 +1,278 @@
+{
+  "title": "case:D01 \u2014 two runs per version",
+  "created_at": "2026-10-24T16:43:10.279157+00:00",
+  "arena_scope": "sandbox",
+  "arena_sessions_used": 4,
+  "new_sessions_used": 2,
+  "practice_sessions_used": 0,
+  "conditions": {
+    "case_ids": [
+      "case:D01"
+    ],
+    "planned_sessions": 4,
+    "repetitions_per_version": 2,
+    "supplier_mode": "hosted sandbox",
+    "buyer_model": "claude-sonnet-5-5"
+  },
+  "infrastructure_failures": [],
+  "summary": {
+    "reference-9ceb745": {
+      "scores": [
+        0.6889183182089182,
+        0.6889183182089182
+      ],
+      "mean_score": 0.6889183182089182,
+      "spread": 0.0,
+      "sessions": 2,
+      "failures": 0,
+      "must_have_violations": 0,
+      "decision_p95_s": 2.735
+    },
+    "current-bfd470c": {
+      "scores": [
+        0.7719600126210977,
+        0.9206684901564397
+      ],
+      "mean_score": 0.8463142513887687,
+      "spread": 0.148708477535342,
+      "sessions": 2,
+      "failures": 0,
+      "must_have_violations": 0,
+      "decision_p95_s": 4.047
+    }
+  },
+  "runs": {
+    "reference-9ceb745": [
+      {
+        "case_id": "case:D01",
+        "repetition": 1,
+        "run_id": "35d1c6acd53d48e3a8ac96279149c2df",
+        "status": "completed",
+        "result": {
+          "ended": true,
+          "deal": true,
+          "supplier_id": "sup:DEMO-F1",
+          "offer_id": "offer:DEMO-F1-3",
+          "terms": {
+            "payment_days": 30,
+            "lead_time_days": 35,
+            "volume_per_year": 4000,
+            "contract_months": 24,
+            "effective_date": "2026-12-01",
+            "index_clause": null,
+            "incoterm": "FCA",
+            "tooling_eur": 0.0,
+            "ppm_commitment": 650,
+            "chargeback_eur_per_complaint": 0.0,
+            "unit_price": 51.1
+          },
+          "c_open": 448810.67,
+          "c_deal": 421125.33,
+          "c_alt": null,
+          "c_best": 408623.99,
+          "score": 0.6889183182089182,
+          "must_haves_ok": true,
+          "cost_breakdown": {
+            "price": 408800.0,
+            "uncovered_need": 0.0,
+            "fallback_risk": 0.0,
+            "payment_terms": 2725.33,
+            "freight": 9600.0,
+            "late_delivery": 0.0,
+            "quality": 0.0,
+            "tooling": 0.0,
+            "index_clause": 0.0,
+            "index_risk": 0.0,
+            "relationship": 0.0
+          }
+        },
+        "error": null,
+        "metrics": {
+          "elapsed_s": 65.56,
+          "fallbacks": 0,
+          "calls": 3,
+          "errors": 0,
+          "input_tokens": 18278,
+          "output_tokens": 203
+        }
+      },
+      {
+        "case_id": "case:D01",
+        "repetition": 2,
+        "run_id": "3dc1568a02794c4b8332986227464cc8",
+        "status": "completed",
+        "result": {
+          "ended": true,
+          "deal": true,
+          "supplier_id": "sup:DEMO-F1",
+          "offer_id": "offer:DEMO-F1-3",
+          "terms": {
+            "payment_days": 30,
+            "lead_time_days": 35,
+            "volume_per_year": 4000,
+            "contract_months": 24,
+            "effective_date": "2026-12-01",
+            "index_clause": null,
+            "incoterm": "FCA",
+            "tooling_eur": 0.0,
+            "ppm_commitment": 650,
+            "chargeback_eur_per_complaint": 0.0,
+            "unit_price": 51.1
+          },
+          "c_open": 448810.67,
+          "c_deal": 421125.33,
+          "c_alt": null,
+          "c_best": 408623.99,
+          "score": 0.6889183182089182,
+          "must_haves_ok": true,
+          "cost_breakdown": {
+            "price": 408800.0,
+            "uncovered_need": 0.0,
+            "fallback_risk": 0.0,
+            "payment_terms": 2725.33,
+            "freight": 9600.0,
+            "late_delivery": 0.0,
+            "quality": 0.0,
+            "tooling": 0.0,
+            "index_clause": 0.0,
+            "index_risk": 0.0,
+            "relationship": 0.0
+          }
+        },
+        "error": null,
+        "metrics": {
+          "elapsed_s": 6.03,
+          "fallbacks": 0,
+          "calls": 3,
+          "errors": 0,
+          "input_tokens": 18278,
+          "output_tokens": 203
+        }
+      }
+    ],
+    "current-bfd470c": [
+      {
+        "case_id": "case:D01",
+        "repetition": 1,
+        "run_id": "8c48c52dd68e40beb152fab69ce2fd4c",
+        "status": "completed",
+        "result": {
+          "ended": true,
+          "deal": true,
+          "supplier_id": "sup:DEMO-F1",
+          "offer_id": "offer:DEMO-F1-4",
+          "terms": {
+            "payment_days": 30,
+            "lead_time_days": 35,
+            "volume_per_year": 4000,
+            "contract_months": 24,
+            "effective_date": "2027-04-01",
+            "index_clause": null,
+            "incoterm": "FCA",
+            "tooling_eur": 0.0,
+            "ppm_commitment": 650,
+            "chargeback_eur_per_complaint": 0.0,
+            "unit_price": 51.1
+          },
+          "c_open": 448810.67,
+          "c_deal": 417788.16,
+          "c_alt": null,
+          "c_best": 408623.99,
+          "score": 0.7719600126210977,
+          "must_haves_ok": true,
+          "cost_breakdown": {
+            "price": 405484.93,
+            "uncovered_need": 0.0,
+            "fallback_risk": 0.0,
+            "payment_terms": 2703.23,
+            "freight": 9600.0,
+            "late_delivery": 0.0,
+            "quality": 0.0,
+            "tooling": 0.0,
+            "index_clause": 0.0,
+            "index_risk": 0.0,
+            "relationship": 0.0
+          }
+        },
+        "error": null,
+        "metrics": {
+          "elapsed_s": 160.36,
+          "fallbacks": 0,
+          "calls": 6,
+          "errors": 0,
+          "input_tokens": 28906,
+          "output_tokens": 465
+        }
+      },
+      {
+        "case_id": "case:D01",
+        "repetition": 2,
+        "run_id": "3a5ba9e8a28a4d738be7c3968134620c",
+        "status": "completed",
+        "result": {
+          "ended": true,
+          "deal": true,
+          "supplier_id": "sup:DEMO-F1",
+          "offer_id": "offer:DEMO-F1-4",
+          "terms": {
+            "payment_days": 30,
+            "lead_time_days": 35,
+            "volume_per_year": 4000,
+            "contract_months": 24,
+            "effective_date": "2027-04-01",
+            "index_clause": null,
+            "incoterm": "FCA",
+            "tooling_eur": 0.0,
+            "ppm_commitment": 650,
+            "chargeback_eur_per_complaint": 0.0,
+            "unit_price": 50.2
+          },
+          "c_open": 448810.67,
+          "c_deal": 411812.06,
+          "c_alt": null,
+          "c_best": 408623.99,
+          "score": 0.9206684901564397,
+          "must_haves_ok": true,
+          "cost_breakdown": {
+            "price": 399478.36,
+            "uncovered_need": 0.0,
+            "fallback_risk": 0.0,
+            "payment_terms": 2663.19,
+            "freight": 9600.0,
+            "late_delivery": 0.0,
+            "quality": 0.0,
+            "tooling": 0.0,
+            "index_clause": 0.0,
+            "index_risk": 0.0,
+            "relationship": 70.51
+          }
+        },
+        "error": null,
+        "metrics": {
+          "elapsed_s": 107.81,
+          "fallbacks": 0,
+          "calls": 6,
+          "errors": 0,
+          "input_tokens": 28994,
+          "output_tokens": 487
+        }
+      }
+    ]
+  },
+  "paired_comparisons": {},
+  "excluded_pairs": 0,
+  "mean_change_points": 15.739593317985046,
+  "limitation": "Includes two previously completed reference sessions and two new sessions. Different versions ran at different times; two repeats cannot establish generalization or isolate LLM causality. Multiple controller changes are bundled. No extra Practice attempts. D02 repetition 2 then suffered a Windows file-lock crash and server timeout: its actual zero score is included, not discarded. It does not measure LLM-only variation. The subsequent storage and delivery-probe fixes were locally tested only. One D02 start was rejected with HTTP 429 before creating a session and was retried when capacity became available; that rejection is recorded separately.",
+  "practice_before": {
+    "used": 28,
+    "left": 172,
+    "limit": 200,
+    "resets_at": "2026-10-25T11:19:44.936916+00:00"
+  },
+  "practice_after": {
+    "used": 28,
+    "left": 172,
+    "limit": 200,
+    "resets_at": "2026-10-25T11:19:44.936916+00:00"
+  }
+}

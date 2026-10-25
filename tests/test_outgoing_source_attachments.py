@@ -26,20 +26,40 @@ NOTE = "doc:20260310-70410-M1"
 @pytest.fixture
 def prepared():
     case = json.loads((ROOT / "data/package/cases/practice/P10.json").read_text())
-    threads = {SID: [{"from": "sales@70410", "status": "open", "body": "Please provide the March note.",
-                      "term_sheets": [{"term_sheet_id": "offer:70410-0", "terms": {
-                          "unit_price": 32.2, "volume_per_year": 19890,
-                          "contract_months": 12, "lead_time_days": 54}}]}]}
+    threads = {
+        SID: [
+            {
+                "from": "sales@70410",
+                "status": "open",
+                "body": "Please provide the March note.",
+                "term_sheets": [
+                    {
+                        "term_sheet_id": "offer:70410-0",
+                        "terms": {
+                            "unit_price": 32.2,
+                            "volume_per_year": 19890,
+                            "contract_months": 12,
+                            "lead_time_days": 54,
+                        },
+                    }
+                ],
+            }
+        ]
+    }
     agent = PromptLabAgent(package(), None, PromptSpec("attachment-test", "Negotiate P10.", assessment_enabled=True))
     agent.prepare(case)
     return agent, case, threads
 
 
 def action():
-    return {"action": "send", "supplier_id": SID, "subject": "Recorded approval process",
-            "body": "Attached is the historical March meeting note. Please review our proposal.",
-            "term_sheets": [{"unit_price": 31, "volume_per_year": 23400,
-                             "contract_months": 36, "lead_time_days": 54}], "attach_sources": [NOTE]}
+    return {
+        "action": "send",
+        "supplier_id": SID,
+        "subject": "Recorded approval process",
+        "body": "Attached is the historical March meeting note. Please review our proposal.",
+        "term_sheets": [{"unit_price": 31, "volume_per_year": 23400, "contract_months": 36, "lead_time_days": 54}],
+        "attach_sources": [NOTE],
+    }
 
 
 def test_exact_source_reaches_http_request_and_is_audited(prepared):
@@ -67,18 +87,22 @@ def test_exact_source_reaches_http_request_and_is_audited(prepared):
     message = sent[0]["message"]
     assert message["body"] == request["body"]
     assert message["term_sheets"][0]["terms"]["lead_time_days"] == 54
-    attachment, = message["attachments"]
+    (attachment,) = message["attachments"]
     assert set(attachment) == {"name", "type", "content_b64"}
     assert attachment["name"] == "doc-20260310-70410-M1.md"
     assert attachment["type"] == "md"
     assert base64.b64decode(attachment["content_b64"], validate=True) == original
-    receipt, = agent.decisions[-1]["outgoing_source_attachments"]
-    assert receipt == {"source_ref": NOTE, "name": attachment["name"], "bytes": len(original),
-                       "content_sha256": hashlib.sha256(original).hexdigest()}
+    (receipt,) = agent.decisions[-1]["outgoing_source_attachments"]
+    assert receipt == {
+        "source_ref": NOTE,
+        "name": attachment["name"],
+        "bytes": len(original),
+        "content_sha256": hashlib.sha256(original).hexdigest(),
+    }
     # The following decision sees what was actually attached, not an empty file placeholder.
     threads[SID].append({"from": "buyer", **message})
     payload = json.loads(agent.render_lab(case, threads))
-    rendered, = payload["threads"][SID]["messages"][-1]["attachments"]
+    (rendered,) = payload["threads"][SID]["messages"][-1]["attachments"]
     assert rendered["text"] == original.decode("utf-8")
     assert not rendered["truncated"]
     record = source_records(agent.intelligence, threads)[rendered["source_ref"]]
@@ -116,9 +140,20 @@ def test_partial_document_must_be_read_before_it_can_be_sent(prepared):
         agent.contract(case, threads, action())
 
 
-@pytest.mark.parametrize("refs", [NOTE, None, [1], [NOTE, NOTE], [NOTE] * 6,
-                                  ["table:po_lines"], ["p10:ordered_last_12m_units"],
-                                  ["doc:missing"], ["/etc/passwd"]])
+@pytest.mark.parametrize(
+    "refs",
+    [
+        NOTE,
+        None,
+        [1],
+        [NOTE, NOTE],
+        [NOTE] * 6,
+        ["table:po_lines"],
+        ["p10:ordered_last_12m_units"],
+        ["doc:missing"],
+        ["/etc/passwd"],
+    ],
+)
 def test_invalid_attachment_selections_are_rejected_without_changing_the_action(prepared, refs):
     agent, case, threads = prepared
     request = {**action(), "attach_sources": refs}
@@ -137,17 +172,20 @@ def test_different_supplier_and_model_authored_contents_are_not_sent(prepared):
     with pytest.raises(ContractError, match="raw attachments are unsupported"):
         agent.contract(case, threads, {**action(), "attachments": [{"name": "invented.md", "text": "Invented"}]})
     with pytest.raises(ContractError, match="only with action: send"):
-        agent.contract(case, threads, {"supplier_id": SID, "action": "accept",
-                                      "term_sheet_id": "offer:70410-0", "attach_sources": [NOTE]})
+        agent.contract(
+            case,
+            threads,
+            {"supplier_id": SID, "action": "accept", "term_sheet_id": "offer:70410-0", "attach_sources": [NOTE]},
+        )
 
 
 def test_size_limits_use_utf8_bytes_and_never_truncate_documents():
     text = "ü" * (MAX_SOURCE_ATTACHMENT_BYTES // 2)
     info = {"facts": {NOTE: {"supplier": SID}}, "documents": [{"id": NOTE, "text": text}]}
-    encoded, = outgoing_source_attachments({"attach_sources": [NOTE]}, SID, info)
+    (encoded,) = outgoing_source_attachments({"attach_sources": [NOTE]}, SID, info)
     assert len(base64.b64decode(encoded["content_b64"])) == MAX_SOURCE_ATTACHMENT_BYTES
     assert source_attachment_catalog(info)[SID][NOTE]["bytes"] == MAX_SOURCE_ATTACHMENT_BYTES
-    rendered, = render_attachments(SID, 0, {"attachments": [encoded]})
+    (rendered,) = render_attachments(SID, 0, {"attachments": [encoded]})
     assert rendered["truncated"] and rendered["text"] == text[:3500]
     info["documents"][0]["text"] += "ü"
     with pytest.raises(ValueError, match="32 KiB"):

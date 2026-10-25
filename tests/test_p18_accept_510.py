@@ -27,8 +27,11 @@ def scenario():
 
 
 def agent():
-    return PromptLabAgent(package(), NoModel(), PromptSpec(
-        "v25-offline", STRATEGY, assessment_enabled=True, execution_policy=copy.deepcopy(POLICY)))
+    return PromptLabAgent(
+        package(),
+        NoModel(),
+        PromptSpec("v25-offline", STRATEGY, assessment_enabled=True, execution_policy=copy.deepcopy(POLICY)),
+    )
 
 
 @pytest.mark.parametrize("days", [14, 30, 45, 60, 90])
@@ -38,15 +41,16 @@ def test_authorized_510_accepts_each_permitted_complete_package(days, deadband, 
     case, threads = scenario()
     sheet = threads[SID][-1]["term_sheets"][0]
     sheet["terms"] = {
-        "unit_price": 5.10, "payment_days": days, "contract_months": duration,
-        "index_clause": None if deadband is None else {
-            "series": "AS-14404", "material_share": .45,
-            "deadband_pct": deadband, "base_month": "2026-08"},
+        "unit_price": 5.10,
+        "payment_days": days,
+        "contract_months": duration,
+        "index_clause": None
+        if deadband is None
+        else {"series": "AS-14404", "material_share": 0.45, "deadband_pct": deadband, "base_month": "2026-08"},
     }
     before = copy.deepcopy(threads)
     a = agent()
-    assert a.decide(case, threads)["message"]["action"] == {
-        "type": "accept", "term_sheet_id": sheet["term_sheet_id"]}
+    assert a.decide(case, threads)["message"]["action"] == {"type": "accept", "term_sheet_id": sheet["term_sheet_id"]}
     assert a.decisions[-1]["source"] == "policy:accept"
     assert threads == before
 

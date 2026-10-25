@@ -25,7 +25,11 @@ console.log(JSON.stringify({expression}));
 """
     result = subprocess.run(
         [node, "--input-type=module", "-e", script],
-        cwd=ROOT, input=json.dumps(payload), text=True, capture_output=True, check=True,
+        cwd=ROOT,
+        input=json.dumps(payload),
+        text=True,
+        capture_output=True,
+        check=True,
     )
     return json.loads(result.stdout)
 
@@ -39,24 +43,41 @@ def test_browser_cost_matches_kit_for_complete_and_partial_packages():
             for volume in [3000, 8000]:
                 for incoterm in ["EXW", "FCA", "DAP"]:
                     terms = {
-                        "unit_price": 16.7, "payment_days": 90, "contract_months": months,
-                        "volume_per_year": volume, "incoterm": incoterm, "lead_time_days": 45,
-                        "effective_date": "2027-04-01", "tooling_eur": 1200,
-                        "ppm_commitment": 1800, "chargeback_eur_per_complaint": 12,
+                        "unit_price": 16.7,
+                        "payment_days": 90,
+                        "contract_months": months,
+                        "volume_per_year": volume,
+                        "incoterm": incoterm,
+                        "lead_time_days": 45,
+                        "effective_date": "2027-04-01",
+                        "tooling_eur": 1200,
+                        "ppm_commitment": 1800,
+                        "chargeback_eur_per_complaint": 12,
                         "index_clause": {"series": "METAL", "material_share": 0.6, "deadband_pct": 3},
                     }
                     samples.append({"case": case, "terms": terms, "standard": {}})
-        samples.extend([
-            {"case": case, "terms": {"unit_price": 17.1, "payment_days": None},
-             "standard": {"payment_days": 30, "lead_time_days": 28, "ppm_commitment": 1100}},
-            {"case": case, "terms": {"unit_price": 16.7, "payment_days": 60, "lead_time_days": 35,
-                                     "incoterm": "DAP"}, "standard": {"ppm_commitment": 2600}},
-            {"case": case, "terms": {}, "standard": {}},
-        ])
-    observed = browser(samples, """input.map(s => {
+        samples.extend(
+            [
+                {
+                    "case": case,
+                    "terms": {"unit_price": 17.1, "payment_days": None},
+                    "standard": {"payment_days": 30, "lead_time_days": 28, "ppm_commitment": 1100},
+                },
+                {
+                    "case": case,
+                    "terms": {"unit_price": 16.7, "payment_days": 60, "lead_time_days": 35, "incoterm": "DAP"},
+                    "standard": {"ppm_commitment": 2600},
+                },
+                {"case": case, "terms": {}, "standard": {}},
+            ]
+        )
+    observed = browser(
+        samples,
+        """input.map(s => {
       const t = costs.closingTerms(s.case, s.terms, s.standard);
       return { terms: t, cost: costs.publicCost(s.case, t), valid: !costs.violations(s.case, t).length };
-    })""")
+    })""",
+    )
     for sample, actual in zip(samples, observed, strict=True):
         case, terms, standard = sample["case"], sample["terms"], sample["standard"]
         expected = closing_terms(case, terms, standard)
@@ -70,7 +91,12 @@ def message(price, standard, *, buyer=False, lead=28):
     return {
         "from": "buyer" if buyer else "sales@test",
         "term_sheets": [{"terms": {"unit_price": price, "payment_days": 30, "lead_time_days": lead}}],
-        "attachments": [] if buyer else [{"name": "quote-test.pdf", "text": f"""Offered terms
+        "attachments": []
+        if buyer
+        else [
+            {
+                "name": "quote-test.pdf",
+                "text": f"""Offered terms
 Unit price (EUR) {price}
 Our standard terms (apply to everything not stated above)
 Incoterm EXW
@@ -78,21 +104,30 @@ Quality commitment (ppm) {standard}
 Price valid from none
 Index clause none
 Terms fixed by your enquiry
-Contract term (months) 24"""}],
+Contract term (months) 24""",
+            }
+        ],
     }
 
 
 def test_live_quotes_keep_opening_standard_terms_and_supplier_boundaries():
     case = CASES[1]
-    events = [message(17.1, 1100), message(14.5, 0, buyer=True), message(16, 2000),
-              {"from": "buyer", "term_sheets": [], "action": {"type": "accept"}}]
+    events = [
+        message(17.1, 1100),
+        message(14.5, 0, buyer=True),
+        message(16, 2000),
+        {"from": "buyer", "term_sheets": [], "action": {"type": "accept"}},
+    ]
     other = [message(10, 3000, lead=45)]  # Cheaper, but violates the lead-time requirement.
-    result = browser({"case": case, "events": events, "other": other}, """({
+    result = browser(
+        {"case": case, "events": events, "other": other},
+        """({
       quotes: costs.threadQuotes(input.case, input.events),
       opening: costs.openingCost(input.case, { J1: input.events, C1: input.other }),
       alternative: costs.alternativeCost(input.case),
       other: costs.threadQuotes(input.case, input.other)
-    })""")
+    })""",
+    )
     assert result["opening"] == 214296
     assert result["alternative"] == 238800
     quotes = result["quotes"]

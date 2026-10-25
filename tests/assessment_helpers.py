@@ -6,13 +6,22 @@ def assessment_fields(payload, sid):
     if not context:
         return {}
     ref = context["suppliers"][sid]["latest_message_ref"]
-    return {"assessment": {
-        "observed_message": ref,
-        "changes": ["Reviewed the latest fixture quotation."],
-        "evidence": [{"claim": "The supplier supplied a quotation.", "kind": "supplier_claim",
-                      "source_refs": [ref], "confidence": "high"}],
-        "open_questions": [],
-        "response_to_last_move": "Fixture response observed.",
-        "adaptation": "Use the currently eligible fixture offer.",
-        "next_move": "Execute the fixture action.",
-    }, "numeric_claims": []}
+    return {
+        "assessment": {
+            "observed_message": ref,
+            "changes": ["Reviewed the latest fixture quotation."],
+            "evidence": [
+                {
+                    "claim": "The supplier supplied a quotation.",
+                    "kind": "supplier_claim",
+                    "source_refs": [ref],
+                    "confidence": "high",
+                }
+            ],
+            "open_questions": [],
+            "response_to_last_move": "Fixture response observed.",
+            "adaptation": "Use the currently eligible fixture offer.",
+            "next_move": "Execute the fixture action.",
+        },
+        "numeric_claims": [],
+    }

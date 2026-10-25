@@ -24,10 +24,11 @@ def test_retrieves_complete_scoped_order_and_forecast_history(prepared):
     _, pkg, info, _ = prepared
     refs = info["p18_evidence"]["order_refs"]
     assert len(refs) == 72
-    assert set(refs) == {r["id"] for r in pkg.query(
-        "SELECT id FROM po_lines WHERE supplier_id=? AND part_id=?", ["sup:70740", "part:370010"])}
-    assert all(info["facts"][r]["supplier"] == "sup:70740" and info["facts"][r]["part"] == "part:370010"
-               for r in refs)
+    assert set(refs) == {
+        r["id"]
+        for r in pkg.query("SELECT id FROM po_lines WHERE supplier_id=? AND part_id=?", ["sup:70740", "part:370010"])
+    }
+    assert all(info["facts"][r]["supplier"] == "sup:70740" and info["facts"][r]["part"] == "part:370010" for r in refs)
     assert len(info["tables"]["forecasts"]) == 12
     assert all(row["part_id"] == "part:370010" for row in info["tables"]["forecasts"])
     assert len(info["tables"]["price_conditions"]) == 6
@@ -44,13 +45,12 @@ def test_calculations_keep_actual_orders_separate_from_company_forecast(prepared
     values = {ref: item["value"] for ref, item in context["calculations"].items()}
     assert values["p18:orders_last_12m_kg"] == 22440
     assert values["p18:orders_last_12m_lines"] == 23
-    assert [values[f"p18:orders_{q}_kg"] for q in ("2025Q4", "2026Q1", "2026Q2", "2026Q3")] == [
-        4830, 7210, 5340, 5060]
-    assert values["p18:commitment_vs_orders_pct"] == pytest.approx((23700 / 22440 - 1) * 100, abs=.0001)
+    assert [values[f"p18:orders_{q}_kg"] for q in ("2025Q4", "2026Q1", "2026Q2", "2026Q3")] == [4830, 7210, 5340, 5060]
+    assert values["p18:commitment_vs_orders_pct"] == pytest.approx((23700 / 22440 - 1) * 100, abs=0.0001)
     assert info["facts"]["fc:370010@2026-09"]["volume_per_year"] == 118500
     assert info["facts"]["fc:370010@2026-09"]["change_pct"] == 1.9
     assert case["fixed_terms"]["volume_per_year"] == 23700
-    assert values["p18:order_price_change_pct"] == pytest.approx((5.84 / 5.26 - 1) * 100, abs=.0001)
+    assert values["p18:order_price_change_pct"] == pytest.approx((5.84 / 5.26 - 1) * 100, abs=0.0001)
     for calc in info["calculations"]:
         assert all(ref in context["sources"] for ref in calc["source_refs"])
 
@@ -68,8 +68,8 @@ def test_opening_arguments_use_unique_eligible_source_groups(prepared):
         assert 0 < (end.year - start.year) * 12 + end.month - start.month <= 12
         assert date(2025, 10, 1) <= end <= date(2026, 9, 30)
         claim = group["numeric_claims"][0]
-        assert claim["value"] == pytest.approx((b["value"] / a["value"] - 1) * 100, abs=.01)
-        assert claim["value"] == pytest.approx(context["calculations"][claim["calculation_id"]]["value"], abs=.01)
+        assert claim["value"] == pytest.approx((b["value"] / a["value"] - 1) * 100, abs=0.01)
+        assert claim["value"] == pytest.approx(context["calculations"][claim["calculation_id"]]["value"], abs=0.01)
 
 
 @pytest.mark.parametrize("version", ["v6", "v7", "v8", "v9"])
@@ -82,12 +82,27 @@ def test_evidence_reaches_actual_send_and_keeps_score_gate(prepared, version):
         "v9": (246888.17, 66.57991, 4.90),
     }[version]
     strategy = (ROOT / f"prompts/p18-diagnostic-{version}.txt").read_text()
-    body = "Dear Mr Seidl," + strategy.split("Dear Mr Seidl,", 1)[1].split(
-        "Purchasing, Hollerau Pumpenwerke", 1)[0] + "Purchasing, Hollerau Pumpenwerke"
+    body = (
+        "Dear Mr Seidl,"
+        + strategy.split("Dear Mr Seidl,", 1)[1].split("Purchasing, Hollerau Pumpenwerke", 1)[0]
+        + "Purchasing, Hollerau Pumpenwerke"
+    )
     sid = "sup:70740"
-    threads = {sid: [{"from": "sales@70740", "status": "open", "body": "Our quotation.",
-                     "term_sheets": [{"term_sheet_id": "offer:opening", "terms": {
-                         "unit_price": 6.10, "payment_days": 30, "contract_months": 12, "index_clause": None}}]}]}
+    threads = {
+        sid: [
+            {
+                "from": "sales@70740",
+                "status": "open",
+                "body": "Our quotation.",
+                "term_sheets": [
+                    {
+                        "term_sheet_id": "offer:opening",
+                        "terms": {"unit_price": 6.10, "payment_days": 30, "contract_months": 12, "index_clause": None},
+                    }
+                ],
+            }
+        ]
+    }
     calls = []
 
     class FixtureBackend:
@@ -102,13 +117,30 @@ def test_evidence_reaches_actual_send_and_keeps_score_gate(prepared, version):
                     continue
                 assert ref in payload["decision_context"]["calculations"]
             fields = assessment_fields(payload, sid)
-            fields["numeric_claims"] = json.loads(next(line for line in strategy.splitlines()
-                                                      if line.startswith('[{"calculation_id":')))
-            return json.dumps({"supplier_id": sid, "action": "send", "body": body, **fields,
-                               "term_sheets": [{"unit_price": opening_price,
-                                                "payment_days": 14, "contract_months": 36,
-                                                "index_clause": {"series": "AS-14404", "material_share": .45,
-                                                                 "deadband_pct": 0, "base_month": "2026-08"}}]})
+            fields["numeric_claims"] = json.loads(
+                next(line for line in strategy.splitlines() if line.startswith('[{"calculation_id":'))
+            )
+            return json.dumps(
+                {
+                    "supplier_id": sid,
+                    "action": "send",
+                    "body": body,
+                    **fields,
+                    "term_sheets": [
+                        {
+                            "unit_price": opening_price,
+                            "payment_days": 14,
+                            "contract_months": 36,
+                            "index_clause": {
+                                "series": "AS-14404",
+                                "material_share": 0.45,
+                                "deadband_pct": 0,
+                                "base_month": "2026-08",
+                            },
+                        }
+                    ],
+                }
+            )
 
     spec = PromptSpec(f"{version}-offline-test", strategy, assessment_enabled=True)
     agent = PromptLabAgent(pkg, FixtureBackend(), spec)
@@ -121,14 +153,22 @@ def test_evidence_reaches_actual_send_and_keeps_score_gate(prepared, version):
     assert "buyer-record:" not in body and "p18:" not in body
     assert AcceptanceFloor.from_prompt(strategy).metadata()["minimum_score"] == minimum_score
     floor = AcceptanceFloor.from_prompt(strategy)
-    assert not floor.allows(float(floor.max_cost) + .01, {"unit_price": 4.80})
+    assert not floor.allows(float(floor.max_cost) + 0.01, {"unit_price": 4.80})
 
 
 def test_extra_calculation_cannot_reference_unavailable_evidence(prepared):
     case, _, _, _ = prepared
     with pytest.raises(ValueError, match="unavailable source"):
-        build_context(case, {}, {"calculations": [{"id": "p18:false", "value": 1,
-                                                   "description": "Invalid", "source_refs": ["po:unknown"]}]}, {})
+        build_context(
+            case,
+            {},
+            {
+                "calculations": [
+                    {"id": "p18:false", "value": 1, "description": "Invalid", "source_refs": ["po:unknown"]}
+                ]
+            },
+            {},
+        )
 
 
 def test_enrichment_does_not_change_other_cases(prepared):
@@ -160,7 +200,7 @@ def test_receipts_orders_and_supplier_scorecard_keep_distinct_bases(prepared):
     values = {key: item["value"] for key, item in context["calculations"].items()}
     assert values["p18:part_received_fy2026_kg"] == 23340
     assert values["p18:orders_last_12m_kg"] == 22440
-    assert values["p18:part_receipt_otd_fy2026_pct"] == pytest.approx(22 / 26 * 100, abs=.0001)
+    assert values["p18:part_receipt_otd_fy2026_pct"] == pytest.approx(22 / 26 * 100, abs=0.0001)
     assert info["facts"]["sc:70740@2026Q3"]["otd_pct"] == 81
     scorecard = next(r for r in info["tables"]["scorecards"] if r["id"] == "sc:70740@2026Q3")
     assert (scorecard["period_start"], scorecard["period_end"]) == ("2025-10-01", "2026-09-30")

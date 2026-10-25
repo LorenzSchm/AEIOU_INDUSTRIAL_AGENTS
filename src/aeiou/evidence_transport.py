@@ -56,10 +56,13 @@ def recipient_offer_citations(action, events):
     """
     if action.get("action") != "send":
         return []
-    own_ids = {sheet.get("term_sheet_id") for message in events if message.get("from") != "buyer"
-               for sheet in message.get("term_sheets", [])}
-    text = "\n".join(value for field in ("subject", "body")
-                     if isinstance(value := action.get(field), str))
+    own_ids = {
+        sheet.get("term_sheet_id")
+        for message in events
+        if message.get("from") != "buyer"
+        for sheet in message.get("term_sheets", [])
+    }
+    text = "\n".join(value for field in ("subject", "body") if isinstance(value := action.get(field), str))
     cited = set(re.findall(r"(?<![\w:])offer:[\w:-]+", text))
     return sorted(cited & own_ids)
 
@@ -68,12 +71,14 @@ def internal_evidence_citations(action, calculation_ids):
     """Keep local audit handles out of public email without rewriting the message."""
     if action.get("action") != "send":
         return []
-    prose = "\n".join(value for key in ("subject", "body")
-                      if isinstance(value := action.get(key), str))
+    prose = "\n".join(value for key in ("subject", "body") if isinstance(value := action.get(key), str))
     tokens = set(re.findall(r"(?<![\w:])[\w-]+(?::[\w-]+)+", prose))
     local = set(calculation_ids)
-    return sorted(token for token in tokens if token in local
-                  or token.startswith(("table:", "buyer-record:", "message:", "attachment:")))
+    return sorted(
+        token
+        for token in tokens
+        if token in local or token.startswith(("table:", "buyer-record:", "message:", "attachment:"))
+    )
 
 
 def source_records(intelligence, threads):
@@ -82,11 +87,14 @@ def source_records(intelligence, threads):
     records.update({f"table:{name}": rows for name, rows in intelligence.get("tables", {}).items()})
     for sid, events in threads.items():
         for i, msg in enumerate(events):
-            records[f"message:{sid}:{i}"] = {k: msg[k] for k in
-                                            ("from", "body", "status", "term_sheets", "claim_results") if k in msg}
+            records[f"message:{sid}:{i}"] = {
+                k: msg[k] for k in ("from", "body", "status", "term_sheets", "claim_results") if k in msg
+            }
             for j, attachment in enumerate(msg.get("attachments", [])):
                 records[f"attachment:{sid}:{i}:{j}"] = {
-                    "name": attachment.get("name"), "text": attachment_text(attachment)}
+                    "name": attachment.get("name"),
+                    "text": attachment_text(attachment),
+                }
     return records
 
 
@@ -95,8 +103,11 @@ def attachment_text(attachment):
     if isinstance(attachment.get("text"), str):
         return attachment["text"]
     encoded = attachment.get("content_b64")
-    if (attachment.get("type") not in {"md", "csv", "json"} or not isinstance(encoded, str)
-            or len(encoded) > 4 * ((MAX_SOURCE_ATTACHMENT_BYTES + 2) // 3)):
+    if (
+        attachment.get("type") not in {"md", "csv", "json"}
+        or not isinstance(encoded, str)
+        or len(encoded) > 4 * ((MAX_SOURCE_ATTACHMENT_BYTES + 2) // 3)
+    ):
         return ""
     try:
         raw = base64.b64decode(encoded, validate=True)
@@ -118,7 +129,8 @@ def source_attachment_catalog(intelligence):
             continue
         catalog.setdefault(sid, {})[ref] = {
             "name": re.sub(r"[^A-Za-z0-9._-]", "-", ref) + ".md",
-            "bytes": len(raw), "content_sha256": hashlib.sha256(raw).hexdigest(),
+            "bytes": len(raw),
+            "content_sha256": hashlib.sha256(raw).hexdigest(),
         }
     return catalog
 
@@ -140,16 +152,26 @@ def outgoing_source_attachments(action, sid, intelligence, sources=None):
             raise ValueError("Attach only an exact source_attachments ID for this recipient (up to 32 KiB each)")
         if sources is not None and not sources.get(ref, {}).get("complete_record"):
             raise ValueError(f"Read the complete document {ref} with retrieve_evidence before attaching it")
-        attachments.append({"name": catalog[ref]["name"], "type": "md",
-                            "content_b64": base64.b64encode(documents[ref].encode("utf-8")).decode("ascii")})
+        attachments.append(
+            {
+                "name": catalog[ref]["name"],
+                "type": "md",
+                "content_b64": base64.b64encode(documents[ref].encode("utf-8")).decode("ascii"),
+            }
+        )
     return attachments
 
 
 def source_attachment_receipts(action, message):
-    return [{"source_ref": ref, "name": attachment["name"],
-             "bytes": len(raw := base64.b64decode(attachment["content_b64"], validate=True)),
-             "content_sha256": hashlib.sha256(raw).hexdigest()}
-            for ref, attachment in zip(action.get("attach_sources", []), message.get("attachments", []), strict=True)]
+    return [
+        {
+            "source_ref": ref,
+            "name": attachment["name"],
+            "bytes": len(raw := base64.b64decode(attachment["content_b64"], validate=True)),
+            "content_sha256": hashlib.sha256(raw).hexdigest(),
+        }
+        for ref, attachment in zip(action.get("attach_sources", []), message.get("attachments", []), strict=True)
+    ]
 
 
 def document_record(doc, intelligence):
@@ -181,16 +203,27 @@ def retrieve(records, action):
     if offset >= len(text) and offset != 0:
         raise ValueError("Evidence offset is beyond the record")
     end = min(len(text), offset + MAX_PAGE_CHARS)
-    return {"source_ref": ref, "offset": offset, "text": text[offset:end],
-            "total_chars": len(text), "next_offset": end if end < len(text) else None,
-            "content_sha256": hashlib.sha256(text.encode()).hexdigest(),
-            "complete_record": offset == 0 and end == len(text)}
+    return {
+        "source_ref": ref,
+        "offset": offset,
+        "text": text[offset:end],
+        "total_chars": len(text),
+        "next_offset": end if end < len(text) else None,
+        "content_sha256": hashlib.sha256(text.encode()).hexdigest(),
+        "complete_record": offset == 0 and end == len(text),
+    }
 
 
 def render_attachments(sid, index, message):
-    return [{"source_ref": f"attachment:{sid}:{index}:{j}", "name": a.get("name"),
-             "text": (body := attachment_text(a))[:3500], "truncated": len(body) > 3500}
-            for j, a in enumerate(message.get("attachments", []))]
+    return [
+        {
+            "source_ref": f"attachment:{sid}:{index}:{j}",
+            "name": a.get("name"),
+            "text": (body := attachment_text(a))[:3500],
+            "truncated": len(body) > 3500,
+        }
+        for j, a in enumerate(message.get("attachments", []))
+    ]
 
 
 def _page_coverage(pages, total):
@@ -205,8 +238,11 @@ def _page_coverage(pages, total):
 def register_read(payload, evidence):
     ref = evidence["source_ref"]
     source = payload["decision_context"]["sources"][ref]
-    pages = [p for p in payload.get("retrieved_evidence", []) if p["source_ref"] == ref
-             and p["content_sha256"] == evidence["content_sha256"]]
+    pages = [
+        p
+        for p in payload.get("retrieved_evidence", [])
+        if p["source_ref"] == ref and p["content_sha256"] == evidence["content_sha256"]
+    ]
     complete = source.get("complete_record", False) or _page_coverage(pages, evidence["total_chars"])
     source.update(available=True, complete_record=complete, delivery="full" if complete else "partial")
     refresh_delivery(payload)
@@ -214,12 +250,14 @@ def register_read(payload, evidence):
 
 def refresh_delivery(payload):
     sources = payload["decision_context"]["sources"]
-    counts = {state: sum(s.get("delivery") == state for s in sources.values())
-              for state in ("full", "partial", "deferred")}
+    counts = {
+        state: sum(s.get("delivery") == state for s in sources.values()) for state in ("full", "partial", "deferred")
+    }
     payload["evidence_transport"]["delivery_counts"] = counts
     payload["evidence_transport"]["partial_refs"] = [r for r, s in sources.items() if s["delivery"] == "partial"]
     payload["evidence_transport"]["unretrievable_refs"] = [
-        r for r, s in sources.items() if s["delivery"] != "full" and not s.get("retrievable")]
+        r for r, s in sources.items() if s["delivery"] != "full" and not s.get("retrievable")
+    ]
 
 
 def restore_reads(payload, records, cache):
@@ -254,43 +292,71 @@ def compact_research(case, intelligence, threads, strategy):
     # In particular a recent-window index calculation needs both endpoints, not
     # just the annual endpoints. Large ERP ledgers still require bounded retrieval.
     evidence = intelligence.get("p18_evidence", {})
-    supported = [*intelligence.get("calculations", []),
-                 *evidence.get("opening_arguments", []), *evidence.get("followup_arguments", []),
-                 *intelligence.get("p10_evidence", {}).get("opening_arguments", [])]
+    supported = [
+        *intelligence.get("calculations", []),
+        *evidence.get("opening_arguments", []),
+        *evidence.get("followup_arguments", []),
+        *intelligence.get("p10_evidence", {}).get("opening_arguments", []),
+    ]
     for item in supported:
         refs = item.get("source_refs", [])
         if len(refs) <= 8:
-            mandatory.update(ref for ref in refs if ref in facts and not ref.startswith("buyer-record:")
-                             and len(json.dumps(facts[ref], ensure_ascii=False, default=str)) <= 2000)
-    selected = {ref: copy.deepcopy(value) for ref, value in facts.items()
-                if ref in mandatory and not ref.startswith("buyer-record:")}
+            mandatory.update(
+                ref
+                for ref in refs
+                if ref in facts
+                and not ref.startswith("buyer-record:")
+                and len(json.dumps(facts[ref], ensure_ascii=False, default=str)) <= 2000
+            )
+    selected = {
+        ref: copy.deepcopy(value)
+        for ref, value in facts.items()
+        if ref in mandatory and not ref.startswith("buyer-record:")
+    }
     # Relevant small canonical records are useful without duplicating full ERP ledgers.
     for ref, value in facts.items():
         if len(selected) >= 28:
             break
         if ref.startswith(("doc:", "sc:", "ctr:", "quote:")):
             selected.setdefault(ref, copy.deepcopy(value))
-    documents = [{**document_record(doc, intelligence), "text": doc.get("text", "")[:1800],
-                  "truncated": len(doc.get("text", "")) > 1800}
-                 for doc in intelligence.get("documents", [])]
+    documents = [
+        {
+            **document_record(doc, intelligence),
+            "text": doc.get("text", "")[:1800],
+            "truncated": len(doc.get("text", "")) > 1800,
+        }
+        for doc in intelligence.get("documents", [])
+    ]
     table_names = ("forecasts", "quotes", "scorecards", "cost_drivers", "price_conditions")
-    tables = {name: copy.deepcopy(rows) for name, rows in intelligence.get("tables", {}).items()
-              if name in table_names}
+    tables = {name: copy.deepcopy(rows) for name, rows in intelligence.get("tables", {}).items() if name in table_names}
     remaining = 16000
-    for name in ("supplier_intel", "spend_cube", "news", "should_cost", "contract_clauses", "sourcing",
-                 "negotiation_history", "forecast_history_lines", "rfqs"):
+    for name in (
+        "supplier_intel",
+        "spend_cube",
+        "news",
+        "should_cost",
+        "contract_clauses",
+        "sourcing",
+        "negotiation_history",
+        "forecast_history_lines",
+        "rfqs",
+    ):
         rows = intelligence.get("tables", {}).get(name)
         if rows is not None and len(record_text(rows)) <= min(6000, remaining):
             tables[name] = copy.deepcopy(rows)
             remaining -= len(record_text(rows))
-    result = {"facts": selected, "documents": documents, "tables": tables,
-              "latest_forecasts": copy.deepcopy(intelligence.get("latest_forecasts", [])),
-              "indices": copy.deepcopy(intelligence.get("indices", [])),
-              "estimates": copy.deepcopy(intelligence.get("estimates", {})),
-              "table_row_counts": {name: len(rows) for name, rows in intelligence.get("tables", {}).items()},
-              "retrieval_issues": intelligence.get("retrieval_issues", []),
-              "collection": copy.deepcopy(intelligence.get("collection", {})),
-              "calculation_location": "decision_context.calculations"}
+    result = {
+        "facts": selected,
+        "documents": documents,
+        "tables": tables,
+        "latest_forecasts": copy.deepcopy(intelligence.get("latest_forecasts", [])),
+        "indices": copy.deepcopy(intelligence.get("indices", [])),
+        "estimates": copy.deepcopy(intelligence.get("estimates", {})),
+        "table_row_counts": {name: len(rows) for name, rows in intelligence.get("tables", {}).items()},
+        "retrieval_issues": intelligence.get("retrieval_issues", []),
+        "collection": copy.deepcopy(intelligence.get("collection", {})),
+        "calculation_location": "decision_context.calculations",
+    }
     if "p18_evidence" in intelligence:
         result["p18_evidence"] = copy.deepcopy(intelligence["p18_evidence"])
     if "p10_evidence" in intelligence:
@@ -310,8 +376,7 @@ def prepare_evidence_payload(payload, intelligence, threads, strategy):
         for doc in intelligence.get("documents", []):
             if doc["id"] in delivered:
                 delivered[doc["id"]] = "partial"
-        delivered.update({d["id"]: "partial" if d["truncated"] else "full"
-                          for d in payload["research"]["documents"]})
+        delivered.update({d["id"]: "partial" if d["truncated"] else "full" for d in payload["research"]["documents"]})
         delivered.update({f"table:{t}": "full" for t in payload["research"]["tables"]})
         if any(snapshot["monthly_rows"] for snapshot in payload["research"]["latest_forecasts"]):
             delivered.setdefault("table:forecast_history_lines", "partial")
@@ -334,13 +399,19 @@ def prepare_evidence_payload(payload, intelligence, threads, strategy):
             # Source IDs carry the type/date; remove the identical repeated generic description.
             source.pop("description", None)
             state = delivered.get(ref, "deferred")
-            source.update(available=state != "deferred", delivery=state, complete_record=state == "full",
-                          retrievable=ref in records)
+            source.update(
+                available=state != "deferred",
+                delivery=state,
+                complete_record=state == "full",
+                retrievable=ref in records,
+            )
             if ref in records and state != "full":
                 source["total_chars"] = len(record_text(records[ref]))
     payload["evidence_transport"] = {
-        "version": VERSION, "max_local_reads": MAX_RETRIEVALS,
-        "complete_source_count": len(records), "raw_payload_chars": original,
+        "version": VERSION,
+        "max_local_reads": MAX_RETRIEVALS,
+        "complete_source_count": len(records),
+        "raw_payload_chars": original,
         "selected_fact_count": len(payload["research"]["facts"]),
         "availability_note": "Deferred records remain accessible through retrieve_evidence. No arbitrary queries.",
         "collection_issues": intelligence.get("retrieval_issues", []),
@@ -369,7 +440,10 @@ def request_receipt(encoded):
     """Compact audit of the exact request delivered to the model backend."""
     payload = json.loads(encoded)
     transport = payload.get("evidence_transport", {})
-    return {"payload_sha256": hashlib.sha256(encoded.encode()).hexdigest(), "payload_chars": len(encoded),
-            "delivery_counts": transport.get("delivery_counts"),
-            "partial_refs": transport.get("partial_refs", []),
-            "retrieved_pages": len(payload.get("retrieved_evidence", []))}
+    return {
+        "payload_sha256": hashlib.sha256(encoded.encode()).hexdigest(),
+        "payload_chars": len(encoded),
+        "delivery_counts": transport.get("delivery_counts"),
+        "partial_refs": transport.get("partial_refs", []),
+        "retrieved_pages": len(payload.get("retrieved_evidence", [])),
+    }

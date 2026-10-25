@@ -3,9 +3,13 @@
 import copy
 import math
 
-from arena_kit.cost import closing_terms, complete_offer, cost_breakdown, must_haves_ok, total_cost
+from arena_kit.cost import closing_terms, complete_offer, must_haves_ok
 from arena_kit.docs import standard_terms
 from arena_kit.play import latest, live_threads, standing
+
+from .economic_beliefs import cost_breakdown, total_cost
+from .opponent_model import comparable_price_step
+from .quote_financing import observed_financing_close
 
 
 def case_with_supplier_defaults(case, events):
@@ -16,18 +20,21 @@ def case_with_supplier_defaults(case, events):
     or free text. Keep these observations local to this supplier and leave fixed
     terms and must-haves untouched. The server still validates every proposal.
     """
-    opening = next(((i, m) for i, m in enumerate(events)
-                    if m.get("from") != "buyer" and m.get("term_sheets")), None)
+    opening = next(((i, m) for i, m in enumerate(events) if m.get("from") != "buyer" and m.get("term_sheets")), None)
     if opening is None:
         return case
     index, message = opening
-    defaults = {**message["term_sheets"][0].get("terms", {}),
-                **standard_terms(events[:index + 1])}
+    defaults = {**message["term_sheets"][0].get("terms", {}), **standard_terms(events[: index + 1])}
     options = copy.deepcopy(case.get("term_options", {}))
     for field in ("payment_days", "lead_time_days", "volume_per_year", "contract_months", "ppm_commitment"):
         value = defaults.get(field)
-        if (field in case["negotiable"] and field in options
-                and type(value) is int and value >= 0 and value not in options[field]):
+        if (
+            field in case["negotiable"]
+            and field in options
+            and type(value) is int
+            and value >= 0
+            and value not in options[field]
+        ):
             options[field].append(value)
             options[field].sort()
     return {**case, "term_options": options}
@@ -43,7 +50,8 @@ def estimate(case, sid, std, intelligence):
     reference = {k: master[k] for k in ("payment_days", "incoterm") if master.get(k) is not None}
     reference.update(std)
     reference = closing_terms(case, {}, reference)
-    return {"full_cost": source["full_cost"], "interest_rate": 0.12, "standard": reference}
+    belief = intelligence.get("economic_beliefs", {}).get(sid) or {}
+    return {"full_cost": source["full_cost"], "interest_rate": 0.12, **belief, "standard": reference}
 
 
 def valid_terms(case, terms):
@@ -101,13 +109,29 @@ def evaluate(case, threads, intelligence):
     return sorted(rows, key=lambda r: r["cost"])
 
 
+def closing_choice(case, threads, intelligence):
+    rows = [r for r in evaluate(case, threads, intelligence) if r["acceptable"]]
+    if not rows:
+        return None
+    best = rows[0]
+    sid = best["supplier_id"]
+    return observed_financing_close(
+        case,
+        threads[sid],
+        estimate(case, sid, standard_terms(threads[sid]), intelligence),
+        intelligence.get("estimates", {}).get(sid, {}).get("confidence_pct"),
+        [r for r in rows if r["supplier_id"] == sid],
+        best,
+    )
+
+
 def safe_close(case, threads, intelligence):
-    for row in evaluate(case, threads, intelligence):
-        if row["acceptable"]:
-            return {
-                "supplier_id": row["supplier_id"],
-                "message": {"action": {"type": "accept", "term_sheet_id": row["sheet_id"]}},
-            }
+    row = closing_choice(case, threads, intelligence)
+    if row:
+        return {
+            "supplier_id": row["supplier_id"],
+            "message": {"action": {"type": "accept", "term_sheet_id": row["sheet_id"]}},
+        }
     from .action_policy import NegotiationBlocked
 
     raise NegotiationBlocked("NO_ELIGIBLE_OFFER")
@@ -136,15 +160,7 @@ def candidate_packages(case, events, sid, intelligence, anchor=0.18):
     # Only concede against observable resistance; avoid paying above the standing ask.
     price = min(price, current["unit_price"])
     if rounds >= max(3, round(case.get("round_limit", 10) * 0.4)):
-        observations = [
-            s["terms"]["unit_price"]
-            for m in events
-            if m.get("from") != "buyer"
-            for s in m.get("term_sheets", [])
-            if s["terms"].get("unit_price")
-        ]
-        changes = [a - b for a, b in zip(observations[-4:-1], observations[-3:], strict=False) if a > b]
-        step = sorted(changes)[len(changes) // 2] if changes else 0
+        step = comparable_price_step(case, events)
         # Extrapolate a small observed step instead of chasing an unobserved floor into an ultimatum.
         price = min(current["unit_price"], max(price, current["unit_price"] - min(step, current["unit_price"] * 0.03)))
     supplier = estimate(case, sid, std, intelligence)
@@ -154,6 +170,11 @@ def candidate_packages(case, events, sid, intelligence, anchor=0.18):
             return total_cost(case, t, std, supplier)
         except (TypeError, ValueError, KeyError, ZeroDivisionError):
             return math.inf
+
+    def rank(t):
+        # At identical buyer cost, do not demand stricter quality than needed.
+        # All explicit must-haves still apply before selecting a final package.
+        return (cost(t), -(t.get("ppm_commitment") or 0), t.get("chargeback_eur_per_complaint") or 0)
 
     seeds = [complete_offer(case, {**std, **current, "unit_price": round(price, 2)})]
     # Include neutral buyer-plan defaults, especially full horizon and volume coverage.
@@ -168,11 +189,11 @@ def candidate_packages(case, events, sid, intelligence, anchor=0.18):
         expanded = [dict(t, **{field: v}) for t in beam for v in values]
         # Intermediate candidates may violate another must-have that a later coordinate fixes.
         unique = {str(t): t for t in expanded}
-        beam = sorted(unique.values(), key=cost)[:32]
+        beam = sorted(unique.values(), key=rank)[:32]
         # Preserve an early-payment path to discover cash-constrained suppliers.
         if field == "payment_days" and values:
             beam += [dict(t, payment_days=min(v for v in values if v is not None)) for t in seeds]
-    legal = sorted((t for t in beam if valid_terms(case, t)), key=cost)
+    legal = sorted((t for t in beam if valid_terms(case, t)), key=rank)
     if supplier and case["buyer"].get("category_goal") in {"stabilise", "secure_supply"}:
         # A strategic supplier's health can make a higher cash price the cheaper total deal.
         revised = []
@@ -185,7 +206,7 @@ def candidate_packages(case, events, sid, intelligence, anchor=0.18):
                 else:
                     lo = a
             revised.append(dict(t, unit_price=round((lo + hi) / 2, 2)))
-        legal = sorted(revised, key=cost)
+        legal = sorted(revised, key=rank)
     if not legal:
         return []
     best, target = legal[0], cost(legal[0])

@@ -74,10 +74,14 @@ def sandbox(monkeypatch, tmp_path):
             return httpx.Response(200, json=copy.deepcopy(CASES))
         if request.url.path == "/v1/sessions":
             if request.method == "GET":
-                return httpx.Response(200, json=[
-                    {"session_id": sid, "status": s.get("status", "open")}
-                    for sid, s in sessions.items() if request.url.params["set"] == "sandbox"
-                ])
+                return httpx.Response(
+                    200,
+                    json=[
+                        {"session_id": sid, "status": s.get("status", "open")}
+                        for sid, s in sessions.items()
+                        if request.url.params["set"] == "sandbox"
+                    ],
+                )
             case_id = json.loads(request.content)["case_id"]
             assert case_id in eval_suite.SANDBOX_CASES
             case = next(case for case in CASES if case["case_id"] == case_id)
@@ -122,6 +126,7 @@ def sandbox(monkeypatch, tmp_path):
         def locked_handler(request):
             with request_lock:
                 return handler(request)
+
         return ArenaClient(
             base_url=eval_suite.ARENA_URL, transport=httpx.MockTransport(locked_handler), rate=100000, retries=0
         )
@@ -235,13 +240,24 @@ def test_edited_prompt_controls_emails_and_acceptance_without_reference_tactics(
             assert payload["protocol_state"]["required_repeats"] == 0
             sid, state = next(iter(payload["protocol_state"]["suppliers"].items()))
             if self.calls == 1:
-                return json.dumps({"supplier_id": sid, "action": "send", "body": email, "term_sheets": [],
-                                   **assessment_fields(payload, sid)})
+                return json.dumps(
+                    {
+                        "supplier_id": sid,
+                        "action": "send",
+                        "body": email,
+                        "term_sheets": [],
+                        **assessment_fields(payload, sid),
+                    }
+                )
             assert "accept" in state["legal_actions"]
-            return json.dumps({
-                "supplier_id": sid, "action": "accept", "term_sheet_id": state["offers"][0]["term_sheet_id"],
-                **assessment_fields(payload, sid),
-            })
+            return json.dumps(
+                {
+                    "supplier_id": sid,
+                    "action": "accept",
+                    "term_sheet_id": state["offers"][0]["term_sheet_id"],
+                    **assessment_fields(payload, sid),
+                }
+            )
 
     result = eval_suite.run_evaluation(report, EditedBuyer, factory)
     assert result["status"] == "completed", result.get("stop_reason")
@@ -632,9 +648,12 @@ def test_sandbox_clients_share_request_limit_including_retries(monkeypatch):
 
     try:
         for _ in range(2):
-            clients.append(eval_suite.SandboxClient(
-                base_url=eval_suite.ARENA_URL, transport=httpx.MockTransport(handler),
-            ))
+            clients.append(
+                eval_suite.SandboxClient(
+                    base_url=eval_suite.ARENA_URL,
+                    transport=httpx.MockTransport(handler),
+                )
+            )
         clients[0].cases("sandbox")
         clients[1].cases("sandbox")
         clients[0].attachment("test-session", "test-attachment")
@@ -736,8 +755,14 @@ def test_stop_between_supplier_replies_prevents_another_model_call(sandbox, monk
             self.calls += 1
             payload = json.loads(user)
             sid = next(iter(payload["protocol_state"]["suppliers"]))
-            return json.dumps({"supplier_id": sid, "action": "send", "body": "Please improve your offer.",
-                               **assessment_fields(payload, sid)})
+            return json.dumps(
+                {
+                    "supplier_id": sid,
+                    "action": "send",
+                    "body": "Please improve your offer.",
+                    **assessment_fields(payload, sid),
+                }
+            )
 
     def make_backend(**kwargs):
         buyer = EmailBuyer(**kwargs)

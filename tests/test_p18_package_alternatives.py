@@ -16,9 +16,16 @@ STRATEGY = (ROOT / "prompts/p18-diagnostic-v16.txt").read_text()
 
 
 def agent(backend=None, policy=None):
-    return PromptLabAgent(package(), backend or NeverCall(), PromptSpec(
-        "p18-package-alternatives", STRATEGY, assessment_enabled=True,
-        execution_policy=copy.deepcopy(POLICY if policy is None else policy)))
+    return PromptLabAgent(
+        package(),
+        backend or NeverCall(),
+        PromptSpec(
+            "p18-package-alternatives",
+            STRATEGY,
+            assessment_enabled=True,
+            execution_policy=copy.deepcopy(POLICY if policy is None else policy),
+        ),
+    )
 
 
 def second_reply(duration=36, status="open"):
@@ -37,8 +44,9 @@ def second_reply(duration=36, status="open"):
 
 
 def action_at(a, case, threads):
-    return controlled_action(case, threads, a.decision_protocol_state(case, threads),
-                             a.acceptance_floor, a.execution_policy)
+    return controlled_action(
+        case, threads, a.decision_protocol_state(case, threads), a.acceptance_floor, a.execution_policy
+    )
 
 
 @pytest.mark.parametrize("duration", [24, 36])
@@ -47,8 +55,7 @@ def test_two_qualifying_alternatives_replace_third_price_counter_before_final(du
     a = agent()
     move = a.decide(case, threads)
     proposals = [s["terms"] for s in move["message"]["term_sheets"]]
-    assert proposals == [{**p, "contract_months": duration}
-                         for p in POLICY["early_package_alternatives"]["packages"]]
+    assert proposals == [{**p, "contract_months": duration} for p in POLICY["early_package_alternatives"]["packages"]]
     assert [total_cost(case, p) for p in proposals] == [243971.22, 243915.66]
     for p in proposals:
         assert (295173.23 - total_cost(case, p)) / (295173.23 - 222651.27) * 100 > 70.01
@@ -126,9 +133,15 @@ def test_after_menu_model_can_address_objection_and_binding_reply_is_accepted():
     class Followup:
         def complete(self, system, user):
             payload = json.loads(user)
-            return json.dumps({"supplier_id": sid, "action": "send", "term_sheets": [],
-                               "body": "Thank you. Could your owner review Option A with 14-day payment?",
-                               **assessment_fields(payload, sid)})
+            return json.dumps(
+                {
+                    "supplier_id": sid,
+                    "action": "send",
+                    "term_sheets": [],
+                    "body": "Thank you. Could your owner review Option A with 14-day payment?",
+                    **assessment_fields(payload, sid),
+                }
+            )
 
     followup = agent(Followup()).decide(case, threads)
     assert followup["message"]["term_sheets"] == []
@@ -150,8 +163,10 @@ def test_advertised_nonstanding_alternative_is_never_accepted():
     assert a.decide(case, threads)["message"].get("action") is None
 
 
-@pytest.mark.parametrize("key,value", [("after_buyer_proposals", True), ("after_buyer_proposals", 0),
-                                       ("packages", []), ("packages", [None, None])])
+@pytest.mark.parametrize(
+    "key,value",
+    [("after_buyer_proposals", True), ("after_buyer_proposals", 0), ("packages", []), ("packages", [None, None])],
+)
 def test_invalid_menu_config_is_rejected(key, value):
     policy = copy.deepcopy(POLICY)
     policy["early_package_alternatives"][key] = value
@@ -159,10 +174,18 @@ def test_invalid_menu_config_is_rejected(key, value):
         validate_policy(policy, agent().acceptance_floor)
 
 
-@pytest.mark.parametrize("field,value", [("unit_price", float("nan")), ("unit_price", 5.11),
-                                         ("payment_days", True), ("payment_days", 20),
-                                         ("index_clause", None), ("index_clause", {}),
-                                         ("unit_price", 5.06)])
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("unit_price", float("nan")),
+        ("unit_price", 5.11),
+        ("payment_days", True),
+        ("payment_days", 20),
+        ("index_clause", None),
+        ("index_clause", {}),
+        ("unit_price", 5.06),
+    ],
+)
 def test_invalid_or_overbudget_packages_fail_before_run(field, value):
     policy = copy.deepcopy(POLICY)
     policy["early_package_alternatives"]["packages"][0][field] = value
@@ -176,7 +199,7 @@ def test_runtime_cost_check_never_sends_one_valid_and_one_overbudget_option():
     a = agent()
     a.prepare(case)
     # A newly discovered cost input must be rechecked at decision time.
-    case["buyer"]["index_paths"]["AS-14404"] = .20
+    case["buyer"]["index_paths"]["AS-14404"] = 0.20
     assert action_at(a, case, threads) is None
 
 
@@ -185,8 +208,16 @@ def test_outgoing_model_package_still_checks_total_cost_when_final_counter_disab
     a = agent(policy={**POLICY, "adapt_closing_price_to_budget": False})
     terms = threads[sid][-1]["term_sheets"][0]["terms"]
     with pytest.raises(ContractError, match="complete-cost"):
-        a.contract(case, threads, {"supplier_id": sid, "action": "send", "body": "Please consider this.",
-                                   "term_sheets": [{**terms, "unit_price": 5.10}]})
+        a.contract(
+            case,
+            threads,
+            {
+                "supplier_id": sid,
+                "action": "send",
+                "body": "Please consider this.",
+                "term_sheets": [{**terms, "unit_price": 5.10}],
+            },
+        )
 
 
 def test_policy_is_case_scoped():
@@ -200,13 +231,21 @@ def test_policy_is_case_scoped():
 
 def standard_payment_agent():
     return agent_with_spec(
-        "p18-early-payment-menu", "prompts/p18-diagnostic-v18.txt", "config/p18-early-payment-menu.json")
+        "p18-early-payment-menu", "prompts/p18-diagnostic-v18.txt", "config/p18-early-payment-menu.json"
+    )
 
 
 def agent_with_spec(name, strategy_path, policy_path):
-    return PromptLabAgent(package(), NeverCall(), PromptSpec(
-        name, (ROOT / strategy_path).read_text(), assessment_enabled=True,
-        execution_policy=json.loads((ROOT / policy_path).read_text())["case:P18"]))
+    return PromptLabAgent(
+        package(),
+        NeverCall(),
+        PromptSpec(
+            name,
+            (ROOT / strategy_path).read_text(),
+            assessment_enabled=True,
+            execution_policy=json.loads((ROOT / policy_path).read_text())["case:P18"],
+        ),
+    )
 
 
 @pytest.mark.parametrize("duration", [24, 36])
@@ -245,7 +284,9 @@ def test_prior_standard_payment_proposal_prevents_repeated_menu():
     case, sid, threads = second_reply()
     a = standard_payment_agent()
     threads[sid][3]["term_sheets"][0]["terms"] = {
-        **a.execution_policy["early_package_alternatives"]["packages"][0], "contract_months": 36}
+        **a.execution_policy["early_package_alternatives"]["packages"][0],
+        "contract_months": 36,
+    }
     for status in ("open", "final_offer"):
         threads[sid][-1]["status"] = status
         assert action_at(standard_payment_agent(), case, threads) is None

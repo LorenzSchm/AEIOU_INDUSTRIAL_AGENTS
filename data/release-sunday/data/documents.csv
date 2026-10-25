@@ -1,0 +1,5 @@
+id,date,kind,supplier_id,part_ids,subject,author,file,asked_pct,asked_price,effective_date,notice_days
+doc:20261016-70170-S12,2026-10-16,letter,sup:70170,,Payment terms for stainless castings,Slévárna Vrbenský s.r.o.,correspondence/20261016-70170-S12.md,,,,
+doc:20261019-70190-S13,2026-10-19,letter,sup:70190,,Our liquidity and your call-offs,Gießerei Pfaffenreuth GmbH,correspondence/20261019-70190-S13.md,,,,
+doc:20261013-70340-S15,2026-10-13,letter,sup:70340,,Steel for 2027,Metallbau Steinfelder KG,correspondence/20261013-70340-S15.md,,,,
+doc:20261023-HPW-MEMO,2026-10-23,memo,,,"Market memo, October 2026","Hollerau Pumpenwerke, Purchasing",correspondence/20261023-HPW-MEMO.md,,,,

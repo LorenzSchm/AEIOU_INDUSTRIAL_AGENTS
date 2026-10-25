@@ -28,11 +28,19 @@ def timed_buyer(monkeypatch):
         clock.now += seconds
         if isinstance(text, Exception):
             raise text
-        return httpx.Response(200, json={
-            "id": "msg_fixture", "type": "message", "role": "assistant", "model": "claude-sonnet-5-5",
-            "content": [{"type": "text", "text": text}], "stop_reason": "end_turn", "stop_sequence": None,
-            "usage": {"input_tokens": 10, "output_tokens": 5},
-        })
+        return httpx.Response(
+            200,
+            json={
+                "id": "msg_fixture",
+                "type": "message",
+                "role": "assistant",
+                "model": "claude-sonnet-5-5",
+                "content": [{"type": "text", "text": text}],
+                "stop_reason": "end_turn",
+                "stop_sequence": None,
+                "usage": {"input_tokens": 10, "output_tokens": 5},
+            },
+        )
 
     sdk = anthropic.Anthropic(
         api_key="test-only", max_retries=0, http_client=httpx.Client(transport=httpx.MockTransport(respond))
@@ -43,10 +51,16 @@ def timed_buyer(monkeypatch):
     agent = PromptLabAgent(package(), CancellableBackend(backend, cancel), PromptSpec("eval", "Negotiate."))
     case = copy.deepcopy(local_cases()["case:S01"])
     sid = case["suppliers"][0]
-    threads = {sid: [{
-        "from": sid, "status": "open", "body": "Opening quotation.",
-        "term_sheets": [{"term_sheet_id": "offer:1", "terms": {"unit_price": 16, "payment_days": 60}}],
-    }]}
+    threads = {
+        sid: [
+            {
+                "from": sid,
+                "status": "open",
+                "body": "Opening quotation.",
+                "term_sheets": [{"term_sheet_id": "offer:1", "terms": {"unit_price": 16, "payment_days": 60}}],
+            }
+        ]
+    }
     valid = json.dumps({"supplier_id": sid, "action": "send", "body": "Please improve your quote.", "term_sheets": []})
     yield SimpleNamespace(**locals())
     sdk.close()

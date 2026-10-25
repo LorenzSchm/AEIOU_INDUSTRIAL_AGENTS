@@ -17,8 +17,7 @@ STAGES = {
 
 def stage_from_action(action):
     body = action.get("body", "")
-    return next((name for name, (_, intro) in STAGES.items()
-                 if body.startswith(f"Dear Mr Seidl,\n\n{intro}")), None)
+    return next((name for name, (_, intro) in STAGES.items() if body.startswith(f"Dear Mr Seidl,\n\n{intro}")), None)
 
 
 def sequence_packages(policy):
@@ -29,24 +28,41 @@ def sequence_packages(policy):
 
 def validate_sequence(policy):
     sequence = policy["consistent_package_sequence"]
-    if (policy["case_id"] != "case:P18" or policy["one_final_counter"]
-            or any(k in policy for k in ("early_package_alternatives", "open_payment_compromise",
-                                        "menu_evidence_argument", "compromise_evidence_argument"))):
+    if (
+        policy["case_id"] != "case:P18"
+        or policy["one_final_counter"]
+        or any(
+            k in policy
+            for k in (
+                "early_package_alternatives",
+                "open_payment_compromise",
+                "menu_evidence_argument",
+                "compromise_evidence_argument",
+            )
+        )
+    ):
         raise ValueError("P18 consistent_package_sequence cannot be combined with legacy counter controls")
-    if (not isinstance(sequence, dict)
-            or set(sequence) != {"payment_days", "contract_months", "index_clause", "stages"}
-            or any(type(sequence[k]) is not int or sequence[k] <= 0 for k in ("payment_days", "contract_months"))
-            or not isinstance(sequence["index_clause"], dict)):
+    if (
+        not isinstance(sequence, dict)
+        or set(sequence) != {"payment_days", "contract_months", "index_clause", "stages"}
+        or any(type(sequence[k]) is not int or sequence[k] <= 0 for k in ("payment_days", "contract_months"))
+        or not isinstance(sequence["index_clause"], dict)
+    ):
         raise ValueError("consistent_package_sequence requires a complete shared structure")
     stages = sequence["stages"]
     if not isinstance(stages, list) or len(stages) != len(STAGES):
         raise ValueError("consistent_package_sequence requires opening, ppi_counter and alloy_close stages")
     previous = 0
     for stage, (name, (argument, _)) in zip(stages, STAGES.items(), strict=True):
-        if (not isinstance(stage, dict) or set(stage) != {"name", "unit_price", "evidence_argument"}
-                or stage["name"] != name or stage["evidence_argument"] != argument
-                or type(stage["unit_price"]) not in (int, float) or not math.isfinite(stage["unit_price"])
-                or not previous < stage["unit_price"] <= policy["closing_price"]):
+        if (
+            not isinstance(stage, dict)
+            or set(stage) != {"name", "unit_price", "evidence_argument"}
+            or stage["name"] != name
+            or stage["evidence_argument"] != argument
+            or type(stage["unit_price"]) not in (int, float)
+            or not math.isfinite(stage["unit_price"])
+            or not previous < stage["unit_price"] <= policy["closing_price"]
+        ):
             raise ValueError("Invalid consistent package stage, evidence argument or concession order")
         previous = stage["unit_price"]
     if previous != policy["closing_price"] or not policy.get("stop_after_nonqualifying_final"):
@@ -55,8 +71,11 @@ def validate_sequence(policy):
 
 def validate_case_sequence(case, floor, policy):
     for terms in sequence_packages(policy):
-        if (not valid_terms(case, terms) or terms["contract_months"] < policy["minimum_contract_months"]
-                or not floor.allows(total_cost(case, terms), terms)):
+        if (
+            not valid_terms(case, terms)
+            or terms["contract_months"] < policy["minimum_contract_months"]
+            or not floor.allows(total_cost(case, terms), terms)
+        ):
             raise ValueError("Consistent package stages must satisfy case options, duration and complete-cost limits")
 
 
@@ -68,10 +87,15 @@ def structure_restriction(events, days, payment_restriction):
         if message.get("from") == "buyer":
             continue
         for sentence in re.split(r"[.!?\n]", message.get("body", "")):
-            structure = re.search(r"deadband|indexation|index clause|contract|months?|laufzeit|gleitklausel",
-                                  sentence, re.I)
-            refusal = re.search(r"cannot|can't|unable|not (?:possible|acceptable|an option)|reject|refus|"
-                                r"will not|won't|\bonly\b|nicht|nur", sentence, re.I)
+            structure = re.search(
+                r"deadband|indexation|index clause|contract|months?|laufzeit|gleitklausel", sentence, re.I
+            )
+            refusal = re.search(
+                r"cannot|can't|unable|not (?:possible|acceptable|an option)|reject|refus|"
+                r"will not|won't|\bonly\b|nicht|nur",
+                sentence,
+                re.I,
+            )
             if structure and refusal:
                 return sentence.strip()
     return None
@@ -95,16 +119,23 @@ def sequence_plan(case, threads, state, floor, policy, payment_restriction):
             item["reason"] = "awaiting_supplier_reply"
             continue
         # Do not counter over a qualifying advertised alternative; request binding confirmation.
-        if any(o["must_haves_ok"] and o["terms"].get("contract_months", 0) >= policy["minimum_contract_months"]
-               and floor.allows(o["cost"], o["terms"]) for o in supplier["offers"]):
+        if any(
+            o["must_haves_ok"]
+            and o["terms"].get("contract_months", 0) >= policy["minimum_contract_months"]
+            and floor.allows(o["cost"], o["terms"])
+            for o in supplier["offers"]
+        ):
             item["reason"] = "qualifying_quote_requires_acceptance_or_confirmation"
             continue
         if len(buyers) >= len(packages):
             item["reason"] = "sequence_complete"
             continue
-        aligned = all(len(m.get("term_sheets", [])) == 1 and
-                      {k: m["term_sheets"][0].get("terms", m["term_sheets"][0]).get(k)
-                       for k in case["negotiable"]} == packages[i] for i, m in enumerate(buyers))
+        aligned = all(
+            len(m.get("term_sheets", [])) == 1
+            and {k: m["term_sheets"][0].get("terms", m["term_sheets"][0]).get(k) for k in case["negotiable"]}
+            == packages[i]
+            for i, m in enumerate(buyers)
+        )
         if not aligned:
             item["reason"] = "history_does_not_match_sequence"
             continue
@@ -115,8 +146,11 @@ def sequence_plan(case, threads, state, floor, policy, payment_restriction):
             item.update(reason="explicit_structure_restriction", source_quote=cue)
             continue
         cost = total_cost(case, terms, standard_terms(events))
-        if (not valid_terms(case, terms) or terms["contract_months"] < policy["minimum_contract_months"]
-                or not floor.allows(cost, terms)):
+        if (
+            not valid_terms(case, terms)
+            or terms["contract_months"] < policy["minimum_contract_months"]
+            or not floor.allows(cost, terms)
+        ):
             item["reason"] = "package_outside_current_limits"
             continue
         item.update(status="ready", total_cost=cost)

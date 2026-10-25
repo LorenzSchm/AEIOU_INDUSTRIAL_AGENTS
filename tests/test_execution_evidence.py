@@ -19,9 +19,16 @@ CALC = "p18:ppi_recent_change_pct"
 
 
 def agent(policy=None, assessment_enabled=True):
-    return PromptLabAgent(package(), NeverCall(), PromptSpec(
-        "p18-evidence-menu", STRATEGY, assessment_enabled=assessment_enabled,
-        execution_policy=copy.deepcopy(POLICY if policy is None else policy)))
+    return PromptLabAgent(
+        package(),
+        NeverCall(),
+        PromptSpec(
+            "p18-evidence-menu",
+            STRATEGY,
+            assessment_enabled=assessment_enabled,
+            execution_policy=copy.deepcopy(POLICY if policy is None else policy),
+        ),
+    )
 
 
 @pytest.fixture
@@ -58,12 +65,17 @@ def test_checked_ppi_reaches_actual_menu_email_without_model_or_package_changes(
     assert decision["message_index"] == 3
     assert decision["source"] == "policy:package-alternatives"
     assert decision["execution_evidence"] == {
-        "argument_id": "ppi_recent_change_pct", "source_refs": REFS, "calculation_id": CALC,
-        "status": "included", "value": -2.27, "quote": "changed by -2.27%"}
+        "argument_id": "ppi_recent_change_pct",
+        "source_refs": REFS,
+        "calculation_id": CALC,
+        "status": "included",
+        "value": -2.27,
+        "quote": "changed by -2.27%",
+    }
     assert len(decision["numeric_checks"]) == 1
     check = decision["numeric_checks"][0]
     assert check["calculation_id"] == CALC and check["source_refs"] == REFS
-    assert check["value"] == pytest.approx((129.1 / 132.1 - 1) * 100, abs=.0001)
+    assert check["value"] == pytest.approx((129.1 / 132.1 - 1) * 100, abs=0.0001)
     assert decision["assessment"]["evidence"][-1]["kind"] == "public_record"
     assert not a.audit["contract_rejections"] and not a.audit["validation_failures"]
     assert set(move["message"]) == {"subject", "body", "term_sheets"}
@@ -87,8 +99,17 @@ def test_unavailable_sources_are_skipped_instead_of_sent(prepared, damage):
     validate_assessment(result, payload["decision_context"])
 
 
-@pytest.mark.parametrize("field,value", [("value", float("nan")), ("value", True), ("value", 0),
-                                       ("value", "132.1"), ("month", "2025-06"), ("series", "AS-14404")])
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("value", float("nan")),
+        ("value", True),
+        ("value", 0),
+        ("value", "132.1"),
+        ("month", "2025-06"),
+        ("series", "AS-14404"),
+    ],
+)
 def test_wrong_or_malformed_index_records_are_never_claimed(prepared, field, value):
     action, payload, events = prepared
     payload["research"]["facts"][REFS[0]][field] = value
@@ -118,10 +139,13 @@ def test_a_rising_window_is_not_presented_as_a_decline(prepared):
     assert result == action and audit["reason"] == "window_is_not_a_decline"
 
 
-@pytest.mark.parametrize("body", [
-    f"Please review {REFS[0]} and {REFS[1]}.",
-    "The PPI-C2431 movement between 2026-06 and 2026-08 supports a review.",
-])
+@pytest.mark.parametrize(
+    "body",
+    [
+        f"Please review {REFS[0]} and {REFS[1]}.",
+        "The PPI-C2431 movement between 2026-06 and 2026-08 supports a review.",
+    ],
+)
 def test_previous_buyer_argument_is_not_sent_as_new_evidence(first_reply, body):
     case, sid, threads = first_reply
     threads[sid][1]["body"] = body
@@ -143,7 +167,9 @@ def test_annual_supplier_claim_does_not_hide_unused_recent_window(first_reply):
 def test_eligible_acceptance_still_precedes_evidence(first_reply):
     case, sid, threads = first_reply
     threads[sid][-1]["term_sheets"][0]["terms"] = {
-        **POLICY["early_package_alternatives"]["packages"][0], "contract_months": 36}
+        **POLICY["early_package_alternatives"]["packages"][0],
+        "contract_months": 36,
+    }
     a = agent()
     assert a.decide(case, threads)["message"]["action"]["type"] == "accept"
     assert "execution_evidence" not in a.decisions[-1]
@@ -152,8 +178,9 @@ def test_eligible_acceptance_still_precedes_evidence(first_reply):
 def test_old_policy_and_inputs_are_unchanged(prepared):
     action, payload, events = prepared
     original = copy.deepcopy((action, payload, events))
-    result, audit = apply_menu_evidence(action, payload, events, {k: v for k, v in POLICY.items()
-                                                               if k != "menu_evidence_argument"})
+    result, audit = apply_menu_evidence(
+        action, payload, events, {k: v for k, v in POLICY.items() if k != "menu_evidence_argument"}
+    )
     assert result == action and audit is None
     enriched, _ = apply_menu_evidence(action, payload, events, POLICY)
     validate_assessment(enriched, payload["decision_context"])

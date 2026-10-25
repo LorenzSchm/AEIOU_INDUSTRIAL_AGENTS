@@ -81,8 +81,12 @@ def model_settings(model=None, effort=None):
     effort = effort or default_effort
     if effort not in model_efforts(model):
         raise ValueError(f"Unsupported reasoning effort for {model}: {effort}")
-    return {"model": model, "provider": model_provider(model), "effort": effort,
-            "speed": "fast" if opus else "standard"}
+    return {
+        "model": model,
+        "provider": model_provider(model),
+        "effort": effort,
+        "speed": "fast" if opus else "standard",
+    }
 
 
 def set_model(model):

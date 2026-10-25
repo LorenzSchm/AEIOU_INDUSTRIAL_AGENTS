@@ -18,12 +18,16 @@ def latest_forecasts(case, tables):
         if part not in case.get("parts", []):
             continue
         if part not in latest or (row["snapshot_month"], row["id"]) > (
-                latest[part]["snapshot_month"], latest[part]["id"]):
+            latest[part]["snapshot_month"],
+            latest[part]["id"],
+        ):
             latest[part] = row
     snapshots = []
     for part, forecast in sorted(latest.items()):
-        rows = sorted((r for r in tables.get("forecast_history_lines", []) if r["fc_id"] == forecast["id"]),
-                      key=lambda r: r["target_month"])
+        rows = sorted(
+            (r for r in tables.get("forecast_history_lines", []) if r["fc_id"] == forecast["id"]),
+            key=lambda r: r["target_month"],
+        )
         expected = [month_offset(forecast["snapshot_month"], n + 1) for n in range(forecast["horizon_months"])]
         counts = Counter(r["target_month"] for r in rows)
         missing = sorted(set(expected) - counts.keys())
@@ -31,17 +35,23 @@ def latest_forecasts(case, tables):
         duplicates = sorted(month for month, count in counts.items() if count > 1)
         total = sum(r["qty"] for r in rows) if rows else None
         matches = total == forecast["qty_next_12m"] if total is not None else None
-        snapshots.append({
-            "part_id": part, "forecast": copy.deepcopy(forecast),
-            "monthly_rows": copy.deepcopy(rows),
-            "source_refs": ["table:forecasts", "table:forecast_history_lines"],
-            "coverage": {
-                "expected_months": expected, "missing_months": missing,
-                "unexpected_months": unexpected, "duplicate_months": duplicates,
-                "monthly_total": total, "matches_reported_total": matches,
-                "complete": bool(expected) and not (missing or unexpected or duplicates) and matches is True,
-            },
-        })
+        snapshots.append(
+            {
+                "part_id": part,
+                "forecast": copy.deepcopy(forecast),
+                "monthly_rows": copy.deepcopy(rows),
+                "source_refs": ["table:forecasts", "table:forecast_history_lines"],
+                "coverage": {
+                    "expected_months": expected,
+                    "missing_months": missing,
+                    "unexpected_months": unexpected,
+                    "duplicate_months": duplicates,
+                    "monthly_total": total,
+                    "matches_reported_total": matches,
+                    "complete": bool(expected) and not (missing or unexpected or duplicates) and matches is True,
+                },
+            }
+        )
     return snapshots
 
 
@@ -60,15 +70,21 @@ def commitment_comparison(case, snapshot):
     scenarios = []
     for duration in sorted(set(case.get("term_options", {}).get("contract_months", []))):
         months = [month_offset(start, offset) for offset in range(duration)]
-        scenarios.append({
-            "contract_months": duration, "start_month": start, "end_month": months[-1],
-            "annual_volume": need, "total_committed_units": need * duration / 12,
-            "months_with_forecast": len(set(months) & usable),
-            "months_without_forecast": sorted(set(months) - usable),
-            "months_beyond_scoring_horizon": max(0, duration - case["buyer"]["horizon_years"] * 12),
-        })
+        scenarios.append(
+            {
+                "contract_months": duration,
+                "start_month": start,
+                "end_month": months[-1],
+                "annual_volume": need,
+                "total_committed_units": need * duration / 12,
+                "months_with_forecast": len(set(months) & usable),
+                "months_without_forecast": sorted(set(months) - usable),
+                "months_beyond_scoring_horizon": max(0, duration - case["buyer"]["horizon_years"] * 12),
+            }
+        )
     return {
-        "authorized_need_per_year": need, "forecast_total": forecast["qty_next_12m"],
+        "authorized_need_per_year": need,
+        "forecast_total": forecast["qty_next_12m"],
         "forecast_horizon_months": forecast["horizon_months"],
         "forecast_start_month": coverage["expected_months"][0] if expected else None,
         "forecast_end_month": coverage["expected_months"][-1] if expected else None,

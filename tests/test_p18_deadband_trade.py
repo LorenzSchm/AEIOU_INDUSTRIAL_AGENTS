@@ -27,8 +27,11 @@ def recorded(through):
 
 
 def agent():
-    return PromptLabAgent(package(), NoModel(), PromptSpec(
-        "v24-offline", STRATEGY, assessment_enabled=True, execution_policy=copy.deepcopy(POLICY)))
+    return PromptLabAgent(
+        package(),
+        NoModel(),
+        PromptSpec("v24-offline", STRATEGY, assessment_enabled=True, execution_policy=copy.deepcopy(POLICY)),
+    )
 
 
 def test_menu_transports_different_clauses_with_checked_evidence_and_qualifying_costs():
@@ -36,8 +39,11 @@ def test_menu_transports_different_clauses_with_checked_evidence_and_qualifying_
     a = agent()
     move = a.decide(case, threads)
     terms = [s["terms"] for s in move["message"]["term_sheets"]]
-    assert [(t["unit_price"], t["payment_days"], t["index_clause"]["deadband_pct"])
-            for t in terms] == [(5.07, 30, 5), (5.00, 14, 3), (5.10, 60, 5)]
+    assert [(t["unit_price"], t["payment_days"], t["index_clause"]["deadband_pct"]) for t in terms] == [
+        (5.07, 30, 5),
+        (5.00, 14, 3),
+        (5.10, 60, 5),
+    ]
     assert [total_cost(case, t) for t in terms] == [244082.98, 243688.67, 243915.66]
     assert all(a.acceptance_floor.allows(total_cost(case, t), t) for t in terms)
     assert score(295173.23, total_cost(case, terms[1]), 222651.27) * 100 == pytest.approx(70.99168307)
@@ -52,12 +58,14 @@ def test_menu_transports_different_clauses_with_checked_evidence_and_qualifying_
 def test_synthetic_binding_trade_is_accepted_unchanged_at_both_qualifying_cent_prices(price):
     case, threads = recorded(7)
     sheet = threads[SID][-1]["term_sheets"][0]
-    sheet["terms"] = {**copy.deepcopy(POLICY["early_package_alternatives"]["packages"][1]),
-                      "unit_price": price, "contract_months": 36}
+    sheet["terms"] = {
+        **copy.deepcopy(POLICY["early_package_alternatives"]["packages"][1]),
+        "unit_price": price,
+        "contract_months": 36,
+    }
     before = copy.deepcopy(threads)
     a = agent()
-    assert a.decide(case, threads)["message"]["action"] == {
-        "type": "accept", "term_sheet_id": sheet["term_sheet_id"]}
+    assert a.decide(case, threads)["message"]["action"] == {"type": "accept", "term_sheet_id": sheet["term_sheet_id"]}
     assert threads == before
     assert a.decisions[-1]["source"] == "policy:accept"
 
@@ -65,8 +73,11 @@ def test_synthetic_binding_trade_is_accepted_unchanged_at_both_qualifying_cent_p
 @pytest.mark.parametrize("price", [5.02, 5.10])
 def test_price_in_another_clause_cannot_be_accepted_under_the_three_percent_trade(price):
     case, threads = recorded(7)
-    terms = {**copy.deepcopy(POLICY["early_package_alternatives"]["packages"][1]),
-             "unit_price": price, "contract_months": 36}
+    terms = {
+        **copy.deepcopy(POLICY["early_package_alternatives"]["packages"][1]),
+        "unit_price": price,
+        "contract_months": 36,
+    }
     threads[SID][-1]["term_sheets"][0]["terms"] = terms
     a = agent()
     assert total_cost(case, terms) > 244400.60

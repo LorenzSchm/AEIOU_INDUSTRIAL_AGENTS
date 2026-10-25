@@ -1,6 +1,7 @@
 """Retrieve the supplier's situation, not just the references listed in a case."""
 
 import json
+import math
 import threading
 from datetime import date
 
@@ -18,6 +19,7 @@ class ResearchPackage(DataPackage):
 
     def __init__(self, root, *, include_release=True):
         self._read_lock = threading.RLock()
+        self._evidence_index = None
         self._base_view = None
         super().__init__(root, include_release=include_release)
 
@@ -29,6 +31,14 @@ class ResearchPackage(DataPackage):
                     self._base_view = ResearchPackage(self.root, include_release=False)
                 return self._base_view
         return self
+
+    def evidence_index(self):
+        from .retrieval import HybridEvidenceIndex
+
+        with self._read_lock:
+            if self._evidence_index is None:
+                self._evidence_index = HybridEvidenceIndex.from_package(self)
+            return self._evidence_index
 
     def tables(self):
         with self._read_lock:
@@ -49,6 +59,65 @@ class ResearchPackage(DataPackage):
 
 def package():
     return ResearchPackage(data_root())
+
+
+def recent_index_reversals(case, pkg, annual_indices):
+    """Fixed three-month window, never a retrospectively selected price peak.
+
+    Keep the annual rise visible. A recent market decline neither proves lower
+    total supplier costs nor reprices a supplier's already-covered materials.
+    """
+    from .retrieval import evidence_cutoff
+
+    if case.get("buyer", {}).get("category_goal") != "leverage" or "index_clause" not in case.get("negotiable", []):
+        return []
+    cutoff = evidence_cutoff(case)[:7]
+    result = []
+    for annual in annual_indices:
+        series = annual["series"]
+        points = {
+            f["month"]: (ref, f["value"])
+            for ref, f in pkg.facts.items()
+            if ref.startswith("idx:")
+            and f.get("series") == series
+            and isinstance(f.get("month"), str)
+            and f["month"] <= cutoff
+            and type(f.get("value")) in (float, int)
+            and math.isfinite(f["value"])
+            and f["value"] > 0
+        }
+        if not points:
+            continue
+        end = max(points)
+        number = int(end[:4]) * 12 + int(end[5:]) - 1
+        cutoff_number = int(cutoff[:4]) * 12 + int(cutoff[5:]) - 1
+        if cutoff_number - number > 12:
+            continue  # The arena's evidence contract rejects stale end points.
+        month = lambda n: f"{n // 12:04d}-{n % 12 + 1:02d}"  # noqa: E731
+        start, year_start = month(number - 3), month(number - 12)
+        if start not in points or year_start not in points:
+            continue
+        change = (points[end][1] / points[start][1] - 1) * 100
+        year_change = (points[end][1] / points[year_start][1] - 1) * 100
+        if change >= -0.005 or year_change <= 0:
+            continue
+        refs = [points[start][0], points[end][0]]
+        result.append(
+            {
+                "series": series,
+                "window": "recent_quarter",
+                "weight": annual["weight"],
+                "change_pct": round(change, 4),
+                "annual_change_pct": round(year_change, 4),
+                "refs": refs,
+                "claim": (
+                    f"{series} changed {change:+.2f}% from {start} to {end} ({refs[0]}, {refs[1]}). "
+                    "This is the latest three-month change, while the twelve-month change remains positive. "
+                    "It does not establish a fall in your total cost or reprice materials already covered."
+                ),
+            }
+        )
+    return result
 
 
 def research(case, pkg):
@@ -74,8 +143,14 @@ def research(case, pkg):
     doc_refs.extend(r["id"] for r in rows.get("contracts", []))
     doc_refs.extend(ref for ref in case.get("refs", []) if ref.startswith(("doc:", "ctr:")) and "#" not in ref)
     # Sunday facts are not in the original SQLite database; retrieve them too.
+    release_refs = (
+        set(json.loads((pkg.release / "facts.json").read_text(encoding="utf-8")))
+        if case.get("set") == "final" and getattr(pkg, "release", None)
+        else set()
+    )
     for ref, fact in pkg.facts.items():
-        if ref.startswith(("doc:", "news:")) and any(s in json.dumps(fact) for s in suppliers):
+        global_release = ref in release_refs and not fact.get("supplier")
+        if ref.startswith(("doc:", "news:")) and (global_release or any(s in json.dumps(fact) for s in suppliers)):
             facts[ref] = fact
             if ref.startswith("doc:"):
                 doc_refs.append(ref)
@@ -132,7 +207,12 @@ def research(case, pkg):
                 }
             )
             facts[start_ref], facts[end_ref] = start, end
+    recent = recent_index_reversals(case, pkg, indices)
+    for index in recent:
+        for ref in index["refs"]:
+            facts[ref] = pkg.lookup(ref)
     intelligence = {"facts": facts, "documents": docs, "tables": rows, "indices": indices, "estimates": estimates}
+    intelligence["recent_indices"] = recent
     intelligence["latest_forecasts"] = latest_forecasts(case, rows)
     intelligence["retrieval_issues"] = issues
     intelligence["collection"] = collection

@@ -27,9 +27,16 @@ class NoModel:
 
 
 def agent(policy=None, backend=None):
-    return PromptLabAgent(package(), backend or NoModel(), PromptSpec(
-        "v22-offline", STRATEGY, assessment_enabled=True,
-        execution_policy=copy.deepcopy(POLICY if policy is None else policy)))
+    return PromptLabAgent(
+        package(),
+        backend or NoModel(),
+        PromptSpec(
+            "v22-offline",
+            STRATEGY,
+            assessment_enabled=True,
+            execution_policy=copy.deepcopy(POLICY if policy is None else policy),
+        ),
+    )
 
 
 def opening():
@@ -39,11 +46,19 @@ def opening():
 
 def reply(threads, move, price=5.40, status="open", **terms):
     threads[SID].append({**move["message"], "from": "buyer"})
-    threads[SID].append({
-        "from": "sales@70740", "status": status, "body": "Thank you. Please review our current complete offer.",
-        "term_sheets": [{"term_sheet_id": f"offer:test-{len(threads[SID])}", "terms": {
-            **sequence_packages(POLICY)[0], "unit_price": price, **terms}}],
-    })
+    threads[SID].append(
+        {
+            "from": "sales@70740",
+            "status": status,
+            "body": "Thank you. Please review our current complete offer.",
+            "term_sheets": [
+                {
+                    "term_sheet_id": f"offer:test-{len(threads[SID])}",
+                    "terms": {**sequence_packages(POLICY)[0], "unit_price": price, **terms},
+                }
+            ],
+        }
+    )
 
 
 def after_opening():
@@ -53,8 +68,9 @@ def after_opening():
 
 
 def control(a, case, threads):
-    return controlled_action(case, threads, a.decision_protocol_state(case, threads),
-                             a.acceptance_floor, a.execution_policy)
+    return controlled_action(
+        case, threads, a.decision_protocol_state(case, threads), a.acceptance_floor, a.execution_policy
+    )
 
 
 def test_full_sequence_keeps_structure_injects_each_argument_once_and_accepts_exact_reply():
@@ -82,7 +98,9 @@ def test_full_sequence_keeps_structure_injects_each_argument_once_and_accepts_ex
     a = agent()
     move = a.decide(case, threads)
     assert move["message"]["action"] == {
-        "type": "accept", "term_sheet_id": threads[SID][-1]["term_sheets"][0]["term_sheet_id"]}
+        "type": "accept",
+        "term_sheet_id": threads[SID][-1]["term_sheets"][0]["term_sheet_id"],
+    }
     assert a.decisions[-1]["source"] == "policy:accept"
     assert total_cost(case, threads[SID][-1]["term_sheets"][0]["terms"]) == 243915.66
 
@@ -109,10 +127,15 @@ def test_low_score_final_stops_without_late_counter_or_model(days):
     assert a.audit["terminal_limits"][-1]["protocol_state"]["suppliers"][SID]["rounds_left"] == 9
 
 
-@pytest.mark.parametrize("restriction", [
-    "We cannot accept 60-day payment.", "Payment must remain at 30 days net.",
-    "We cannot accept a 5% deadband.", "We only offer a 24-month contract.",
-])
+@pytest.mark.parametrize(
+    "restriction",
+    [
+        "We cannot accept 60-day payment.",
+        "Payment must remain at 30 days net.",
+        "We cannot accept a 5% deadband.",
+        "We only offer a 24-month contract.",
+    ],
+)
 def test_explicit_objections_defer_with_visible_reason_instead_of_forcing_sequence(restriction):
     case, threads = after_opening()
     threads[SID][-1]["body"] += " " + restriction
@@ -176,8 +199,12 @@ def test_opening_cannot_invent_or_misattribute_purchase_order_evidence(damage):
     if damage == "unread":
         payload["decision_context"]["sources"][ref]["available"] = False
     else:
-        key, value = {"wrong_part": ("part", "part:other"), "wrong_price": ("unit_price", 5.10),
-                      "wrong_supplier": ("supplier", "sup:other"), "wrong_price_unit": ("price_unit", 100)}[damage]
+        key, value = {
+            "wrong_part": ("part", "part:other"),
+            "wrong_price": ("unit_price", 5.10),
+            "wrong_supplier": ("supplier", "sup:other"),
+            "wrong_price_unit": ("price_unit", 100),
+        }[damage]
         payload["research"]["facts"][ref][key] = value
     result, audit = apply_menu_evidence(action, payload, threads[SID], POLICY)
     assert audit["status"] == "skipped" and result == action
@@ -191,8 +218,15 @@ def test_missing_required_evidence_defers_to_model_without_sending_the_unsubstan
         def complete(self, system, user):
             payload = json.loads(user)
             seen.append(payload["execution_control_deferral"])
-            return json.dumps({"supplier_id": SID, "action": "send", "body": "Could you confirm the quotation date?",
-                               "term_sheets": [], **assessment_fields(payload, SID)})
+            return json.dumps(
+                {
+                    "supplier_id": SID,
+                    "action": "send",
+                    "body": "Could you confirm the quotation date?",
+                    "term_sheets": [],
+                    **assessment_fields(payload, SID),
+                }
+            )
 
     case, threads = opening()
     a = agent(backend=Fallback())
@@ -241,15 +275,21 @@ def test_sequence_requires_evidence_validation_and_never_sends_after_withdrawal(
         agent().decide(case, threads)
 
 
-@pytest.mark.parametrize("body,authority,blocked", [
-    ("I am fully authorized to negotiate and conclude this agreement.", "supplier_confirmed", False),
-    ("Our pricing committee has reviewed your request and authorized this offer.", "supplier_confirmed", False),
-    ("This price requires pricing committee approval.", "approval_required_or_limited", True),
-    ("I am fully authorized only up to 2%; further reductions require approval.",
-     "approval_required_or_limited", True),
-    ("I am not fully authorized to conclude this agreement.", "unspecified", False),
-    ("Our committee has not authorized this offer.", "unspecified", False),
-])
+@pytest.mark.parametrize(
+    "body,authority,blocked",
+    [
+        ("I am fully authorized to negotiate and conclude this agreement.", "supplier_confirmed", False),
+        ("Our pricing committee has reviewed your request and authorized this offer.", "supplier_confirmed", False),
+        ("This price requires pricing committee approval.", "approval_required_or_limited", True),
+        (
+            "I am fully authorized only up to 2%; further reductions require approval.",
+            "approval_required_or_limited",
+            True,
+        ),
+        ("I am not fully authorized to conclude this agreement.", "unspecified", False),
+        ("Our committee has not authorized this offer.", "unspecified", False),
+    ],
+)
 def test_confirmed_authority_is_not_treated_as_missing_approval(body, authority, blocked):
     case, threads = opening()
     threads[SID][-1]["body"] = body

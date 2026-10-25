@@ -24,8 +24,11 @@ TERMS = {"unit_price": 49.6, "payment_days": 30, "contract_months": 24, "effecti
 
 def quote(number=0):
     return {
-        "from": "supplier", "status": "final_offer", "message_id": f"msg:{number}",
-        "body": "A main offer and a quoted alternative.", "attachments": [],
+        "from": "supplier",
+        "status": "final_offer",
+        "message_id": f"msg:{number}",
+        "body": "A main offer and a quoted alternative.",
+        "attachments": [],
         "term_sheets": [
             {"term_sheet_id": f"offer:{number}", "terms": {**TERMS, "unit_price": 49.8}},
             {"term_sheet_id": f"offer:{number}-a", "terms": TERMS.copy()},
@@ -41,15 +44,22 @@ def transport(accepts, *, ended=False, reject_all=False, status=422):
         if request.method == "POST" and request.url.path == "/v1/sessions":
             return httpx.Response(200, json={"session_id": "session-test", "case": CASE, "threads": {SID: events}})
         if request.method == "GET" and request.url.path == "/v1/sessions/session-test":
-            return httpx.Response(200, json={
-                "status": "ended" if ended else "open", "result": {"score": 0.0, "deal": False},
-            })
+            return httpx.Response(
+                200,
+                json={
+                    "status": "ended" if ended else "open",
+                    "result": {"score": 0.0, "deal": False},
+                },
+            )
         if request.method == "GET":
-            return httpx.Response(200, json={
-                # Simulate a race: the initially registered alternative is withdrawn before POST.
-                "messages": events, "offer_id": "offer:0-a" if not accepts else
-                events[-1]["term_sheets"][0]["term_sheet_id"],
-            })
+            return httpx.Response(
+                200,
+                json={
+                    # Simulate a race: the initially registered alternative is withdrawn before POST.
+                    "messages": events,
+                    "offer_id": "offer:0-a" if not accepts else events[-1]["term_sheets"][0]["term_sheet_id"],
+                },
+            )
         message = json.loads(request.content)["message"]
         if action := message.get("action"):
             accepts.append(action["term_sheet_id"])
@@ -82,10 +92,14 @@ def test_rejected_alternative_refreshes_then_confirms_exact_terms_before_accepti
                 assert state["rounds_left"] == CASE["round_limit"]
                 assert state["acceptance_rejection"]["rejected_offer_id"] == "offer:0-a"
                 assert state["eligible_offer_ids"] == ["offer:0"]
-                return json.dumps({
-                    "supplier_id": SID, "action": "send", "body": "Please confirm this exact package as standing.",
-                    "term_sheets": [TERMS],
-                })
+                return json.dumps(
+                    {
+                        "supplier_id": SID,
+                        "action": "send",
+                        "body": "Please confirm this exact package as standing.",
+                        "term_sheets": [TERMS],
+                    }
+                )
             assert state["rounds_left"] == CASE["round_limit"] - 1
             return json.dumps({"supplier_id": SID, "action": "accept", "term_sheet_id": "offer:confirmed"})
 
@@ -114,6 +128,8 @@ def test_recovery_is_bounded_and_ended_session_uses_official_result(monkeypatch,
     http, calls = transport(accepts, ended=ended, reject_all=True)
 
     class Stubborn:
+        manages_execution = True
+
         def decide(self, case, threads):
             return {"supplier_id": SID, "message": {"action": {"type": "accept", "term_sheet_id": "offer:0-a"}}}
 
@@ -171,9 +187,13 @@ def test_each_reissued_alternative_is_checked_again_before_model_acceptance(monk
         if request.url.path == "/v1/sessions":
             return httpx.Response(200, json={"session_id": "test", "case": CASE, "threads": {SID: events}})
         if request.method == "GET":
-            return httpx.Response(200, json={
-                "messages": events, "offer_id": events[-1]["term_sheets"][0]["term_sheet_id"],
-            })
+            return httpx.Response(
+                200,
+                json={
+                    "messages": events,
+                    "offer_id": events[-1]["term_sheets"][0]["term_sheet_id"],
+                },
+            )
         message = json.loads(request.content)["message"]
         if message.get("action"):
             accepted.append(message["action"]["term_sheet_id"])
@@ -194,14 +214,16 @@ def test_each_reissued_alternative_is_checked_again_before_model_acceptance(monk
                 assert not state["offers"][1]["server_acceptance_available"]
             if self.calls < 4:
                 return json.dumps({"supplier_id": SID, "action": "send", "body": "Please confirm the package."})
-            return json.dumps({"supplier_id": SID, "action": "accept",
-                               "term_sheet_id": state["eligible_offer_ids"][0]})
+            return json.dumps({"supplier_id": SID, "action": "accept", "term_sheet_id": state["eligible_offer_ids"][0]})
 
     remote = ArenaClient(base_url="https://arena.test", transport=httpx.MockTransport(handler), rate=100000)
     record = new_run(CASE["case_id"], "hosted", "test")
     try:
-        result = play(RecordingTable(remote, record), CASE["case_id"],
-                      PromptLabAgent(package(), Buyer(), PromptSpec("eval", "Choose a valid offer.")))
+        result = play(
+            RecordingTable(remote, record),
+            CASE["case_id"],
+            PromptLabAgent(package(), Buyer(), PromptSpec("eval", "Choose a valid offer.")),
+        )
     finally:
         remote.http.close()
     assert result["deal"]

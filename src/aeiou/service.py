@@ -71,8 +71,16 @@ def index():
 def status():
     return {
         **model_settings(),
-        "models": [{"id": k, "label": v, "provider": model_provider(k), "efforts": model_efforts(k),
-                    "default_effort": model_settings(k)["effort"]} for k, v in MODELS.items()],
+        "models": [
+            {
+                "id": k,
+                "label": v,
+                "provider": model_provider(k),
+                "efforts": model_efforts(k),
+                "default_effort": model_settings(k)["effort"],
+            }
+            for k, v in MODELS.items()
+        ],
         "claude_configured": provider_configured("anthropic"),
         "openai_configured": provider_configured("openai"),
         "llm_configured": provider_configured(model_provider(model_name())),
@@ -81,7 +89,12 @@ def status():
         "facts": len(pkg().facts),
         "tables": pkg().tables(),
         "sunday_release": pkg().release is not None,
-        "data_notes": "Frozen buyer world: 30 September 2026. Refresh Sunday release before final.",
+        "data_notes": (
+            "Base package: 30 September 2026. Sunday release loaded for final cases; "
+            "practice and sandbox use the base package."
+            if pkg().release
+            else "Base package: 30 September 2026. Refresh Sunday release before final."
+        ),
         "jobs": JOBS,
     }
 
@@ -114,12 +127,49 @@ def run(run_id: str):
         raise HTTPException(404, "Run not found") from e
 
 
+@app.get("/api/runs/{run_id}/handoff")
+def handoff(run_id: str):
+    from .handoff import procurement_handoff
+
+    try:
+        recorded = get_run(run_id)
+    except FileNotFoundError as e:
+        raise HTTPException(404, "Run not found") from e
+    if recorded.get("status") != "completed":
+        raise HTTPException(409, "Wait for the completed negotiation before reviewing a handoff")
+    return procurement_handoff(recorded)
+
+
 @app.get("/api/research/{case_id}")
 def dossier(case_id: str):
     case = next((c for c in [*local_cases().values(), *hosted_cases()] if c["case_id"] == case_id), None)
     if case is None:
         raise HTTPException(404, "Case not found")
     return clean({"case": case, "research": research(case, pkg())})
+
+
+@app.get("/api/research/{case_id}/search")
+def research_search(case_id: str, q: str, supplier_id: str | None = None):
+    from .research_tools import decision_research
+
+    case = dossier(case_id)["case"]
+    try:
+        return clean(decision_research(case, pkg(), q, supplier_id))
+    except ValueError as exc:
+        raise HTTPException(422, str(exc)) from exc
+
+
+@app.get("/api/evaluations")
+def advanced_evaluations():
+    files = sorted((state_root() / "evaluations").glob("*/report.json"), key=lambda p: p.stat().st_mtime, reverse=True)
+    reports = []
+    for path in files[:12]:
+        try:
+            report = json.loads(path.read_text(encoding="utf-8"))
+            reports.append({k: v for k, v in report.items() if k != "rows"})
+        except (ValueError, OSError):
+            continue
+    return reports
 
 
 @app.get("/api/benchmarks")
@@ -275,8 +325,15 @@ def launch_practice_eval(body: PracticeEvalRequest):
                 raise HTTPException(409, "Hosted practice already has a running evaluation")
             if sum(job["status"] == "running" for job in JOBS.values()) >= 4:
                 raise HTTPException(429, "Wait for a running job to finish")
-            report = prepare_evaluation(body.prompt, settings["model"], "practice", repeats=body.repeats,
-                                        case_ids=body.case_ids, catalog=catalog, effort=settings["effort"])
+            report = prepare_evaluation(
+                body.prompt,
+                settings["model"],
+                "practice",
+                repeats=body.repeats,
+                case_ids=body.case_ids,
+                catalog=catalog,
+                effort=settings["effort"],
+            )
             JOBS[report["id"]] = {"status": "running", "kind": "evaluation", "variant_id": "practice"}
     except HTTPException:
         raise
@@ -315,10 +372,12 @@ class EvalComparisonRequest(BaseModel):
 
 @app.post("/api/eval-suite/compare", status_code=202)
 def launch_eval_comparison(body: EvalComparisonRequest):
-    reports = start_eval_variants([
-        EvalSuiteRequest(prompt=body.prompt_a, variant_id="a", model=body.model_a, effort=body.effort_a),
-        EvalSuiteRequest(prompt=body.prompt_b, variant_id="b", model=body.model_b, effort=body.effort_b),
-    ])
+    reports = start_eval_variants(
+        [
+            EvalSuiteRequest(prompt=body.prompt_a, variant_id="a", model=body.model_a, effort=body.effort_a),
+            EvalSuiteRequest(prompt=body.prompt_b, variant_id="b", model=body.model_b, effort=body.effort_b),
+        ]
+    )
     return {"batches": [{"id": report["id"], "variant_id": report["variant_id"]} for report in reports]}
 
 
@@ -341,12 +400,17 @@ def start_eval_variants(requests):
         if sum(job["status"] == "running" for job in JOBS.values()) + len(requests) > 4:
             raise HTTPException(429, "Wait for a running job to finish before starting more evaluations")
         comparison_id = uuid.uuid4().hex if len(requests) > 1 else None
-        reports = [prepare_evaluation(body.prompt, selection["model"], body.variant_id, comparison_id,
-                                      effort=selection["effort"])
-                   for body, selection in zip(requests, selections, strict=True)]
+        reports = [
+            prepare_evaluation(
+                body.prompt, selection["model"], body.variant_id, comparison_id, effort=selection["effort"]
+            )
+            for body, selection in zip(requests, selections, strict=True)
+        ]
         for report in reports:
             JOBS[report["id"]] = {
-                "status": "running", "kind": "evaluation", "variant_id": report["variant_id"],
+                "status": "running",
+                "kind": "evaluation",
+                "variant_id": report["variant_id"],
             }
     for report in reports:
         POOL.submit(dispatch, report["id"], lambda report=report: run_evaluation(report))
@@ -356,7 +420,9 @@ def start_eval_variants(requests):
 class PlayRequest(BaseModel):
     case_id: str = Field(max_length=100)
     mode: str = Field(pattern="^(local|hosted)$")
-    agent: str = Field(default="original", pattern="^(baseline|guarded|adaptive|claude|original)$")
+    agent: str = Field(
+        default="original", pattern="^(baseline|guarded|adaptive|claude|original|strategic|strategic-policy)$"
+    )
     opponent: str = Field(default="auto", max_length=50)
     # Seconds between local exchanges, so a demo audience can watch the pipeline move.
     pace: float = Field(default=0, ge=0, le=5)
@@ -372,7 +438,7 @@ def dispatch(job_id, fn):
 
 @app.post("/api/play", status_code=202)
 def launch(body: PlayRequest):
-    if body.mode == "local" or body.agent in {"claude", "original"}:
+    if body.mode == "local" or body.agent in {"claude", "original", "strategic"}:
         validate_buyer()
     if body.mode == "hosted" and not os.environ.get("ARENA_API_KEY"):
         raise HTTPException(409, "Set ARENA_API_KEY in .env")

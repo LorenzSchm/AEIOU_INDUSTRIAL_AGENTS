@@ -26,16 +26,20 @@ def test_latest_forecast_is_scoped_and_preserves_monthly_rows_and_original_histo
     assert len(snapshots) == 1
     snapshot = snapshots[0]
     assert snapshot["forecast"]["id"] == "fc:340010@2026-09"
-    assert snapshot["monthly_rows"] == [r for r in tables["forecast_history_lines"]
-                                        if r["fc_id"] == "fc:340010@2026-09"]
+    assert snapshot["monthly_rows"] == [
+        r for r in tables["forecast_history_lines"] if r["fc_id"] == "fc:340010@2026-09"
+    ]
     assert len(snapshot["monthly_rows"]) == 12
     assert snapshot["coverage"]["complete"]
     assert snapshot["coverage"]["monthly_total"] == 21310
-    assert (min(r["qty"] for r in snapshot["monthly_rows"]),
-            max(r["qty"] for r in snapshot["monthly_rows"])) == (910, 2400)
+    assert (min(r["qty"] for r in snapshot["monthly_rows"]), max(r["qty"] for r in snapshot["monthly_rows"])) == (
+        910,
+        2400,
+    )
     # A newer unrelated part must never replace the case part's snapshot.
-    tables["forecasts"].append({**snapshot["forecast"], "id": "fc:other", "part_id": "part:other",
-                                "snapshot_month": "2028-01"})
+    tables["forecasts"].append(
+        {**snapshot["forecast"], "id": "fc:other", "part_id": "part:other", "snapshot_month": "2028-01"}
+    )
     assert latest_forecasts(case, tables) == snapshots
     snapshot["monthly_rows"][0]["qty"] = -1
     assert tables["forecast_history_lines"] == before["forecast_history_lines"]
@@ -124,8 +128,15 @@ def test_actual_backend_gets_latest_months_and_preparation_without_retrieval(p10
             assert "unresolved_from_buyer_records" in payload["research"]["p10_evidence"]
             assert payload["research"]["estimates"][sid]["full_cost"] == 24.31
             assert payload["evidence_transport"]["delivered_payload_chars"] == len(user)
-            return json.dumps({"supplier_id": sid, "action": "send", "body": "Thank you for your quotation.",
-                               "term_sheets": [], **assessment_fields(payload, sid)})
+            return json.dumps(
+                {
+                    "supplier_id": sid,
+                    "action": "send",
+                    "body": "Thank you for your quotation.",
+                    "term_sheets": [],
+                    **assessment_fields(payload, sid),
+                }
+            )
 
     agent = PromptLabAgent(pkg, Backend(), PromptSpec("forecast-check", "Negotiate P10.", assessment_enabled=True))
     agent.decide(case, threads)

@@ -21,8 +21,7 @@ def test_hosted_practice_respects_attempt_cap_and_uses_original(monkeypatch, lim
         calls.append((case_id, agent))
         return {"case_id": case_id, "status": "completed"}
 
-    argv = ["aeiou", "practice", "--agent", "original"] + (
-        ["--max-sessions", str(limit)] if limit is not None else [])
+    argv = ["aeiou", "practice", "--agent", "original"] + (["--max-sessions", str(limit)] if limit is not None else [])
     monkeypatch.setattr(sys, "argv", argv)
     monkeypatch.setattr(cli, "ArenaClient", Client)
     monkeypatch.setattr(cli, "hosted", lambda cases: cases)

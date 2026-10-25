@@ -69,11 +69,24 @@ The historical tenth-euro price pattern is a planning observation, not a hard ac
 
 
 def validate_policy(policy, floor):
-    required = {"case_id", "accept_eligible_offers", "closing_price", "maximum_unit_price",
-                "maximum_total_cost", "minimum_contract_months", "one_final_counter"}
-    optional = {"adapt_closing_price_to_budget", "early_package_alternatives", "menu_evidence_argument",
-                "open_payment_compromise", "compromise_evidence_argument", "stop_after_nonqualifying_final",
-                "consistent_package_sequence"}
+    required = {
+        "case_id",
+        "accept_eligible_offers",
+        "closing_price",
+        "maximum_unit_price",
+        "maximum_total_cost",
+        "minimum_contract_months",
+        "one_final_counter",
+    }
+    optional = {
+        "adapt_closing_price_to_budget",
+        "early_package_alternatives",
+        "menu_evidence_argument",
+        "open_payment_compromise",
+        "compromise_evidence_argument",
+        "stop_after_nonqualifying_final",
+        "consistent_package_sequence",
+    }
     if not isinstance(policy, dict) or not required <= set(policy) or set(policy) - required - optional:
         raise ValueError("Execution policy must contain exactly the documented closing-control fields")
     for key in ("accept_eligible_offers", "one_final_counter"):
@@ -88,9 +101,11 @@ def validate_policy(policy, floor):
             raise ValueError(f"{key} must be finite and positive")
     if not floor or floor.case_id != policy["case_id"]:
         raise ValueError("Execution controls require matching case-scoped acceptance limits")
-    if (Decimal(str(policy["maximum_unit_price"])) != floor.maximum_unit_price
-            or Decimal(str(policy["maximum_total_cost"])) != floor.max_cost
-            or policy["closing_price"] > policy["maximum_unit_price"]):
+    if (
+        Decimal(str(policy["maximum_unit_price"])) != floor.maximum_unit_price
+        or Decimal(str(policy["maximum_total_cost"])) != floor.max_cost
+        or policy["closing_price"] > policy["maximum_unit_price"]
+    ):
         raise ValueError("Execution controls and prompt acceptance limits differ; align them before starting a run")
     if "early_package_alternatives" in policy:
         menu = policy["early_package_alternatives"]
@@ -104,8 +119,11 @@ def validate_policy(policy, floor):
         for p in packages:
             if not isinstance(p, dict) or set(p) != {"unit_price", "payment_days", "index_clause"}:
                 raise ValueError("Each early package must specify price, payment days and index clause")
-            if (type(p["unit_price"]) not in (int, float) or not math.isfinite(p["unit_price"])
-                    or not 0 < p["unit_price"] <= policy["maximum_unit_price"]):
+            if (
+                type(p["unit_price"]) not in (int, float)
+                or not math.isfinite(p["unit_price"])
+                or not 0 < p["unit_price"] <= policy["maximum_unit_price"]
+            ):
                 raise ValueError("Early package price must be finite, positive and within the nominal cap")
             if type(p["payment_days"]) is not int or p["payment_days"] <= 0:
                 raise ValueError("Early package payment_days must be a positive integer")
@@ -114,23 +132,31 @@ def validate_policy(policy, floor):
         if any(p in packages[:i] for i, p in enumerate(packages)):
             raise ValueError("Early package alternatives must be distinct")
     if "menu_evidence_argument" in policy and (
-            policy["menu_evidence_argument"] != "ppi_recent_change_pct"
-            or policy["case_id"] != "case:P18" or not policy.get("early_package_alternatives")):
+        policy["menu_evidence_argument"] != "ppi_recent_change_pct"
+        or policy["case_id"] != "case:P18"
+        or not policy.get("early_package_alternatives")
+    ):
         raise ValueError("menu_evidence_argument must select ppi_recent_change_pct for a P18 package menu")
     if "open_payment_compromise" in policy:
         p = policy["open_payment_compromise"]
-        if (policy["case_id"] != "case:P18" or not policy.get("early_package_alternatives")
-                or not isinstance(p, dict) or set(p) != {"unit_price", "payment_days", "index_clause"}
-                or type(p["unit_price"]) not in (int, float) or not math.isfinite(p["unit_price"])
-                or not 0 < p["unit_price"] <= policy["maximum_unit_price"]
-                or type(p["payment_days"]) is not int or p["payment_days"] <= 0
-                or not isinstance(p["index_clause"], dict)):
+        if (
+            policy["case_id"] != "case:P18"
+            or not policy.get("early_package_alternatives")
+            or not isinstance(p, dict)
+            or set(p) != {"unit_price", "payment_days", "index_clause"}
+            or type(p["unit_price"]) not in (int, float)
+            or not math.isfinite(p["unit_price"])
+            or not 0 < p["unit_price"] <= policy["maximum_unit_price"]
+            or type(p["payment_days"]) is not int
+            or p["payment_days"] <= 0
+            or not isinstance(p["index_clause"], dict)
+        ):
             raise ValueError("open_payment_compromise requires a valid P18 package and an early menu")
         if p in policy["early_package_alternatives"]["packages"]:
             raise ValueError("open_payment_compromise must be distinct from the early menu")
     if "compromise_evidence_argument" in policy and (
-            policy["compromise_evidence_argument"] != "as_recent_change_pct"
-            or not policy.get("open_payment_compromise")):
+        policy["compromise_evidence_argument"] != "as_recent_change_pct" or not policy.get("open_payment_compromise")
+    ):
         raise ValueError("compromise_evidence_argument requires as_recent_change_pct and an open compromise")
     if "consistent_package_sequence" in policy:
         validate_sequence(policy)
@@ -144,12 +170,12 @@ def validate_case_policy(case, floor, policy):
     menu = (policy or {}).get("early_package_alternatives")
     if not menu:
         return
-    durations = [m for m in case.get("term_options", {}).get("contract_months", [])
-                 if m >= policy["minimum_contract_months"]]
+    durations = [
+        m for m in case.get("term_options", {}).get("contract_months", []) if m >= policy["minimum_contract_months"]
+    ]
     if not durations:
         raise ValueError("No case contract duration satisfies the early package policy")
-    packages = menu["packages"] + ([policy["open_payment_compromise"]]
-                                  if policy.get("open_payment_compromise") else [])
+    packages = menu["packages"] + ([policy["open_payment_compromise"]] if policy.get("open_payment_compromise") else [])
     for package in packages:
         terms = {**package, "contract_months": min(durations)}
         if not valid_terms(case, terms):
@@ -163,8 +189,9 @@ def load_execution_policies():
     if not path.exists():
         return {}
     value = json.loads(path.read_text())
-    if not isinstance(value, dict) or any(not isinstance(p, dict) or p.get("case_id") != cid
-                                          for cid, p in value.items()):
+    if not isinstance(value, dict) or any(
+        not isinstance(p, dict) or p.get("case_id") != cid for cid, p in value.items()
+    ):
         raise ValueError("Negotiation policies must map exact case IDs to their controls")
     return value
 
@@ -175,17 +202,28 @@ def matches_scope(case, policy):
 
 def package_allowed(case, terms, cost, floor, policy):
     minimal = {k: terms.get(k) for k in case["negotiable"]}
-    return (valid_terms(case, minimal) and terms.get("contract_months", 0) >= policy["minimum_contract_months"]
-            and floor.allows(cost, terms))
+    return (
+        valid_terms(case, minimal)
+        and terms.get("contract_months", 0) >= policy["minimum_contract_months"]
+        and floor.allows(cost, terms)
+    )
 
 
 def package_menu_used(events, menu):
     # Match terms as well as our wording, including a menu sent by the model. IDs,
     # term-sheet ordering and a subsequent supplier duration change must not reset it.
-    return any(m.get("from") == "buyer" and (
-        m.get("body", "").startswith(PACKAGE_PREFIX)
-        or any(all(s.get("terms", {}).get(k) == v for k, v in p.items())
-               for s in m.get("term_sheets", []) for p in menu["packages"])) for m in events)
+    return any(
+        m.get("from") == "buyer"
+        and (
+            m.get("body", "").startswith(PACKAGE_PREFIX)
+            or any(
+                all(s.get("terms", {}).get(k) == v for k, v in p.items())
+                for s in m.get("term_sheets", [])
+                for p in menu["packages"]
+            )
+        )
+        for m in events
+    )
 
 
 def early_package_action(case, threads, state, floor, policy):
@@ -194,12 +232,20 @@ def early_package_action(case, threads, state, floor, policy):
         return None
     for sid, supplier in state["suppliers"].items():
         events = threads[sid]
-        if (supplier["supplier_status"] != "open" or "send" not in supplier["legal_actions"]
-                or package_menu_used(events, menu)):
+        if (
+            supplier["supplier_status"] != "open"
+            or "send" not in supplier["legal_actions"]
+            or package_menu_used(events, menu)
+        ):
             continue
-        proposals = sum(m.get("from") == "buyer" and any(
-            valid_terms(case, {k: s.get("terms", {}).get(k) for k in case["negotiable"]})
-            for s in m.get("term_sheets", [])) for m in events)
+        proposals = sum(
+            m.get("from") == "buyer"
+            and any(
+                valid_terms(case, {k: s.get("terms", {}).get(k) for k in case["negotiable"]})
+                for s in m.get("term_sheets", [])
+            )
+            for m in events
+        )
         if proposals < menu["after_buyer_proposals"]:
             continue
         # Use a duration currently quoted by the supplier, not an invented commitment.
@@ -211,8 +257,10 @@ def early_package_action(case, threads, state, floor, policy):
                 continue
             packages = [{**p, "contract_months": duration} for p in menu["packages"]]
             std = standard_terms(events)
-            if not all(valid_terms(case, p) and package_allowed(case, p, total_cost(case, p, std), floor, policy)
-                       for p in packages):
+            if not all(
+                valid_terms(case, p) and package_allowed(case, p, total_cost(case, p, std), floor, policy)
+                for p in packages
+            ):
                 continue
             options = []
             for i, p in enumerate(packages):
@@ -221,19 +269,27 @@ def early_package_action(case, threads, state, floor, policy):
                     f"Option {chr(65 + i)}: EUR {p['unit_price']:.2f}/kg, payment within {p['payment_days']} days "
                     f"net, a {p['contract_months']}-month contract, {clause['series']} on a "
                     f"{clause['material_share'] * 100:g}% material share, {clause['deadband_pct']:g}% deadband "
-                    f"and base month {clause['base_month']}.")
+                    f"and base month {clause['base_month']}."
+                )
             trade_note = ""
             for i, p in enumerate(packages):
                 peers = [other for other in packages if other is not p]
                 # Explain a real package trade only when the adjustment basis is
                 # shared and every peer has a wider buffer, later payment and higher price.
-                if all(all(p["index_clause"][key] == other["index_clause"][key]
-                           for key in ("series", "material_share", "base_month"))
-                       and p["index_clause"]["deadband_pct"] < other["index_clause"]["deadband_pct"]
-                       and p["payment_days"] < other["payment_days"]
-                       and p["unit_price"] < other["unit_price"] for other in peers):
-                    trade_note = (f"Option {chr(65 + i)} pairs earlier payment with a narrower adjustment "
-                                  "buffer in exchange for its lower starting price.\n\n")
+                if all(
+                    all(
+                        p["index_clause"][key] == other["index_clause"][key]
+                        for key in ("series", "material_share", "base_month")
+                    )
+                    and p["index_clause"]["deadband_pct"] < other["index_clause"]["deadband_pct"]
+                    and p["payment_days"] < other["payment_days"]
+                    and p["unit_price"] < other["unit_price"]
+                    for other in peers
+                ):
+                    trade_note = (
+                        f"Option {chr(65 + i)} pairs earlier payment with a narrower adjustment "
+                        "buffer in exchange for its lower starting price.\n\n"
+                    )
             body = (
                 f"{PACKAGE_PREFIX} We appreciate your team's careful review and would like to find an "
                 "arrangement that works for Werdenfels as well as for us.\n\n"
@@ -264,7 +320,10 @@ def payment_restriction(events, days):
             restriction = re.search(
                 r"cannot|can't|unable|not (?:possible|acceptable|an option)|unacceptable|reject|declin|refus|"
                 r"\bonly\b|\brequir(?:e|es|ed)\b|\bmust\b|maximum|at most|no more than|up to|non.negotiable|fixed at|"
-                r"will not|won't|nicht|nur|maximal|müssen", sentence, re.I)
+                r"will not|won't|nicht|nur|maximal|müssen",
+                sentence,
+                re.I,
+            )
             if (payment or target) and restriction:
                 return sentence.strip()
     return None
@@ -276,19 +335,33 @@ def open_payment_compromise_action(case, threads, state, floor, policy):
         return None
     for sid, supplier in state["suppliers"].items():
         events = threads[sid]
-        used = any(m.get("from") == "buyer" and (
-            m.get("body", "").startswith(COMPROMISE_PREFIX)
-            or any(s.get("terms", {}).get("payment_days") == package["payment_days"]
-                   and s.get("terms", {}).get("index_clause") == package["index_clause"]
-                   for s in m.get("term_sheets", []))) for m in events)
-        if (supplier["supplier_status"] != "open" or "send" not in supplier["legal_actions"] or used
-                or not package_menu_used(events, policy["early_package_alternatives"])
-                or payment_restriction(events, package["payment_days"])):
+        used = any(
+            m.get("from") == "buyer"
+            and (
+                m.get("body", "").startswith(COMPROMISE_PREFIX)
+                or any(
+                    s.get("terms", {}).get("payment_days") == package["payment_days"]
+                    and s.get("terms", {}).get("index_clause") == package["index_clause"]
+                    for s in m.get("term_sheets", [])
+                )
+            )
+            for m in events
+        )
+        if (
+            supplier["supplier_status"] != "open"
+            or "send" not in supplier["legal_actions"]
+            or used
+            or not package_menu_used(events, policy["early_package_alternatives"])
+            or payment_restriction(events, package["payment_days"])
+        ):
             continue
         for offer in sorted(supplier["offers"], key=lambda o: o["cost"]):
             current = offer["terms"]
-            if (not offer["must_haves_ok"] or current.get("index_clause") != package["index_clause"]
-                    or current.get("unit_price", 0) < package["unit_price"]):
+            if (
+                not offer["must_haves_ok"]
+                or current.get("index_clause") != package["index_clause"]
+                or current.get("unit_price", 0) < package["unit_price"]
+            ):
                 continue
             terms = {**package, "contract_months": current.get("contract_months", 0)}
             if not package_allowed(case, terms, total_cost(case, terms, standard_terms(events)), floor, policy):
@@ -313,17 +386,25 @@ def open_payment_compromise_action(case, threads, state, floor, policy):
 
 def nonqualifying_final(case, supplier, floor, policy):
     """Policy stop; a qualifying advertised alternative can still need binding confirmation."""
-    return bool((policy or {}).get("stop_after_nonqualifying_final")
-                and supplier["supplier_status"] == "final_offer"
-                and not any(o["must_haves_ok"] and package_allowed(case, o["terms"], o["cost"], floor, policy)
-                            for o in supplier["offers"]))
+    return bool(
+        (policy or {}).get("stop_after_nonqualifying_final")
+        and supplier["supplier_status"] == "final_offer"
+        and not any(
+            o["must_haves_ok"] and package_allowed(case, o["terms"], o["cost"], floor, policy)
+            for o in supplier["offers"]
+        )
+    )
 
 
 def controlled_action(case, threads, state, floor, policy):
     if not matches_scope(case, policy):
         return None
-    acceptable = [(o["cost"], sid, o) for sid, s in state["suppliers"].items() for o in s["offers"]
-                  if o["acceptance_eligible"] and package_allowed(case, o["terms"], o["cost"], floor, policy)]
+    acceptable = [
+        (o["cost"], sid, o)
+        for sid, s in state["suppliers"].items()
+        for o in s["offers"]
+        if o["acceptance_eligible"] and package_allowed(case, o["terms"], o["cost"], floor, policy)
+    ]
     if acceptable and policy["accept_eligible_offers"]:
         _, sid, offer = min(acceptable, key=lambda item: item[0])
         return {"supplier_id": sid, "action": "accept", "term_sheet_id": offer["term_sheet_id"]}
@@ -338,8 +419,7 @@ def controlled_action(case, threads, state, floor, policy):
     compromise = open_payment_compromise_action(case, threads, state, floor, policy)
     if compromise:
         return compromise
-    if state["suppliers"] and all(nonqualifying_final(case, s, floor, policy)
-                                  for s in state["suppliers"].values()):
+    if state["suppliers"] and all(nonqualifying_final(case, s, floor, policy) for s in state["suppliers"].values()):
         return {"supplier_id": next(iter(state["suppliers"])), "action": "stop"}
     if not policy["one_final_counter"]:
         return None
@@ -347,21 +427,29 @@ def controlled_action(case, threads, state, floor, policy):
         if supplier["supplier_status"] != "final_offer" or "send" not in supplier["legal_actions"]:
             continue
         if policy.get("early_package_alternatives") and package_menu_used(
-                threads[sid], policy["early_package_alternatives"]):
+            threads[sid], policy["early_package_alternatives"]
+        ):
             continue
         # Transcript-based idempotency survives retries/reconstruction of the agent.
-        used = any(m.get("from") == "buyer" and (
-            (m.get("body", "").startswith(CLOSING_PREFIX) and CLOSING_REQUEST in m.get("body", ""))
-            or any(s.get("terms", {}).get("unit_price", 0) >= policy["closing_price"]
-                   for s in m.get("term_sheets", []))) for m in threads[sid])
+        used = any(
+            m.get("from") == "buyer"
+            and (
+                (m.get("body", "").startswith(CLOSING_PREFIX) and CLOSING_REQUEST in m.get("body", ""))
+                or any(
+                    s.get("terms", {}).get("unit_price", 0) >= policy["closing_price"] for s in m.get("term_sheets", [])
+                )
+            )
+            for m in threads[sid]
+        )
         if used:
             continue
         candidates = []
         for offer in supplier["offers"]:
             # A quoted alternative can be proposed for binding approval even when it is
             # not the server's standing offer. Acceptance above still requires eligibility.
-            if not offer["must_haves_ok"] or (not policy.get("adapt_closing_price_to_budget")
-                                              and not offer["server_acceptance_available"]):
+            if not offer["must_haves_ok"] or (
+                not policy.get("adapt_closing_price_to_budget") and not offer["server_acceptance_available"]
+            ):
                 continue
             terms = {k: offer["terms"][k] for k in case["negotiable"]}
             if not {"unit_price", "payment_days", "contract_months"} <= terms.keys():
@@ -369,8 +457,9 @@ def controlled_action(case, threads, state, floor, policy):
             # Keep the offered structure; don't invent a new duration or unknown supplier permission.
             terms["unit_price"] = policy["closing_price"]
             if policy.get("adapt_closing_price_to_budget"):
-                price = maximum_affordable_price(case, terms, policy["maximum_total_cost"],
-                                                 policy["closing_price"], standard_terms(threads[sid]))
+                price = maximum_affordable_price(
+                    case, terms, policy["maximum_total_cost"], policy["closing_price"], standard_terms(threads[sid])
+                )
                 if price is None:
                     continue
                 terms["unit_price"] = price
@@ -380,12 +469,18 @@ def controlled_action(case, threads, state, floor, policy):
             candidates.append((terms, cost))
         if not candidates:
             continue
-        terms, _ = (min(candidates, key=lambda item: (-item[0]["unit_price"], item[1]))
-                    if policy.get("adapt_closing_price_to_budget") else candidates[0])
+        terms, _ = (
+            min(candidates, key=lambda item: (-item[0]["unit_price"], item[1]))
+            if policy.get("adapt_closing_price_to_budget")
+            else candidates[0]
+        )
         clause = terms.get("index_clause")
-        adjustment = (f"{clause['series']} on a {clause['material_share'] * 100:g}% material share, "
-                      f"{clause['deadband_pct']:g}% deadband and base month {clause['base_month']}"
-                      if clause else "a fixed price")
+        adjustment = (
+            f"{clause['series']} on a {clause['material_share'] * 100:g}% material share, "
+            f"{clause['deadband_pct']:g}% deadband and base month {clause['base_month']}"
+            if clause
+            else "a fixed price"
+        )
         body = (
             f"{CLOSING_PREFIX} "
             "We appreciate your team's effort and would very much like to conclude together.\n\n"
@@ -421,25 +516,52 @@ def controlled_assessment(action, context):
     compromise = controlled_source(action) == "policy:payment-compromise"
     stopping = action["action"] == "stop"
     stage = stage_from_action(action)
-    return {"assessment": {
-        "observed_message": ref,
-        "changes": ["Reviewed the current offer against the explicit execution controls."],
-        "evidence": [{"claim": "The supplier supplied the current offer being evaluated.",
-                      "kind": "supplier_claim", "source_refs": [ref], "confidence": "high"}],
-        "open_questions": [] if accepting or stopping else [
-            "Which proposed package, if any, can the supplier approve?" if menu
-            else "Will the supplier issue the authorized closing package?"],
-        "response_to_last_move": "Current structured terms and live eligibility determine the available action.",
-        "adaptation": ("Apply the user's acceptance priority." if accepting else
-                       "Stop after a final offer with no package meeting the saved limits." if stopping else
-                       "Keep payment, duration and index clause unchanged through the sequence." if stage else
-                       "Offer the payment compromise while open for any current payment term." if compromise else
-                       "Offer the authorized package alternatives before a final offer." if menu else
-                       "Use the one authorized final counter."),
-        "next_move": ("Accept the exact qualifying live offer." if accepting else
-                      "Stop locally without another counter or a below-threshold acceptance." if stopping else
-                      f"Send the {stage} package once with its checked evidence." if stage else
-                      "Send the payment compromise once and request a binding offer." if compromise else
-                      "Send the package menu once and request a binding offer." if menu else
-                      "Send the closing counter once."),
-    }, "numeric_claims": []}
+    return {
+        "assessment": {
+            "observed_message": ref,
+            "changes": ["Reviewed the current offer against the explicit execution controls."],
+            "evidence": [
+                {
+                    "claim": "The supplier supplied the current offer being evaluated.",
+                    "kind": "supplier_claim",
+                    "source_refs": [ref],
+                    "confidence": "high",
+                }
+            ],
+            "open_questions": []
+            if accepting or stopping
+            else [
+                "Which proposed package, if any, can the supplier approve?"
+                if menu
+                else "Will the supplier issue the authorized closing package?"
+            ],
+            "response_to_last_move": "Current structured terms and live eligibility determine the available action.",
+            "adaptation": (
+                "Apply the user's acceptance priority."
+                if accepting
+                else "Stop after a final offer with no package meeting the saved limits."
+                if stopping
+                else "Keep payment, duration and index clause unchanged through the sequence."
+                if stage
+                else "Offer the payment compromise while open for any current payment term."
+                if compromise
+                else "Offer the authorized package alternatives before a final offer."
+                if menu
+                else "Use the one authorized final counter."
+            ),
+            "next_move": (
+                "Accept the exact qualifying live offer."
+                if accepting
+                else "Stop locally without another counter or a below-threshold acceptance."
+                if stopping
+                else f"Send the {stage} package once with its checked evidence."
+                if stage
+                else "Send the payment compromise once and request a binding offer."
+                if compromise
+                else "Send the package menu once and request a binding offer."
+                if menu
+                else "Send the closing counter once."
+            ),
+        },
+        "numeric_claims": [],
+    }

@@ -20,27 +20,44 @@ def setup_case():
 
 
 def message(sid, price=18, payment=60, lead=35, status="open"):
-    return {"from": sid, "body": "Our quotation.", "status": status,
-            "term_sheets": [{"term_sheet_id": f"offer:{sid}:{price}:{payment}",
-                             "terms": {"unit_price": price, "payment_days": payment,
-                                       "lead_time_days": lead, "incoterm": "DAP"}}]}
+    return {
+        "from": sid,
+        "body": "Our quotation.",
+        "status": status,
+        "term_sheets": [
+            {
+                "term_sheet_id": f"offer:{sid}:{price}:{payment}",
+                "terms": {"unit_price": price, "payment_days": payment, "lead_time_days": lead, "incoterm": "DAP"},
+            }
+        ],
+    }
 
 
 def send(payload, sid):
-    return {"supplier_id": sid, "action": "send", "body": "Please clarify your delivery terms.",
-            "term_sheets": [], **assessment_fields(payload, sid)}
+    return {
+        "supplier_id": sid,
+        "action": "send",
+        "body": "Please clarify your delivery terms.",
+        "term_sheets": [],
+        **assessment_fields(payload, sid),
+    }
 
 
 def test_ledger_exposes_cheaper_price_but_more_expensive_package_and_buyer_concession():
     case, sid, other = setup_case()
-    threads = {sid: [message(sid), message("buyer", 16), message(sid, 17.99, 14, 42), message("buyer", 17)],
-               other: [message(other, 12, lead=49)]}
+    threads = {
+        sid: [message(sid), message("buyer", 16), message(sid, 17.99, 14, 42), message("buyer", 17)],
+        other: [message(other, 12, lead=49)],
+    }
     context = build_context(case, threads, {}, {})
     ledger = context["suppliers"][sid]
     assert ledger["supplier_change"]["cost_delta"] > 0  # lower price loses on payment/delivery
     assert ledger["buyer_change"]["cost_delta"] > 0
     assert {item["term"] for item in ledger["supplier_change"]["term_changes"]} == {
-        "unit_price", "payment_days", "lead_time_days"}
+        "unit_price",
+        "payment_days",
+        "lead_time_days",
+    }
     assert ledger["current_best_valid_offer"]["cost"] == total_cost(case, threads[sid][2]["term_sheets"][0]["terms"])
     assert context["suppliers"][other]["current_best_valid_offer"] is None  # 49 days violates a must-have
 
@@ -83,13 +100,23 @@ def test_assessment_rejects_stale_or_ungrounded_output(problem):
 
 def test_weighted_cost_claim_checks_share_and_exact_email_number():
     case, sid, _ = setup_case()
-    research = {"indices": [{"series": "Copper", "weight": .2, "change_pct": 47.7,
-                             "weighted_change_pct": 9.54, "refs": ["idx:start", "idx:end"]}]}
+    research = {
+        "indices": [
+            {
+                "series": "Copper",
+                "weight": 0.2,
+                "change_pct": 47.7,
+                "weighted_change_pct": 9.54,
+                "refs": ["idx:start", "idx:end"],
+            }
+        ]
+    }
     context = build_context(case, {sid: [message(sid)]}, research, {})
     action = send({"decision_context": context}, sid)
     action["body"] = "The weighted contribution is 9.54 percentage points."
-    action["numeric_claims"] = [{"calculation_id": "index:0:weighted_change_pct", "value": 9.54,
-                                 "quote": action["body"]}]
+    action["numeric_claims"] = [
+        {"calculation_id": "index:0:weighted_change_pct", "value": 9.54, "quote": action["body"]}
+    ]
     _, checks = validate_assessment(action, context)
     assert checks[0]["value"] == 9.54
     action["numeric_claims"][0]["value"] = 47.7
@@ -144,7 +171,7 @@ def test_each_reply_updates_memory_with_one_call_and_no_private_fields_sent():
 def test_assessment_repair_keeps_same_deadline_and_only_commits_valid_memory(monkeypatch, repair_time):
     case, sid, _ = setup_case()
     threads = {sid: [message(sid)]}
-    clock = SimpleNamespace(now=100.)
+    clock = SimpleNamespace(now=100.0)
     monkeypatch.setattr("aeiou.prompt_protocol.time", SimpleNamespace(monotonic=lambda: clock.now))
     deadlines = []
 

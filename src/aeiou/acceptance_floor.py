@@ -23,8 +23,7 @@ class AcceptanceFloor:
         if isinstance(value, dict) and "maximum_total_cost" in value:
             return cls.from_limits(value)
         required = {"case_id", "c_open", "c_best", "minimum_score"}
-        if (not isinstance(value, dict) or not required <= set(value)
-                or set(value) - required - {"maximum_unit_price"}):
+        if not isinstance(value, dict) or not required <= set(value) or set(value) - required - {"maximum_unit_price"}:
             raise ValueError("Acceptance floor needs case_id, c_open, c_best and minimum_score")
         if not isinstance(value["case_id"], str) or not value["case_id"].startswith("case:"):
             raise ValueError("Acceptance floor needs an exact case ID")
@@ -117,12 +116,18 @@ class AcceptanceFloor:
 
     def metadata(self):
         if not self.has_benchmark:
-            return {"case_id": self.case_id, "maximum_total_cost": float(self.max_cost),
-                    "maximum_unit_price": float(self.maximum_unit_price)}
-        return {"case_id": self.case_id, "c_open": float(self.c_open),
-                "c_best": float(self.c_best), "minimum_score": float(self.minimum_score),
-                **({"maximum_unit_price": float(self.maximum_unit_price)}
-                   if self.maximum_unit_price is not None else {})}
+            return {
+                "case_id": self.case_id,
+                "maximum_total_cost": float(self.max_cost),
+                "maximum_unit_price": float(self.maximum_unit_price),
+            }
+        return {
+            "case_id": self.case_id,
+            "c_open": float(self.c_open),
+            "c_best": float(self.c_best),
+            "minimum_score": float(self.minimum_score),
+            **({"maximum_unit_price": float(self.maximum_unit_price)} if self.maximum_unit_price is not None else {}),
+        }
 
     def check_case(self, case, threads=None):
         if case["case_id"] != self.case_id:
@@ -133,7 +138,7 @@ class AcceptanceFloor:
         for events in threads.values():
             for i, message in enumerate(events):
                 if message.get("from") != "buyer" and message.get("term_sheets"):
-                    std = standard_terms(events[:i + 1])
+                    std = standard_terms(events[: i + 1])
                     opening_costs.extend(total_cost(case, s["terms"], std) for s in message["term_sheets"])
                     break
         if not opening_costs or Decimal(str(min(opening_costs))) != self.c_open:

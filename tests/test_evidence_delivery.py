@@ -28,13 +28,17 @@ from aeiou.research import ResearchPackage, package, research
 def large_package(tmp_path):
     db = sqlite3.connect(tmp_path / "world.sqlite")
     db.execute("CREATE TABLE negotiation_history (event_id TEXT, supplier_id TEXT, part_id TEXT, note TEXT)")
-    db.executemany("INSERT INTO negotiation_history VALUES (?,?,?,?)",
-                   [(f"event:{i:04}", "sup:1", "part:1", f"Negotiation {i}") for i in range(451)]
-                   + [("event:unrelated", "sup:2", "part:2", "Unrelated")])
+    db.executemany(
+        "INSERT INTO negotiation_history VALUES (?,?,?,?)",
+        [(f"event:{i:04}", "sup:1", "part:1", f"Negotiation {i}") for i in range(451)]
+        + [("event:unrelated", "sup:2", "part:2", "Unrelated")],
+    )
     db.execute("CREATE TABLE documents (id TEXT, supplier_id TEXT, date TEXT, body TEXT)")
-    db.executemany("INSERT INTO documents VALUES (?,?,?,?)",
-                   [(f"doc:{i:02}", "sup:1", "2026-01-01", f"Document {i}") for i in range(12)]
-                   + [("doc:other", "sup:2", "2026-01-01", "Unrelated")])
+    db.executemany(
+        "INSERT INTO documents VALUES (?,?,?,?)",
+        [(f"doc:{i:02}", "sup:1", "2026-01-01", f"Document {i}") for i in range(12)]
+        + [("doc:other", "sup:2", "2026-01-01", "Unrelated")],
+    )
     db.commit()
     db.close()
     (tmp_path / "facts.json").write_text(json.dumps({"sup:1": {"name": "Supplier"}, "part:1": {"unit": "kg"}}))
@@ -85,8 +89,9 @@ def test_part_master_is_not_replaced_by_a_foreign_key_in_the_kit_index():
 def test_sunday_release_cannot_leak_into_base_only_practice_cases(large_package):
     release = large_package.root / "release-sunday"
     release.mkdir()
-    (release / "facts.json").write_text(json.dumps({
-        "news:sunday": {"supplier": "sup:1", "body": "New Sunday development"}}))
+    (release / "facts.json").write_text(
+        json.dumps({"news:sunday": {"supplier": "sup:1", "body": "New Sunday development"}})
+    )
     pkg = ResearchPackage(large_package.root)
     case = {"case_id": "case:test", "set": "practice", "suppliers": ["sup:1"], "parts": ["part:1"], "refs": []}
     assert pkg.release
@@ -101,17 +106,37 @@ def test_sunday_release_cannot_leak_into_base_only_practice_cases(large_package)
 
 def transport_fixture():
     case = {"case_id": "case:test", "suppliers": ["sup:1"], "parts": [], "refs": []}
-    threads = {"sup:1": [{"from": "sales", "body": "See attachment", "status": "open",
-                           "attachments": [{"name": "long.txt", "text": "a" * 40000 + "TAIL_EVIDENCE"}]},
-                          {"from": "buyer", "body": "Our sheet", "attachments": [{"name": "ours", "text": "ok"}]}]}
-    info = {"facts": {"sup:1": {"name": "Supplier"}},
-            "documents": [{"id": "doc:long", "text": "d" * 3000 + "DOCUMENT_TAIL"}], "tables": {}}
+    threads = {
+        "sup:1": [
+            {
+                "from": "sales",
+                "body": "See attachment",
+                "status": "open",
+                "attachments": [{"name": "long.txt", "text": "a" * 40000 + "TAIL_EVIDENCE"}],
+            },
+            {"from": "buyer", "body": "Our sheet", "attachments": [{"name": "ours", "text": "ok"}]},
+        ]
+    }
+    info = {
+        "facts": {"sup:1": {"name": "Supplier"}},
+        "documents": [{"id": "doc:long", "text": "d" * 3000 + "DOCUMENT_TAIL"}],
+        "tables": {},
+    }
     context = build_context(case, threads, info, {})
-    payload = {"case": case, "research": copy.deepcopy(info), "decision_context": context,
-               "threads": {sid: {"messages": [{"source_ref": f"message:{sid}:{i}", **message,
-                                                "attachments": render_attachments(sid, i, message)}
-                                               for i, message in enumerate(events)]}
-                           for sid, events in threads.items()}}
+    payload = {
+        "case": case,
+        "research": copy.deepcopy(info),
+        "decision_context": context,
+        "threads": {
+            sid: {
+                "messages": [
+                    {"source_ref": f"message:{sid}:{i}", **message, "attachments": render_attachments(sid, i, message)}
+                    for i, message in enumerate(events)
+                ]
+            }
+            for sid, events in threads.items()
+        },
+    }
     records = prepare_evidence_payload(payload, info, threads, "")
     return payload, records
 
@@ -138,15 +163,18 @@ def test_truncated_sources_are_partial_and_preserve_party_provenance():
 
 
 def test_document_record_preserves_both_canonical_metadata_and_full_text():
-    info = {"facts": {"doc:1": {"asked_pct": 12, "date": "2026-06-01"}},
-            "documents": [{"id": "doc:1", "text": "Full document"}]}
+    info = {
+        "facts": {"doc:1": {"asked_pct": 12, "date": "2026-06-01"}},
+        "documents": [{"id": "doc:1", "text": "Full document"}],
+    }
     record = source_records(info, {})["doc:1"]
     assert record["metadata"] == info["facts"]["doc:1"]
     assert record["text"] == "Full document"
 
 
-@pytest.mark.parametrize("fields", [{"find": ""}, {"find": "absent"}, {"find": "d", "offset": 0},
-                                    {"find": "x" * 201}, {"find": True}])
+@pytest.mark.parametrize(
+    "fields", [{"find": ""}, {"find": "absent"}, {"find": "d", "offset": 0}, {"find": "x" * 201}, {"find": True}]
+)
 def test_local_find_rejects_invalid_or_missing_patterns(fields):
     _, records = transport_fixture()
     with pytest.raises(ValueError):
@@ -188,8 +216,16 @@ def test_p18_collection_has_no_inaccessible_source_or_unexplained_row_loss():
     assert set(records) <= sources.keys()
     assert all(s["delivery"] == "full" or s["retrievable"] for s in sources.values())
     assert payload["evidence_transport"]["unretrievable_refs"] == []
-    for name in ("po_lines", "goods_receipts", "invoices", "quality_notifications", "forecast_history_lines",
-                 "index_values", "negotiation_history", "contracts"):
+    for name in (
+        "po_lines",
+        "goods_receipts",
+        "invoices",
+        "quality_notifications",
+        "forecast_history_lines",
+        "index_values",
+        "negotiation_history",
+        "contracts",
+    ):
         coverage = payload["research"]["collection"]["tables"][name]
         assert coverage["expected_rows"] == coverage["loaded_rows"] == len(records[f"table:{name}"])
     quotes = payload["research"]["collection"]["tables"]["quotes"]
@@ -200,8 +236,17 @@ def test_p18_collection_has_no_inaccessible_source_or_unexplained_row_loss():
 def test_old_messages_and_attachments_remain_retrievable_outside_display_window():
     case = json.loads((ROOT / "data/package/cases/practice/P01.json").read_text())
     sid = case["suppliers"][0]
-    threads = {sid: [{"from": "supplier", "body": f"Message {i}", "status": "open",
-                       "attachments": [{"name": "note", "text": f"Full note {i}"}]} for i in range(18)]}
+    threads = {
+        sid: [
+            {
+                "from": "supplier",
+                "body": f"Message {i}",
+                "status": "open",
+                "attachments": [{"name": "note", "text": f"Full note {i}"}],
+            }
+            for i in range(18)
+        ]
+    }
     agent = PromptLabAgent(package(), None, PromptSpec("test", "Use evidence", assessment_enabled=True))
     agent.prepare(case)
     payload = json.loads(agent.render_lab(case, threads))
@@ -227,14 +272,22 @@ def test_actual_backend_receives_reads_and_carries_them_into_next_turn_with_exac
                 return json.dumps({"action": "retrieve_evidence", "source_ref": ref})
             assert payload["decision_context"]["sources"][ref]["available"]
             assert payload["retrieved_evidence"][0]["source_ref"] == ref
-            return json.dumps({"supplier_id": sid, "action": "send", "body": "Thank you. Please clarify.",
-                               "term_sheets": [], **assessment_fields(payload, sid)})
+            return json.dumps(
+                {
+                    "supplier_id": sid,
+                    "action": "send",
+                    "body": "Thank you. Please clarify.",
+                    "term_sheets": [],
+                    **assessment_fields(payload, sid),
+                }
+            )
 
     backend = Backend()
     agent = PromptLabAgent(package(), backend, PromptSpec("test", "Use evidence", assessment_enabled=True))
     move = agent.decide(case, threads)
-    threads[sid].extend([{**move["message"], "from": "buyer"},
-                        {"from": "supplier", "body": "We can review this.", "status": "open"}])
+    threads[sid].extend(
+        [{**move["message"], "from": "buyer"}, {"from": "supplier", "body": "We can review this.", "status": "open"}]
+    )
     agent.decide(case, threads)
     assert len(backend.requests) == 3  # The second turn reuses the local read.
     receipts = agent.audit["model_requests"]

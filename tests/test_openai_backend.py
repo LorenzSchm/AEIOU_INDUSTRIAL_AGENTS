@@ -19,26 +19,49 @@ def api_mock(monkeypatch, tmp_path):
     monkeypatch.setenv("AEIOU_STATE", str(tmp_path))
     monkeypatch.setenv("OPENAI_API_KEY", "sk-test-only-openai")
     monkeypatch.setattr(config, "dotenv_values", lambda path: {})
-    state = SimpleNamespace(requests=[], clients=[], streams=[], status="completed", delay=0, http_status=200,
-                            content=[{"type": "output_text", "text": '{"action":"send"}', "annotations": []}])
+    state = SimpleNamespace(
+        requests=[],
+        clients=[],
+        streams=[],
+        status="completed",
+        delay=0,
+        http_status=200,
+        content=[{"type": "output_text", "text": '{"action":"send"}', "annotations": []}],
+    )
 
     class Stream(httpx.AsyncByteStream):
         closed = False
 
         async def __aiter__(self):
-            yield (b'event: response.output_text.delta\n'
-                   b'data: {"type":"response.output_text.delta","delta":"partial"}\n\n')
+            yield (
+                b'event: response.output_text.delta\ndata: {"type":"response.output_text.delta","delta":"partial"}\n\n'
+            )
             if state.delay:
                 await asyncio.sleep(state.delay)
             response = {
-                "id": "resp_fixture", "object": "response", "created_at": 1,
-                "status": state.status, "model": "gpt-5.5-2026-04-23", "error": None,
+                "id": "resp_fixture",
+                "object": "response",
+                "created_at": 1,
+                "status": state.status,
+                "model": "gpt-5.5-2026-04-23",
+                "error": None,
                 "incomplete_details": {"reason": "max_output_tokens"} if state.status == "incomplete" else None,
-                "output": [{"type": "message", "id": "msg_fixture", "role": "assistant", "status": "completed",
-                            "content": state.content}],
-                "usage": {"input_tokens": 100, "output_tokens": 30, "total_tokens": 130,
-                          "input_tokens_details": {"cached_tokens": 20},
-                          "output_tokens_details": {"reasoning_tokens": 10}},
+                "output": [
+                    {
+                        "type": "message",
+                        "id": "msg_fixture",
+                        "role": "assistant",
+                        "status": "completed",
+                        "content": state.content,
+                    }
+                ],
+                "usage": {
+                    "input_tokens": 100,
+                    "output_tokens": 30,
+                    "total_tokens": 130,
+                    "input_tokens_details": {"cached_tokens": 20},
+                    "output_tokens_details": {"reasoning_tokens": 10},
+                },
             }
             event = {"type": f"response.{state.status}", "response": response, "sequence_number": 1}
             yield f"event: {event['type']}\ndata: {json.dumps(event)}\n\n".encode()
@@ -168,16 +191,26 @@ def test_route_snapshots_independent_models_and_efforts(api_mock, monkeypatch):
     queued = []
     monkeypatch.setattr(service, "POOL", SimpleNamespace(submit=lambda *args: queued.append(args)))
     client = TestClient(service.app)
-    response = client.post("/api/eval-suite/compare", json={
-        "prompt_a": "Same strategy", "prompt_b": "Same strategy",
-        "model_a": "claude-sonnet-5-5", "effort_a": "high", "model_b": "gpt-5.5", "effort_b": "medium",
-    })
+    response = client.post(
+        "/api/eval-suite/compare",
+        json={
+            "prompt_a": "Same strategy",
+            "prompt_b": "Same strategy",
+            "model_a": "claude-sonnet-5-5",
+            "effort_a": "high",
+            "model_b": "gpt-5.5",
+            "effort_b": "medium",
+        },
+    )
     assert response.status_code == 202, response.text
     config.set_model("claude-opus-5-5")
-    reports = [json.loads((config.state_root() / "eval-suite" / f"{b['id']}.json").read_text())
-               for b in response.json()["batches"]]
+    reports = [
+        json.loads((config.state_root() / "eval-suite" / f"{b['id']}.json").read_text())
+        for b in response.json()["batches"]
+    ]
     assert [(r["model"], r["provider"], r["effort"]) for r in reports] == [
-        ("claude-sonnet-5-5", "anthropic", "high"), ("gpt-5.5", "openai", "medium"),
+        ("claude-sonnet-5-5", "anthropic", "high"),
+        ("gpt-5.5", "openai", "medium"),
     ]
     assert len(queued) == 2 and not api_mock.requests
 
@@ -188,19 +221,31 @@ def test_missing_key_blocks_both_before_any_session(api_mock, monkeypatch):
     monkeypatch.setattr(service, "JOBS", {})
     queued = []
     monkeypatch.setattr(service, "POOL", SimpleNamespace(submit=lambda *args: queued.append(args)))
-    response = TestClient(service.app).post("/api/eval-suite/compare", json={
-        "prompt_a": "A", "prompt_b": "B", "model_a": "claude-sonnet-5-5", "model_b": "gpt-5.5",
-    })
+    response = TestClient(service.app).post(
+        "/api/eval-suite/compare",
+        json={
+            "prompt_a": "A",
+            "prompt_b": "B",
+            "model_a": "claude-sonnet-5-5",
+            "model_b": "gpt-5.5",
+        },
+    )
     assert response.status_code == 409 and "OPENAI_API_KEY" in response.text
     assert queued == [] and service.JOBS == {}
 
 
-@pytest.mark.parametrize(("model", "effort"), [("gpt-invalid", "medium"), ("gpt-5.5", "ultra"),
-                                              ("claude-sonnet-5-5", "none")])
+@pytest.mark.parametrize(
+    ("model", "effort"), [("gpt-invalid", "medium"), ("gpt-5.5", "ultra"), ("claude-sonnet-5-5", "none")]
+)
 def test_bad_model_settings_rejected(api_mock, model, effort):
-    response = TestClient(service.app).post("/api/eval-suite", json={
-        "prompt": "Test", "model": model, "effort": effort,
-    })
+    response = TestClient(service.app).post(
+        "/api/eval-suite",
+        json={
+            "prompt": "Test",
+            "model": model,
+            "effort": effort,
+        },
+    )
     assert response.status_code == 422
 
 

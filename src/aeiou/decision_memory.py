@@ -79,10 +79,15 @@ def _menu(case, events, message):
             valid = must_haves_ok(case, resolved) and math.isfinite(cost)
         except (KeyError, TypeError, ValueError, ZeroDivisionError):
             continue
-        offers.append({"terms": resolved, "cost": cost if math.isfinite(cost) else None,
-                       "must_haves_ok": valid,
-                       "term_sheet_id": sheet.get("term_sheet_id"),
-                       "breakdown": {k: round(v, 2) for k, v in breakdown.items()}})
+        offers.append(
+            {
+                "terms": resolved,
+                "cost": cost if math.isfinite(cost) else None,
+                "must_haves_ok": valid,
+                "term_sheet_id": sheet.get("term_sheet_id"),
+                "breakdown": {k: round(v, 2) for k, v in breakdown.items()},
+            }
+        )
     eligible = [o for o in offers if o["must_haves_ok"]]
     return offers, min(eligible, key=lambda o: o["cost"]) if eligible else None
 
@@ -94,10 +99,16 @@ def _change(history):
     before, after = previous["best_valid_offer"], current["best_valid_offer"]
     if not before or not after:
         return None
-    return {"from_ref": previous["message_ref"], "to_ref": current["message_ref"],
-            "cost_delta": round(after["cost"] - before["cost"], 2),
-            "term_changes": [{"term": k, "before": before["terms"].get(k), "after": v}
-                             for k, v in after["terms"].items() if before["terms"].get(k) != v]}
+    return {
+        "from_ref": previous["message_ref"],
+        "to_ref": current["message_ref"],
+        "cost_delta": round(after["cost"] - before["cost"], 2),
+        "term_changes": [
+            {"term": k, "before": before["terms"].get(k), "after": v}
+            for k, v in after["terms"].items()
+            if before["terms"].get(k) != v
+        ],
+    }
 
 
 def build_context(case, threads, intelligence, memory):
@@ -131,34 +142,48 @@ def build_context(case, threads, intelligence, memory):
         for index, message in enumerate(events):
             ref = message_ref(sid, index)
             buyer = message.get("from") == "buyer"
-            sources[ref] = {"kind": "buyer_message" if buyer else "supplier_claim",
-                            "description": f"{'Buyer' if buyer else sid} message {index + 1}"}
+            sources[ref] = {
+                "kind": "buyer_message" if buyer else "supplier_claim",
+                "description": f"{'Buyer' if buyer else sid} message {index + 1}",
+            }
             if not message.get("term_sheets"):
                 continue
             # Use only standards known at that point, never later attachments.
-            _, best = _menu(case, events[:index + 1], message)
-            history.append({"message_ref": ref, "party": "buyer" if buyer else "supplier",
-                            "best_valid_offer": ({k: best[k] for k in ("terms", "cost", "term_sheet_id")}
-                                                 if best else None)})
+            _, best = _menu(case, events[: index + 1], message)
+            history.append(
+                {
+                    "message_ref": ref,
+                    "party": "buyer" if buyer else "supplier",
+                    "best_valid_offer": ({k: best[k] for k in ("terms", "cost", "term_sheet_id")} if best else None),
+                }
+            )
             if best:
                 calculation(f"cost:{sid}:{index}", best["cost"], "Lowest valid menu cost in EUR", [ref, "case"])
         supplier_history = [row for row in history if row["party"] == "supplier"]
         buyer_history = [row for row in history if row["party"] == "buyer"]
-        latest_index = next((i for i in range(len(events) - 1, -1, -1)
-                             if events[i].get("from") != "buyer"), None)
+        latest_index = next((i for i in range(len(events) - 1, -1, -1) if events[i].get("from") != "buyer"), None)
         current = latest(events) if latest_index is not None else {}
         _, current_best = _menu(case, events, current)
         live = sid in live_threads(threads)
-        data = {"latest_message_ref": message_ref(sid, latest_index) if latest_index is not None else None,
-                "status": current.get("status"), "live": live,
-                "current_best_valid_offer": current_best if live else None,
-                "supplier_change": _change(supplier_history), "buyer_change": _change(buyer_history),
-                "offer_history": history, "previous_assessment": copy.deepcopy(memory.get(sid))}
+        data = {
+            "latest_message_ref": message_ref(sid, latest_index) if latest_index is not None else None,
+            "status": current.get("status"),
+            "live": live,
+            "current_best_valid_offer": current_best if live else None,
+            "supplier_change": _change(supplier_history),
+            "buyer_change": _change(buyer_history),
+            "offer_history": history,
+            "previous_assessment": copy.deepcopy(memory.get(sid)),
+        }
         for party in ("supplier", "buyer"):
             change = data[f"{party}_change"]
             if change:
-                calculation(f"delta:{sid}:{party}", change["cost_delta"], f"Latest {party} menu cost change in EUR",
-                            [change["from_ref"], change["to_ref"], "case"])
+                calculation(
+                    f"delta:{sid}:{party}",
+                    change["cost_delta"],
+                    f"Latest {party} menu cost change in EUR",
+                    [change["from_ref"], change["to_ref"], "case"],
+                )
         suppliers[sid] = data
         for i, message in reversed(list(enumerate(events))):
             if message.get("from") == "buyer":
@@ -167,20 +192,34 @@ def build_context(case, threads, intelligence, memory):
             if not claims:
                 continue
             share_sum = sum(c["stated_cost_share_pct"] for c in claims)
-            data["stated_annual_cost_drivers"] = {"source_ref": message_ref(sid, i), "components": claims,
-                                                 "stated_share_sum_pct": share_sum}
+            data["stated_annual_cost_drivers"] = {
+                "source_ref": message_ref(sid, i),
+                "components": claims,
+                "stated_share_sum_pct": share_sum,
+            }
             if share_sum <= 100:
                 calc_ref = f"weighted-claims:{sid}:{i}"
-                description = ("Conditional contribution using the supplier's stated shares as non-overlapping "
-                               "base-period weights. Not a verified total-cost increase: timing, overlap, "
-                               "remaining components and prior price recovery are unknown.")
-                calculation(calc_ref, sum(c["conditional_contribution_pp"] for c in claims), description,
-                            [message_ref(sid, i)], kind="inference")
+                description = (
+                    "Conditional contribution using the supplier's stated shares as non-overlapping "
+                    "base-period weights. Not a verified total-cost increase: timing, overlap, "
+                    "remaining components and prior price recovery are unknown."
+                )
+                calculation(
+                    calc_ref,
+                    sum(c["conditional_contribution_pp"] for c in claims),
+                    description,
+                    [message_ref(sid, i)],
+                    kind="inference",
+                )
                 data["stated_annual_cost_drivers"]["conditional_calculation_id"] = calc_ref
             break
-    return {"version": ASSESSMENT_VERSION, "suppliers": suppliers, "sources": sources,
-            "calculations": calculations,
-            "cost_basis": "Public case formula; excludes unknown private supplier relationship costs."}
+    return {
+        "version": ASSESSMENT_VERSION,
+        "suppliers": suppliers,
+        "sources": sources,
+        "calculations": calculations,
+        "cost_basis": "Public case formula; excludes unknown private supplier relationship costs.",
+    }
 
 
 def _text(value, field):
@@ -200,9 +239,16 @@ def normalize_evidence_labels(action, context):
         if not isinstance(item, dict) or item.get("kind") not in {"public_record", "supplier_claim"}:
             continue
         refs = item.get("source_refs")
-        if (not isinstance(refs, list) or not 1 <= len(refs) <= 8 or any(
-                not isinstance(ref, str) or ref not in context["sources"]
-                or context["sources"][ref].get("available") is False for ref in refs)):
+        if (
+            not isinstance(refs, list)
+            or not 1 <= len(refs) <= 8
+            or any(
+                not isinstance(ref, str)
+                or ref not in context["sources"]
+                or context["sources"][ref].get("available") is False
+                for ref in refs
+            )
+        ):
             continue
         kinds = {context["sources"][ref]["kind"] for ref in refs}
         original = item["kind"]
@@ -211,9 +257,15 @@ def normalize_evidence_labels(action, context):
         item["kind"] = "supplier_claim" if kinds == {"supplier_claim"} else "inference"
         if item["kind"] == "inference" and item.get("confidence") == "high":
             item["confidence"] = "medium"
-        repairs.append({"evidence_index": index, "source_refs": list(refs),
-                        "declared_kind": original, "normalized_kind": item["kind"],
-                        "reason": "Source-registry classification only; claim wording is not verified."})
+        repairs.append(
+            {
+                "evidence_index": index,
+                "source_refs": list(refs),
+                "declared_kind": original,
+                "normalized_kind": item["kind"],
+                "reason": "Source-registry classification only; claim wording is not verified.",
+            }
+        )
     return result, repairs
 
 
@@ -228,12 +280,24 @@ def evidence_diagnostic(action, context):
         if not isinstance(item, dict):
             continue
         refs = item.get("source_refs")
-        result.append({"evidence_index": index, "claim": str(item.get("claim", ""))[:400],
-                       "declared_kind": str(item.get("kind", ""))[:40],
-                       "sources": [{"ref": str(ref)[:160],
-                                    **(context["sources"].get(ref, {"status": "unknown"})
-                                       if isinstance(ref, str) else {"status": "invalid"})}
-                                   for ref in (refs[:8] if isinstance(refs, list) else [])]})
+        result.append(
+            {
+                "evidence_index": index,
+                "claim": str(item.get("claim", ""))[:400],
+                "declared_kind": str(item.get("kind", ""))[:40],
+                "sources": [
+                    {
+                        "ref": str(ref)[:160],
+                        **(
+                            context["sources"].get(ref, {"status": "unknown"})
+                            if isinstance(ref, str)
+                            else {"status": "invalid"}
+                        ),
+                    }
+                    for ref in (refs[:8] if isinstance(refs, list) else [])
+                ],
+            }
+        )
     return result
 
 
@@ -265,22 +329,37 @@ def validate_assessment(action, context):
         kind, refs = item.get("kind"), item.get("source_refs")
         if kind not in {"public_record", "supplier_claim", "inference"}:
             raise ValueError("Evidence kind must be public_record, supplier_claim or inference")
-        if (not isinstance(refs, list) or not 1 <= len(refs) <= 8
-                or any(not isinstance(ref, str) or ref not in context["sources"] for ref in refs)):
-            raise ValueError(f"Evidence item {index} must cite existing source_refs from decision_context.sources; "
-                             f"received {str(refs)[:400]}")
+        if (
+            not isinstance(refs, list)
+            or not 1 <= len(refs) <= 8
+            or any(not isinstance(ref, str) or ref not in context["sources"] for ref in refs)
+        ):
+            raise ValueError(
+                f"Evidence item {index} must cite existing source_refs from decision_context.sources; "
+                f"received {str(refs)[:400]}"
+            )
         deferred = [ref for ref in refs if context["sources"][ref].get("available") is False]
         if deferred:
-            raise ValueError(f"Evidence item {index} is deferred: {', '.join(deferred)}. "
-                             "Use retrieve_evidence before citing those sources, or omit that claim")
+            raise ValueError(
+                f"Evidence item {index} is deferred: {', '.join(deferred)}. "
+                "Use retrieve_evidence before citing those sources, or omit that claim"
+            )
         if kind != "inference" and any(context["sources"][ref]["kind"] != kind for ref in refs):
             actual = {ref: context["sources"][ref]["kind"] for ref in refs}
-            raise ValueError(f"Evidence kind must match its sources in item {index}: "
-                             f"declared {kind}, source kinds {actual}; mixed sources require inference")
+            raise ValueError(
+                f"Evidence kind must match its sources in item {index}: "
+                f"declared {kind}, source kinds {actual}; mixed sources require inference"
+            )
         if item.get("confidence") not in {"low", "medium", "high"}:
             raise ValueError("Evidence confidence must be low, medium or high")
-        result["evidence"].append({"claim": _text(item.get("claim"), "evidence.claim"),
-                                   "kind": kind, "source_refs": refs, "confidence": item["confidence"]})
+        result["evidence"].append(
+            {
+                "claim": _text(item.get("claim"), "evidence.claim"),
+                "kind": kind,
+                "source_refs": refs,
+                "confidence": item["confidence"],
+            }
+        )
     if not any(result["observed_message"] in item["source_refs"] for item in result["evidence"]):
         raise ValueError("Ground at least one assessment conclusion in the latest supplier reply")
     claims = action.get("numeric_claims")

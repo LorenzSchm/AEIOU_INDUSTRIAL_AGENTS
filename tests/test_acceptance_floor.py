@@ -18,14 +18,38 @@ STRATEGY = "<acceptance_floor>" + json.dumps(POLICY) + "</acceptance_floor>"
 def fixture(price=5.60, status="final_offer", sends=2):
     case = json.loads((ROOT / "data/package/cases/practice/P18.json").read_text())
     sid = "sup:70740"
-    opening = {"from": "sales@70740", "status": "open", "message_id": "opening",
-               "term_sheets": [{"term_sheet_id": "offer:opening", "terms": {
-                   "unit_price": 6.10, "payment_days": 30, "contract_months": 12, "index_clause": None}}]}
-    quote = {"from": "sales@70740", "status": status, "message_id": "latest",
-             "term_sheets": [{"term_sheet_id": "offer:latest", "terms": {
-                 "unit_price": price, "payment_days": 14, "contract_months": 36,
-                 "index_clause": {"series": "AS-14404", "material_share": .45,
-                                  "deadband_pct": 0, "base_month": "2026-08"}}}]}
+    opening = {
+        "from": "sales@70740",
+        "status": "open",
+        "message_id": "opening",
+        "term_sheets": [
+            {
+                "term_sheet_id": "offer:opening",
+                "terms": {"unit_price": 6.10, "payment_days": 30, "contract_months": 12, "index_clause": None},
+            }
+        ],
+    }
+    quote = {
+        "from": "sales@70740",
+        "status": status,
+        "message_id": "latest",
+        "term_sheets": [
+            {
+                "term_sheet_id": "offer:latest",
+                "terms": {
+                    "unit_price": price,
+                    "payment_days": 14,
+                    "contract_months": 36,
+                    "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 0,
+                        "base_month": "2026-08",
+                    },
+                },
+            }
+        ],
+    }
     threads = {sid: [opening, *[{"from": "buyer", "body": "Conditional counter"} for _ in range(sends)], quote]}
     return case, sid, threads
 
@@ -159,13 +183,15 @@ def test_released_v5_carries_the_actual_floor():
 
 
 def v8_spec():
-    return PromptSpec("v8-user-price-limit", (ROOT / "prompts/p18-diagnostic-v8.txt").read_text(),
-                      assessment_enabled=True)
+    return PromptSpec(
+        "v8-user-price-limit", (ROOT / "prompts/p18-diagnostic-v8.txt").read_text(), assessment_enabled=True
+    )
 
 
 def v9_spec():
-    return PromptSpec("v9-user-price-limit", (ROOT / "prompts/p18-diagnostic-v9.txt").read_text(),
-                      assessment_enabled=True)
+    return PromptSpec(
+        "v9-user-price-limit", (ROOT / "prompts/p18-diagnostic-v9.txt").read_text(), assessment_enabled=True
+    )
 
 
 @pytest.mark.parametrize("status", ["open", "final_offer", "agreed"])
@@ -267,15 +293,17 @@ def test_new_unit_cap_also_blocks_an_above_cap_counterproposal():
     terms = {**threads[sid][-1]["term_sheets"][0]["terms"], "unit_price": 4.91}
     a = PromptLabAgent(package(), None, v8_spec())
     with pytest.raises(ContractError, match="ACCEPTANCE_UNIT_PRICE_LIMIT_EXCEEDED"):
-        a.contract(case, threads, {"supplier_id": sid, "action": "send", "body": "Counterproposal",
-                                   "term_sheets": [terms]})
+        a.contract(
+            case, threads, {"supplier_id": sid, "action": "send", "body": "Counterproposal", "term_sheets": [terms]}
+        )
     run = {"case": case, "threads": copy.deepcopy(threads), "prompt": v8_spec().metadata()}
     with pytest.raises(NegotiationBlocked, match="ACCEPTANCE_UNIT_PRICE_LIMIT_EXCEEDED"):
         RecordingTable(NeverSend(), run, case).send(sid, {"body": "Counterproposal", "term_sheets": [{"terms": terms}]})
     assert run["threads"] == threads
     terms["unit_price"] = 4.90
-    move = a.contract(case, threads, {"supplier_id": sid, "action": "send", "body": "Conditional close",
-                                     "term_sheets": [terms]})
+    move = a.contract(
+        case, threads, {"supplier_id": sid, "action": "send", "body": "Conditional close", "term_sheets": [terms]}
+    )
     assert move["message"]["term_sheets"][0]["terms"]["unit_price"] == 4.90
 
 
@@ -286,8 +314,9 @@ def test_lower_limit_does_not_reopen_a_terminal_thread(status):
             raise AssertionError("Terminal thread triggered a model call")
 
     case, sid, threads = fixture(price=4.90)
-    threads[sid].append({"from": "sales@70740", "status": status,
-                         "body": "We withdraw. Our general offer remains valid for 14 days."})
+    threads[sid].append(
+        {"from": "sales@70740", "status": status, "body": "We withdraw. Our general offer remains valid for 14 days."}
+    )
     a = PromptLabAgent(package(), NeverCalled(), v8_spec())
     assert a.decision_protocol_state(case, threads)["suppliers"] == {}
     with pytest.raises(ContractError, match="live thread"):

@@ -23,9 +23,13 @@ class NoModel:
 
 
 def agent(backend=None):
-    return PromptLabAgent(package(), backend or NoModel(), PromptSpec(
-        "closing-comparison-test", STRATEGY, assessment_enabled=True,
-        execution_policy=copy.deepcopy(POLICY)))
+    return PromptLabAgent(
+        package(),
+        backend or NoModel(),
+        PromptSpec(
+            "closing-comparison-test", STRATEGY, assessment_enabled=True, execution_policy=copy.deepcopy(POLICY)
+        ),
+    )
 
 
 def scenario():
@@ -34,8 +38,8 @@ def scenario():
     # Synthetic structured variants of the recorded open reply. They test cost
     # ordering and transport, not how the supplier responds to a new proposal.
     events[3]["term_sheets"] = [
-        {"terms": {**copy.deepcopy(p), "contract_months": 36}}
-        for p in POLICY["early_package_alternatives"]["packages"]]
+        {"terms": {**copy.deepcopy(p), "contract_months": 36}} for p in POLICY["early_package_alternatives"]["packages"]
+    ]
     alternative = events[-1]["term_sheets"][1]["terms"]
     alternative["payment_days"] = 14
     alternative["index_clause"]["deadband_pct"] = 3
@@ -59,8 +63,11 @@ def test_common_price_reverses_the_quoted_cost_order_and_preserves_source_status
     assert fast["cost"] < slow["cost"]
     plan = p["price_plan"]["suppliers"][SID]
     rows = plan["closing_package_comparison"]
-    assert [(r["terms"]["payment_days"], r["terms"]["index_clause"]["deadband_pct"])
-            for r in rows] == [(60, 5), (30, 5), (14, 3)]
+    assert [(r["terms"]["payment_days"], r["terms"]["index_clause"]["deadband_pct"]) for r in rows] == [
+        (60, 5),
+        (30, 5),
+        (14, 3),
+    ]
     assert [r["complete_cost"] for r in rows] == [243915.66, 245527.26, 248562.44]
     assert [r["estimated_score"] for r in rows] == [70.6787, 68.4565, 64.2713]
     assert [r["cost_above_lowest_comparison"] for r in rows] == [0, 1611.60, 4646.78]
@@ -78,8 +85,12 @@ def test_unconfigured_or_unauthorized_reference_price_does_not_create_comparison
     case, threads = scenario()
     a = agent()
     state = a.decision_protocol_state(case, threads)
-    assert closing_comparisons(case, threads[SID], state["suppliers"][SID]["offers"],
-                               price, a.acceptance_floor, minimum_contract_months=24) == []
+    assert (
+        closing_comparisons(
+            case, threads[SID], state["suppliers"][SID]["offers"], price, a.acceptance_floor, minimum_contract_months=24
+        )
+        == []
+    )
 
 
 def test_minimum_duration_and_positive_floor_are_still_reflected_in_comparison():
@@ -102,10 +113,15 @@ def test_comparisons_reach_the_model_and_decision_audit_without_rewriting_its_ac
             p = json.loads(user)
             rows = p["price_plan"]["suppliers"][SID]["closing_package_comparison"]
             assert [r["complete_cost"] for r in rows] == [243915.66, 245527.26, 248562.44]
-            return json.dumps({
-                "supplier_id": SID, "action": "send", "body": "Could you approve this complete proposal?",
-                "term_sheets": [rows[1]["terms"]], **assessment_fields(p, SID),
-            })
+            return json.dumps(
+                {
+                    "supplier_id": SID,
+                    "action": "send",
+                    "body": "Could you approve this complete proposal?",
+                    "term_sheets": [rows[1]["terms"]],
+                    **assessment_fields(p, SID),
+                }
+            )
 
     case, threads = scenario()
     a = agent(Buyer())
@@ -124,5 +140,7 @@ def test_v28_still_accepts_an_actual_510_fourteen_day_three_percent_final():
     final["standing_offer_id"] = final["term_sheets"][0]["term_sheet_id"]
     a = agent()
     assert a.decide(case, threads)["message"]["action"] == {
-        "type": "accept", "term_sheet_id": final["term_sheets"][0]["term_sheet_id"]}
+        "type": "accept",
+        "term_sheet_id": final["term_sheets"][0]["term_sheet_id"],
+    }
     assert a.decisions[-1]["source"] == "policy:accept"

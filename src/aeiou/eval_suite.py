@@ -135,8 +135,9 @@ def refresh_practice_catalog():
     client = sandbox_client()
     try:
         catalog = {
-            "cases": [{"case_id": case["case_id"], "title": case["title"]}
-                      for case in hosted(client.cases("practice"))],
+            "cases": [
+                {"case_id": case["case_id"], "title": case["title"]} for case in hosted(client.cases("practice"))
+            ],
             "quota": client.me().get("practice"),
             "checked_at": datetime.now(UTC).isoformat(),
         }
@@ -205,8 +206,9 @@ def suite():
     }
 
 
-def prepare_evaluation(prompt, model=None, variant_id="a", comparison_id=None, *,
-                       case_ids=None, repeats=REPEATS, catalog=None, effort=None):
+def prepare_evaluation(
+    prompt, model=None, variant_id="a", comparison_id=None, *, case_ids=None, repeats=REPEATS, catalog=None, effort=None
+):
     settings = model_settings(model, effort)
     if settings["model"] not in MODELS:
         raise ValueError("Unknown buyer model")
@@ -228,12 +230,16 @@ def prepare_evaluation(prompt, model=None, variant_id="a", comparison_id=None, *
         raise ValueError("Not enough practice quota for this batch; reduce cases or repeats")
     spec = PromptSpec("eval", prompt, revision="eval-prompt-v2", assessment_enabled=True)
     if spec.acceptance_floor and any(cid != spec.acceptance_floor.case_id for cid in selected):
-        raise ValueError("The prompt's acceptance_floor is for one case; use a shared prompt without that block "
-                         "for multiple cases. Saved case limits are applied separately.")
+        raise ValueError(
+            "The prompt's acceptance_floor is for one case; use a shared prompt without that block "
+            "for multiple cases. Saved case limits are applied separately."
+        )
     saved_controls = load_execution_policies()
-    execution_policies = {cid: validate_policy(
-        saved_controls[cid], replace(spec, execution_policy=saved_controls[cid]).acceptance_floor)
-                          for cid in selected if cid in saved_controls}
+    execution_policies = {
+        cid: validate_policy(saved_controls[cid], replace(spec, execution_policy=saved_controls[cid]).acceptance_floor)
+        for cid in selected
+        if cid in saved_controls
+    }
     report = {
         "id": uuid.uuid4().hex,
         "suite_id": PRACTICE_SUITE_ID if practice else SUITE_ID,
@@ -342,8 +348,11 @@ def run_case(report, row, case, spec, pkg, client, backend_factory, stop, cancel
     table = SandboxTable(client, run, report, row, cancel, stop)
     try:
         backend = backend_factory(
-            model=report["model"], max_tokens=12000, timeout=BUYER_DECISION_BUDGET_S,
-            effort=run["effort"], speed=run["speed"],
+            model=report["model"],
+            max_tokens=12000,
+            timeout=BUYER_DECISION_BUDGET_S,
+            effort=run["effort"],
+            speed=run["speed"],
         )
         agent = PromptLabAgent(pkg, CancellableBackend(backend, cancel), spec)
         # Research the public case before opening the supplier's 60-second clock.
@@ -397,7 +406,9 @@ def run_evaluation(report, backend_factory=make_backend, client_factory=sandbox_
     with REPORT_LOCK:
         _, cancel = ACTIVE_EVALUATIONS.setdefault(report["id"], (report, threading.Event()))
     spec = PromptSpec(
-        report["prompt"]["variant"], report["prompt_text"], revision=report["prompt"]["strategy_revision"],
+        report["prompt"]["variant"],
+        report["prompt_text"],
+        revision=report["prompt"]["strategy_revision"],
         assessment_enabled=bool(report["prompt"].get("assessment_version")),
     )
     try:
@@ -428,14 +439,25 @@ def run_evaluation(report, backend_factory=make_backend, client_factory=sandbox_
             if row is None:
                 return None
             future = RUN_POOL.submit(
-                run_case, report, row, cases[row["case_id"]], spec, pkg, client, backend_factory, stop,
+                run_case,
+                report,
+                row,
+                cases[row["case_id"]],
+                spec,
+                pkg,
+                client,
+                backend_factory,
+                stop,
                 cancel,
             )
             futures.append(future)
             return future
 
-        pending = {f for _ in range(min(PARALLEL_RUNS, report.get("parallel_runs", PARALLEL_RUNS)))
-                   if (f := submit_next()) is not None}
+        pending = {
+            f
+            for _ in range(min(PARALLEL_RUNS, report.get("parallel_runs", PARALLEL_RUNS)))
+            if (f := submit_next()) is not None
+        }
         while pending:
             done, pending = wait(pending, return_when=FIRST_COMPLETED)
             for future in done:

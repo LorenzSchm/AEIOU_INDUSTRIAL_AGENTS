@@ -29,8 +29,12 @@ def scenario():
 
 
 def spec(policy=None):
-    return PromptSpec("shared-test", STRATEGY, assessment_enabled=True,
-                      execution_policy=copy.deepcopy(POLICY if policy is None else policy))
+    return PromptSpec(
+        "shared-test",
+        STRATEGY,
+        assessment_enabled=True,
+        execution_policy=copy.deepcopy(POLICY if policy is None else policy),
+    )
 
 
 @pytest.fixture
@@ -45,7 +49,8 @@ def saved_policy(monkeypatch, tmp_path):
 def test_shared_batch_snapshots_only_selected_limits_without_editing_strategy(saved_policy):
     catalog = {"cases": [{"case_id": cid, "title": cid} for cid in ["case:P10", "case:P18"]], "quota": {"left": 2}}
     report = eval_suite.prepare_evaluation(
-        STRATEGY, variant_id="practice", repeats=1, case_ids=["case:P10", "case:P18"], catalog=catalog)
+        STRATEGY, variant_id="practice", repeats=1, case_ids=["case:P10", "case:P18"], catalog=catalog
+    )
     assert report["prompt_text"] == STRATEGY
     assert "acceptance_floor" not in report["prompt"]
     assert report["execution_policies"] == {"case:P18": POLICY}
@@ -88,7 +93,9 @@ def test_shared_prompt_accepts_exact_eligible_quote_without_model_call(saved_pol
     sheet = threads[SID][-1]["term_sheets"][0]
     agent = PromptLabAgent(package(), NoModel(), spec())
     assert agent.decide(case, threads)["message"]["action"] == {
-        "type": "accept", "term_sheet_id": sheet["term_sheet_id"]}
+        "type": "accept",
+        "term_sheet_id": sheet["term_sheet_id"],
+    }
     assert agent.decisions[-1]["source"] == "policy:accept"
 
 
@@ -100,8 +107,7 @@ def test_shared_prompt_cannot_bypass_price_or_duration(saved_policy, price, dura
     agent = PromptLabAgent(package(), None, spec())
     assert not agent.decision_protocol_state(case, threads)["suppliers"][SID]["eligible_offer_ids"]
     with pytest.raises(ContractError, match="saved execution controls"):
-        agent.contract(case, threads, {"supplier_id": SID, "action": "accept",
-                                      "term_sheet_id": sheet["term_sheet_id"]})
+        agent.contract(case, threads, {"supplier_id": SID, "action": "accept", "term_sheet_id": sheet["term_sheet_id"]})
 
 
 @pytest.mark.parametrize("changed", ["price", "cost"])
@@ -128,9 +134,13 @@ def test_saved_caps_are_rechecked_at_transport_before_network(saved_policy, chan
 def test_explicit_conflicting_limits_still_fail_before_a_batch_is_created(saved_policy):
     prompt = (ROOT / "prompts/p18-diagnostic-v14.txt").read_text()
     with pytest.raises(ValueError, match="limits differ"):
-        eval_suite.prepare_evaluation(prompt, variant_id="practice", repeats=1, case_ids=["case:P18"],
-                                      catalog={"cases": [{"case_id": "case:P18", "title": "P18"}],
-                                               "quota": {"left": 1}})
+        eval_suite.prepare_evaluation(
+            prompt,
+            variant_id="practice",
+            repeats=1,
+            case_ids=["case:P18"],
+            catalog={"cases": [{"case_id": "case:P18", "title": "P18"}], "quota": {"left": 1}},
+        )
     assert eval_suite.ACTIVE_EVALUATIONS == {}
     assert not (saved_policy / "eval-suite").exists()
 
@@ -138,11 +148,16 @@ def test_explicit_conflicting_limits_still_fail_before_a_batch_is_created(saved_
 def test_case_specific_prompt_rejected_for_mixed_batch_at_preflight(saved_policy):
     prompt = (ROOT / "prompts/p18-diagnostic-v25.txt").read_text()
     with pytest.raises(ValueError, match="for one case"):
-        eval_suite.prepare_evaluation(prompt, variant_id="practice", repeats=1,
-                                      case_ids=["case:P10", "case:P18"], catalog={
-                                          "cases": [{"case_id": "case:P10", "title": "P10"},
-                                                    {"case_id": "case:P18", "title": "P18"}],
-                                          "quota": {"left": 2}})
+        eval_suite.prepare_evaluation(
+            prompt,
+            variant_id="practice",
+            repeats=1,
+            case_ids=["case:P10", "case:P18"],
+            catalog={
+                "cases": [{"case_id": "case:P10", "title": "P10"}, {"case_id": "case:P18", "title": "P18"}],
+                "quota": {"left": 2},
+            },
+        )
     assert eval_suite.ACTIVE_EVALUATIONS == {}
 
 
@@ -161,11 +176,17 @@ def test_browser_launch_api_accepts_shared_prompt_and_preserves_limits(monkeypat
 
     monkeypatch.setattr(service, "POOL", QueueOnly())
     monkeypatch.setattr(service, "validate_buyer", lambda *_: model_settings())
-    monkeypatch.setattr(eval_suite, "refresh_practice_catalog", lambda: {
-        "cases": [{"case_id": "case:P10", "title": "P10"}, {"case_id": "case:P18", "title": "P18"}],
-        "quota": {"left": 2}})
-    response = TestClient(service.app).post("/api/eval-suite/practice", json={
-        "prompt": STRATEGY, "case_ids": ["case:P10", "case:P18"], "repeats": 1})
+    monkeypatch.setattr(
+        eval_suite,
+        "refresh_practice_catalog",
+        lambda: {
+            "cases": [{"case_id": "case:P10", "title": "P10"}, {"case_id": "case:P18", "title": "P18"}],
+            "quota": {"left": 2},
+        },
+    )
+    response = TestClient(service.app).post(
+        "/api/eval-suite/practice", json={"prompt": STRATEGY, "case_ids": ["case:P10", "case:P18"], "repeats": 1}
+    )
     assert response.status_code == 202, response.text
     assert len(queued) == 1  # No real job, model call or hosted session is started.
     saved = json.loads((saved_policy / "eval-suite" / f"{response.json()['id']}.json").read_text())

@@ -1,0 +1,202 @@
+{
+  "case": {
+    "case_id": "case:D01",
+    "set": "demo",
+    "type": "price_increase",
+    "title": "Pump housing PH-100: the foundry wants +8.8 %",
+    "briefing": "Demo Gie\u00dferei GmbH, our single source for the grey-iron pump housing PH-100 for 12 years, announces +8.8 % from 1 December citing energy and wages. Castings are a strategic category: the goal is to stabilise supply with a healthy partner, so squeezing the foundry below a 4 % margin costs us (from EUR 5,000 per margin point and year). We need 4,000 housings a year for the next two years; anything not covered by this deal costs EUR 55.00 per unit (spot buys and a second source). Price, payment terms, contract length and the date the new price applies are open; lead time and Incoterm are fixed.",
+    "trigger_doc": "doc:D01-LETTER",
+    "parts": [
+      "part:PH-100"
+    ],
+    "suppliers": [
+      "sup:DEMO-F1"
+    ],
+    "negotiable": [
+      "unit_price",
+      "payment_days",
+      "contract_months",
+      "effective_date"
+    ],
+    "fixed_terms": {
+      "lead_time_days": 35,
+      "incoterm": "FCA"
+    },
+    "term_options": {
+      "payment_days": [
+        30,
+        45,
+        60
+      ],
+      "contract_months": [
+        12,
+        24
+      ],
+      "effective_date": [
+        "2026-12-01",
+        "2027-01-01",
+        "2027-02-01",
+        "2027-04-01"
+      ]
+    },
+    "buyer": {
+      "category_goal": "stabilise",
+      "need_per_year": 4000,
+      "horizon_years": 2,
+      "current_unit_price": 48.6,
+      "fallback_unit_price": 55.0,
+      "fallback_risk_pct": 5,
+      "sustainable_margin_pct": 4,
+      "relationship_eur_per_point": 5000,
+      "interest_rate": 0.08,
+      "reference_payment_days": 60,
+      "need_lead_time_days": 35,
+      "late_cost_per_day": 0,
+      "cost_per_defect": 0,
+      "freight_eur_per_unit": {
+        "EXW": 1.9,
+        "FCA": 1.2,
+        "DAP": 0.0
+      },
+      "index_paths": {},
+      "must_haves": [],
+      "alternative": {
+        "kind": "none"
+      }
+    },
+    "round_limit": 10,
+    "refs": [
+      "doc:D01-LETTER",
+      "ctr:D01-FRAMEWORK",
+      "sc:DEMO-F1@2026Q2",
+      "sc:DEMO-F1@2026Q3",
+      "po:4500001201",
+      "po:4500001288",
+      "po:4500001342",
+      "cost:part:PH-100"
+    ]
+  },
+  "threads": {
+    "sup:DEMO-F1": [
+      {
+        "from": "sales@DEMO-F1",
+        "body": "Guten Tag,\n\nThank you for your enquiry. Please find our Angebot below.\n\nIt is always a pleasure to work with your esteemed house, continuing the strong tradition of craftsmanship and trust between our companies. For this agreement, our offer stands at a price of \u20ac52.90 per unit, a Zahlungsziel 30 days net, a contract term of 12 months, valid from 1 December 2026. \n\nTo remain transparent about our situation, WAGES-METAL rose 3.1 % in twelve months and is 28 % of our cost. We take great pride in the dedication of our foundry workforce and the quality we deliver to our partners every day.\n\nPlease note that this offer remains valid for 30 days. We look forward to continuing our successful cooperation together.\n\nViele Gr\u00fc\u00dfe aus der Gie\u00dferei\nAndreas Moser\nOwner, Demo Gie\u00dferei GmbH",
+        "attachments": [
+          {
+            "attachment_id": "att:DEMO-F1-0-quote",
+            "name": "quote-offer-DEMO-F1-0.pdf",
+            "type": "pdf",
+            "content_b64": null,
+            "text": "Demo Gie\u00dferei GmbH\nTo: Hollerau Pumpenwerke GmbH\nAngebot / Quote offer:DEMO-F1-0\nOffered terms\nUnit price (EUR) 52.90\nPayment terms (days net) 30\nContract term (months) 12\nPrice valid from 2026-12-01\nOur standard terms (apply to everything not stated above)\nVolume per year (pcs) 4000\nIndex clause none\nTooling (EUR) 0.00\nQuality commitment (ppm) 650\nChargeback per complaint (EUR) 0.00\nTerms fixed by your enquiry\nLead time (days) 35\nIncoterm FCA\nPart(s): part:PH-100. Enquiry: Pump housing PH-100: the foundry wants +8.8 %.\nValidity: 30 days."
+          }
+        ],
+        "term_sheets": [
+          {
+            "term_sheet_id": "offer:DEMO-F1-0",
+            "terms": {
+              "unit_price": 52.9,
+              "payment_days": 30,
+              "contract_months": 12,
+              "effective_date": "2026-12-01"
+            }
+          }
+        ],
+        "status": "open"
+      },
+      {
+        "body": "Thank you for working through the options with us. We value a reliable agreement. The alternative changes one commercial term in exchange for the quoted price reduction. Both changes are conditional on accepting the complete package. Which package can you authorize? Any movement is conditional on the executable terms below.\n\nExecutable packages:\nPackage 1: Unit price (EUR): 45.49; Payment (days): 60; Contract duration (months): 24; Effective date: \"2026-12-01\"\nPackage 2: Unit price (EUR): 45.18; Payment (days): 30; Contract duration (months): 24; Effective date: \"2026-12-01\"\nPackage 3: Unit price (EUR): 34.43; Payment (days): 60; Contract duration (months): 12; Effective date: \"2026-12-01\"",
+        "term_sheets": [
+          {
+            "terms": {
+              "unit_price": 45.49,
+              "payment_days": 60,
+              "contract_months": 24,
+              "effective_date": "2026-12-01"
+            }
+          },
+          {
+            "terms": {
+              "unit_price": 45.18,
+              "payment_days": 30,
+              "contract_months": 24,
+              "effective_date": "2026-12-01"
+            }
+          },
+          {
+            "terms": {
+              "unit_price": 34.43,
+              "payment_days": 60,
+              "contract_months": 12,
+              "effective_date": "2026-12-01"
+            }
+          }
+        ],
+        "from": "buyer"
+      },
+      {
+        "from": "sales@DEMO-F1",
+        "body": "Guten Tag,\n\nWe have reviewed your offer and can adjust our Angebot as follows. \n\nOur family foundry has always deeply valued our long-standing relationship, and we warmly welcome the stability that a contract term of 24 months brings to our business. In exchange for this extended commitment, we are pleased to offer a significant price reduction. \n\nYour proposed prices are unfortunately not feasible given our cost structure, but we believe \u20ac51.30 per unit is a fair step forward. Therefore, our price of \u20ac51.30 per unit comes with a Zahlungsziel 30 days net and a contract term of 24 months, valid from 1 December 2026. Please note that this offer remains valid for 30 days.\n\nWe trust this tailored Angebot reflects both our appreciation for our history together and our commitment to serving you with pride.\n\nViele Gr\u00fc\u00dfe aus der Gie\u00dferei\nAndreas Moser\nOwner, Demo Gie\u00dferei GmbH",
+        "attachments": [],
+        "term_sheets": [
+          {
+            "term_sheet_id": "offer:DEMO-F1-1",
+            "terms": {
+              "unit_price": 51.3,
+              "payment_days": 30,
+              "contract_months": 24,
+              "effective_date": "2026-12-01"
+            }
+          }
+        ],
+        "status": "open"
+      },
+      {
+        "body": "Thank you for working through the options with us. We value a reliable agreement. The alternative changes one commercial term in exchange for the quoted price reduction. Both changes are conditional on accepting the complete package. Which package can you authorize? Any movement is conditional on the executable terms below.\n\nExecutable packages:\nPackage 1: Unit price (EUR): 45.67; Payment (days): 60; Contract duration (months): 24; Effective date: \"2026-12-01\"\nPackage 2: Unit price (EUR): 45.36; Payment (days): 30; Contract duration (months): 24; Effective date: \"2026-12-01\"\nPackage 3: Unit price (EUR): 34.79; Payment (days): 60; Contract duration (months): 12; Effective date: \"2026-12-01\"",
+        "term_sheets": [
+          {
+            "terms": {
+              "unit_price": 45.67,
+              "payment_days": 60,
+              "contract_months": 24,
+              "effective_date": "2026-12-01"
+            }
+          },
+          {
+            "terms": {
+              "unit_price": 45.36,
+              "payment_days": 30,
+              "contract_months": 24,
+              "effective_date": "2026-12-01"
+            }
+          },
+          {
+            "terms": {
+              "unit_price": 34.79,
+              "payment_days": 60,
+              "contract_months": 12,
+              "effective_date": "2026-12-01"
+            }
+          }
+        ],
+        "from": "buyer"
+      },
+      {
+        "from": "sales@DEMO-F1",
+        "body": "Guten Tag,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We acknowledge your updated offer and appreciate the slight adjustment in your proposed price. \n\nOur family foundry deeply values our 12-year relationship, and we trust this step demonstrates our commitment to continuing our successful cooperation. To reciprocate and move us closer to a reliable agreement, we are prepared to reduce our price to a price of \u20ac51.10 per unit, Zahlungsziel 30 days net, a contract term of 24 months, valid from 1 December 2026. \n\nOur general terms and conditions apply; the quote lists our standard terms. Please note that this offer remains valid for 30 days. We look forward to reaching a firm agreement together that reflects the proud tradition and reliable partnership of our region.\n\nViele Gr\u00fc\u00dfe aus der Gie\u00dferei\nAndreas Moser\nOwner, Demo Gie\u00dferei GmbH",
+        "attachments": [],
+        "term_sheets": [
+          {
+            "term_sheet_id": "offer:DEMO-F1-2",
+            "terms": {
+              "unit_price": 51.1,
+              "payment_days": 30,
+              "contract_months": 24,
+              "effective_date": "2026-12-01"
+            }
+          }
+        ],
+        "status": "open"
+      }
+    ]
+  }
+}

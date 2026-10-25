@@ -23,9 +23,16 @@ class NoModel:
 
 
 def agent(policy=None):
-    return PromptLabAgent(package(), NoModel(), PromptSpec(
-        "v21-offline", STRATEGY, assessment_enabled=True,
-        execution_policy=copy.deepcopy(POLICY if policy is None else policy)))
+    return PromptLabAgent(
+        package(),
+        NoModel(),
+        PromptSpec(
+            "v21-offline",
+            STRATEGY,
+            assessment_enabled=True,
+            execution_policy=copy.deepcopy(POLICY if policy is None else policy),
+        ),
+    )
 
 
 def recorded(name=FIXTURES[1], through=5):
@@ -34,8 +41,9 @@ def recorded(name=FIXTURES[1], through=5):
 
 
 def control(a, case, threads):
-    return controlled_action(case, threads, a.decision_protocol_state(case, threads),
-                             a.acceptance_floor, a.execution_policy)
+    return controlled_action(
+        case, threads, a.decision_protocol_state(case, threads), a.acceptance_floor, a.execution_policy
+    )
 
 
 @pytest.mark.parametrize("fixture", FIXTURES)
@@ -82,11 +90,16 @@ def test_compromise_is_not_sent_before_menu_or_repeated_after_reconstruction():
     assert control(agent(), case, threads) is None
 
 
-@pytest.mark.parametrize("restriction", [
-    "We cannot accept 45-day payment.", "Payment is limited to a maximum of 30 days.",
-    "Payment must remain at 14 days net.", "45 days is not an option.",
-    "Das Zahlungsziel ist nicht verhandelbar.",
-])
+@pytest.mark.parametrize(
+    "restriction",
+    [
+        "We cannot accept 45-day payment.",
+        "Payment is limited to a maximum of 30 days.",
+        "Payment must remain at 14 days net.",
+        "45 days is not an option.",
+        "Das Zahlungsziel ist nicht verhandelbar.",
+    ],
+)
 def test_explicit_payment_restriction_prevents_forced_compromise(restriction):
     case, threads = recorded()
     threads[SID][-1]["body"] += "\n" + restriction
@@ -103,7 +116,7 @@ def test_open_compromise_never_ignores_package_or_round_limits(damage):
     if damage == "no_rounds":
         case["round_limit"] = 2
     elif damage == "higher_cost":
-        case["buyer"]["index_paths"]["AS-14404"] = .20
+        case["buyer"]["index_paths"]["AS-14404"] = 0.20
     else:
         for sheet in threads[SID][-1]["term_sheets"]:
             if damage == "short_duration":
@@ -117,11 +130,9 @@ def test_open_compromise_never_ignores_package_or_round_limits(damage):
 def test_qualifying_exact_offer_is_accepted_before_compromise_or_final_stop(status):
     case, threads = recorded(through=7)
     threads[SID][-1]["status"] = status
-    threads[SID][-1]["term_sheets"][0]["terms"] = {
-        **POLICY["open_payment_compromise"], "contract_months": 36}
+    threads[SID][-1]["term_sheets"][0]["terms"] = {**POLICY["open_payment_compromise"], "contract_months": 36}
     a = agent()
-    assert a.decide(case, threads)["message"] == {
-        "action": {"type": "accept", "term_sheet_id": "offer:70740-3"}}
+    assert a.decide(case, threads)["message"] == {"action": {"type": "accept", "term_sheet_id": "offer:70740-3"}}
     assert a.decisions[-1]["source"] == "policy:accept"
 
 
@@ -139,9 +150,11 @@ def test_nonqualifying_final_stops_without_model_or_counter_despite_remaining_ro
     assert a.audit["terminal_limits"][-1]["source"] == "policy:final-offer-stop"
     assert threads == before
     late_change = {**POLICY["early_package_alternatives"]["packages"][2], "contract_months": 36}
-    for action in ({"action": "send", "body": "Please approve 60 days.", "term_sheets": [late_change]},
-                   {"action": "send", "body": "Could your owner improve this?", "term_sheets": []},
-                   {"action": "confirm", "term_sheet_id": "offer:70740-3"}):
+    for action in (
+        {"action": "send", "body": "Please approve 60 days.", "term_sheets": [late_change]},
+        {"action": "send", "body": "Could your owner improve this?", "term_sheets": []},
+        {"action": "confirm", "term_sheet_id": "offer:70740-3"},
+    ):
         with pytest.raises(ContractError, match="further negotiation is disabled"):
             a.contract(case, threads, {"supplier_id": SID, **action})
 
@@ -165,9 +178,14 @@ def test_withdrawn_thread_remains_terminal():
         agent().decide(case, threads)
 
 
-@pytest.mark.parametrize("damage,reason", [
-    ("unread", "sources_not_delivered"), ("mismatch", "calculation_mismatch"), ("used", "already_sent"),
-])
+@pytest.mark.parametrize(
+    "damage,reason",
+    [
+        ("unread", "sources_not_delivered"),
+        ("mismatch", "calculation_mismatch"),
+        ("used", "already_sent"),
+    ],
+)
 def test_as_evidence_is_checked_against_actual_delivered_sources_and_sent_history(damage, reason):
     case, threads = recorded()
     a = agent()
@@ -186,9 +204,16 @@ def test_as_evidence_is_checked_against_actual_delivered_sources_and_sent_histor
     assert result == action and result["numeric_claims"] == []
 
 
-@pytest.mark.parametrize("field,value", [("unit_price", 5.10), ("payment_days", 20),
-                                         ("payment_days", True), ("index_clause", {}),
-                                         ("unit_price", float("nan"))])
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("unit_price", 5.10),
+        ("payment_days", 20),
+        ("payment_days", True),
+        ("index_clause", {}),
+        ("unit_price", float("nan")),
+    ],
+)
 def test_bad_or_nonqualifying_compromise_is_rejected_before_start(field, value):
     policy = copy.deepcopy(POLICY)
     policy["open_payment_compromise"][field] = value

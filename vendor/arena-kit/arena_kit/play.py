@@ -149,10 +149,21 @@ def play(table, case_id, agent, deadline=None):
         for m in events:
             fetch_documents(table, m)
     slowest = 0.0  # the longest round so far: decision + the supplier's reply
+    stale_recoveries = 0
     while live_threads(threads):
+        # Optional hosted-table hooks: local simulators keep their original path.
+        refresh = None if getattr(agent, "manages_execution", False) else getattr(table, "refresh", None)
+        if refresh:
+            if (result := refresh(threads)) is not None:
+                return result
+            if not live_threads(threads):
+                break
         t0 = time.monotonic()
         cap = deadline() if callable(deadline) else deadline
-        if cap and time.time() > cap - max(CLOSE_BEFORE_CAP_S, slowest + ROUND_MARGIN_S):
+        urgent = table.deadline_close(agent, threads) if hasattr(table, "deadline_close") else None
+        if urgent:
+            decision = urgent
+        elif cap and time.time() > cap - max(CLOSE_BEFORE_CAP_S, slowest + ROUND_MARGIN_S):
             log.info("%s: the wave's cap is near - closing", case_id)
             decision = agent.close(case, threads) if hasattr(agent, "close") else closing_move(case, threads)
         else:
@@ -164,6 +175,14 @@ def play(table, case_id, agent, deadline=None):
             table.observe_decision(agent)
         try:
             if msg.get("action"):
+                if refresh:
+                    if (result := refresh(threads)) is not None:
+                        return result
+                    if not live_threads(threads):
+                        break
+                    # Re-evaluate prices, must-haves and alternatives, not just the ID.
+                    decision = agent.close(case, threads) if hasattr(agent, "close") else closing_move(case, threads)
+                    sid, msg = decision["supplier_id"], decision["message"]
                 log.info("%s %s", sid, msg["action"])
                 return table.close(sid, msg)
             reply = table.send(sid, msg)
@@ -175,6 +194,15 @@ def play(table, case_id, agent, deadline=None):
                         return table.done
                     threads = refreshed
                     continue  # Re-decide on authoritative state; a rejected request used no round.
+            if (
+                not hasattr(table, "recover_acceptance") and
+                refresh and e.status == 422 and "not a standing offer" in str(e.detail)
+                and msg.get("action", {}).get("type") == "accept" and stale_recoveries < 2
+            ):
+                # The offer can change between GET and POST. Refresh and decide
+                # again within this session, never create a replacement attempt.
+                stale_recoveries += 1
+                continue
             if e.status != 409:
                 raise
             log.info("%s: %s", sid, e.detail)

@@ -42,6 +42,12 @@ class OpenAIBackend:
     def complete_json(self, system, user, schema):
         return self.complete(system, user, output_schema=schema)
 
+    def plan_negotiation(self, payload):
+        from .agent import parse
+        from .strategic_planner import PLANNER_SYSTEM
+
+        return parse(self.complete(PLANNER_SYSTEM, payload))
+
     def complete_before(self, system, user, deadline):
         return self.complete(system, user, deadline=deadline)
 
@@ -52,12 +58,20 @@ class OpenAIBackend:
         # Fix the destination: an Anthropic credential or a configured proxy must never
         # accidentally receive this provider's requests.
         async with openai.AsyncOpenAI(
-            api_key=self.api_key, base_url="https://api.openai.com/v1", max_retries=0, timeout=remaining,
+            api_key=self.api_key,
+            base_url="https://api.openai.com/v1",
+            max_retries=0,
+            timeout=remaining,
         ) as client:
             stream = await client.responses.create(
-                model=self.model, instructions=system, input=[{"role": "user", "content": user}],
-                reasoning={"effort": self.effort}, max_output_tokens=self.max_tokens,
-                store=False, stream=True, **({"text": text} if text else {}),
+                model=self.model,
+                instructions=system,
+                input=[{"role": "user", "content": user}],
+                reasoning={"effort": self.effort},
+                max_output_tokens=self.max_tokens,
+                store=False,
+                stream=True,
+                **({"text": text} if text else {}),
             )
             async with stream:
                 async for event in stream:
@@ -103,8 +117,9 @@ class OpenAIBackend:
             self.stop_reasons[reason] = self.stop_reasons.get(reason, 0) + 1
             if time.monotonic() >= deadline:
                 raise BuyerDecisionTimeout("OpenAI exceeded the buyer decision budget; no action was sent")
-            if any(block.type == "refusal" for item in response.output
-                   if item.type == "message" for block in item.content):
+            if any(
+                block.type == "refusal" for item in response.output if item.type == "message" for block in item.content
+            ):
                 self.refusals += 1
                 safe = {"model": self.model, "category": "refusal", "response_id": response.id}
                 self.refusal_details.append(safe)
