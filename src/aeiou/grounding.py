@@ -46,6 +46,10 @@ OPENINGS = {
     "firm": "We can move conditionally on a complete package that works for both parties.",
 }
 QUESTIONS = {
+    "quote_reconciliation": (
+        "Could you reconcile the new base price with your dated quotation, allowing for differences in terms, "
+        "and have the complete package reviewed by someone with pricing authority?"
+    ),
     "priorities": "Which package best fits your operating needs, and which term prevents agreement?",
     "cash": "Would earlier payment allow a reciprocal improvement in the complete package?",
     "continuity": "Would a longer commitment support better pricing or delivery terms?",
@@ -363,7 +367,7 @@ def compose_email(data, cards, sid, strategy="balanced"):
         body.append(context[acknowledgment])
     for card in approved:
         refs = card.get("source_ids") or [card["source_id"]]
-        if card["kind"] == "rival_quote":
+        if card["kind"] in {"rival_quote", "historical_quote"}:
             body.append(card["text"])
         elif card["kind"] == "computed_index":
             body.append(card["text"])

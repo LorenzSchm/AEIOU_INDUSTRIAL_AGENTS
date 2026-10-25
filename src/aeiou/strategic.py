@@ -30,6 +30,7 @@ from .grounding import (
 from .negotiation_state import supplier_state
 from .opponent_model import learn_beliefs, predicted_choices
 from .optimizer import alternative_cost, estimate, evaluate, safe_close
+from .price_reconciliation import focused_index_terms, own_quote_cards
 from .reciprocity import responsive_packages
 from .retrieval import evidence_cards, evidence_cutoff
 from .scenario_planner import plan_packages
@@ -321,10 +322,13 @@ class StrategicNegotiator(Negotiator):
                 if "evidence_ids" not in data:
                     data = {**data, "evidence_ids": next_evidence_ids(self._cards, threads, sid)}
                 cover = material_cover_evidence(self._cards, case, threads[sid], sid)
+                own_quote = next((c["id"] for c in self._cards if c.get("kind") == "historical_quote"), None)
                 if cover:
                     # Keep the qualification in the verbatim excerpt; do not let
                     # a restatement of the supplier's ask displace counter-evidence.
                     data = {**data, "evidence_ids": [cover]}
+                if own_quote:
+                    data = {**data, "evidence_ids": [own_quote] + ([cover] if cover else [])}
                 data = responsive_act(
                     data,
                     threads[sid],
@@ -339,13 +343,15 @@ class StrategicNegotiator(Negotiator):
                     case=case,
                     terms=[p["terms"] for p in candidates.get(sid, []) if p["id"] in ids],
                 )
+                if own_quote:
+                    data = {**data, "question": "quote_reconciliation", "commercial_context": None}
                 data = {**data, "body": compose_email(data, self._cards, sid, strategy)}
                 if any(p.get("index_reciprocity") and p["id"] in ids for p in candidates.get(sid, [])):
                     data["body"] += (
                         "\n\nThe indexed option makes a further price movement on the terms you quoted. "
                         "In return, please review your price on that complete package."
                     )
-                if cover:
+                if cover and not own_quote:
                     data["body"] += (
                         "\n\nCould you reconcile the requested adjustment with that covered material period, "
                         "and distinguish costs during and after the cover expires?"
@@ -482,6 +488,7 @@ class StrategicNegotiator(Negotiator):
                     if ref and ref not in self.intelligence["facts"]:
                         if fact := self.pkg.lookup(ref):
                             self.intelligence["facts"][ref] = fact
+        self._cards = own_quote_cards(case, threads[sid], sid, self.intelligence) + self._cards
         if self.features.grounded_language:
             self._cards = fresh_evidence_cards(self._cards, threads)
             self._cards = communication_evidence(self._cards, threads[sid])
@@ -553,6 +560,35 @@ class StrategicNegotiator(Negotiator):
                     },
                 }
         sheets = move["message"].get("term_sheets", [])
+        focused = (
+            focused_index_terms(
+                case,
+                threads[sid],
+                sheets,
+                lambda terms: total_cost(
+                    case,
+                    terms,
+                    standard_terms(threads[sid]),
+                    estimate(case, sid, standard_terms(threads[sid]), self.intelligence),
+                ),
+            )
+            if sheets
+            else None
+        )
+        if focused is not None:
+            self.support[sid]["outbound_focus"] = {
+                "reason": "Explicit index requirement; focus an existing validated package on quoted terms",
+                "terms": copy.deepcopy(focused),
+                "original_package_count": len(sheets),
+            }
+            sheets = [{"terms": focused}]
+            move["message"]["term_sheets"] = sheets
+            move["message"]["body"] = (
+                "Thank you for clarifying the index requirement. We have reviewed your quoted structure "
+                "and are focusing on the complete indexed proposal below. "
+                "Could you obtain commercial approval for this package, or identify the specific term "
+                "that prevents agreement? Any movement is conditional on the complete executable terms."
+            )
         if sheets:
             if answer := fixed_commitment_answer(case, threads[sid]):
                 move["message"]["body"] += "\n\n" + answer

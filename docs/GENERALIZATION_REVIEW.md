@@ -1415,3 +1415,31 @@ rejected-advertised-alternative recovery. Experiment remains in Git history.
 No further attempt. Three calls, 19774 input / 303 output tokens, no errors or
 fallbacks, 24.56 seconds. One creation request/marker/session, quota 148 -> 149,
 best map unchanged. Report: data/local/evaluations/practice-p08-065988d/report.json.
+
+
+## Own-quote reconciliation and focused indexed approval request
+
+Change the argument and outward decision structure rather than raising the bid.
+Add a dated own-supplier quote card only for a same-part, same-supplier known
+source, EUR/unit-price-unit1, dated within the 90 days preceding case evidence
+cutoff, below the current opening. Choose the latest qualifying record. State
+its actual price/payment/delivery/incoterm and explicitly qualify that duration,
+index and other conditions may differ. It is a reference, never a binding live
+alternative. No hidden benchmark values or case IDs enter the policy.
+
+For the opening, select this quote and the verified overlapping cover letter
+together and request reconciliation/commercial review. Do not disclose the
+internal call note or assume the owner's approval. Later, after an explicit
+index requirement backed by all latest quoted offers, the code may focus the
+outgoing message on the cheapest already-validated indexed package matching a
+live quoted non-price structure. Prices and terms are not changed. Internal
+anchors/alternatives remain in economic planning, acceptance and safeguards;
+the outward subset and reason are recorded separately as outbound_focus.
+Any fixed-price live quote, terminal state, or nonmatching structure prevents
+this filtering. Other categories retain their prior communication policy.
+
+172 focused tests pass, including quote provenance and focused-offer constraints;
+Ruff clean; all 57 protected P01-P05 replay decisions identical. Mock-planner P08
+replay demonstrates exact dated quote plus cover evidence without guard fallback,
+and subsequent single indexed offers at unchanged scheduled prices. Final-offer
+acceptance is unchanged. One hosted P08 attempt is authorized; no creation retry.
