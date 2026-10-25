@@ -499,3 +499,36 @@ two existing simulation score assertions failed identically on committed baselin
 `e498de8`. Ten archived hosted openings were also replayed locally: all ten actions
 matched with and without release activation. This checks compatibility, not a
 live score improvement. No Arena sessions or model API calls were used.
+
+## Observed liability trade: one P11 trial
+
+Revision `830a902` protects a lower-cost liability option after comparable
+alternatives in the same supplier reply demonstrate a price premium that exceeds
+its buyer benefit. Only a fresh quote on the same complete structure permits a
+bounded counter roughly one percent below that price. A stale historical quote
+can protect the option but cannot cause a price concession. Buyer-value A,
+must-haves, external cost ceiling, terminal handling and previous comparable
+concessions remain protected. The learned selector and strategic planner cannot
+silently discard or replace the protected option. There are no case IDs,
+supplier IDs or historical record prices in the rule, and no retraining.
+
+57 focused tests passed. Archived decision-prefix replay left the checked P2/P5
+actions unchanged and changed the last open P11 decision to include EUR45.05 at
+1500 ppm and zero complaint charges. Replay does not predict supplier acceptance.
+
+One authorized hosted P11 attempt then selected that actual option:
+
+- Session `6ff8181a488575b8`, run `6ceb7ea46f204766bf78a33b2cbfe951`.
+- Score **69.4845**, previous personal best **61.9591**, gain **7.5254 points**.
+- EUR45.05 instead of EUR45.50, with the remaining final terms unchanged.
+  Buyer cost EUR751,513.50, a reduction of EUR7,155 against that earlier deal.
+- Existing progress model SHA256
+  `660351c1b7f6f6a25c9bbf5c08efcead84442533743629ba844917090a243447`.
+- Four Claude calls, 25,577 input / 390 output tokens, 32.58 seconds,
+  no fallbacks, provider errors or transport recovery events.
+- Practice quota224 to225; one exclusive creation marker and one new session.
+
+This is a new personal record, not a verified overall competition record or a
+causal estimate from repeated paired trials. No second attempt was started.
+Artifacts: `data/local/practice-p11-observed-v1/`, including source/model snapshot,
+preflight replay, full transcript, result, quota audit and HTML report.
