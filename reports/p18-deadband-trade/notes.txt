@@ -1,0 +1,27 @@
+P18 V24: exchange a narrower deadband and earlier payment for a lower starting price
+
+Latest V23 run f201c6e6e8804c73acb6c36468cc74aa recovered 5.10 / 30 days / 5%
+as an alternative, scoring 68.4565 if accepted. Primary 5.20 / 60 days / 5%
+scored 64.0839. Both failed the unchanged 70.01 minimum. Official score was zero.
+
+Only configured menu Option B changes in V24:
+old 5.05 / 14 days / 5% -> new 5.00 / 14 days / 3%.
+All options retain a supplier-quoted 24/36-month duration and fixed case terms.
+A stays 5.07 / 30 days / 5%; C stays 5.10 / 60 days / 5%.
+The menu explains the commercial trade only when the structured packages support
+it: B has earlier payment, a narrower deadband, and a lower price than both peers.
+The opening stays 4.60 / 30 days / 36 months / 0% with checked PO records;
+PPI remains the early-menu argument; AS remains for the following open response.
+No repeated private-cost questions, extra volume, side benefits or late counters.
+
+B complete cost EUR 243688.67, calculated score 70.9917. At 5.01, score 70.3197;
+at 5.02, it fails. Do not apply the 5%-clause price envelope to the 3% clause.
+A binding qualifying B is accepted unchanged. An above-limit final still stops.
+This package might display as 71, but the other team's deal terms are unknown.
+Our prior similar 5.01/14/3 proposal was only made after finality, together with
+a private-cost request. Its withdrawal is not a clean test of an early trade.
+No saved supplier quote proves acceptance of this candidate or a true price floor.
+
+Use prompts/p18-diagnostic-v24.txt with config/p18-deadband-trade.json in a fresh
+P18 evaluation. Replayed supplier history only tests the outgoing action and
+source checks. We did not call the hosted supplier or a paid model for this fix.

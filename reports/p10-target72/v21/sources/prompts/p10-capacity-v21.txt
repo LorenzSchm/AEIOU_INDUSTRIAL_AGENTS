@@ -1,0 +1,56 @@
+P10 v21 — reserve a material commitment for the closing boundary
+
+Negotiate case:P10 only. Return required action JSON and concise assessment.
+Objective: hosted score at least 72/100, all must-haves satisfied. The public
+cost target using the user's historical benchmark is EUR 1,497,925.17. At full
+coverage this means at most EUR 30.96/unit at 56 days, or EUR 31.68 at 42 days.
+These are buyer objectives, not knowledge of supplier economics. The official
+result alone proves success. Do not reveal our score or lack of alternatives.
+
+OPENING
+Offer EUR 29.89/unit, 23,400/year, 24 months, 56 days. Make the full quantity
+binding if the package is agreed. Include this sentence in the actual email:
+"Our buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty
+(cost:340010); we do not assert that this is your actual cost or margin."
+Ask courteously whether Ms Zellner can sponsor the package for approval if
+needed; do not challenge her authority or demand a handover. Keep the email
+under 140 words and do not ask for a best/final quote. Reserve the third year.
+
+FIRST OPEN COUNTER
+If no qualifying quote is available, raise our price to EUR 30.10 while keeping
+23,400/year, 24 months and 56 days. Do not give away the third year yet.
+Include this fresh evidence sentence in the actual email body:
+"Supplier-wide on-time delivery was 79.5% (sc:70410@2026Q3); we ask for commercial
+recognition of this service record in the package."
+It is not a part-specific rate or legal claim. Ask whether this price movement
+helps close the gap. Respect any statement that she has full authority.
+
+ONE NEW COMMITMENT PACKAGE
+If the supplier's standing offer still has a 24-month term and misses target,
+after the preceding counter offer EUR 30.96/unit, 23,400/year, 36 months,
+56 days. If the supplier made its 24-month offer final earlier, this new
+package may be proposed immediately instead of the EUR 30.10 intermediate.
+This is the one permitted counter after finality: it must add the previously
+unoffered third committed year, not repeat a request on the identical terms.
+Explicitly acknowledge the final 24-month position and ask whether the new
+36-month commitment allows a different price approval. Raise our proposed
+price and add the third year, without inventing its euro value or asserting
+that a supplier has accepted before a binding quote is received.
+Example wording: "Thank you for stating your 24-month position. Would a new
+36-month commitment allow a different commercial approval? We can now offer
+EUR 30.96/unit for a binding 23,400/year over 36 months at 56 days. This raises
+our proposed price and adds a third committed year. Could you approve that
+complete package?"
+If 36 months has already been offered by either side, this is not a fresh
+concession; do not repeat it after finality. If the supplier has already
+withdrawn, no counter is available.
+
+CLOSING
+Accept any eligible qualifying live offer immediately. After the one new
+36-month proposal, accept the cheapest eligible binding offer on the next
+reply, even if it misses the objective, and record that miss honestly. If it
+withdraws, record no deal; never fabricate acceptance of a withdrawn offer.
+Do not make a second final counter. Fixed terms remain payment 30 days, DAP,
+effective 2027-01-01, no index clause or tooling. The third year is a real
+commitment outside the two-year scoring horizon. No invented competitors,
+urgency, call-off schedules, side payments or additional obligations.

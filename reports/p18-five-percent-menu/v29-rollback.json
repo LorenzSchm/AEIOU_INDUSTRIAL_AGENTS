@@ -1,0 +1,19 @@
+{
+  "restored_at": "2026-10-25T00:22:04.619594+00:00",
+  "status": "V29_not_promoted_V25_restored",
+  "active_policy_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/config/p18-accept-510.json",
+  "matching_prompt_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/prompts/p18-diagnostic-v25.txt",
+  "matching_prompt_sha256": "59f13f054b0aef7ec6c132b8767c76aeccd8b6eb3c2f147cb1c901ca3aeaa4b4",
+  "reason": "V29: 1 of 2 recorded runs closed; latest final EUR 5.20. V25: 4 of 4 recorded runs closed, 64.2713 to 68.4565, with medium/high effort mixed. Small observational samples do not prove future reliability.",
+  "other_case_policies_preserved": true,
+  "new_hosted_sessions": 0,
+  "paid_model_calls": 0,
+  "server_restart_required": false,
+  "browser_draft": "Not modified; load the matching V25 prompt before starting a fresh run.",
+  "validation": {
+    "pytest": "120 passed in 7.76s",
+    "actual_run_replays": "Checked restored menu and PPI evidence; exact successful 5.10 acceptance; failed 5.20 stop.",
+    "saved_runtime_policy_matches_baseline": true,
+    "matching_prompt_hash_verified": true
+  }
+}

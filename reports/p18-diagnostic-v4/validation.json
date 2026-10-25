@@ -1,0 +1,185 @@
+{
+  "strategy": {
+    "variant": "p18-diagnostic-v4",
+    "strategy_revision": "p18-target-package-v4",
+    "strategy_sha256": "b955474034544bfc12774b9d85119c8f3f4ac97aa24fe7156f01f0ea52f7c5b3",
+    "transport_sha256": "94b30217c8bfc917f77da5f41b83033862aa011e7523fe953a21ab75e67ceaba",
+    "system_sha256": "5b172afa798ecac02eb3a71e6eb9bdc7c34e69885f290d47fc0b7147704aa5d7",
+    "protocol_version": "faithful-v8-shared-decision-budget",
+    "required_repeats": 0,
+    "enforce_reference_tactics": false,
+    "assessment_version": "supplier-assessment-v1"
+  },
+  "prompt_file": "prompts/p18-diagnostic-v4.txt",
+  "original_buyer_rules_verbatim": true,
+  "original_buyer_rules_sha256": "25b86bde6d7a8ce65e3f8dcef69200fb5e4b0e38288ccd9a81b7c97e864edca6",
+  "v3_repeats": [
+    {
+      "run_id": "b772337fdc544cd49384d41df6ab1ba1",
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "c_deal": 256557.24,
+      "score": 53.24730605736524
+    },
+    {
+      "run_id": "91dff19b84ba43f49fcfc8e212047161",
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "c_deal": 266059.36,
+      "score": 40.14490231648455
+    },
+    {
+      "run_id": "30f0ca5f561c4292a03ff9bcef325275",
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "c_deal": 270810.42,
+      "score": 33.5937004460442
+    }
+  ],
+  "v3_mean_score": 42.328636273297995,
+  "v3_best_score": 53.24730605736524,
+  "c_best": 222651.27,
+  "gap_best_v3_to_benchmark_eur": 33905.97,
+  "benchmark_definition_sources": [
+    "docs/arena/brief.md:140",
+    "docs/arena/api.md:423"
+  ],
+  "packages": [
+    {
+      "label": "opening",
+      "terms": {
+        "unit_price": 5.18,
+        "payment_days": 90,
+        "contract_months": 24,
+        "index_clause": null
+      },
+      "cost_eur": 243895.12,
+      "hypothetical_score": 70.70701067649026,
+      "acceptance_demonstrated": false
+    },
+    {
+      "label": "target_probe",
+      "terms": {
+        "unit_price": 4.45,
+        "payment_days": 14,
+        "contract_months": 36,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 0,
+          "base_month": "2026-08"
+        }
+      },
+      "cost_eur": 219730.47,
+      "hypothetical_score": 100.0,
+      "acceptance_demonstrated": false
+    },
+    {
+      "label": "reciprocal_1_max",
+      "terms": {
+        "unit_price": 4.49,
+        "payment_days": 14,
+        "contract_months": 36,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 0,
+          "base_month": "2026-08"
+        }
+      },
+      "cost_eur": 221705.57,
+      "hypothetical_score": 100.0,
+      "acceptance_demonstrated": false
+    },
+    {
+      "label": "reciprocal_2_max",
+      "terms": {
+        "unit_price": 4.51,
+        "payment_days": 14,
+        "contract_months": 36,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 0,
+          "base_month": "2026-08"
+        }
+      },
+      "cost_eur": 222693.13,
+      "hypothetical_score": 99.94227955229007,
+      "acceptance_demonstrated": false
+    },
+    {
+      "label": "reciprocal_3_max",
+      "terms": {
+        "unit_price": 4.52,
+        "payment_days": 14,
+        "contract_months": 36,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 0,
+          "base_month": "2026-08"
+        }
+      },
+      "cost_eur": 223186.9,
+      "hypothetical_score": 99.26142371221076,
+      "acceptance_demonstrated": false
+    },
+    {
+      "label": "cost_reference_45",
+      "terms": {
+        "unit_price": 4.64,
+        "payment_days": 45,
+        "contract_months": 36,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5,
+          "base_month": "2026-08"
+        }
+      },
+      "cost_eur": 222648.54,
+      "hypothetical_score": 100.0,
+      "acceptance_demonstrated": false
+    },
+    {
+      "label": "cost_reference_90",
+      "terms": {
+        "unit_price": 4.69,
+        "payment_days": 90,
+        "contract_months": 36,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5,
+          "base_month": "2026-08"
+        }
+      },
+      "cost_eur": 222824.71,
+      "hypothetical_score": 99.76084485306244,
+      "acceptance_demonstrated": false
+    }
+  ],
+  "checks": {
+    "original_rules_exact_substring": true,
+    "opening_floor_85pct": true,
+    "four_negotiable_fields_and_options": true,
+    "all_seven_costs_match_prompt": true,
+    "positive_steps_strictly_shrinking": true,
+    "send_transport": true,
+    "eligible_final_acceptance": true,
+    "unavailable_alternative_rejected": true,
+    "sample_assessment_source_types": true
+  },
+  "validation_scope": "Offline arithmetic, schema and transport checks only. No model behavior or supplier acceptance measured.",
+  "interpretation": "A lower price for a different fast-payment/indexed/longer-term structure is requested compensation under Every term has a price. Positive-step limits still apply. An unchanged package is not simply bid down.",
+  "new_hosted_runs": 0,
+  "new_model_calls": 0,
+  "limitations": [
+    "The best-attainable package exists by the arena definition, but its terms and path to agreement remain unknown.",
+    "The 4.45 probe starts below C_best; it is not asserted to be acceptable.",
+    "Multiple strategy changes; not an isolated one-factor experiment.",
+    "The original final/agreement rule can force closing above target, including at the first 5.18 offer.",
+    "User specified up to three P18 runs; three v3 repeats are already recorded. No further run was launched."
+  ]
+}

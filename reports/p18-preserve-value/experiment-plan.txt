@@ -1,0 +1,21 @@
+P18 V26: preserve value in proposed packages
+
+Archive V25 unchanged. Current achieved baseline is run 0a3d28878306453f935b8d5a5ec1e5a0:
+5.10 / 30 days / 36 months / 5% deadband, official score 68.4565, Opus High.
+The preceding medium-effort V25 three-run mean was 65.2713, with one 5%/14-day
+and two 3%/14-day deals. Differences across those settings are not isolated effects.
+
+V26 removes the 5.00 / 14-day / 3% early-menu option. Its two remaining options
+are identical to V25: 5.07/30/5% and 5.10/60/5%. Opening, PO/PPI/AS evidence,
+fixed scope, exact acceptance, finality and the 5.10 cap retain V25 behaviour.
+The post-menu model follows the cheapest offered whole package, normally closing
+5.10/30/5%. It must not offer faster payment at the same price as another option.
+Actual supplier counteroffers at 5.10/14/3% remain acceptable under user authority.
+No new automatic script or proposal validation retry gate is introduced.
+
+Run three fresh P18 sessions at Opus High / Fast, matching the latest baseline.
+Retain candidate only if all three deal and the mean is at least the achieved
+68.4565 baseline, allowing normal cent-cost rounding. Otherwise restore V25.
+This is a small observational diagnostic, not a randomized causal comparison or
+proof of a supplier floor. Do not promise a score above 70. No runs beyond this
+three-session batch are authorized by this experiment plan itself.

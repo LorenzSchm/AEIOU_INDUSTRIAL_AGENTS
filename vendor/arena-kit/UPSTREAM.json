@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/tacto-playground/negotiation-arena-kit",
+  "revision": "75eecd19bf42c4f4b5a93f01139fa2a757ec5c07",
+  "directory": "starter-kit",
+  "local_changes": {
+    "arena_kit/play.py": "Decision observer, closing/table hooks and bounded rejected-acceptance recovery hook for workbench recording; simulator, cases, scoring and wave deadlines are unchanged."
+  }
+}

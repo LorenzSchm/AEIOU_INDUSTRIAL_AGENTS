@@ -1,0 +1,260 @@
+{
+  "source": "Existing local hosted-run records; no network session or model calls",
+  "runs": [
+    {
+      "label": "best_previous_quote",
+      "run_id": "c206a1d4b53944e285756a588c445bda",
+      "session_id": "5919bb36f6f2f0a2",
+      "model_calls": 3,
+      "official_deal": false,
+      "official_score": 0.0,
+      "quotes": [
+        {
+          "id": "offer:70740-0",
+          "status": "open",
+          "terms": {
+            "unit_price": 6.1,
+            "payment_days": 30,
+            "index_clause": null,
+            "contract_months": 12
+          },
+          "cost": 295173.23,
+          "calculated_points": 0.0
+        },
+        {
+          "id": "offer:70740-1",
+          "status": "open",
+          "terms": {
+            "unit_price": 5.4,
+            "payment_days": 30,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 0.0,
+              "base_month": "2026-08"
+            },
+            "contract_months": 36
+          },
+          "cost": 265729.14,
+          "calculated_points": 40.600240258261046
+        },
+        {
+          "id": "offer:70740-2",
+          "status": "open",
+          "terms": {
+            "unit_price": 5.3,
+            "payment_days": 60,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 5.0,
+              "base_month": "2026-08"
+            },
+            "contract_months": 36
+          },
+          "cost": 253480.98,
+          "calculated_points": 57.489138462336065
+        },
+        {
+          "id": "offer:70740-2-a",
+          "status": "open",
+          "terms": {
+            "unit_price": 5.2,
+            "payment_days": 30,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 5.0,
+              "base_month": "2026-08"
+            },
+            "contract_months": 36
+          },
+          "cost": 250341.52,
+          "calculated_points": 61.818116884871834
+        },
+        {
+          "id": "offer:70740-3",
+          "status": "final_offer",
+          "terms": {
+            "unit_price": 5.1,
+            "payment_days": 30,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 5.0,
+              "base_month": "2026-08"
+            },
+            "contract_months": 36
+          },
+          "cost": 245527.26,
+          "calculated_points": 68.45646477287704
+        }
+      ],
+      "recovery_replay_final_stop": "FINAL_OFFER_OUTSIDE_LIMITS",
+      "recovery_routing": [
+        {
+          "messages": 1,
+          "path": "model"
+        },
+        {
+          "messages": 3,
+          "path": "policy:package-alternatives"
+        },
+        {
+          "messages": 5,
+          "path": "model"
+        }
+      ]
+    },
+    {
+      "label": "v22_regression",
+      "run_id": "5e19ec6b5f1a425f8e3d4adaf99f5b14",
+      "session_id": "fc83e041c9cd6321",
+      "model_calls": 0,
+      "official_deal": false,
+      "official_score": 0.0,
+      "quotes": [
+        {
+          "id": "offer:70740-0",
+          "status": "open",
+          "terms": {
+            "unit_price": 6.1,
+            "payment_days": 30,
+            "index_clause": null,
+            "contract_months": 12
+          },
+          "cost": 295173.23,
+          "calculated_points": 0.0
+        },
+        {
+          "id": "offer:70740-1",
+          "status": "open",
+          "terms": {
+            "unit_price": 5.6,
+            "payment_days": 60,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 5.0,
+              "base_month": "2026-08"
+            },
+            "contract_months": 36
+          },
+          "cost": 267828.96,
+          "calculated_points": 37.704813824667674
+        },
+        {
+          "id": "offer:70740-2",
+          "status": "open",
+          "terms": {
+            "unit_price": 5.4,
+            "payment_days": 60,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 5.0,
+              "base_month": "2026-08"
+            },
+            "contract_months": 36
+          },
+          "cost": 258263.64,
+          "calculated_points": 50.89436358311327
+        },
+        {
+          "id": "offer:70740-3",
+          "status": "final_offer",
+          "terms": {
+            "unit_price": 5.3,
+            "payment_days": 60,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 5.0,
+              "base_month": "2026-08"
+            },
+            "contract_months": 36
+          },
+          "cost": 253480.98,
+          "calculated_points": 57.489138462336065
+        }
+      ],
+      "recovery_replay_final_stop": "FINAL_OFFER_OUTSIDE_LIMITS",
+      "server_checked_evidence": [
+        {
+          "round": 1,
+          "claims": [
+            {
+              "type": "price_history",
+              "refs": [
+                "po:4500014022-10",
+                "po:4500014078-10",
+                "po:4500014355-10",
+                "po:4500014427-10"
+              ],
+              "asserted": {
+                "prices": [
+                  5.26,
+                  5.26,
+                  5.84,
+                  5.84
+                ]
+              }
+            }
+          ],
+          "claim_results": [
+            {
+              "index": 0,
+              "result": "verified"
+            }
+          ],
+          "supplier_text": "Dear customer,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We appreciate your proposal and are prepared to accept the 36-month contract, the AS-14404 index clause, and the 60-day payment terms. Acknowledging the historical purchase orders from 2026 you cited, we have revised our calculation. We can therefore offer \u20ac5.60 per kg for this complete package.\n\nOur current Angebot stands at a price of \u20ac5.60 per unit, Zahlungsziel 60 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. Please note that our price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. Furthermore, we can offer a Preisgleitklausel on AS-14404, AS-14404, AS-14404. \n\nThis offer stays valid for 30 days.\n\nMit freundlichen Gr\u00fc\u00dfen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH"
+        },
+        {
+          "round": 2,
+          "claims": [
+            {
+              "type": "index_change",
+              "refs": [
+                "idx:PPI-C2431@2026-06",
+                "idx:PPI-C2431@2026-08"
+              ],
+              "asserted": {
+                "change_pct": -2.27
+              }
+            }
+          ],
+          "claim_results": [
+            {
+              "index": 0,
+              "result": "verified"
+            }
+          ],
+          "supplier_text": "Dear customer,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the index change data you cited; it holds and we took it into account. Furthermore, we have verified the recent movement in PPI-C2431 you cited and adjusted our calculation accordingly.\n\nWhile this short-term fluctuation provides some relief, it only partially offsets the broader cost increases we continue to face. Specifically, AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. That remains. LCI-C rose 2.7 % in twelve months and is 5 % of our cost. That remains. PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. That remains.\n\nWe can therefore offer a revised price of EUR 5.40 per kg for the 36-month contract with the AS-14404 index clause and 60-day payment terms. Our current Angebot stands at a price of \u20ac5.40 per unit, Zahlungsziel 60 days net, a contract term of 36 months, and a Preisgleitklausel on AS-14404. This offer remains valid for 30 days.\n\nMit freundlichen Gr\u00fc\u00dfen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH"
+        },
+        {
+          "round": 3,
+          "claims": [
+            {
+              "type": "index_change",
+              "refs": [
+                "idx:AS-14404@2026-06",
+                "idx:AS-14404@2026-09"
+              ],
+              "asserted": {
+                "change_pct": -5.49
+              }
+            }
+          ],
+          "claim_results": [
+            {
+              "index": 0,
+              "result": "verified"
+            }
+          ],
+          "supplier_text": "Dear customer,\n\nThank you for your ongoing partnership. We checked the index change data you cited; it holds and we took it into account. We have verified the recent movement in AS-14404 you cited and adjusted our calculation accordingly. While this short-term fluctuation provides some relief, it only partially offsets the broader cost increases we continue to face. Specifically, AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. That remains. LCI-C rose 2.7 % in twelve months and is 5 % of our cost. That remains. PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. That remains.\n\nWe can therefore offer a revised price of EUR 5.30 per kg for the 36-month contract with the AS-14404 index clause and 60-day payment terms. In summary, our Angebot stands at a price of \u20ac5.30 per unit, Zahlungsziel 60 days net, a contract term of 36 months, and a Preisgleitklausel on AS-14404. This is our final offer (letztes Angebot). Please decide. This offer stays valid for 7 days.\n\nMit freundlichen Gr\u00fc\u00dfen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH"
+        }
+      ]
+    }
+  ],
+  "limitations": "Different packages and strategies; not a controlled experiment. Quoted-point estimates are not achieved scores."
+}

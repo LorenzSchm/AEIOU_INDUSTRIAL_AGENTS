@@ -1,0 +1,101 @@
+P18: Den Bestwert als Ziel verhandeln
+
+Der Einwand ist berechtigt
+Die Arena definiert C_best als die günstigere Größe aus der Alternative und dem
+besten Paket, das ein Lieferant mit allen gültigen Hebeln akzeptieren würde.
+Quellen: docs/arena/brief.md:140 und docs/arena/api.md:423.
+Für P18 beträgt die Alternative 301.087,96 EUR und C_best 222.651,27 EUR.
+Damit bezeichnet der Bestwert hier ein Lieferantenpaket. Wir kennen weder seine
+genauen Konditionen noch den Gesprächsverlauf, der zu seiner Freigabe führt.
+Der Nutzer bezieht sich auf den angezeigten Bestwert, nicht auf einen bereits
+beobachteten Abschluss zu diesem Betrag.
+
+Was die drei V3-Wiederholungen zeigen
+Alle drei liefen mit Opus High und demselben V3-Prompt:
+  b772337fdc544cd49384d41df6ab1ba1: 53,247 Punkte; 256.557,24 EUR
+  91dff19b84ba43f49fcfc8e212047161: 40,145 Punkte; 266.059,36 EUR
+  30f0ca5f561c4292a03ff9bcef325275: 33,594 Punkte; 270.810,42 EUR
+Mittelwert: 42,329 Punkte. Bester Abstand zu C_best: 33.905,97 EUR.
+Der Spitzenlauf belegt keinen stabilen Sprung auf 53 Punkte. Die Stichprobe ist
+klein und enthält unterschiedliche Formulierungen und Reaktionen.
+
+Alle drei Lieferantenantworten auf das erste Menü übernahmen 14 Tage Zahlung,
+24 Monate und die Indexklausel ohne Deadband zu 5,60 EUR. In späteren Antworten
+wurde die günstigere Alternative häufig nur als zweite Menüposition genannt.
+Im besten Lauf waren 5,30 EUR / 30 Tage günstiger als das registrierte Hauptangebot
+5,40 EUR / 90 Tage. Nur das Hauptangebot war laut Serverzustand direkt annehmbar.
+Die günstigere Option hätte 255.155,78 EUR gekostet: 1.401,46 EUR Verbesserung,
+aber weiterhin 32.504,51 EUR über C_best. Die Menüauswahl erklärt den großen
+Abstand somit nicht allein. Die Annahmesperre wird nicht umgangen.
+
+Der wesentliche Fehler des bisherigen Ansatzes
+V3 begann mit Paketen um 243.900 EUR und erhöhte die eigenen Gegenangebote bis
+auf etwa 253.700 EUR. Eine Zustimmung zur letzten Staffel hätte nur ungefähr
+57 Punkte geliefert. Damit war diese Staffel schlecht auf das neue Ziel
+ausgerichtet. Eine höhere Forderung des Käufers beweist allerdings keine
+mathematische Obergrenze für jedes denkbare Lieferantenangebot.
+
+V4: Gegenstand des nächsten Diagnosetests
+Datei: prompts/p18-diagnostic-v4.txt. Vollständig als Ersatzprompt verwenden;
+nicht zusätzlich an V3 anhängen.
+
+1. Die ursprünglichen Buyer rules bleiben wörtlich enthalten. Der erste Preis
+   bleibt 5,18 EUR: 15 % unter 6,10 EUR, auf Cent abgerundet. Das erste Angebot
+   enthält nur ein Paket: 90 Tage, 24 Monate, keine Indexklausel.
+2. Solange der Lieferant noch offen ist und nicht zugestimmt hat, folgt früh
+   ein anderer Vertragsvorschlag: 4,45 EUR, 14 Tage Zahlung, 36 Monate und
+   AS-14404 / 45 % Materialanteil / 0 % Deadband / Basis August 2026.
+   Der niedrigere Preis ist die verlangte Gegenleistung für diese neuen
+   Bedingungen. Er ist keine Behauptung über Herstellkosten oder Marktpreise.
+3. Für dieses neue Paket sind nur verdiente, abnehmende positive Schritte
+   vorgesehen: höchstens 0,04, dann 0,02, dann 0,01 EUR. Nach kleineren tatsächlich
+   genutzten Schritten müssen auch spätere Schritte entsprechend kleiner sein.
+   Die Historie wird bei einem Strukturwechsel nicht zurückgesetzt.
+4. Pro Nachricht gibt es ein vollständiges Paket. Das soll die Ausgabe eines
+   klaren Hauptangebots fördern; eine Garantie über die Serverregistrierung
+   ist es nicht. Final- und Annahmeregeln bleiben bestehen.
+
+Die Anwendung der ursprünglichen Regeln ist hier ausdrücklich: Bei einer
+anderen Zahlungs-, Index- und Laufzeitstruktur wird ein neuer, niedrigerer
+Paketpreis als Gegenleistung verlangt. Eine unveränderte Struktur wird nicht
+einfach nachträglich heruntergeboten. Positive Preiszugeständnisse bleiben
+begrenzt. Das ist die strategische Änderung gegenüber der bisherigen festen
+Aufwärtsstaffel, keine Freigabe zum Überschreiten der Grenzen.
+
+Rechenwerte für den neuen Vorschlag, jeweils 14 Tage / 36 Monate / 0 % Deadband:
+  4,45 EUR -> 219.730,47 EUR
+  4,49 EUR -> 221.705,57 EUR
+  4,51 EUR -> 222.693,13 EUR -> hypothetisch 99,942 Punkte
+  4,52 EUR -> 223.186,90 EUR -> hypothetisch 99,261 Punkte
+4,45 und 4,49 liegen unter C_best. Sie sind bewusst niedrige Verhandlungsansätze;
+wir behaupten nicht, dass der Lieferant sie akzeptieren kann. Auch 4,51 bei
+dieser konkreten Struktur ist noch kein nachgewiesen akzeptables Paket.
+Andere Konditionen können denselben Gesamtbetrag ergeben. Ein passender
+Rechenwert allein identifiziert das optimale Lieferantenpaket nicht.
+
+Die Freigabe-/Volumennotizen sind Kontext. Die öffentliche Recherche ergab
+keine lieferantenspezifische Should-Cost-Schätzung für dieses Teil. Es wird keine
+erfunden. Ausgeschlossene Konkurrenzangebote werden nicht wieder eingeführt.
+Der Prompt fordert weder größere Jahresmengen noch Nebenabreden außerhalb der
+vier verhandelbaren Felder. Der Datenbestand zum gesamten Firmenbedarf wird
+nicht mit der für P18 autorisierten Menge verwechselt.
+
+Prüfung und verbleibender Test
+Lokal geprüft: Originalregeln, 15%-Rundung, sieben Paketkosten, erlaubte Felder
+und Werte, abnehmende Schrittobergrenzen, Send-/Accept-Vertrag und eine gültige
+Assessment-Struktur. Die nicht direkt annehmbare Alternative wird weiterhin
+abgewiesen. Die Prüfungen sind in validation.json dokumentiert.
+
+Dies ist eine neue Strategie mit mehreren Änderungen, kein isolierter
+Ein-Faktor-Vergleich. Modellbefolgung und Lieferantenreaktion sind ungetestet.
+Die beibehaltene Abschlussregel kann einen früheren Abschluss über Zielkosten
+erzwingen; eine Zustimmung zum ersten 5,18-EUR-Paket würde 70,707 Punkte liefern
+und müsste angenommen werden.
+
+Es wurden keine neuen Hosted-Sessions oder Modellaufrufe gestartet. Das zuvor
+genannte Budget von drei Läufen ist bereits durch die drei V3-Wiederholungen
+belegt. Falls der Nutzer einen zusätzlichen Test durchführt: ausschließlich
+P18, derselbe Opus-High-Stand, Repeats=1. Prüfen, ob das neue Paket tatsächlich
+in Nachricht zwei erscheint, welche bindende Antwort es erhält und welcher
+konkrete Preis- oder Freigabegrund den Abstand zum Ziel erklärt. Ein niedriger
+eigener Angebotspreis allein gilt nicht als Erfolg.

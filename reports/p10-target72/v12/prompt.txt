@@ -1,0 +1,55 @@
+P10 v12 — cost-supported opening, fresh service evidence, reciprocal commitment
+
+Negotiate case:P10 only. Return the required JSON action and concise assessment.
+Target at least 72/100 while respecting every must-have and fixed term.
+
+<acceptance_floor>
+{"case_id":"case:P10","c_open":1932492.18,"c_best":1328926.89,"minimum_score":72,"maximum_unit_price":31.68}
+</acceptance_floor>
+
+Use concise, courteous commercial emails, at most 180 words. Do not ask for a
+best/final quote, threaten to leave, invent urgency, reveal the score target or
+claim another supplier exists. Historical benchmarks do not reveal the supplier's
+floor. Public costs may omit relationship effects; official scores come from the
+server. Third-year commitments are real although the score covers two years.
+
+OPENING
+Send one complete proposal: EUR 30.28/unit, 23,400/year, 24 months, 56 days.
+This is below the supplier's opening but above our current EUR 29.89; it offers
+room for input inflation and acknowledges the capacity constraint. Do not claim
+it proves the supplier's actual inflation or acceptable price.
+Use exactly three separate evidence sentences with their canonical IDs:
+1. Our buyer estimate is EUR 24.31 per unit excluding margin, with 5% uncertainty
+   (cost:340010); this is not asserted to be the supplier's actual cost.
+2. LCI-C rose 2.66% from June 2025 to June 2026
+   (idx:LCI-C@2025-06, idx:LCI-C@2026-06).
+3. PPI-C2219 rose 3.90% from August 2025 to August 2026
+   (idx:PPI-C2219@2025-08, idx:PPI-C2219@2026-08).
+Recognize those increases, rather than treating them as price-decrease evidence.
+Offer two years of binding full volume and the 56-day scheduling time in return
+for full allocation at the proposed price. Ask whether this package can work.
+Do not cite purchase orders, forecasts, scorecards or news in this first email.
+
+FIRST OPEN COUNTER
+If no qualifying quote is available, raise our proposal to EUR 30.96/unit and
+extend the commitment to 36 months, retaining 23,400/year and 56 days. Make
+the price concession and third year explicit. Keep the explanation grounded:
+70,200 units is simply the proposed 23,400 x 3, not historical consumption.
+Use the following fresh evidence, one argument per sentence:
+- Supplier-wide rolling on-time delivery was 79.5% (sc:70410@2026Q3); request
+  commercial recognition of this service record without alleging a legal breach.
+- The September forecast records a 10.1% change (fc:340010@2026-09), not a
+  past-order growth rate. Distinguish this forecast from our proposed commitment.
+- The August report concerns Ravensteiner allocating volumes in line with past
+  call-offs (news:20260822-23). Acknowledge the constraint and ask whether the
+  larger binding commitment supports a full allocation at this price.
+Do not repeat the previous cost or index citations, add a fourth evidence group,
+ask for private calculations, or offer unscored side payments or extra obligations.
+
+ACCEPTANCE
+Payment remains 30 days, DAP, effective 2027-01-01, no index clause or tooling.
+Full-coverage ceilings are EUR 30.96 at 56 days or EUR 31.68 at 42 days on the
+other recorded terms. Accept a live eligible qualifying offer immediately by
+its exact ID. If final or withdrawn with no qualifying offer, stop locally;
+do not counter after finality or accept below target. If unexpectedly still
+open, respond to the actual objection without inventing further concessions.

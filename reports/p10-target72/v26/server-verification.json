@@ -1,0 +1,299 @@
+{
+  "session_id": "e182a449519d0e67",
+  "case_id": "case:P10",
+  "status": "ended",
+  "end_reason": "accepted",
+  "rounds": 3,
+  "set": "practice",
+  "opening": {
+    "sup:70410": {
+      "offer_id": "offer:70410-0",
+      "round": 0,
+      "status": "open",
+      "terms": {
+        "unit_price": 32.2,
+        "lead_time_days": 54,
+        "volume_per_year": 19890,
+        "contract_months": 12
+      },
+      "alternatives": [],
+      "missing_fields": [],
+      "claims": [],
+      "claim_results": [],
+      "signals": {
+        "reply_delay_days": 2,
+        "validity_days": 30
+      },
+      "text": "Dear Sir or Madam,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe offer a price of \u20ac32.20 per unit for a volume of 19890 pcs per year. Our Lieferzeit is 54 days, and the contract term is 12 months. \n\nPlease note that this offer remains valid for 30 days. All deliveries and services are strictly subject to our standard procedure and standard conditions.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH"
+    }
+  },
+  "threads": {
+    "sup:70410": {
+      "offer_id": "offer:70410-2",
+      "status": "agreed",
+      "offers": 3,
+      "closed": null,
+      "seconds_left": null
+    }
+  },
+  "moves": [],
+  "result": {
+    "ended": true,
+    "deal": true,
+    "supplier_id": "sup:70410",
+    "offer_id": "offer:70410-2",
+    "terms": {
+      "payment_days": 30,
+      "lead_time_days": 56,
+      "volume_per_year": 23400,
+      "contract_months": 24,
+      "effective_date": "2027-01-01",
+      "index_clause": null,
+      "incoterm": "DAP",
+      "tooling_eur": 0.0,
+      "ppm_commitment": 300,
+      "chargeback_eur_per_complaint": 0.0,
+      "unit_price": 31.4
+    },
+    "c_open": 1932492.18,
+    "c_deal": 1518252.0,
+    "c_alt": null,
+    "c_best": 1328926.89,
+    "score": 0.6863220713040008,
+    "must_haves_ok": true,
+    "cost_breakdown": {
+      "price": 1469520.0,
+      "uncovered_need": 0.0,
+      "fallback_risk": 0.0,
+      "payment_terms": 9796.8,
+      "freight": 0.0,
+      "late_delivery": 33600.0,
+      "quality": 5335.2,
+      "tooling": 0.0,
+      "index_clause": 0.0,
+      "index_risk": 0.0,
+      "relationship": 0.0
+    },
+    "trace": [
+      {
+        "round": 0,
+        "actor": "sup:70410",
+        "move": {
+          "offer_id": "offer:70410-0",
+          "round": 0,
+          "status": "open",
+          "terms": {
+            "unit_price": 32.2,
+            "lead_time_days": 54,
+            "volume_per_year": 19890,
+            "contract_months": 12
+          },
+          "alternatives": [],
+          "missing_fields": [],
+          "claims": [],
+          "claim_results": [],
+          "signals": {
+            "reply_delay_days": 2,
+            "validity_days": 30
+          },
+          "text": "Dear Sir or Madam,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe offer a price of \u20ac32.20 per unit for a volume of 19890 pcs per year. Our Lieferzeit is 54 days, and the contract term is 12 months. \n\nPlease note that this offer remains valid for 30 days. All deliveries and services are strictly subject to our standard procedure and standard conditions.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH"
+        },
+        "reasons": []
+      },
+      {
+        "round": 1,
+        "actor": "buyer",
+        "move": {
+          "type": "message",
+          "message_id": null,
+          "subject": "Seal 340010 \u2013 binding multi-year commitment at contract lead time",
+          "body": "Dear Ms Zellner,\n\nThank you for your quotation. You said you prioritise firm, long-term commitments, and we can offer one. We propose a binding 23,400 pcs/year at the contract lead time of 42 days (ctr:4600070410#5.1), with a choice of term:\n\nA) 36 months at EUR 29.89/unit\nB) 24 months at EUR 30.25/unit\n\nEUR 29.89 is the price on our September orders (po:4500014383-10, po:4500014436-10). The framework also fixes prices per calendar year (ctr:4600070410#3.1).\n\nA fixed annual volume committed up front should let you plan capacity for 42 days rather than rely on overtime. Our September forecast of 21,310 (fc:340010@2026-09) is a planning figure. The 23,400/year in these packages would be binding.\n\nWhich package can your planning support at 42 days? If neither, please tell us whether term length or price is the harder constraint for you, so we can adjust the right lever.\n\nBest regards,\nHollerau Pumpenwerke, Purchasing",
+          "refs": [],
+          "term_sheets": [
+            {
+              "term_sheet_id": null,
+              "terms": {
+                "unit_price": 29.89,
+                "volume_per_year": 23400,
+                "contract_months": 36,
+                "lead_time_days": 42
+              }
+            },
+            {
+              "term_sheet_id": null,
+              "terms": {
+                "unit_price": 30.25,
+                "volume_per_year": 23400,
+                "contract_months": 24,
+                "lead_time_days": 42
+              }
+            }
+          ],
+          "interpreted": {
+            "claims": [
+              {
+                "type": "price_history",
+                "refs": [
+                  "po:4500014383-10",
+                  "po:4500014436-10"
+                ],
+                "asserted": {
+                  "prices": [
+                    29.89,
+                    29.89
+                  ]
+                }
+              },
+              {
+                "type": "volume_change",
+                "refs": [
+                  "fc:340010@2026-09"
+                ],
+                "asserted": {
+                  "change_pct": 10.1
+                }
+              }
+            ]
+          },
+          "supplier_id": "sup:70410"
+        },
+        "reasons": []
+      },
+      {
+        "round": 1,
+        "actor": "sup:70410",
+        "move": {
+          "offer_id": "offer:70410-1",
+          "round": 1,
+          "status": "open",
+          "terms": {
+            "unit_price": 33.5,
+            "lead_time_days": 42,
+            "volume_per_year": 23400,
+            "contract_months": 24
+          },
+          "alternatives": [],
+          "missing_fields": [],
+          "claims": [],
+          "claim_results": [
+            {
+              "index": 0,
+              "result": "verified"
+            },
+            {
+              "index": 1,
+              "result": "verified"
+            }
+          ],
+          "signals": {
+            "reply_delay_days": 2,
+            "validity_days": 30
+          },
+          "text": "Dear Sir or Madam,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the price history data you cited; it holds, but it does not change our calculation. We checked the volume change data you cited; it holds, but it does not change our calculation. We have reviewed your proposed packages.\n\nSupporting a reduced lead time of 42 days requires extraordinary planning measures, which is reflected in the unit price of EUR 33.50 for a 24-month term. If price is your primary constraint, we advise reverting to our standard lead time. \n\nOur Angebot stands at a price of \u20ac33.50 per unit, Lieferzeit 42 days, a volume of 23400 pcs per year, a contract term of 24 months. Our Lieferzeit is 42 days. This offer remains valid for 30 days.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH"
+        },
+        "reasons": [
+          "We checked the price history data you cited; it holds, but it does not change our calculation.",
+          "We checked the volume change data you cited; it holds, but it does not change our calculation.",
+          "We have reviewed your proposed packages.",
+          "Supporting a reduced lead time of \u2026 days requires extraordinary planning measures, which is reflected in the unit price of EUR \u2026 for a 24-month term.",
+          "If price is your primary constraint, we advise reverting to our standard lead time.",
+          "Our Lieferzeit is \u2026 days."
+        ]
+      },
+      {
+        "round": 2,
+        "actor": "buyer",
+        "move": {
+          "type": "message",
+          "message_id": null,
+          "subject": "Two packages for 23,400 pcs/year: lead time vs. term",
+          "body": "Dear Ms Zellner,\n\nThank you for the clear answer. We take your point on lead time, so here are two packages, each for a binding 23,400 pcs/year:\n\nA) 56 days, 24 months, EUR 30.30/unit\nB) 42 days, 36 months, EUR 31.10/unit\n\nPackage A follows your advice on lead time. Its 56 days is longer than the 54 days in your opening quotation, so it needs no extraordinary planning. It also doubles that quotation's term and raises its annual volume.\n\nPackage B responds to your note that you prioritise firm, long-term commitments (doc:20260918-70410-P10). It offers three fixed years on a level monthly schedule, which you can plan into regular shifts rather than overtime.\n\nWe ordered 19,880 units in the last twelve months (p10:ordered_last_12m_units), so 23,400 is a larger binding volume, not a repeat of past call-offs. Our bottom-up estimate of your plant cost is EUR 24.31 before margin (cost:340010). That is a low-confidence buyer estimate, not a claim about your accounts.\n\nWhich package fits your capacity plan better?\n\nBest regards,\nHollerau Pumpenwerke, Purchasing",
+          "refs": [],
+          "term_sheets": [
+            {
+              "term_sheet_id": null,
+              "terms": {
+                "unit_price": 30.3,
+                "volume_per_year": 23400,
+                "contract_months": 24,
+                "lead_time_days": 56
+              }
+            },
+            {
+              "term_sheet_id": null,
+              "terms": {
+                "unit_price": 31.1,
+                "volume_per_year": 23400,
+                "contract_months": 36,
+                "lead_time_days": 42
+              }
+            }
+          ],
+          "interpreted": {
+            "claims": [
+              {
+                "type": "should_cost",
+                "refs": [
+                  "cost:340010"
+                ],
+                "asserted": {
+                  "unit_cost": 24.31
+                }
+              }
+            ]
+          },
+          "supplier_id": "sup:70410"
+        },
+        "reasons": []
+      },
+      {
+        "round": 2,
+        "actor": "sup:70410",
+        "move": {
+          "offer_id": "offer:70410-2",
+          "round": 2,
+          "status": "final_offer",
+          "terms": {
+            "unit_price": 31.4,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 24
+          },
+          "alternatives": [],
+          "missing_fields": [],
+          "claims": [],
+          "claim_results": [
+            {
+              "index": 0,
+              "result": "verified"
+            }
+          ],
+          "signals": {
+            "reply_delay_days": 3,
+            "validity_days": 7
+          },
+          "text": "Dear Sir or Madam,\n\nThis is our final offer (letztes Angebot). Please decide.\n\nWe checked the should cost data you cited; it holds and we took it into account. Your cost estimate has been noted, though it does not fully account for our specialized manufacturing requirements. Our calculation is our property; we do not share a breakdown.\n\nWe acknowledge your willingness to extend the lead time to 56 days, which accommodates our standard production scheduling. Based on this extended lead time, we can offer a revised price of EUR 31.40 per unit for the 24-month term. \n\nOur Angebot comprises a price of \u20ac31.40 per unit, Lieferzeit 56 days, a volume of 23400 pcs per year, and a contract term of 24 months. Our Lieferzeit is 56 days. This offer remains valid for 7 days.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH"
+        },
+        "reasons": [
+          "We checked the should cost data you cited; it holds and we took it into account.",
+          "We acknowledge your willingness to extend the lead time to \u2026 days, which accommodates our standard production scheduling.",
+          "Your cost estimate has been noted, though it does not fully account for our specialized manufacturing requirements.",
+          "Based on this extended lead time, we can offer a revised price of EUR \u2026 per unit for the 24-month term.",
+          "Our Lieferzeit is \u2026 days.",
+          "Our calculation is our property; we do not share a breakdown."
+        ]
+      },
+      {
+        "round": 2,
+        "actor": "buyer",
+        "move": {
+          "type": "accept",
+          "offer_id": "offer:70410-2",
+          "supplier_id": "sup:70410"
+        },
+        "reasons": []
+      }
+    ]
+  },
+  "replay_url": "/replay/e182a449519d0e67"
+}

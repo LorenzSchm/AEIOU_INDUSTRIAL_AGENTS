@@ -1,0 +1,74 @@
+[
+  {
+    "round": 0,
+    "supplier_id": "sup:70410",
+    "supplier": "Dichtungswerk Ravensteiner GmbH",
+    "from": "Segment Manager",
+    "to": "team",
+    "text": "quote attached (quote-offer-70410-0.pdf)"
+  },
+  {
+    "round": 1,
+    "supplier_id": "sup:70410",
+    "supplier": "Dichtungswerk Ravensteiner GmbH",
+    "from": "Segment Manager",
+    "to": "team",
+    "text": "My call: counter."
+  },
+  {
+    "round": 1,
+    "supplier_id": "sup:70410",
+    "supplier": "Dichtungswerk Ravensteiner GmbH",
+    "from": "Segment Manager",
+    "to": "team",
+    "text": "Read the buyer's e-mail: \u2026 term sheet and \u2026 cited fact to check; we answer with our offer."
+  },
+  {
+    "round": 2,
+    "supplier_id": "sup:70410",
+    "supplier": "Dichtungswerk Ravensteiner GmbH",
+    "from": "Segment Manager",
+    "to": "team",
+    "text": "My call: counter."
+  },
+  {
+    "round": 2,
+    "supplier_id": "sup:70410",
+    "supplier": "Dichtungswerk Ravensteiner GmbH",
+    "from": "Segment Manager",
+    "to": "team",
+    "text": "Read the buyer's e-mail: \u2026 term sheet; we answer with our final offer."
+  },
+  {
+    "round": 2,
+    "supplier_id": "sup:70410",
+    "supplier": "Dichtungswerk Ravensteiner GmbH",
+    "from": "Segment Manager",
+    "to": "Legal Department",
+    "text": "The buyer asks something for Legal Department; please answer."
+  },
+  {
+    "round": 2,
+    "supplier_id": "sup:70410",
+    "supplier": "Dichtungswerk Ravensteiner GmbH",
+    "from": "Segment Manager",
+    "to": "team",
+    "text": "quote attached (quote-offer-70410-2.pdf)"
+  },
+  {
+    "round": 2,
+    "supplier_id": "sup:70410",
+    "supplier": "Dichtungswerk Ravensteiner GmbH",
+    "from": "Segment Manager",
+    "to": "Legal Department",
+    "text": "The buyer asks something for Legal Department; please answer."
+  },
+  {
+    "round": 2,
+    "supplier_id": "sup:70410",
+    "supplier": "Dichtungswerk Ravensteiner GmbH",
+    "from": "Segment Manager",
+    "to": "team",
+    "text": "order confirmation attached (order-confirmation-offer-70410-2.pdf)"
+  }
+]

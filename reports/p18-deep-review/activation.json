@@ -1,0 +1,24 @@
+{
+  "activated_at": "2026-10-24T22:52:46.160506+00:00",
+  "server_url": "http://127.0.0.1:8765",
+  "previous_pid": 61430,
+  "server_pid": 65183,
+  "protocol_version": "faithful-v15-payment-tradeoffs",
+  "policy_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/data/local/negotiation-policies.json",
+  "policy_source": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/config/p18-approval-opening.json",
+  "policy_changed": false,
+  "prompt_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/prompts/p18-diagnostic-v20.txt",
+  "prompt_selection": "Ready to paste/select for next run; no browser prompt selection was changed.",
+  "tests": {
+    "full_suite_passed": 386,
+    "full_suite_skipped": 2,
+    "fixture_regression_passed": 5,
+    "ruff": "passed",
+    "data_audit_cases": 19,
+    "data_audit_sources": 1279,
+    "collection_issues": 0
+  },
+  "live_research_collection_issues": [],
+  "hosted_sessions_used": 0,
+  "paid_model_calls": 0
+}

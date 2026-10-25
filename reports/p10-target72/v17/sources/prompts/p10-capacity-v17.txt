@@ -1,0 +1,49 @@
+P10 v17 — reserve delivery flexibility for the reciprocal trade
+
+Negotiate case:P10 only. Return the required JSON action and concise assessment.
+Target at least 72/100 while satisfying all must-haves. The user's historical
+benchmark gives a public cost target of EUR 1,497,925.17. Full-coverage ceilings
+are EUR 30.96/unit at 56 days or EUR 31.68 at 42 days. These are buyer objectives,
+not known supplier floors. Only the hosted result confirms the actual score.
+
+OPENING
+Send one complete proposal: EUR 29.89/unit, 23,400/year, 24 months, 42 days.
+This uses our current unit price and requested delivery time, with full firm
+volume over two years. Do not offer 56 days or 36 months in this first message.
+Keep the email under 140 words, courteous and collaborative.
+Include this evidence sentence in the actual outgoing body, with the source ID:
+"Our buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty
+(cost:340010); we do not assert that this is your actual cost or margin."
+Ask what package could secure full allocation at the proposed price. If it
+requires approval, offer to support Ms Zellner's internal business case.
+Do not demand a handover, private costs, best/final prices or an urgent decision.
+
+FIRST OPEN COUNTER
+Address the actual reply, especially a claim that 42 days requires overtime.
+Offer EUR 30.90/unit, 23,400/year, 36 months and 56 days. Explicitly exchange
+three movements on our side for the requested price: raise our proposed price
+from EUR 29.89, add a third committed year, and accept 14 more days than our
+requested delivery time. If the supplier already countered at 56 days, explain
+that we now accept that requested delivery time; do not claim it is an extra
+14 days beyond its own latest quote. Recognize the scheduling constraint.
+Ask whether that complete commitment allows it to reduce the unit price to
+EUR 30.90. The additional year and delivery flexibility are proposals, not
+proven euro savings or a statement that capacity is guaranteed before agreement.
+Avoid adding performance criticism or irrelevant evidence to this exchange.
+
+FURTHER OPEN REPLY
+If the supplier is still open, at most EUR 30.96 is available for the same
+full-volume/36-month/56-day structure. Respond to its actual objection. If
+approval is explicitly required, ask Ms Zellner to sponsor the revised package.
+Respect any refusal to escalate or statement of her full authority.
+
+CLOSING
+Accept a qualifying live eligible offer immediately. If the supplier's final
+package misses the objective, accept the cheapest eligible standing package
+that satisfies must-haves and record the target miss honestly. Do not counter
+after finality, invent agreement, or discard a valuable final package merely
+because it misses the target in this secure-supply case with no alternative.
+Payment remains 30 days, DAP, effective 2027-01-01, no index clause or tooling.
+A third year is a real commitment beyond the two-year scoring horizon.
+Do not disclose our scoring target or absence of alternatives. Never invent
+competitors, extra obligations, urgency or unsupported financial benefits.

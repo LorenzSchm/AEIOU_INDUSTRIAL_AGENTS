@@ -1,0 +1,799 @@
+{
+  "collection": {
+    "version": "research-collection-v1",
+    "tables": {
+      "suppliers": {
+        "status": "complete",
+        "source_table": "suppliers",
+        "expected_rows": 1,
+        "loaded_rows": 1,
+        "scope": {
+          "id": [
+            "sup:70410"
+          ]
+        },
+        "retained_rows": 1
+      },
+      "parts": {
+        "status": "complete",
+        "source_table": "parts",
+        "expected_rows": 1,
+        "loaded_rows": 1,
+        "scope": {
+          "id": [
+            "part:340010"
+          ]
+        },
+        "retained_rows": 1
+      },
+      "supplier_intel": {
+        "status": "complete",
+        "source_table": "supplier_intel",
+        "expected_rows": 1,
+        "loaded_rows": 1,
+        "scope": {
+          "supplier_id": [
+            "sup:70410"
+          ]
+        },
+        "retained_rows": 1
+      },
+      "negotiation_history": {
+        "status": "complete",
+        "source_table": "negotiation_history",
+        "expected_rows": 12,
+        "loaded_rows": 12,
+        "scope": {
+          "supplier_id": [
+            "sup:70410"
+          ]
+        },
+        "retained_rows": 12
+      },
+      "news": {
+        "status": "complete",
+        "source_table": "news",
+        "expected_rows": 1,
+        "loaded_rows": 1,
+        "scope": {
+          "supplier_id": [
+            "sup:70410"
+          ]
+        },
+        "retained_rows": 1
+      },
+      "scorecards": {
+        "status": "complete",
+        "source_table": "scorecards",
+        "expected_rows": 9,
+        "loaded_rows": 9,
+        "scope": {
+          "supplier_id": [
+            "sup:70410"
+          ]
+        },
+        "retained_rows": 9
+      },
+      "contracts": {
+        "status": "complete",
+        "source_table": "contracts",
+        "expected_rows": 1,
+        "loaded_rows": 1,
+        "scope": {
+          "supplier_id": [
+            "sup:70410"
+          ]
+        },
+        "retained_rows": 1
+      },
+      "spend_cube": {
+        "status": "complete",
+        "source_table": "spend_cube",
+        "expected_rows": 3,
+        "loaded_rows": 3,
+        "scope": {
+          "supplier_id": [
+            "sup:70410"
+          ]
+        },
+        "retained_rows": 3
+      },
+      "documents": {
+        "status": "complete",
+        "source_table": "documents",
+        "expected_rows": 4,
+        "loaded_rows": 4,
+        "scope": {
+          "supplier_id": [
+            "sup:70410"
+          ]
+        },
+        "retained_rows": 4
+      },
+      "should_cost": {
+        "status": "complete",
+        "source_table": "should_cost",
+        "expected_rows": 1,
+        "loaded_rows": 1,
+        "scope": {
+          "part_id": [
+            "part:340010"
+          ]
+        },
+        "retained_rows": 1
+      },
+      "quotes": {
+        "status": "complete",
+        "source_table": "quotes",
+        "expected_rows": 0,
+        "loaded_rows": 0,
+        "scope": {
+          "part_id": [
+            "part:340010"
+          ]
+        },
+        "retained_rows": 0
+      },
+      "forecasts": {
+        "status": "complete",
+        "source_table": "forecasts",
+        "expected_rows": 12,
+        "loaded_rows": 12,
+        "scope": {
+          "part_id": [
+            "part:340010"
+          ]
+        },
+        "retained_rows": 12
+      },
+      "sourcing": {
+        "status": "complete",
+        "source_table": "sourcing",
+        "expected_rows": 1,
+        "loaded_rows": 1,
+        "scope": {
+          "part_id": [
+            "part:340010"
+          ]
+        },
+        "retained_rows": 1
+      },
+      "cost_drivers": {
+        "status": "complete",
+        "source_table": "cost_drivers",
+        "expected_rows": 2,
+        "loaded_rows": 2,
+        "scope": {
+          "part_id": [
+            "part:340010"
+          ]
+        },
+        "retained_rows": 2
+      },
+      "rfqs": {
+        "status": "complete",
+        "source_table": "rfqs",
+        "expected_rows": 0,
+        "loaded_rows": 0,
+        "scope": {
+          "part_id": [
+            "part:340010"
+          ]
+        },
+        "retained_rows": 0
+      },
+      "po_lines": {
+        "status": "complete",
+        "source_table": "po_lines",
+        "expected_rows": 72,
+        "loaded_rows": 72,
+        "scope": {
+          "supplier_id": [
+            "sup:70410"
+          ],
+          "part_id": [
+            "part:340010"
+          ]
+        },
+        "retained_rows": 72
+      },
+      "goods_receipts": {
+        "status": "complete",
+        "source_table": "goods_receipts",
+        "expected_rows": 74,
+        "loaded_rows": 74,
+        "scope": {
+          "supplier_id": [
+            "sup:70410"
+          ],
+          "part_id": [
+            "part:340010"
+          ]
+        },
+        "retained_rows": 74
+      },
+      "quality_notifications": {
+        "status": "complete",
+        "source_table": "quality_notifications",
+        "expected_rows": 22,
+        "loaded_rows": 22,
+        "scope": {
+          "supplier_id": [
+            "sup:70410"
+          ],
+          "part_id": [
+            "part:340010"
+          ]
+        },
+        "retained_rows": 22
+      },
+      "price_conditions": {
+        "status": "complete",
+        "source_table": "price_conditions",
+        "expected_rows": 4,
+        "loaded_rows": 4,
+        "scope": {
+          "supplier_id": [
+            "sup:70410"
+          ],
+          "part_id": [
+            "part:340010"
+          ]
+        },
+        "retained_rows": 4
+      },
+      "invoices": {
+        "status": "complete",
+        "source_table": "invoices",
+        "expected_rows": 74,
+        "loaded_rows": 74,
+        "scope": {
+          "supplier_id": [
+            "sup:70410"
+          ]
+        },
+        "retained_rows": 74
+      },
+      "contract_clauses": {
+        "status": "complete",
+        "source_table": "contract_clauses",
+        "expected_rows": 6,
+        "loaded_rows": 6,
+        "scope": {
+          "contract_id": [
+            "ctr:4600070410"
+          ]
+        },
+        "retained_rows": 6
+      },
+      "forecast_history_lines": {
+        "status": "complete",
+        "source_table": "forecast_lines",
+        "expected_rows": 144,
+        "loaded_rows": 144,
+        "scope": {
+          "fc_id": [
+            "fc:340010@2023-12",
+            "fc:340010@2024-03",
+            "fc:340010@2024-06",
+            "fc:340010@2024-09",
+            "fc:340010@2024-12",
+            "fc:340010@2025-03",
+            "fc:340010@2025-06",
+            "fc:340010@2025-09",
+            "fc:340010@2025-12",
+            "fc:340010@2026-03",
+            "fc:340010@2026-06",
+            "fc:340010@2026-09"
+          ]
+        },
+        "retained_rows": 144
+      },
+      "index_series": {
+        "status": "complete",
+        "source_table": "index_series",
+        "expected_rows": 2,
+        "loaded_rows": 2,
+        "scope": {
+          "id": [
+            "LCI-C",
+            "PPI-C2219"
+          ]
+        },
+        "retained_rows": 2
+      },
+      "index_values": {
+        "status": "complete",
+        "source_table": "index_values",
+        "expected_rows": 134,
+        "loaded_rows": 134,
+        "scope": {
+          "series_id": [
+            "LCI-C",
+            "PPI-C2219"
+          ]
+        },
+        "retained_rows": 134
+      }
+    },
+    "sunday_release_loaded": false,
+    "scope_note": "Supplier account context and case-part records. Historical quotes are not automatically authorized live alternatives. Forecasts are not commitments.",
+    "fact_count": 101,
+    "document_count": 5,
+    "issues": []
+  },
+  "transport": {
+    "version": "evidence-transport-v5-source-attachments",
+    "max_local_reads": 2,
+    "complete_source_count": 127,
+    "raw_payload_chars": 152125,
+    "selected_fact_count": 28,
+    "availability_note": "Deferred records remain accessible through retrieve_evidence. No arbitrary queries.",
+    "collection_issues": [],
+    "delivery_counts": {
+      "full": 52,
+      "partial": 0,
+      "deferred": 82
+    },
+    "partial_refs": [],
+    "unretrievable_refs": [],
+    "retained_pages": 0,
+    "delivered_payload_chars": 62725
+  },
+  "p10_evidence": {
+    "scope": "Supplier 70410 / part 340010; frozen practice data through September 2026",
+    "order_refs": [
+      "po:4500010017-10",
+      "po:4500010099-10",
+      "po:4500010149-10",
+      "po:4500010219-10",
+      "po:4500010274-10",
+      "po:4500010364-10",
+      "po:4500010407-10",
+      "po:4500010483-10",
+      "po:4500010543-10",
+      "po:4500010608-10",
+      "po:4500010658-10",
+      "po:4500010738-10",
+      "po:4500010850-10",
+      "po:4500010890-10",
+      "po:4500010927-10",
+      "po:4500010989-10",
+      "po:4500011057-10",
+      "po:4500011167-10",
+      "po:4500011225-10",
+      "po:4500011248-10",
+      "po:4500011284-10",
+      "po:4500011317-10",
+      "po:4500011381-10",
+      "po:4500011517-10",
+      "po:4500011546-10",
+      "po:4500011580-10",
+      "po:4500011642-10",
+      "po:4500011710-10",
+      "po:4500011752-10",
+      "po:4500011850-10",
+      "po:4500011912-10",
+      "po:4500011972-10",
+      "po:4500012033-10",
+      "po:4500012093-10",
+      "po:4500012147-10",
+      "po:4500012237-10",
+      "po:4500012283-10",
+      "po:4500012360-10",
+      "po:4500012425-10",
+      "po:4500012472-10",
+      "po:4500012551-10",
+      "po:4500012651-10",
+      "po:4500012660-10",
+      "po:4500012784-10",
+      "po:4500012784-20",
+      "po:4500012828-10",
+      "po:4500012868-10",
+      "po:4500012956-10",
+      "po:4500013017-10",
+      "po:4500013077-10",
+      "po:4500013138-10",
+      "po:4500013203-10",
+      "po:4500013269-10",
+      "po:4500013313-10",
+      "po:4500013370-10",
+      "po:4500013451-10",
+      "po:4500013515-10",
+      "po:4500013591-10",
+      "po:4500013646-10",
+      "po:4500013725-10",
+      "po:4500013787-10",
+      "po:4500013851-10",
+      "po:4500013964-10",
+      "po:4500013987-10",
+      "po:4500014027-10",
+      "po:4500014147-10",
+      "po:4500014147-20",
+      "po:4500014213-10",
+      "po:4500014318-10",
+      "po:4500014337-10",
+      "po:4500014383-10",
+      "po:4500014436-10"
+    ],
+    "opening_arguments": [
+      {
+        "id": "recent_order_prices",
+        "source_refs": [
+          "po:4500014383-10",
+          "po:4500014436-10"
+        ],
+        "sentence": "Our orders for this seal on 2026-09-07 and 2026-09-21 were both at EUR 29.89/unit (po:4500014383-10, po:4500014436-10).",
+        "numeric_claims": []
+      },
+      {
+        "id": "buyer_should_cost",
+        "source_refs": [
+          "cost:340010"
+        ],
+        "interpretation": "Buyer estimate excluding margin, not a proven supplier floor; use the recorded value and uncertainty, not a profitability assertion."
+      },
+      {
+        "id": "delivery_performance",
+        "source_refs": [
+          "sc:70410@2026Q3"
+        ],
+        "interpretation": "Supplier-wide rolling on-time delivery, not this part's delivery rate. A past service level is not proof of future capacity."
+      }
+    ],
+    "interpretation": [
+      "Use at most three evidence groups per email, with one argument per sentence.",
+      "PO change_pct is not a unit-price change. Compare normalized prices explicitly.",
+      "Annual LCI and PPI increased. They support rising inputs and do not establish a required price cut.",
+      "The latest forecast is 21,310 units; the authorized case need is 23,400. Neither is past consumption.",
+      "The allocation news refers to past call-offs. Full future allocation remains to be negotiated.",
+      "Do not ask for a best/final quote merely to obtain an ordinary counteroffer."
+    ]
+  },
+  "delivered_argument_sources": {
+    "cost:340010": {
+      "kind": "public_record",
+      "available": true,
+      "delivery": "full",
+      "complete_record": true,
+      "retrievable": true
+    },
+    "ctr:4600070410": {
+      "kind": "public_record",
+      "available": true,
+      "delivery": "full",
+      "complete_record": true,
+      "retrievable": true
+    },
+    "doc:20260918-70410-P10": {
+      "kind": "public_record",
+      "available": true,
+      "delivery": "full",
+      "complete_record": true,
+      "retrievable": true
+    },
+    "po:4500014383-10": {
+      "kind": "public_record",
+      "available": true,
+      "delivery": "full",
+      "complete_record": true,
+      "retrievable": true
+    },
+    "po:4500014436-10": {
+      "kind": "public_record",
+      "available": true,
+      "delivery": "full",
+      "complete_record": true,
+      "retrievable": true
+    },
+    "sc:70410@2026Q3": {
+      "kind": "public_record",
+      "available": true,
+      "delivery": "full",
+      "complete_record": true,
+      "retrievable": true
+    }
+  },
+  "opening_plan": [
+    {
+      "terms": {
+        "unit_price": 27.37,
+        "volume_per_year": 23400,
+        "contract_months": 24,
+        "lead_time_days": 42
+      },
+      "complete_cost": 1294790.64,
+      "reference_cost": 1294790.64,
+      "delay_cost_at_reference_price": 0.0,
+      "unit_price_reduction": 0.0,
+      "opening_fraction": 0.85,
+      "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+    },
+    {
+      "terms": {
+        "unit_price": 26.75,
+        "volume_per_year": 23400,
+        "contract_months": 24,
+        "lead_time_days": 54
+      },
+      "complete_cost": 1294381.2,
+      "reference_cost": 1294790.64,
+      "delay_cost_at_reference_price": 28800.0,
+      "unit_price_reduction": 0.62,
+      "opening_fraction": 0.85,
+      "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+    },
+    {
+      "terms": {
+        "unit_price": 26.65,
+        "volume_per_year": 23400,
+        "contract_months": 24,
+        "lead_time_days": 56
+      },
+      "complete_cost": 1294470.0,
+      "reference_cost": 1294790.64,
+      "delay_cost_at_reference_price": 33600.0,
+      "unit_price_reduction": 0.72,
+      "opening_fraction": 0.85,
+      "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+    },
+    {
+      "terms": {
+        "unit_price": 27.37,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "lead_time_days": 42
+      },
+      "complete_cost": 1294790.64,
+      "reference_cost": 1294790.64,
+      "delay_cost_at_reference_price": 0.0,
+      "unit_price_reduction": 0.0,
+      "opening_fraction": 0.85,
+      "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+    },
+    {
+      "terms": {
+        "unit_price": 26.75,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "lead_time_days": 54
+      },
+      "complete_cost": 1294381.2,
+      "reference_cost": 1294790.64,
+      "delay_cost_at_reference_price": 28800.0,
+      "unit_price_reduction": 0.62,
+      "opening_fraction": 0.85,
+      "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+    },
+    {
+      "terms": {
+        "unit_price": 26.65,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "lead_time_days": 56
+      },
+      "complete_cost": 1294470.0,
+      "reference_cost": 1294790.64,
+      "delay_cost_at_reference_price": 33600.0,
+      "unit_price_reduction": 0.72,
+      "opening_fraction": 0.85,
+      "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+    }
+  ],
+  "benchmark_target": {
+    "source": "User-provided historical result; evaluation target, not private supplier state",
+    "score": 72,
+    "maximum_total_cost": 1497925.1712,
+    "max_unit_price_42_days": 31.68,
+    "max_unit_price_56_days": 30.96,
+    "max_unit_price_54_days": 31.07
+  },
+  "supplier_default_fix": {
+    "contract": "https://github.com/tacto-playground/negotiation-arena-kit/blob/main/brief/api.md#terms",
+    "public_rule": "term_options or the supplier standard value",
+    "observed_opening_lead_days": 54,
+    "original_case_options": [
+      35,
+      42,
+      56
+    ],
+    "corrected_supplier_options": [
+      35,
+      42,
+      54,
+      56
+    ],
+    "failures_fixed": [
+      "Local validator rejected the observed 54-day default",
+      "Term completion snapped 54 to 56",
+      "Candidate selector must resolve the same expanded menu shown to the model"
+    ],
+    "hosted_proof": "v29/run.json and v30/server-verification.json",
+    "realized_cost_reduction_eur": 4800,
+    "target_ceiling_54_days": 31.07
+  },
+  "platform_mode": {
+    "source": "https://arena.tacto.ai/live",
+    "public_notice": "Practice may switch to a rule-based brain if the daily AI budget runs out",
+    "current_mode": "unknown",
+    "user_confirmation": "unknown",
+    "causal_claim": "None; no assertion that fallback caused observed negotiation outcomes"
+  },
+  "opening_plan_scope": "Illustrative cost-planner candidates, not the executed proposal. The explicit strategy chooses the actual package below.",
+  "actual_opening_proposal": [
+    {
+      "terms": {
+        "unit_price": 29.89,
+        "volume_per_year": 23400,
+        "contract_months": 24,
+        "lead_time_days": 54
+      }
+    }
+  ],
+  "supplier_options": {
+    "volume_per_year": [
+      16379,
+      19890,
+      23400
+    ],
+    "contract_months": [
+      12,
+      24,
+      36
+    ],
+    "lead_time_days": [
+      35,
+      42,
+      54,
+      56
+    ]
+  },
+  "snapshot": {
+    "generated_at": "2026-10-25T02:01:39.955895+00:00",
+    "mode": "Offline current-code render using the recorded v32 opening; not a new hosted performance claim",
+    "prompt": "prompts/p10-capacity-v32.txt",
+    "prompt_sha256": "b2218cdaa89c46a32baaa9d1b6b6bbed1cb09629bbfd6547baea7a6e211e81cb",
+    "source_run_id": "05e7feccda504f0f94ba044d9c9a616d"
+  },
+  "previous_snapshots": [
+    {
+      "transport": {
+        "version": "evidence-transport-v3-delivery-audit",
+        "max_local_reads": 2,
+        "complete_source_count": 127,
+        "raw_payload_chars": 151156,
+        "selected_fact_count": 28,
+        "availability_note": "Deferred records remain accessible through retrieve_evidence. No arbitrary queries.",
+        "collection_issues": [],
+        "delivery_counts": {
+          "full": 52,
+          "partial": 0,
+          "deferred": 82
+        },
+        "partial_refs": [],
+        "unretrievable_refs": [],
+        "retained_pages": 0,
+        "delivered_payload_chars": 60730
+      },
+      "opening_plan": [
+        {
+          "terms": {
+            "unit_price": 25.76,
+            "volume_per_year": 23400,
+            "contract_months": 24,
+            "lead_time_days": 42
+          },
+          "complete_cost": 1218940.32,
+          "reference_cost": 1218940.32,
+          "delay_cost_at_reference_price": 0.0,
+          "unit_price_reduction": 0.0,
+          "opening_fraction": 0.8,
+          "status": "Illustrative 80%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+        },
+        {
+          "terms": {
+            "unit_price": 25.04,
+            "volume_per_year": 23400,
+            "contract_months": 24,
+            "lead_time_days": 56
+          },
+          "complete_cost": 1218619.68,
+          "reference_cost": 1218940.32,
+          "delay_cost_at_reference_price": 33600.0,
+          "unit_price_reduction": 0.72,
+          "opening_fraction": 0.8,
+          "status": "Illustrative 80%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+        },
+        {
+          "terms": {
+            "unit_price": 25.76,
+            "volume_per_year": 23400,
+            "contract_months": 36,
+            "lead_time_days": 42
+          },
+          "complete_cost": 1218940.32,
+          "reference_cost": 1218940.32,
+          "delay_cost_at_reference_price": 0.0,
+          "unit_price_reduction": 0.0,
+          "opening_fraction": 0.8,
+          "status": "Illustrative 80%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+        },
+        {
+          "terms": {
+            "unit_price": 25.04,
+            "volume_per_year": 23400,
+            "contract_months": 36,
+            "lead_time_days": 56
+          },
+          "complete_cost": 1218619.68,
+          "reference_cost": 1218940.32,
+          "delay_cost_at_reference_price": 33600.0,
+          "unit_price_reduction": 0.72,
+          "opening_fraction": 0.8,
+          "status": "Illustrative 80%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+        }
+      ]
+    }
+  ],
+  "best_hosted_result": {
+    "score": 0.7020804327564958,
+    "terms": {
+      "payment_days": 30,
+      "lead_time_days": 54,
+      "volume_per_year": 23400,
+      "contract_months": 36,
+      "effective_date": "2027-01-01",
+      "index_clause": null,
+      "incoterm": "DAP",
+      "tooling_eur": 0.0,
+      "ppm_commitment": 300,
+      "chargeback_eur_per_complaint": 0.0,
+      "unit_price": 31.3
+    },
+    "c_deal": 1508740.8,
+    "must_haves_ok": true
+  },
+  "source_attachments": {
+    "sup:70410": {
+      "doc:20260918-70410-P10": {
+        "name": "doc-20260918-70410-P10.md",
+        "bytes": 414,
+        "content_sha256": "12ccf74533fa54aadf8cde7be6250a063811a30942646ff9ffd97be93fad03fe"
+      },
+      "doc:20251108-70410-N": {
+        "name": "doc-20251108-70410-N.md",
+        "bytes": 185,
+        "content_sha256": "853acfc0267ff2f855c3afcbd63d31d7cec9d285837c12410def02ea2b29e320"
+      },
+      "doc:20260310-70410-M1": {
+        "name": "doc-20260310-70410-M1.md",
+        "bytes": 271,
+        "content_sha256": "571c326806c2cf12c36e7d42e31e1cab9ee9377656139c78a165c05691bdbcc1"
+      },
+      "doc:20260327-70410-M2": {
+        "name": "doc-20260327-70410-M2.md",
+        "bytes": 176,
+        "content_sha256": "772adadb66ea9fd344282d55b20886332ddf43d09370b3536c4fb70776c840ce"
+      },
+      "ctr:4600070410": {
+        "name": "ctr-4600070410.md",
+        "bytes": 787,
+        "content_sha256": "e5d84bfca21ec65b1b08ce21548b1ee93f418d0a505e1eae67fc27fa1e68b133"
+      }
+    }
+  },
+  "outgoing_document_fix": {
+    "source": "doc:20260310-70410-M1",
+    "trigger": "v38 supplier asked for the actual historical note after receiving only its citation and summary",
+    "behavior": "Select canonical document IDs; validate complete reading and recipient scope; encode unchanged source text into documented Markdown attachments; retain receipts and preview",
+    "proof": "v39/attachment-verification.json",
+    "server_received_exact_bytes": true,
+    "historical_note_changed_pricing": false,
+    "limitations": "Receipt proves delivery, not that the supplier accepted the historical process as current."
+  },
+  "source_sha256": {
+    "src/aeiou/evidence_transport.py": "4eff07f2e15aaf49970076effee67e7816d0a9a20458f722026458fb750d9e80",
+    "src/aeiou/prompt_protocol.py": "3a97fe1d32c91bbd7e4de61aa460691eaed81de882acfa43f1abebf71635ef2b",
+    "src/aeiou/service.py": "a76cbf85ae8cedf9925b35fcea4a452ea0fca39efe42275b4f3e7551500bddd7"
+  }
+}

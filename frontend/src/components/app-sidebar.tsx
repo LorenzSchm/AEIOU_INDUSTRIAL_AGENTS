@@ -44,8 +44,8 @@ function ModelPicker() {
   return (
     <div className="grid gap-1.5 rounded-lg border bg-card p-2 group-data-[collapsible=icon]:hidden">
       <div className="flex items-center gap-1.5 px-1 text-xs text-muted-foreground">
-        <span className={`size-1.5 shrink-0 rounded-full ${status?.claude_configured ? "bg-emerald-500" : "bg-amber-500"}`} />
-        {status?.claude_configured ? "Claude configured" : "Claude key required"}
+        <span className={`size-1.5 shrink-0 rounded-full ${status?.llm_configured ? "bg-emerald-500" : "bg-amber-500"}`} />
+        {status?.provider === "openai" ? "OpenAI" : "Anthropic"} {status?.llm_configured ? "configured" : "key required"}
       </div>
       <Select value={status?.model} onValueChange={choose}>
         <SelectTrigger size="sm" className="w-full bg-card" aria-label="Buyer model">

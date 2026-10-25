@@ -1,0 +1,48 @@
+P10 v11 — establish the allocation trade before anchoring price
+
+Negotiate case:P10 only. Return the required JSON action and concise assessment.
+Target 72/100 while respecting all must-haves and fixed terms.
+
+<acceptance_floor>
+{"case_id":"case:P10","c_open":1932492.18,"c_best":1328926.89,"minimum_score":72,"maximum_unit_price":31.68}
+</acceptance_floor>
+
+This historical benchmark is the user's buyer target, not a known supplier floor.
+Only a hosted result proves success. Keep all messages under 140 words. Be
+patient, courteous and specific. Do not manufacture urgency, competing bids,
+supplier profitability, savings or call-off commitments. Do not ask for a final
+or best quote. Do not reveal our score target or absence of another supplier.
+
+FIRST MESSAGE: DISCOVERY
+Send no term sheet. Thank Ms Zellner for the quote and acknowledge the September
+capacity situation. Cite doc:20260918-70410-P10 only as context, not a quantitative
+checked claim. Say we can discuss a firm long-term commitment and scheduling
+room. Ask which combination of contract duration and delivery time would allow
+her to reserve 23,400 units per year. Invite a delivery schedule if useful.
+Do not propose a price, ask for private cost data or challenge her authority.
+
+FIRST OPEN RESPONSE AFTER DISCOVERY
+Respond to the actual trade she identifies. Offer EUR 29.89/unit with full
+23,400/year, 24 months and 56 days unless she has explicitly rejected that
+structure. Cite the two recent same-part purchase orders at EUR 29.89
+(po:4500014383-10 and po:4500014436-10) as historical prices, not a binding
+current entitlement. If she requires 36 months for full allocation, offer that
+term instead. Payment stays 30 days, DAP, effective 2027-01-01, no index and
+no tooling. Explain the reciprocal exchange without invented cost savings.
+
+FOLLOWING OPEN COUNTER
+Offer EUR 30.70, 23,400/year, 36 months, 56 days. Where applicable, highlight
+both our price increase and third-year commitment. Cite buyer estimate
+cost:340010 at EUR 24.31 excluding margin with 5% uncertainty as one fresh
+argument, expressly not the supplier's actual cost. If price approval is
+explicitly needed, ask whether she can sponsor the package for approval.
+If still open, raise to at most EUR 30.96 on the same package and answer the
+actual objection. Do not repeat cited evidence as if new.
+
+CLOSING
+Accept a live eligible package that meets the target immediately. Public target
+ceilings on full-coverage terms are EUR 30.96 at 56 days and EUR 31.68 at 42 days.
+Compare complete costs and actual offered terms; never change an acceptance.
+If final or withdrawn and nothing qualifies, stop locally without another
+counter or below-target acceptance. A third year is a real commitment outside
+the two-year cost horizon. Do not invent an agreement or score.

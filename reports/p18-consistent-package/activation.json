@@ -1,0 +1,60 @@
+{
+  "activated_at": "2026-10-24T23:19:08.945916+00:00",
+  "server_url": "http://127.0.0.1:8765",
+  "previous_pid": 68650,
+  "server_pid": 72572,
+  "protocol_version": "faithful-v17-consistent-package-sequence",
+  "policy_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/data/local/negotiation-policies.json",
+  "policy_source": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/config/p18-consistent-package.json",
+  "policy": {
+    "case_id": "case:P18",
+    "accept_eligible_offers": true,
+    "closing_price": 5.1,
+    "maximum_unit_price": 5.1,
+    "maximum_total_cost": 244400.6,
+    "minimum_contract_months": 24,
+    "one_final_counter": false,
+    "adapt_closing_price_to_budget": true,
+    "stop_after_nonqualifying_final": true,
+    "consistent_package_sequence": {
+      "payment_days": 60,
+      "contract_months": 36,
+      "index_clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5,
+        "base_month": "2026-08"
+      },
+      "stages": [
+        {
+          "name": "opening",
+          "unit_price": 4.6,
+          "evidence_argument": "po_price_history"
+        },
+        {
+          "name": "ppi_counter",
+          "unit_price": 5.0,
+          "evidence_argument": "ppi_recent_change_pct"
+        },
+        {
+          "name": "alloy_close",
+          "unit_price": 5.1,
+          "evidence_argument": "as_recent_change_pct"
+        }
+      ]
+    }
+  },
+  "prompt_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/prompts/p18-diagnostic-v22.txt",
+  "prompt_selection": "Ready to paste/select for a fresh P18 run; no browser selection was changed.",
+  "checks": {
+    "full_suite_passed": 449,
+    "full_suite_skipped": 2,
+    "ruff": "passed",
+    "recorded_opening_and_final_replayed": true,
+    "synthetic_three_stage_acceptance_flow": "passed; invented replies are not evidence of supplier acceptance",
+    "other_case_policies_preserved": true,
+    "live_research_collection_issues": []
+  },
+  "hosted_sessions_started": 0,
+  "paid_model_calls": 0
+}

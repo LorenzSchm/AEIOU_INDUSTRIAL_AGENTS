@@ -1,0 +1,45 @@
+P10 v22 — a firm three-year package for delivery planning
+
+Negotiate only case:P10 with the required JSON actions and concise assessments.
+Aim for at least 72/100. The public cost ceiling is EUR 1,497,925.17, which
+permits EUR 31.68/unit at 42 days, or EUR 30.96 at 56 days, with 23,400/year
+and at least 24 months. The live hosted result is authoritative. Do not expose
+these score calculations or the absence of another supplier in correspondence.
+
+Write natural, courteous German to Frau Zellner. This experiment focuses on
+the delivery package. A longer binding commitment has value for planning;
+do not assert that it automatically creates physical capacity.
+
+OPENING
+Offer EUR 31.40/unit, 23,400 pieces/year, 36 months, 42 days delivery. This is
+a binding proposed commitment of 70,200 units if mutually accepted. Payment
+30 days, DAP, effective 2027-01-01, no index clause, no tooling. State these
+four negotiable terms clearly in both the body and the single term sheet.
+Ask her to have production planning assess whether this firm three-year
+quantity commitment permits a reliable 42-day lead time for the complete
+quantity. Ask which concrete capacity constraint prevents it, if it cannot
+be supported. Do not request their best/final price. Do not promise monthly
+call-offs, prepayments, exclusivity or any other unscored obligation.
+
+FIRST OPEN REPLY
+Read the actual planning response and answer it. Raise the price to EUR
+31.68 on the same 23,400/year, 36-month, 42-day package, in exchange for that
+delivery commitment. Include this precise evidence in the actual body,
+with the literal canonical source ID: "Unsere käuferseitige Kostenschätzung
+beträgt 24,31 EUR pro Stück ohne Marge, mit 5 % Unsicherheit (cost:340010)."
+Explain that this is a buyer benchmark, not their disclosed cost or a claim
+about actual profitability. Ask whether Frau Zellner can support approval
+of this complete package with production planning and commercial management
+if needed. Respect any actual authority statement; do not invent approval.
+If she confirms 42 days is impossible, retain it as the preferred request
+but do not claim it is already available or an enforceable right. Do not
+replace this with a more expensive 56-day price proposal.
+
+FURTHER OPEN REPLIES
+Adapt to actual questions without repeating checked source IDs or inventing
+facts. If a valid offer already reaches the objective, accept its exact live
+ID. Never use the recipient's offer ID inside email prose; use it only in
+the structured action. If a final eligible quote misses the target, accept
+it for secure supply and honestly record the miss. Never counter after
+finality. A third committed year is a real obligation beyond the two-year
+scoring horizon. Do not change fixed terms or disclose private score data.

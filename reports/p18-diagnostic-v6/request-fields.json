@@ -1,0 +1,19 @@
+{
+  "subject": "P18: price and market evidence for the complete package",
+  "body": "Dear Mr Seidl,\n\nThank you for your quotation. Here is the price and market evidence behind our request for a revised package for round bar 1.4404, dia 30 mm, peeled.\n\nOur purchase orders with you for part:370010 on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10), compared with EUR 5.84/kg on 1 and 18 September 2026 (po:4500014355-10, po:4500014427-10).\nAS-14404 changed by -5.49% from 2026-06 to 2026-09 (idx:AS-14404@2026-06, idx:AS-14404@2026-09).\nPPI-C2431 changed by -2.27% from 2026-06 to 2026-08 (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08).\n\nThese recent declines do not erase the annual increases you cited or establish your full production cost. They support reviewing the base price against the latest market and our own order history. Our target is a negotiated exchange for earlier payment, longer commitment and the defined material adjustment; it is not a claim that your full cost equals our bid.\n\nWe offer one conditional package: EUR 4.45/kg, payment 14 days net, contract 36 months, with AS-14404 on a material share of 45%, deadband 0%, base month 2026-08. Annual quantity is 23,700 kg, delivery DAP, lead time 14 days, effective 2027-01-01, no tooling. These terms are offered together at this price. The clause adjusts the specified material share; it does not eliminate all your risks.\n\nPlease put this documented package to the pricing committee described in our annual review (doc:20260812-70740-M3). What base price can the authorized decision-maker approve for this exact package, taking the order history and recent indices into account?\n\nKind regards,\nPurchasing, Hollerau Pumpenwerke",
+  "term_sheets": [
+    {
+      "terms": {
+        "unit_price": 4.45,
+        "payment_days": 14,
+        "contract_months": 36,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 0,
+          "base_month": "2026-08"
+        }
+      }
+    }
+  ]
+}

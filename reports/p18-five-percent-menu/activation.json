@@ -1,0 +1,66 @@
+{
+  "activated_at": "2026-10-25T00:14:42.699498+00:00",
+  "status": "single_hosted_diagnostic_passed_candidate_retained",
+  "policy_source": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/config/p18-five-percent-menu.json",
+  "prompt_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/prompts/p18-diagnostic-v29.txt",
+  "prompt_sha256": "c96d5bb0dcbb944132d0708812f6deb343cc8f4ff587d2ab035984f9ca8c38f3",
+  "policy": {
+    "case_id": "case:P18",
+    "accept_eligible_offers": true,
+    "closing_price": 5.1,
+    "maximum_unit_price": 5.1,
+    "maximum_total_cost": 295173.23,
+    "minimum_contract_months": 24,
+    "one_final_counter": false,
+    "adapt_closing_price_to_budget": true,
+    "early_package_alternatives": {
+      "after_buyer_proposals": 1,
+      "packages": [
+        {
+          "unit_price": 5.07,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        },
+        {
+          "unit_price": 5.05,
+          "payment_days": 14,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        },
+        {
+          "unit_price": 5.1,
+          "payment_days": 60,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        }
+      ]
+    },
+    "menu_evidence_argument": "ppi_recent_change_pct",
+    "stop_after_nonqualifying_final": true
+  },
+  "checks": {
+    "checked_menu_replay": "passed",
+    "exact_acceptance_at_510": "passed",
+    "other_case_policies_preserved": true
+  },
+  "test_plan": "One P18 session, Opus High/Fast. Retain as candidate only on a deal at or below 5.10 and score at least 67.27; else restore V25. A single run does not establish reliable improvement.",
+  "verified_at": "2026-10-25T00:16:45.222943+00:00",
+  "evaluation_id": "25980bae7a3a4948b1e751bed12df1c5",
+  "run_id": "9c825f8215cf47289d0376441a7acd8e",
+  "official_points": 68.45646477287704,
+  "hosted_sessions_started": 1,
+  "validation": "Official deal cost/score and exact eligible acceptance verified; not a reliability claim."
+}

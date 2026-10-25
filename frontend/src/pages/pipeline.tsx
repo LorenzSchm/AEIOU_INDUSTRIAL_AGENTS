@@ -65,7 +65,7 @@ function PriceTrack({ d, large }: { d: Deal; large?: boolean }) {
     <div className="space-y-1.5">
       <div className={cn("relative mx-1.5 rounded-full bg-muted", large ? "h-2" : "h-1.5")}>
         {d.now != null && <div className="absolute inset-y-0 rounded-full bg-orange-200" style={{ left: `${at(d.now)}%`, right: `${100 - at(d.start)}%` }} />}
-        {d.walk_away != null && <span title={`Walk-away ${eur(d.walk_away, 2)}`} className="absolute top-1/2 h-3 w-0.5 -translate-y-1/2 bg-red-400" style={{ left: `${at(d.walk_away)}%` }} />}
+        {d.walk_away != null && <span title={`Alternative cost ${eur(d.walk_away, 2)}`} className="absolute top-1/2 h-3 w-0.5 -translate-y-1/2 bg-red-400" style={{ left: `${at(d.walk_away)}%` }} />}
         {marker(d.target, "size-2.5 bg-emerald-500", "Target")}
         {marker(d.bid, "size-2 bg-slate-500", "Our bid")}
         {marker(d.start, "size-2.5 bg-slate-300", "Opening quote")}
@@ -302,7 +302,7 @@ export function Pipeline() {
             <Button variant="outline" onClick={() => openLaunch({ mode: "local", live: true, stay: true })}>
               <Play /> Live demo
             </Button>
-            <Button onClick={() => openLaunch({ mode: scope, stay: true })}>
+            <Button onClick={() => openLaunch({ mode: "local", stay: true })}>
               New negotiation <Plus />
             </Button>
           </>

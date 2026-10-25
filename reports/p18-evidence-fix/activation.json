@@ -1,0 +1,11 @@
+{
+  "ready": true,
+  "pid": 48830,
+  "protocol_version": "faithful-v11-evidence-validation",
+  "minimum_score": 70.01,
+  "strategy": "prompts/p18-diagnostic-v15.txt",
+  "tests_passed": 273,
+  "frontend_build": "passed",
+  "new_ui_asset_served": "/assets/index-DcKoboYe.js",
+  "hosted_sessions_used": 0
+}

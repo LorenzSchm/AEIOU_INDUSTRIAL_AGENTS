@@ -1,0 +1,13 @@
+{
+  "offline_tests": "82 passed",
+  "ruff": "passed",
+  "git_diff_check": "passed",
+  "maximum_unit_price": 5.0,
+  "maximum_total_cost": 246888.17,
+  "minimum_score": 66.57991,
+  "hosted_tests_launched": 0,
+  "paid_model_calls": 0,
+  "production_code_changed": false,
+  "server_restart_required": false,
+  "limitation": "Supplier acceptance at EUR 5.00 is untested; latest supplier quote was EUR 5.20. New prompt applies only when used in a future run."
+}

@@ -1,0 +1,11 @@
+{
+  "status": "ready",
+  "previous_pid": 45567,
+  "pid": 47376,
+  "policy_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/data/local/negotiation-policies.json",
+  "strategy_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/prompts/p18-diagnostic-v15.txt",
+  "minimum_score": 70.01,
+  "maximum_total_cost": 244400.6,
+  "jobs": {},
+  "hosted_runs_started": 0
+}

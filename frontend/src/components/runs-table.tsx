@@ -13,8 +13,10 @@ import { useWorkbench } from "@/store"
 const agentLabel = (a: string) => (a === "claude" ? "Claude / AEIOU" : human(a))
 
 export function runOutcome(r: RunSummary) {
+  if (r.status === "cancelled") return "Cancelled"
+  if (r.status === "failed" && r.metrics?.refusals) return "Provider refusal"
   if (r.status !== "completed") return r.status === "running" ? "Running" : "Failed"
-  return r.result?.deal ? "Deal reached" : "Walked away"
+  return r.result?.deal ? "Deal reached" : "No deal"
 }
 
 export function RunsTable({ rows, title = "Negotiations", compact }: { rows: RunSummary[]; title?: string; compact?: boolean }) {
@@ -76,7 +78,7 @@ export function RunsTable({ rows, title = "Negotiations", compact }: { rows: Run
                       </div>
                     </div>
                   </TableCell>
-                  <TableCell className="text-muted-foreground">{r.opponent ? (cases.opponents[r.opponent]?.name ?? human(r.opponent)) : "Tacto practice"}</TableCell>
+                  <TableCell className="text-muted-foreground">{r.opponent ? (cases.opponents[r.opponent.replace("language:", "")]?.name ?? human(r.opponent)) : "Tacto practice"}</TableCell>
                   <TableCell className="text-muted-foreground">{agentLabel(r.agent)}</TableCell>
                   <TableCell>
                     <StatusBadge tone={runTone(r.status, r.result?.deal)}>{runOutcome(r)}</StatusBadge>

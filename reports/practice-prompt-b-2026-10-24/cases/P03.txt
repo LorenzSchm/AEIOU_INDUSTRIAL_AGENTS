@@ -1,0 +1,957 @@
+
+================================================================================
+P03 — Frame agreement renewal for the 7.5 kW frequency converter
+================================================================================
+
+Run ID: a5ea540d0e3847dfa4fefd88e8e847d8
+Session ID: cf94cfeea4708907
+Status: completed
+
+BUYER CASE CONTEXT
+{
+  "case_id": "case:P03",
+  "set": "practice",
+  "type": "renewal",
+  "title": "Frame agreement renewal for the 7.5 kW frequency converter",
+  "briefing": "You negotiate for Hollerau Pumpenwerke with Selvbrunn Drive Systems GmbH. Frame agreement renewal for the 7.5 kW frequency converter. Need: 4580 pc a year. Category goal: stabilise a strategic supply: a healthy supplier and stable prices count, not only the lowest price. Score: the lowest total cost C as defined in the rules, valued with this case's rates (need lead time 54 days). Fallback if you walk away: the second-source quote quote:7200003. Must-haves: none. Prepare from the data package.",
+  "trigger_doc": "doc:20260917-70530-P03",
+  "parts": [
+    "part:350020"
+  ],
+  "suppliers": [
+    "sup:70530"
+  ],
+  "negotiable": [
+    "unit_price",
+    "payment_days",
+    "contract_months",
+    "volume_per_year"
+  ],
+  "fixed_terms": {
+    "lead_time_days": 49,
+    "effective_date": "2027-01-01",
+    "index_clause": null,
+    "incoterm": "DAP",
+    "tooling_eur": 0
+  },
+  "term_options": {
+    "payment_days": [
+      14,
+      30,
+      45,
+      60,
+      90
+    ],
+    "contract_months": [
+      12,
+      24,
+      36
+    ],
+    "volume_per_year": [
+      3664,
+      4580,
+      5496
+    ]
+  },
+  "buyer": {
+    "need_per_year": 4580,
+    "horizon_years": 2,
+    "current_unit_price": 412.74,
+    "fallback_unit_price": 441.63,
+    "interest_rate": 0.08,
+    "reference_payment_days": 60,
+    "need_lead_time_days": 54,
+    "category_goal": "stabilise",
+    "fallback_risk_pct": 10,
+    "index_risk_pct": 4,
+    "late_cost_per_day": 600,
+    "cost_per_defect": 624,
+    "sustainable_margin_pct": 8,
+    "relationship_eur_per_point": 28360,
+    "freight_eur_per_unit": {
+      "EXW": 0.35,
+      "FCA": 0.3,
+      "DAP": 0.0
+    },
+    "index_paths": {},
+    "must_haves": [],
+    "alternative": {
+      "kind": "quote",
+      "ref": "quote:7200003",
+      "terms": {
+        "unit_price": 466.99,
+        "payment_days": 30,
+        "lead_time_days": 98,
+        "volume_per_year": 4580,
+        "contract_months": 24,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0,
+        "ppm_commitment": 0
+      }
+    }
+  },
+  "round_limit": 10,
+  "refs": [
+    "doc:20260917-70530-P03",
+    "ctr:4600070530",
+    "sc:70530@2026Q3",
+    "quote:7200003",
+    "fc:350020@2026-09"
+  ]
+}
+
+OFFICIAL POST-RUN RESULT
+{
+  "ended": true,
+  "deal": true,
+  "supplier_id": "sup:70530",
+  "offer_id": "offer:70530-3",
+  "terms": {
+    "payment_days": 14,
+    "lead_time_days": 49,
+    "volume_per_year": 4580,
+    "contract_months": 24,
+    "effective_date": "2027-01-01",
+    "index_clause": null,
+    "incoterm": "DAP",
+    "tooling_eur": 0.0,
+    "ppm_commitment": 350,
+    "chargeback_eur_per_complaint": 0.0,
+    "unit_price": 428.4
+  },
+  "c_open": 4246314.02,
+  "c_deal": 3966261.31,
+  "c_alt": 4332545.92,
+  "c_best": 3909043.1,
+  "score": 0.8303494116836398,
+  "must_haves_ok": true,
+  "cost_breakdown": {
+    "price": 3924144.0,
+    "uncovered_need": 0.0,
+    "fallback_risk": 0.0,
+    "payment_terms": 40113.47,
+    "freight": 0.0,
+    "late_delivery": 0.0,
+    "quality": 2000.54,
+    "tooling": 0.0,
+    "index_clause": 0.0,
+    "index_risk": 0.0,
+    "relationship": 3.29
+  }
+}
+
+
+SUPPLIER THREAD: sup:70530 — 9 events
+
+
+[P03 / sup:70530 / M01]
+Sender: sales@70530
+Subject: Quote from Selvbrunn Drive Systems GmbH: Frame agreement renewal for the 7.5 kW frequency converter
+
+BEGIN VERBATIM BODY
+
+Dear Sir or Madam,
+
+Thank you for your enquiry. Please find our Angebot below.
+
+We offer a price of €438.21 per unit, a volume of 4580 pcs per year, a contract term of 12 months, and a Zahlungsziel 30 days net. This offer remains valid for 30 days.
+
+Regarding our cost structure, CU-NOTATION rose 47.7 % in twelve months and is 5 % of our cost. LCI-C rose 2.7 % in twelve months and is 16 % of our cost. Furthermore, PPI-C2611 rose 13.5 % in twelve months and is 42 % of our cost.
+
+Mit freundlichen Grüßen
+Birgit Mayrhofer
+Key Account Manager, Selvbrunn Drive Systems GmbH
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70530-0",
+    "terms": {
+      "unit_price": 438.21,
+      "payment_days": 30,
+      "contract_months": 12,
+      "volume_per_year": 4580
+    }
+  }
+]
+
+ATTACHMENT 1: quote-offer-70530-0.pdf
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+Selvbrunn Drive Systems GmbH
+To: Hollerau Pumpenwerke GmbH
+Angebot / Quote offer:70530-0
+Offered terms
+Unit price (EUR) 438.21
+Payment terms (days net) 30
+Contract term (months) 12
+Volume per year (pcs) 4580
+Our standard terms (apply to everything not stated above)
+Quality commitment (ppm) 350
+Chargeback per complaint (EUR) 0.00
+Terms fixed by your enquiry
+Lead time (days) 49
+Price valid from 2027-01-01
+Index clause none
+Incoterm DAP
+Tooling (EUR) 0.00
+Part(s): part:350020. Enquiry: Frame agreement renewal for the 7.5 kW frequency converter.
+Validity: 30 days.
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70530-0-quote",
+  "name": "quote-offer-70530-0.pdf",
+  "type": "pdf",
+  "content_b64": null
+}
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P03:70530",
+  "message_id": "msg:70530-0-0",
+  "in_reply_to": null,
+  "from_name": "Key Account Manager, Selvbrunn Drive Systems GmbH",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "open",
+  "signals": {
+    "reply_delay_days": 1,
+    "validity_days": 30
+  },
+  "missing_fields": [],
+  "claim_results": []
+}
+
+
+[P03 / sup:70530 / M02]
+Sender: buyer
+Subject: Renewal of framework agreement 4600070530 – our proposal for 2027–2028
+
+BEGIN VERBATIM BODY
+
+Dear Ms Mayrhofer,
+
+Thank you for your Angebot and for setting out your cost drivers so clearly.
+
+To answer your question on volumes: we expect 4,580 pcs per year of the 7.5 kW converter (part 350020). That is about 10% above what we received over the last twelve months. We would like to commit to this volume for 24 months rather than 12, which gives you planning security for both 2027 and 2028.
+
+We recognise that copper and PPI-C2611 have moved significantly, and we are prepared to share part of that. At the same time, a two-year commitment and faster payment are real value for Selvbrunn. We have also aimed to keep the increase within the 2% range, so it should not need to wait for your pricing committee.
+
+We propose either of the following packages (Lead time 49 days, DAP, no index clause, as per enquiry):
+
+A) €417.90 per unit, Zahlungsziel 14 days net, contract term 24 months, 4,580 pcs per year
+B) €414.20 per unit, Zahlungsziel 60 days net, contract term 24 months, 4,580 pcs per year
+
+Both options are equivalent for us, so please choose whichever suits your cash-flow position better. Package A means you are paid more than two weeks earlier than today.
+
+In return for the longer commitment, we would ask for your support on delivery reliability: on-time delivery has slipped to 84.6% over the last four quarters. We are happy to share rolling forecasts and to place January call-offs early, ahead of your holiday shutdown, to help your planning.
+
+Could you let us know which package works for you, or where you would need adjustment?
+
+Kind regards,
+Purchasing
+Hollerau Pumpenwerke
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "terms": {
+      "unit_price": 417.9,
+      "payment_days": 14,
+      "contract_months": 24,
+      "volume_per_year": 4580
+    }
+  },
+  {
+    "terms": {
+      "unit_price": 414.2,
+      "payment_days": 60,
+      "contract_months": 24,
+      "volume_per_year": 4580
+    }
+  }
+]
+
+
+[P03 / sup:70530 / M03]
+Sender: sales@70530
+Subject: Re: Renewal of framework agreement 4600070530 – our proposal for 2027–2028
+
+BEGIN VERBATIM BODY
+
+Dear Sir or Madam,
+
+We have reviewed your offer and can adjust our Angebot as follows. We welcome your proposal for a 24-month contract and 14-day payment terms, which provide valuable planning security. While we appreciate these improved terms, the substantial increases in our material indices restrict our pricing flexibility. Consequently, we can offer €428.41 per unit for this package, and our logistics department will review the delivery performance you noted. 
+
+For clarity, our Angebot comprises a price of €428.41 per unit, Zahlungsziel 14 days net, a volume of 4580 pcs per year, and a contract term of 24 months. This offer remains valid for 30 days.
+
+Mit freundlichen Grüßen
+Birgit Mayrhofer
+Key Account Manager, Selvbrunn Drive Systems GmbH
+
+Logistics: Our Lieferzeit is 49 days. With overtime we can deliver in 49 days, at a premium.
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70530-1",
+    "terms": {
+      "unit_price": 428.41,
+      "payment_days": 14,
+      "contract_months": 24,
+      "volume_per_year": 4580
+    }
+  }
+]
+
+ATTACHMENT 1: delivery-schedule.xlsx
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+[Delivery schedule]
+Month | Quantity | Cumulative
+1 | =ROUND(4580/12,0) | =SUM(B$2:B2)
+2 | =ROUND(4580/12,0) | =SUM(B$2:B3)
+3 | =ROUND(4580/12,0) | =SUM(B$2:B4)
+4 | =ROUND(4580/12,0) | =SUM(B$2:B5)
+5 | =ROUND(4580/12,0) | =SUM(B$2:B6)
+6 | =ROUND(4580/12,0) | =SUM(B$2:B7)
+7 | =ROUND(4580/12,0) | =SUM(B$2:B8)
+8 | =ROUND(4580/12,0) | =SUM(B$2:B9)
+9 | =ROUND(4580/12,0) | =SUM(B$2:B10)
+10 | =ROUND(4580/12,0) | =SUM(B$2:B11)
+11 | =ROUND(4580/12,0) | =SUM(B$2:B12)
+12 | =ROUND(4580/12,0) | =SUM(B$2:B13)
+13 | =ROUND(4580/12,0) | =SUM(B$2:B14)
+14 | =ROUND(4580/12,0) | =SUM(B$2:B15)
+15 | =ROUND(4580/12,0) | =SUM(B$2:B16)
+16 | =ROUND(4580/12,0) | =SUM(B$2:B17)
+17 | =ROUND(4580/12,0) | =SUM(B$2:B18)
+18 | =ROUND(4580/12,0) | =SUM(B$2:B19)
+19 | =ROUND(4580/12,0) | =SUM(B$2:B20)
+20 | =ROUND(4580/12,0) | =SUM(B$2:B21)
+21 | =ROUND(4580/12,0) | =SUM(B$2:B22)
+22 | =ROUND(4580/12,0) | =SUM(B$2:B23)
+23 | =ROUND(4580/12,0) | =SUM(B$2:B24)
+24 | =ROUND(4580/12,0) | =SUM(B$2:B25)
+Lead time (days) | 49 | 
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70530-1-delivery_schedule",
+  "name": "delivery-schedule.xlsx",
+  "type": "xlsx",
+  "content_b64": null
+}
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P03:70530",
+  "message_id": "msg:70530-1-2",
+  "in_reply_to": null,
+  "from_name": "Key Account Manager, Selvbrunn Drive Systems GmbH",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "open",
+  "signals": {
+    "reply_delay_days": 1,
+    "validity_days": 30
+  },
+  "missing_fields": [],
+  "claim_results": []
+}
+
+
+[P03 / sup:70530 / M04]
+Sender: buyer
+Subject: Re: Renewal of framework agreement 4600070530 – part 350020
+
+BEGIN VERBATIM BODY
+
+Dear Ms Mayrhofer,
+
+Thank you for your revised Angebot and for accepting the 24-month term with 14-day payment. That gives both of us a solid basis for 2027 and 2028.
+
+We have moved towards you on price. However, €428.41 is about 3.8% above today's €412.74. In our view, the two-year volume commitment and payment at 14 days instead of 30 should be reflected more strongly in the price. They secure your utilisation and improve your cash flow over the full term.
+
+We propose either of the following packages, both based on lead time 49 days, DAP, no index clause and no tooling:
+
+A) €421.00 per unit, Zahlungsziel 14 days net, contract term 24 months, 4,580 pcs per year
+B) €417.30 per unit, Zahlungsziel 60 days net, contract term 24 months, 4,580 pcs per year
+
+Package A is an increase of 2.0% on the current price. That recognises a real share of your material cost increases and should stay within your own approval range, so we can finalise quickly without waiting for the pricing committee. Both options are equivalent for us, so please choose whichever fits your cash-flow position better.
+
+Two points to confirm:
+1. Your logistics note mentions a premium for delivery in 49 days with overtime. Since 49 days is your standard Lieferzeit and the fixed lead time of this enquiry, we understand that the agreed unit price is all-in, with no overtime or other surcharge. Please confirm.
+2. In return for the two-year commitment, we would welcome your logistics department's plan to bring on-time delivery back above 90%. On our side, we will share rolling forecasts and place January call-offs ahead of your holiday shutdown.
+
+Please let us know which package you prefer.
+
+Kind regards,
+Purchasing
+Hollerau Pumpenwerke
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "terms": {
+      "unit_price": 421.0,
+      "payment_days": 14,
+      "contract_months": 24,
+      "volume_per_year": 4580
+    }
+  },
+  {
+    "terms": {
+      "unit_price": 417.3,
+      "payment_days": 60,
+      "contract_months": 24,
+      "volume_per_year": 4580
+    }
+  }
+]
+
+
+[P03 / sup:70530 / M05]
+Sender: sales@70530
+Subject: Re: Renewal of framework agreement 4600070530 – part 350020
+
+BEGIN VERBATIM BODY
+
+Dear Sir or Madam,
+
+We have reviewed your offer and can adjust our Angebot as follows. We can offer a price of €428.40 per unit, Zahlungsziel 14 days net, a volume of 4580 pcs per year, a contract term of 24 months.
+
+Due to strict internal directives limiting our pricing flexibility, we can only offer a marginal adjustment to €428.40 for the 24-month contract with 14-day payment terms. We confirm that the 49-day lead time is our standard and the quoted unit price is all-inclusive without overtime surcharges. Our logistics department is committed to ensuring high delivery reliability and appreciates your proactive forecasting. 
+
+Which figures is that based on? Please send us the data. Our standard terms apply to everything the quote does not state; see attached. This offer remains valid for 30 days.
+
+Mit freundlichen Grüßen
+Birgit Mayrhofer
+Key Account Manager, Selvbrunn Drive Systems GmbH
+
+Logistics: Our Lieferzeit is 49 days. With overtime we can deliver in 49 days, at a premium.
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70530-2",
+    "terms": {
+      "unit_price": 428.4,
+      "payment_days": 14,
+      "contract_months": 24,
+      "volume_per_year": 4580
+    }
+  }
+]
+
+ATTACHMENT 1: delivery-schedule.xlsx
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+[Delivery schedule]
+Month | Quantity | Cumulative
+1 | =ROUND(4580/12,0) | =SUM(B$2:B2)
+2 | =ROUND(4580/12,0) | =SUM(B$2:B3)
+3 | =ROUND(4580/12,0) | =SUM(B$2:B4)
+4 | =ROUND(4580/12,0) | =SUM(B$2:B5)
+5 | =ROUND(4580/12,0) | =SUM(B$2:B6)
+6 | =ROUND(4580/12,0) | =SUM(B$2:B7)
+7 | =ROUND(4580/12,0) | =SUM(B$2:B8)
+8 | =ROUND(4580/12,0) | =SUM(B$2:B9)
+9 | =ROUND(4580/12,0) | =SUM(B$2:B10)
+10 | =ROUND(4580/12,0) | =SUM(B$2:B11)
+11 | =ROUND(4580/12,0) | =SUM(B$2:B12)
+12 | =ROUND(4580/12,0) | =SUM(B$2:B13)
+13 | =ROUND(4580/12,0) | =SUM(B$2:B14)
+14 | =ROUND(4580/12,0) | =SUM(B$2:B15)
+15 | =ROUND(4580/12,0) | =SUM(B$2:B16)
+16 | =ROUND(4580/12,0) | =SUM(B$2:B17)
+17 | =ROUND(4580/12,0) | =SUM(B$2:B18)
+18 | =ROUND(4580/12,0) | =SUM(B$2:B19)
+19 | =ROUND(4580/12,0) | =SUM(B$2:B20)
+20 | =ROUND(4580/12,0) | =SUM(B$2:B21)
+21 | =ROUND(4580/12,0) | =SUM(B$2:B22)
+22 | =ROUND(4580/12,0) | =SUM(B$2:B23)
+23 | =ROUND(4580/12,0) | =SUM(B$2:B24)
+24 | =ROUND(4580/12,0) | =SUM(B$2:B25)
+Lead time (days) | 49 | 
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70530-2-delivery_schedule",
+  "name": "delivery-schedule.xlsx",
+  "type": "xlsx",
+  "content_b64": null
+}
+
+ATTACHMENT 2: quote-offer-70530-2.pdf
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+Selvbrunn Drive Systems GmbH
+To: Hollerau Pumpenwerke GmbH
+Angebot / Quote offer:70530-2
+Offered terms
+Unit price (EUR) 428.40
+Payment terms (days net) 14
+Contract term (months) 24
+Volume per year (pcs) 4580
+Our standard terms (apply to everything not stated above)
+Quality commitment (ppm) 350
+Chargeback per complaint (EUR) 0.00
+Terms fixed by your enquiry
+Lead time (days) 49
+Price valid from 2027-01-01
+Index clause none
+Incoterm DAP
+Tooling (EUR) 0.00
+Part(s): part:350020. Enquiry: Frame agreement renewal for the 7.5 kW frequency converter.
+Validity: 30 days.
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70530-2-quote",
+  "name": "quote-offer-70530-2.pdf",
+  "type": "pdf",
+  "content_b64": null
+}
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P03:70530",
+  "message_id": "msg:70530-2-4",
+  "in_reply_to": null,
+  "from_name": "Key Account Manager, Selvbrunn Drive Systems GmbH",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "open",
+  "signals": {
+    "reply_delay_days": 1,
+    "validity_days": 30
+  },
+  "missing_fields": [],
+  "claim_results": []
+}
+
+
+[P03 / sup:70530 / M06]
+Sender: buyer
+Subject: Re: Renewal of framework agreement 4600070530 – part 350020
+
+BEGIN VERBATIM BODY
+
+Dear Ms Mayrhofer,
+
+Thank you for your revised Angebot. Thank you also for confirming that the 49-day Lieferzeit is your standard and that the unit price is all-inclusive, with no overtime surcharges.
+
+You asked which figures our points are based on. Here is the data:
+
+1. Price reference: our current price is €412.74 per unit, as confirmed in your quote of 5 September 2026. €428.40 is +3.8% on that, and €421.00 would be +2.0%.
+2. Delivery performance: our supplier scorecard for 1 October 2025 to 30 September 2026 shows on-time delivery of 84.6% across 26 goods-receipt lines. Over the same period it was 88–92%, and it was 95.2% two years ago. We are glad to send the line-level data to your logistics team. We also want to recognise that quality has been excellent: 0 ppm for the last four quarters.
+3. Volume: 4,580 pcs per year is about 10% above the 4,154 pcs we received over the last twelve months. It is now committed for 24 months instead of 12.
+4. Cost development: we take the index movements you described seriously. Part of that period was already reflected in the +3.1% we agreed in November 2025. In addition, 14-day payment instead of 30 days is worth roughly €1.50 per unit to you in financing alone.
+
+We want this renewal to work for Selvbrunn as well, so we are moving again. We propose either of the following packages (lead time 49 days, DAP, no index clause, no tooling, all-in price):
+
+A) €424.50 per unit, Zahlungsziel 14 days net, contract term 24 months, 4,580 pcs per year
+B) €426.00 per unit, Zahlungsziel 30 days net, contract term 24 months, 4,580 pcs per year
+
+Both are equivalent for us. Package A means +2.8% on today's price, plus faster payment and a two-year volume commitment.
+
+On our side, we will share a rolling 6-month forecast every month. We will also place January call-offs before your holiday shutdown deadline, to support your logistics team in bringing on-time delivery back above 90%.
+
+If either package needs your pricing committee, we would appreciate it if you could put it forward at their next meeting, so that we can finalise the agreement well before 31 December. Please let us know which option you prefer.
+
+Kind regards,
+Purchasing
+Hollerau Pumpenwerke
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "terms": {
+      "unit_price": 424.5,
+      "payment_days": 14,
+      "contract_months": 24,
+      "volume_per_year": 4580
+    }
+  },
+  {
+    "terms": {
+      "unit_price": 426.0,
+      "payment_days": 30,
+      "contract_months": 24,
+      "volume_per_year": 4580
+    }
+  }
+]
+
+
+[P03 / sup:70530 / M07]
+Sender: sales@70530
+Subject: Re: Renewal of framework agreement 4600070530 – part 350020
+
+BEGIN VERBATIM BODY
+
+Dear Sir or Madam,
+
+We have reviewed your offer and hold our Angebot. 
+
+Please note that a strict freeze on price reductions mandated by our head office restricts any further downward adjustment. Consequently, we must maintain our offer of €428.40 per unit for the package with a 24-month term and 14-day payment. Our Angebot reflects a price of €428.40 per unit, Zahlungsziel 14 days net, a volume of 4580 pcs per year, and a contract term of 24 months.
+
+A binding higher volume would help us and can improve the price. Which volume can you commit to? We are happy to discuss this in a call; until then our offer stands. Our offer remains valid for 30 days.
+
+Mit freundlichen Grüßen
+Birgit Mayrhofer
+Key Account Manager, Selvbrunn Drive Systems GmbH
+
+Logistics: Our Lieferzeit is 49 days. With overtime we can deliver in 49 days, at a premium.
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70530-3",
+    "terms": {
+      "unit_price": 428.4,
+      "payment_days": 14,
+      "contract_months": 24,
+      "volume_per_year": 4580
+    }
+  }
+]
+
+ATTACHMENT 1: delivery-schedule.xlsx
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+[Delivery schedule]
+Month | Quantity | Cumulative
+1 | =ROUND(4580/12,0) | =SUM(B$2:B2)
+2 | =ROUND(4580/12,0) | =SUM(B$2:B3)
+3 | =ROUND(4580/12,0) | =SUM(B$2:B4)
+4 | =ROUND(4580/12,0) | =SUM(B$2:B5)
+5 | =ROUND(4580/12,0) | =SUM(B$2:B6)
+6 | =ROUND(4580/12,0) | =SUM(B$2:B7)
+7 | =ROUND(4580/12,0) | =SUM(B$2:B8)
+8 | =ROUND(4580/12,0) | =SUM(B$2:B9)
+9 | =ROUND(4580/12,0) | =SUM(B$2:B10)
+10 | =ROUND(4580/12,0) | =SUM(B$2:B11)
+11 | =ROUND(4580/12,0) | =SUM(B$2:B12)
+12 | =ROUND(4580/12,0) | =SUM(B$2:B13)
+13 | =ROUND(4580/12,0) | =SUM(B$2:B14)
+14 | =ROUND(4580/12,0) | =SUM(B$2:B15)
+15 | =ROUND(4580/12,0) | =SUM(B$2:B16)
+16 | =ROUND(4580/12,0) | =SUM(B$2:B17)
+17 | =ROUND(4580/12,0) | =SUM(B$2:B18)
+18 | =ROUND(4580/12,0) | =SUM(B$2:B19)
+19 | =ROUND(4580/12,0) | =SUM(B$2:B20)
+20 | =ROUND(4580/12,0) | =SUM(B$2:B21)
+21 | =ROUND(4580/12,0) | =SUM(B$2:B22)
+22 | =ROUND(4580/12,0) | =SUM(B$2:B23)
+23 | =ROUND(4580/12,0) | =SUM(B$2:B24)
+24 | =ROUND(4580/12,0) | =SUM(B$2:B25)
+Lead time (days) | 49 | 
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70530-3-delivery_schedule",
+  "name": "delivery-schedule.xlsx",
+  "type": "xlsx",
+  "content_b64": null
+}
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P03:70530",
+  "message_id": "msg:70530-3-6",
+  "in_reply_to": null,
+  "from_name": "Key Account Manager, Selvbrunn Drive Systems GmbH",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "open",
+  "signals": {
+    "reply_delay_days": 1,
+    "validity_days": 30
+  },
+  "missing_fields": [],
+  "claim_results": []
+}
+
+
+[P03 / sup:70530 / M08]
+Sender: buyer
+Subject: (none recorded)
+
+(No email body recorded.)
+
+API ACTION
+{
+  "type": "accept",
+  "term_sheet_id": "offer:70530-3"
+}
+
+
+[P03 / sup:70530 / M09]
+Sender: sales@70530
+Subject: Re: Renewal of framework agreement 4600070530 – part 350020
+
+BEGIN VERBATIM BODY
+
+Dear Sir or Madam,
+
+Thank you for your order. Our order confirmation is attached. 
+
+Mit freundlichen Grüßen
+Birgit Mayrhofer
+Key Account Manager, Selvbrunn Drive Systems GmbH
+
+Logistics: Our Lieferzeit is 49 days. With overtime we can deliver in 49 days, at a premium.
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70530-3",
+    "terms": {
+      "unit_price": 428.4,
+      "payment_days": 14,
+      "contract_months": 24,
+      "volume_per_year": 4580
+    }
+  }
+]
+
+ATTACHMENT 1: order-confirmation-offer-70530-3.pdf
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+Selvbrunn Drive Systems GmbH
+To: Hollerau Pumpenwerke GmbH
+Auftragsbestätigung / Order confirmation offer:70530-3
+Agreed terms
+Payment terms (days net) 14
+Lead time (days) 49
+Volume per year (pcs) 4580
+Contract term (months) 24
+Price valid from 2027-01-01
+Index clause none
+Incoterm DAP
+Tooling (EUR) 0.00
+Quality commitment (ppm) 350
+Chargeback per complaint (EUR) 0.00
+Unit price (EUR) 428.40
+Part(s): part:350020. We confirm your order on the terms above.
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70530-3-order_confirmation",
+  "name": "order-confirmation-offer-70530-3.pdf",
+  "type": "pdf",
+  "content_b64": null
+}
+
+ATTACHMENT 2: delivery-schedule.xlsx
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+[Delivery schedule]
+Month | Quantity | Cumulative
+1 | =ROUND(4580/12,0) | =SUM(B$2:B2)
+2 | =ROUND(4580/12,0) | =SUM(B$2:B3)
+3 | =ROUND(4580/12,0) | =SUM(B$2:B4)
+4 | =ROUND(4580/12,0) | =SUM(B$2:B5)
+5 | =ROUND(4580/12,0) | =SUM(B$2:B6)
+6 | =ROUND(4580/12,0) | =SUM(B$2:B7)
+7 | =ROUND(4580/12,0) | =SUM(B$2:B8)
+8 | =ROUND(4580/12,0) | =SUM(B$2:B9)
+9 | =ROUND(4580/12,0) | =SUM(B$2:B10)
+10 | =ROUND(4580/12,0) | =SUM(B$2:B11)
+11 | =ROUND(4580/12,0) | =SUM(B$2:B12)
+12 | =ROUND(4580/12,0) | =SUM(B$2:B13)
+13 | =ROUND(4580/12,0) | =SUM(B$2:B14)
+14 | =ROUND(4580/12,0) | =SUM(B$2:B15)
+15 | =ROUND(4580/12,0) | =SUM(B$2:B16)
+16 | =ROUND(4580/12,0) | =SUM(B$2:B17)
+17 | =ROUND(4580/12,0) | =SUM(B$2:B18)
+18 | =ROUND(4580/12,0) | =SUM(B$2:B19)
+19 | =ROUND(4580/12,0) | =SUM(B$2:B20)
+20 | =ROUND(4580/12,0) | =SUM(B$2:B21)
+21 | =ROUND(4580/12,0) | =SUM(B$2:B22)
+22 | =ROUND(4580/12,0) | =SUM(B$2:B23)
+23 | =ROUND(4580/12,0) | =SUM(B$2:B24)
+24 | =ROUND(4580/12,0) | =SUM(B$2:B25)
+Lead time (days) | 49 | 
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70530-3-delivery_schedule",
+  "name": "delivery-schedule.xlsx",
+  "type": "xlsx",
+  "content_b64": null
+}
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P03:70530",
+  "message_id": "msg:70530-3-8",
+  "in_reply_to": null,
+  "from_name": "Key Account Manager, Selvbrunn Drive Systems GmbH",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "agreed",
+  "signals": {
+    "reply_delay_days": 1,
+    "validity_days": 30
+  },
+  "missing_fields": [],
+  "claim_results": [],
+  "result": {
+    "ended": true,
+    "deal": true,
+    "supplier_id": "sup:70530",
+    "offer_id": "offer:70530-3",
+    "terms": {
+      "payment_days": 14,
+      "lead_time_days": 49,
+      "volume_per_year": 4580,
+      "contract_months": 24,
+      "effective_date": "2027-01-01",
+      "index_clause": null,
+      "incoterm": "DAP",
+      "tooling_eur": 0.0,
+      "ppm_commitment": 350,
+      "chargeback_eur_per_complaint": 0.0,
+      "unit_price": 428.4
+    },
+    "c_open": 4246314.02,
+    "c_deal": 3966261.31,
+    "c_alt": 4332545.92,
+    "c_best": 3909043.1,
+    "score": 0.8303494116836398,
+    "must_haves_ok": true,
+    "cost_breakdown": {
+      "price": 3924144.0,
+      "uncovered_need": 0.0,
+      "fallback_risk": 0.0,
+      "payment_terms": 40113.47,
+      "freight": 0.0,
+      "late_delivery": 0.0,
+      "quality": 2000.54,
+      "tooling": 0.0,
+      "index_clause": 0.0,
+      "index_risk": 0.0,
+      "relationship": 3.29
+    }
+  }
+}
+
+
+RECORDED DECISION ORDER AND VALIDATION (NOT MODEL REASONING)
+[
+  {
+    "supplier_id": "sup:70530",
+    "source": "claude:eval",
+    "action": "send",
+    "elapsed_s": 21.237,
+    "protocol_version": "faithful-v7-confirm-every-offer-menu",
+    "rejections": []
+  },
+  {
+    "supplier_id": "sup:70530",
+    "source": "claude:eval",
+    "action": "send",
+    "elapsed_s": 7.339,
+    "protocol_version": "faithful-v7-confirm-every-offer-menu",
+    "rejections": []
+  },
+  {
+    "supplier_id": "sup:70530",
+    "source": "claude:eval",
+    "action": "send",
+    "elapsed_s": 13.751,
+    "protocol_version": "faithful-v7-confirm-every-offer-menu",
+    "rejections": []
+  },
+  {
+    "supplier_id": "sup:70530",
+    "source": "claude:eval",
+    "action": "accept",
+    "elapsed_s": 5.985,
+    "protocol_version": "faithful-v7-confirm-every-offer-menu",
+    "rejections": []
+  }
+]
+
+EXECUTION METRICS
+{
+  "elapsed_s": 155.99,
+  "fallbacks": 0,
+  "calls": 4,
+  "errors": 0,
+  "input_tokens": 55478,
+  "output_tokens": 11987,
+  "refusals": 0,
+  "empty_responses": 0,
+  "stop_reasons": {
+    "end_turn": 4
+  },
+  "refusal_details": []
+}
+
+CONTROLLER AUDIT
+{
+  "contract_rejections": [],
+  "forced_stops": 0,
+  "verbatim_request_sent": false,
+  "verbatim_request_ignoring_whitespace": false,
+  "calibrated_question_messages": 0,
+  "accepts_before_five_repeats": 0,
+  "accepted_offer_position": 1,
+  "preparation_tags_present": true,
+  "strategy_tags_present": true,
+  "preparation_sections_present": [
+    "Role and Objectives",
+    "Strategy Identification",
+    "Compromise Exploration",
+    "Creative Solutions"
+  ],
+  "verbatim_insertions": 0,
+  "verbatim_format_restorations": 0,
+  "confirmation_messages": 0,
+  "walk_aways": [],
+  "terminal_limits": []
+}

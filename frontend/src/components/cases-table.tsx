@@ -57,7 +57,7 @@ export function CasesTable({ cases, mode }: { cases: Case[]; mode: Scope }) {
           <TableBody>
             {rows.map(c => {
               const b = c.buyer
-              const gap = b.fallback_unit_price / b.current_unit_price - 1
+              const gap = b.current_unit_price ? b.fallback_unit_price / b.current_unit_price - 1 : null
               const launch = () => openLaunch({ mode, caseId: c.case_id })
               return (
                 <TableRow key={c.case_id} tabIndex={0} onClick={launch} onKeyDown={e => e.key === "Enter" && launch()} className="group h-10 cursor-pointer hover:bg-orange-50/60">
@@ -75,12 +75,12 @@ export function CasesTable({ cases, mode }: { cases: Case[]; mode: Scope }) {
                   <TableCell className="text-right tabular-nums">{eur(b.current_unit_price, 2)}</TableCell>
                   <TableCell className="text-right tabular-nums">
                     {eur(b.fallback_unit_price, 2)}
-                    <span className={`ml-1.5 text-xs ${gap > 0 ? "text-red-600" : "text-emerald-600"}`}>
+                    {gap != null && <span className={`ml-1.5 text-xs ${gap > 0 ? "text-red-600" : "text-emerald-600"}`}>
                       {gap > 0 ? "+" : ""}
                       {num(gap * 100, 1)}%
-                    </span>
+                    </span>}
                   </TableCell>
-                  <TableCell className="text-right font-medium tabular-nums">{eur(b.need_per_year * b.current_unit_price)}</TableCell>
+                  <TableCell className="text-right font-medium tabular-nums">{eur(b.current_unit_price == null ? null : b.need_per_year * b.current_unit_price)}</TableCell>
                   <TableCell className="capitalize text-muted-foreground">{b.category_goal}</TableCell>
                   <TableCell className="text-right tabular-nums text-muted-foreground">{c.round_limit}</TableCell>
                   <TableCell className="pr-4 text-muted-foreground group-hover:text-primary">

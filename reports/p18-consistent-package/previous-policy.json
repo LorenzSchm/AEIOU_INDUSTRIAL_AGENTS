@@ -1,0 +1,60 @@
+{
+  "case:P18": {
+    "case_id": "case:P18",
+    "accept_eligible_offers": true,
+    "closing_price": 5.09,
+    "maximum_unit_price": 5.1,
+    "maximum_total_cost": 244400.6,
+    "minimum_contract_months": 24,
+    "one_final_counter": false,
+    "adapt_closing_price_to_budget": true,
+    "early_package_alternatives": {
+      "after_buyer_proposals": 1,
+      "packages": [
+        {
+          "unit_price": 5.07,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        },
+        {
+          "unit_price": 5.05,
+          "payment_days": 14,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        },
+        {
+          "unit_price": 5.1,
+          "payment_days": 60,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        }
+      ]
+    },
+    "menu_evidence_argument": "ppi_recent_change_pct",
+    "open_payment_compromise": {
+      "unit_price": 5.09,
+      "payment_days": 45,
+      "index_clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5,
+        "base_month": "2026-08"
+      }
+    },
+    "compromise_evidence_argument": "as_recent_change_pct",
+    "stop_after_nonqualifying_final": true
+  }
+}

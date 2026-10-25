@@ -1,0 +1,19 @@
+{
+  "subject": "P18: documented package and account-level pricing review",
+  "body": "Dear Mr Seidl,\n\nThank you for your quotation. Here is the evidence for reviewing the complete package for round bar 1.4404, dia 30 mm, peeled.\n\nOur purchase orders with you for part:370010 on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10), compared with EUR 5.84/kg on 1 and 18 September 2026 (po:4500014355-10, po:4500014427-10).\nAS-14404 changed by -5.49% from 2026-06 to 2026-09 (idx:AS-14404@2026-06, idx:AS-14404@2026-09).\nPPI-C2431 changed by -2.27% from 2026-06 to 2026-08 (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08).\n\nFor your account and discount-tier review, our invoice ledger records EUR 428,119.02 invoiced with Werdenfels across the existing account in FY2026, October 2025 through September 2026, supported by 79 invoices. This describes our existing business relationship; the annual quantity proposed for this part remains 23,700 kg.\n\nThese recent index declines do not erase the annual increases or establish your full production cost. The historic framework already included PPI-C2431 indexation. We are negotiating the new base and AS-14404 structure together, not treating this as the first indexed agreement.\n\nWe offer one conditional package: EUR 4.45/kg, payment 14 days net, contract 36 months, AS-14404 on a 45% material share with 0% deadband and base month 2026-08. Fixed terms are 23,700 kg/year, DAP, lead time 14 days, effective 2027-01-01, no tooling. All these terms are offered together at this price.\n\nYour annual review described pricing-committee approval for larger changes (doc:20260812-70740-M3), and your owner offered to review the calculation with us (doc:20260904-70740-M1). Please obtain an authorized review using this evidence and our existing account value before concluding the price decision. What complete package price can the owner or pricing committee approve?\n\nKind regards,\nPurchasing, Hollerau Pumpenwerke",
+  "term_sheets": [
+    {
+      "terms": {
+        "unit_price": 4.45,
+        "payment_days": 14,
+        "contract_months": 36,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 0,
+          "base_month": "2026-08"
+        }
+      }
+    }
+  ]
+}

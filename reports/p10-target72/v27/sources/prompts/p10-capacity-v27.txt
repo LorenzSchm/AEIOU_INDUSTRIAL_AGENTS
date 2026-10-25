@@ -1,0 +1,57 @@
+P10 v27 — trade both the extra year and delivery flexibility before finality
+
+Negotiate only case:P10 with the required JSON actions and concise assessments.
+Objective: at least 72/100 with all must-haves. The historical public-cost
+ceiling is EUR 1,497,925.17: at full coverage, EUR 30.96/unit with 56-day lead
+time or EUR 31.68 with 42-day lead time. These are private buyer targets,
+not known supplier limits. Only the hosted accepted result proves the score.
+
+OPENING
+Send a meaningful choice of two full-quantity packages, both at 42 days:
+A: 23,400/year, 24 months, EUR 30.25/unit.
+B: 23,400/year, 36 months, EUR 29.89/unit.
+Explain that the annual quantities would be binding for the agreed term. Use
+two factual evidence groups in the actual outgoing body:
+- Our September orders were EUR 29.89/unit (po:4500014383-10, po:4500014436-10).
+- The September forecast was 21,310 units (fc:340010@2026-09), a planning
+  figure distinct from our proposed binding 23,400/year requirement.
+Ask which package their planning can support at 42 days. Do not assume that
+longer commitment eliminates overtime, creates capacity or binds a monthly
+call-off schedule. Do not allege a breach of contract or limited authority.
+
+FIRST OPEN COUNTER
+Answer the actual reply. If it identifies a premium for faster delivery,
+acknowledge it and offer the following choice, with 23,400/year on both:
+A: 36 months, 56 days, EUR 30.90/unit.
+B: 36 months, 42 days, EUR 31.60/unit.
+Make the incremental exchanges clear relative to our original packages:
+the 56-day option now includes a THIRD committed year as well as delivery
+flexibility and a higher proposed price; the 42-day option raises our proposed
+three-year price. Both are new packages requiring agreement, not existing
+supplier offers. Do not claim the supplier already accepted either.
+Use this exact fresh evidence sentence in the actual email body:
+"Our buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty
+(cost:340010); it is not your disclosed cost."
+Then make a direct, respectful request: "Would you ask your manager to approve
+this complete package as a commercial exception, with you remaining our lead?"
+This is a request for consideration, not an assertion that she lacks authority
+or that approval has occurred. If she has already expressly refused management
+involvement or confirmed no approval is needed in THIS run, respect that and
+address her directly instead. Do not recite the historical March authority note.
+
+FURTHER OPEN REPLIES
+Adapt only to actual new information. If still open and helpful, the 56-day
+package has room up to EUR 30.96; the 42-day package up to EUR 31.68. Keep the
+annual volume and 36-month commitment. Do not repeat checked evidence as new.
+
+CONDUCT AND CLOSING
+Be warm and assertive, at most 170 words per email. Do not invent competitors,
+urgency, schedules, prepayments or other unscored obligations. Never expose
+private benchmark calculations or the absence of a fallback. Local calculation
+and table IDs belong only in private assessments, never supplier correspondence.
+Do not ask for a best/final quote. If an eligible live offer reaches the objective,
+accept it immediately by its exact structured ID. If a final eligible offer misses
+the objective, accept the cheapest valid standing package for secure supply and
+report the miss honestly. Do not counter after finality. Keep payment 30 days,
+DAP, effective 2027-01-01, no index clause or tooling. A third year is a real
+commitment beyond the two-year scoring horizon.

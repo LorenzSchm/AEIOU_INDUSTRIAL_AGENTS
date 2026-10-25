@@ -1,0 +1,226 @@
+Update after V22: this document below is the original 30-run review.
+The subsequent experiment 5e19ec6b5f1a425f8e3d4adaf99f5b14 returned a worse
+5.30 / 60-day / 5% final (57.4891 calculated points), despite all three verified
+arguments. Its fixed sequence is disabled. See ../p18-baseline-recovery/notes.txt
+and comparison.json for the result and V23 recovery. No above-70 deal is established.
+
+P18 supplier behaviour — evidence review, 25 October 2026
+
+Conclusion
+The supplier recognises our relevant evidence. The remaining failure is that
+the complete package it offers does not clear our chosen acceptance threshold.
+Evidence verification, acceptance of individual terms, and agreement on the
+whole package are three different events. The strategy must track them separately.
+
+Scope and reproducibility
+30 saved hosted P18 runs, plus 30 fresh read-only GET snapshots of their owned
+sessions. All 30 sessions are ended. There were 10 accepted deals, 15 supplier
+withdrawals and 5 buyer API closures. The five closures must not be counted as
+supplier reactions. This review started no session and made no paid model call.
+
+observations.json contains the calculated results and links to each original run.
+sessions/ contains the server snapshots, including the actual interpreted claim
+groups and their results. scripts/analyze_p18_behavior.py rebuilds the analysis
+offline. It excludes repeated local acceptance confirmations from offer counts.
+It checks session identity, claim/result mapping and uniqueness of offer IDs.
+
+This is an observational sample, not a randomised experiment. Strategies, prices,
+payment terms, duration and clause changed between runs. We can report what
+followed a message and what the supplier said; we cannot assign an exact causal
+price discount to each argument or infer an undisclosed reservation price.
+
+1. Latest run: when arguments were accepted
+Run 835ad45899e34ee588343a6696ea42a1; session 43b2b1e8c9dc9119.
+All prices below are EUR/kg. Fixed enquiry terms remain unchanged.
+
+Buyer message 2 / supplier message 3:
+  Evidence: June PO prices EUR 5.26 versus September EUR 5.84, with exact PO IDs.
+  Server check: price_history = verified.
+  Supplier: says the history holds and was taken into account; accepts a
+  36-month duration and AS-14404 indexation. Explicitly confirms authority.
+  Quote: 6.10 / 30 days / 12 months / no clause becomes
+         5.40 / 30 days / 36 months / AS 45%, 0% deadband, base 2026-08.
+  Meaning: factual and structural movement, not acceptance of our EUR 4.60.
+  Several terms changed, so the EUR 0.70 reduction is not an isolated PO effect.
+
+Buyer message 4 / supplier message 5:
+  Evidence: PPI-C2431 June-August 2026 declined 2.27%; exact two index IDs.
+  Server check: index_change = verified.
+  Supplier: explicitly says it factored this movement into its calculation
+  while accommodating the requested 5% deadband.
+  Quotes: primary 5.40 / 60 days and alternative 5.30 / 30 days,
+          both 36 months / AS 45%, 5% deadband, base 2026-08.
+  Meaning: the 30-day price fell EUR 0.10 while the clause changed. The supplier
+  did not approve any of our EUR 5.05/5.07/5.10 menu packages.
+
+Buyer message 6 / supplier message 7:
+  Evidence: AS-14404 June-September 2026 declined 5.49%; exact two index IDs.
+  Server check: index_change = verified.
+  Supplier: explicitly says it verified and factored the decline into its
+  calculation; accepts 45-day payment and retains the 36-month duration.
+  Final quote: 5.20 / 45 days / 36 months / AS 45%, 5% deadband, base 2026-08.
+  Meaning: the payment request was accepted, the EUR 5.09 price was not.
+  Complete cost EUR 249519.92; calculated score 62.9510, not an agreed result.
+  Official outcome remains zero because there was no acceptance/deal.
+
+Buyer message 8 / supplier message 9:
+  Buyer politely declined without new terms. Supplier withdrew over pricing.
+  Four buyer sends had occurred out of a 10-round API limit. This was not a
+  message-limit failure, a missing-data rejection, or a rude-tone reaction.
+
+Execution timing: the run started 2026-10-24 23:02:49 UTC with protocol v15.
+V21/v16 activation occurred at 23:04:57 UTC after it completed. The new final-stop
+controller would avoid the extra decline email; it would still not be permitted
+to accept EUR 5.20/45. A deployment correction cannot turn that quote into 70+.
+
+2. Evidence that worked, and evidence that merely checked out
+Counts are checked claim evaluations across this sample, not effect sizes.
+
+  Price history: 20 verified checks.
+    Initial June/September PO comparisons repeatedly elicited acknowledgement
+    and revised packages. Further PO facts are not automatically persuasive:
+    in run 0fb5e14c... a later PO claim verified but explicitly did not change
+    the calculation, even though the supplier made a separate concession.
+
+  AS-14404 June-September decline: 15 verified; 1 duplicate.
+    Latest run and c206a1d4... expressly say this was factored into pricing.
+
+  PPI-C2431 June-August decline: 7 verified; 2 duplicates.
+    Latest run and c206a1d4... expressly say this was factored into pricing.
+
+  Flat latest LCI-C quarter: 2 verified, with explicit no-price-effect wording.
+  Supplier-wide 81% delivery performance: 1 verified, explicit no-price-effect.
+  Forecast +1.9%: 1 verified, explicit no-price-effect, followed by withdrawal.
+  Rival quote claims: 3 irrelevant. Do not reuse the previously excluded quote.
+
+In c0664b1a... both repeated index arguments were labelled duplicate. The
+supplier explicitly said the already incorporated data could not support a
+further reduction; EUR 5.20/14 days/0% deadband remained unchanged and final.
+
+In 54747c61... verified flat wages and delivery performance were explicitly
+excluded from the calculation. The supplier nevertheless moved EUR 5.30 to
+EUR 5.20 and attributed that to a committee-approved concession. Counting every
+price reduction after a verified fact as that fact's effect would be misleading.
+
+The annual increases and recent declines can both be true. Keep the exact
+series, period, value and refs. Do not present a recent decline as disproving
+the annual figures, the supplier's whole cost, or its minimum sustainable price.
+
+3. Observed commercial behaviour
+
+Price increments:
+  Every one of the 112 quoted packages after the opening used EUR 0.10 increments.
+  This includes primary quotes and advertised alternatives, not duplicate order
+  confirmations. None quoted EUR 5.05, 5.07 or 5.09. The lowest observed price was
+  EUR 5.10. This is a strong planning observation, not a documented price-grid
+  restriction or proof that EUR 5.00 or EUR 5.09 is impossible. Never round a live
+  offer or refuse a valid qualifying offer merely because it breaks this pattern.
+
+Payment and clause are priced together:
+  The latest menu priced 60 days at EUR 5.40 and 30 days at EUR 5.30, with the
+  same clause/duration. Longer credit is not a free concession. In other runs,
+  a 5% deadband alternative cost EUR 0.10 more than a 0% deadband package.
+  Neither surcharge is proven universal. It explains why winning a nominal
+  price while later asking for more credit or a different clause can fail.
+
+Partial acceptance:
+  Phrases such as "we accept your proposed 45-day payment term" do not mean
+  "we accept your offer". Read the complete structured term sheet and its live
+  status. In cfed77f5... narrative and structured primary price even differed;
+  use protocol eligibility and exact quoted terms for acceptance, not sentiment.
+
+Authority:
+  Latest message 3 says Seidl is fully authorised. In 54747c61..., the supplier
+  said the committee had reviewed and authorised its final price. Repeating an
+  escalation request is not a demonstrated source of another concession.
+  Historical approval records justify asking early if necessary; once answered,
+  record the answer. Current supplier_signals.py matches "authoriz" inside its
+  approval_required cue even when authority is confirmed. That cue is only a
+  language signal and must not be interpreted as proof of missing approval.
+
+Finality:
+  26 runs reached a final offer: 9 after the second buyer proposal, 14 after the
+  third, 3 after the fourth. Every first final offer had a 7-day validity signal.
+  Of those runs, 15 sent a further email: all 15 received supplier withdrawal.
+  Eight accepted the final offer; three closed via the buyer API. Thus the
+  demonstrated successful response to an acceptable final offer is acceptance.
+  Do not treat remaining API rounds, a polite farewell, a volume question, or
+  later "valid for 14 days" boilerplate as permission to reopen a terminal state.
+
+Tone:
+  Polite language appears in concessions, final offers and withdrawals. Warmth
+  is appropriate, but the records do not establish a sentiment-based discount.
+  Commercial stance and exact terms should drive decisions, not cordial words.
+
+4. The target must fit the whole package
+Public cost formula; 47400 kg over two years; 24 or 36 months; fixed enquiry
+terms; AS-14404 / 45% / 5% deadband / 2026-08. Limit 70.01 and nominal cap 5.10.
+
+  Package                       Complete cost      Calculated points
+  5.10 / 14 days                 246386.78            67.2713
+  5.10 / 30 days                 245527.26            68.4565
+  5.10 / 45 days                 244721.46            69.5676
+  5.09 / 45 days                 244241.61            70.2292
+  5.10 / 60 days                 243915.66            70.6787
+  5.10 / 90 days                 242304.06            72.9009
+  5.00 / 30 days                 240713.00            75.0948
+
+At two-decimal prices, the highest qualifying bids are 5.05/14, 5.07/30,
+5.09/45 and 5.10/60 or /90. If the observed tenth-euro quoting pattern persists,
+14/30/45 days require 5.00 or less; 60/90 days permit 5.10.
+
+The highest quoted calculated score in these 30 runs is still 68.4565:
+c206a1d4... final 5.10/30/36/5%. The best actual agreement was 59.7713:
+cfed77f5... 5.10/14/36/0%. No saved run proves a 70+ package is accepted.
+
+5. Proposed next controlled structure — hypothesis, not activated
+The next useful question is whether EUR 5.10/60 days/5% deadband can be reached
+when that structure is established from the outset. No saved opening included
+60 days with the 5% clause. It has appeared later as a menu item, at higher prices.
+This is therefore a distinct test of package consistency, not proof of a new lever.
+
+Hold the model, polite tone, authorised scope and PO -> PPI -> AS sequence fixed.
+Use a single complete package path, not a menu offering short-payment options
+that are attractive to the supplier but only qualify at unobserved cent prices.
+
+  Opening: EUR 4.60, 60 days, 36 months, AS-14404/45%/5%/2026-08.
+    Cite the verified June/September PO history. Ask for a binding complete
+    counteroffer. Do not assert the supplier already accepted these terms.
+  First open counter: recompute every quoted package; accept any eligible
+    qualifying one first. Otherwise propose EUR 5.00 on the same structure,
+    citing the fresh PPI decline. Resolve an explicit structural objection now.
+  Next open counter: accept a qualifying offer first. Otherwise make the
+    EUR 5.10 closing proposal on the same structure with the unused AS decline.
+    This is the highest nominal price authorised. Use the evidence once.
+  Any final offer: accept the exact eligible package if it qualifies; otherwise
+    stop under the existing strict policy. Do not reserve essential terms for
+    a later turn or send another approval/clarification loop.
+
+Finality can occur after the second proposal; a third evidence turn is not
+guaranteed. If this test ends early or 60 days is refused, record that result
+instead of pretending another fresh argument guarantees more discussion.
+At 14/30/45 days, under the observed quoting pattern, the target would need to
+be EUR 5.00 or less. Do not convert a EUR 5.10 short-payment quote into a deal.
+
+The existing V21 controller still sends its A/B/C menu and then the automatic
+EUR 5.09/45-day compromise. A prompt-only change would conflict with this test.
+A future implementation must replace those controls for this experimental
+variant while retaining acceptance validation and final-offer stopping. The
+analysis/profile files here are not automatically loaded into live decisions.
+
+Suggested internal state for that implementation
+  evidence: source refs; actually sent; server check result; supplier's stated
+    pricing response; observed package changes; no inferred discount credit.
+  terms: complete standing offer; alternatives and eligibility; requested
+    structure; explicit restrictions; never mix prices and payment from options.
+  authority: unknown / confirmed / explicitly limited; source message.
+  stance: open / final / terminal, independent of courteous tone.
+  economics: current full cost; threshold; qualifying permitted trades.
+
+Decision order: exact qualifying acceptance -> terminal/final handling ->
+explicit objection -> fresh relevant evidence plus one complete counteroffer.
+All historical observations remain fallible context, not hidden supplier rules.
+
+Files changed by this review: the offline analysis script and files in this
+report directory only. No runtime policy, agent prompt selection, server process,
+or acceptance threshold was changed. No paid or hosted negotiation was started.

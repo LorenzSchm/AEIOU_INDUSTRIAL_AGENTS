@@ -1,0 +1,8 @@
+{
+  "prompt_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/prompts/p18-diagnostic-v27.txt",
+  "prompt_sha256": "a29c2fb87f7bc83f580911fa5fa4d622a3ae7c7e37dfb809d9e933ce1eb828d8",
+  "active_policy_matches_v25": true,
+  "full_v25_menu_verified": true,
+  "actual_684565_offer_acceptance_verified": true,
+  "hosted_sessions_started_for_v27": 0
+}

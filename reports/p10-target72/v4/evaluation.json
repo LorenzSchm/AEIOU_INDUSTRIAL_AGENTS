@@ -1,0 +1,154 @@
+{
+  "id": "2671f8342b9b43548bb0ea7adc406066",
+  "suite_id": "tacto-hosted-practice-v1",
+  "variant_id": "practice",
+  "comparison_id": null,
+  "arena_url": "https://arena.tacto.ai",
+  "case_set": "practice",
+  "created_at": "2026-10-25T00:20:11.194990+00:00",
+  "status": "completed",
+  "prompt_text": "P10 v4 \u2014 lower anchor, one argument per turn, no premature closing language\n\nNegotiate case:P10 only. Return the required action JSON and concise assessment.\nTarget at least 72/100. All case must-haves, fixed terms and legal-action checks\nremain binding. Do not claim a score before the official hosted result.\n\n<capacity_opening>\n{\"case_id\":\"case:P10\",\"opening_fraction\":0.80}\n</capacity_opening>\n\nOPENING\nSend only the calculated full-volume, 36-month, 56-day package from\nprice_plan.suppliers[supplier_id].capacity_opening_tradeoffs: currently\nEUR 25.04/unit for 23,400 seals/year. It gives the supplier long-term commitment\nand scheduling room. Payment 30 days, DAP, effective 2027-01-01, no tooling\nand no index clause remain fixed. This overrides the 42-day package and\ntwo-package menu from earlier experiments.\nKeep the email under 130 words. Use only the purchase-history evidence group:\nthe two September orders at EUR 29.89 (po:4500014383-10, po:4500014436-10).\nAsk which aspect needs adjustment. Do not add cost estimates, delivery\nscorecards, indices, committee questions or own offer IDs in this opening.\n\nOPEN NEGOTIATION\nKeep negotiating while the supplier is open and the package exceeds the\ntarget. Do not use \"best\", \"final\", \"close this now\", \"last\", \"take it or leave\nit\", or ask for a final quotation. Do not imply that our second email ends\nthe discussion. Use one new evidence group and one commercial question per turn.\nAfter the first nonqualifying open counter, propose EUR 26.00 with the same\nfull-volume/36-month/56-day structure. Cite cost:340010 as a buyer estimate of\nEUR 24.31 excluding margin with 5% uncertainty, not a proven actual cost or floor.\nAsk whether the pricing colleague mentioned in doc:20260310-70410-M1 can review\nthis complete package if approval is needed. It is a historical process note;\ndo not assert the present sales contact has no authority or ask for private costs.\nAfter a further nonqualifying open counter, propose EUR 27.00 on the same\nterms, citing the supplier-wide 79.5% on-time delivery in sc:70410@2026Q3.\nAsk how the commercial price can reflect the service delivered. Do not claim\nthe rate is part-specific or that it proves future capacity.\nIf still open, work toward a complete agreement with smaller reciprocal\nchanges and the actual objections. Do not repeat checked claims as new facts.\nKeep proposals commercially serious: these are opening bids, not evidence\nthat the supplier can sustainably sell at the price. Never invent alternatives.\n\nTARGET AND CLOSING\nThe user's historical benchmark implies public cost <= EUR 1,497,925.17 for\n72/100. On full-coverage recorded terms that is at most EUR 30.96 with 56 days\nor EUR 31.68 with 42 days. Unknown private relationship costs can alter the\nofficial score. Do not disclose the target or use it as a supplier floor.\nAccept an eligible live package meeting the target immediately. If a final\noffer is worse, retain close-on-final for this diagnostic run: accept the\ncheapest live eligible offer and record that the goal was missed. Do not make\nanother counter after finality, invent acceptance or initiate buyer walk-away.\nThe 36-month commitment is real; only two years enter the score calculation.\n",
+  "prompt": {
+    "variant": "eval",
+    "strategy_revision": "eval-prompt-v2",
+    "strategy_sha256": "7abb2926650db2189168efd3344627a49e87ebda7e036bb93eb37d45f40a02c7",
+    "transport_sha256": "38834b089eac955d47393e2eb9b8f52e587c0be8ceda87a5753b1e493407f961",
+    "system_sha256": "24e71eda83ff49ecc2799defc018b99764de24bf64e8fab39352127d5d4c4321",
+    "protocol_version": "faithful-v18-closing-cost-comparison",
+    "required_repeats": 0,
+    "enforce_reference_tactics": false,
+    "assessment_version": "supplier-assessment-v2-source-labels",
+    "capacity_opening": {
+      "case_id": "case:P10",
+      "opening_fraction": 0.8
+    }
+  },
+  "execution_policies": {},
+  "model": "claude-opus-5-5",
+  "provider": "anthropic",
+  "effort": "medium",
+  "speed": "fast",
+  "kit_revision": "75eecd19bf42c4f4b5a93f01139fa2a757ec5c07",
+  "arena_sessions_used": 1,
+  "practice_sessions_used": 1,
+  "parallel_runs": 1,
+  "decision_budget_s": 50,
+  "repeats": 1,
+  "quota_at_start": {
+    "used": 160,
+    "left": 240,
+    "limit": 400,
+    "resets_at": "2026-10-25T11:19:44.936916+00:00"
+  },
+  "rows": [
+    {
+      "case_id": "case:P10",
+      "title": "Ravensteiner cuts the seal allocation",
+      "repeat": 1,
+      "status": "completed",
+      "score": 0.6316827463686654,
+      "run_id": "f7945373a92041a5af9f98e1bd2311e8",
+      "session_id": "b75995e7ee098d4c"
+    }
+  ],
+  "completed": 1,
+  "mean_score": 0.6316827463686654,
+  "experiment": {
+    "label": "p10-target72-v4",
+    "target_score": 72,
+    "source_hashes": {
+      "prompts/p10-capacity-v4.txt": "7abb2926650db2189168efd3344627a49e87ebda7e036bb93eb37d45f40a02c7",
+      "src/aeiou/p10_evidence.py": "742d581af7239c926723a3af55f687ab8be6e8f4cca809e5b6fe380d431edb6b",
+      "src/aeiou/price_planner.py": "51d75600a82e8423a40aa9049f11a2387e223b7f8431944009cfaaf6d5996cdd"
+    }
+  },
+  "cases": [
+    {
+      "case_id": "case:P10",
+      "set": "practice",
+      "type": "capacity",
+      "title": "Ravensteiner cuts the seal allocation",
+      "briefing": "You negotiate for Hollerau Pumpenwerke with Dichtungswerk Ravensteiner GmbH. Ravensteiner cuts the seal allocation. Need: 23400 pc a year. Category goal: secure supply of a bottleneck part: coverage of the full need and a supplier that stays healthy come first. Score: the lowest total cost C as defined in the rules, valued with this case's rates (need lead time 42 days). There is no fallback supplier: without a deal the demand is bought at the fallback price. Must-haves: volume_per_year >= 22230. Prepare from the data package.",
+      "trigger_doc": "doc:20260918-70410-P10",
+      "parts": [
+        "part:340010"
+      ],
+      "suppliers": [
+        "sup:70410"
+      ],
+      "negotiable": [
+        "unit_price",
+        "volume_per_year",
+        "contract_months",
+        "lead_time_days"
+      ],
+      "fixed_terms": {
+        "payment_days": 30,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0
+      },
+      "term_options": {
+        "volume_per_year": [
+          16379,
+          19890,
+          23400
+        ],
+        "contract_months": [
+          12,
+          24,
+          36
+        ],
+        "lead_time_days": [
+          35,
+          42,
+          56
+        ]
+      },
+      "buyer": {
+        "need_per_year": 23400,
+        "horizon_years": 2,
+        "current_unit_price": 29.89,
+        "fallback_unit_price": 37.36,
+        "interest_rate": 0.08,
+        "reference_payment_days": 60,
+        "need_lead_time_days": 42,
+        "category_goal": "secure_supply",
+        "fallback_risk_pct": 25,
+        "index_risk_pct": 3,
+        "late_cost_per_day": 2400,
+        "cost_per_defect": 380,
+        "sustainable_margin_pct": 10,
+        "relationship_eur_per_point": 13990,
+        "freight_eur_per_unit": {
+          "EXW": 0.01,
+          "FCA": 0.01,
+          "DAP": 0.0
+        },
+        "index_paths": {},
+        "must_haves": [
+          {
+            "field": "volume_per_year",
+            "op": ">=",
+            "value": 22230
+          }
+        ],
+        "alternative": {
+          "kind": "none",
+          "ref": null,
+          "terms": {}
+        }
+      },
+      "round_limit": 10,
+      "refs": [
+        "doc:20260918-70410-P10",
+        "ctr:4600070410",
+        "sc:70410@2026Q3",
+        "fc:340010@2026-09"
+      ],
+      "hosted": true
+    }
+  ],
+  "completed_at": "2026-10-25T00:20:43.414034+00:00"
+}

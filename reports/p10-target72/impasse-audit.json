@@ -1,0 +1,34 @@
+{
+  "condition": "No qualifying supplier acceptance at the fixed case terms after the supported price, term, evidence, document-delivery and approval routes reviewed so far. No remaining supported next action has been identified.",
+  "first_audited_at": "2026-10-25T02:03:38.887229+00:00",
+  "consecutive_goal_turns_audited": 3,
+  "not_a_proven_private_limit": true,
+  "latest_evidence": [
+    "current-hosted-state.json",
+    "completion-audit.json",
+    "v39/server-verification.json",
+    "v39/backoffice.json",
+    "v40/server-verification.json",
+    "revalidation-input.json",
+    "final-impasse-revalidation.json"
+  ],
+  "needed_to_reopen_progress": "New case evidence, a documented approval route, a qualifying standing offer, or a change in the external supplier response.",
+  "prohibited_conclusions": [
+    "Do not call the current engine fallback without evidence.",
+    "Do not claim 72 is mathematically impossible or change the score definition."
+  ],
+  "note": "Third consecutive explicit impasse audit. The score target remains unmet. Resume requires new evidence, a documented route to qualifying supplier approval, or an external supplier change; the target has not been reduced.",
+  "last_revalidated_at": "2026-10-25T02:05:23.752169+00:00",
+  "previous_goal_turn_classification": "no progress: revalidation found unchanged case, data availability, runtime sources and hosted score",
+  "current_turn_classification": "no progress: same supplier-acceptance impasse remains, with no active P10 negotiation or new supported route",
+  "revalidation": {
+    "hosted_best_score": 70.20804327564957,
+    "case_terms_changed": false,
+    "verified_runtime_sources_changed": false,
+    "active_ui_jobs": {},
+    "new_release_public": false,
+    "new_release_available_at": "2026-10-25T07:00:00+00:00",
+    "practice_scope": "Practice uses the frozen base data even after the Sunday release; its publication alone is not assumed to unblock P10."
+  },
+  "status_recommendation": "blocked; the thread goal tool is authoritative for applied status"
+}

@@ -1,0 +1,405 @@
+{
+  "created_at": "2026-10-24T23:17:59.039576+00:00",
+  "mode": "offline_counterfactual",
+  "limitations": "Verifies what the buyer code would choose on recorded live states. Does not simulate supplier acceptance or predict the score of a new run.",
+  "hosted_sessions_used": 0,
+  "model_calls": 0,
+  "execution_policy": {
+    "case_id": "case:P18",
+    "accept_eligible_offers": true,
+    "closing_price": 5.1,
+    "maximum_unit_price": 5.1,
+    "maximum_total_cost": 244400.6,
+    "minimum_contract_months": 24,
+    "one_final_counter": false,
+    "adapt_closing_price_to_budget": true,
+    "stop_after_nonqualifying_final": true,
+    "consistent_package_sequence": {
+      "payment_days": 60,
+      "contract_months": 36,
+      "index_clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5,
+        "base_month": "2026-08"
+      },
+      "stages": [
+        {
+          "name": "opening",
+          "unit_price": 4.6,
+          "evidence_argument": "po_price_history"
+        },
+        {
+          "name": "ppi_counter",
+          "unit_price": 5.0,
+          "evidence_argument": "ppi_recent_change_pct"
+        },
+        {
+          "name": "alloy_close",
+          "unit_price": 5.1,
+          "evidence_argument": "as_recent_change_pct"
+        }
+      ]
+    }
+  },
+  "strategy_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/prompts/p18-diagnostic-v22.txt",
+  "policy_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/config/p18-consistent-package.json",
+  "replays": [
+    {
+      "source_run": "835ad45899e34ee588343a6696ea42a1",
+      "source_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/data/local/runs/835ad45899e34ee588343a6696ea42a1.json",
+      "replay_through_message": 1,
+      "then_live_offer_ids": [],
+      "counterfactual_action": {
+        "supplier_id": "sup:70740",
+        "message": {
+          "subject": "Alloy surcharge and base price for 1.4404 bar (Werdenfels)",
+          "body": "Dear Mr Seidl,\n\nThank you for your quotation and for considering a longer-term agreement. We value our relationship with Werdenfels and would like to find a package your team can approve.\n\nOur purchase orders with you for part:370010 on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10), compared with EUR 5.84/kg on 1 and 18 September 2026 (po:4500014355-10, po:4500014427-10).\n\nWe propose EUR 4.60/kg for part:370010, payment within 60 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\n\nOur price applies only together with the complete package above. This is a proposal for your approval, not a confirmation of agreement. The fixed terms of our enquiry remain unchanged. Could you issue this complete package as your binding offer? If a term prevents approval, please identify it so we can address it directly.\n\nKind regards,\nPurchasing, Hollerau Pumpenwerke",
+          "term_sheets": [
+            {
+              "terms": {
+                "unit_price": 4.6,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                },
+                "payment_days": 60,
+                "contract_months": 36
+              }
+            }
+          ]
+        }
+      },
+      "decision": {
+        "supplier_id": "sup:70740",
+        "source": "policy:package-sequence:opening",
+        "action": "send",
+        "elapsed_s": 0.01,
+        "protocol_version": "faithful-v17-consistent-package-sequence",
+        "rejections": [],
+        "message_index": 1,
+        "evidence_transport": {
+          "version": "evidence-transport-v3-delivery-audit",
+          "max_local_reads": 2,
+          "complete_source_count": 193,
+          "raw_payload_chars": 208934,
+          "selected_fact_count": 40,
+          "availability_note": "Deferred records remain accessible through retrieve_evidence. No arbitrary queries.",
+          "collection_issues": [],
+          "delivery_counts": {
+            "full": 90,
+            "partial": 0,
+            "deferred": 129
+          },
+          "partial_refs": [],
+          "unretrievable_refs": [],
+          "retained_pages": 0,
+          "delivered_payload_chars": 92684
+        },
+        "evidence_reads": [],
+        "model_requests": [],
+        "assessment_label_repairs": [],
+        "supplier_signals": {
+          "live": true,
+          "status": "open",
+          "tone": "courteous",
+          "stance": "negotiating",
+          "authority": "unspecified",
+          "withdrawal_risk_signal": "unknown",
+          "risk_basis": "Explicit finality or terminal status; qualitative signal, not a calibrated probability.",
+          "rounds_left": 10,
+          "rounds_note": "Remaining API sends are not a promise that the supplier will continue.",
+          "evidence": [
+            {
+              "signal": "courtesy",
+              "source_ref": "message:sup:70740:0",
+              "quote": "Dear customer,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe are delighted to present our competitive quote"
+            }
+          ],
+          "primary_price_history": [
+            {
+              "unit_price": 6.1,
+              "source_ref": "message:sup:70740:0"
+            }
+          ],
+          "latest_primary_price_movement": null,
+          "live_objections": [],
+          "latest_stated_cost_drivers": [
+            {
+              "series": "AS-14404",
+              "annual_change_pct": 5.9,
+              "stated_cost_share_pct": 45.0,
+              "conditional_contribution_pp": 2.655
+            },
+            {
+              "series": "LCI-C",
+              "annual_change_pct": 2.7,
+              "stated_cost_share_pct": 5.0,
+              "conditional_contribution_pp": 0.135
+            },
+            {
+              "series": "PPI-C2431",
+              "annual_change_pct": 12.3,
+              "stated_cost_share_pct": 38.0,
+              "conditional_contribution_pp": 4.674
+            }
+          ],
+          "previously_cited_refs": [],
+          "supplier_questions": []
+        },
+        "price_plan": {
+          "offers": [
+            {
+              "offer_id": "offer:70740-0",
+              "unit_price": 6.1,
+              "complete_cost": 295173.23,
+              "acceptance_eligible": false,
+              "estimated_score": 0.0,
+              "maximum_affordable_unit_price": 3.97,
+              "cost_gap_to_acceptance": 50772.63,
+              "qualifying_payment_tradeoffs": [],
+              "benchmark_price_limits": [
+                {
+                  "score": 70,
+                  "unit_price_at_or_below": 3.97,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                },
+                {
+                  "score": 70.01,
+                  "unit_price_at_or_below": 3.97,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                },
+                {
+                  "score": 80,
+                  "unit_price_at_or_below": 3.66,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                },
+                {
+                  "score": 100,
+                  "unit_price_at_or_below": 3.06,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                }
+              ],
+              "budget_ceiling_package": {
+                "terms": {
+                  "unit_price": 3.97,
+                  "index_clause": null,
+                  "payment_days": 30,
+                  "contract_months": 12
+                },
+                "complete_cost": 244355.69,
+                "estimated_score": 70.0719,
+                "status": "Buyer calculation only; supplier has not offered this price."
+              },
+              "preferred_package": {
+                "terms": {
+                  "unit_price": 5.1,
+                  "index_clause": null,
+                  "payment_days": 30,
+                  "contract_months": 12
+                },
+                "complete_cost": 271315.23,
+                "within_buyer_limits": false
+              }
+            }
+          ],
+          "best_eligible_offer_id": null
+        },
+        "assessment": {
+          "observed_message": "message:sup:70740:0",
+          "changes": [
+            "Reviewed the current offer against the explicit execution controls."
+          ],
+          "open_questions": [
+            "Will the supplier issue the authorized closing package?"
+          ],
+          "response_to_last_move": "Current structured terms and live eligibility determine the available action.",
+          "adaptation": "Keep payment, duration and index clause unchanged through the sequence.",
+          "next_move": "Send the opening package with checked literal PO prices once.",
+          "evidence": [
+            {
+              "claim": "The supplier supplied the current offer being evaluated.",
+              "kind": "supplier_claim",
+              "source_refs": [
+                "message:sup:70740:0"
+              ],
+              "confidence": "high"
+            },
+            {
+              "claim": "Our purchase orders with you for part:370010 on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10), compared with EUR 5.84/kg on 1 and 18 September 2026 (po:4500014355-10, po:4500014427-10).",
+              "kind": "public_record",
+              "source_refs": [
+                "po:4500014022-10",
+                "po:4500014078-10",
+                "po:4500014355-10",
+                "po:4500014427-10"
+              ],
+              "confidence": "high"
+            }
+          ]
+        },
+        "assessment_version": "supplier-assessment-v2-source-labels",
+        "numeric_checks": [],
+        "economics": {
+          "supplier_change": null,
+          "buyer_change": null,
+          "current_best_valid_offer": {
+            "terms": {
+              "volume_per_year": 23700,
+              "contract_months": 12,
+              "payment_days": 30,
+              "lead_time_days": 14,
+              "incoterm": "DAP",
+              "ppm_commitment": 70,
+              "chargeback_eur_per_complaint": 0.0,
+              "effective_date": "2027-01-01",
+              "tooling_eur": 0,
+              "unit_price": 6.1,
+              "index_clause": null
+            },
+            "cost": 295173.23,
+            "must_haves_ok": true,
+            "term_sheet_id": "offer:70740-0",
+            "breakdown": {
+              "price": 144570.0,
+              "uncovered_need": 145281.0,
+              "fallback_risk": 4358.43,
+              "payment_terms": 963.8,
+              "freight": 0.0,
+              "late_delivery": 0,
+              "quality": 0.0,
+              "tooling": 0.0,
+              "index_clause": 0.0,
+              "index_risk": 0.0,
+              "relationship": 0.0
+            }
+          },
+          "cost_basis": "Public case formula; excludes unknown private supplier relationship costs."
+        },
+        "execution_evidence": {
+          "argument_id": "po_price_history",
+          "source_refs": [
+            "po:4500014022-10",
+            "po:4500014078-10",
+            "po:4500014355-10",
+            "po:4500014427-10"
+          ],
+          "status": "included"
+        },
+        "package_sequence_state": {
+          "status": "ready",
+          "sent_buyer_messages": 0,
+          "stage": "opening",
+          "evidence_argument": "po_price_history",
+          "terms": {
+            "payment_days": 60,
+            "contract_months": 36,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 5,
+              "base_month": "2026-08"
+            },
+            "unit_price": 4.6
+          },
+          "total_cost": 220002.36
+        }
+      },
+      "local_stop": null,
+      "price_plan": {
+        "basis": "Public total-cost formula and explicit buyer limits; no private supplier costs or reservation price.",
+        "needed_quantity": 47400,
+        "horizon_years": 2,
+        "preferred_closing_price": 5.1,
+        "ideal_price": null,
+        "ideal_price_status": "Not identifiable from public data: the supplier's feasible minimum is unknown.",
+        "suppliers": {
+          "sup:70740": {
+            "offers": [
+              {
+                "offer_id": "offer:70740-0",
+                "unit_price": 6.1,
+                "complete_cost": 295173.23,
+                "acceptance_eligible": false,
+                "estimated_score": 0.0,
+                "maximum_affordable_unit_price": 3.97,
+                "cost_gap_to_acceptance": 50772.63,
+                "qualifying_payment_tradeoffs": [],
+                "benchmark_price_limits": [
+                  {
+                    "score": 70,
+                    "unit_price_at_or_below": 3.97,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  },
+                  {
+                    "score": 70.01,
+                    "unit_price_at_or_below": 3.97,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  },
+                  {
+                    "score": 80,
+                    "unit_price_at_or_below": 3.66,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  },
+                  {
+                    "score": 100,
+                    "unit_price_at_or_below": 3.06,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  }
+                ],
+                "budget_ceiling_package": {
+                  "terms": {
+                    "unit_price": 3.97,
+                    "index_clause": null,
+                    "payment_days": 30,
+                    "contract_months": 12
+                  },
+                  "complete_cost": 244355.69,
+                  "estimated_score": 70.0719,
+                  "status": "Buyer calculation only; supplier has not offered this price."
+                },
+                "preferred_package": {
+                  "terms": {
+                    "unit_price": 5.1,
+                    "index_clause": null,
+                    "payment_days": 30,
+                    "contract_months": 12
+                  },
+                  "complete_cost": 271315.23,
+                  "within_buyer_limits": false
+                }
+              }
+            ],
+            "best_eligible_offer_id": null
+          }
+        },
+        "minimum_score": 70.01,
+        "maximum_total_cost": 244400.6,
+        "score_basis": "Arithmetic estimate from the configured benchmarks; official result is server-issued."
+      },
+      "payload": {
+        "version": "evidence-transport-v3-delivery-audit",
+        "max_local_reads": 2,
+        "complete_source_count": 193,
+        "raw_payload_chars": 208934,
+        "selected_fact_count": 40,
+        "availability_note": "Deferred records remain accessible through retrieve_evidence. No arbitrary queries.",
+        "collection_issues": [],
+        "delivery_counts": {
+          "full": 90,
+          "partial": 0,
+          "deferred": 129
+        },
+        "partial_refs": [],
+        "unretrievable_refs": [],
+        "retained_pages": 0,
+        "delivered_payload_chars": 92684,
+        "reduction_pct": 55.64,
+        "measurement": "Initial JSON characters, not tokens, latency or billing. Raw size precedes new signals."
+      },
+      "terminal_replay": "No live supplier remains"
+    }
+  ]
+}

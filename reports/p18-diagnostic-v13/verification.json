@@ -1,0 +1,18 @@
+{
+  "offline_validation": "passed: updated opening and live follow-up pass the actual decision adapter",
+  "acceptance_policy": {
+    "case_id": "case:P18",
+    "c_open": 295173.23,
+    "c_best": 222651.27,
+    "minimum_score": 76.87403,
+    "maximum_unit_price": 5.0
+  },
+  "maximum_total_cost": 239422.67,
+  "concession_sequence_unchanged": true,
+  "fixed_price_requirement_unchanged": true,
+  "source_review": "Annual rates match supplied records after rounding; supplier cost shares remain assertions. Annual and June-September windows cannot be directly compared.",
+  "hosted_tests_launched": 0,
+  "paid_model_calls": 0,
+  "production_code_changed": false,
+  "limitation": "Argument seeks clarification; it does not prove a feasible supplier price or resolve the stated objection to fixing prices for multiple years. The pasted run ended with a supplier withdrawal."
+}

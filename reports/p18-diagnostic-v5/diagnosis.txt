@@ -1,0 +1,70 @@
+P18: Why the 25.7-point offer was accepted, and the new 80-point floor
+
+Observed run: b8abc5e1bc524b819fd33a7279826f9c.
+The supplier's final binding terms were 5.60 EUR/kg, 14 days, 36 months,
+AS-14404 / 45% / no deadband / base 2026-08. Total cost: 276514.75 EUR.
+Official score: 25.7280415 points.
+
+The target proposal at 4.45 cost 219730.47 EUR. The supplier never accepted that
+price. It kept its own 5.60 while taking the other conditions. The buyer's next
+decision explicitly invoked the unconditional Final closing rule and accepted
+the only eligible live offer. Eligibility meant a valid standing offer cheaper
+than the alternative; it did not mean a score of 80 or more.
+
+V4 contained: 'The target is not a veto on the original closing rule.' It also
+required accepting on Final, agreement or exhausted sends even above target.
+The new user instruction explicitly supersedes those rules. An 80-point
+acceptance boundary was not implemented in V4.
+
+Exact new threshold
+Score = 100 * (295173.23 - C_deal) / (295173.23 - 222651.27).
+Score >= 80 requires C_deal <= 237155.662 EUR.
+Since evaluated costs are rounded to cents, the allowed maximum is 237155.66.
+237155.67 is below 80 even though a display could round its score to 80.0.
+
+Changes
+prompts/p18-diagnostic-v5.txt is a COMPLETE replacement, not an appended patch.
+It contains a structured acceptance_floor block that activates the code guard.
+It removes unconditional acceptance and the mandatory 5.18 opening, which
+itself scored only 70.707 on the old terms. The first proposal is now the target
+exchange directly. The existing shrinking, reciprocal concession discipline
+remains. An 80-point package is the last acceptable boundary; near 100 remains
+the objective.
+
+The controller derives the exact maximum cost from the configured benchmark,
+checks the case ID and actual opening cost, and filters the model's eligible
+offers. Acceptance of a package above the boundary is rejected. If a model
+insists after its validation retry, execution fails without sending acceptance.
+A second check immediately before the hosted send prevents bypassing the
+controller. Term-sheet costs include payment and index terms.
+
+The new stop action terminates locally without acceptance. The evaluation's
+existing cleanup can close the remote session without a deal. That is not a
+successful negotiation and is never assigned an invented 80-point score.
+If a useful legal move remains, V5 continues negotiation. Final alone does not
+waive the minimum. When no acceptable offer or useful legal move remains,
+V5 stops rather than accepting below 80.
+
+Scope
+The structured policy is explicit and case-scoped. V5 activates it for P18.
+Unconfigured earlier prompts retain their behavior for reproducible comparison;
+replace V4 with the entire V5 file, including the policy block. A different case
+or a different opening benchmark fails validation rather than borrowing P18's
+threshold. No benchmark for an unknown case is invented.
+
+Validation
+74 relevant tests passed, including the new regression cases and existing
+protocol, standing-offer recovery, prompt comparison and evaluation tests.
+The 10 acceptance-floor cases passed again after import lint fixes. Lint and
+diff whitespace checks passed. Tests cover the actual bad package, exhausted
+rounds, exact cost boundary, payment/index differences at the same unit price,
+unavailable cheaper alternatives, a model insisting on acceptance, and the
+last check before network delivery. The test backends are test doubles, not
+supplier-performance evidence.
+
+The local workbench was restarted after confirming no active jobs and returned
+HTTP 200. No hosted negotiation or paid model call was started for validation.
+The supplier's willingness to meet 80 remains untested with V5. The public best
+attainable benchmark describes an achievable optimal package with all levers;
+it does not guarantee that every negotiation run will reach 80. Refusing a
+lower-scoring deal can leave a no-deal outcome with a lower or zero score.

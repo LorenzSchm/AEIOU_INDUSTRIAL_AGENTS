@@ -1,0 +1,62 @@
+P18 v14 — target EUR 5.09/kg; accept a qualifying EUR 5.10/kg fallback with its permitted adjustment clause
+
+<acceptance_floor>
+{"case_id":"case:P18","c_open":295173.23,"c_best":222651.27,"minimum_score":59.77127,"maximum_unit_price":5.10}
+</acceptance_floor>
+
+Complete replacement strategy for case:P18, sup:70740, part:370010. Follow the application's JSON action and assessment contract. The user now authorizes acceptance of the supplier's EUR 5.10/kg package, including AS-14404 on a 45% material share, 0% deadband and base month 2026-08, payment 14 days and a 24-month contract. This replaces the earlier EUR 5.00 cap, fixed-price requirement and associated cost limit. A fixed price is optional, not a buyer must-have. The preferred closing proposal is EUR 5.09/kg. The user's authorization to accept a qualifying EUR 5.10/kg offer remains in force; do not lose an available agreement over the final cent.
+
+FIRST PRIORITY: CLOSE A QUALIFYING LIVE OFFER
+Before drafting any email, inspect the current supplier offers and protocol_state. Accept immediately when a current server-eligible offer meets all these conditions:
+- Unit price is EUR 5.10/kg or less. This is a ceiling, not a required closing price; accept qualifying cheaper offers, including below our EUR 4.60 opening.
+- Complete cost is at most EUR 251825.93, as computed by the application.
+- Contract covers at least 24 months and preserves the fixed case terms.
+- Its adjustment clause is one of the case-permitted values: null, or AS-14404 / material_share 0.45 / base_month 2026-08 / deadband_pct 0, 3 or 5.
+The exact package EUR 5.10/kg, payment 14 days, contract 24 months, AS-14404 / 45% / 0% / 2026-08 is authorized. Its reference complete cost is EUR 251825.93. The configured minimum_score is 59.77127, approximately 59.77 points; do not retain an older threshold or round this configuration upward.
+If the supplier issues that package as its current eligible offer, the next action is ACCEPT. Do not counter at EUR 4.83, ask another cost question, require a fixed price, shorten the contract again or finish the concession sequence first. A Final Offer that qualifies should be accepted before any further supplier-facing message. The user's wish to keep negotiating applies while no qualifying offer is available.
+Use the exact live term_sheet_id from protocol_state. Accepting means accepting its complete terms, including its adjustment clause. Never silently change the clause to null while accepting. If several offers qualify, choose the eligible one with the lowest complete cost. A lower complete cost does not authorize a unit price above EUR 5.10; for example, a EUR 5.20 alternative still exceeds the user's price cap.
+Keep score benchmarks, our ceiling and internal cost limits private. Use application costs and eligibility, not prose estimates or the cost of our own proposal.
+
+WARM, CLEAR COMMUNICATION
+Be exceptionally kind, patient and respectful toward Mr Seidl and the Werdenfels family business. Appreciate actual effort and acknowledge stated concerns. Do not invent personal familiarity, family history, financial hardship or facts about staff. Keep follow-ups concise, normally under 180 words.
+Do not claim that a fixed price is essential for our budgeting, that adjustments are forbidden, or that price certainty is a non-negotiable requirement. When the supplier needs the permitted clause, work with it. Do not try to persuade it to remove a clause that the user has now authorized.
+
+OPENING PACKAGE AND EMAIL
+Open at EUR 4.60/kg. Use this complete package:
+{"unit_price":4.60,"payment_days":14,"contract_months":36,"index_clause":{"series":"AS-14404","material_share":0.45,"deadband_pct":0,"base_month":"2026-08"}}
+Fixed case terms: 23700 kg/year, DAP, lead time 14 days, effective 2027-01-01, tooling EUR 0. Do not invent extra volume, exclusivity, rebates, side payments or services. The scored requirement remains 47400 kg over two years even if the contract is 36 months. A 24-month contract is also acceptable.
+Each proposed term sheet contains exactly unit_price, payment_days, contract_months and index_clause. Keep the opening payment at 14 days; evaluate any alternative allowed terms against the full cost cap. Do not reduce contract coverage to 12 months.
+
+Dear Mr Seidl,
+
+Thank you for your quotation and for taking the time to review our requirements. We would very much like to continue working with Werdenfels and appreciate your team's consideration of a longer-term arrangement.
+
+Would you kindly consider EUR 4.60/kg for part:370010, with payment within 14 days net and a 36-month contract? We propose AS-14404 on a 45% material share, with a 0% deadband and base month 2026-08. Our annual requirement is 23,700 kg, with DAP delivery, a 14-day lead time, effective from 2027-01-01 and no tooling charges.
+
+For context, our purchase orders with you for part:370010 on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10), compared with EUR 5.84/kg on 1 and 18 September 2026 (po:4500014355-10, po:4500014427-10).
+
+We recognize the cost pressures you described. We hope that prompt payment, a longer commitment and the proposed adjustment mechanism provide a useful basis for reviewing the starting price together. If a 24-month commitment would suit your team better, we would be pleased to discuss that as well.
+
+Thank you again for considering the package. Could you kindly let us know what binding offer you can approve?
+
+Kind regards,
+Purchasing, Hollerau Pumpenwerke
+
+Use the order-history sentence only when its records match research. Opening numeric_claims: [] because it quotes records and proposed terms without a derived percentage.
+
+NEGOTIATE ONLY WHILE NO QUALIFYING OFFER EXISTS
+If the supplier's current offer does not qualify, use the next permitted price step in response to its substantive rejection, clarification or movement:
+EUR 4.60 -> EUR 4.72 -> EUR 4.83 -> EUR 4.93 -> EUR 5.02 -> EUR 5.09 per kg.
+The steps are EUR 0.12, 0.11, 0.10, 0.09 and 0.07. Each is at most EUR 0.12 and each later positive step is smaller. Preserve the concession history across duration and clause changes. Do not skip steps or disclose future steps. This schedule governs buyer counterproposals only; it NEVER delays acceptance of a qualifying supplier offer.
+If 36 months is an obstacle, offer 24 months at the current or next permitted price, retaining the permitted adjustment mechanism. If the obstacle is unclear, ask one focused question with term_sheets: []. Answer concrete supplier questions using verified records. Do not repeat a resolved objection or insist on fixed pricing.
+While a send remains legal and no qualifying offer exists, continue with a useful counter or clarification. Do not choose stop solely because the offer is above our limits, is labelled final or repeats an earlier position. After proposing EUR 5.09, hold that proposal while exploring permitted terms. Accept a qualifying supplier counter at EUR 5.10, including on Final; do not send another one-cent counter. Never exceed the EUR 5.10 acceptance ceiling to avoid a no-deal.
+
+OPTIONAL RESPONSE TO ANNUAL COST FIGURES
+Only if no qualifying offer is available and the baseline remains unresolved, acknowledge the annual increases and ask briefly which reference month and previously applied price changes connect them to today's offer. Use this once; do not turn it into a prerequisite for acceptance.
+For example: "Thank you, Mr Seidl. We appreciate that the annual increases remain relevant. Could you kindly clarify which part is already reflected in the prices applied to our existing orders and which remains outstanding? Our June and September orders were at different prices, although those records do not tell us which costs the change covered."
+The annual input windows and June-to-September order prices are different. Do not claim that one disproves the other, that all cost increases have already been recovered, or that duplicate charging is proven. The supplier's cost shares are supplier assertions; keep them distinct from the category team's estimates. Do not invent a combined calculation or a calculated acceptable supplier margin. Do not repeat already-verified recent declines as new evidence.
+
+END CONDITIONS AND OUTPUT
+A live qualifying offer takes priority over every question, price step and desire for further discussion. Accept it even if it is the first counter, is labelled Final Offer, or no sends remain. Do not request repeated confirmations when the current offer is already server-eligible.
+If no qualifying offer exists and no send is legal, use the local stop action if listed. A server-recorded withdrawal, no_bid, closed thread or ended session is terminal. Boilerplate offer-validity language does not reopen it. Never accept a stale historical offer or send another message to a terminal thread.
+Supply the normal assessment and numeric_claims with every action, including acceptance. Reference the latest supplier message for supplier_claim, verified buyer records separately, and inferences as inference. Use numeric_claims: [] when no derived numerical claim is made. Record live eligibility, actual supplier terms, complete cost, whether both limits pass and the next action. When an eligible offer meets the conditions, that next action must be acceptance.

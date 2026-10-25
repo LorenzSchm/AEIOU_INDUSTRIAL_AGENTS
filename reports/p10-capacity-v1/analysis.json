@@ -1,0 +1,271 @@
+{
+  "baseline_run_id": "293f76b2ed574de6856f509031ae1569",
+  "baseline_result": {
+    "ended": true,
+    "deal": true,
+    "supplier_id": "sup:70410",
+    "offer_id": "offer:70410-1",
+    "terms": {
+      "payment_days": 30,
+      "lead_time_days": 42,
+      "volume_per_year": 23400,
+      "contract_months": 24,
+      "effective_date": "2027-01-01",
+      "index_clause": null,
+      "incoterm": "DAP",
+      "tooling_eur": 0.0,
+      "ppm_commitment": 300,
+      "chargeback_eur_per_complaint": 0.0,
+      "unit_price": 34.1
+    },
+    "c_open": 1932492.18,
+    "c_deal": 1611854.4,
+    "c_alt": null,
+    "c_best": 1328926.89,
+    "score": 0.5312395946426939,
+    "must_haves_ok": true,
+    "cost_breakdown": {
+      "price": 1595880.0,
+      "uncovered_need": 0.0,
+      "fallback_risk": 0.0,
+      "payment_terms": 10639.2,
+      "freight": 0.0,
+      "late_delivery": 0.0,
+      "quality": 5335.2,
+      "tooling": 0.0,
+      "index_clause": 0.0,
+      "index_risk": 0.0,
+      "relationship": 0.0
+    }
+  },
+  "gap_to_reported_best": 282927.51,
+  "history": [
+    {
+      "run_id": "cf9f2092d3c6476c9d0ed1104bc4a5c1",
+      "created_at": "2026-10-24T16:51:37.754461+00:00",
+      "status": "completed",
+      "score": 0.5312395946426939,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 42,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 34.1
+      },
+      "cost": 1611854.4
+    },
+    {
+      "run_id": "1eab51669a27457fbd1043c761d0d57d",
+      "created_at": "2026-10-24T17:56:53.074111+00:00",
+      "status": "completed",
+      "score": 0.5390452124905989,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 42,
+        "volume_per_year": 23400,
+        "contract_months": 24,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 34.0
+      },
+      "cost": 1607143.2
+    },
+    {
+      "run_id": "d7e0d3693ab143ed9d2c7e2715c3b017",
+      "created_at": "2026-10-24T19:21:37.337299+00:00",
+      "status": "completed",
+      "score": 0.6394883642165704,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 24,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 32.0
+      },
+      "cost": 1546519.2
+    },
+    {
+      "run_id": "76f76a83e9c34ccd8b0dca110033c1a7",
+      "created_at": "2026-10-24T22:20:47.328832+00:00",
+      "status": "failed",
+      "score": null,
+      "terms": {},
+      "cost": null
+    },
+    {
+      "run_id": "99bec252cb124b83b539b2ae2b49855b",
+      "created_at": "2026-10-24T22:27:34.217151+00:00",
+      "status": "completed",
+      "score": 0.6472939820644754,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 24,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.9
+      },
+      "cost": 1541808.0
+    },
+    {
+      "run_id": "83fec46ecf3c4a49869a982d1cf3d8b0",
+      "created_at": "2026-10-24T22:27:34.218545+00:00",
+      "status": "completed",
+      "score": 0.5390452124905989,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 42,
+        "volume_per_year": 23400,
+        "contract_months": 24,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 34.0
+      },
+      "cost": 1607143.2
+    },
+    {
+      "run_id": "6a936a315f3a46568199bb43c63f1812",
+      "created_at": "2026-10-24T22:27:34.219907+00:00",
+      "status": "completed",
+      "score": 0.0,
+      "terms": {},
+      "cost": null
+    },
+    {
+      "run_id": "6393c01e8b684979a281b0c6bab9a95c",
+      "created_at": "2026-10-24T23:01:32.851242+00:00",
+      "status": "completed",
+      "score": 0.5390452124905989,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 42,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 34.0
+      },
+      "cost": 1607143.2
+    },
+    {
+      "run_id": "293f76b2ed574de6856f509031ae1569",
+      "created_at": "2026-10-25T00:07:51.949851+00:00",
+      "status": "completed",
+      "score": 0.5312395946426939,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 42,
+        "volume_per_year": 23400,
+        "contract_months": 24,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 34.1
+      },
+      "cost": 1611854.4
+    }
+  ],
+  "opening_tradeoffs": [
+    {
+      "terms": {
+        "unit_price": 27.37,
+        "volume_per_year": 23400,
+        "contract_months": 24,
+        "lead_time_days": 42
+      },
+      "complete_cost": 1294790.64,
+      "reference_cost": 1294790.64,
+      "delay_cost_at_reference_price": 0.0,
+      "unit_price_reduction": 0.0,
+      "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+    },
+    {
+      "terms": {
+        "unit_price": 26.65,
+        "volume_per_year": 23400,
+        "contract_months": 24,
+        "lead_time_days": 56
+      },
+      "complete_cost": 1294470.0,
+      "reference_cost": 1294790.64,
+      "delay_cost_at_reference_price": 33600.0,
+      "unit_price_reduction": 0.72,
+      "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+    },
+    {
+      "terms": {
+        "unit_price": 27.37,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "lead_time_days": 42
+      },
+      "complete_cost": 1294790.64,
+      "reference_cost": 1294790.64,
+      "delay_cost_at_reference_price": 0.0,
+      "unit_price_reduction": 0.0,
+      "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+    },
+    {
+      "terms": {
+        "unit_price": 26.65,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "lead_time_days": 56
+      },
+      "complete_cost": 1294470.0,
+      "reference_cost": 1294790.64,
+      "delay_cost_at_reference_price": 33600.0,
+      "unit_price_reduction": 0.72,
+      "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+    }
+  ],
+  "source_hashes": {
+    "src/aeiou/price_planner.py": "f5519c0f9243eb534aef05a5399d2772eb413d3e8e6f1d135924c8c603b21bc9",
+    "prompts/p10-capacity-v1.txt": "e7de6f8e050aa13363d8859fe0aac2f2dc5e5a76164c24b0c16806427634e142"
+  },
+  "validation": {
+    "pytest": "85 passed across focused planner, prompt, evidence and evaluation checks",
+    "ruff": "passed",
+    "new_model_calls": 0,
+    "new_arena_sessions": 0
+  },
+  "limits": [
+    "Historical runs are observational, not controlled comparisons.",
+    "Reported best cost is offline evaluation data, excluded from buyer inputs.",
+    "The own-offer citation is a suspected cause of the irrelevant rival claim; no counterfactual is recorded.",
+    "Public equal-cost proposals exclude unknown relationship costs. Supplier approval remains unknown."
+  ],
+  "experiment_evaluation_id": "7ebf7243d5c5446a8e3c922a4007b29a"
+}

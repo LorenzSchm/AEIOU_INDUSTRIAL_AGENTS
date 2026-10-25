@@ -1,0 +1,15 @@
+{
+  "offline_tests": "75 passed",
+  "ruff": "passed",
+  "git_diff_check": "passed",
+  "workbench_http_status": 200,
+  "workbench_pid": 34547,
+  "maximum_unit_price": 4.9,
+  "maximum_total_cost": 241950.4,
+  "minimum_score": 73.38857,
+  "hosted_tests_launched": 0,
+  "paid_model_calls": 0,
+  "closed_session_checked": "eb6e2bc2d9fe34da",
+  "closed_session_status": "ended / no_deal / walked_away; no standing offer",
+  "limitation": "The previous run cannot be reopened; new supplier acceptance is untested."
+}

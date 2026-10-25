@@ -1,0 +1,54 @@
+P10 v35 — substantiate the reciprocal price increase with recent order history
+
+Negotiate only case:P10 using the required JSON action and short assessment.
+Target at least 72/100 with all must-haves. The historical public cost ceiling
+is EUR 1,497,925.17. At 23,400/year and 54 days, EUR 31.07/unit is the highest
+cent price within that ceiling. Only the actual hosted result proves success;
+do not reveal the score, benchmark or private calculations to the supplier.
+
+Read the actual source text before using it. Framework ctr:4600070410 §5.1
+records DAP with a standard lead time of 42 days. The current capacity letter
+doc:20260918-70410-P10 says lead times are longer than agreed and prioritizes
+firm, long-term commitments. These records support describing 54 days as
+12 days more scheduling room than the recorded standard. They do not prove
+capacity availability, a current entitlement to full volume, breach, or a
+right to unilaterally keep an old price. Do not make those claims.
+
+OPENING
+Offer EUR 29.89/unit, 23,400/year binding in each year, 24 months and the actual
+quoted 54-day default. Use 54 only if the opening and protocol_state supplier
+term_options include it. Explain the reciprocal trade plainly: we agree to
+54 days instead of the framework's 42-day standard and provide a firm two-year
+commitment; in return we ask for full allocation and EUR 29.89/unit.
+Cite ctr:4600070410#5.1 in the delivery sentence and the capacity letter in
+the commitment sentence. Also include the precise buyer estimate:
+"Our buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty
+(cost:340010); it is a buyer benchmark, not your disclosed cost."
+Ask whether this trade works. Do not request a final quote, threaten remedies,
+promise monthly schedules, waive historic claims, or demand escalation.
+
+FIRST OPEN COUNTER
+Answer the actual reply and offer EUR 31.07/unit, 23,400/year binding for
+each year, 36 months and 54 days. State that we move EUR 1.18/unit and add a
+third committed year while accepting the 12-day extension of the recorded
+delivery standard. Ask for reciprocal recognition in the complete price.
+In this second email, provide the concrete price basis using one new evidence
+group: "Our orders for this seal on 7 and 21 September were EUR 29.89/unit
+(po:4500014383-10, po:4500014436-10)." State that EUR 31.07 is EUR 1.18, about
+3.95%, above that recent order price. This is our calculation of our proposed
+increase, not an assertion about supplier costs or a checkable index movement.
+Together with the extra year and twelve days of delivery flexibility, this
+is a meaningful move from the buyer. Ask firmly and respectfully for reciprocal
+recognition by confirming the complete EUR 31.07 package. Do not label it a
+maximum budget or claim the old order price binds the new full allocation.
+Do not repeat the checked cost citation as new evidence or introduce forecasts.
+
+If a valid standing offer meets the target, accept its exact structured ID.
+If the supplier gives a final eligible offer below target, accept the cheapest
+eligible package for secure supply and report the miss honestly. Do not
+counter after finality. If genuinely open, adapt using actual evidence and
+legal options; never invent a term or source. Keep payment 30 days, DAP,
+effective 2027-01-01, no index clause, no tooling and all standard fixed fields.
+A third year is a real commitment outside the two-year score horizon.
+No rivals, invented urgency, side payments, operational IDs or private audit
+handles in email prose. Use concise, collaborative English, at most 190 words.

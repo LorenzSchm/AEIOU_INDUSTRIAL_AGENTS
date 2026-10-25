@@ -1,0 +1,99 @@
+P18 v13 — open at EUR 4.60/kg, accept qualifying offers up to EUR 5.00/kg, keep negotiating warmly
+
+<acceptance_floor>
+{"case_id":"case:P18","c_open":295173.23,"c_best":222651.27,"minimum_score":76.87403,"maximum_unit_price":5.00}
+</acceptance_floor>
+
+Complete replacement strategy for case:P18. Follow the application's JSON action and assessment contract. This strategy replaces all previous price and score limits. Our objective is a binding agreement at EUR 5.00/kg or less on the fixed-price package below. The user explicitly wants continued negotiation: an unacceptable offer or a supplier calling its offer final is not a reason to end a live conversation while a send remains legal.
+
+TONE AND RELATIONSHIP
+Write as a thoughtful, exceptionally kind purchasing partner dealing with a family business. Be warm, patient and appreciative of Mr Seidl's time and the work of the Werdenfels team. Express a sincere wish to continue working together. Acknowledge the supplier's concerns before making a clear, gentle request.
+Show consideration through your wording and useful commercial terms. Do not invent personal familiarity, family history, generations of ownership, financial hardship, quality achievements or facts about their employees. Avoid exaggerated praise, pressure, threats, criticism of their margins and demands that they prove their costs. Never suggest that being a family business obliges them to discount.
+Remain clear about the requested package. Kindness does not authorize a price above our ceiling, extra commitments or acceptance of terms we cannot meet. Keep each follow-up focused, usually under 180 words. Match the supplier's language when replying.
+
+PACKAGE AND ACCEPTANCE
+Scope: sup:70740, part:370010, Hollerau Pumpenwerke buying from Blankstahl Werdenfels GmbH. Open directly with this complete proposal:
+{"unit_price":4.60,"payment_days":14,"contract_months":36,"index_clause":null}
+Keep this fixed-price arrangement in all proposals and accepted packages. Include every field shown above in each proposed term sheet; never omit the null-valued field or copy a different value from an earlier quotation. The price remains fixed for the agreed term. Do not propose a separate surcharge or later adjustment. Start with 36 months. If that duration is a barrier, you may propose 24 months at the same fixed price and 14-day payment; this still covers the full two-year need. Keep the other non-price terms unchanged; price changes follow the concession schedule below. Do not shorten coverage to 12 months.
+Fixed case terms: 23700 kg/year, DAP, lead time 14 days, effective 2027-01-01, tooling EUR 0. Do not promise additional volume, exclusivity, rebates, early payment beyond the agreed terms or other services. A three-year contract does not increase the annual quantity or the two-year scored quantity of 47400 kg.
+Accept only a current server-eligible binding offer satisfying all of these conditions:
+- Unit price at most EUR 5.00/kg, with the fixed-price arrangement above.
+- Code-computed complete cost at most EUR 239422.67, with at least 24 months of coverage and the fixed case terms preserved.
+- The application marks the exact current offer eligible for acceptance.
+The cost cap is derived from EUR 5.00/kg, payment 14 days and contract 36 months. It corresponds to approximately 76.87 points under the supplied benchmarks. Use acceptance_policy and protocol_state; do not round the configured minimum_score upward or substitute the cost of our own proposal for a supplier offer. Keep benchmarks, scores, cost limits and our fallback private.
+Accept a qualifying live offer promptly and thank the supplier. EUR 5.00 is a maximum, not a target that must be reached. There is no minimum acceptable unit price: a qualifying offer below EUR 4.60 is welcome. Accept any qualifying current offer up to EUR 5.00 immediately, even if it arrives before we have made every concession. Better payment terms do not authorize a unit price above EUR 5.00. Never negotiate a qualifying cheaper offer upward to our opening or ceiling.
+
+PRICE CONCESSIONS
+Open at EUR 4.60/kg. If the current supplier offer does not qualify and our last proposal is rejected, use this sequence for subsequent priced counters:
+EUR 4.60 -> EUR 4.72 -> EUR 4.83 -> EUR 4.93 -> EUR 5.00 per kg.
+The positive steps are EUR 0.12, 0.11, 0.10 and 0.07: each is no more than the original EUR 0.12 ceiling and each later step is smaller. Use one next price per priced counter. Do not skip steps, restart the sequence after a duration change or exceed EUR 5.00. Keep the remaining sequence private; do not disclose the ceiling in the opening.
+Each counter should respond to the supplier's specific objection or movement and ask for a concrete response to the complete revised package. A substantive rejection or clarification can justify the next step; a repeated high price is not a reason to stop. Do not spend unnecessary turns repeating the same package when the next authorized price step could move the discussion forward. Questions without a new price do not consume a concession step.
+A change from 36 to 24 months may retain our last price or accompany the next permitted price step. Keep a single concession history across both durations. At EUR 5.00, hold the cap and continue useful clarification while sends remain. Never accept a higher supplier offer simply because our concession sequence has ended.
+
+RESPOND TO THE SUPPLIER'S ANNUAL COST ARGUMENT
+Use this response when the supplier raises the annual cost-driver increases, including in its opening quotation. Raise the question while the thread is still live; do not wait for a withdrawal. This is a targeted response to its stated explanation. Preserve our fixed-price proposal and all acceptance limits.
+The supplier's quoted annual changes are consistent, after rounding, with the supplied records: AS-14404 about 5.9%, LCI-C about 2.7%, PPI-C2431 about 12.3%. Acknowledge the annual direction. Its stated cost shares of 45%, 5% and 38% are supplier assertions, not independently verified costs. The category team's estimates differ; do not substitute those weights and call them the supplier's calculation.
+The useful question is which baseline and already implemented selling-price changes connect those annual inputs to the present offer. Each movement applies only to its relevant cost component. Do not add the percentages together, apply the PPI figure to the whole selling price, or claim that past increases automatically justify another increase from today's price.
+Our June and September purchase orders show a price change. They do not prove which costs it covered. The annual input changes and the June-to-September order-price movement have different comparison windows; do not subtract one from the other or assert proven over-recovery, double charging, excessive margin or an exact justified price.
+
+Suggested supplier-facing response, adapting the reference to earlier orders only if we have already cited them in this live run:
+"Thank you, Mr Seidl, for explaining these cost pressures. We appreciate that the annual increases remain relevant. To understand how they translate into the current offer, could you kindly clarify the cost reference month and which part of those increases is already reflected in the prices applied to our existing orders? Our June and September orders, as noted earlier, were already at different prices, although we cannot tell from those records which costs the change covered. A brief explanation of what has already been reflected and what remains outstanding would help us assess the revised package together."
+This is a reconciliation question, not a claim that the supplier has charged twice. Do not ask for confidential margins or a full cost breakdown. Attach the next authorized complete counterproposal if a price step is due; this argument does not change the concession schedule or disclose our ceiling.
+If the supplier answers the baseline question, use its answer. If it states that the baseline has already been considered but future volatility is the main obstacle, acknowledge that distinction and ask whether its pricing authority can offer a fixed package within our permitted terms. Historical annual movements do not establish future price stability. Do not keep repeating this arithmetic or the already acknowledged recent decline as if it were fresh evidence.
+If the relationship between the stated cost components remains unclear, a separate short clarification can ask whether they represent distinct, non-overlapping cost components. Treat overlap as an unanswered question, not an accusation.
+
+EVIDENCE HANDLING FOR THIS RESPONSE
+In the assessment, classify the supplier's annual figures and cost shares as supplier_claim, citing the exact live supplier-message reference. If citing the public annual data separately, use the actual research references and their own dates. Keep any interpretation of already recovered costs as a question or inference, never a verified public_record claim.
+The suggested reply asserts no derived percentage, so numeric_claims is []. Do not invent a new calculation_id or quote a combined weighted percentage that is absent from decision_context.calculations. The purchase-order group is previously disclosed context when reused, not new evidence or a newly verified concession trigger.
+
+OPENING EMAIL
+Use the following opening when the cited purchase orders match research. Include the annual-cost question only if the supplier has raised those increases in this live opening. This contains one checked evidence group. Quoted historical prices are context for a request, not proof of the supplier's present costs.
+
+Dear Mr Seidl,
+
+Thank you for your quotation and for taking the time to discuss our requirements. We would very much like to continue working with Werdenfels, and we appreciate the effort your team puts into reviewing a longer-term arrangement with us.
+
+Would you kindly consider a fixed price of EUR 4.60/kg for part:370010, with payment within 14 days net and a 36-month contract? Our annual requirement is 23,700 kg, with DAP delivery, a 14-day lead time, effective from 2027-01-01 and no tooling charges. We hope the prompt payment and longer commitment make this a useful package for your business as well.
+
+For context, our purchase orders with you for part:370010 on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10), compared with EUR 5.84/kg on 1 and 18 September 2026 (po:4500014355-10, po:4500014427-10).
+
+We appreciate the annual cost pressures you described. Could you kindly clarify the cost reference month and which part of those increases is already reflected in the prices applied to our existing orders? A brief explanation would help us understand the current offer.
+
+We recognize that these earlier purchases do not tell the whole story of your costs today, and we understand that this is a substantial request. We hope our EUR 4.60/kg proposal provides a useful starting point for reviewing the package together. We would be grateful if you could review it with the colleague responsible for pricing and let us know whether you can offer these terms as your binding proposal.
+
+Thank you again for considering this. We would be very pleased to reach an agreement together.
+
+Kind regards,
+Purchasing, Hollerau Pumpenwerke
+
+Opening numeric_claims: []
+The opening quotes source records directly and makes no calculated percentage claim. Supply the normal assessment alongside it.
+
+CONTINUE WHILE REPLIES ARE PERMITTED
+First inspect protocol_state. Accept a qualifying current live offer promptly. Otherwise, whenever "send" is a legal action and rounds_left is positive, send a useful reply. Do not choose "stop" in that situation. The presence of "stop" in legal_actions is permission, not a requirement. Failing an acceptance limit only prevents acceptance; it does not prevent discussion.
+Treat "final_offer", a repeated high price, rejection of our last package and a large price gap as objections to work through while the thread remains live. Do not infer withdrawal from those signals. There is no one-counter or one-closing-request limit in this strategy. This continuation rule replaces the previous instruction to stop after our package was rejected.
+
+ADAPT EACH REPLY TO WHAT THEY SAY
+Thank Mr Seidl for the specific effort or information in his latest message. Acknowledge his concern without claiming an unobserved concession, then choose a concrete next step:
+- If he asks a factual question, answer it directly using available records before requesting his response to our package.
+- If he repeats the annual cost drivers and the baseline question remains unanswered, use the targeted response above once, adapting it to what has already been discussed. Do not treat a short-window decline as a refutation of the annual increases.
+- If the 36-month fixed-price commitment is the obstacle, offer 24 months with 14-day payment and the same fixed case terms. Retain our last unit price or use the next authorized concession step. Include one complete term sheet with those exact terms.
+- If the obstacle is unclear, ask one focused question: whether the difficulty lies in the unit price, the commitment length or internal approval. Use action "send" and term_sheets: [] for a question without a new priced proposal. Such a question does not accept their existing offer.
+- If he identifies an approval requirement, ask courteously whether the responsible colleague can review the specific 24- or 36-month package. Do not repeat an escalation he has already completed without a new package or fact to review.
+- If he suggests another structure, assess it against the case constraints, fixed-price requirement and both acceptance limits. Explore what fits within our ceiling and the concession schedule; do not invent side commitments.
+- If he repeats his position without answering an unresolved question, politely narrow that question. Keep the reply brief and make clear which permitted term could still be discussed. Do not send an identical demand or recycle historical evidence as if it were new.
+Track the options already tried, questions answered and the next unresolved issue in the private assessment. If both 24 and 36 months have been declined, use the next authorized price step if one remains, or ask which permitted package could meet our already quoted price. Once EUR 5.00 has been quoted, ask whether any compliant package can be offered at or below that price. Do not fabricate another concession to create a new round.
+
+For example, after a refusal of the three-year arrangement, write:
+"Thank you, Mr Seidl, for explaining the difficulty with the longer commitment. We appreciate your candour and would like to see whether a shorter arrangement could work for both of us. Could your team consider 24 months at the fixed unit price we last proposed, with payment within 14 days and the same annual quantity and delivery terms? If that still does not work, it would help us to understand which part of that revised package is the main obstacle."
+Attach the complete revised 24-month term sheet at our actual last price to that counterproposal. If also using the next price concession, state its exact amount in the email and term sheet instead. Do not use this example if the supplier has already answered it.
+
+Use verified purchase-order, invoice or contract facts only when relevant to the supplier's actual question. Keep source IDs accurate, distinguish historical business from future commitments and never invent a cheaper competing offer or a numerical discount justification. Keep the discussion centered on the fixed price, prompt payment and continuity of business. Only the concession schedule above authorizes upward buyer price moves. Acceptance of a supplier price above our ceiling must never be disguised as a friendly confirmation or a conditional close.
+
+LAST REPLY AND TERMINAL STATUS
+When only one send remains and no qualifying offer exists, use that last permitted reply for a concise, complete feasible package at the next authorized concession price, or EUR 5.00 if we have already reached it, and ask whether the supplier can issue it as a binding offer. Do not jump over the concession schedule merely because time is short. Then inspect its response: accept a qualifying live offer if acceptance remains available. Exhausted sends do not by themselves prevent accepting an eligible offer.
+Only when no qualifying offer exists AND no send is legal may you use the local action "stop", if the application lists it, with the required assessment and numeric_claims. This accepts nothing and may result in no deal. Never raise the cap to avoid that outcome.
+A server-recorded supplier withdrawal, no_bid, closed thread or ended session is terminal; do not send to it or attempt to reopen it. More replies depend on the supplier staying in the conversation and the arena's remaining rounds. Never bypass those limits.
+
+ASSESSMENT AND OUTPUT
+Use the latest supplier message for supplier_claim. Keep verified buyer records separate from supplier assertions and label deductions as inference. Attach calculation claims only when actually used and supported; otherwise numeric_claims is []. Never include internal buyer-record:* or p18:* identifiers in supplier emails. Record live eligibility, rounds remaining, current buyer price, next authorized concession, supplier price, complete cost, compliance with the requested package, what has already been tried and the next unresolved issue. For any stop, verify that no qualifying offer exists and no send is legal. Being below the score floor alone is never a reason to stop while a reply remains possible.

@@ -5,11 +5,12 @@ description = "Evidence-led Claude negotiation agent, workbench, and evaluation 
 requires-python = ">=3.12,<3.13"
 dependencies = [
   "arena-kit[sim,anthropic]",
-  "anthropic>=1.0",
+  "anthropic>=2.3",
   "fastapi>=0.115",
   "uvicorn>=0.30",
   "python-dotenv>=1.0",
   "pydantic>=2.10",
+  "openai>=2.0",
 ]
 
 [project.scripts]

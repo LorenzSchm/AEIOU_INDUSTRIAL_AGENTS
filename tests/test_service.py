@@ -16,13 +16,24 @@ def test_status_exposes_presence_not_credentials():
             assert os.environ[variable] not in response.text
 
 
-def test_prompt_api_returns_the_exact_original_source():
+def test_prompt_api_distinguishes_active_revision_from_archived_original():
     from aeiou.config import ROOT
 
     response = client.get("/api/prompts")
     assert response.status_code == 200
-    assert response.json()["variants"]["original"]["strategy"] == (ROOT / "SYSTEM_PROMPT.md").read_text()
+    body = response.json()
+    active = body["variants"]["original"]
+    assert active["strategy"] == (ROOT / "SYSTEM_PROMPT.md").read_text()
+    assert "how am i supposed to do that?" not in active["strategy"].casefold()
+    assert active["required_repeats"] == 5
+    reference = body["reference_original"]
+    assert reference["strategy_sha256"] == "e8bb52863ea8b281f0c5e05bb533a414f22d0b9cd1d02ed95aa7d07e3cf1fe28"
+    assert "how am i supposed to do that?" in reference["strategy"].casefold()
+    assert len(body["research_sources"]) == 3
+    assert active["strategy_sha256"] != reference["strategy_sha256"]
     assert client.get("/api/prompt-comparisons").status_code == 200
+    local = client.get("/api/local-evaluations")
+    assert local.status_code == 200 and isinstance(local.json(), list)
 
 
 def test_cross_origin_paid_job_rejected():
@@ -40,7 +51,7 @@ def test_traversal_cannot_read_env():
     assert client.get("/assets/..%2F..%2F..%2F.env").status_code == 404
 
 
-def test_local_ui_job_persists_completed_transcript(tmp_path, monkeypatch):
+def test_local_ui_job_persists_completed_transcript(tmp_path, monkeypatch, model_supplier):
     from aeiou.service import JOBS
     from aeiou.store import get_run
 

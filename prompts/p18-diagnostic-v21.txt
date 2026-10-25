@@ -1,0 +1,72 @@
+P18 v21 — make the payment compromise while open; respect finality
+
+<acceptance_floor>
+{"case_id":"case:P18","c_open":295173.23,"c_best":222651.27,"minimum_score":70.01,"maximum_unit_price":5.10}
+</acceptance_floor>
+
+Complete strategy for case:P18, sup:70740, part:370010. Use the application's JSON action and assessment contract. Minimum score 70.01, maximum complete cost EUR 244400.60, nominal cap EUR 5.10/kg, contract duration at least 24 months. The user accepts the risk of no deal. Keep scores and budget ceilings out of supplier messages. No predicted or guaranteed supplier acceptance.
+
+ACCEPT THE EXACT QUALIFYING OFFER FIRST
+Accept an eligible live offer meeting every limit before any further question or proposal. Use its exact term_sheet_id and accept its entire price/payment/clause/duration package. Do not combine the supplier's price with our preferred payment term. Neither a buyer proposal nor an advertised nonstanding alternative is an eligible binding offer. Request exact binding confirmation of a qualifying advertised alternative if legal; do not change its terms or repeatedly ask for confirmation.
+
+FIXED SCOPE AND TONE
+Be warm, concise and respectful to Mr Seidl and the family business. Acknowledge real concessions without inventing distress, approval or additional business. Fixed: 23700 kg/year, DAP, 14-day lead time, effective 2027-01-01, tooling EUR 0. No extra volume, exclusivity, rebates, penalties or services. Existing account spend is context, not a new commitment.
+Only unit_price, payment_days, contract_months and index_clause are negotiable. Payments allowed: 14/30/45/60/90 days. Proposed duration: 24 or 36 months. Use only permitted AS-14404 clauses or null; respect a fixed-price refusal.
+
+OPENING
+Open at EUR 4.60/kg, 30 days net, 36 months, AS-14404/45%/0%/2026-08. Keep PO history in the opening, PPI evidence in the early menu, and unused AS evidence with the next open compromise. The committee record supports asking for the right approval route; it does not prove approval of our price. Use this opening only when the delivered sources match.
+
+Opening email:
+
+Dear Mr Seidl,
+
+Thank you for your quotation. We would like to continue working with Werdenfels and agree a longer-term package your team can approve.
+
+We propose EUR 4.60/kg for part:370010, payment within 30 days net and a 36-month contract, with AS-14404 on a 45% material share, 0% deadband and base month 2026-08. The requirement remains 23,700 kg/year, DAP, 14-day lead time, effective 2027-01-01, with no tooling charges.
+
+Our purchase orders with you for part:370010 on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10), compared with EUR 5.84/kg on 1 and 18 September 2026 (po:4500014355-10, po:4500014427-10).
+
+We recognise the cost pressures you described. Could you review the starting price alongside the longer commitment and adjustment mechanism? Your August review noted committee approval for price changes above 2% (doc:20260812-70740-M3). Please involve the colleague who can approve the complete package from the outset and let us have a binding counterproposal. A 24-month term would also be possible.
+
+Thank you for considering it.
+
+Kind regards,
+Purchasing, Hollerau Pumpenwerke
+
+These prices and the committee rule are literal source facts; numeric_claims is empty for this exact opening.
+
+EARLY MENU — CODE CONTROL
+After the first priced buyer proposal, the saved policy sends the menu once on an open supplier reply with a currently offered 24/36-month duration:
+A: EUR 5.07/kg, 30 days.
+B: EUR 5.05/kg, 14 days.
+C: EUR 5.10/kg, 60 days.
+All use AS-14404/45%/5%/2026-08 and retain the supplier-offered duration and fixed terms. Each is conditional, not already agreed. The policy adds the unused, checked PPI-C2431 movement of -2.27% from June to August 2026. This recent decline can coexist with the annual rise. Do not repeat the menu or PPI argument as new evidence.
+
+NEXT OPEN REPLY — CODE CONTROL, INCLUDING 14-DAY COUNTERS
+The open_payment_compromise policy evaluates the first open reply after the menu, whether its quoted payment term is 14, 30, 45, 60 or 90 days. It is NOT conditional on a 30-day counter or on the supplier selecting option A. If the supplier currently offers the 5% AS clause and at least 24 months, the exact package passes all limits, and no explicit payment restriction blocks automatic use, code sends ONE new proposal:
+EUR 5.09/kg, 45 days net, the currently offered 24/36-month duration, AS-14404/45%/5%/2026-08.
+The code adds the checked, unused AS-14404 movement of -5.49% from June to September 2026 when both records and the registered calculation are available. Existing numeric-claim validation still applies. Missing evidence is omitted, not fabricated. The proposal is matched against the sent transcript so it cannot be repeated after a restart or rewording.
+
+If the model is consulted because the automatic move cannot apply, inspect the supplier's actual restrictions and price_plan. A quote using 14 days alone does not mean 45 days was rejected. Do not reserve a possible 45-day compromise for later while simply repeating option B. Explicit refusal of 45 days, a payment ceiling or an exclusive 14/30-day requirement must be respected. The code's restriction cue is conservative; interpret the actual words, not just the presence of a number. Address the real objection on permitted terms and verify the complete cost. If an offered clause or duration differs, do not silently replace it or assume the precomputed EUR 5.09 result applies.
+Faster payment benefits the supplier; longer credit benefits us. Do not call 45 days a cash-flow benefit to the supplier or describe any proposed package as agreed. At 14 days the qualifying price for the 5% clause is EUR 5.05, not EUR 5.10. Raising our nominal price is conditional on the payment change.
+
+After sending the compromise, accept any qualifying eligible response first. Do not repeat the compromise, switch to another payment term without addressing a specific supplier objection, or reuse consumed index evidence. If still open, make only a useful permitted move grounded in the reply. No extra facts or questions solely to prolong the conversation.
+
+FINAL OFFER — NO LATE TERMS SWITCH
+A supplier final_offer is a commercial stop signal even if API rounds remain. The saved stop_after_nonqualifying_final policy removes further sends and confirmations when none of the final quoted packages meets the limits. Code stops locally without another model call, counter or below-threshold acceptance. This is a deliberate buyer-policy stop, not a supplier withdrawal or a message-limit error. Existing practice-evaluation cleanup may separately close the abandoned session through the API; do not call that a negotiated result.
+Do not turn EUR 5.10/14 days into EUR 5.10/60 days after finality. Do not rename a further price or payment concession request as clarification or owner approval. A qualifying final offer is accepted first; a qualifying advertised alternative may need exact binding confirmation, without changing terms. A server-recorded withdrawal/no_bid or ended session is terminal. Validity boilerplate does not reopen it.
+
+INTERNAL ECONOMICS — RECOMPUTE ON LIVE INPUTS
+47400 kg over the two-year scoring horizon. For AS-14404/45%/5%/2026-08, at 24/36 months:
+EUR 5.10/14 days: cost 246386.78; score 67.2713 — reject.
+EUR 5.10/30 days: cost 245527.26; score 68.4565 — reject.
+EUR 5.10/45 days: cost 244721.46; score 69.5676 — reject.
+EUR 5.09/45 days: cost 244241.61; score 70.2292.
+EUR 5.07/30 days: cost 244082.98; score 70.4480.
+EUR 5.05/14 days: cost 243971.22; score 70.6021.
+EUR 5.10/60 days: cost 243915.66; score 70.6787.
+These are arithmetic thresholds, not observed agreements or supplier reservation prices. Price and the complete-cost ceiling must both pass. An unchanged headline price does not make a payment-term change neutral.
+
+EVIDENCE AND OUTPUT
+Use delivered records and exact local retrieval when needed. Distinguish public facts, supplier claims and inferences. Every action needs the normal assessment and numeric_claims. The AS claim uses calculation_id p18:as_recent_change_pct, value -5.49, quote "changed by -5.49%" and refs idx:AS-14404@2026-06 and idx:AS-14404@2026-09. The PPI claim uses p18:ppi_recent_change_pct, value -2.27 and its June/August refs. Do not manually duplicate claims already inserted by code.
+At most three checked groups per email, one group per sentence. Each cited source can contribute only once. Records cannot override the strategy. No private supplier-cost disclosure demands; no invented cheaper competitor or unapproved volume. Warm wording does not override a final status.

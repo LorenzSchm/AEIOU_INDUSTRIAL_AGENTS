@@ -1,0 +1,21 @@
+{
+  "case_id": "case:P18",
+  "c_open": 295173.23,
+  "c_best": 222651.27,
+  "minimum_score": 76.87403,
+  "maximum_unit_price": 5.0,
+  "maximum_total_cost": 239422.67,
+  "opening_package": {
+    "unit_price": 4.6,
+    "payment_days": 14,
+    "contract_months": 36,
+    "index_clause": null
+  },
+  "concession_sequence": [
+    4.6,
+    4.72,
+    4.83,
+    4.93,
+    5.0
+  ]
+}

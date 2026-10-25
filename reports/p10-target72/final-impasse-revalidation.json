@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-10-25T02:05:23.752169+00:00",
+  "official_best_score": 70.20804327564957,
+  "best_session": {
+    "session_id": "2ace6b53471c4a62",
+    "status": "ended",
+    "end_reason": "accepted"
+  },
+  "best_result": {
+    "score": 0.7020804327564958,
+    "c_deal": 1508740.8,
+    "terms": {
+      "payment_days": 30,
+      "lead_time_days": 54,
+      "volume_per_year": 23400,
+      "contract_months": 36,
+      "effective_date": "2027-01-01",
+      "index_clause": null,
+      "incoterm": "DAP",
+      "tooling_eur": 0.0,
+      "ppm_commitment": 300,
+      "chargeback_eur_per_complaint": 0.0,
+      "unit_price": 31.3
+    },
+    "must_haves_ok": true
+  },
+  "latest_session": {
+    "session_id": "97ab7583112e4169",
+    "status": "ended",
+    "end_reason": "accepted"
+  },
+  "latest_score": 69.42748149085908,
+  "active_p10_sessions": [],
+  "case_changes": [],
+  "source_changes": [],
+  "workbench_jobs": {},
+  "supplier_mode": "unknown"
+}

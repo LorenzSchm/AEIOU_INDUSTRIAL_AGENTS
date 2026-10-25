@@ -1,0 +1,159 @@
+{
+  "id": "942f86af02c14b7f8a5b173ab3018f24",
+  "suite_id": "tacto-hosted-practice-v1",
+  "variant_id": "practice",
+  "comparison_id": null,
+  "arena_url": "https://arena.tacto.ai",
+  "case_set": "practice",
+  "created_at": "2026-10-25T00:24:44.241443+00:00",
+  "status": "stopped",
+  "prompt_text": "P10 v7 \u2014 explicit pricing-committee approval before finality\n\nNegotiate case:P10 only. Return the required JSON action and concise assessment.\nThe user requires at least 72/100. The following buyer limit uses their recorded\nbenchmark; it is not knowledge of the supplier's private reservation price.\n\n<acceptance_floor>\n{\"case_id\":\"case:P10\",\"c_open\":1932492.18,\"c_best\":1328926.89,\"minimum_score\":72,\"maximum_unit_price\":31.68}\n</acceptance_floor>\n\nFull annual volume is 23,400. Payment 30 days, DAP, effective 2027-01-01, no\nindex clause and no tooling remain fixed. 56-day delivery and 36 months are\nlegal trades. The third commitment year is real despite the two-year score.\n\nOPENING\nSend one complete proposal: EUR 29.89/unit, 23,400/year, 36 months, 56 days.\nThis overrides the illustrative percentage-discount menus. Use the following\nshort opening; prose and structured terms must match:\n\nSubject: Pricing Committee review \u2014 full seal allocation and 36-month commitment\nDear Ms Zellner,\nPlease escalate this complete proposal to your Pricing Committee for explicit\nprice approval. Our annual review on 10 March recorded that price changes above\n2% require committee approval (doc:20260310-70410-M1). We are requesting that\napproval now, rather than asking you to exceed your delegated authority.\nWe offer EUR 29.89 per seal for a binding 23,400 units/year over 36 months,\nallowing 56 days for delivery. Payment stays 30 days net, DAP, effective\n2027-01-01, no index clause or tooling charge. Our September orders were at\nEUR 29.89/unit (po:4500014383-10, po:4500014436-10).\nPlease have the authorized pricing decision-maker assess this complete\ncommitment and confirm the price they can approve with full allocation.\nKind regards, Hollerau Purchasing\n\nThe annual-review note describes a historical approval process, not proof of\ncurrent personal authority. If the supplier confirms authority or says the\ncommittee has already reviewed the proposal, accept that answer; do not\nrepeatedly demand escalation. Do not ask for private costs, breakdowns, indices\nor legal review. Do not claim that the committee has already approved anything.\n\nAFTER AN OPEN REPLY\nFirst read whether price approval was actually obtained or the supplier merely\nrepeated a quote. If approval remains unaddressed, ask once for an explicit\npricing-committee exception at EUR 30.90 on the same full-volume/36-month/56-day\npackage; that higher price is our concession. If approval is confirmed, assess\nits complete price. Make at most one further open commercial counter at EUR\n30.96 on the same structure if necessary. Avoid \"best/final\" requests and\nultimatums. Do not wait real calendar weeks for a meeting in this live session.\n\nACCEPTANCE\nUse the controller's exact cost and eligibility checks. On unchanged terms the\ntarget permits at most EUR 30.96 at 56 days or EUR 31.68 at 42 days; the actual\npublic complete-cost maximum is EUR 1,497,925.17. Unknown private relationship\ncosts may change the official score. Do not reveal the target budget or score.\nAccept a qualifying live binding offer immediately by its exact ID. A final\noffer that fails the saved limit must not be accepted. Do not counter again\nafter finality: use local stop if no eligible package remains. No invented\napproval, fabricated offer, buyer walk-away or claim that an unmet goal succeeded.\n",
+  "prompt": {
+    "variant": "eval",
+    "strategy_revision": "eval-prompt-v2",
+    "strategy_sha256": "63e6d0eba4ceb7f7ba62de5ce159a919082ebea154c9d3302921e0159b639ddc",
+    "transport_sha256": "c832e4750803bf0dbd09f1746cb3e28b9a6cd1669bc16a305c5856f0a4aee689",
+    "system_sha256": "d46cf86104d13939a53800c8bdd144c8f4f8ace2bb319c7f6796c89e7f352d67",
+    "protocol_version": "faithful-v18-closing-cost-comparison",
+    "required_repeats": 0,
+    "enforce_reference_tactics": false,
+    "assessment_version": "supplier-assessment-v2-source-labels",
+    "acceptance_floor": {
+      "case_id": "case:P10",
+      "c_open": 1932492.18,
+      "c_best": 1328926.89,
+      "minimum_score": 72.0,
+      "maximum_unit_price": 31.68
+    }
+  },
+  "execution_policies": {},
+  "model": "claude-opus-5-5",
+  "provider": "anthropic",
+  "effort": "medium",
+  "speed": "fast",
+  "kit_revision": "75eecd19bf42c4f4b5a93f01139fa2a757ec5c07",
+  "arena_sessions_used": 1,
+  "practice_sessions_used": 1,
+  "parallel_runs": 1,
+  "decision_budget_s": 50,
+  "repeats": 1,
+  "quota_at_start": {
+    "used": 164,
+    "left": 236,
+    "limit": 400,
+    "resets_at": "2026-10-25T11:19:44.936916+00:00"
+  },
+  "rows": [
+    {
+      "case_id": "case:P10",
+      "title": "Ravensteiner cuts the seal allocation",
+      "repeat": 1,
+      "status": "failed",
+      "score": null,
+      "run_id": "a92a0da89a044bf6a20cdaafd90b20f4",
+      "session_id": "0892e74f2d21c2ea",
+      "error": "NegotiationBlocked: ACCEPTANCE_SCORE_FLOOR_NOT_MET"
+    }
+  ],
+  "completed": 0,
+  "mean_score": null,
+  "experiment": {
+    "label": "p10-target72-v7",
+    "target_score": 72,
+    "source_hashes": {
+      "prompts/p10-capacity-v7.txt": "63e6d0eba4ceb7f7ba62de5ce159a919082ebea154c9d3302921e0159b639ddc",
+      "src/aeiou/p10_evidence.py": "742d581af7239c926723a3af55f687ab8be6e8f4cca809e5b6fe380d431edb6b",
+      "src/aeiou/price_planner.py": "51d75600a82e8423a40aa9049f11a2387e223b7f8431944009cfaaf6d5996cdd"
+    }
+  },
+  "cases": [
+    {
+      "case_id": "case:P10",
+      "set": "practice",
+      "type": "capacity",
+      "title": "Ravensteiner cuts the seal allocation",
+      "briefing": "You negotiate for Hollerau Pumpenwerke with Dichtungswerk Ravensteiner GmbH. Ravensteiner cuts the seal allocation. Need: 23400 pc a year. Category goal: secure supply of a bottleneck part: coverage of the full need and a supplier that stays healthy come first. Score: the lowest total cost C as defined in the rules, valued with this case's rates (need lead time 42 days). There is no fallback supplier: without a deal the demand is bought at the fallback price. Must-haves: volume_per_year >= 22230. Prepare from the data package.",
+      "trigger_doc": "doc:20260918-70410-P10",
+      "parts": [
+        "part:340010"
+      ],
+      "suppliers": [
+        "sup:70410"
+      ],
+      "negotiable": [
+        "unit_price",
+        "volume_per_year",
+        "contract_months",
+        "lead_time_days"
+      ],
+      "fixed_terms": {
+        "payment_days": 30,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0
+      },
+      "term_options": {
+        "volume_per_year": [
+          16379,
+          19890,
+          23400
+        ],
+        "contract_months": [
+          12,
+          24,
+          36
+        ],
+        "lead_time_days": [
+          35,
+          42,
+          56
+        ]
+      },
+      "buyer": {
+        "need_per_year": 23400,
+        "horizon_years": 2,
+        "current_unit_price": 29.89,
+        "fallback_unit_price": 37.36,
+        "interest_rate": 0.08,
+        "reference_payment_days": 60,
+        "need_lead_time_days": 42,
+        "category_goal": "secure_supply",
+        "fallback_risk_pct": 25,
+        "index_risk_pct": 3,
+        "late_cost_per_day": 2400,
+        "cost_per_defect": 380,
+        "sustainable_margin_pct": 10,
+        "relationship_eur_per_point": 13990,
+        "freight_eur_per_unit": {
+          "EXW": 0.01,
+          "FCA": 0.01,
+          "DAP": 0.0
+        },
+        "index_paths": {},
+        "must_haves": [
+          {
+            "field": "volume_per_year",
+            "op": ">=",
+            "value": 22230
+          }
+        ],
+        "alternative": {
+          "kind": "none",
+          "ref": null,
+          "terms": {}
+        }
+      },
+      "round_limit": 10,
+      "refs": [
+        "doc:20260918-70410-P10",
+        "ctr:4600070410",
+        "sc:70410@2026Q3",
+        "fc:340010@2026-09"
+      ],
+      "hosted": true
+    }
+  ],
+  "stop_reason": "1 run(s) failed. NegotiationBlocked: ACCEPTANCE_SCORE_FLOOR_NOT_MET. Other active runs finished; queued runs were not started.",
+  "completed_at": "2026-10-25T00:25:35.569983+00:00"
+}

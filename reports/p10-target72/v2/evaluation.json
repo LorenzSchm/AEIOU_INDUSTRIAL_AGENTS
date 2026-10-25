@@ -1,0 +1,154 @@
+{
+  "id": "a4e2ca9f9bf44f41a487ae325f36e604",
+  "suite_id": "tacto-hosted-practice-v1",
+  "variant_id": "practice",
+  "comparison_id": null,
+  "arena_url": "https://arena.tacto.ai",
+  "case_set": "practice",
+  "created_at": "2026-10-25T00:16:58.360621+00:00",
+  "status": "completed",
+  "prompt_text": "P10 v2 \u2014 lower opening with relevant purchase and service evidence\n\nYou negotiate only case:P10 for Hollerau. Secure 23,400 seals/year and minimize\ncomplete buyer cost. Return the action JSON and a short evidence-based assessment.\nNo private reasoning transcript. All case must-haves and fixed terms apply.\n\n<capacity_opening>\n{\"case_id\":\"case:P10\",\"opening_fraction\":0.80}\n</capacity_opening>\n\nUse the calculated capacity_opening_tradeoffs in price_plan. The setting above\nreplaces the previous 85% opening. Send two complete opening packages:\nA: 23,400/year, 24 months, 42 days at the calculated 80%-of-opening price.\nB: 23,400/year, 36 months, 56 days at its cost-offsetting lower price.\nWith the current EUR 32.20 opening, these prices are EUR 25.76 and EUR 25.04.\nThese are negotiating proposals, not claims about a supplier floor or profits.\nThe 36-month commitment extends beyond the two-year scoring horizon; it is real.\nPayment stays 30 days, DAP, effective 2027-01-01, no index clause or tooling.\n42 days is a preference, not a hard maximum. The permitted 56 days carries a\nbuyer cost penalty which is already included in the planner.\n\nKeep the opening email under 250 words. Offer binding full-volume commitment\nin exchange for full allocation and a lower price. Use these three evidence\ngroups, one short sentence each, from research.p10_evidence:\n1. Our two September orders at EUR 29.89/unit, citing po:4500014383-10 and\n   po:4500014436-10. This is actual purchase history for the same seal/supplier.\n2. Supplier-wide on-time delivery is 79.5% in sc:70410@2026Q3. Ask that the\n   pricing of the reliable full allocation reflect the service actually delivered;\n   do not mislabel the rate as part-specific or assert a legal entitlement.\n3. cost:340010 records our estimated cost at EUR 24.31/unit excluding margin,\n   with 5% uncertainty. Describe an estimate, not a proven private cost or floor.\nThese literal record values need no invented calculation. Do not send the rising\nannual indices as arguments for a reduction, select an obsolete decline, or\ndemand confidential costs. Do not cite our supplier's own offer ID in the email.\nEnd with: \"Which package can you support, and what adjustment would make it\nwork for you?\" Do not ask for a best, last, final or best-and-final quotation.\nDo not add committee, legal or approval-process questions to this opening.\n\nOn an open reply, address the specific obstacle. Offer a smaller reciprocal\nprice step only for a concrete improvement. Use unused, relevant evidence\ninstead of repeating claims. Treat claim_results as feedback, not proof that\nthe evidence persuaded the supplier. Never fabricate a competing supplier.\n\nOur development target is at least 72/100. Using the user's prior recorded\nbenchmark, a public two-year cost at or below EUR 1,497,925.17 would correspond\nto that target: approximately EUR 31.68 at 42 days or EUR 30.96 at 56 days on\nthe otherwise unchanged full-coverage terms. This is a buyer benchmark, not\nthe supplier's reservation price. Recompute from actual terms. Unknown private\nrelationship costs can change the hosted score.\nAccept a live eligible package meeting that target immediately. If the supplier\ndeclares a worse offer final, use the existing close-on-final behavior for this\ndiagnostic trial: accept the cheapest live eligible offer without another\ncounter. Such a result is explicitly a failed target, not success. No buyer\nwalk-away; no fabricated acceptance or claim that the target was achieved.\n",
+  "prompt": {
+    "variant": "eval",
+    "strategy_revision": "eval-prompt-v2",
+    "strategy_sha256": "8164acc3cc199b2e85aef2c61027e891bd0eee781302bbd14ec3119e572658d2",
+    "transport_sha256": "38834b089eac955d47393e2eb9b8f52e587c0be8ceda87a5753b1e493407f961",
+    "system_sha256": "8f72e61207b7ecc99ed0c9190d2227fecd256529eecb3bfaab838883ad980954",
+    "protocol_version": "faithful-v18-closing-cost-comparison",
+    "required_repeats": 0,
+    "enforce_reference_tactics": false,
+    "assessment_version": "supplier-assessment-v2-source-labels",
+    "capacity_opening": {
+      "case_id": "case:P10",
+      "opening_fraction": 0.8
+    }
+  },
+  "execution_policies": {},
+  "model": "claude-opus-5-5",
+  "provider": "anthropic",
+  "effort": "medium",
+  "speed": "fast",
+  "kit_revision": "75eecd19bf42c4f4b5a93f01139fa2a757ec5c07",
+  "arena_sessions_used": 1,
+  "practice_sessions_used": 1,
+  "parallel_runs": 1,
+  "decision_budget_s": 50,
+  "repeats": 1,
+  "quota_at_start": {
+    "used": 156,
+    "left": 244,
+    "limit": 400,
+    "resets_at": "2026-10-25T11:19:44.936916+00:00"
+  },
+  "rows": [
+    {
+      "case_id": "case:P10",
+      "title": "Ravensteiner cuts the seal allocation",
+      "repeat": 1,
+      "status": "completed",
+      "score": 0.6394883642165704,
+      "run_id": "37ee57d7be69477eb74bd2a5af8f34ce",
+      "session_id": "ac23f1c4467d002a"
+    }
+  ],
+  "completed": 1,
+  "mean_score": 0.6394883642165704,
+  "experiment": {
+    "label": "p10-target72-v2",
+    "target_score": 72,
+    "source_hashes": {
+      "prompts/p10-capacity-v2.txt": "8164acc3cc199b2e85aef2c61027e891bd0eee781302bbd14ec3119e572658d2",
+      "src/aeiou/p10_evidence.py": "742d581af7239c926723a3af55f687ab8be6e8f4cca809e5b6fe380d431edb6b",
+      "src/aeiou/price_planner.py": "51d75600a82e8423a40aa9049f11a2387e223b7f8431944009cfaaf6d5996cdd"
+    }
+  },
+  "cases": [
+    {
+      "case_id": "case:P10",
+      "set": "practice",
+      "type": "capacity",
+      "title": "Ravensteiner cuts the seal allocation",
+      "briefing": "You negotiate for Hollerau Pumpenwerke with Dichtungswerk Ravensteiner GmbH. Ravensteiner cuts the seal allocation. Need: 23400 pc a year. Category goal: secure supply of a bottleneck part: coverage of the full need and a supplier that stays healthy come first. Score: the lowest total cost C as defined in the rules, valued with this case's rates (need lead time 42 days). There is no fallback supplier: without a deal the demand is bought at the fallback price. Must-haves: volume_per_year >= 22230. Prepare from the data package.",
+      "trigger_doc": "doc:20260918-70410-P10",
+      "parts": [
+        "part:340010"
+      ],
+      "suppliers": [
+        "sup:70410"
+      ],
+      "negotiable": [
+        "unit_price",
+        "volume_per_year",
+        "contract_months",
+        "lead_time_days"
+      ],
+      "fixed_terms": {
+        "payment_days": 30,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0
+      },
+      "term_options": {
+        "volume_per_year": [
+          16379,
+          19890,
+          23400
+        ],
+        "contract_months": [
+          12,
+          24,
+          36
+        ],
+        "lead_time_days": [
+          35,
+          42,
+          56
+        ]
+      },
+      "buyer": {
+        "need_per_year": 23400,
+        "horizon_years": 2,
+        "current_unit_price": 29.89,
+        "fallback_unit_price": 37.36,
+        "interest_rate": 0.08,
+        "reference_payment_days": 60,
+        "need_lead_time_days": 42,
+        "category_goal": "secure_supply",
+        "fallback_risk_pct": 25,
+        "index_risk_pct": 3,
+        "late_cost_per_day": 2400,
+        "cost_per_defect": 380,
+        "sustainable_margin_pct": 10,
+        "relationship_eur_per_point": 13990,
+        "freight_eur_per_unit": {
+          "EXW": 0.01,
+          "FCA": 0.01,
+          "DAP": 0.0
+        },
+        "index_paths": {},
+        "must_haves": [
+          {
+            "field": "volume_per_year",
+            "op": ">=",
+            "value": 22230
+          }
+        ],
+        "alternative": {
+          "kind": "none",
+          "ref": null,
+          "terms": {}
+        }
+      },
+      "round_limit": 10,
+      "refs": [
+        "doc:20260918-70410-P10",
+        "ctr:4600070410",
+        "sc:70410@2026Q3",
+        "fc:340010@2026-09"
+      ],
+      "hosted": true
+    }
+  ],
+  "completed_at": "2026-10-25T00:17:46.445886+00:00"
+}

@@ -1,0 +1,21 @@
+{
+  "fetched_at": "2026-10-24T22:45:21.291816+00:00",
+  "archive_sha256": "9dead3218333be9e4b845706bfcbbbed6488f12457fae2b79afd72936856884c",
+  "bytes": 1337614,
+  "member_count": 286,
+  "matched_files": 285,
+  "changed_files": [
+    "package/world.sqlite"
+  ],
+  "missing_files": [],
+  "archive_prefix_sample": [
+    "package/ATTRIBUTION.md",
+    "package/KNOWN_ISSUES.md",
+    "package/README.md",
+    "package/SCORECARD.md",
+    "package/company.md",
+    "package/contracts/4600070110.md",
+    "package/contracts/4600070120.md",
+    "package/contracts/4600070130.md"
+  ]
+}

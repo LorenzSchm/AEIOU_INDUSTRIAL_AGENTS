@@ -1,0 +1,54 @@
+{
+  "activated_at": "2026-10-25T00:00:34.046940+00:00",
+  "status": "rejected_after_test_baseline_restored",
+  "policy_source": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/config/p18-preserve-value.json",
+  "prompt_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/prompts/p18-diagnostic-v26.txt",
+  "prompt_sha256": "bb0127e4daaa85f32c7717ae50439bd80c3f8d576c84a68b15729dbcae0bce8e",
+  "policy": {
+    "case_id": "case:P18",
+    "accept_eligible_offers": true,
+    "closing_price": 5.1,
+    "maximum_unit_price": 5.1,
+    "maximum_total_cost": 295173.23,
+    "minimum_contract_months": 24,
+    "one_final_counter": false,
+    "adapt_closing_price_to_budget": true,
+    "early_package_alternatives": {
+      "after_buyer_proposals": 1,
+      "packages": [
+        {
+          "unit_price": 5.07,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        },
+        {
+          "unit_price": 5.1,
+          "payment_days": 60,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        }
+      ]
+    },
+    "menu_evidence_argument": "ppi_recent_change_pct",
+    "stop_after_nonqualifying_final": true
+  },
+  "server_restart": false,
+  "checks": {
+    "targeted_tests_passed": 102,
+    "actual_menu_replay": "passed",
+    "exact_acceptance_preserved": "passed",
+    "other_cases_preserved": true
+  },
+  "comparison": "three candidate runs versus the single achieved 68.4565 baseline, same High effort; not randomized",
+  "restored_at": "2026-10-25T00:03:24.046100+00:00",
+  "restored_policy_source": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/config/p18-accept-510.json"
+}

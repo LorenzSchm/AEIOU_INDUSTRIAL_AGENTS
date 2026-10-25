@@ -168,6 +168,13 @@ def play(table, case_id, agent, deadline=None):
                 return table.close(sid, msg)
             reply = table.send(sid, msg)
         except ArenaError as e:
+            if e.status == 422 and hasattr(table, "recover_acceptance"):
+                refreshed = table.recover_acceptance(sid, msg, e)
+                if refreshed is not None:
+                    if getattr(table, "done", None):
+                        return table.done
+                    threads = refreshed
+                    continue  # Re-decide on authoritative state; a rejected request used no round.
             if e.status != 409:
                 raise
             log.info("%s: %s", sid, e.detail)

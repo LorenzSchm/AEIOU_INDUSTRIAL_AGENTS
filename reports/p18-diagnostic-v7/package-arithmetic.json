@@ -1,0 +1,64 @@
+[
+  {
+    "terms": {
+      "unit_price": 4.51,
+      "payment_days": 14,
+      "contract_months": 36,
+      "index_clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 0,
+        "base_month": "2026-08"
+      }
+    },
+    "cost": 222693.13,
+    "benchmark_score_if_accepted": 99.9423,
+    "caution": "Arithmetic comparison only; no new supplier agreement or proof of reservation price.",
+    "previously_offered_by_supplier": false,
+    "currently_live": false
+  },
+  {
+    "terms": {
+      "unit_price": 4.65,
+      "payment_days": 14,
+      "contract_months": 36,
+      "index_clause": null
+    },
+    "cost": 222663.08,
+    "benchmark_score_if_accepted": 99.9837,
+    "caution": "Arithmetic comparison only; no new supplier agreement or proof of reservation price.",
+    "previously_offered_by_supplier": false,
+    "currently_live": false
+  },
+  {
+    "terms": {
+      "unit_price": 4.95,
+      "payment_days": 14,
+      "contract_months": 36,
+      "index_clause": null
+    },
+    "cost": 237028.44,
+    "benchmark_score_if_accepted": 80.1754,
+    "caution": "Arithmetic comparison only; no new supplier agreement or proof of reservation price.",
+    "previously_offered_by_supplier": false,
+    "currently_live": false
+  },
+  {
+    "terms": {
+      "unit_price": 5.2,
+      "payment_days": 14,
+      "contract_months": 36,
+      "index_clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 0,
+        "base_month": "2026-08"
+      }
+    },
+    "cost": 256763.69,
+    "benchmark_score_if_accepted": 52.9626,
+    "caution": "Arithmetic comparison only; no new supplier agreement or proof of reservation price.",
+    "previously_offered_by_supplier": true,
+    "currently_live": false
+  }
+]

@@ -1,0 +1,61 @@
+{
+  "policy": {
+    "case_id": "case:P10",
+    "c_open": 1932492.18,
+    "c_best": 1328926.89,
+    "minimum_score": 72.0,
+    "maximum_unit_price": 31.68,
+    "maximum_total_cost": 1497925.17
+  },
+  "state": {
+    "rounds_left": 8,
+    "round_limit": 10,
+    "supplier_status": "final_offer",
+    "phase": "negotiate",
+    "offers": [
+      {
+        "term_sheet_id": "offer:70410-2",
+        "offer_position": 1,
+        "package_fingerprint": "95ae1421d99a2b6a841fa3695f6bc26d1aaa7e00fef56f2cf7c407cde3c22537",
+        "terms": {
+          "volume_per_year": 23400,
+          "contract_months": 36,
+          "payment_days": 30,
+          "lead_time_days": 56,
+          "incoterm": "DAP",
+          "ppm_commitment": 300,
+          "chargeback_eur_per_complaint": 0.0,
+          "effective_date": "2027-01-01",
+          "index_clause": null,
+          "tooling_eur": 0,
+          "unit_price": 31.6
+        },
+        "cost": 1527674.4,
+        "must_haves_ok": true,
+        "economically_acceptable": true,
+        "repeat_count": 1,
+        "confirmations_needed": 0,
+        "server_acceptance_available": true,
+        "acceptance_eligible": false,
+        "meets_score_floor": false,
+        "meets_unit_price_limit": true
+      }
+    ],
+    "legal_actions": [
+      "send",
+      "stop"
+    ],
+    "eligible_offer_ids": [],
+    "confirmation_offer_ids": [
+      "offer:70410-2"
+    ],
+    "confirmation_target": null,
+    "confirmation_window_missed": false,
+    "acceptance_rejection": null,
+    "consequences": {
+      "accept": "Closes the case on the selected eligible binding package.",
+      "send": "Consumes one round. Changing any package term resets that package's repeat count.",
+      "confirm": "Consumes one round requesting the identical complete package, with no changed terms."
+    }
+  }
+}

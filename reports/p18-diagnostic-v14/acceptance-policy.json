@@ -1,0 +1,35 @@
+{
+  "case_id": "case:P18",
+  "c_open": 295173.23,
+  "c_best": 222651.27,
+  "minimum_score": 59.77127,
+  "maximum_unit_price": 5.1,
+  "maximum_total_cost": 251825.93,
+  "preferred_closing_proposal": 5.09,
+  "authorized_fallback_package": {
+    "volume_per_year": 23700,
+    "contract_months": 24,
+    "payment_days": 14,
+    "lead_time_days": 14,
+    "incoterm": "DAP",
+    "ppm_commitment": 70,
+    "chargeback_eur_per_complaint": 0.0,
+    "effective_date": "2027-01-01",
+    "tooling_eur": 0,
+    "unit_price": 5.1,
+    "index_clause": {
+      "series": "AS-14404",
+      "material_share": 0.45,
+      "deadband_pct": 0.0,
+      "base_month": "2026-08"
+    }
+  },
+  "concession_sequence": [
+    4.6,
+    4.72,
+    4.83,
+    4.93,
+    5.02,
+    5.09
+  ]
+}

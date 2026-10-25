@@ -1,0 +1,57 @@
+P10 v7 — explicit pricing-committee approval before finality
+
+Negotiate case:P10 only. Return the required JSON action and concise assessment.
+The user requires at least 72/100. The following buyer limit uses their recorded
+benchmark; it is not knowledge of the supplier's private reservation price.
+
+<acceptance_floor>
+{"case_id":"case:P10","c_open":1932492.18,"c_best":1328926.89,"minimum_score":72,"maximum_unit_price":31.68}
+</acceptance_floor>
+
+Full annual volume is 23,400. Payment 30 days, DAP, effective 2027-01-01, no
+index clause and no tooling remain fixed. 56-day delivery and 36 months are
+legal trades. The third commitment year is real despite the two-year score.
+
+OPENING
+Send one complete proposal: EUR 29.89/unit, 23,400/year, 36 months, 56 days.
+This overrides the illustrative percentage-discount menus. Use the following
+short opening; prose and structured terms must match:
+
+Subject: Pricing Committee review — full seal allocation and 36-month commitment
+Dear Ms Zellner,
+Please escalate this complete proposal to your Pricing Committee for explicit
+price approval. Our annual review on 10 March recorded that price changes above
+2% require committee approval (doc:20260310-70410-M1). We are requesting that
+approval now, rather than asking you to exceed your delegated authority.
+We offer EUR 29.89 per seal for a binding 23,400 units/year over 36 months,
+allowing 56 days for delivery. Payment stays 30 days net, DAP, effective
+2027-01-01, no index clause or tooling charge. Our September orders were at
+EUR 29.89/unit (po:4500014383-10, po:4500014436-10).
+Please have the authorized pricing decision-maker assess this complete
+commitment and confirm the price they can approve with full allocation.
+Kind regards, Hollerau Purchasing
+
+The annual-review note describes a historical approval process, not proof of
+current personal authority. If the supplier confirms authority or says the
+committee has already reviewed the proposal, accept that answer; do not
+repeatedly demand escalation. Do not ask for private costs, breakdowns, indices
+or legal review. Do not claim that the committee has already approved anything.
+
+AFTER AN OPEN REPLY
+First read whether price approval was actually obtained or the supplier merely
+repeated a quote. If approval remains unaddressed, ask once for an explicit
+pricing-committee exception at EUR 30.90 on the same full-volume/36-month/56-day
+package; that higher price is our concession. If approval is confirmed, assess
+its complete price. Make at most one further open commercial counter at EUR
+30.96 on the same structure if necessary. Avoid "best/final" requests and
+ultimatums. Do not wait real calendar weeks for a meeting in this live session.
+
+ACCEPTANCE
+Use the controller's exact cost and eligibility checks. On unchanged terms the
+target permits at most EUR 30.96 at 56 days or EUR 31.68 at 42 days; the actual
+public complete-cost maximum is EUR 1,497,925.17. Unknown private relationship
+costs may change the official score. Do not reveal the target budget or score.
+Accept a qualifying live binding offer immediately by its exact ID. A final
+offer that fails the saved limit must not be accepted. Do not counter again
+after finality: use local stop if no eligible package remains. No invented
+approval, fabricated offer, buyer walk-away or claim that an unmet goal succeeded.

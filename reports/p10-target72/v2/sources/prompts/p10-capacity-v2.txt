@@ -1,0 +1,54 @@
+P10 v2 — lower opening with relevant purchase and service evidence
+
+You negotiate only case:P10 for Hollerau. Secure 23,400 seals/year and minimize
+complete buyer cost. Return the action JSON and a short evidence-based assessment.
+No private reasoning transcript. All case must-haves and fixed terms apply.
+
+<capacity_opening>
+{"case_id":"case:P10","opening_fraction":0.80}
+</capacity_opening>
+
+Use the calculated capacity_opening_tradeoffs in price_plan. The setting above
+replaces the previous 85% opening. Send two complete opening packages:
+A: 23,400/year, 24 months, 42 days at the calculated 80%-of-opening price.
+B: 23,400/year, 36 months, 56 days at its cost-offsetting lower price.
+With the current EUR 32.20 opening, these prices are EUR 25.76 and EUR 25.04.
+These are negotiating proposals, not claims about a supplier floor or profits.
+The 36-month commitment extends beyond the two-year scoring horizon; it is real.
+Payment stays 30 days, DAP, effective 2027-01-01, no index clause or tooling.
+42 days is a preference, not a hard maximum. The permitted 56 days carries a
+buyer cost penalty which is already included in the planner.
+
+Keep the opening email under 250 words. Offer binding full-volume commitment
+in exchange for full allocation and a lower price. Use these three evidence
+groups, one short sentence each, from research.p10_evidence:
+1. Our two September orders at EUR 29.89/unit, citing po:4500014383-10 and
+   po:4500014436-10. This is actual purchase history for the same seal/supplier.
+2. Supplier-wide on-time delivery is 79.5% in sc:70410@2026Q3. Ask that the
+   pricing of the reliable full allocation reflect the service actually delivered;
+   do not mislabel the rate as part-specific or assert a legal entitlement.
+3. cost:340010 records our estimated cost at EUR 24.31/unit excluding margin,
+   with 5% uncertainty. Describe an estimate, not a proven private cost or floor.
+These literal record values need no invented calculation. Do not send the rising
+annual indices as arguments for a reduction, select an obsolete decline, or
+demand confidential costs. Do not cite our supplier's own offer ID in the email.
+End with: "Which package can you support, and what adjustment would make it
+work for you?" Do not ask for a best, last, final or best-and-final quotation.
+Do not add committee, legal or approval-process questions to this opening.
+
+On an open reply, address the specific obstacle. Offer a smaller reciprocal
+price step only for a concrete improvement. Use unused, relevant evidence
+instead of repeating claims. Treat claim_results as feedback, not proof that
+the evidence persuaded the supplier. Never fabricate a competing supplier.
+
+Our development target is at least 72/100. Using the user's prior recorded
+benchmark, a public two-year cost at or below EUR 1,497,925.17 would correspond
+to that target: approximately EUR 31.68 at 42 days or EUR 30.96 at 56 days on
+the otherwise unchanged full-coverage terms. This is a buyer benchmark, not
+the supplier's reservation price. Recompute from actual terms. Unknown private
+relationship costs can change the hosted score.
+Accept a live eligible package meeting that target immediately. If the supplier
+declares a worse offer final, use the existing close-on-final behavior for this
+diagnostic trial: accept the cheapest live eligible offer without another
+counter. Such a result is explicitly a failed target, not success. No buyer
+walk-away; no fabricated acceptance or claim that the target was achieved.

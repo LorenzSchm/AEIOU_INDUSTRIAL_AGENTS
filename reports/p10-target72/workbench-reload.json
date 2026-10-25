@@ -1,0 +1,69 @@
+{
+  "reloaded": true,
+  "old_pid": 16847,
+  "new_pid": 24160,
+  "checked_at": "2026-10-25T02:24:52.813738+00:00",
+  "api_status": "healthy",
+  "latest_forecast_preparation_loaded": true,
+  "reason": "Load latest monthly forecast delivery and explicit demand/commitment gaps after checking UI jobs idle.",
+  "source_sha256": {
+    "src/aeiou/forecast_evidence.py": "0f7f20b20a07e61efc5ec7f4efe3cee2b571b963935735a62ddc65f15bf259d8",
+    "src/aeiou/research.py": "9214a247f91a1da015ba84191bbe1c16edf3dda561ff76bc0ce95a30789cae70",
+    "src/aeiou/p10_evidence.py": "ee805d15be97851003a8540984b8a0fc697c7b8847a3d3f3a4ab01aa3548b537",
+    "src/aeiou/evidence_transport.py": "30c201ad1da4ffcd4c1bda59f644a2c9934570c0029d94b30eac233525cb4921",
+    "src/aeiou/prompt_protocol.py": "3a97fe1d32c91bbd7e4de61aa460691eaed81de882acfa43f1abebf71635ef2b",
+    "src/aeiou/service.py": "a76cbf85ae8cedf9925b35fcea4a452ea0fca39efe42275b4f3e7551500bddd7",
+    "src/aeiou/optimizer.py": "28be5aca98924ef8ed49aeee930dcef5674e9230005545f69fa94d40d48e872f",
+    "src/aeiou/price_planner.py": "47c7c5e8781a26dc1319e4466c72090f8096f5398235d3af2f0a254740d41095"
+  },
+  "previous_reload": {
+    "reloaded": true,
+    "old_pid": 8294,
+    "new_pid": 16847,
+    "checked_at": "2026-10-25T01:58:55.644327+00:00",
+    "api_status": "healthy",
+    "source_attachment_transport_loaded": true,
+    "reason": "Load verified exact-source attachments and workbench attachment preview after confirming no active UI jobs.",
+    "source_sha256": {
+      "src/aeiou/evidence_transport.py": "4eff07f2e15aaf49970076effee67e7816d0a9a20458f722026458fb750d9e80",
+      "src/aeiou/prompt_protocol.py": "3a97fe1d32c91bbd7e4de61aa460691eaed81de882acfa43f1abebf71635ef2b",
+      "src/aeiou/service.py": "a76cbf85ae8cedf9925b35fcea4a452ea0fca39efe42275b4f3e7551500bddd7",
+      "src/aeiou/optimizer.py": "28be5aca98924ef8ed49aeee930dcef5674e9230005545f69fa94d40d48e872f",
+      "src/aeiou/price_planner.py": "47c7c5e8781a26dc1319e4466c72090f8096f5398235d3af2f0a254740d41095"
+    },
+    "previous_reload": {
+      "reloaded": true,
+      "old_pid": 4478,
+      "new_pid": 8294,
+      "api_status": "healthy",
+      "reason": "Load observed supplier-default validation, candidate selection and faithful term completion after checking UI jobs idle.",
+      "supplier_default_transport_loaded": true,
+      "source_sha256": {
+        "src/aeiou/optimizer.py": "28be5aca98924ef8ed49aeee930dcef5674e9230005545f69fa94d40d48e872f",
+        "src/aeiou/price_planner.py": "47c7c5e8781a26dc1319e4466c72090f8096f5398235d3af2f0a254740d41095",
+        "src/aeiou/evidence_transport.py": "5fa221ef919a0ec20bba8fee7e5ff26822e1fa3299a9b136d2a832e7ebc55cfc",
+        "src/aeiou/prompt_protocol.py": "9679f1267edd0784a050eb3243b8c875349ba59d01015255bd2f2473aa5c04e8"
+      },
+      "previous_reload": {
+        "reloaded": true,
+        "old_pid": 93813,
+        "new_pid": 4478,
+        "api_status": "healthy",
+        "reason": "Load private calculation/retrieval citation guard after confirming UI jobs idle.",
+        "verification": "Fresh workbench process started after the tested source changes. API status is healthy and exposed prompt hashes match. The first verification looked for evidence-extension text in an endpoint that returns only the base transport; the running server was rechecked, not restarted.",
+        "source_sha256": {
+          "src/aeiou/evidence_transport.py": "5fa221ef919a0ec20bba8fee7e5ff26822e1fa3299a9b136d2a832e7ebc55cfc",
+          "src/aeiou/prompt_protocol.py": "777f18ab43b7b6dc5708ba12cd70cd516d9f9033702ba2b52164e46d53df42f5"
+        },
+        "previous_reload": {
+          "reloaded": true,
+          "old_pid": 86384,
+          "new_pid": 93813,
+          "api_status": "healthy",
+          "reason": "Load P10 canonical evidence and outgoing own-offer citation guard after confirming UI jobs idle.",
+          "outbound_guard_loaded": true
+        }
+      }
+    }
+  }
+}

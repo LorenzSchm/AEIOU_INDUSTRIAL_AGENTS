@@ -1,0 +1,248 @@
+{
+  "session_id": "a55aa7ae9a426aef",
+  "case_id": "case:P10",
+  "status": "ended",
+  "end_reason": "accepted",
+  "rounds": 3,
+  "set": "practice",
+  "opening": {
+    "sup:70410": {
+      "offer_id": "offer:70410-0",
+      "round": 0,
+      "status": "open",
+      "terms": {
+        "unit_price": 32.2,
+        "lead_time_days": 54,
+        "volume_per_year": 19890,
+        "contract_months": 12
+      },
+      "alternatives": [],
+      "missing_fields": [],
+      "claims": [],
+      "claim_results": [],
+      "signals": {
+        "reply_delay_days": 2,
+        "validity_days": 30
+      },
+      "text": "Dear Sir or Madam,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe offer a price of \u20ac32.20 per unit for a volume of 19890 pcs per year. Our Lieferzeit is 54 days, and the contract term is 12 months. \n\nPlease note that this offer remains valid for 30 days. All deliveries and services are strictly subject to our standard procedure and standard conditions.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH"
+    }
+  },
+  "threads": {
+    "sup:70410": {
+      "offer_id": "offer:70410-2",
+      "status": "agreed",
+      "offers": 3,
+      "closed": null,
+      "seconds_left": null
+    }
+  },
+  "moves": [],
+  "result": {
+    "ended": true,
+    "deal": true,
+    "supplier_id": "sup:70410",
+    "offer_id": "offer:70410-2",
+    "terms": {
+      "payment_days": 30,
+      "lead_time_days": 54,
+      "volume_per_year": 23400,
+      "contract_months": 36,
+      "effective_date": "2027-01-01",
+      "index_clause": null,
+      "incoterm": "DAP",
+      "tooling_eur": 0.0,
+      "ppm_commitment": 300,
+      "chargeback_eur_per_complaint": 0.0,
+      "unit_price": 31.4
+    },
+    "c_open": 1932492.18,
+    "c_deal": 1513452.0,
+    "c_alt": null,
+    "c_best": 1328926.89,
+    "score": 0.6942748149085908,
+    "must_haves_ok": true,
+    "cost_breakdown": {
+      "price": 1469520.0,
+      "uncovered_need": 0.0,
+      "fallback_risk": 0.0,
+      "payment_terms": 9796.8,
+      "freight": 0.0,
+      "late_delivery": 28800.0,
+      "quality": 5335.2,
+      "tooling": 0.0,
+      "index_clause": 0.0,
+      "index_risk": 0.0,
+      "relationship": 0.0
+    },
+    "trace": [
+      {
+        "round": 0,
+        "actor": "sup:70410",
+        "move": {
+          "offer_id": "offer:70410-0",
+          "round": 0,
+          "status": "open",
+          "terms": {
+            "unit_price": 32.2,
+            "lead_time_days": 54,
+            "volume_per_year": 19890,
+            "contract_months": 12
+          },
+          "alternatives": [],
+          "missing_fields": [],
+          "claims": [],
+          "claim_results": [],
+          "signals": {
+            "reply_delay_days": 2,
+            "validity_days": 30
+          },
+          "text": "Dear Sir or Madam,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe offer a price of \u20ac32.20 per unit for a volume of 19890 pcs per year. Our Lieferzeit is 54 days, and the contract term is 12 months. \n\nPlease note that this offer remains valid for 30 days. All deliveries and services are strictly subject to our standard procedure and standard conditions.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH"
+        },
+        "reasons": []
+      },
+      {
+        "round": 1,
+        "actor": "buyer",
+        "move": {
+          "type": "message",
+          "message_id": null,
+          "subject": "Mechanical seal 24 mm: full allocation against a firm two-year commitment",
+          "body": "Dear Ms Zellner,\n\nThank you for your quotation. We would like to propose a reciprocal trade for the mechanical seal 24 mm, SiC/carbon, EPDM.\n\nOn delivery, we accept your 54-day lead time instead of the 42-day standard recorded in our framework agreement (ctr:4600070410#5.1), DAP.\n\nOn commitment, your letter of 18 September 2026 says you will prioritise firm, long-term commitments (doc:20260918-70410-P10). We offer 23,400 pcs per year, binding in each year, for 24 months.\n\nIn return, we ask for full allocation of that volume at EUR 28.40/unit, with payment at 30 days, effective 2027-01-01 and no index clause.\n\nOur buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty (cost:340010); it is a buyer benchmark, not your disclosed cost.\n\nOur proposal adds the full 5% uncertainty on top of that estimate and then allows a 10% gross margin in our model, so EUR 24.31 x 1.05 / 0.90 is the basis for our EUR 28.40. This is neither your disclosed cost nor proof of your actual margin, and we recognise that your economics may differ.\n\nDoes this trade work for you?\n\nKind regards,\nHollerau Pumpenwerke GmbH, Purchasing",
+          "refs": [],
+          "term_sheets": [
+            {
+              "term_sheet_id": null,
+              "terms": {
+                "unit_price": 28.4,
+                "volume_per_year": 23400,
+                "contract_months": 24,
+                "lead_time_days": 54
+              }
+            }
+          ],
+          "interpreted": {
+            "claims": [
+              {
+                "type": "should_cost",
+                "refs": [
+                  "cost:340010"
+                ],
+                "asserted": {
+                  "unit_cost": 24.31
+                }
+              }
+            ]
+          },
+          "supplier_id": "sup:70410"
+        },
+        "reasons": []
+      },
+      {
+        "round": 1,
+        "actor": "sup:70410",
+        "move": {
+          "offer_id": "offer:70410-1",
+          "round": 1,
+          "status": "open",
+          "terms": {
+            "unit_price": 31.7,
+            "lead_time_days": 54,
+            "volume_per_year": 23400,
+            "contract_months": 24
+          },
+          "alternatives": [],
+          "missing_fields": [],
+          "claims": [],
+          "claim_results": [
+            {
+              "index": 0,
+              "result": "verified"
+            }
+          ],
+          "signals": {
+            "reply_delay_days": 2,
+            "validity_days": 30
+          },
+          "text": "Dear Sir or Madam,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the should cost data you cited; it holds and we took it into account. We note your proposal and the theoretical cost model provided; however, our pricing is dictated by actual production realities and our current high capacity utilisation. \n\nIn recognition of the increased volume of 23,400 units and the 24-month commitment, we are prepared to revise our price. We can offer EUR 31.70 per unit under these terms, maintaining the 54-day lead time. Our offer stands with a price of \u20ac31.70 per unit, Lieferzeit 54 days, a volume of 23400 pcs per year, and a contract term of 24 months. Our calculation is our property; we do not share a breakdown. Which volume can you commit to? This Angebot remains valid for 30 days.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH"
+        },
+        "reasons": [
+          "We checked the should cost data you cited; it holds and we took it into account.",
+          "We note your proposal and the theoretical cost model provided; however, our pricing is dictated by actual production realities and our current high capacity utilisation.",
+          "In recognition of the increased volume of \u2026 units and the 24-month commitment, we are prepared to revise our price.",
+          "We can offer EUR \u2026 per unit under these terms, maintaining the 54-day lead time.",
+          "Our calculation is our property; we do not share a breakdown.",
+          "Which volume can you commit to?"
+        ]
+      },
+      {
+        "round": 2,
+        "actor": "buyer",
+        "move": {
+          "type": "message",
+          "message_id": null,
+          "subject": "Mechanical seal 24 mm \u2013 full volume, three-year commitment",
+          "body": "Dear Ms Zellner,\n\nThank you for your revised quotation and for moving on price.\n\nTo answer your question directly: we can commit to 23,400 pcs per year, binding in each year.\n\nTo meet you, we are prepared to go further on several points at once:\n- We move our price from EUR 28.40 to EUR 31.07/unit.\n- We add a third committed year, so the contract runs 36 months.\n- We keep accepting your 54-day lead time instead of the 42-day standard in our framework agreement.\n\nThat gives you firm, full-volume demand over three years, which is the kind of long-term commitment your capacity letter said you would prioritise.\n\nThe other terms are unchanged: DAP, payment at 30 days, effective 2027-01-01 and no index clause.\n\nOur figure is our commercial proposal for this exchange. It is supported by the buyer estimate we shared earlier, not by any assumption about your actual costs. A longer binding commitment has real value for your capacity planning. We would ask you to recognise that in the complete price.\n\nCan you confirm full allocation at EUR 31.07/unit on these terms?\n\nKind regards,\nHollerau Pumpenwerke GmbH, Purchasing",
+          "refs": [],
+          "term_sheets": [
+            {
+              "term_sheet_id": null,
+              "terms": {
+                "unit_price": 31.07,
+                "volume_per_year": 23400,
+                "contract_months": 36,
+                "lead_time_days": 54
+              }
+            }
+          ],
+          "interpreted": {
+            "claims": []
+          },
+          "supplier_id": "sup:70410"
+        },
+        "reasons": []
+      },
+      {
+        "round": 2,
+        "actor": "sup:70410",
+        "move": {
+          "offer_id": "offer:70410-2",
+          "round": 2,
+          "status": "final_offer",
+          "terms": {
+            "unit_price": 31.4,
+            "lead_time_days": 54,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          },
+          "alternatives": [],
+          "missing_fields": [],
+          "claims": [],
+          "claim_results": [],
+          "signals": {
+            "reply_delay_days": 3,
+            "validity_days": 7
+          },
+          "text": "Dear Sir or Madam,\n\nWe note your commitment to a 36-month contract for 23,400 units per year. In response to this extended term, we are prepared to lower our price to EUR 31.40 per unit. The lead time remains at 54 days. Overall, our offer comprises a price of \u20ac31.40 per unit, Lieferzeit 54 days, a volume of 23400 pcs per year, and a contract term of 36 months. \n\nThis is our final offer (letztes Angebot). Please decide. Which figures is that based on? Please send us the data. We are happy to discuss this in a call; until then our offer stands.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH"
+        },
+        "reasons": [
+          "We note your commitment to a 36-month contract for \u2026 units per year.",
+          "In response to this extended term, we are prepared to lower our price to EUR \u2026 per unit.",
+          "The lead time remains at \u2026 days.",
+          "We are happy to discuss this in a call; until then our offer stands.",
+          "Which figures is that based on? Please send us the data."
+        ]
+      },
+      {
+        "round": 2,
+        "actor": "buyer",
+        "move": {
+          "type": "accept",
+          "offer_id": "offer:70410-2",
+          "supplier_id": "sup:70410"
+        },
+        "reasons": []
+      }
+    ]
+  },
+  "replay_url": "/replay/a55aa7ae9a426aef"
+}

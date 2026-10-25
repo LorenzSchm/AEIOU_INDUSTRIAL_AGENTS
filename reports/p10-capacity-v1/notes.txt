@@ -1,0 +1,16 @@
+P10 capacity experiment — 25 October 2026
+
+Baseline: 293f76b2ed574de6856f509031ae1569; supplied transcript matched exactly.
+The existing strategy required acceptance after finality. The first improvement therefore targets the opening.
+The planner now computes legal full-coverage capacity menus with delivery penalties offset at cent precision.
+The separate P10 prompt presents 24 months / 42 days and 36 months / 56 days immediately, cites raw index changes and an explicitly uncertain should-cost estimate, and asks about pricing approval before finality.
+Own supplier offer IDs remain in structured acceptance rather than appearing as rival-quote citations.
+
+Hosted result: 65.50996/100; EUR 31.80, 23400/year, 36 months, 56 days.
+Two-year scored cost EUR 1537096.80, including EUR 33600 delay cost; savings versus supplied run EUR 74757.60.
+Remaining gap to reported best EUR 208169.91. All three evidence claims verified; all must-haves met.
+85 focused tests and lint passed. Both recorded paths replayed exactly offline. One new practice session, two model calls, zero repairs/fallbacks/errors.
+
+Interpretation: one observation, with several changes. Earlier saved 56-day runs already scored 63.95 and 64.73, so most of this gain is consistent with recovering the delivery trade. The new trial improves on the strongest of those by 0.78 points, which is not proof of a repeatable increment.
+The real third-year commitment is outside the two-year cost formula; do not present that extra commitment as costless.
+Next hypothesis: improve opening evidence relevance and brevity; the supplier used the rising indices to support its own position and did not answer the approval question. Do not assume more API rounds imply willingness to negotiate.

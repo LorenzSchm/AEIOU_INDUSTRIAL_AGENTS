@@ -3,18 +3,28 @@ import { useEffect, useState } from "react"
 export type Route =
   | { page: "overview" | "pipeline" | "negotiations" | "evidence" }
   | { page: "evaluations"; tab: "local" | "hosted" | "prompts" }
-  | { page: "replay"; runId: string }
+  | { page: "replay"; runId: string; from?: "evaluations" }
 
 // Hash routes stay compatible with links in the README (#prompts, #run/<id>).
 function parse(hash: string): Route {
   const h = hash.replace(/^#\/?/, "")
-  if (h.startsWith("run/")) return { page: "replay", runId: decodeURIComponent(h.slice(4)) }
+  if (h.startsWith("evaluations/run/"))
+    return { page: "replay", runId: decodeURIComponent(h.slice("evaluations/run/".length)), from: "evaluations" }
+  if (h.startsWith("run/"))
+    return { page: "replay", runId: decodeURIComponent(h.slice(4)) }
   if (h === "prompts") return { page: "evaluations", tab: "prompts" }
   if (h.startsWith("evaluations")) {
     const tab = h.split("/")[1]
-    return { page: "evaluations", tab: tab === "hosted" || tab === "prompts" ? tab : "local" }
+    return {
+      page: "evaluations",
+      tab:
+        tab === "hosted" || tab === "prompts"
+          ? tab
+          : "local",
+    }
   }
-  if (h === "negotiations" || h === "evidence" || h === "pipeline") return { page: h }
+  if (h === "negotiations" || h === "evidence" || h === "pipeline")
+    return { page: h }
   return { page: "overview" }
 }
 

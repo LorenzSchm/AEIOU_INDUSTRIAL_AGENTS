@@ -1,0 +1,1259 @@
+[
+  {
+    "id": "0ddca8e06c51464da58931cfa16b7126",
+    "created_at": "2026-10-24T16:52:21.990075+00:00",
+    "mode": "hosted",
+    "actual_score": 0.44299588703890513,
+    "deal": true,
+    "best_supplier_offer": {
+      "message": 7,
+      "price": 5.5,
+      "payment_days": 60,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5.0,
+        "base_month": "2026-08"
+      },
+      "cost": 263046.3,
+      "potential_score": 44.2996,
+      "terms": {
+        "unit_price": 5.5,
+        "payment_days": 60,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 24
+      },
+      "status": "agreed"
+    },
+    "opening_chars": 1967,
+    "opening_checked_markers": {
+      "PO": false,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": true,
+      "committee": true
+    },
+    "claim_results": []
+  },
+  {
+    "id": "34690cd803054727a6a486fedb566ce4",
+    "created_at": "2026-10-24T17:56:56.107639+00:00",
+    "mode": "hosted",
+    "actual_score": 0.2946951516478595,
+    "deal": true,
+    "best_supplier_offer": {
+      "message": 3,
+      "price": 5.6,
+      "payment_days": 30,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5.0,
+        "base_month": "2026-08"
+      },
+      "cost": 269598.56,
+      "potential_score": 35.2647,
+      "terms": {
+        "unit_price": 5.6,
+        "payment_days": 30,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 24
+      },
+      "status": "open"
+    },
+    "opening_chars": 664,
+    "opening_checked_markers": {
+      "PO": false,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": false
+    },
+    "claim_results": []
+  },
+  {
+    "id": "072207627ec847878ad0e439e124efb6",
+    "created_at": "2026-10-24T19:22:05.177077+00:00",
+    "mode": "hosted",
+    "actual_score": 0.31909603656602736,
+    "deal": true,
+    "best_supplier_offer": {
+      "message": 3,
+      "price": 5.6,
+      "payment_days": 14,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5.0,
+        "base_month": "2026-08"
+      },
+      "cost": 270542.35,
+      "potential_score": 33.9633,
+      "terms": {
+        "unit_price": 5.6,
+        "payment_days": 14,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 24
+      },
+      "status": "open"
+    },
+    "opening_chars": 1678,
+    "opening_checked_markers": {
+      "PO": false,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": true,
+      "committee": false
+    },
+    "claim_results": []
+  },
+  {
+    "id": "9330b8cbf23347f687a68f0ec80d802c",
+    "created_at": "2026-10-24T19:52:39.670067+00:00",
+    "mode": "hosted",
+    "actual_score": 0.41903073220856135,
+    "deal": true,
+    "best_supplier_offer": {
+      "message": 7,
+      "price": 5.5,
+      "payment_days": 30,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5.0,
+        "base_month": "2026-08"
+      },
+      "cost": 264784.3,
+      "potential_score": 41.9031,
+      "terms": {
+        "unit_price": 5.5,
+        "payment_days": 30,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 24
+      },
+      "status": "open"
+    },
+    "opening_chars": 1213,
+    "opening_checked_markers": {
+      "PO": false,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": false
+    },
+    "claim_results": []
+  },
+  {
+    "id": "724457830daa47e6bb9d29c177796866",
+    "created_at": "2026-10-24T20:05:46.718792+00:00",
+    "mode": "hosted",
+    "actual_score": 0.33593700446044206,
+    "deal": true,
+    "best_supplier_offer": {
+      "message": 5,
+      "price": 5.6,
+      "payment_days": 30,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5.0,
+        "base_month": "2026-08"
+      },
+      "cost": 269598.56,
+      "potential_score": 35.2647,
+      "terms": {
+        "unit_price": 5.6,
+        "payment_days": 30,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      },
+      "status": "final_offer"
+    },
+    "opening_chars": 1802,
+    "opening_checked_markers": {
+      "PO": false,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": true
+    },
+    "claim_results": [
+      [
+        3,
+        [
+          {
+            "index": 0,
+            "result": "irrelevant"
+          }
+        ]
+      ],
+      [
+        5,
+        [
+          {
+            "index": 0,
+            "result": "irrelevant"
+          }
+        ]
+      ],
+      [
+        7,
+        [
+          {
+            "index": 0,
+            "result": "irrelevant"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "b772337fdc544cd49384d41df6ab1ba1",
+    "created_at": "2026-10-24T20:10:38.515283+00:00",
+    "mode": "hosted",
+    "actual_score": 0.5324730605736524,
+    "deal": true,
+    "best_supplier_offer": {
+      "message": 9,
+      "price": 5.3,
+      "payment_days": 30,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5.0,
+        "base_month": "2026-08"
+      },
+      "cost": 255155.78,
+      "potential_score": 55.1798,
+      "terms": {
+        "unit_price": 5.3,
+        "payment_days": 30,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      },
+      "status": "final_offer"
+    },
+    "opening_chars": 1561,
+    "opening_checked_markers": {
+      "PO": false,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": true
+    },
+    "claim_results": []
+  },
+  {
+    "id": "91dff19b84ba43f49fcfc8e212047161",
+    "created_at": "2026-10-24T20:10:38.516301+00:00",
+    "mode": "hosted",
+    "actual_score": 0.4014490231648455,
+    "deal": true,
+    "best_supplier_offer": {
+      "message": 9,
+      "price": 5.5,
+      "payment_days": 30,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5.0,
+        "base_month": "2026-08"
+      },
+      "cost": 264784.3,
+      "potential_score": 41.9031,
+      "terms": {
+        "unit_price": 5.5,
+        "payment_days": 30,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      },
+      "status": "final_offer"
+    },
+    "opening_chars": 1530,
+    "opening_checked_markers": {
+      "PO": false,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": true
+    },
+    "claim_results": []
+  },
+  {
+    "id": "30f0ca5f561c4292a03ff9bcef325275",
+    "created_at": "2026-10-24T20:10:38.517184+00:00",
+    "mode": "hosted",
+    "actual_score": 0.33593700446044206,
+    "deal": true,
+    "best_supplier_offer": {
+      "message": 5,
+      "price": 5.6,
+      "payment_days": 30,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5.0,
+        "base_month": "2026-08"
+      },
+      "cost": 269598.56,
+      "potential_score": 35.2647,
+      "terms": {
+        "unit_price": 5.6,
+        "payment_days": 30,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      },
+      "status": "open"
+    },
+    "opening_chars": 1608,
+    "opening_checked_markers": {
+      "PO": false,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": true
+    },
+    "claim_results": []
+  },
+  {
+    "id": "b8abc5e1bc524b819fd33a7279826f9c",
+    "created_at": "2026-10-24T20:20:57.455448+00:00",
+    "mode": "hosted",
+    "actual_score": 0.2572804154769119,
+    "deal": true,
+    "best_supplier_offer": {
+      "message": 3,
+      "price": 5.6,
+      "payment_days": 30,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 0.0,
+        "base_month": "2026-08"
+      },
+      "cost": 275570.96,
+      "potential_score": 27.0294,
+      "terms": {
+        "unit_price": 5.6,
+        "payment_days": 30,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 0.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 24
+      },
+      "status": "open"
+    },
+    "opening_chars": 963,
+    "opening_checked_markers": {
+      "PO": false,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": true
+    },
+    "claim_results": [
+      [
+        3,
+        [
+          {
+            "index": 0,
+            "result": "irrelevant"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "93aded2caecc497f8c565807b09fe5e0",
+    "created_at": "2026-10-24T20:28:01.715323+00:00",
+    "mode": "hosted",
+    "actual_score": 0.0,
+    "deal": false,
+    "best_supplier_offer": {
+      "message": 5,
+      "price": 5.5,
+      "payment_days": 14,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 0.0,
+        "base_month": "2026-08"
+      },
+      "cost": 271576.98,
+      "potential_score": 32.5367,
+      "terms": {
+        "unit_price": 5.5,
+        "payment_days": 14,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 0.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      },
+      "status": "final_offer"
+    },
+    "opening_chars": 1391,
+    "opening_checked_markers": {
+      "PO": false,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": true
+    },
+    "claim_results": []
+  },
+  {
+    "id": "0fb5e14c8e7b408480f8e4dc51aae482",
+    "created_at": "2026-10-24T20:37:59.549939+00:00",
+    "mode": "hosted",
+    "actual_score": 0.0,
+    "deal": false,
+    "best_supplier_offer": {
+      "message": 5,
+      "price": 5.2,
+      "payment_days": 14,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 0.0,
+        "base_month": "2026-08"
+      },
+      "cost": 256763.69,
+      "potential_score": 52.9626,
+      "terms": {
+        "unit_price": 5.2,
+        "payment_days": 14,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 0.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      },
+      "status": "final_offer"
+    },
+    "opening_chars": 1644,
+    "opening_checked_markers": {
+      "PO": true,
+      "AS_recent": true,
+      "PPI_recent": true,
+      "owner": false,
+      "committee": true
+    },
+    "claim_results": [
+      [
+        3,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          },
+          {
+            "index": 1,
+            "result": "verified"
+          },
+          {
+            "index": 2,
+            "result": "verified"
+          }
+        ]
+      ],
+      [
+        5,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ],
+      [
+        7,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "54747c61df044ac09c5e084e596da97f",
+    "created_at": "2026-10-24T20:50:41.655927+00:00",
+    "mode": "hosted",
+    "actual_score": 0.0,
+    "deal": false,
+    "best_supplier_offer": {
+      "message": 5,
+      "price": 5.3,
+      "payment_days": 14,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5.0,
+        "base_month": "2026-08"
+      },
+      "cost": 256049.01,
+      "potential_score": 53.9481,
+      "terms": {
+        "unit_price": 5.3,
+        "payment_days": 14,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      },
+      "status": "final_offer"
+    },
+    "opening_chars": 1894,
+    "opening_checked_markers": {
+      "PO": true,
+      "AS_recent": true,
+      "PPI_recent": true,
+      "owner": true,
+      "committee": true
+    },
+    "claim_results": [
+      [
+        3,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          },
+          {
+            "index": 1,
+            "result": "verified"
+          },
+          {
+            "index": 2,
+            "result": "verified"
+          }
+        ]
+      ],
+      [
+        5,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          },
+          {
+            "index": 1,
+            "result": "verified"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "f522d544597b477dbb4a455594d416b7",
+    "created_at": "2026-10-24T21:16:54.065585+00:00",
+    "mode": "hosted",
+    "actual_score": 0.0,
+    "deal": false,
+    "best_supplier_offer": {
+      "message": 5,
+      "price": 5.2,
+      "payment_days": 14,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5.0,
+        "base_month": "2026-08"
+      },
+      "cost": 251217.89,
+      "potential_score": 60.6097,
+      "terms": {
+        "unit_price": 5.2,
+        "payment_days": 14,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 24
+      },
+      "status": "final_offer"
+    },
+    "opening_chars": 1396,
+    "opening_checked_markers": {
+      "PO": true,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": false
+    },
+    "claim_results": [
+      [
+        3,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ],
+      [
+        7,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "7cd1987baac74f5a94b36e3a5359185b",
+    "created_at": "2026-10-24T21:21:47.618822+00:00",
+    "mode": "hosted",
+    "actual_score": 0.0,
+    "deal": false,
+    "best_supplier_offer": {
+      "message": 5,
+      "price": 5.2,
+      "payment_days": 14,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5.0,
+        "base_month": "2026-08"
+      },
+      "cost": 251217.89,
+      "potential_score": 60.6097,
+      "terms": {
+        "unit_price": 5.2,
+        "payment_days": 14,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 24
+      },
+      "status": "final_offer"
+    },
+    "opening_chars": 1667,
+    "opening_checked_markers": {
+      "PO": true,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": false
+    },
+    "claim_results": [
+      [
+        3,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "7e756bd88f304d81a4a70a6c4fabac64",
+    "created_at": "2026-10-24T21:27:39.426051+00:00",
+    "mode": "hosted",
+    "actual_score": 0.0,
+    "deal": false,
+    "best_supplier_offer": {
+      "message": 5,
+      "price": 5.3,
+      "payment_days": 14,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 0.0,
+        "base_month": "2026-08"
+      },
+      "cost": 261701.46,
+      "potential_score": 46.154,
+      "terms": {
+        "unit_price": 5.3,
+        "payment_days": 14,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 0.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 24
+      },
+      "status": "final_offer"
+    },
+    "opening_chars": 1243,
+    "opening_checked_markers": {
+      "PO": true,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": false
+    },
+    "claim_results": [
+      [
+        3,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "cfed77f5e84c477dac44dc50863cc41f",
+    "created_at": "2026-10-24T21:41:11.643235+00:00",
+    "mode": "hosted",
+    "actual_score": 0.5977127479731655,
+    "deal": true,
+    "best_supplier_offer": {
+      "message": 5,
+      "price": 5.2,
+      "payment_days": 14,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5.0,
+        "base_month": "2026-08"
+      },
+      "cost": 251217.89,
+      "potential_score": 60.6097,
+      "terms": {
+        "unit_price": 5.2,
+        "payment_days": 14,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      },
+      "status": "open"
+    },
+    "opening_chars": 1243,
+    "opening_checked_markers": {
+      "PO": true,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": false
+    },
+    "claim_results": [
+      [
+        3,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ],
+      [
+        5,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ],
+      [
+        7,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "7a374d292e544d748429cf3bd37107db",
+    "created_at": "2026-10-24T21:53:46.070313+00:00",
+    "mode": "hosted",
+    "actual_score": 0.0,
+    "deal": false,
+    "best_supplier_offer": {
+      "message": 7,
+      "price": 5.1,
+      "payment_days": 14,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 0.0,
+        "base_month": "2026-08"
+      },
+      "cost": 251825.93,
+      "potential_score": 59.7713,
+      "terms": {
+        "unit_price": 5.1,
+        "payment_days": 14,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 0.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      },
+      "status": "final_offer"
+    },
+    "opening_chars": 1243,
+    "opening_checked_markers": {
+      "PO": true,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": false
+    },
+    "claim_results": [
+      [
+        3,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ],
+      [
+        5,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "6fd08b2bc3734637b2d815e25b8e4a90",
+    "created_at": "2026-10-24T22:11:11.989506+00:00",
+    "mode": "hosted",
+    "actual_score": 0.0,
+    "deal": false,
+    "best_supplier_offer": {
+      "message": 7,
+      "price": 5.1,
+      "payment_days": 14,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 0.0,
+        "base_month": "2026-08"
+      },
+      "cost": 251825.93,
+      "potential_score": 59.7713,
+      "terms": {
+        "unit_price": 5.1,
+        "payment_days": 14,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 0.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      },
+      "status": "final_offer"
+    },
+    "opening_chars": 1243,
+    "opening_checked_markers": {
+      "PO": true,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": false
+    },
+    "claim_results": [
+      [
+        3,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ],
+      [
+        5,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "c57a073a73f3406a863beac1eb2366e2",
+    "created_at": "2026-10-24T22:16:04.379842+00:00",
+    "mode": "hosted",
+    "actual_score": 0.0,
+    "deal": false,
+    "best_supplier_offer": {
+      "message": 7,
+      "price": 5.1,
+      "payment_days": 30,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 0.0,
+        "base_month": "2026-08"
+      },
+      "cost": 250966.41,
+      "potential_score": 60.9565,
+      "terms": {
+        "unit_price": 5.1,
+        "payment_days": 30,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 0.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      },
+      "status": "final_offer"
+    },
+    "opening_chars": 1225,
+    "opening_checked_markers": {
+      "PO": true,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": false
+    },
+    "claim_results": [
+      [
+        3,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ],
+      [
+        5,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "0bf9a703c393406986acd3be92bc6a9f",
+    "created_at": "2026-10-24T22:23:26.366594+00:00",
+    "mode": "hosted",
+    "actual_score": 0.0,
+    "deal": false,
+    "best_supplier_offer": {
+      "message": 7,
+      "price": 5.2,
+      "payment_days": 30,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5.0,
+        "base_month": "2026-08"
+      },
+      "cost": 250341.52,
+      "potential_score": 61.8181,
+      "terms": {
+        "unit_price": 5.2,
+        "payment_days": 30,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      },
+      "status": "final_offer"
+    },
+    "opening_chars": 1111,
+    "opening_checked_markers": {
+      "PO": true,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": false
+    },
+    "claim_results": [
+      [
+        3,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ],
+      [
+        7,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "ca3625c14ff14f09b082d8e86b30d174",
+    "created_at": "2026-10-24T22:23:26.367836+00:00",
+    "mode": "hosted",
+    "actual_score": 0.0,
+    "deal": false,
+    "best_supplier_offer": {
+      "message": 7,
+      "price": 5.2,
+      "payment_days": 30,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5.0,
+        "base_month": "2026-08"
+      },
+      "cost": 250341.52,
+      "potential_score": 61.8181,
+      "terms": {
+        "unit_price": 5.2,
+        "payment_days": 30,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      },
+      "status": "final_offer"
+    },
+    "opening_chars": 1111,
+    "opening_checked_markers": {
+      "PO": true,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": false
+    },
+    "claim_results": [
+      [
+        3,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ],
+      [
+        7,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "cf03d2c849224651bf1671cb6426b518",
+    "created_at": "2026-10-24T22:23:26.369014+00:00",
+    "mode": "hosted",
+    "actual_score": 0.0,
+    "deal": false,
+    "best_supplier_offer": {
+      "message": 7,
+      "price": 5.2,
+      "payment_days": 14,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5.0,
+        "base_month": "2026-08"
+      },
+      "cost": 251217.89,
+      "potential_score": 60.6097,
+      "terms": {
+        "unit_price": 5.2,
+        "payment_days": 14,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      },
+      "status": "final_offer"
+    },
+    "opening_chars": 1111,
+    "opening_checked_markers": {
+      "PO": true,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": false
+    },
+    "claim_results": [
+      [
+        3,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ],
+      [
+        7,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "c206a1d4b53944e285756a588c445bda",
+    "created_at": "2026-10-24T22:40:34.507817+00:00",
+    "mode": "hosted",
+    "actual_score": 0.0,
+    "deal": false,
+    "best_supplier_offer": {
+      "message": 7,
+      "price": 5.1,
+      "payment_days": 30,
+      "clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5.0,
+        "base_month": "2026-08"
+      },
+      "cost": 245527.26,
+      "potential_score": 68.4565,
+      "terms": {
+        "unit_price": 5.1,
+        "payment_days": 30,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      },
+      "status": "final_offer"
+    },
+    "opening_chars": 1111,
+    "opening_checked_markers": {
+      "PO": true,
+      "AS_recent": false,
+      "PPI_recent": false,
+      "owner": false,
+      "committee": false
+    },
+    "claim_results": [
+      [
+        3,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ],
+      [
+        5,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ],
+      [
+        7,
+        [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      ]
+    ]
+  }
+]

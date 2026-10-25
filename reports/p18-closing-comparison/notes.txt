@@ -1,0 +1,47 @@
+Update: V28 was tested in run fef6cf692e524910bccd2465a58d5ef3 and failed.
+The supplier countered 5.20/30/5% after the late structure switch. Its forced
+proposal instruction has been superseded by V29. The arithmetic comparison
+feature remains available as information, not a supplier-acceptance prediction.
+See ../p18-five-percent-menu/results.txt for the single successful V29 test.
+
+P18 V28: choose the closing structure by full cost
+
+Source run a5fe624cdda045be9e16dbdfb3ce2968 used V27 exactly. The requested package
+was 5.00 / 14 days / 36 months / 3% deadband. Supplier countered 5.10; exact live
+acceptance followed the user's current authorization. Official result: 64.2713
+points, cost 248562.44. No scoring or acceptance bug was found.
+
+The achieved 5.10 / 30 days / 5% package costs 245527.26 and scores 68.4565.
+At the same 5.10 price, earlier payment adds 859.52 and the narrower deadband
+adds 2175.66. Total disadvantage 3035.18 = 4.1852 score points.
+The requested 5.00 / 14 days / 3% package would score 70.9917, but was not agreed.
+
+V27 still explicitly instructed the model to repeat Option B when the supplier
+favoured it. Its no-free-payment instruction did not change that branch. V28
+replaces that branch while keeping the complete V25 opening menu and evidence
+order. Before finality, ask for the demonstrated 5.10 / 30-day / 5% structure as
+a new complete proposal with fresh checked AS evidence. Respect explicit refusal.
+Any actual eligible counter at 5.10 remains acceptable, including 14 days / 3%.
+No positive score floor was reinstated, and no final negotiation was enabled.
+
+price_planner.closing_comparisons provides the model and decision audit with
+closing_package_comparison for each supplier. It compares currently quoted
+structures and the last buyer menu at one preferred price. It validates case
+terms, price cap and minimum duration, deduplicates numerically equal clauses
+such as 5 and 5.0, and records quote versus buyer-proposal provenance. It sorts
+by full cost without creating eligibility or asserting supplier approval.
+
+The actual message-5 replay gives, at 5.10:
+60 days / 5%: 243915.66, 70.6787 points.
+30 days / 5%: 245527.26, 68.4565 points.
+14 days / 3%: 248562.44, 64.2713 points.
+The cheapest current quote can become the worse closing structure when prices
+converge. The comparison is arithmetic, not an acceptance prediction.
+
+132 core checks passed, including the new reversal/provenance/model-transport
+cases, all allowed 5.10 acceptances and the existing score/cap protections. Ruff
+passed. Metadata protocol version now identifies the new input comparison.
+The actual 5.10/14/3 final still replays as exact acceptance with no model call.
+
+No hosted session or paid model call was started for V28. The refinement is ready
+for a fresh test, not a demonstrated score improvement. V25 remains archived.

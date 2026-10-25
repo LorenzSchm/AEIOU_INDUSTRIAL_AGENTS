@@ -1,0 +1,14 @@
+{
+  "offline_tests": "65 passed",
+  "ruff": "passed",
+  "live_research_http_status": 200,
+  "facts": 157,
+  "order_lines": 72,
+  "forecast_snapshots": 12,
+  "checked_opening_groups": 3,
+  "minimum_accepted_score": 80,
+  "workbench_pid": 28723,
+  "hosted_tests_launched": 0,
+  "paid_model_calls": 0,
+  "limitation": "Fixture tests validate retrieval, arithmetic and transport; hosted acceptance and model adherence untested."
+}

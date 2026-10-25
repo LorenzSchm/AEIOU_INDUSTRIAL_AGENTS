@@ -1,0 +1,26 @@
+P18 V22 regression and V23 baseline recovery
+
+Latest run: 5e19ec6b5f1a425f8e3d4adaf99f5b14, hosted session fc83e041c9cd6321.
+V22 counteroffers: 5.60 -> 5.40 -> 5.30, all 60 days / 36 months / 5% deadband.
+All PO/PPI/AS claim groups verified. Zero buyer model calls, three supplier rounds.
+Final cost EUR 253480.98 = 57.4891 calculated points. Official result: no deal, 0.
+The local final-offer stop preceded API cleanup; no supplier withdrawal email.
+
+Best previous quoted package: 5.10 / 30 days / 36 months / 5% deadband.
+Cost EUR 245527.26 = 68.4565 calculated points, also below the 70.01 floor.
+V22 was EUR 7953.72 worse in complete cost, roughly 10.97 calculated points.
+The changed opening asked for both longer credit and a wider deadband, and the
+buyer followed a fixed sequence. The run does not isolate a causal price premium.
+
+Recovery: V19 early-menu policy plus the existing final-stop guard; matching V23
+prompt. Model handles the 4.60 / 30-day / 0% opening and the actual post-menu
+response. Early menu remains 5.07/30, 5.05/14, 5.10/60 with checked PPI evidence.
+No automatic three-stage sequence or 5.09/45-day compromise. Keep AS evidence
+for the subsequent open reply and compare whole packages using the live planner.
+All above-70, nominal-cap, duration and exact-live-offer controls remain in force.
+
+This restores the best observed baseline, not a proven above-70 strategy.
+No saved supplier offer establishes a feasible score above 70. Test results verify
+routing, source delivery, acceptance and stopping; they do not predict negotiation
+performance. Run only a fresh P18 evaluation with prompts/p18-diagnostic-v23.txt.
+The previous ended session cannot resume. No hosted test was started for this fix.

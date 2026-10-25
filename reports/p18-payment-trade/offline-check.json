@@ -1,0 +1,98 @@
+{
+  "strategy": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/prompts/p18-diagnostic-v17.txt",
+  "policy": "config/p18-package-alternatives.json",
+  "checks": [
+    {
+      "terms": {
+        "unit_price": 4.6,
+        "payment_days": 30,
+        "contract_months": 36,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 0,
+          "base_month": "2026-08"
+        }
+      },
+      "cost": 226361.86,
+      "estimated_score": 94.8835
+    },
+    {
+      "terms": {
+        "unit_price": 4.72,
+        "payment_days": 30,
+        "contract_months": 36,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 0,
+          "base_month": "2026-08"
+        }
+      },
+      "cost": 232266.95,
+      "estimated_score": 86.741
+    },
+    {
+      "terms": {
+        "unit_price": 5.05,
+        "payment_days": 14,
+        "contract_months": 36,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5,
+          "base_month": "2026-08"
+        }
+      },
+      "cost": 243971.22,
+      "estimated_score": 70.6021
+    },
+    {
+      "terms": {
+        "unit_price": 5.07,
+        "payment_days": 30,
+        "contract_months": 36,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5,
+          "base_month": "2026-08"
+        }
+      },
+      "cost": 244082.98,
+      "estimated_score": 70.448
+    },
+    {
+      "terms": {
+        "unit_price": 5.09,
+        "payment_days": 45,
+        "contract_months": 36,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5,
+          "base_month": "2026-08"
+        }
+      },
+      "cost": 244241.61,
+      "estimated_score": 70.2292
+    },
+    {
+      "terms": {
+        "unit_price": 5.1,
+        "payment_days": 60,
+        "contract_months": 36,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5,
+          "base_month": "2026-08"
+        }
+      },
+      "cost": 243915.66,
+      "estimated_score": 70.6787
+    }
+  ],
+  "hosted_sessions_used": 0,
+  "model_calls": 0
+}

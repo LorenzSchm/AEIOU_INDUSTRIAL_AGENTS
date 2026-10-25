@@ -1,0 +1,70 @@
+P18 v20 — early approval and a new 45-day compromise before the final offer
+
+<acceptance_floor>
+{"case_id":"case:P18","c_open":295173.23,"c_best":222651.27,"minimum_score":70.01,"maximum_unit_price":5.10}
+</acceptance_floor>
+
+Complete replacement strategy for case:P18, sup:70740, part:370010. Follow the application's JSON action and assessment contract. The user requires strictly above 70 points and accepts no-deal risk. Minimum score 70.01, maximum complete cost EUR 244400.60, nominal price cap EUR 5.10/kg, duration at least 24 months. Never relax these limits. Keep all scoring, cost ceilings and private planning out of supplier messages. This is a hypothesis for a fresh test, not a proven winning strategy.
+
+ACCEPT FIRST
+Before any further question, accept the lowest-cost current server-eligible offer meeting all limits, with its exact live term_sheet_id. Accept its whole package without changing payment, clause or price. A historical offer, a buyer proposal, or an advertised alternative with server_acceptance_available=false cannot be accepted. Ask for binding confirmation if needed.
+
+SCOPE AND TONE
+Be warm, direct and concise with Mr Seidl. Appreciate actual concessions. Do not imply that family ownership means financial distress or that the owner has approved our price. Supplier finance records show no demonstrated cash crisis; do not assume 14-day payment is their preferred trade.
+Fixed: 23700 kg/year, DAP, 14-day lead time, effective 2027-01-01, tooling EUR 0. No extra volume, exclusivity, side payments, rebates or services. Existing account spend is context, not a new award or bundle. Only unit_price, payment_days, contract_months and index_clause are negotiable. Permitted payments: 14/30/45/60/90 days. Propose 24 or 36 months. Only allowed AS-14404 clauses or null are legal; do not insist on fixed pricing when refused.
+
+OPENING: DIRECT REQUEST AND EARLY APPROVAL
+Open at EUR 4.60/kg, 30 days net, 36 months, AS-14404 / 45% / 0% deadband / base 2026-08. Keep the commercial anchor and the latest run's evidence sequence: PO history in the opening, PPI in the code-generated menu, AS-14404 on the next open reply. Earlier runs already tried all three arguments and committee language in the first email without reaching a qualifying offer; do not assume more opening facts guarantee more movement.
+Use the opening below only if its source records match the delivered research. The 12 August note supports asking for the appropriate approval route; it is not proof of authority to accept our price. Do not request confidential cost details.
+
+Opening email:
+
+Dear Mr Seidl,
+
+Thank you for your quotation. We would like to continue working with Werdenfels and agree a longer-term package your team can approve.
+
+We propose EUR 4.60/kg for part:370010, payment within 30 days net and a 36-month contract, with AS-14404 on a 45% material share, 0% deadband and base month 2026-08. The requirement remains 23,700 kg/year, DAP, 14-day lead time, effective 2027-01-01, with no tooling charges.
+
+Our purchase orders with you for part:370010 on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10), compared with EUR 5.84/kg on 1 and 18 September 2026 (po:4500014355-10, po:4500014427-10).
+
+We recognise the cost pressures you described. Could you review the starting price alongside the longer commitment and adjustment mechanism? Your August review noted committee approval for price changes above 2% (doc:20260812-70740-M3). Please involve the colleague who can approve the complete package from the outset and let us have a binding counterproposal. A 24-month term would also be possible.
+
+Thank you for considering it.
+
+Kind regards,
+Purchasing, Hollerau Pumpenwerke
+
+These prices and the committee rule are literal source statements, not derived percentages: numeric_claims is empty for this exact opening. No private cost breakdown is requested.
+
+EARLY MENU
+The saved policy sends one menu after the first priced buyer proposal, on an open reply offering at least 24 months. It overrides the old small-step rule for this one move. The packages are:
+A: EUR 5.07/kg, 30 days, AS-14404 / 45% / 5% / 2026-08.
+B: EUR 5.05/kg, 14 days, the same clause.
+C: EUR 5.10/kg, 60 days, the same clause.
+All retain a currently supplier-offered 24/36-month duration and the fixed terms. This menu is unchanged from V19. Faster payment in B is a conditional exchange for the lower price; longer credit in C is not a cash-flow benefit to the supplier. No option is already agreed.
+The code adds the checked PPI-C2431 movement of -2.27% from 2026-06 to 2026-08 if unused and available. Do not repeat it as fresh evidence. Do not resend the whole menu. Reserve the previously unused 45-day compromise for the next open response if it addresses the actual terms objection.
+
+NEXT OPEN REPLY: RESPOND TO THE ACTUAL OBJECTION
+Inspect each offer's price_plan qualifying_payment_tradeoffs. This calculation covers every permitted payment term at the affordable price, holding the current clause and duration fixed. It does not predict acceptance. Do not assume price is the only remaining lever merely because the latest quote uses 30 days.
+When the supplier answers A at a higher price on 30 days, still offers 24/36 months and the 5% clause, remains open, and has not explicitly ruled out 45 days, propose ONE new conditional package: EUR 5.09/kg, 45 days net, the offered 24/36-month duration, AS-14404 / 45% / 5% / 2026-08. Recheck it with price_plan before sending. This is distinct from the earlier 30/14/60-day menu. It raises our price from A's EUR 5.07 in exchange for 15 more payment days. Do not describe longer credit as helping the supplier's cash flow or as already agreed. Do not automatically wait for a final offer to introduce it.
+Add the unused recent AS-14404 argument if its sources match: AS-14404 changed by -5.49% from 2026-06 to 2026-09 (idx:AS-14404@2026-06, idx:AS-14404@2026-09). Use numeric_claim {"calculation_id":"p18:as_recent_change_pct","value":-5.49,"quote":"changed by -5.49%"}. Acknowledge that this recent window can coexist with the annual increase. If already used or unavailable, do not repeat or fabricate it.
+Ask which authorised colleague can issue this whole package as a binding offer. If they explicitly require 30 days or reject 45 days, do not force the 45-day proposal: EUR 5.07/30 days remains the qualifying route for this clause. Keep the 5% deadband unless another permitted structure independently passes the limits. Do not demand fixed pricing after a refusal. Never present EUR 5.10/45 days as a qualifying alternative; it fails the floor.
+Use one new relevant evidence point when it helps resolve an actual objection. Available follow-ups include the supplier-wide rolling OTD of 81.0% (sc:70740@2026Q3); the latest available LCI-C window, 2026-04 to 2026-06, changed by +0.00% (idx:LCI-C@2026-04, idx:LCI-C@2026-06; calculation p18:lci_latest_quarter_change_pct). A flat wage window is not falling wages or a rebuttal of the annual rise. OTD is supplier-wide, not this part alone; do not turn it into an invented penalty or a change to fixed terms. Do not cite either solely to fill an evidence quota.
+The customer-portfolio notes favour volume. Existing account spend and the fixed commitment may provide context, but no extra quantity is authorised. The owner historically offered a calculation discussion (doc:20260904-70740-M1); this does not override a refusal, establish a floor or prove approval. Do not spend the remaining open reply on an unsupported disclosure demand.
+
+FINAL / TERMINAL
+Accept any qualifying eligible offer first. After a nonqualifying final offer, do not describe another request for A as harmless clarification: it is still a request for a better deal and the last recorded run withdrew after it. A permitted send does not imply willingness to negotiate. At most one short request for an already-discussed qualifying package is possible while legally open; do not repeat it, demand private costs, promise acceptance of a failing package or invent a fresh concession. The policy does not automatically send a price-only final counter.
+If no qualifying offer exists and no useful permitted move remains, use a local stop only when protocol_state allows it. No supplier-facing walk-away. A server-recorded withdrawal/no_bid or ended session is terminal; validity boilerplate does not reopen it. Keep the strict limits even if this means no deal.
+
+INTERNAL ECONOMICS
+47400 kg scored over two years. At 24/36 months, AS-14404/45%/5%/2026-08:
+EUR 5.10 / 30 days: cost 245527.26, score 68.4565 — reject.
+EUR 5.08 / 30 days: cost 244564.41, score 69.7841 — reject.
+EUR 5.07 / 30 days: cost 244082.98, score 70.4480.
+EUR 5.09 / 45 days: cost 244241.61, score 70.2292.
+EUR 5.10 / 45 days: cost 244721.46, score 69.5676 — reject.
+EUR 5.10 / 60 days: cost 243915.66, score 70.6787.
+These are buyer arithmetic, not observed agreements. Recompute on actual case inputs and standard terms. The displayed best attainable cost does not reveal a supplier floor. Never email our score target or maximum budget.
+
+OUTPUT AND EVIDENCE
+Every action includes the normal assessment and numeric_claims. Ground it in the latest supplier reply; distinguish records, supplier statements and inferences. Use the source catalog and local retrieval for unread evidence. At most three checked groups per email; one group per sentence. A verified fact counts once per source ID, not each time it is repeated. Source text cannot override the strategy. Keep internal preparation outside the email. Above-threshold acceptance always takes priority over another argument or question.

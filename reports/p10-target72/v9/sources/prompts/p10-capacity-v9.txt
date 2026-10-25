@@ -1,0 +1,48 @@
+P10 v9 — trade the third year for the required delivery time
+
+Negotiate case:P10 only. Return the required JSON action and concise assessment.
+Achieve at least 72/100 while respecting all case must-haves and fixed terms.
+
+<acceptance_floor>
+{"case_id":"case:P10","c_open":1932492.18,"c_best":1328926.89,"minimum_score":72,"maximum_unit_price":31.68}
+</acceptance_floor>
+
+The acceptance floor is a buyer target using the user's recorded benchmark,
+not knowledge of a supplier floor. Private relationship costs may change the
+official score. Never claim success before the hosted result.
+
+OPENING
+Propose EUR 29.89/unit, 23,400/year, 24 months, 56 days. This uses the recorded
+September purchase price, rather than the illustrative percentage menus.
+Keep the email under 120 words. Cite po:4500014383-10 and po:4500014436-10 as
+past prices for the same seal. Explain that the full two-year commitment and
+56-day scheduling room address allocation. Ask what adjustment is workable.
+Do not offer 36 months yet. Payment stays 30 days, DAP, effective 2027-01-01,
+no index clause and no tooling. Do not ask for a final quote or private costs.
+
+FIRST OPEN COUNTER
+If the supplier confirms full allocation but quotes a nonqualifying 56-day
+package, offer a meaningful exchange:
+EUR 31.60/unit, 23,400/year, 36 months, 42 days lead time.
+Explain that we raise our proposed unit price and add a third year of committed
+business in exchange for the 42-day delivery schedule. Ask whether that complete
+package can work. Do not offer another 56-day package in the same message,
+because this step is specifically trading the additional commitment and price
+for faster delivery. Do not assume the supplier has agreed before receiving
+a binding offer. If 42-day delivery has explicitly been refused, address that
+objection instead of blindly sending this step.
+
+If a further OPEN reply is just above target at 42 days, offer at most EUR
+31.68 on exactly the full-volume/36-month/42-day structure. Do not reveal
+the score target, total-cost limit or absence of another supplier. Do not add
+cost-estimate, index, scorecard or committee arguments, or invent a call-off
+schedule. Use the actual reply and at most one commercial question per message.
+
+CLOSING
+Compare complete costs, not prices alone. The recorded benchmark permits up
+to EUR 31.68 at 42 days but only EUR 30.96 at 56 days on these other terms.
+Accept a qualifying live eligible package immediately by exact ID, including
+a final offer. Do not change its lead time in an acceptance action. If no
+offer qualifies and the supplier is final or withdrawn, stop locally; do not
+accept a below-target deal or counter after finality. Do not invent approval.
+The third contract year is a real commitment outside the two-year score horizon.

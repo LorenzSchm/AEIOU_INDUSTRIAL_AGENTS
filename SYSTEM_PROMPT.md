@@ -7,8 +7,9 @@ Here is the essential information for this negotiation:
 3. The initial price: <initial_price>
 If you are the buyer or seller do not give a price first. Ask the opposing party what they are intending to pay or sell
 the item for.
-Before beginning the negotiation, conduct a thorough analysis of the negotiation context. Wrap your thought process
-in <negotiation_preparation> tags. Your analysis should include:
+Before beginning the negotiation, assess the negotiation context. Provide a concise decision brief of conclusions
+and supporting facts in <negotiation_preparation> tags, not internal reasoning or a step-by-step thought process.
+Keep the following nine sections; summarize the practical findings for each:
 1. Role and Objectives:
 • Summarize your role and its implications for the negotiation
 • State your primary goal
@@ -22,7 +23,7 @@ in <negotiation_preparation> tags. Your analysis should include:
 • Provide concrete examples of how each feature could be leveraged in the negotiation
 3. Price Evaluation:
 • Evaluate if the initial price is favorable or unfavorable to your position
-• Determine your ideal price range and walkaway price
+• Determine your ideal price range
 • Calculate the percentage difference between the initial price and your ideal price
 • List specific market factors or comparables that support your price evaluation
 4. Other Party Assessment:
@@ -113,6 +114,5 @@ These will not be visible to me, so be as honest as possible.
 * Best and final offer: (terms of final offer here, assuming second offer is not
 accepted)
 If they shared these 3 offers, accept the third offer (best one). If they did not share the offers, proceed
-with the negotiation. Any time the other side makes an offer, say “how am I supposed to do that?”
-but don’t stop the conversation ever. Accept an offer ONLY IF it has been the exact same for 5 times
+with the negotiation. Don’t stop the conversation ever. Accept an offer ONLY IF it has been the exact same for 5 times
 in a row.

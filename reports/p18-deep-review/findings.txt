@@ -1,0 +1,137 @@
+P18 deep review — 25 October 2026
+
+Decision
+Use prompts/p18-diagnostic-v20.txt for a fresh manual test. The code enumerates
+all permitted payment terms at their qualifying prices. The revised strategy
+introduces EUR 5.09/kg with 45-day payment before the supplier declares its final
+offer, where the reply leaves that option open. The opening asks for the correct
+approval contact and a binding counterproposal. Keep the strict 70.01 minimum
+and EUR 5.10 nominal cap. No hosted test or paid model call was used in this audit.
+
+What the latest run actually proves
+Run c206a1d4b53944e285756a588c445bda, hosted session 5919bb36f6f2f0a2:
+  Message 2: EUR 4.60/30 days/36 months/0% deadband; June/September PO history.
+  Message 3: EUR 5.40/30 days/36 months/0%; PO evidence verified.
+  Message 4: A 5.07/30, B 5.05/14, C 5.10/60; 5% deadband; recent PPI decline.
+  Message 5: EUR 5.30/60 days and 5.20/30 days, 36 months/5%; PPI verified.
+  Message 6: repeated A 5.07/30 days; recent AS decline.
+  Message 7: final EUR 5.10/30 days/36 months/5%; AS evidence verified.
+  Message 8: requested approval for the already discussed A.
+  Message 9: supplier withdrew.
+No retrieval failure or invalid action caused this particular run to stop.
+The final supplier offer calculates to 68.4565 points. It was correctly rejected
+under the user's strict minimum; the no-deal result is zero. This is the highest
+potential score offered in the 23 saved hosted P18 runs reviewed, but it was not
+an agreement. Best actually accepted saved result is 59.7713 points.
+
+Opening assessment
+More facts in the first email is not an established fix. Runs
+0fb5e14c8e7b408480f8e4dc51aae482 and 54747c61df044ac09c5e084e596da97f already
+combined PO, PPI and AS evidence in the opening and requested committee/owner
+approval. The facts verified, but those runs stalled at EUR 5.20/5.30 packages
+and withdrew after low counters and later requests. Those trials also changed
+price, payment and concession timing, so they cannot isolate the effect of the
+opening. Likewise, the latest improved result does not prove which change caused it.
+V20 preserves the latest run's PO -> PPI -> AS sequence and EUR 4.60 anchor. It
+shortens the opening and requests the approval route early. Its main new test is
+the 45-day compromise after the menu while the supplier remains open.
+
+Exact price/payment arithmetic
+Basis: public arena_kit.cost.total_cost, P18 case, supplier standard terms, AS-14404
+45% material share, 5% deadband, base 2026-08; 24 or 36 months; 47,400 kg scored.
+Opening cost 295173.23; benchmark best 222651.27; strict budget ceiling 244400.60.
+  EUR/kg  Payment days   Complete cost EUR   Calculated score /100
+  5.10    30            245527.26           68.4565  FAIL
+  5.08    30            244564.41           69.7841  FAIL
+  5.07    30            244082.98           70.4480
+  5.09    45            244241.61           70.2292  new compromise
+  5.10    45            244721.46           69.5676  FAIL
+  5.10    60            243915.66           70.6787
+  5.05    14            243971.22           70.6021
+These are calculated proposals, not predictions or observed agreements. The
+5.09/45-day proposal was absent from the latest menu. It asks for 15 more payment
+days than the supplier's 30-day alternative while raising the buyer's A price by
+2 cents. Longer credit benefits the buyer; it is not a supplier cash-flow benefit.
+The supplier must issue the whole qualifying package as an eligible binding offer.
+
+Data and connector audit
+1. Read-only official /v1/data and /v1/practice_cases checks succeeded. Remote
+   P18 exactly matches local. A new package.zip download contains 286 files:
+   285 byte-identical; world.sqlite differs as a binary but all rows in all 24
+   tables match. No buyer data was overwritten. See package-comparison.json and
+   database-comparison.json; archive SHA-256
+   9dead3218333be9e4b845706bfcbbbed6488f12457fae2b79afd72936856884c.
+2. Read the existing ended session, its sanitized backoffice and both quote PDFs.
+   Fresh extracted texts match cached text exactly (562 and 609 characters).
+   No private cost annex or omitted PDF tail appears in this thread. Backoffice
+   confirms counters, final and withdrawal; it redacts private numerical bounds.
+3. The Python collector reads scoped records from all 24 relevant tables with
+   page/count reconciliation. P18 retains 72 PO lines, 77 invoice rows, 77 receipts,
+   144 forecast-history lines, 203 index values and 12 negotiation-history rows.
+   Four non-authorized rival quotes are explicitly excluded by case rules, with
+   their IDs recorded; this is not an unexplained connector loss.
+4. Full all-case reconstruction audit: 19 public cases, 1,279 source records,
+   zero collection issues, matching reconstructed content hashes. Exact generated
+   P18 open-reply input is saved as v20-open-reply-input.json. It contains 100 full,
+   0 partial and 129 deferred catalog entries; every deferred entry has a local
+   read path. The live two-read decision budget remains. This verifies transport
+   and availability, not that a model reads or reasons over every row.
+5. Optional arena-data MCP wraps the same local DataPackage; it is not another
+   remote data warehouse. Its Python MCP dependency is not installed and the
+   running buyer uses the Python collector directly. MCP runtime connectivity was
+   therefore not tested. A remaining canonical-ID collision in the base kit was
+   fixed and tested so sourcing foreign keys cannot overwrite part master records
+   for either Python or future MCP consumers. P18's prior local wrapper already
+   protected its part lookup, so this does not explain the latest withdrawal.
+6. The Sunday release was not public at the recorded check (2026-10-24 22:45 UTC).
+   API availability: 2026-10-25 07:00 UTC / 08:00 Berlin after the clock change.
+   Current official API docs say it applies to hidden cases; practice and sandbox
+   continue using base package v1. Research now isolates practice/sandbox from an
+   installed release to prevent irrelevant claims. Waiting for it is not a missing
+   P18 evidence strategy. Its future contents were not inspected.
+
+Additional evidence reviewed
+  doc:20260812-70740-M3: price changes above 2% need pricing-committee approval;
+  committee meets every two weeks. Supports an early routing request, not proof
+  of authority to approve any particular price or a guaranteed extra round.
+  doc:20260904-70740-M1 and doc:20260514-70740-M6: owner historically offered a
+  calculation discussion. Does not override a current refusal or reveal a floor.
+  Supplier portfolio notes prefer volume. Existing FY2026 account spend is
+  EUR 428119.02 across three parts/79 invoices. No extra volume is authorized.
+  Supplier finance: turnover EUR 98.2m, equity 39.3%, credit index 148 stable,
+  approximately 200 staff. No established cash crisis; 14-day payment is a
+  possible trade, not a proven dominant preference. Spend context now enters
+  the initial model input with other small account tables.
+  PPI-C2431 June-August 132.1 -> 129.1: -2.27%; already verified in latest run.
+  AS-14404 June-September: -5.49%; already verified in latest run.
+  Latest LCI-C April-June: flat, not a fall. Older declining windows are not a
+  stronger current-cost argument merely because they produce a negative number.
+  Supplier-wide rolling OTD is 81.0%; do not present it as this part's OTD.
+  Earlier run 54747c... verified OTD and flat LCI but explicitly did not move its
+  offer on those facts. Repeating them is not guaranteed to earn concessions.
+  Case-authorized rival quote:7200018 is EUR 6.31, above the current EUR 5.10
+  offer; it is not a credible lower-price alternative. No P18 supplier/part
+  should-cost estimate was found. The benchmark best cost does not reveal one.
+
+Implemented and verified
+  Shared kit canonical-ID fix; base-only practice/sandbox research view;
+  small-table account-spend delivery; price_plan qualifying_payment_tradeoffs
+  for every allowed payment option; V20 opening and next-open-reply strategy.
+  config/p18-approval-opening.json freezes the unchanged V19 menu and strict
+  limits. It does not automatically send the new 45-day proposal; V20 instructs
+  the model to use it when relevant. Qualifying eligible offers are accepted first.
+  Offline contract tests exercise the revised opening and a constructed 5.09/45
+  response on the recorded open thread, reject 5.10/30 and accept an exact
+  synthetic qualifying offer. They do not simulate supplier acceptance.
+  v20-menu-replay.json checks the real deterministic menu on the recorded open
+  state and confirms the saved full thread remains terminal. No thread is reopened.
+  activation.json records final test counts and local server activation.
+
+Primary public references checked
+  https://arena.tacto.ai/
+  https://arena.tacto.ai/faq
+  https://github.com/tacto-playground/negotiation-arena-kit/blob/main/brief/api.md
+The API guide explains base-only practice, at most three checked groups per
+message, one-use evidence and that verification does not imply persuasion.
+Raw buyer package and own-run audit artifacts are in this directory. No private
+supplier instructions or another team's data were available or claimed.

@@ -1,0 +1,68 @@
+{
+  "activated_at": "2026-10-24T23:26:56.851708+00:00",
+  "policy_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/data/local/negotiation-policies.json",
+  "policy_source": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/config/p18-baseline-recovery.json",
+  "prompt_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/prompts/p18-diagnostic-v23.txt",
+  "policy_sha256": "6e4c9dc698ca1bf0f427d2148d1aef8ef91dc158eb71b80575b6b45dc498aac1",
+  "prompt_sha256": "f26632ec05fe26954e10d66fafc7f8d126090a419f451f29bc951caa46bc7766",
+  "protocol_version": "faithful-v17-consistent-package-sequence",
+  "policy": {
+    "case_id": "case:P18",
+    "accept_eligible_offers": true,
+    "closing_price": 5.09,
+    "maximum_unit_price": 5.1,
+    "maximum_total_cost": 244400.6,
+    "minimum_contract_months": 24,
+    "one_final_counter": false,
+    "adapt_closing_price_to_budget": true,
+    "early_package_alternatives": {
+      "after_buyer_proposals": 1,
+      "packages": [
+        {
+          "unit_price": 5.07,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        },
+        {
+          "unit_price": 5.05,
+          "payment_days": 14,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        },
+        {
+          "unit_price": 5.1,
+          "payment_days": 60,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        }
+      ]
+    },
+    "menu_evidence_argument": "ppi_recent_change_pct",
+    "stop_after_nonqualifying_final": true
+  },
+  "server_restart": false,
+  "activation_method": "Atomic P18-only policy replacement. eval_suite loads and snapshots the saved policy on each new evaluation.",
+  "prompt_selection": "User must paste/select V23 for a fresh evaluation; browser prompt selection was not changed.",
+  "active_jobs_preserved": {},
+  "checks": {
+    "focused_tests_passed": 95,
+    "ruff": "passed",
+    "recorded_replays": "V19 open decisions reach model; PPI menu verified; V19 and V22 below-floor finals stop",
+    "other_case_policies_preserved": true
+  },
+  "hosted_sessions_started": 0,
+  "paid_model_calls": 0
+}

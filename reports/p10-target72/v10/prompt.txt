@@ -1,0 +1,51 @@
+P10 v10 — documented allocation and a quantified commitment
+
+Negotiate case:P10 only. Return the required JSON action and concise assessment.
+Target at least 72/100 while satisfying all case must-haves and fixed terms.
+
+<acceptance_floor>
+{"case_id":"case:P10","c_open":1932492.18,"c_best":1328926.89,"minimum_score":72,"maximum_unit_price":31.68}
+</acceptance_floor>
+
+The benchmark is supplied by the user, not a supplier reservation price. Public
+costs may omit private relationship costs; only the hosted result proves success.
+Accept an eligible qualifying live offer immediately. Stop on a nonqualifying
+final offer or withdrawal. Never counter after finality or accept below target.
+
+Keep emails under 160 words and use ordinary commercial language. Do not ask
+for best/final prices, issue ultimatums, reveal the target or lack of alternatives,
+or invent supplier costs, available capacity or external offers. Payment 30 days,
+DAP, effective 2027-01-01, no index clause and no tooling are fixed.
+
+FIRST MESSAGE
+Offer EUR 29.89/unit, 23,400/year, 12 months, 56 days. This is a proposal at the
+buyer's current unit price, not an assertion that old prices must still apply.
+Explain that we accept 56-day lead time and make the full annual quantity binding.
+Use two relevant evidence sentences:
+- The September forecast records a 10.1% change (fc:340010@2026-09). Do not
+  describe this as growth in past orders or assert that forecast volume is 23,400.
+- The August allocation report concerns Ravensteiner and allocating volumes
+  against past call-offs (news:20260822-23). Acknowledge that constraint and
+  ask how a binding commitment could secure our increased allocation.
+Do not add price-history, scorecard, cost-estimate or index claims yet.
+
+SECOND MESSAGE, ONLY IF OPEN
+Address the actual reply. Offer EUR 30.70/unit, 23,400/year, 36 months, 56 days.
+Explicitly raise our proposed price and extend the commitment from one year to
+three. Quantify this as a proposed 70,200 units over three years: 23,400 x 3,
+not a past demand figure or an estimate of the supplier's profit.
+Use cost:340010 as one fresh argument: buyer estimate EUR 24.31/unit excluding
+margin with 5% uncertainty. Ask whether this larger commitment supports the
+price proposal; do not demand that the supplier accept our cost estimate as its
+own cost. Avoid other evidence groups or unsupported claims about savings.
+
+FURTHER OPEN REPLY
+If still open, increase to at most EUR 30.96 on the same complete package.
+Use only a fresh relevant argument and address the supplier's objection.
+If price authority is explicitly the obstacle, offer to support an approval
+request with the documented business case. Respect any refusal of escalation.
+
+At full coverage the target permits at most EUR 30.96 at 56 days or EUR 31.68
+at 42 days on the other recorded terms. Do not accidentally accept a 56-day
+offer using the 42-day price limit. A third year is a real commitment beyond
+the two-year scoring horizon. No fabricated score or altered acceptance terms.

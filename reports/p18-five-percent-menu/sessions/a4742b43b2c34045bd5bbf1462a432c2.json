@@ -1,0 +1,482 @@
+{
+  "session_id": "691db6e1fac373a7",
+  "case_id": "case:P18",
+  "status": "ended",
+  "end_reason": "walked_away",
+  "rounds": 3,
+  "set": "practice",
+  "opening": {
+    "sup:70740": {
+      "offer_id": "offer:70740-0",
+      "round": 0,
+      "status": "open",
+      "terms": {
+        "unit_price": 6.1,
+        "payment_days": 30,
+        "index_clause": null,
+        "contract_months": 12
+      },
+      "alternatives": [],
+      "missing_fields": [],
+      "claims": [
+        {
+          "type": "index_change",
+          "refs": [
+            "idx:AS-14404@2025-09",
+            "idx:AS-14404@2026-09"
+          ],
+          "asserted": {
+            "change_pct": 5.9
+          }
+        },
+        {
+          "type": "index_change",
+          "refs": [
+            "idx:LCI-C@2025-06",
+            "idx:LCI-C@2026-06"
+          ],
+          "asserted": {
+            "change_pct": 2.7
+          }
+        },
+        {
+          "type": "index_change",
+          "refs": [
+            "idx:PPI-C2431@2025-08",
+            "idx:PPI-C2431@2026-08"
+          ],
+          "asserted": {
+            "change_pct": 12.3
+          }
+        }
+      ],
+      "claim_results": [],
+      "signals": {
+        "reply_delay_days": 2,
+        "validity_days": 30
+      },
+      "text": "Dear customer,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe are delighted to present our competitive quote for your requirements. Our price is \u20ac6.10 per unit, with a Zahlungsziel of 30 days net, a contract term of 12 months, and no Preisgleitklausel. Please note that AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. Furthermore, LCI-C rose 2.7 % in twelve months and is 5 % of our cost, while PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. This offer remains valid for 30 days.\n\nMit freundlichen Gr\u00fc\u00dfen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH"
+    }
+  },
+  "threads": {
+    "sup:70740": {
+      "offer_id": "offer:70740-3",
+      "status": "final_offer",
+      "offers": 3,
+      "closed": null,
+      "seconds_left": null
+    }
+  },
+  "moves": [],
+  "result": {
+    "ended": true,
+    "deal": false,
+    "supplier_id": null,
+    "offer_id": null,
+    "terms": null,
+    "c_open": 295173.23,
+    "c_deal": null,
+    "c_alt": 301087.96,
+    "c_best": 222651.27,
+    "score": 0.0,
+    "must_haves_ok": null,
+    "cost_breakdown": null,
+    "trace": [
+      {
+        "round": 0,
+        "actor": "sup:70740",
+        "move": {
+          "offer_id": "offer:70740-0",
+          "round": 0,
+          "status": "open",
+          "terms": {
+            "unit_price": 6.1,
+            "payment_days": 30,
+            "index_clause": null,
+            "contract_months": 12
+          },
+          "alternatives": [],
+          "missing_fields": [],
+          "claims": [
+            {
+              "type": "index_change",
+              "refs": [
+                "idx:AS-14404@2025-09",
+                "idx:AS-14404@2026-09"
+              ],
+              "asserted": {
+                "change_pct": 5.9
+              }
+            },
+            {
+              "type": "index_change",
+              "refs": [
+                "idx:LCI-C@2025-06",
+                "idx:LCI-C@2026-06"
+              ],
+              "asserted": {
+                "change_pct": 2.7
+              }
+            },
+            {
+              "type": "index_change",
+              "refs": [
+                "idx:PPI-C2431@2025-08",
+                "idx:PPI-C2431@2026-08"
+              ],
+              "asserted": {
+                "change_pct": 12.3
+              }
+            }
+          ],
+          "claim_results": [],
+          "signals": {
+            "reply_delay_days": 2,
+            "validity_days": 30
+          },
+          "text": "Dear customer,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe are delighted to present our competitive quote for your requirements. Our price is \u20ac6.10 per unit, with a Zahlungsziel of 30 days net, a contract term of 12 months, and no Preisgleitklausel. Please note that AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. Furthermore, LCI-C rose 2.7 % in twelve months and is 5 % of our cost, while PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. This offer remains valid for 30 days.\n\nMit freundlichen Gr\u00fc\u00dfen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH"
+        },
+        "reasons": [
+          "AS-14404 rose \u2026 in twelve months and is \u2026 of our cost.",
+          "LCI-C rose \u2026 in twelve months and is \u2026 of our cost.",
+          "PPI-C2431 rose \u2026 in twelve months and is \u2026 of our cost."
+        ]
+      },
+      {
+        "round": 1,
+        "actor": "buyer",
+        "move": {
+          "type": "message",
+          "message_id": null,
+          "subject": "part:370010 \u2013 proposal for the coming contract period",
+          "body": "Dear Mr Seidl,\n\nThank you for your quotation and for reviewing our requirements. We would very much like to continue working with Werdenfels and appreciate your consideration of a longer-term arrangement.\n\nWould you kindly consider EUR 4.60/kg for part:370010, with payment within 30 days net and a 36-month contract? We propose AS-14404 on a 45% material share, with a 0% deadband and base month 2026-08. Our requirement is 23,700 kg/year, DAP, with a 14-day lead time, effective from 2027-01-01 and no tooling charges.\n\nOur purchase orders with you for part:370010 on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10), compared with EUR 5.84/kg on 1 and 18 September 2026 (po:4500014355-10, po:4500014427-10).\n\nWe recognise the cost pressures you described and hope that the longer commitment and proposed adjustment mechanism give us a useful basis for reviewing the starting price together. A 24-month commitment would also be possible if that suits your team better.\n\nCould you kindly let us know what binding offer you can approve?\n\nKind regards,\nPurchasing, Hollerau Pumpenwerke",
+          "refs": [],
+          "term_sheets": [
+            {
+              "term_sheet_id": null,
+              "terms": {
+                "unit_price": 4.6,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 0,
+                  "base_month": "2026-08"
+                },
+                "payment_days": 30,
+                "contract_months": 36
+              }
+            }
+          ],
+          "interpreted": {
+            "claims": [
+              {
+                "type": "price_history",
+                "refs": [
+                  "po:4500014022-10",
+                  "po:4500014078-10",
+                  "po:4500014355-10",
+                  "po:4500014427-10"
+                ],
+                "asserted": {
+                  "prices": [
+                    5.26,
+                    5.26,
+                    5.84,
+                    5.84
+                  ]
+                }
+              }
+            ]
+          },
+          "supplier_id": "sup:70740"
+        },
+        "reasons": []
+      },
+      {
+        "round": 1,
+        "actor": "sup:70740",
+        "move": {
+          "offer_id": "offer:70740-1",
+          "round": 1,
+          "status": "open",
+          "terms": {
+            "unit_price": 5.4,
+            "payment_days": 30,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 0.0,
+              "base_month": "2026-08"
+            },
+            "contract_months": 36
+          },
+          "alternatives": [
+            {
+              "offer_id": "offer:70740-1-a",
+              "terms": {
+                "unit_price": 5.4,
+                "payment_days": 30,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 0.0,
+                  "base_month": "2026-08"
+                },
+                "contract_months": 24
+              }
+            }
+          ],
+          "missing_fields": [],
+          "claims": [],
+          "claim_results": [
+            {
+              "index": 0,
+              "result": "verified"
+            }
+          ],
+          "signals": {
+            "reply_delay_days": 2,
+            "validity_days": 30
+          },
+          "text": "Dear customer,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the price history data you cited; it holds and we took it into account. Acknowledging the historical purchase orders you referenced, we can revise our offer to \u20ac5.40 per kg under these updated terms.\n\nOur main offer is a price of \u20ac5.40 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. \n\nWe appreciate your interest in a long-term partnership and agree to implement the AS-14404 index mechanism to manage material volatility. Our price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C, and we can offer a Preisgleitklausel on AS-14404, AS-14404, AS-14404. Our standard Zahlungsziel is 30 days net.\n\nAs you suggested, a 24-month contract duration provides a more balanced framework for this new structure. Alternatively, with a contract term of 24 months: \u20ac5.40 per unit. This alternative package features a price of \u20ac5.40 per unit, Zahlungsziel 30 days net, a contract term of 24 months, a Preisgleitklausel on AS-14404.\n\nThis offer stays valid for 30 days.\n\nMit freundlichen Gr\u00fc\u00dfen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH"
+        },
+        "reasons": [
+          "We checked the price history data you cited; it holds and we took it into account.",
+          "We appreciate your interest in a long-term partnership and agree to implement the AS-14404 index mechanism to manage material volatility.",
+          "As you suggested, a 24-month contract duration provides a more balanced framework for this new structure.",
+          "Acknowledging the historical purchase orders you referenced, we can revise our offer to \u20ac\u2026 per kg under these updated terms.",
+          "Alternatively, with a contract term of \u2026 months: \u20ac\u2026 per unit.",
+          "Our standard Zahlungsziel is \u2026 days net.",
+          "Our price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C.",
+          "We can offer a Preisgleitklausel on AS-14404, AS-14404, AS-14404."
+        ]
+      },
+      {
+        "round": 2,
+        "actor": "buyer",
+        "move": {
+          "type": "message",
+          "message_id": null,
+          "subject": "Alloy surcharge and base price for 1.4404 bar (Werdenfels)",
+          "body": "Thank you for working through the options with us. We appreciate your team's careful review and would like to find an arrangement that works for Werdenfels as well as for us.\n\nFor your review, PPI-C2431 changed by -2.27% from 2026-06 to 2026-08 (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08). We recognise that this recent movement can coexist with the annual increase you described. Could you take it into account when reviewing the starting price?\n\nCould you kindly consider one of these complete alternatives? Each price is conditional on its payment term and adjustment clause.\n\nOption A: EUR 5.07/kg, payment within 30 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\nOption B: EUR 5.05/kg, payment within 14 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\nOption C: EUR 5.10/kg, payment within 60 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\n\nThe fixed terms of our enquiry remain unchanged. These are new proposals for your approval. Could you issue the option you can approve as your binding offer? If none works, which term would need to change? We would be pleased to review it together.\n\nKind regards,\nPurchasing",
+          "refs": [],
+          "term_sheets": [
+            {
+              "term_sheet_id": null,
+              "terms": {
+                "unit_price": 5.07,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                },
+                "payment_days": 30,
+                "contract_months": 36
+              }
+            },
+            {
+              "term_sheet_id": null,
+              "terms": {
+                "unit_price": 5.05,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                },
+                "payment_days": 14,
+                "contract_months": 36
+              }
+            },
+            {
+              "term_sheet_id": null,
+              "terms": {
+                "unit_price": 5.1,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                },
+                "payment_days": 60,
+                "contract_months": 36
+              }
+            }
+          ],
+          "interpreted": {
+            "claims": [
+              {
+                "type": "index_change",
+                "refs": [
+                  "idx:PPI-C2431@2026-06",
+                  "idx:PPI-C2431@2026-08"
+                ],
+                "asserted": {
+                  "change_pct": -2.27
+                }
+              }
+            ]
+          },
+          "supplier_id": "sup:70740"
+        },
+        "reasons": []
+      },
+      {
+        "round": 2,
+        "actor": "sup:70740",
+        "move": {
+          "offer_id": "offer:70740-2",
+          "round": 2,
+          "status": "open",
+          "terms": {
+            "unit_price": 5.4,
+            "payment_days": 60,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 5.0,
+              "base_month": "2026-08"
+            },
+            "contract_months": 36
+          },
+          "alternatives": [
+            {
+              "offer_id": "offer:70740-2-a",
+              "terms": {
+                "unit_price": 5.3,
+                "payment_days": 30,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5.0,
+                  "base_month": "2026-08"
+                },
+                "contract_months": 36
+              }
+            }
+          ],
+          "missing_fields": [],
+          "claims": [],
+          "claim_results": [
+            {
+              "index": 0,
+              "result": "verified"
+            }
+          ],
+          "signals": {
+            "reply_delay_days": 2,
+            "validity_days": 30
+          },
+          "text": "Dear customer,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We are always delighted to work with Hollerau Pumpenwerke GmbH and support your needs with our broad range and reliable service.\n\nWe have verified the PPI-C2431 data you provided and factored the recent decrease into our calculation. Building on your Option A, we agree to the 36-month contract duration and 30 days net payment terms. Reflecting the updated index data, we can revise our offer to EUR 5.30 per kg.\n\nOur price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. Specifically, AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. That remains. LCI-C rose 2.7 % in twelve months and is 5 % of our cost. That remains. PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. That remains.\n\nOur current Angebot is a price of \u20ac5.40 per unit, Zahlungsziel 60 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. Alternatively, with Zahlungsziel 30 days net: a price of \u20ac5.30 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404.\n\nThis offer remains valid for 30 days.\n\nMit freundlichen Gr\u00fc\u00dfen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH"
+        },
+        "reasons": [
+          "AS-14404 rose \u2026 in twelve months and is \u2026 of our cost. That remains.",
+          "LCI-C rose \u2026 in twelve months and is \u2026 of our cost. That remains.",
+          "PPI-C2431 rose \u2026 in twelve months and is \u2026 of our cost. That remains.",
+          "We have verified the PPI-C2431 data you provided and factored the recent decrease into our calculation.",
+          "Building on your Option A, we agree to the 36-month contract duration and \u2026 days net payment terms.",
+          "Reflecting the updated index data, we can revise our offer to EUR \u2026 per kg.",
+          "Alternatively, with Zahlungsziel \u2026 days net: \u20ac\u2026 per unit.",
+          "Our price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C."
+        ]
+      },
+      {
+        "round": 3,
+        "actor": "buyer",
+        "move": {
+          "type": "message",
+          "message_id": null,
+          "subject": "part:370010 \u2013 closing proposal on your 30-day / 36-month structure",
+          "body": "Dear Mr Seidl,\n\nThank you for your revised offer and for taking the PPI-C2431 data into account. We appreciate the move to EUR 5.30/kg on 30 days net, and your acceptance of the 36-month term with AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\n\nWe would like to close on exactly that structure. For your review, AS-14404 changed by -5.49% from 2026-06 to 2026-09 (idx:AS-14404@2026-06, idx:AS-14404@2026-09). We recognise that this recent movement can coexist with the annual increase you described, and the agreed clause will continue to share future material movements fairly between us.\n\nWould you kindly approve EUR 5.10/kg, with payment within 30 days net, a 36-month contract and AS-14404 on a 45% material share, 5% deadband and base month 2026-08? The fixed terms of our enquiry remain unchanged: 23,700 kg/year, DAP, a 14-day lead time, effective from 2027-01-01 and no tooling charges.\n\nIf you can confirm this as your binding offer, we would be glad to finalise the arrangement with Werdenfels promptly.\n\nKind regards,\nPurchasing, Hollerau Pumpenwerke",
+          "refs": [],
+          "term_sheets": [
+            {
+              "term_sheet_id": null,
+              "terms": {
+                "unit_price": 5.1,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                },
+                "payment_days": 30,
+                "contract_months": 36
+              }
+            }
+          ],
+          "interpreted": {
+            "claims": [
+              {
+                "type": "index_change",
+                "refs": [
+                  "idx:AS-14404@2026-06",
+                  "idx:AS-14404@2026-09"
+                ],
+                "asserted": {
+                  "change_pct": -5.49
+                }
+              }
+            ]
+          },
+          "supplier_id": "sup:70740"
+        },
+        "reasons": []
+      },
+      {
+        "round": 3,
+        "actor": "sup:70740",
+        "move": {
+          "offer_id": "offer:70740-3",
+          "round": 3,
+          "status": "final_offer",
+          "terms": {
+            "unit_price": 5.2,
+            "payment_days": 30,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 5.0,
+              "base_month": "2026-08"
+            },
+            "contract_months": 36
+          },
+          "alternatives": [],
+          "missing_fields": [],
+          "claims": [],
+          "claim_results": [
+            {
+              "index": 0,
+              "result": "verified"
+            }
+          ],
+          "signals": {
+            "reply_delay_days": 3,
+            "validity_days": 7
+          },
+          "text": "Dear customer,\n\nIt is always a pleasure to work with Hollerau Pumpenwerke GmbH. We have verified the AS-14404 index data you provided and factored the recent decrease into our calculation. Our price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C. Specifically, AS-14404 rose 5.9 % in twelve months and is 45 % of our cost. That remains. LCI-C rose 2.7 % in twelve months and is 5 % of our cost. That remains. Furthermore, PPI-C2431 rose 12.3 % in twelve months and is 38 % of our cost. That remains. \n\nAcknowledging this movement, we can revise our offer to EUR 5.20 per kg for the 36-month contract with 30 days net payment. This represents a fair sharing of the recent material cost changes while maintaining the agreed structure. Our standard Zahlungsziel is 30 days net. \n\nAs a reminder, our Angebot stands at a price of \u20ac5.20 per unit, Zahlungsziel 30 days net, a contract term of 36 months, a Preisgleitklausel on AS-14404. This is our final offer (letztes Angebot). Please decide. This offer remains valid for 7 days.\n\nMit freundlichen Gr\u00fc\u00dfen\nFranz Seidl\nInside Sales, Blankstahl Werdenfels GmbH"
+        },
+        "reasons": [
+          "AS-14404 rose \u2026 in twelve months and is \u2026 of our cost. That remains.",
+          "LCI-C rose \u2026 in twelve months and is \u2026 of our cost. That remains.",
+          "PPI-C2431 rose \u2026 in twelve months and is \u2026 of our cost. That remains.",
+          "We have verified the AS-14404 index data you provided and factored the recent decrease into our calculation.",
+          "Acknowledging this movement, we can revise our offer to EUR \u2026 per kg for the 36-month contract with \u2026 days net payment.",
+          "This represents a fair sharing of the recent material cost changes while maintaining the agreed structure.",
+          "Our standard Zahlungsziel is \u2026 days net.",
+          "Our price follows our main cost drivers: AS-14404, PPI-C2431, LCI-C."
+        ]
+      },
+      {
+        "round": 3,
+        "actor": "buyer",
+        "move": {
+          "type": "walk_away"
+        },
+        "reasons": []
+      }
+    ]
+  },
+  "replay_url": "/replay/691db6e1fac373a7"
+}

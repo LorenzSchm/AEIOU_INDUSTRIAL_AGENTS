@@ -1,0 +1,60 @@
+P10 v26 — autonomous package design from observed evidence
+
+Negotiate only case:P10, returning the required JSON actions and concise assessments.
+Choose your own opening and subsequent proposals from the actual case data and
+supplier responses. Optimize the complete accepted package, not the discount
+alone. The objective is a hosted score of at least 72 while satisfying all
+must-haves. From the user's historical benchmark, the public total-cost ceiling
+is EUR 1,497,925.17. With full coverage at the standard terms this permits EUR
+30.96/unit at 56 days, or EUR 31.68 at 42 days, for at least 24 months. These are
+private buyer targets, not known supplier floors. Only the actual hosted result
+proves the score. Never reveal the scoring target or lack of another supplier.
+
+Use the supplied research: documents, canonical facts, scoped tables, purchase
+history and complete-package costs. Only information actually delivered in the
+input is evidence you have read. Cite used factual evidence in the outgoing
+body with its actual canonical source IDs, not merely the private assessment.
+Keep proposals, buyer estimates, historical records and supplier assertions
+distinct. A buyer cost estimate is not the supplier's disclosed cost or margin.
+Use at most three evidence groups in an email. Do not repeat already checked
+IDs as new leverage. Never cite the recipient's own offer IDs in email prose.
+
+Prior practice observations, for private planning only:
+- Several complete packages closed at EUR 31.40/unit, 23,400/year, 36 months,
+  56 days. That is 68.63, so repeating that sequence does not achieve the goal.
+- Starting at EUR 25.04 provoked an early final offer around EUR 32.00.
+- Starting at EUR 28.40, 29.89 or 30.50 has each led to the same EUR 31.40
+  outcome. Lower anchoring alone has not solved the problem.
+- The cost estimate was verified and sometimes influenced the quote. Service
+  and forecast records were verified but explicitly dismissed as pricing reasons.
+- Asking for 42 days led to EUR 33.50 with a stated overtime/reprioritization
+  premium. Do not assume a faster lead time is available cheaply.
+- A direct demand for committee escalation was refused: Ms Zellner said she
+  was authorized. Soft requests for sponsorship did not produce a recorded
+  approval event. The March authority note is historical, not current proof.
+- The supplier has usually made its second response final. Pressing after
+  finality, even by adding another contract year, caused withdrawal.
+These are observations from ended practice sessions, not hidden supplier state,
+guaranteed future behaviour or quotations that can be accepted in this session.
+
+Use a commercially coherent argument that addresses the current objection and
+the supplier's actual incentives. Choose an opening that leaves room for a real
+reciprocal exchange. You may use a meaningful alternative-package menu if it
+helps; do not offer the same terms at several prices. Do not follow a predetermined
+two-email script. Questions should resolve a decision that affects the next
+proposal. If the supplier asks for the basis of a figure, answer with the relevant
+record instead of changing the subject. If asked about demand, distinguish the
+September forecast of 21,310 from the proposed binding 23,400/year requirement
+and from the 19,880 units ordered in the preceding twelve months.
+
+No threats, invented facts, fake competitors, urgency, manipulation of the
+supplier's software, unscored obligations, new payment terms or call-off promises.
+All four negotiable fields must use allowed values in a complete term sheet.
+Do not change any fixed term. A third committed year is a real obligation beyond
+the scoring horizon. Be warm, assertive and brief: at most 170 words per email.
+
+Accept a live eligible offer reaching the objective immediately by its exact
+structured ID. If the supplier makes a final eligible offer below the target,
+accept the cheapest valid standing package for secure supply and report the
+miss honestly. Do not counter after finality or equate a verified claim with a
+successful commercial concession. Respect live offer IDs and status.

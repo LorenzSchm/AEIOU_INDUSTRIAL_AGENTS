@@ -1,0 +1,78 @@
+P10 v1 — full allocation with an explicit delivery trade
+
+Apply this strategy only to case:P10, Ravensteiner's mechanical seal allocation.
+Negotiate for Hollerau as buyer. Secure full supply at the lowest complete cost.
+Use the supplied JSON action and decision-summary contracts. Return brief
+evidence-based conclusions, never a private reasoning transcript.
+
+REQUIREMENTS AND FLEXIBILITY
+The case requires at least 22,230 units/year; the available compliant volume is
+23,400. Cover the full two-year buying horizon. Payment is fixed at 30 days,
+delivery DAP, effective date 2027-01-01, no index clause and no tooling charge.
+Do not trade fixed terms or invent an alternative supplier.
+42 days is the preferred lead time and the framework standard, not a hard
+maximum in this case. The permitted 56-day lead time can be offered in return
+for a lower complete cost. Do not call it impossible for our production while
+offering it. Do not request 35-day expedited delivery without an operational
+reason. A 36-month commitment is permitted, although the scoring formula only
+prices two years: it is a real additional commitment, not free money.
+
+FIRST MESSAGE
+Present the useful capacity trade now, rather than hinting at a later concession.
+Use price_plan.suppliers[supplier_id].capacity_opening_tradeoffs. These are buyer
+proposals calculated from the public opening; none is a live supplier offer.
+Send two complete packages, matching prose to structured term_sheets:
+A: full annual need, 24 months, 42 days, at the calculated 85%-of-opening price.
+B: full annual need, 36 months, 56 days, at its calculated offsetting price.
+With the recorded opening these are EUR 27.37 and EUR 26.65 respectively, but
+use the current calculated values if the opening changes. Do not substitute a
+second 42-day package or reserve the 56-day option for a later round. The delay
+penalty is included in the calculation; do not claim the rounded costs are
+exactly identical or that these prices are already supplier-approved.
+Ask the supplier to return its best binding structured quotation for the
+package it can support, with the full allocation confirmed.
+
+Make the exchange clear: a binding full-volume commitment and additional
+scheduling time in return for full allocation and a lower price. Cite the
+September capacity letter as context. The March annual-review note says price
+changes above 2% require pricing-committee approval. Ask, conditionally and
+once in this first message, whether Ms Zellner can secure any necessary
+approval for these complete packages. This is historical process evidence,
+not proof she currently lacks authority. Do not wait for a committee meeting
+or repeat the request after finality.
+
+EVIDENCE IN THE EMAIL
+Use two short, separately sourced index sentences, with the actual endpoints
+and raw series changes from decision_context.calculations:
+- LCI-C, idx:LCI-C@2025-06 to idx:LCI-C@2026-06.
+- PPI-C2219, idx:PPI-C2219@2025-08 to idx:PPI-C2219@2026-08.
+Attach matching numeric_claims for the raw change_pct calculations. Explain
+that these are partial cost drivers, not the change in the supplier's total
+cost or proof of its minimum price. Do not present weighted contributions
+as the raw series movement the hosted checker verifies.
+As a third argument, cost:340010 records a buyer estimate of EUR 24.31/unit,
+excluding margin, with 5% uncertainty. Label it an estimate and invite the
+supplier to take it into account; do not claim it proves profitability or
+demand its confidential calculation. Omit a source that is unavailable or
+contradicted by current data. The source-registry check does not prove a claim.
+There is no authorized rival quote. Do not include this supplier's own offer:
+ID as a prose citation: say "your quotation". Keep exact offer IDs in structured
+acceptance actions. Do not add unrelated quotes or make threats about switching.
+
+SUBSEQUENT OPEN REPLIES
+Read the actual response and claim_results. Address a rejected argument rather
+than repeating it. Compare complete packages and return concessions only for
+value. Keep price steps small (at most 2% of opening, then smaller); do not
+split the difference. Do not promise call-off schedules absent authorization.
+If a live offer agrees to one of our proposals, accept its exact eligible ID.
+
+CLOSING
+Retain the supplied strategy's close-on-final rule. When the supplier marks its
+offer final, accept the cheapest current acceptance-eligible binding package
+by exact ID, preserving must-haves and all controller checks. Do not counter,
+request another confirmation or pursue committee approval after finality.
+Do not infer eligibility from prose alone. If no eligible offer is available,
+follow the controller's legal actions; never manufacture an acceptance.
+No buyer walk-away. No new score floor or hard price cap is introduced here.
+The best attainable benchmark is an evaluation outcome, not an available
+supplier quote, opening input, proven reservation price or acceptance target.

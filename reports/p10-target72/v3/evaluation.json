@@ -1,0 +1,150 @@
+{
+  "id": "d4918e1cb15d4c04b1b92bf2307e0e31",
+  "suite_id": "tacto-hosted-practice-v1",
+  "variant_id": "practice",
+  "comparison_id": null,
+  "arena_url": "https://arena.tacto.ai",
+  "case_set": "practice",
+  "created_at": "2026-10-25T00:18:18.493697+00:00",
+  "status": "completed",
+  "prompt_text": "P10 v3 \u2014 executable renewal at the evidenced historical price\n\nNegotiate case:P10 only, for Hollerau. Return action JSON with the required short\nassessment and numeric_claims. The objective is a hosted score of at least 72.\nThe task permits 56-day lead time and a 36-month commitment; all other fixed\nterms and must-haves remain binding. The full annual volume is 23,400 units.\n\nThis experiment replaces a mechanical percentage anchor with the same-part\npurchase price shown in po:4500014383-10 and po:4500014436-10. Use EUR 29.89\nas our first unit-price proposal, with 23,400/year, 36 months and 56 days.\nThis is an actual purchase-history anchor, not a statement of supplier approval.\nIgnore the illustrative percentage-based candidate menus for this experiment.\nSend one complete structured package. Do not offer 42 days in this opening.\n\nKeep the first email under 160 words, along these lines:\nDear Ms Zellner,\nWe can make a binding commitment for 23,400 seals per year for 36 months,\nallowing 56 days for delivery. This gives you the longer commitment and\nscheduling room requested in your capacity letter.\nOur September orders for this same seal were at EUR 29.89/unit\n(po:4500014383-10, po:4500014436-10). We propose renewing at that price in\nexchange for the full allocation and the longer commitment above.\nPayment remains 30 days net, DAP, effective 2027-01-01, no index clause and\nno tooling charge. Can you agree to this complete package?\nKind regards, Hollerau Purchasing\n\nDo not add index, should-cost, scorecard, committee or legal arguments to this\nmessage. Do not demand a cost breakdown. Do not ask for a best or final offer.\nDo not disclose our target score, budget or absence of an alternative supplier.\n\nOn a genuinely open counter, compare its complete cost. At 56 days, the user's\nrecorded benchmark suggests prices no higher than EUR 30.96 achieve 72 before\nunknown private relationship costs; at 42 days the corresponding limit is EUR\n31.68. The public total-cost target is EUR 1,497,925.17. These are development\nbenchmarks, not knowledge of a supplier floor or a promise of the official score.\nIf an open reply does not qualify, one reciprocal closing proposal of EUR 30.90\nwith full volume, 36 months and 56 days is available. State we can conclude on\nthose exact terms if accepted. Do not gradually spend all remaining rounds.\nAccept a live eligible offer meeting the target immediately, by its exact ID.\n\nFor this diagnostic experiment retain close-on-final: accept the cheapest\nlive eligible binding offer after finality, without a further counter or\nconfirmation. If it exceeds the target, record failure to achieve 72 honestly.\nNo invented live offer, buyer walk-away or acceptance that violates must-haves.\nCommitment beyond two years is real although unpriced by the scoring formula.\n",
+  "prompt": {
+    "variant": "eval",
+    "strategy_revision": "eval-prompt-v2",
+    "strategy_sha256": "62eb589593d2aa1320e5acc91cc72dee192122f0bea8a67e24c622e38df03b77",
+    "transport_sha256": "38834b089eac955d47393e2eb9b8f52e587c0be8ceda87a5753b1e493407f961",
+    "system_sha256": "a57879363cc95f4aec6e2a2019a77253c9617fd055f8a95d43b69808b9c24a56",
+    "protocol_version": "faithful-v18-closing-cost-comparison",
+    "required_repeats": 0,
+    "enforce_reference_tactics": false,
+    "assessment_version": "supplier-assessment-v2-source-labels"
+  },
+  "execution_policies": {},
+  "model": "claude-opus-5-5",
+  "provider": "anthropic",
+  "effort": "medium",
+  "speed": "fast",
+  "kit_revision": "75eecd19bf42c4f4b5a93f01139fa2a757ec5c07",
+  "arena_sessions_used": 1,
+  "practice_sessions_used": 1,
+  "parallel_runs": 1,
+  "decision_budget_s": 50,
+  "repeats": 1,
+  "quota_at_start": {
+    "used": 158,
+    "left": 242,
+    "limit": 400,
+    "resets_at": "2026-10-25T11:19:44.936916+00:00"
+  },
+  "rows": [
+    {
+      "case_id": "case:P10",
+      "title": "Ravensteiner cuts the seal allocation",
+      "repeat": 1,
+      "status": "completed",
+      "score": 0.6707108356081908,
+      "run_id": "35c94f62700043fba5f5b6af3b3ddf3f",
+      "session_id": "ed737e51824d5be2"
+    }
+  ],
+  "completed": 1,
+  "mean_score": 0.6707108356081908,
+  "experiment": {
+    "label": "p10-target72-v3",
+    "target_score": 72,
+    "source_hashes": {
+      "prompts/p10-capacity-v3.txt": "62eb589593d2aa1320e5acc91cc72dee192122f0bea8a67e24c622e38df03b77",
+      "src/aeiou/p10_evidence.py": "742d581af7239c926723a3af55f687ab8be6e8f4cca809e5b6fe380d431edb6b",
+      "src/aeiou/price_planner.py": "51d75600a82e8423a40aa9049f11a2387e223b7f8431944009cfaaf6d5996cdd"
+    }
+  },
+  "cases": [
+    {
+      "case_id": "case:P10",
+      "set": "practice",
+      "type": "capacity",
+      "title": "Ravensteiner cuts the seal allocation",
+      "briefing": "You negotiate for Hollerau Pumpenwerke with Dichtungswerk Ravensteiner GmbH. Ravensteiner cuts the seal allocation. Need: 23400 pc a year. Category goal: secure supply of a bottleneck part: coverage of the full need and a supplier that stays healthy come first. Score: the lowest total cost C as defined in the rules, valued with this case's rates (need lead time 42 days). There is no fallback supplier: without a deal the demand is bought at the fallback price. Must-haves: volume_per_year >= 22230. Prepare from the data package.",
+      "trigger_doc": "doc:20260918-70410-P10",
+      "parts": [
+        "part:340010"
+      ],
+      "suppliers": [
+        "sup:70410"
+      ],
+      "negotiable": [
+        "unit_price",
+        "volume_per_year",
+        "contract_months",
+        "lead_time_days"
+      ],
+      "fixed_terms": {
+        "payment_days": 30,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0
+      },
+      "term_options": {
+        "volume_per_year": [
+          16379,
+          19890,
+          23400
+        ],
+        "contract_months": [
+          12,
+          24,
+          36
+        ],
+        "lead_time_days": [
+          35,
+          42,
+          56
+        ]
+      },
+      "buyer": {
+        "need_per_year": 23400,
+        "horizon_years": 2,
+        "current_unit_price": 29.89,
+        "fallback_unit_price": 37.36,
+        "interest_rate": 0.08,
+        "reference_payment_days": 60,
+        "need_lead_time_days": 42,
+        "category_goal": "secure_supply",
+        "fallback_risk_pct": 25,
+        "index_risk_pct": 3,
+        "late_cost_per_day": 2400,
+        "cost_per_defect": 380,
+        "sustainable_margin_pct": 10,
+        "relationship_eur_per_point": 13990,
+        "freight_eur_per_unit": {
+          "EXW": 0.01,
+          "FCA": 0.01,
+          "DAP": 0.0
+        },
+        "index_paths": {},
+        "must_haves": [
+          {
+            "field": "volume_per_year",
+            "op": ">=",
+            "value": 22230
+          }
+        ],
+        "alternative": {
+          "kind": "none",
+          "ref": null,
+          "terms": {}
+        }
+      },
+      "round_limit": 10,
+      "refs": [
+        "doc:20260918-70410-P10",
+        "ctr:4600070410",
+        "sc:70410@2026Q3",
+        "fc:340010@2026-09"
+      ],
+      "hosted": true
+    }
+  ],
+  "completed_at": "2026-10-25T00:19:19.393911+00:00"
+}

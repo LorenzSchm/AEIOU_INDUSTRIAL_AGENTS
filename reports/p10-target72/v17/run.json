@@ -1,0 +1,1246 @@
+{
+  "id": "ad4d7143be294da4a487649d540048bd",
+  "case_id": "case:P10",
+  "mode": "hosted",
+  "agent": "prompt-eval",
+  "created_at": "2026-10-25T00:43:02.346334+00:00",
+  "status": "completed",
+  "threads": {
+    "sup:70410": [
+      {
+        "thread_id": "thread:P10:70410",
+        "message_id": "msg:70410-0-0",
+        "in_reply_to": null,
+        "from": "sales@70410",
+        "from_name": "Segment Manager, Dichtungswerk Ravensteiner GmbH",
+        "to": "Hollerau Pumpenwerke GmbH",
+        "subject": "Quote from Dichtungswerk Ravensteiner GmbH: Ravensteiner cuts the seal allocation",
+        "body": "Dear Sir or Madam,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe offer a price of €32.20 per unit for a volume of 19890 pcs per year. Our Lieferzeit is 54 days, and the contract term is 12 months. \n\nPlease note that this offer remains valid for 30 days. All deliveries and services are strictly subject to our standard procedure and standard conditions.\n\nMit freundlichen Grüßen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH",
+        "attachments": [
+          {
+            "attachment_id": "att:70410-0-quote",
+            "name": "quote-offer-70410-0.pdf",
+            "type": "pdf",
+            "content_b64": null,
+            "text": "Dichtungswerk Ravensteiner GmbH\nTo: Hollerau Pumpenwerke GmbH\nAngebot / Quote offer:70410-0\nOffered terms\nUnit price (EUR) 32.20\nLead time (days) 54\nVolume per year (pcs) 19890\nContract term (months) 12\nOur standard terms (apply to everything not stated above)\nQuality commitment (ppm) 300\nChargeback per complaint (EUR) 0.00\nTerms fixed by your enquiry\nPayment terms (days net) 30\nPrice valid from 2027-01-01\nIndex clause none\nIncoterm DAP\nTooling (EUR) 0.00\nPart(s): part:340010. Enquiry: Ravensteiner cuts the seal allocation.\nValidity: 30 days."
+          }
+        ],
+        "term_sheets": [
+          {
+            "term_sheet_id": "offer:70410-0",
+            "terms": {
+              "unit_price": 32.2,
+              "lead_time_days": 54,
+              "volume_per_year": 19890,
+              "contract_months": 12
+            }
+          }
+        ],
+        "refs": [],
+        "action": null,
+        "status": "open",
+        "signals": {
+          "reply_delay_days": 2,
+          "validity_days": 30
+        },
+        "missing_fields": [],
+        "claim_results": []
+      },
+      {
+        "subject": "Seal 24 mm – proposal for full allocation from 2027",
+        "body": "Dear Ms Zellner,\n\nThank you for your quotation and for explaining the current capacity situation. We would like to secure full allocation through a firm commitment, and propose: EUR 29.89/unit, 23,400 pcs/year, a 24-month term and 42 days lead time, with payment at 30 days, DAP, effective 2027-01-01.\n\nOur buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty (cost:340010); we do not assert that this is your actual cost or margin.\n\nCould you let us know what package would allow you to secure full allocation at this price? If it requires internal approval, we would be glad to support your business case with any information you need.\n\nKind regards,\nPurchasing, Hollerau Pumpenwerke",
+        "term_sheets": [
+          {
+            "terms": {
+              "unit_price": 29.89,
+              "volume_per_year": 23400,
+              "contract_months": 24,
+              "lead_time_days": 42
+            }
+          }
+        ],
+        "from": "buyer"
+      },
+      {
+        "thread_id": "thread:P10:70410",
+        "message_id": "msg:70410-1-2",
+        "in_reply_to": null,
+        "from": "sales@70410",
+        "from_name": "Segment Manager, Dichtungswerk Ravensteiner GmbH",
+        "to": "Hollerau Pumpenwerke GmbH",
+        "subject": "Re: Seal 24 mm – proposal for full allocation from 2027",
+        "body": "Dear Sir or Madam,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We reviewed your request for a full allocation of 23,400 units and a reduced lead time of 42 days. We checked the should cost data you cited; it holds and we took it into account. Accommodating this shorter lead time and higher volume within our current production schedule requires significant adjustments. Our price reflects our costs; our calculation stays internal. Consequently, we can offer this specific package at a price of €33.60 per unit, a volume of 23400 pcs per year, and a contract term of 24 months. Our Lieferzeit is 42 days. This offer remains valid for 30 days.\n\nMit freundlichen Grüßen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH",
+        "attachments": [
+          {
+            "attachment_id": "att:70410-1-delivery_schedule",
+            "name": "delivery-schedule.xlsx",
+            "type": "xlsx",
+            "content_b64": null,
+            "text": "[Delivery schedule]\nMonth | Quantity | Cumulative\n1 | =ROUND(23400/12,0) | =SUM(B$2:B2)\n2 | =ROUND(23400/12,0) | =SUM(B$2:B3)\n3 | =ROUND(23400/12,0) | =SUM(B$2:B4)\n4 | =ROUND(23400/12,0) | =SUM(B$2:B5)\n5 | =ROUND(23400/12,0) | =SUM(B$2:B6)\n6 | =ROUND(23400/12,0) | =SUM(B$2:B7)\n7 | =ROUND(23400/12,0) | =SUM(B$2:B8)\n8 | =ROUND(23400/12,0) | =SUM(B$2:B9)\n9 | =ROUND(23400/12,0) | =SUM(B$2:B10)\n10 | =ROUND(23400/12,0) | =SUM(B$2:B11)\n11 | =ROUND(23400/12,0) | =SUM(B$2:B12)\n12 | =ROUND(23400/12,0) | =SUM(B$2:B13)\n13 | =ROUND(23400/12,0) | =SUM(B$2:B14)\n14 | =ROUND(23400/12,0) | =SUM(B$2:B15)\n15 | =ROUND(23400/12,0) | =SUM(B$2:B16)\n16 | =ROUND(23400/12,0) | =SUM(B$2:B17)\n17 | =ROUND(23400/12,0) | =SUM(B$2:B18)\n18 | =ROUND(23400/12,0) | =SUM(B$2:B19)\n19 | =ROUND(23400/12,0) | =SUM(B$2:B20)\n20 | =ROUND(23400/12,0) | =SUM(B$2:B21)\n21 | =ROUND(23400/12,0) | =SUM(B$2:B22)\n22 | =ROUND(23400/12,0) | =SUM(B$2:B23)\n23 | =ROUND(23400/12,0) | =SUM(B$2:B24)\n24 | =ROUND(23400/12,0) | =SUM(B$2:B25)\nLead time (days) | 42 | "
+          }
+        ],
+        "term_sheets": [
+          {
+            "term_sheet_id": "offer:70410-1",
+            "terms": {
+              "unit_price": 33.6,
+              "lead_time_days": 42,
+              "volume_per_year": 23400,
+              "contract_months": 24
+            }
+          }
+        ],
+        "refs": [],
+        "action": null,
+        "status": "open",
+        "signals": {
+          "reply_delay_days": 2,
+          "validity_days": 30
+        },
+        "missing_fields": [],
+        "claim_results": [
+          {
+            "index": 0,
+            "result": "verified"
+          }
+        ]
+      },
+      {
+        "subject": "Revised package: full allocation, 36 months, 56 days",
+        "body": "Dear Ms Zellner,\n\nThank you for your revised quotation. We understand that delivering full volume at 42 days would require significant changes to your current production schedule. We would like to ease that constraint rather than add to it.\n\nWe therefore propose a complete package of EUR 30.90/unit, 23,400 pcs/year, a 36-month term and 56 days lead time. Payment remains 30 days, DAP, effective 2027-01-01. This moves us in three ways:\n- We raise our proposed price from EUR 29.89.\n- We add a third committed year.\n- We accept 56 days lead time instead of the 42 days we requested, giving you more scheduling room.\n\nWould this longer, firmer commitment allow you to set the unit price at EUR 30.90 for full allocation? If internal approval is needed, we would be glad to support your business case.\n\nKind regards,\nPurchasing, Hollerau Pumpenwerke",
+        "term_sheets": [
+          {
+            "terms": {
+              "unit_price": 30.9,
+              "volume_per_year": 23400,
+              "contract_months": 36,
+              "lead_time_days": 56
+            }
+          }
+        ],
+        "from": "buyer"
+      },
+      {
+        "thread_id": "thread:P10:70410",
+        "message_id": "msg:70410-2-4",
+        "in_reply_to": null,
+        "from": "sales@70410",
+        "from_name": "Segment Manager, Dichtungswerk Ravensteiner GmbH",
+        "to": "Hollerau Pumpenwerke GmbH",
+        "subject": "Re: Revised package: full allocation, 36 months, 56 days",
+        "body": "Dear Sir or Madam,\n\nWe note your revised parameters of 36 months and 56 days lead time, which provide better planning stability. Consequently, we can offer a unit price of EUR 31.50 for this specific package. Our offer stands at a price of €31.50 per unit, Lieferzeit 56 days, a volume of 23400 pcs per year, and a contract term of 36 months. \n\nPlease provide the data supporting your volume projections for the requested full allocation. Which volume can you commit to? Our price reflects our costs; our calculation stays internal.\n\nThis is our final offer (letztes Angebot). Please decide. This Angebot stays valid for 7 days.\n\nMit freundlichen Grüßen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH",
+        "attachments": [
+          {
+            "attachment_id": "att:70410-2-quote",
+            "name": "quote-offer-70410-2.pdf",
+            "type": "pdf",
+            "content_b64": null,
+            "text": "Dichtungswerk Ravensteiner GmbH\nTo: Hollerau Pumpenwerke GmbH\nAngebot / Quote offer:70410-2\nOffered terms\nUnit price (EUR) 31.50\nLead time (days) 56\nVolume per year (pcs) 23400\nContract term (months) 36\nOur standard terms (apply to everything not stated above)\nQuality commitment (ppm) 300\nChargeback per complaint (EUR) 0.00\nTerms fixed by your enquiry\nPayment terms (days net) 30\nPrice valid from 2027-01-01\nIndex clause none\nIncoterm DAP\nTooling (EUR) 0.00\nPart(s): part:340010. Enquiry: Ravensteiner cuts the seal allocation.\nValidity: 7 days."
+          }
+        ],
+        "term_sheets": [
+          {
+            "term_sheet_id": "offer:70410-2",
+            "terms": {
+              "unit_price": 31.5,
+              "lead_time_days": 56,
+              "volume_per_year": 23400,
+              "contract_months": 36
+            }
+          }
+        ],
+        "refs": [],
+        "action": null,
+        "status": "final_offer",
+        "signals": {
+          "reply_delay_days": 3,
+          "validity_days": 7
+        },
+        "missing_fields": [],
+        "claim_results": []
+      },
+      {
+        "action": {
+          "type": "accept",
+          "term_sheet_id": "offer:70410-2"
+        },
+        "from": "buyer"
+      },
+      {
+        "thread_id": "thread:P10:70410",
+        "message_id": "msg:70410-2-6",
+        "in_reply_to": null,
+        "from": "sales@70410",
+        "from_name": "Segment Manager, Dichtungswerk Ravensteiner GmbH",
+        "to": "Hollerau Pumpenwerke GmbH",
+        "subject": "Re: Revised package: full allocation, 36 months, 56 days",
+        "body": "Dear Sir or Madam,\n\nThank you for your order. Our order confirmation is attached.\n\nMit freundlichen Grüßen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH",
+        "attachments": [
+          {
+            "attachment_id": "att:70410-2-order_confirmation",
+            "name": "order-confirmation-offer-70410-2.pdf",
+            "type": "pdf",
+            "content_b64": null,
+            "text": "Dichtungswerk Ravensteiner GmbH\nTo: Hollerau Pumpenwerke GmbH\nAuftragsbestätigung / Order confirmation offer:70410-2\nAgreed terms\nPayment terms (days net) 30\nLead time (days) 56\nVolume per year (pcs) 23400\nContract term (months) 36\nPrice valid from 2027-01-01\nIndex clause none\nIncoterm DAP\nTooling (EUR) 0.00\nQuality commitment (ppm) 300\nChargeback per complaint (EUR) 0.00\nUnit price (EUR) 31.50\nPart(s): part:340010. We confirm your order on the terms above."
+          }
+        ],
+        "term_sheets": [
+          {
+            "term_sheet_id": "offer:70410-2",
+            "terms": {
+              "unit_price": 31.5,
+              "lead_time_days": 56,
+              "volume_per_year": 23400,
+              "contract_months": 36
+            }
+          }
+        ],
+        "refs": [],
+        "action": null,
+        "status": "agreed",
+        "signals": {
+          "reply_delay_days": 3,
+          "validity_days": 7
+        },
+        "missing_fields": [],
+        "claim_results": [],
+        "result": {
+          "ended": true,
+          "deal": true,
+          "supplier_id": "sup:70410",
+          "offer_id": "offer:70410-2",
+          "terms": {
+            "payment_days": 30,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36,
+            "effective_date": "2027-01-01",
+            "index_clause": null,
+            "incoterm": "DAP",
+            "tooling_eur": 0.0,
+            "ppm_commitment": 300,
+            "chargeback_eur_per_complaint": 0.0,
+            "unit_price": 31.5
+          },
+          "c_open": 1932492.18,
+          "c_deal": 1522963.2,
+          "c_alt": null,
+          "c_best": 1328926.89,
+          "score": 0.6785164534560958,
+          "must_haves_ok": true,
+          "cost_breakdown": {
+            "price": 1474200.0,
+            "uncovered_need": 0.0,
+            "fallback_risk": 0.0,
+            "payment_terms": 9828.0,
+            "freight": 0.0,
+            "late_delivery": 33600.0,
+            "quality": 5335.2,
+            "tooling": 0.0,
+            "index_clause": 0.0,
+            "index_risk": 0.0,
+            "relationship": 0.0
+          }
+        }
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "supplier_id": "sup:70410",
+      "source": "claude:eval",
+      "action": "send",
+      "elapsed_s": 6.111,
+      "protocol_version": "faithful-v18-closing-cost-comparison",
+      "rejections": [],
+      "message_index": 1,
+      "evidence_transport": {
+        "version": "evidence-transport-v3-delivery-audit",
+        "max_local_reads": 2,
+        "complete_source_count": 127,
+        "raw_payload_chars": 151156,
+        "selected_fact_count": 28,
+        "availability_note": "Deferred records remain accessible through retrieve_evidence. No arbitrary queries.",
+        "collection_issues": [],
+        "delivery_counts": {
+          "full": 52,
+          "partial": 0,
+          "deferred": 82
+        },
+        "partial_refs": [],
+        "unretrievable_refs": [],
+        "retained_pages": 0,
+        "delivered_payload_chars": 60732
+      },
+      "evidence_reads": [],
+      "model_requests": [
+        {
+          "message_index": {
+            "sup:70410": 1
+          },
+          "attempt": 1,
+          "payload_sha256": "a2287923f67675311042807060222111fae872a1f94fb0348b673f44cdf81219",
+          "payload_chars": 60732,
+          "delivery_counts": {
+            "full": 52,
+            "partial": 0,
+            "deferred": 82
+          },
+          "partial_refs": [],
+          "retrieved_pages": 0
+        }
+      ],
+      "assessment_label_repairs": [
+        {
+          "evidence_index": 1,
+          "source_refs": [
+            "doc:20260918-70410-P10"
+          ],
+          "declared_kind": "supplier_claim",
+          "normalized_kind": "inference",
+          "reason": "Source-registry classification only; claim wording is not verified."
+        }
+      ],
+      "supplier_signals": {
+        "live": true,
+        "status": "open",
+        "tone": "courteous",
+        "stance": "negotiating",
+        "authority": "unspecified",
+        "withdrawal_risk_signal": "unknown",
+        "risk_basis": "Explicit finality or terminal status; qualitative signal, not a calibrated probability.",
+        "rounds_left": 10,
+        "rounds_note": "Remaining API sends are not a promise that the supplier will continue.",
+        "evidence": [
+          {
+            "signal": "courtesy",
+            "source_ref": "message:sup:70410:0",
+            "quote": "Dear Sir or Madam,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe offer a price of €32.20 per unit for a volume "
+          }
+        ],
+        "primary_price_history": [
+          {
+            "unit_price": 32.2,
+            "source_ref": "message:sup:70410:0"
+          }
+        ],
+        "latest_primary_price_movement": null,
+        "live_objections": [],
+        "latest_stated_cost_drivers": [],
+        "previously_cited_refs": [],
+        "supplier_questions": []
+      },
+      "price_plan": {
+        "offers": [
+          {
+            "offer_id": "offer:70410-0",
+            "unit_price": 32.2,
+            "complete_cost": 1932492.18,
+            "acceptance_eligible": false
+          }
+        ],
+        "best_eligible_offer_id": null,
+        "closing_package_comparison": [],
+        "capacity_opening_tradeoffs": [
+          {
+            "terms": {
+              "unit_price": 27.37,
+              "volume_per_year": 23400,
+              "contract_months": 24,
+              "lead_time_days": 42
+            },
+            "complete_cost": 1294790.64,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 0.0,
+            "unit_price_reduction": 0.0,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          },
+          {
+            "terms": {
+              "unit_price": 26.65,
+              "volume_per_year": 23400,
+              "contract_months": 24,
+              "lead_time_days": 56
+            },
+            "complete_cost": 1294470.0,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 33600.0,
+            "unit_price_reduction": 0.72,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          },
+          {
+            "terms": {
+              "unit_price": 27.37,
+              "volume_per_year": 23400,
+              "contract_months": 36,
+              "lead_time_days": 42
+            },
+            "complete_cost": 1294790.64,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 0.0,
+            "unit_price_reduction": 0.0,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          },
+          {
+            "terms": {
+              "unit_price": 26.65,
+              "volume_per_year": 23400,
+              "contract_months": 36,
+              "lead_time_days": 56
+            },
+            "complete_cost": 1294470.0,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 33600.0,
+            "unit_price_reduction": 0.72,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          }
+        ]
+      },
+      "assessment": {
+        "observed_message": "message:sup:70410:0",
+        "changes": [
+          "Opening quotation received: EUR 32.20/unit, 19,890 pcs/year, 12 months, 54 days lead time; no buyer move yet."
+        ],
+        "open_questions": [
+          "What volume and term would secure full allocation of 23,400/year?",
+          "Is the 54-day lead time a capacity constraint, or negotiable at 42 days?",
+          "Does Ms Zellner need pricing committee approval?"
+        ],
+        "response_to_last_move": "There is no prior buyer move; this was the supplier's opening quotation.",
+        "adaptation": "Open with full volume and a two-year commitment to address the stated allocation priority, while holding back delivery flexibility and a third year.",
+        "next_move": "Send the opening proposal at EUR 29.89, 23,400/year, 24 months, 42 days. In the next round, address the supplier's reply with the reciprocal 36-month/56-day package.",
+        "evidence": [
+          {
+            "claim": "The supplier offers 19,890 pcs/year, below the 22,230 must-have, so the quote is not eligible.",
+            "kind": "supplier_claim",
+            "source_refs": [
+              "message:sup:70410:0"
+            ],
+            "confidence": "high"
+          },
+          {
+            "claim": "The supplier says it will prioritise customers with firm, long-term commitments during high utilisation.",
+            "kind": "inference",
+            "source_refs": [
+              "doc:20260918-70410-P10"
+            ],
+            "confidence": "medium"
+          },
+          {
+            "claim": "The buyer should-cost is EUR 24.31/unit excluding margin, with 5% uncertainty. It is not a proven supplier floor.",
+            "kind": "public_record",
+            "source_refs": [
+              "cost:340010"
+            ],
+            "confidence": "medium"
+          },
+          {
+            "claim": "The current price has held at EUR 29.89 since 2024, including recent September 2026 orders.",
+            "kind": "public_record",
+            "source_refs": [
+              "po:4500014383-10",
+              "po:4500014436-10"
+            ],
+            "confidence": "high"
+          },
+          {
+            "claim": "Price changes above 2% may need approval from the supplier's pricing committee.",
+            "kind": "public_record",
+            "source_refs": [
+              "doc:20260310-70410-M1"
+            ],
+            "confidence": "medium"
+          }
+        ]
+      },
+      "assessment_version": "supplier-assessment-v2-source-labels",
+      "numeric_checks": [],
+      "economics": {
+        "supplier_change": null,
+        "buyer_change": null,
+        "current_best_valid_offer": null,
+        "cost_basis": "Public case formula; excludes unknown private supplier relationship costs."
+      }
+    },
+    {
+      "supplier_id": "sup:70410",
+      "source": "claude:eval",
+      "action": "send",
+      "elapsed_s": 6.337,
+      "protocol_version": "faithful-v18-closing-cost-comparison",
+      "rejections": [],
+      "message_index": 3,
+      "evidence_transport": {
+        "version": "evidence-transport-v3-delivery-audit",
+        "max_local_reads": 2,
+        "complete_source_count": 130,
+        "raw_payload_chars": 158211,
+        "selected_fact_count": 28,
+        "availability_note": "Deferred records remain accessible through retrieve_evidence. No arbitrary queries.",
+        "collection_issues": [],
+        "delivery_counts": {
+          "full": 57,
+          "partial": 0,
+          "deferred": 82
+        },
+        "partial_refs": [],
+        "unretrievable_refs": [],
+        "retained_pages": 0,
+        "delivered_payload_chars": 68230
+      },
+      "evidence_reads": [],
+      "model_requests": [
+        {
+          "message_index": {
+            "sup:70410": 3
+          },
+          "attempt": 1,
+          "payload_sha256": "3584a98fa0cd98f37af8627cc2d9877219c96bf86f030f6d19829e30a27534e4",
+          "payload_chars": 68230,
+          "delivery_counts": {
+            "full": 57,
+            "partial": 0,
+            "deferred": 82
+          },
+          "partial_refs": [],
+          "retrieved_pages": 0
+        }
+      ],
+      "assessment_label_repairs": [],
+      "supplier_signals": {
+        "live": true,
+        "status": "open",
+        "tone": "unspecified",
+        "stance": "negotiating",
+        "authority": "unspecified",
+        "withdrawal_risk_signal": "unknown",
+        "risk_basis": "Explicit finality or terminal status; qualitative signal, not a calibrated probability.",
+        "rounds_left": 9,
+        "rounds_note": "Remaining API sends are not a promise that the supplier will continue.",
+        "evidence": [
+          {
+            "signal": "adjustment_required",
+            "source_ref": "message:sup:70410:2",
+            "quote": "r current production schedule requires significant adjustments. Our price reflects our costs; our calculation stays internal. Consequently, we can offer this spe"
+          }
+        ],
+        "primary_price_history": [
+          {
+            "unit_price": 32.2,
+            "source_ref": "message:sup:70410:0"
+          },
+          {
+            "unit_price": 33.6,
+            "source_ref": "message:sup:70410:2"
+          }
+        ],
+        "latest_primary_price_movement": 1.4,
+        "live_objections": [
+          "adjustment_required"
+        ],
+        "latest_stated_cost_drivers": [],
+        "previously_cited_refs": [],
+        "supplier_questions": []
+      },
+      "price_plan": {
+        "offers": [
+          {
+            "offer_id": "offer:70410-1",
+            "unit_price": 33.6,
+            "complete_cost": 1588298.4,
+            "acceptance_eligible": true
+          }
+        ],
+        "best_eligible_offer_id": "offer:70410-1",
+        "closing_package_comparison": [],
+        "capacity_opening_tradeoffs": [
+          {
+            "terms": {
+              "unit_price": 27.37,
+              "volume_per_year": 23400,
+              "contract_months": 24,
+              "lead_time_days": 42
+            },
+            "complete_cost": 1294790.64,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 0.0,
+            "unit_price_reduction": 0.0,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          },
+          {
+            "terms": {
+              "unit_price": 26.65,
+              "volume_per_year": 23400,
+              "contract_months": 24,
+              "lead_time_days": 56
+            },
+            "complete_cost": 1294470.0,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 33600.0,
+            "unit_price_reduction": 0.72,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          },
+          {
+            "terms": {
+              "unit_price": 27.37,
+              "volume_per_year": 23400,
+              "contract_months": 36,
+              "lead_time_days": 42
+            },
+            "complete_cost": 1294790.64,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 0.0,
+            "unit_price_reduction": 0.0,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          },
+          {
+            "terms": {
+              "unit_price": 26.65,
+              "volume_per_year": 23400,
+              "contract_months": 36,
+              "lead_time_days": 56
+            },
+            "complete_cost": 1294470.0,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 33600.0,
+            "unit_price_reduction": 0.72,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          }
+        ]
+      },
+      "assessment": {
+        "observed_message": "message:sup:70410:2",
+        "changes": [
+          "The supplier moved from 19,890/year, 12 months, 54 days at EUR 32.20 to 23,400/year, 24 months, 42 days at EUR 33.60.",
+          "The new offer meets the volume must-have and is acceptance-eligible, but its price is above the opening quote."
+        ],
+        "open_questions": [
+          "Does relaxing lead time to 56 days relieve the scheduling constraint enough to cut the price?",
+          "Does a 36-month commitment carry value for the supplier's allocation priority?",
+          "Is pricing committee approval required for the revised price?"
+        ],
+        "response_to_last_move": "Our proposal was EUR 29.89, full volume, 24 months, 42 days. The supplier returned the same structure at EUR 33.60, citing schedule adjustments.",
+        "adaptation": "Address the scheduling objection directly by offering 56 days and a third year in exchange for a lower price.",
+        "next_move": "Send the reciprocal package of EUR 30.90, 23,400/year, 36 months, 56 days. If the supplier stays open, go no higher than EUR 30.96 on the same structure. Otherwise close on the cheapest eligible package.",
+        "evidence": [
+          {
+            "claim": "The supplier says full volume at 42 days requires significant production schedule adjustments and that its price reflects its costs.",
+            "kind": "supplier_claim",
+            "source_refs": [
+              "message:sup:70410:2"
+            ],
+            "confidence": "medium"
+          },
+          {
+            "claim": "The supplier acknowledged the cited should-cost data. Our estimate is EUR 24.31/unit excluding margin with 5% uncertainty; it is not a proven supplier floor.",
+            "kind": "inference",
+            "source_refs": [
+              "message:sup:70410:2",
+              "cost:340010"
+            ],
+            "confidence": "medium"
+          },
+          {
+            "claim": "The supplier prioritises customers with firm, long-term commitments during high utilisation.",
+            "kind": "public_record",
+            "source_refs": [
+              "doc:20260918-70410-P10"
+            ],
+            "confidence": "medium"
+          },
+          {
+            "claim": "Price changes above 2% may need the supplier's pricing committee approval.",
+            "kind": "public_record",
+            "source_refs": [
+              "doc:20260310-70410-M1"
+            ],
+            "confidence": "medium"
+          },
+          {
+            "claim": "offer:70410-1 costs EUR 1,588,298.40 under the case formula and is the only eligible live offer.",
+            "kind": "public_record",
+            "source_refs": [
+              "cost:sup:70410:2"
+            ],
+            "confidence": "high"
+          }
+        ]
+      },
+      "assessment_version": "supplier-assessment-v2-source-labels",
+      "numeric_checks": [],
+      "economics": {
+        "supplier_change": null,
+        "buyer_change": null,
+        "current_best_valid_offer": {
+          "terms": {
+            "volume_per_year": 23400,
+            "contract_months": 24,
+            "payment_days": 30,
+            "lead_time_days": 42,
+            "incoterm": "DAP",
+            "ppm_commitment": 300,
+            "chargeback_eur_per_complaint": 0.0,
+            "effective_date": "2027-01-01",
+            "index_clause": null,
+            "tooling_eur": 0,
+            "unit_price": 33.6
+          },
+          "cost": 1588298.4,
+          "must_haves_ok": true,
+          "term_sheet_id": "offer:70410-1",
+          "breakdown": {
+            "price": 1572480.0,
+            "uncovered_need": 0.0,
+            "fallback_risk": 0.0,
+            "payment_terms": 10483.2,
+            "freight": 0.0,
+            "late_delivery": 0,
+            "quality": 5335.2,
+            "tooling": 0.0,
+            "index_clause": 0.0,
+            "index_risk": 0.0,
+            "relationship": 0.0
+          }
+        },
+        "cost_basis": "Public case formula; excludes unknown private supplier relationship costs."
+      }
+    },
+    {
+      "supplier_id": "sup:70410",
+      "source": "claude:eval",
+      "action": "accept",
+      "elapsed_s": 4.574,
+      "protocol_version": "faithful-v18-closing-cost-comparison",
+      "rejections": [],
+      "message_index": 5,
+      "evidence_transport": {
+        "version": "evidence-transport-v3-delivery-audit",
+        "max_local_reads": 2,
+        "complete_source_count": 133,
+        "raw_payload_chars": 163867,
+        "selected_fact_count": 28,
+        "availability_note": "Deferred records remain accessible through retrieve_evidence. No arbitrary queries.",
+        "collection_issues": [],
+        "delivery_counts": {
+          "full": 64,
+          "partial": 0,
+          "deferred": 82
+        },
+        "partial_refs": [],
+        "unretrievable_refs": [],
+        "retained_pages": 0,
+        "delivered_payload_chars": 74310
+      },
+      "evidence_reads": [],
+      "model_requests": [
+        {
+          "message_index": {
+            "sup:70410": 5
+          },
+          "attempt": 1,
+          "payload_sha256": "ffe645ca69e9f6f2d9c899db29960cf781006853578de7513c8ccf8ff6786ae2",
+          "payload_chars": 74310,
+          "delivery_counts": {
+            "full": 64,
+            "partial": 0,
+            "deferred": 82
+          },
+          "partial_refs": [],
+          "retrieved_pages": 0
+        }
+      ],
+      "assessment_label_repairs": [],
+      "supplier_signals": {
+        "live": true,
+        "status": "final_offer",
+        "tone": "unspecified",
+        "stance": "final",
+        "authority": "unspecified",
+        "withdrawal_risk_signal": "high",
+        "risk_basis": "Explicit finality or terminal status; qualitative signal, not a calibrated probability.",
+        "rounds_left": 8,
+        "rounds_note": "Remaining API sends are not a promise that the supplier will continue.",
+        "evidence": [
+          {
+            "signal": "final_language",
+            "source_ref": "message:sup:70410:4",
+            "quote": " stays internal.\n\nThis is our final offer (letztes Angebot). Please decide. This Angebot stays valid for 7 days.\n\nMit freundlichen Grüßen\nMon"
+          }
+        ],
+        "primary_price_history": [
+          {
+            "unit_price": 32.2,
+            "source_ref": "message:sup:70410:0"
+          },
+          {
+            "unit_price": 33.6,
+            "source_ref": "message:sup:70410:2"
+          },
+          {
+            "unit_price": 31.5,
+            "source_ref": "message:sup:70410:4"
+          }
+        ],
+        "latest_primary_price_movement": -2.1,
+        "live_objections": [],
+        "latest_stated_cost_drivers": [],
+        "previously_cited_refs": [],
+        "supplier_questions": [
+          "Which volume can you commit to?"
+        ]
+      },
+      "price_plan": {
+        "offers": [
+          {
+            "offer_id": "offer:70410-2",
+            "unit_price": 31.5,
+            "complete_cost": 1522963.2,
+            "acceptance_eligible": true
+          }
+        ],
+        "best_eligible_offer_id": "offer:70410-2",
+        "closing_package_comparison": [],
+        "capacity_opening_tradeoffs": [
+          {
+            "terms": {
+              "unit_price": 27.37,
+              "volume_per_year": 23400,
+              "contract_months": 24,
+              "lead_time_days": 42
+            },
+            "complete_cost": 1294790.64,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 0.0,
+            "unit_price_reduction": 0.0,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          },
+          {
+            "terms": {
+              "unit_price": 26.65,
+              "volume_per_year": 23400,
+              "contract_months": 24,
+              "lead_time_days": 56
+            },
+            "complete_cost": 1294470.0,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 33600.0,
+            "unit_price_reduction": 0.72,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          },
+          {
+            "terms": {
+              "unit_price": 27.37,
+              "volume_per_year": 23400,
+              "contract_months": 36,
+              "lead_time_days": 42
+            },
+            "complete_cost": 1294790.64,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 0.0,
+            "unit_price_reduction": 0.0,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          },
+          {
+            "terms": {
+              "unit_price": 26.65,
+              "volume_per_year": 23400,
+              "contract_months": 36,
+              "lead_time_days": 56
+            },
+            "complete_cost": 1294470.0,
+            "reference_cost": 1294790.64,
+            "delay_cost_at_reference_price": 33600.0,
+            "unit_price_reduction": 0.72,
+            "opening_fraction": 0.85,
+            "status": "Illustrative 85%-of-opening buyer proposal; requires supplier approval. Public costs exclude unknown supplier relationship costs; cent rounding may lower cost. Commitment beyond the scoring horizon is real but unpriced by this formula."
+          }
+        ]
+      },
+      "assessment": {
+        "observed_message": "message:sup:70410:4",
+        "changes": [
+          "The supplier lowered its price from EUR 33.60 to EUR 31.50 and accepted our 36-month, 56-day, 23,400/year structure.",
+          "The supplier declared this its final offer (letztes Angebot), valid for 7 days.",
+          "Payment 30 days, DAP, effective 2027-01-01, no index clause and no tooling are unchanged."
+        ],
+        "open_questions": [],
+        "response_to_last_move": "We proposed EUR 30.90 for full volume, 36 months and 56 days. The supplier returned the same structure at EUR 31.50 and declared it final.",
+        "adaptation": "The strategy forbids countering after finality. Securing full supply with no alternative outweighs the target miss, so we close.",
+        "next_move": "Accept offer:70410-2. Record honestly that it misses the cost target by about EUR 25k and commits a third year beyond the scoring horizon.",
+        "evidence": [
+          {
+            "claim": "offer:70410-2 is final: EUR 31.50/unit, 23,400/year, 36 months, 56 days.",
+            "kind": "supplier_claim",
+            "source_refs": [
+              "message:sup:70410:4"
+            ],
+            "confidence": "high"
+          },
+          {
+            "claim": "offer:70410-2 costs EUR 1,522,963.20 under the case formula. That is above the EUR 1,497,925.17 public target, so the target is missed.",
+            "kind": "public_record",
+            "source_refs": [
+              "cost:sup:70410:4"
+            ],
+            "confidence": "high"
+          },
+          {
+            "claim": "The offer meets the volume must-have (23,400 ≥ 22,230), is the only eligible live offer and is server-acceptable.",
+            "kind": "public_record",
+            "source_refs": [
+              "cost:sup:70410:4",
+              "case"
+            ],
+            "confidence": "high"
+          },
+          {
+            "claim": "There is no alternative supplier. Without a deal, demand is bought at the EUR 37.36 fallback price. Securing supply is the category goal.",
+            "kind": "public_record",
+            "source_refs": [
+              "case"
+            ],
+            "confidence": "high"
+          },
+          {
+            "claim": "The supplier prioritises firm, long-term commitments during high utilisation.",
+            "kind": "public_record",
+            "source_refs": [
+              "doc:20260918-70410-P10"
+            ],
+            "confidence": "medium"
+          }
+        ]
+      },
+      "assessment_version": "supplier-assessment-v2-source-labels",
+      "numeric_checks": [],
+      "economics": {
+        "supplier_change": {
+          "from_ref": "message:sup:70410:2",
+          "to_ref": "message:sup:70410:4",
+          "cost_delta": -65335.2,
+          "term_changes": [
+            {
+              "term": "contract_months",
+              "before": 24,
+              "after": 36
+            },
+            {
+              "term": "lead_time_days",
+              "before": 42,
+              "after": 56
+            },
+            {
+              "term": "unit_price",
+              "before": 33.6,
+              "after": 31.5
+            }
+          ]
+        },
+        "buyer_change": {
+          "from_ref": "message:sup:70410:1",
+          "to_ref": "message:sup:70410:3",
+          "cost_delta": 81183.12,
+          "term_changes": [
+            {
+              "term": "contract_months",
+              "before": 24,
+              "after": 36
+            },
+            {
+              "term": "lead_time_days",
+              "before": 42,
+              "after": 56
+            },
+            {
+              "term": "unit_price",
+              "before": 29.89,
+              "after": 30.9
+            }
+          ]
+        },
+        "current_best_valid_offer": {
+          "terms": {
+            "volume_per_year": 23400,
+            "contract_months": 36,
+            "payment_days": 30,
+            "lead_time_days": 56,
+            "incoterm": "DAP",
+            "ppm_commitment": 300,
+            "chargeback_eur_per_complaint": 0.0,
+            "effective_date": "2027-01-01",
+            "index_clause": null,
+            "tooling_eur": 0,
+            "unit_price": 31.5
+          },
+          "cost": 1522963.2,
+          "must_haves_ok": true,
+          "term_sheet_id": "offer:70410-2",
+          "breakdown": {
+            "price": 1474200.0,
+            "uncovered_need": 0.0,
+            "fallback_risk": 0.0,
+            "payment_terms": 9828.0,
+            "freight": 0.0,
+            "late_delivery": 33600,
+            "quality": 5335.2,
+            "tooling": 0.0,
+            "index_clause": 0.0,
+            "index_risk": 0.0,
+            "relationship": 0.0
+          }
+        },
+        "cost_basis": "Public case formula; excludes unknown private supplier relationship costs."
+      }
+    }
+  ],
+  "model": "claude-opus-5-5",
+  "provider": "anthropic",
+  "effort": "medium",
+  "speed": "fast",
+  "prompt": {
+    "variant": "eval",
+    "strategy_revision": "eval-prompt-v2",
+    "strategy_sha256": "a82ff535a2ce8a0f5a47c26053caf00a10cb9f44b3874b4c741050031be5c778",
+    "transport_sha256": "af6cb84f489f4492123db56ae5af25057be580dbb7c745473286503f0bd10a3c",
+    "system_sha256": "bc1b61e47c64fd3f86d5469e99f50ae5718e80d75f0f64e16e5f44f5a895be67",
+    "protocol_version": "faithful-v18-closing-cost-comparison",
+    "required_repeats": 0,
+    "enforce_reference_tactics": false,
+    "assessment_version": "supplier-assessment-v2-source-labels"
+  },
+  "supplier_kind": "tacto-hosted-practice",
+  "case_set": "practice",
+  "arena_url": "https://arena.tacto.ai",
+  "evaluation_id": "100913330a5149ff915651a671924677",
+  "evaluation_variant": "practice",
+  "decision_budget_s": 50,
+  "case": {
+    "case_id": "case:P10",
+    "set": "practice",
+    "type": "capacity",
+    "title": "Ravensteiner cuts the seal allocation",
+    "briefing": "You negotiate for Hollerau Pumpenwerke with Dichtungswerk Ravensteiner GmbH. Ravensteiner cuts the seal allocation. Need: 23400 pc a year. Category goal: secure supply of a bottleneck part: coverage of the full need and a supplier that stays healthy come first. Score: the lowest total cost C as defined in the rules, valued with this case's rates (need lead time 42 days). There is no fallback supplier: without a deal the demand is bought at the fallback price. Must-haves: volume_per_year >= 22230. Prepare from the data package.",
+    "trigger_doc": "doc:20260918-70410-P10",
+    "parts": [
+      "part:340010"
+    ],
+    "suppliers": [
+      "sup:70410"
+    ],
+    "negotiable": [
+      "unit_price",
+      "volume_per_year",
+      "contract_months",
+      "lead_time_days"
+    ],
+    "fixed_terms": {
+      "payment_days": 30,
+      "effective_date": "2027-01-01",
+      "index_clause": null,
+      "incoterm": "DAP",
+      "tooling_eur": 0
+    },
+    "term_options": {
+      "volume_per_year": [
+        16379,
+        19890,
+        23400
+      ],
+      "contract_months": [
+        12,
+        24,
+        36
+      ],
+      "lead_time_days": [
+        35,
+        42,
+        56
+      ]
+    },
+    "buyer": {
+      "need_per_year": 23400,
+      "horizon_years": 2,
+      "current_unit_price": 29.89,
+      "fallback_unit_price": 37.36,
+      "interest_rate": 0.08,
+      "reference_payment_days": 60,
+      "need_lead_time_days": 42,
+      "category_goal": "secure_supply",
+      "fallback_risk_pct": 25,
+      "index_risk_pct": 3,
+      "late_cost_per_day": 2400,
+      "cost_per_defect": 380,
+      "sustainable_margin_pct": 10,
+      "relationship_eur_per_point": 13990,
+      "freight_eur_per_unit": {
+        "EXW": 0.01,
+        "FCA": 0.01,
+        "DAP": 0.0
+      },
+      "index_paths": {},
+      "must_haves": [
+        {
+          "field": "volume_per_year",
+          "op": ">=",
+          "value": 22230
+        }
+      ],
+      "alternative": {
+        "kind": "none",
+        "ref": null,
+        "terms": {}
+      }
+    },
+    "round_limit": 10,
+    "refs": [
+      "doc:20260918-70410-P10",
+      "ctr:4600070410",
+      "sc:70410@2026Q3",
+      "fc:340010@2026-09"
+    ]
+  },
+  "session_id": "882264e0fc712efe",
+  "audit": {
+    "contract_rejections": [],
+    "validation_failures": [],
+    "assessment_label_repairs": [
+      {
+        "message_index": 1,
+        "evidence_index": 1,
+        "source_refs": [
+          "doc:20260918-70410-P10"
+        ],
+        "declared_kind": "supplier_claim",
+        "normalized_kind": "inference",
+        "reason": "Source-registry classification only; claim wording is not verified."
+      }
+    ],
+    "forced_stops": 0,
+    "verbatim_request_sent": false,
+    "verbatim_request_ignoring_whitespace": false,
+    "calibrated_question_messages": 0,
+    "accepts_before_five_repeats": 0,
+    "accepted_offer_position": 1,
+    "preparation_tags_present": false,
+    "strategy_tags_present": false,
+    "preparation_sections_present": [],
+    "verbatim_insertions": 0,
+    "verbatim_format_restorations": 0,
+    "confirmation_messages": 0,
+    "walk_aways": [],
+    "terminal_limits": [],
+    "model_requests": [
+      {
+        "message_index": {
+          "sup:70410": 1
+        },
+        "attempt": 1,
+        "payload_sha256": "a2287923f67675311042807060222111fae872a1f94fb0348b673f44cdf81219",
+        "payload_chars": 60732,
+        "delivery_counts": {
+          "full": 52,
+          "partial": 0,
+          "deferred": 82
+        },
+        "partial_refs": [],
+        "retrieved_pages": 0
+      },
+      {
+        "message_index": {
+          "sup:70410": 3
+        },
+        "attempt": 1,
+        "payload_sha256": "3584a98fa0cd98f37af8627cc2d9877219c96bf86f030f6d19829e30a27534e4",
+        "payload_chars": 68230,
+        "delivery_counts": {
+          "full": 57,
+          "partial": 0,
+          "deferred": 82
+        },
+        "partial_refs": [],
+        "retrieved_pages": 0
+      },
+      {
+        "message_index": {
+          "sup:70410": 5
+        },
+        "attempt": 1,
+        "payload_sha256": "ffe645ca69e9f6f2d9c899db29960cf781006853578de7513c8ccf8ff6786ae2",
+        "payload_chars": 74310,
+        "delivery_counts": {
+          "full": 64,
+          "partial": 0,
+          "deferred": 82
+        },
+        "partial_refs": [],
+        "retrieved_pages": 0
+      }
+    ]
+  },
+  "metrics": {
+    "elapsed_s": 67.75,
+    "fallbacks": 0,
+    "calls": 3,
+    "errors": 0,
+    "input_tokens": 90629,
+    "output_tokens": 4502,
+    "refusals": 0,
+    "empty_responses": 0,
+    "reasoning_tokens": 0,
+    "cached_input_tokens": 0,
+    "resolved_model": null,
+    "stop_reasons": {
+      "end_turn": 3
+    },
+    "refusal_details": []
+  },
+  "result": {
+    "ended": true,
+    "deal": true,
+    "supplier_id": "sup:70410",
+    "offer_id": "offer:70410-2",
+    "terms": {
+      "payment_days": 30,
+      "lead_time_days": 56,
+      "volume_per_year": 23400,
+      "contract_months": 36,
+      "effective_date": "2027-01-01",
+      "index_clause": null,
+      "incoterm": "DAP",
+      "tooling_eur": 0.0,
+      "ppm_commitment": 300,
+      "chargeback_eur_per_complaint": 0.0,
+      "unit_price": 31.5
+    },
+    "c_open": 1932492.18,
+    "c_deal": 1522963.2,
+    "c_alt": null,
+    "c_best": 1328926.89,
+    "score": 0.6785164534560958,
+    "must_haves_ok": true,
+    "cost_breakdown": {
+      "price": 1474200.0,
+      "uncovered_need": 0.0,
+      "fallback_risk": 0.0,
+      "payment_terms": 9828.0,
+      "freight": 0.0,
+      "late_delivery": 33600.0,
+      "quality": 5335.2,
+      "tooling": 0.0,
+      "index_clause": 0.0,
+      "index_risk": 0.0,
+      "relationship": 0.0
+    }
+  }
+}

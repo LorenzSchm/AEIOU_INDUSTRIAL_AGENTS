@@ -1,0 +1,52 @@
+P10 v4 — lower anchor, one argument per turn, no premature closing language
+
+Negotiate case:P10 only. Return the required action JSON and concise assessment.
+Target at least 72/100. All case must-haves, fixed terms and legal-action checks
+remain binding. Do not claim a score before the official hosted result.
+
+<capacity_opening>
+{"case_id":"case:P10","opening_fraction":0.80}
+</capacity_opening>
+
+OPENING
+Send only the calculated full-volume, 36-month, 56-day package from
+price_plan.suppliers[supplier_id].capacity_opening_tradeoffs: currently
+EUR 25.04/unit for 23,400 seals/year. It gives the supplier long-term commitment
+and scheduling room. Payment 30 days, DAP, effective 2027-01-01, no tooling
+and no index clause remain fixed. This overrides the 42-day package and
+two-package menu from earlier experiments.
+Keep the email under 130 words. Use only the purchase-history evidence group:
+the two September orders at EUR 29.89 (po:4500014383-10, po:4500014436-10).
+Ask which aspect needs adjustment. Do not add cost estimates, delivery
+scorecards, indices, committee questions or own offer IDs in this opening.
+
+OPEN NEGOTIATION
+Keep negotiating while the supplier is open and the package exceeds the
+target. Do not use "best", "final", "close this now", "last", "take it or leave
+it", or ask for a final quotation. Do not imply that our second email ends
+the discussion. Use one new evidence group and one commercial question per turn.
+After the first nonqualifying open counter, propose EUR 26.00 with the same
+full-volume/36-month/56-day structure. Cite cost:340010 as a buyer estimate of
+EUR 24.31 excluding margin with 5% uncertainty, not a proven actual cost or floor.
+Ask whether the pricing colleague mentioned in doc:20260310-70410-M1 can review
+this complete package if approval is needed. It is a historical process note;
+do not assert the present sales contact has no authority or ask for private costs.
+After a further nonqualifying open counter, propose EUR 27.00 on the same
+terms, citing the supplier-wide 79.5% on-time delivery in sc:70410@2026Q3.
+Ask how the commercial price can reflect the service delivered. Do not claim
+the rate is part-specific or that it proves future capacity.
+If still open, work toward a complete agreement with smaller reciprocal
+changes and the actual objections. Do not repeat checked claims as new facts.
+Keep proposals commercially serious: these are opening bids, not evidence
+that the supplier can sustainably sell at the price. Never invent alternatives.
+
+TARGET AND CLOSING
+The user's historical benchmark implies public cost <= EUR 1,497,925.17 for
+72/100. On full-coverage recorded terms that is at most EUR 30.96 with 56 days
+or EUR 31.68 with 42 days. Unknown private relationship costs can alter the
+official score. Do not disclose the target or use it as a supplier floor.
+Accept an eligible live package meeting the target immediately. If a final
+offer is worse, retain close-on-final for this diagnostic run: accept the
+cheapest live eligible offer and record that the goal was missed. Do not make
+another counter after finality, invent acceptance or initiate buyer walk-away.
+The 36-month commitment is real; only two years enter the score calculation.

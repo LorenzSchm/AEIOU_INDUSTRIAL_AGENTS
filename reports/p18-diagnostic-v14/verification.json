@@ -1,0 +1,29 @@
+{
+  "offline_validation": "passed",
+  "replayed_run": "7cd1987baac74f5a94b36e3a5359185b",
+  "replayed_message_index": 4,
+  "old_eligible_offer_ids": [],
+  "new_eligible_offer_ids": [
+    "offer:70740-2"
+  ],
+  "validated_action": {
+    "type": "accept",
+    "term_sheet_id": "offer:70740-2"
+  },
+  "reference_complete_cost": 251825.93,
+  "target_price": 5.09,
+  "maximum_unit_price": 5.1,
+  "minimum_score": 59.77127,
+  "checks": [
+    "Recorded EUR 5.10 indexed final is eligible and passes the decision adapter as acceptance",
+    "Cheaper prices including EUR 5.09 accepted",
+    "EUR 5.11 and EUR 5.20 rejected even with better total cost",
+    "Ended session cannot be accepted retroactively",
+    "Opening package includes the permitted clause",
+    "Concession steps remain decreasing and at most EUR 0.12"
+  ],
+  "hosted_tests_launched": 0,
+  "paid_model_calls": 0,
+  "production_code_changed": false,
+  "limitation": "Scripted offline replay verifies the acceptance path and limits, not model adherence or a future supplier response. No actual acceptance was transmitted."
+}

@@ -1,0 +1,980 @@
+
+================================================================================
+P01 — Brandlhuber announces +9.5 % on HN volute casings
+================================================================================
+
+Run ID: 5091f9530034406ab09ca8e898610e61
+Session ID: b0cc217121ab345e
+Status: completed
+
+BUYER CASE CONTEXT
+{
+  "case_id": "case:P01",
+  "set": "practice",
+  "type": "price_increase",
+  "title": "Brandlhuber announces +9.5 % on HN volute casings",
+  "briefing": "You negotiate for Hollerau Pumpenwerke with Gießerei Brandlhuber GmbH & Co. KG. Brandlhuber announces +9.5 % on HN volute casings. Need: 8150 pc a year. Category goal: stabilise a strategic supply: a healthy supplier and stable prices count, not only the lowest price. Score: the lowest total cost C as defined in the rules, valued with this case's rates (need lead time 45 days). Fallback if you walk away: the second-source quote quote:7200001. Must-haves: none. Prepare from the data package.",
+  "trigger_doc": "doc:20260911-70110-P01",
+  "parts": [
+    "part:310010"
+  ],
+  "suppliers": [
+    "sup:70110"
+  ],
+  "negotiable": [
+    "unit_price",
+    "effective_date",
+    "payment_days"
+  ],
+  "fixed_terms": {
+    "lead_time_days": 42,
+    "volume_per_year": 8150,
+    "contract_months": 12,
+    "index_clause": null,
+    "incoterm": "FCA",
+    "tooling_eur": 0
+  },
+  "term_options": {
+    "effective_date": [
+      "2026-11-01",
+      "2027-01-01",
+      "2027-04-01"
+    ],
+    "payment_days": [
+      14,
+      30,
+      45,
+      60,
+      90
+    ]
+  },
+  "buyer": {
+    "need_per_year": 8150,
+    "horizon_years": 1.0,
+    "current_unit_price": 126.53,
+    "fallback_unit_price": 136.65,
+    "interest_rate": 0.08,
+    "reference_payment_days": 60,
+    "need_lead_time_days": 45,
+    "category_goal": "stabilise",
+    "fallback_risk_pct": 10,
+    "index_risk_pct": 4,
+    "late_cost_per_day": 420,
+    "cost_per_defect": 216,
+    "sustainable_margin_pct": 3,
+    "relationship_eur_per_point": 15470,
+    "freight_eur_per_unit": {
+      "EXW": 2.19,
+      "FCA": 1.9,
+      "DAP": 0.0
+    },
+    "index_paths": {},
+    "must_haves": [],
+    "alternative": {
+      "kind": "quote",
+      "ref": "quote:7200001",
+      "terms": {
+        "unit_price": 143.22,
+        "payment_days": 60,
+        "lead_time_days": 70,
+        "volume_per_year": 8150,
+        "contract_months": 12,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "FCA",
+        "tooling_eur": 1500,
+        "ppm_commitment": 2376
+      }
+    }
+  },
+  "round_limit": 10,
+  "refs": [
+    "doc:20260911-70110-P01",
+    "ctr:4600070110",
+    "sc:70110@2026Q3",
+    "quote:7200001"
+  ]
+}
+
+OFFICIAL POST-RUN RESULT
+{
+  "ended": true,
+  "deal": true,
+  "supplier_id": "sup:70110",
+  "offer_id": "offer:70110-4",
+  "terms": {
+    "payment_days": 14,
+    "lead_time_days": 42,
+    "volume_per_year": 8150,
+    "contract_months": 12,
+    "effective_date": "2027-01-01",
+    "index_clause": null,
+    "incoterm": "FCA",
+    "tooling_eur": 0.0,
+    "ppm_commitment": 900,
+    "chargeback_eur_per_complaint": 0.0,
+    "unit_price": 134.5
+  },
+  "c_open": 1153779.74,
+  "c_deal": 1113569.46,
+  "c_alt": 1176178.02,
+  "c_best": 1096815.78,
+  "score": 0.7058898292885546,
+  "must_haves_ok": true,
+  "cost_breakdown": {
+    "price": 1085319.42,
+    "uncovered_need": 0.0,
+    "fallback_risk": 0.0,
+    "payment_terms": 11094.38,
+    "freight": 15485.0,
+    "late_delivery": 0.0,
+    "quality": 1584.36,
+    "tooling": 0.0,
+    "index_clause": 0.0,
+    "index_risk": 0.0,
+    "relationship": 86.3
+  }
+}
+
+
+SUPPLIER THREAD: sup:70110 — 11 events
+
+
+[P01 / sup:70110 / M01]
+Sender: sales@70110
+Subject: Quote from Gießerei Brandlhuber GmbH & Co. KG: Brandlhuber announces +9.5 % on HN volute casings
+
+BEGIN VERBATIM BODY
+
+Guten Tag,
+
+Thank you for your enquiry. Please find our Angebot below. For many years, our family foundry has taken great pride in supplying your respected company with high-quality castings from our region, and we value our long standing relationship very much.
+
+Our team has prepared our offer carefully. We can offer you a price of €138.55 per unit, valid from 1 November 2026. This Angebot remains valid for 30 days.
+
+To remain transparent about our situation, LCI-C rose 2.7 % in twelve months and is 30 % of our cost. Furthermore, PPI-C241 rose 6.5 % in twelve months and is 24 % of our cost. We trust that you understand the necessity of these figures for our ongoing operation and quality standards.
+
+Viele Grüße aus der Gießerei
+Thomas Brandlhuber
+Owner, Gießerei Brandlhuber GmbH & Co. KG
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70110-0",
+    "terms": {
+      "unit_price": 138.55,
+      "effective_date": "2026-11-01"
+    }
+  }
+]
+
+ATTACHMENT 1: quote-offer-70110-0.pdf
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+Gießerei Brandlhuber GmbH & Co. KG
+To: Hollerau Pumpenwerke GmbH
+Angebot / Quote offer:70110-0
+Offered terms
+Unit price (EUR) 138.55
+Price valid from 2026-11-01
+Our standard terms (apply to everything not stated above)
+Payment terms (days net) 30
+Quality commitment (ppm) 900
+Chargeback per complaint (EUR) 0.00
+Terms fixed by your enquiry
+Lead time (days) 42
+Volume per year (pcs) 8150
+Contract term (months) 12
+Index clause none
+Incoterm FCA
+Tooling (EUR) 0.00
+Part(s): part:310010. Enquiry: Brandlhuber announces +9.5 % on HN volute casings.
+Validity: 30 days.
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70110-0-quote",
+  "name": "quote-offer-70110-0.pdf",
+  "type": "pdf",
+  "content_b64": null
+}
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P01:70110",
+  "message_id": "msg:70110-0-0",
+  "in_reply_to": null,
+  "from_name": "Owner, Gießerei Brandlhuber GmbH & Co. KG",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "open",
+  "signals": {
+    "reply_delay_days": 2,
+    "validity_days": 30
+  },
+  "missing_fields": [
+    "payment_days"
+  ],
+  "claim_results": []
+}
+
+
+[P01 / sup:70110 / M02]
+Sender: buyer
+Subject: Re: Price adjustment HN 50-200 volute casing (part:310010) – our proposal
+
+BEGIN VERBATIM BODY
+
+Dear Mr Brandlhuber,
+
+Thank you for your Angebot and for your openness about your cost situation. We have not forgotten that in 2022 you kept supplying at the old price for a quarter, and we want this partnership to stay healthy on both sides.
+
+We have checked the indices you mentioned against the same public series:
+- LCI-C rose 2.66 % (2025-06 to 2026-06).
+- PPI-C241 rose 6.54 % (2025-08 to 2026-08).
+- PPI-D351 (energy) fell 3.72 % over the same period.
+
+Using your own cost shares (30 % labour, 24 % material), the weighted effect is about +2.4 %. Including the energy decrease, it is about +2.3 %. That supports an increase of roughly EUR 3 per piece, not 9.5 %. We are happy to share our index sources with your office if that helps your costing.
+
+We also remember your request for faster payment. We would like to help with your liquidity and are prepared to move to 14 days net. Our current contract runs until 31 December 2026, so we propose the new price from 1 January 2027.
+
+We propose two packages and would like you to choose either:
+- A) Unit price EUR 130.00 | effective 2027-01-01 | payment 14 days net | (lead time 42 days, FCA as fixed)
+- B) Unit price EUR 128.90 | effective 2027-01-01 | payment 60 days net | (lead time 42 days, FCA as fixed)
+
+Both are an increase above the index development, so they are a step towards you. Package A also gives you substantially faster cash. In return, we ask that you keep the price stable for the full 12-month term on 8,150 pcs.
+
+Please let us know which package works better for you. If neither fits, please tell us which term matters most to you and we will look at it constructively.
+
+Viele Grüße
+Hollerau Pumpenwerke – Purchasing
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "terms": {
+      "unit_price": 130.0,
+      "effective_date": "2027-01-01",
+      "payment_days": 14
+    }
+  },
+  {
+    "terms": {
+      "unit_price": 128.9,
+      "effective_date": "2027-01-01",
+      "payment_days": 60
+    }
+  }
+]
+
+
+[P01 / sup:70110 / M03]
+Sender: sales@70110
+Subject: Re: Price adjustment HN 50-200 volute casing (part:310010) – our proposal
+
+BEGIN VERBATIM BODY
+
+Guten Tag,
+
+We have reviewed your offer and can adjust our Angebot as follows. We appreciate your thorough review of the indices and your constructive proposal to improve payment terms to 14 days net. However, accepting the delayed effective date of 1 January 2027 requires us to absorb increased costs for an additional two months. 
+
+Building on your first package, we can offer a price of €136.50 per unit, which respects your index calculations while ensuring our continued quality. This proposal includes a price of €136.50 per unit, Zahlungsziel 14 days net, valid from 1 January 2027. This Angebot remains valid for 30 days.
+
+Which figures is that based on? Please send us the data. Please understand that our price reflects our costs; our calculation stays internal.
+
+Viele Grüße aus der Gießerei
+Thomas Brandlhuber
+Owner, Gießerei Brandlhuber GmbH & Co. KG
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70110-1",
+    "terms": {
+      "unit_price": 136.5,
+      "payment_days": 14,
+      "effective_date": "2027-01-01"
+    }
+  }
+]
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P01:70110",
+  "message_id": "msg:70110-1-2",
+  "in_reply_to": null,
+  "from_name": "Owner, Gießerei Brandlhuber GmbH & Co. KG",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "open",
+  "signals": {
+    "reply_delay_days": 2,
+    "validity_days": 30
+  },
+  "missing_fields": [],
+  "claim_results": []
+}
+
+
+[P01 / sup:70110 / M04]
+Sender: buyer
+Subject: AW: Angebot HN 50-200 volute casing (part:310010) – index data and revised packages
+
+BEGIN VERBATIM BODY
+
+Dear Mr Brandlhuber,
+
+Thank you for your quick reply and for accepting the start date of 1 January 2027 together with 14 days net. We see this as a real step towards each other.
+
+You asked which figures our calculation is based on. Here is the data. All three are public producer price and labour cost series:
+- PPI-C241 (basic metals/castings material): 99.4 in Aug 2025 → 105.9 in Aug 2026 = +6.54 %
+- LCI-C (labour cost index, manufacturing): 116.5 in Jun 2025 → 119.6 in Jun 2026 = +2.66 %
+- PPI-D351 (electricity/energy): 137.0 in Aug 2025 → 131.9 in Aug 2026 = −3.72 %
+
+With your own cost shares (30 % labour, 24 % material), labour adds about +0.8 % and material about +1.6 %. That is about +2.4 % in total, or around +2.3 % once the lower energy prices are included. On EUR 126.53, this comes to roughly EUR 129.50. We are happy to send the series references to your office manager so your spreadsheet can be updated.
+
+On the two months: our current contract price is agreed until 31 December 2026, so the start date of 1 January 2027 simply follows the existing agreement. In addition, 14 days net brings your cash in about a month earlier than your standard 30 days. On roughly EUR 1.07 M of annual turnover with us, that is a noticeable liquidity gain for you.
+
+We still want a healthy price for a long-standing partner, not just the index figure. So we are moving clearly above the index again and offer you a choice:
+- A) Unit price EUR 131.60 | effective 2027-01-01 | payment 14 days net | lead time 42 days, FCA (fixed)
+- B) Unit price EUR 130.90 | effective 2027-01-01 | payment 30 days net | lead time 42 days, FCA (fixed)
+
+In return, we ask that the price stays fixed for the full 12 months on 8,150 pcs. We will also keep working with you on stable delivery performance.
+
+Could you let us know which package you prefer? If a different combination works better for you, please tell us what matters most and we will look at it constructively.
+
+Viele Grüße
+Hollerau Pumpenwerke – Purchasing
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "terms": {
+      "unit_price": 131.6,
+      "effective_date": "2027-01-01",
+      "payment_days": 14
+    }
+  },
+  {
+    "terms": {
+      "unit_price": 130.9,
+      "effective_date": "2027-01-01",
+      "payment_days": 30
+    }
+  }
+]
+
+
+[P01 / sup:70110 / M05]
+Sender: sales@70110
+Subject: Re: Angebot HN 50-200 volute casing (part:310010) – index data and revised packages
+
+BEGIN VERBATIM BODY
+
+Guten Tag,
+
+We have reviewed your offer and can adjust our Angebot as follows. We appreciate the detailed index data you provided; solid figures are always the best basis for discussion, and we have factored them into our review. However, these general indices do not fully capture the specific operational realities and overheads of our foundry. Our price reflects our costs; our calculation stays internal. Our costs move with LCI-C, PPI-C241, PPI-D351; the figures stay with us.
+
+Building on your preferred package with 14 days net payment from 1 January 2027, we are prepared to make a further concession to €135.50 per unit. For our Angebot, we present a price of €135.50 per unit, Zahlungsziel 14 days net, valid from 1 January 2027. This offer is valid for 30 days.
+
+Viele Grüße aus der Gießerei
+Thomas Brandlhuber
+Owner, Gießerei Brandlhuber GmbH & Co. KG
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70110-2",
+    "terms": {
+      "unit_price": 135.5,
+      "payment_days": 14,
+      "effective_date": "2027-01-01"
+    }
+  }
+]
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P01:70110",
+  "message_id": "msg:70110-2-4",
+  "in_reply_to": null,
+  "from_name": "Owner, Gießerei Brandlhuber GmbH & Co. KG",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "open",
+  "signals": {
+    "reply_delay_days": 2,
+    "validity_days": 30
+  },
+  "missing_fields": [],
+  "claim_results": []
+}
+
+
+[P01 / sup:70110 / M06]
+Sender: buyer
+Subject: Re: Angebot HN 50-200 volute casing (part:310010) – revised packages from 1 January 2027
+
+BEGIN VERBATIM BODY
+
+Dear Mr Brandlhuber,
+
+Thank you for your further step to EUR 135.50 and for taking our index data into account. We appreciate that we are discussing this on the basis of figures.
+
+You mention that the general indices do not capture the specific overheads of your foundry. We understand that, and we do not ask for your full calculation. If there is a specific cost driver beyond these indices, please name it, for example an energy contract renewal or a wage agreement, with its approximate effect. We will take it seriously. Without such information, the public series are the only objective basis we have, and they point to around +2.3 %.
+
+We want this to remain a healthy partnership, so we are moving again and are now well above the index development:
+- A) Unit price EUR 132.90 | effective 2027-01-01 | payment 14 days net | lead time 42 days | FCA
+- B) Unit price EUR 132.40 | effective 2027-01-01 | payment 30 days net | lead time 42 days | FCA
+
+Package A is an increase of about +5 % on today's price, with your cash about a month earlier than your standard terms.
+
+In return, we ask for three things:
+- A fixed price for the full 12 months on 8,150 pcs.
+- Your quality commitment of 900 ppm as stated in your standard terms.
+- A joint effort on delivery reliability. Our latest scorecard shows 85.2 % on-time delivery, 712 ppm and one overdue 8D report, and stable supply is just as important to us as the price.
+
+Please let us know which package you prefer. Then we can close this quickly and give both sides planning security for 2027.
+
+Viele Grüße
+Hollerau Pumpenwerke – Purchasing
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "terms": {
+      "unit_price": 132.9,
+      "effective_date": "2027-01-01",
+      "payment_days": 14
+    }
+  },
+  {
+    "terms": {
+      "unit_price": 132.4,
+      "effective_date": "2027-01-01",
+      "payment_days": 30
+    }
+  }
+]
+
+
+[P01 / sup:70110 / M07]
+Sender: sales@70110
+Subject: Re: Angebot HN 50-200 volute casing (part:310010) – revised packages from 1 January 2027
+
+BEGIN VERBATIM BODY
+
+Guten Tag,
+
+We have reviewed your offer and can adjust our Angebot as follows. We appreciate your further step and your commitment to a healthy partnership, as well as your feedback on our delivery performance which we take very seriously.
+
+While we cannot share our internal wage agreements and energy contracts, we acknowledge your move and are prepared to offer €134.80 per unit. Our costs move with LCI-C, PPI-C241, PPI-D351; the figures stay with us.
+
+This price includes the 14 days net payment terms from 1 January 2027, and we confirm our commitment to the quality standards and stable supply you require. Our offer is a price of €134.80 per unit, Zahlungsziel 14 days net, valid from 1 January 2027. Our Lieferzeit is 42 days. Please note that this offer stays valid for 30 days.
+
+Viele Grüße aus der Gießerei
+Thomas Brandlhuber
+Owner, Gießerei Brandlhuber GmbH & Co. KG
+
+Quality Manager: We take the complaints seriously; our 8D report is attached.
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70110-3",
+    "terms": {
+      "unit_price": 134.8,
+      "payment_days": 14,
+      "effective_date": "2027-01-01"
+    }
+  }
+]
+
+ATTACHMENT 1: 8d-report.pdf
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+Gießerei Brandlhuber GmbH & Co. KG
+To: Hollerau Pumpenwerke GmbH
+8D report - part:310010
+Scorecards
+2024Q3 0 ppm, on time 84.1 %
+2024Q4 253 ppm, on time 87.8 %
+2025Q1 605 ppm, on time 94.0 %
+2025Q2 720 ppm, on time 88.5 %
+2025Q3 785 ppm, on time 88.2 %
+2025Q4 625 ppm, on time 84.9 %
+2026Q1 522 ppm, on time 81.5 %
+2026Q2 626 ppm, on time 83.3 %
+2026Q3 712 ppm, on time 85.2 %
+D1 Team: quality manager, production lead, sales.
+D2 Problem: defect rate above the agreed target (see scorecards).
+D3 Containment: 100 % inspection of outgoing lots until closure.
+D4 Root cause: under analysis; first findings within 10 working days.
+D5-D6 Corrective actions: process and gauge review, verified on 3 lots.
+D7 Prevention: control plan and FMEA updated.
+D8 Closure: after 3 months below the agreed ppm.
+Commitment: 900 ppm.
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70110-3-eight_d",
+  "name": "8d-report.pdf",
+  "type": "pdf",
+  "content_b64": null
+}
+
+ATTACHMENT 2: delivery-schedule.xlsx
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+[Delivery schedule]
+Month | Quantity | Cumulative
+1 | =ROUND(8150/12,0) | =SUM(B$2:B2)
+2 | =ROUND(8150/12,0) | =SUM(B$2:B3)
+3 | =ROUND(8150/12,0) | =SUM(B$2:B4)
+4 | =ROUND(8150/12,0) | =SUM(B$2:B5)
+5 | =ROUND(8150/12,0) | =SUM(B$2:B6)
+6 | =ROUND(8150/12,0) | =SUM(B$2:B7)
+7 | =ROUND(8150/12,0) | =SUM(B$2:B8)
+8 | =ROUND(8150/12,0) | =SUM(B$2:B9)
+9 | =ROUND(8150/12,0) | =SUM(B$2:B10)
+10 | =ROUND(8150/12,0) | =SUM(B$2:B11)
+11 | =ROUND(8150/12,0) | =SUM(B$2:B12)
+12 | =ROUND(8150/12,0) | =SUM(B$2:B13)
+Lead time (days) | 42 | 
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70110-3-delivery_schedule",
+  "name": "delivery-schedule.xlsx",
+  "type": "xlsx",
+  "content_b64": null
+}
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P01:70110",
+  "message_id": "msg:70110-3-6",
+  "in_reply_to": null,
+  "from_name": "Owner, Gießerei Brandlhuber GmbH & Co. KG",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "open",
+  "signals": {
+    "reply_delay_days": 2,
+    "validity_days": 30
+  },
+  "missing_fields": [],
+  "claim_results": []
+}
+
+
+[P01 / sup:70110 / M08]
+Sender: buyer
+Subject: Re: Angebot HN 50-200 volute casing (part:310010) – proposal to close
+
+BEGIN VERBATIM BODY
+
+Dear Mr Brandlhuber,
+
+Thank you for your further step to EUR 135.50 → 134.80, and for confirming the 900 ppm quality commitment and stable supply. Many thanks also to your quality manager for the 8D report. The 100 % outgoing inspection as containment is a good signal. We would appreciate receiving the first root-cause findings within the 10 working days mentioned.
+
+We understand that your wage and energy contracts stay internal, and we respect that. We are now very close, and we would like to close this in this round so that both sides have planning security for 2027. Please choose whichever of these two packages suits you better:
+
+- A) Unit price EUR 134.20 | effective 2027-01-01 | payment 14 days net | lead time 42 days, FCA
+- B) Unit price EUR 134.80 | effective 2027-01-01 | payment 30 days net | lead time 42 days, FCA
+
+Package A keeps your fast cash at 14 days. Package B keeps your price unchanged and returns to your own standard payment terms. Both are an increase of about +6 % on today's price, well above the index development.
+
+Both packages are based on the following:
+- A fixed price for 12 months on 8,150 pcs.
+- The 900 ppm commitment.
+- Closure of the open 8D as described in your report.
+
+If you confirm one of the two packages in an updated Angebot, we can finalise the agreement right away.
+
+Viele Grüße
+Hollerau Pumpenwerke – Purchasing
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "terms": {
+      "unit_price": 134.2,
+      "effective_date": "2027-01-01",
+      "payment_days": 14
+    }
+  },
+  {
+    "terms": {
+      "unit_price": 134.8,
+      "effective_date": "2027-01-01",
+      "payment_days": 30
+    }
+  }
+]
+
+
+[P01 / sup:70110 / M09]
+Sender: sales@70110
+Subject: Re: Angebot HN 50-200 volute casing (part:310010) – proposal to close
+
+BEGIN VERBATIM BODY
+
+Guten Tag,
+
+It is always a pleasure to deal with Hollerau Pumpenwerke GmbH. We have reviewed your offer and can adjust our Angebot as follows. 
+
+We appreciate your proposal to close and confirm the 12-month fixed price for 8,150 pieces and our 900 ppm quality commitment. To reach an agreement today, we are prepared to make a further step to a price of €134.50 per unit, Zahlungsziel 14 days net, valid from 1 January 2027 for this package. 
+
+We prefer to maintain the 14 days net payment terms, as this supports our ongoing operations. Please note that our standard Zahlungsziel is 30 days net. Our general terms and conditions apply; the quote lists our standard terms. This offer stays valid for 30 days.
+
+Viele Grüße aus der Gießerei
+Thomas Brandlhuber
+Owner, Gießerei Brandlhuber GmbH & Co. KG
+
+Quality Manager: We take the complaints seriously; our 8D report is attached.
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70110-4",
+    "terms": {
+      "unit_price": 134.5,
+      "payment_days": 14,
+      "effective_date": "2027-01-01"
+    }
+  }
+]
+
+ATTACHMENT 1: 8d-report.pdf
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+Gießerei Brandlhuber GmbH & Co. KG
+To: Hollerau Pumpenwerke GmbH
+8D report - part:310010
+Scorecards
+2024Q3 0 ppm, on time 84.1 %
+2024Q4 253 ppm, on time 87.8 %
+2025Q1 605 ppm, on time 94.0 %
+2025Q2 720 ppm, on time 88.5 %
+2025Q3 785 ppm, on time 88.2 %
+2025Q4 625 ppm, on time 84.9 %
+2026Q1 522 ppm, on time 81.5 %
+2026Q2 626 ppm, on time 83.3 %
+2026Q3 712 ppm, on time 85.2 %
+D1 Team: quality manager, production lead, sales.
+D2 Problem: defect rate above the agreed target (see scorecards).
+D3 Containment: 100 % inspection of outgoing lots until closure.
+D4 Root cause: under analysis; first findings within 10 working days.
+D5-D6 Corrective actions: process and gauge review, verified on 3 lots.
+D7 Prevention: control plan and FMEA updated.
+D8 Closure: after 3 months below the agreed ppm.
+Commitment: 900 ppm.
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70110-4-eight_d",
+  "name": "8d-report.pdf",
+  "type": "pdf",
+  "content_b64": null
+}
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P01:70110",
+  "message_id": "msg:70110-4-8",
+  "in_reply_to": null,
+  "from_name": "Owner, Gießerei Brandlhuber GmbH & Co. KG",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "open",
+  "signals": {
+    "reply_delay_days": 2,
+    "validity_days": 30
+  },
+  "missing_fields": [],
+  "claim_results": []
+}
+
+
+[P01 / sup:70110 / M10]
+Sender: buyer
+Subject: (none recorded)
+
+(No email body recorded.)
+
+API ACTION
+{
+  "type": "accept",
+  "term_sheet_id": "offer:70110-4"
+}
+
+
+[P01 / sup:70110 / M11]
+Sender: sales@70110
+Subject: Re: Angebot HN 50-200 volute casing (part:310010) – proposal to close
+
+BEGIN VERBATIM BODY
+
+Guten Tag,
+
+Thank you for your order. Our order confirmation is attached. It is always a pleasure to serve Hollerau Pumpenwerke GmbH and to continue the long relationship between our companies. We take great pride in our foundry's craftsmanship and look forward to delivering the quality you expect from us.
+
+Viele Grüße aus der Gießerei
+Thomas Brandlhuber
+Owner, Gießerei Brandlhuber GmbH & Co. KG
+
+Quality Manager: We take the complaints seriously; our 8D report is attached.
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70110-4",
+    "terms": {
+      "unit_price": 134.5,
+      "payment_days": 14,
+      "effective_date": "2027-01-01"
+    }
+  }
+]
+
+ATTACHMENT 1: order-confirmation-offer-70110-4.pdf
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+Gießerei Brandlhuber GmbH & Co. KG
+To: Hollerau Pumpenwerke GmbH
+Auftragsbestätigung / Order confirmation offer:70110-4
+Agreed terms
+Payment terms (days net) 14
+Lead time (days) 42
+Volume per year (pcs) 8150
+Contract term (months) 12
+Price valid from 2027-01-01
+Index clause none
+Incoterm FCA
+Tooling (EUR) 0.00
+Quality commitment (ppm) 900
+Chargeback per complaint (EUR) 0.00
+Unit price (EUR) 134.50
+Part(s): part:310010. We confirm your order on the terms above.
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70110-4-order_confirmation",
+  "name": "order-confirmation-offer-70110-4.pdf",
+  "type": "pdf",
+  "content_b64": null
+}
+
+ATTACHMENT 2: 8d-report.pdf
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+Gießerei Brandlhuber GmbH & Co. KG
+To: Hollerau Pumpenwerke GmbH
+8D report - part:310010
+Scorecards
+2024Q3 0 ppm, on time 84.1 %
+2024Q4 253 ppm, on time 87.8 %
+2025Q1 605 ppm, on time 94.0 %
+2025Q2 720 ppm, on time 88.5 %
+2025Q3 785 ppm, on time 88.2 %
+2025Q4 625 ppm, on time 84.9 %
+2026Q1 522 ppm, on time 81.5 %
+2026Q2 626 ppm, on time 83.3 %
+2026Q3 712 ppm, on time 85.2 %
+D1 Team: quality manager, production lead, sales.
+D2 Problem: defect rate above the agreed target (see scorecards).
+D3 Containment: 100 % inspection of outgoing lots until closure.
+D4 Root cause: under analysis; first findings within 10 working days.
+D5-D6 Corrective actions: process and gauge review, verified on 3 lots.
+D7 Prevention: control plan and FMEA updated.
+D8 Closure: after 3 months below the agreed ppm.
+Commitment: 900 ppm.
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70110-4-eight_d",
+  "name": "8d-report.pdf",
+  "type": "pdf",
+  "content_b64": null
+}
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P01:70110",
+  "message_id": "msg:70110-4-10",
+  "in_reply_to": null,
+  "from_name": "Owner, Gießerei Brandlhuber GmbH & Co. KG",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "agreed",
+  "signals": {
+    "reply_delay_days": 2,
+    "validity_days": 30
+  },
+  "missing_fields": [],
+  "claim_results": [],
+  "result": {
+    "ended": true,
+    "deal": true,
+    "supplier_id": "sup:70110",
+    "offer_id": "offer:70110-4",
+    "terms": {
+      "payment_days": 14,
+      "lead_time_days": 42,
+      "volume_per_year": 8150,
+      "contract_months": 12,
+      "effective_date": "2027-01-01",
+      "index_clause": null,
+      "incoterm": "FCA",
+      "tooling_eur": 0.0,
+      "ppm_commitment": 900,
+      "chargeback_eur_per_complaint": 0.0,
+      "unit_price": 134.5
+    },
+    "c_open": 1153779.74,
+    "c_deal": 1113569.46,
+    "c_alt": 1176178.02,
+    "c_best": 1096815.78,
+    "score": 0.7058898292885546,
+    "must_haves_ok": true,
+    "cost_breakdown": {
+      "price": 1085319.42,
+      "uncovered_need": 0.0,
+      "fallback_risk": 0.0,
+      "payment_terms": 11094.38,
+      "freight": 15485.0,
+      "late_delivery": 0.0,
+      "quality": 1584.36,
+      "tooling": 0.0,
+      "index_clause": 0.0,
+      "index_risk": 0.0,
+      "relationship": 86.3
+    }
+  }
+}
+
+
+RECORDED DECISION ORDER AND VALIDATION (NOT MODEL REASONING)
+[
+  {
+    "supplier_id": "sup:70110",
+    "source": "claude:eval",
+    "action": "send",
+    "elapsed_s": 20.35,
+    "protocol_version": "faithful-v7-confirm-every-offer-menu",
+    "rejections": []
+  },
+  {
+    "supplier_id": "sup:70110",
+    "source": "claude:eval",
+    "action": "send",
+    "elapsed_s": 9.333,
+    "protocol_version": "faithful-v7-confirm-every-offer-menu",
+    "rejections": []
+  },
+  {
+    "supplier_id": "sup:70110",
+    "source": "claude:eval",
+    "action": "send",
+    "elapsed_s": 9.801,
+    "protocol_version": "faithful-v7-confirm-every-offer-menu",
+    "rejections": []
+  },
+  {
+    "supplier_id": "sup:70110",
+    "source": "claude:eval",
+    "action": "send",
+    "elapsed_s": 13.249,
+    "protocol_version": "faithful-v7-confirm-every-offer-menu",
+    "rejections": []
+  },
+  {
+    "supplier_id": "sup:70110",
+    "source": "claude:eval",
+    "action": "accept",
+    "elapsed_s": 4.429,
+    "protocol_version": "faithful-v7-confirm-every-offer-menu",
+    "rejections": []
+  }
+]
+
+EXECUTION METRICS
+{
+  "elapsed_s": 166.9,
+  "fallbacks": 0,
+  "calls": 5,
+  "errors": 0,
+  "input_tokens": 71353,
+  "output_tokens": 13877,
+  "refusals": 0,
+  "empty_responses": 0,
+  "stop_reasons": {
+    "end_turn": 5
+  },
+  "refusal_details": []
+}
+
+CONTROLLER AUDIT
+{
+  "contract_rejections": [],
+  "forced_stops": 0,
+  "verbatim_request_sent": false,
+  "verbatim_request_ignoring_whitespace": false,
+  "calibrated_question_messages": 0,
+  "accepts_before_five_repeats": 0,
+  "accepted_offer_position": 1,
+  "preparation_tags_present": true,
+  "strategy_tags_present": true,
+  "preparation_sections_present": [
+    "Role and Objectives",
+    "Strategy Identification",
+    "Compromise Exploration",
+    "SWOT Analysis",
+    "Creative Solutions"
+  ],
+  "verbatim_insertions": 0,
+  "verbatim_format_restorations": 0,
+  "confirmation_messages": 0,
+  "walk_aways": [],
+  "terminal_limits": []
+}

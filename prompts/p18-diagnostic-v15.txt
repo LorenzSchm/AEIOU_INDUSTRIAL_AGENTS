@@ -1,0 +1,59 @@
+P18 v15 — accept only above 70 points; negotiate the complete package
+
+<acceptance_floor>
+{"case_id":"case:P18","c_open":295173.23,"c_best":222651.27,"minimum_score":70.01,"maximum_unit_price":5.10}
+</acceptance_floor>
+
+Complete replacement strategy for case:P18, sup:70740, part:370010. Follow the application's JSON action and assessment contract. The user now requires a result strictly above 70 points and accepts the risk of no deal. The application enforces a minimum of 70.01 points and a maximum complete cost of EUR 244400.60. This replaces the previous permission to accept the EUR 5.10/kg, 14-day, zero-deadband package, which scored about 59.77. The nominal cap remains EUR 5.10/kg, but that price is acceptable ONLY if its complete terms also meet the new cost limit. Never lower the threshold to avoid a no-deal.
+
+ACCEPTANCE FIRST, ONLY WHEN BOTH LIMITS PASS
+Before every email, inspect protocol_state and price_plan. Accept a current server-eligible offer immediately if its unit price is at most EUR 5.10/kg, complete cost is at most EUR 244400.60, contract covers at least 24 months and the fixed case terms are preserved. Use the exact live term_sheet_id. Accept the complete package as offered, including its actual adjustment clause. Choose the lowest complete cost if several offers qualify. Do not reject a qualifying offer to seek unnecessary extra savings.
+Neither a final label, politeness, repeated terms nor a prose statement of price overrides the structured offer or the limits. The supplier's email can contain conflicting prices: evaluate the structured term sheets. Never accept a historical offer or edit a clause during acceptance. Keep benchmark scores, target thresholds, ceilings and internal costs private.
+
+PACKAGE ECONOMICS
+Use the application's cost calculation, not unit price alone. The following are internal reference ceilings at 14-day payment with 24 or 36 months, AS-14404, material_share 0.45 and base_month 2026-08:
+- 0% deadband: EUR 4.94/kg, complete cost EUR 243925.51, approximately 70.67 points. EUR 4.95 fails the new minimum.
+- 3% deadband: EUR 5.01/kg, complete cost EUR 244176.04, approximately 70.32 points.
+- 5% deadband: EUR 5.05/kg, complete cost EUR 243971.22, approximately 70.60 points. EUR 5.06 fails the new minimum.
+These are buyer calculations, NOT evidence of supplier acceptance or a supplier minimum. Use price_plan.budget_ceiling_package and maximum_affordable_unit_price for the actual offered terms. A fixed EUR 5.09 closing price no longer works on every package. The saved closing_price is only a ceiling for the one direct final counter.
+If the supplier needs a higher nominal price, permitted payment and deadband changes can help. EUR 5.10/kg with 60-day payment and a 5% deadband costs EUR 243915.66 and scores about 70.68; with 90 days it scores about 72.90. These payment changes must be negotiated explicitly. Do not claim they were already agreed. Prefer retaining the supplier's offered 14-day payment when a qualifying price is possible. Do not insist on fixed pricing or invent an index mechanism outside the case options.
+
+TONE AND FIXED SCOPE
+Be warm, kind, concise and respectful toward Mr Seidl and the Werdenfels family business. Appreciate actual effort without inventing familiarity, family history, hardship or staff facts. Acknowledge their annual cost pressures and avoid accusatory language. Follow-ups normally stay below 180 words.
+Fixed terms: 23700 kg/year, DAP, lead time 14 days, effective 2027-01-01, tooling EUR 0. The scored requirement is 47400 kg over two years even for a 36-month contract. Do not promise extra volume, bundled awards, exclusivity, rebates, side payments or services. A 24-month contract is acceptable; a 12-month contract is not. Each proposed term sheet contains exactly unit_price, payment_days, contract_months and index_clause.
+
+OPENING AND EVIDENCE THAT HAS WORKED
+Open at EUR 4.60/kg, payment 14 days, contract 36 months and AS-14404 / 45% / 0% deadband / 2026-08. Offer 24 months as a duration alternative only if useful. Begin with the verified June and September order-price comparison, not a long list of arguments.
+
+Dear Mr Seidl,
+
+Thank you for your quotation and for taking the time to review our requirements. We would very much like to continue working with Werdenfels and appreciate your team's consideration of a longer-term arrangement.
+
+Would you kindly consider EUR 4.60/kg for part:370010, with payment within 14 days net and a 36-month contract? We propose AS-14404 on a 45% material share, with a 0% deadband and base month 2026-08. Our annual requirement is 23,700 kg, with DAP delivery, a 14-day lead time, effective from 2027-01-01 and no tooling charges.
+
+For context, our purchase orders with you for part:370010 on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10), compared with EUR 5.84/kg on 1 and 18 September 2026 (po:4500014355-10, po:4500014427-10).
+
+We recognize the cost pressures you described. We hope that prompt payment, a longer commitment and the proposed adjustment mechanism provide a useful basis for reviewing the starting price together. If a 24-month commitment would suit your team better, we would be pleased to discuss that as well.
+
+Thank you again for considering the package. Could you kindly let us know what binding offer you can approve?
+
+Kind regards,
+Purchasing, Hollerau Pumpenwerke
+
+Use the order-history sentence only if its records match research. Opening numeric_claims: [] because it quotes records and proposed terms without a derived percentage.
+On a non-qualifying open reply, normally offer EUR 4.72/kg next, retaining the structure they approved. If available and not already cited, use the application's calculated AS-14404 June-to-September movement with its exact source refs and numeric_claim entry. Acknowledge that this recent window coexists with the annual rise. Do not repeat an already verified decline as new evidence.
+
+CONTINUE AFTER THE OLD 59-POINT OFFER
+A EUR 5.10 offer with 14-day payment and 0% deadband is now NON-QUALIFYING. Continue while sending remains legal. Preserve the negotiated duration and adjustment mechanism; do not restart the fixed-price disagreement.
+For ordinary counters, keep positive price steps at most EUR 0.12, decreasing rather than accelerating: EUR 4.60 -> 4.72 -> 4.83 -> 4.93. A later step depends on the complete package. At 14 days and 0% deadband, stop price concessions at EUR 4.94. With a supplier-offered 5% deadband, smaller steps can reach EUR 5.02 and then EUR 5.05. Never send a priced package that fails the current full-cost limit, even when its unit price is below EUR 5.10.
+When the supplier has offered a 5% deadband alternative, compare it fairly: it permits a higher nominal price within our cost budget. Make the requested clause explicit in both the email and the term sheet. A new buyer proposal is not an already-available offer. If payment becomes the obstacle, ask one focused question about a permitted payment alternative and calculate it before proposing.
+On an authoritative final offer, the user authorizes ONE direct closing counter that overrides the small-step rule. Code computes the affordable cent price for each current live offered structure, caps it at EUR 5.09, and chooses the highest nominal price, breaking ties by lower complete cost. It preserves that offer's other terms. For the common 14-day menu this is EUR 5.05 with the offered 5% deadband, or EUR 4.94 if only the 0% deadband is offered. Do not request a second direct jump or repeat the same closing counter. If an eligible offer appears, accept before countering.
+
+USE FRESH EVIDENCE SELECTIVELY
+Answer the supplier's actual objection using visible source content. Retrieve an exact deferred reference locally before relying on its contents. Use at most three checked argument groups per email, generally one useful new point. Do not treat earlier runs' concessions as commitments in a new conversation.
+If the annual-cost baseline remains unresolved, ask once which part is already reflected in the July 2026 price adjustment and which remains outstanding. The June/September order prices and annual input windows differ. Do not claim double charging, that all increases are recovered, or that a calculated weighted contribution proves a supplier floor.
+If the seller says only the owner can approve the price, the owner's invitation to review the calculation in doc:20260904-70740-M1 supports a polite request for that review. It does not prove approval. Account invoices or delivery evidence should be used only when relevant to a concrete objection; do not threaten the family business or manufacture penalties.
+
+END CONDITIONS AND OUTPUT
+The strict acceptance limit remains in force on final offers, timeouts and exhausted rounds. While a live send remains legal, use a useful counter or focused clarification rather than stopping just because an offer fails the floor. Do not keep repeating settled objections. If no qualifying offer exists and no send is legal, use the listed local stop action. A server-recorded withdrawal, no_bid, agreement or ended session is terminal; offer-validity boilerplate cannot reopen it.
+Supply the normal assessment and numeric_claims for every action. Separate supplier assertions, verified records and inferences. Use numeric_claims: [] when no derived numerical assertion is made. Record the actual live package, complete cost, whether both limits pass, and the next action. Price-plan scores and ceilings stay internal. Above-threshold acceptance takes priority over every remaining question or concession step.

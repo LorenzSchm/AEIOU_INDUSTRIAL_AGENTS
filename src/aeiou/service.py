@@ -4,13 +4,26 @@ import threading
 import uuid
 from concurrent.futures import ThreadPoolExecutor
 from functools import lru_cache
+from typing import Literal
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from .config import MODELS, ROOT, model_name, set_model, state_root
+from .config import (
+    MODELS,
+    ROOT,
+    model_efforts,
+    model_name,
+    model_provider,
+    model_settings,
+    provider_configured,
+    require_model_key,
+    set_model,
+    state_root,
+)
+from .evidence_transport import attachment_text
 from .research import package, research
 from .runner import hosted_play
 from .simulation import OPPONENTS, local_cases, local_play
@@ -57,9 +70,13 @@ def index():
 @app.get("/api/status")
 def status():
     return {
-        "model": model_name(),
-        "models": [{"id": k, "label": v} for k, v in MODELS.items()],
-        "claude_configured": bool(os.environ.get("ANTHROPIC_API_KEY")),
+        **model_settings(),
+        "models": [{"id": k, "label": v, "provider": model_provider(k), "efforts": model_efforts(k),
+                    "default_effort": model_settings(k)["effort"]} for k, v in MODELS.items()],
+        "claude_configured": provider_configured("anthropic"),
+        "openai_configured": provider_configured("openai"),
+        "llm_configured": provider_configured(model_provider(model_name())),
+        "providers": {name: {"configured": provider_configured(name)} for name in ("anthropic", "openai")},
         "arena_configured": bool(os.environ.get("ARENA_API_KEY")),
         "facts": len(pkg().facts),
         "tables": pkg().tables(),
@@ -71,7 +88,9 @@ def status():
 
 @app.get("/api/cases")
 def cases():
-    return {"local": list(local_cases().values()), "hosted": hosted_cases(), "opponents": OPPONENTS}
+    from .supplier_profiles import PROFILES
+
+    return {"local": list(local_cases().values()), "hosted": hosted_cases(), "opponents": PROFILES}
 
 
 @app.get("/api/runs")
@@ -82,7 +101,15 @@ def runs():
 @app.get("/api/runs/{run_id}")
 def run(run_id: str):
     try:
-        return get_run(run_id)
+        result = get_run(run_id)
+        # Presentation only: preserve the stored wire request for exact replay.
+        for events in result.get("threads", {}).values():
+            for message in events:
+                if message.get("from") == "buyer":
+                    for attachment in message.get("attachments", []):
+                        if "text" not in attachment and (text := attachment_text(attachment)):
+                            attachment["text"] = text
+        return result
     except FileNotFoundError as e:
         raise HTTPException(404, "Run not found") from e
 
@@ -120,6 +147,13 @@ def deal_pipeline():
     return pipeline({c["case_id"]: c for c in [*local_cases().values(), *hosted_cases()]})
 
 
+@app.get("/api/hosted-benchmarks")
+def hosted_benchmarks(archive: bool = False):
+    from .hosted_benchmarks import hosted_benchmarks
+
+    return hosted_benchmarks(archive)
+
+
 class ModelRequest(BaseModel):
     model: str = Field(max_length=100)
 
@@ -130,16 +164,22 @@ def choose_model(body: ModelRequest):
         set_model(body.model)
     except ValueError as e:
         raise HTTPException(422, "Unknown model") from e
-    return {"model": model_name()}
+    return model_settings()
 
 
 @app.get("/api/prompts")
 def prompts():
-    from .prompt_protocol import TRANSPORT, prompt_specs
+    from .prompt_protocol import RESEARCH_SOURCES, TRANSPORT, original_reference, prompt_specs
 
     return {
         "transport": TRANSPORT,
         "variants": {name: {**spec.metadata(), "strategy": spec.strategy} for name, spec in prompt_specs().items()},
+        "reference_original": original_reference(),
+        "revision_note": "The active prompt removes the stock-question tactic and buyer-initiated walk-aways, "
+        "and requests a concise decision brief instead of internal reasoning. "
+        "The three-offer request, "
+        "five-repeat rule and preparation structure are retained.",
+        "research_sources": RESEARCH_SOURCES,
     }
 
 
@@ -155,11 +195,169 @@ def prompt_comparisons():
     return reports
 
 
+@app.get("/api/local-evaluations")
+def local_evaluations():
+    reports = []
+    for path in sorted((ROOT / "reports/local-evaluations").glob("*/report.json"), reverse=True)[:20]:
+        try:
+            reports.append(json.loads(path.read_text()))
+        except (ValueError, OSError):
+            continue
+    return reports
+
+
+@app.get("/api/local-dashboard")
+def local_dashboard():
+    from .evaluation_data import local_dashboard
+
+    return local_dashboard()
+
+
+@app.get("/api/eval-suite")
+def eval_suite():
+    from .eval_suite import suite
+
+    return suite()
+
+
+class EvalSuiteRequest(BaseModel):
+    prompt: str = Field(min_length=1, max_length=100000)
+    variant_id: Literal["a", "b"] = "a"
+    model: str | None = Field(default=None, max_length=100)
+    effort: str | None = Field(default=None, max_length=20)
+
+
+class PracticeEvalRequest(BaseModel):
+    prompt: str = Field(min_length=1, max_length=100000)
+    repeats: int = Field(default=1, ge=1, le=3)
+    case_ids: list[str] | None = Field(default=None, min_length=1, max_length=30)
+    model: str | None = Field(default=None, max_length=100)
+    effort: str | None = Field(default=None, max_length=20)
+
+
+def validate_buyer(model=None, effort=None):
+    model = model or model_name()
+    if model not in MODELS:
+        raise HTTPException(422, "Unknown buyer model")
+    try:
+        settings = model_settings(model, effort)
+    except ValueError as exc:
+        raise HTTPException(422, str(exc)) from exc
+    try:
+        require_model_key(model)
+    except ValueError as exc:
+        raise HTTPException(409, str(exc)) from exc
+    return settings
+
+
+@app.get("/api/eval-suite/practice/catalog")
+def practice_eval_catalog():
+    from .eval_suite import error_text, refresh_practice_catalog
+
+    try:
+        return refresh_practice_catalog()
+    except Exception as exc:
+        raise HTTPException(409, error_text(exc)) from exc
+
+
+@app.post("/api/eval-suite/practice", status_code=202)
+def launch_practice_eval(body: PracticeEvalRequest):
+    from .eval_suite import error_text, prepare_evaluation, refresh_practice_catalog, run_evaluation, suite
+
+    if not body.prompt.strip():
+        raise HTTPException(422, "Enter a prompt before running negotiations")
+    settings = validate_buyer(body.model, body.effort)
+    try:
+        catalog = refresh_practice_catalog()
+        with JOB_LOCK:
+            previous = suite()["practice"]["latest"]
+            if previous and previous["status"] == "running":
+                raise HTTPException(409, "Hosted practice already has a running evaluation")
+            if sum(job["status"] == "running" for job in JOBS.values()) >= 4:
+                raise HTTPException(429, "Wait for a running job to finish")
+            report = prepare_evaluation(body.prompt, settings["model"], "practice", repeats=body.repeats,
+                                        case_ids=body.case_ids, catalog=catalog, effort=settings["effort"])
+            JOBS[report["id"]] = {"status": "running", "kind": "evaluation", "variant_id": "practice"}
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(409, error_text(exc)) from exc
+    POOL.submit(dispatch, report["id"], lambda: run_evaluation(report))
+    return {"id": report["id"], "variant_id": "practice"}
+
+
+@app.post("/api/eval-suite", status_code=202)
+def launch_eval_suite(body: EvalSuiteRequest):
+    reports = start_eval_variants([body])
+    return {"id": reports[0]["id"], "variant_id": body.variant_id}
+
+
+@app.post("/api/eval-suite/{evaluation_id}/stop", status_code=202)
+def stop_eval_suite(evaluation_id: str):
+    from .eval_suite import stop_evaluation
+
+    try:
+        return stop_evaluation(evaluation_id)
+    except FileNotFoundError as exc:
+        raise HTTPException(404, "Evaluation not found") from exc
+    except ValueError as exc:
+        raise HTTPException(409, str(exc)) from exc
+
+
+class EvalComparisonRequest(BaseModel):
+    prompt_a: str = Field(min_length=1, max_length=100000)
+    prompt_b: str = Field(min_length=1, max_length=100000)
+    model_a: str | None = Field(default=None, max_length=100)
+    effort_a: str | None = Field(default=None, max_length=20)
+    model_b: str | None = Field(default=None, max_length=100)
+    effort_b: str | None = Field(default=None, max_length=20)
+
+
+@app.post("/api/eval-suite/compare", status_code=202)
+def launch_eval_comparison(body: EvalComparisonRequest):
+    reports = start_eval_variants([
+        EvalSuiteRequest(prompt=body.prompt_a, variant_id="a", model=body.model_a, effort=body.effort_a),
+        EvalSuiteRequest(prompt=body.prompt_b, variant_id="b", model=body.model_b, effort=body.effort_b),
+    ])
+    return {"batches": [{"id": report["id"], "variant_id": report["variant_id"]} for report in reports]}
+
+
+def start_eval_variants(requests):
+    from .eval_suite import prepare_evaluation, run_evaluation, suite, validate_hosted_config
+
+    if any(not body.prompt.strip() for body in requests):
+        raise HTTPException(422, "Enter a prompt before running negotiations")
+    selections = [validate_buyer(body.model, body.effort) for body in requests]
+    try:
+        validate_hosted_config()
+    except ValueError as exc:
+        raise HTTPException(409, str(exc)) from exc
+    with JOB_LOCK:
+        variants = {variant["id"]: variant["latest"] for variant in suite()["variants"]}
+        for body in requests:
+            latest = variants[body.variant_id]
+            if latest and latest["status"] == "running":
+                raise HTTPException(409, f"Prompt {body.variant_id.upper()} already has a running evaluation")
+        if sum(job["status"] == "running" for job in JOBS.values()) + len(requests) > 4:
+            raise HTTPException(429, "Wait for a running job to finish before starting more evaluations")
+        comparison_id = uuid.uuid4().hex if len(requests) > 1 else None
+        reports = [prepare_evaluation(body.prompt, selection["model"], body.variant_id, comparison_id,
+                                      effort=selection["effort"])
+                   for body, selection in zip(requests, selections, strict=True)]
+        for report in reports:
+            JOBS[report["id"]] = {
+                "status": "running", "kind": "evaluation", "variant_id": report["variant_id"],
+            }
+    for report in reports:
+        POOL.submit(dispatch, report["id"], lambda report=report: run_evaluation(report))
+    return reports
+
+
 class PlayRequest(BaseModel):
     case_id: str = Field(max_length=100)
     mode: str = Field(pattern="^(local|hosted)$")
-    agent: str = Field(default="claude", pattern="^(baseline|guarded|adaptive|claude)$")
-    opponent: str = Field(default="scripted", max_length=50)
+    agent: str = Field(default="original", pattern="^(baseline|guarded|adaptive|claude|original)$")
+    opponent: str = Field(default="auto", max_length=50)
     # Seconds between local exchanges, so a demo audience can watch the pipeline move.
     pace: float = Field(default=0, ge=0, le=5)
 
@@ -174,11 +372,16 @@ def dispatch(job_id, fn):
 
 @app.post("/api/play", status_code=202)
 def launch(body: PlayRequest):
-    if body.agent == "claude" and not os.environ.get("ANTHROPIC_API_KEY"):
-        raise HTTPException(409, "Set ANTHROPIC_API_KEY in .env")
+    if body.mode == "local" or body.agent in {"claude", "original"}:
+        validate_buyer()
     if body.mode == "hosted" and not os.environ.get("ARENA_API_KEY"):
         raise HTTPException(409, "Set ARENA_API_KEY in .env")
     choices = local_cases() if body.mode == "local" else {c["case_id"]: c for c in hosted_cases() if c.get("hosted")}
+    if body.opponent == "auto" and body.case_id in choices:
+        from .supplier_profiles import case_profile
+
+        profile = case_profile(choices[body.case_id])
+        body.opponent = profile if profile in OPPONENTS else "private"
     if body.case_id not in choices or body.opponent not in OPPONENTS:
         raise HTTPException(422, "Unknown or unavailable case / opponent")
     run = new_run(body.case_id, body.mode, body.agent)
@@ -197,14 +400,38 @@ def launch(body: PlayRequest):
     return {"id": run["id"]}
 
 
-@app.post("/api/benchmark", status_code=202)
-def launch_benchmark():
-    from .benchmark import benchmark
+class EvaluationRequest(BaseModel):
+    variant: str = Field(default="original", pattern="^(original|adapted)$")
+    profile: str | None = None
 
+
+@app.post("/api/benchmark", status_code=202)
+def launch_benchmark(body: EvaluationRequest | None = None):
+    from .local_evaluation import evaluate_local, evaluation_plan
+    from .supplier_profiles import PROFILES
+
+    body = body or EvaluationRequest()
+    if body.profile is not None and body.profile not in PROFILES:
+        raise HTTPException(422, "Unknown supplier profile")
+    plan = evaluation_plan(profiles=[body.profile] if body.profile else None)
+
+    validate_buyer()
     with JOB_LOCK:
-        if any(j["status"] == "running" for j in JOBS.values()):
+        if any(j["status"] == "running" for j in JOBS.values()) or any(
+            r["status"] == "running" for r in local_evaluations()
+        ):
             raise HTTPException(409, "Wait for the current job before starting the benchmark")
         job_id = uuid.uuid4().hex
         JOBS[job_id] = {"status": "running", "kind": "benchmark"}
-    POOL.submit(dispatch, job_id, lambda: benchmark("adaptive", 3, "dashboard"))
+    POOL.submit(
+        dispatch,
+        job_id,
+        lambda: evaluate_local(
+            label=f"dashboard-{body.variant}-{len(plan)}",
+            parallel=2,
+            plan=plan,
+            attempt_limit=len(plan),
+            variant=body.variant,
+        ),
+    )
     return {"id": job_id}

@@ -1,0 +1,139 @@
+{
+  "batch_id": "558b6914917f4995984041a26b963afc",
+  "kind": "conditional_counterfactual_not_official_result",
+  "recorded_mean_score": 0.7042138444089167,
+  "completed_runs": 4,
+  "mean_score": 0.7128423898421236,
+  "case_means": {
+    "case:D01": 0.916601470935145,
+    "case:D02": 0.5090833087491022
+  },
+  "estimated_runs": 2,
+  "assumption": "Assumes both rejected offers were confirmed and accepted on unchanged terms. D01 includes a supplier-health penalty calibrated from completed runs.",
+  "estimated_runs_detail": [
+    {
+      "run_id": "6b42c218620c48898ae18c38fe580e15",
+      "case_id": "case:D01",
+      "repeat": 1,
+      "session_id": "d75477601888fbc7",
+      "supplier_id": "sup:DEMO-F1",
+      "offer_id": "offer:DEMO-F1-6-a",
+      "quoted_terms": {
+        "unit_price": 49.6,
+        "payment_days": 30,
+        "contract_months": 24,
+        "effective_date": "2026-12-01"
+      },
+      "closing_terms": {
+        "volume_per_year": 4000,
+        "contract_months": 24,
+        "payment_days": 30,
+        "lead_time_days": 35,
+        "incoterm": "FCA",
+        "index_clause": null,
+        "tooling_eur": 0.0,
+        "ppm_commitment": 650,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 49.6,
+        "effective_date": "2026-12-01"
+      },
+      "cost": 409883.15,
+      "score": 0.9686672300374146,
+      "c_open": 448810.67,
+      "c_best": 408623.99,
+      "cost_breakdown": {
+        "price": 396800.0,
+        "uncovered_need": 0.0,
+        "fallback_risk": 0.0,
+        "payment_terms": 2645.3333333333335,
+        "freight": 9600.0,
+        "late_delivery": 0,
+        "quality": 0.0,
+        "tooling": 0.0,
+        "index_clause": 0.0,
+        "index_risk": 0.0,
+        "relationship": 837.8154266389133
+      },
+      "anchor_source": "d75477601888fbc7",
+      "assumption": "Assumes both rejected offers were confirmed and accepted on unchanged terms. D01 includes a supplier-health penalty calibrated from completed runs."
+    },
+    {
+      "run_id": "a99a1db60a734144bc0b2be64b9307c0",
+      "case_id": "case:D02",
+      "repeat": 2,
+      "session_id": "9e7de8e473af5ecb",
+      "supplier_id": "sup:DEMO-J1",
+      "offer_id": "offer:DEMO-J1-5-a",
+      "quoted_terms": {
+        "unit_price": 15.3,
+        "payment_days": 14,
+        "lead_time_days": 35,
+        "incoterm": "DAP"
+      },
+      "closing_terms": {
+        "volume_per_year": 6000,
+        "contract_months": 24,
+        "payment_days": 14,
+        "lead_time_days": 35,
+        "incoterm": "DAP",
+        "effective_date": "none",
+        "index_clause": null,
+        "tooling_eur": 0.0,
+        "ppm_commitment": 1100,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 15.3
+      },
+      "cost": 186004.8,
+      "score": 0.4915317313796603,
+      "c_open": 214296.0,
+      "c_best": 156738.78,
+      "cost_breakdown": {
+        "price": 183600.0,
+        "uncovered_need": 0.0,
+        "fallback_risk": 0.0,
+        "payment_terms": 1876.8,
+        "freight": 0.0,
+        "late_delivery": 0,
+        "quality": 528.0,
+        "tooling": 0.0,
+        "index_clause": 0.0,
+        "index_risk": 0.0,
+        "relationship": 0.0
+      },
+      "anchor_source": "0097cf1423184476b52e3d0d0798eada",
+      "assumption": "Assumes both rejected offers were confirmed and accepted on unchanged terms. D01 includes a supplier-health penalty calibrated from completed runs."
+    }
+  ],
+  "d01_official_outcome": {
+    "score": 0.0,
+    "end_reason": "timeout"
+  },
+  "calibration": {
+    "effective_full_cost": 48.07,
+    "source_run": "c7fac6f0820946f2b58087a8cc195271",
+    "assumption": "Same supplier economics across these D01 sessions; standard payment terms.",
+    "crosschecks": [
+      {
+        "run_id": "c7fac6f0820946f2b58087a8cc195271",
+        "predicted_relationship": 19.60000000000016,
+        "official_relationship": 19.6
+      },
+      {
+        "run_id": "e828c112cc3d44a6b4cad6483d3e1d23",
+        "predicted_relationship": 563.1836292836701,
+        "official_relationship": 563.18
+      },
+      {
+        "run_id": "e81849a1dd494e15b2bec8b61474cf6e",
+        "predicted_relationship": 0.0,
+        "official_relationship": 0.0
+      },
+      {
+        "run_id": "f3a906985dc149388f54faf64ca2081d",
+        "predicted_relationship": 0.0,
+        "official_relationship": 0.0
+      }
+    ]
+  },
+  "formula": "clip((C_open - C_deal) / (C_open - C_best), 0, 1)"
+}

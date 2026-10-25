@@ -1,0 +1,61 @@
+{
+  "checks": [
+    {
+      "run_id": "ca3625c14ff14f09b082d8e86b30d174",
+      "supplier_message_number": 3,
+      "buyer_message_number": 4,
+      "prices_terms_and_timing_unchanged": true,
+      "only_added_paragraph": "For your review, PPI-C2431 changed by -2.27% from 2026-06 to 2026-08 (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08). We recognise that this recent movement can coexist with the annual increase you described. Could you take it into account when reviewing the starting price?",
+      "execution_evidence": {
+        "argument_id": "ppi_recent_change_pct",
+        "source_refs": [
+          "idx:PPI-C2431@2026-06",
+          "idx:PPI-C2431@2026-08"
+        ],
+        "calculation_id": "p18:ppi_recent_change_pct",
+        "status": "included",
+        "value": -2.27,
+        "quote": "changed by -2.27%"
+      }
+    },
+    {
+      "run_id": "0bf9a703c393406986acd3be92bc6a9f",
+      "supplier_message_number": 3,
+      "buyer_message_number": 4,
+      "prices_terms_and_timing_unchanged": true,
+      "only_added_paragraph": "For your review, PPI-C2431 changed by -2.27% from 2026-06 to 2026-08 (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08). We recognise that this recent movement can coexist with the annual increase you described. Could you take it into account when reviewing the starting price?",
+      "execution_evidence": {
+        "argument_id": "ppi_recent_change_pct",
+        "source_refs": [
+          "idx:PPI-C2431@2026-06",
+          "idx:PPI-C2431@2026-08"
+        ],
+        "calculation_id": "p18:ppi_recent_change_pct",
+        "status": "included",
+        "value": -2.27,
+        "quote": "changed by -2.27%"
+      }
+    },
+    {
+      "run_id": "cf03d2c849224651bf1671cb6426b518",
+      "supplier_message_number": 3,
+      "buyer_message_number": 4,
+      "prices_terms_and_timing_unchanged": true,
+      "only_added_paragraph": "For your review, PPI-C2431 changed by -2.27% from 2026-06 to 2026-08 (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08). We recognise that this recent movement can coexist with the annual increase you described. Could you take it into account when reviewing the starting price?",
+      "execution_evidence": {
+        "argument_id": "ppi_recent_change_pct",
+        "source_refs": [
+          "idx:PPI-C2431@2026-06",
+          "idx:PPI-C2431@2026-08"
+        ],
+        "calculation_id": "p18:ppi_recent_change_pct",
+        "status": "included",
+        "value": -2.27,
+        "quote": "changed by -2.27%"
+      }
+    }
+  ],
+  "note": "The controlled menu changes only by the PPI paragraph; broader data-pipeline changes may influence subsequent model decisions.",
+  "hosted_sessions_used": 0,
+  "model_calls": 0
+}

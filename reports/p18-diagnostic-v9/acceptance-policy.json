@@ -1,0 +1,20 @@
+{
+  "case_id": "case:P18",
+  "c_open": 295173.23,
+  "c_best": 222651.27,
+  "minimum_score": 66.57991,
+  "maximum_unit_price": 5.0,
+  "maximum_total_cost": 246888.17,
+  "reference_package": {
+    "unit_price": 5.0,
+    "payment_days": 14,
+    "contract_months": 36,
+    "index_clause": {
+      "series": "AS-14404",
+      "material_share": 0.45,
+      "deadband_pct": 0,
+      "base_month": "2026-08"
+    }
+  },
+  "reference_score": 66.5799159316709
+}

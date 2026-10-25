@@ -1,0 +1,32 @@
+P18 V6 — evidence and request review
+
+Observed failure
+Run 93aded2caecc497f8c565807b09fe5e0, evaluation c6fcdbf727304133b6be455825837aa6.
+The supplier asked for the figures behind our target. The buyer answered with qualitative package arguments and asked for a private cost breakdown. The final withdrawal repeated the request for data. This supports fixing the missing evidence; it does not prove that evidence alone will prevent withdrawal, since the supplier had also marked its previous offer Final.
+The 80-point acceptance gate worked: no bad deal was accepted. No deal scored zero.
+
+Selected evidence now present in the buyer-model request
+- All 72 historical order lines for Werdenfels / part 370010, by canonical PO reference.
+- All 12 company-wide forecast snapshots, with the latest 12 monthly forecast lines.
+- Six historical price conditions, current sourcing, category cost-driver estimates.
+- Recent AS-14404 / PPI-C2431 / LCI-C observations and the original annual index comparisons.
+- Full current contract text and citable clauses, all eight supplier documents, supplier notes, scorecards, history and news already retrieved.
+- Only the case-authorized alternative quotation (7200018); out-of-case quotation prices removed from P18 research.
+- Ten reproducible P18 calculations, with source IDs registered for numeric validation.
+No supplier-private cost, reservation price or hidden evaluation state was accessed. The benchmark comes from the user's completed run, remains private, and is used only for the acceptance gate.
+
+Three checked groups in the opening supplier request
+1. Four same-part PO IDs: June EUR 5.26/kg, September EUR 5.84/kg.
+2. AS-14404 June–September 2026: -5.49%.
+3. PPI-C2431 June–August 2026: -2.27%.
+The rules allow at most three checks per email. Additional volume/forecast and relevant performance facts are supplied to the buyer and reserved for direct follow-up answers; more citations are not automatically more useful. Verified facts do not guarantee a concession.
+
+Scope distinctions
+22,440 kg / 23 lines are ordered quantities from October 2025 through September 2026, not actual consumption. Quarterly totals: 4,830; 7,210; 5,340; 5,060 kg. The offered 23,700 kg/year remains fixed and is about 5.61% above those historical orders. The company forecast of 118,500 kg is not supplier-authorized volume. Its +1.9% is the package's recorded forecast change, with no invented comparison period.
+Short-window index declines do not negate annual increases. Historic PPI adjustment is not proof of double counting. No should-cost record exists for this part/supplier. EUR 4.45 is an aggressive conditional negotiated bid, not a calculated supplier cost floor.
+
+How to use
+Replace the evaluation prompt with prompts/p18-diagnostic-v6.txt. Do not append it to V5 or an always-close strategy. Run P18 only. opening-request.txt is the supplier-facing body; request-fields.json contains its transport fields. The model still needs to produce the current assessment and numeric_claims specified in V6.
+The application research loader supplies the detailed evidence automatically when P18 starts. The new prompt alone is not a deterministic guarantee that the model will follow it; the offline fixture validates data availability, arithmetic and send transport, not real model behavior or hosted supplier acceptance.
+The 80-point floor corresponds to total cost at most EUR 237155.66. A no-deal remains possible and may score zero.
+No hosted test or paid model call was launched during this update.

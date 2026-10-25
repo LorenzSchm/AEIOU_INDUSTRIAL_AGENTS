@@ -1,0 +1,23 @@
+{
+  "source_run_id": "17867ead358c49f9b3c8b7157c034dcc",
+  "source_session_id": "0878e87ccf1628cb",
+  "mode": "offline replay, no remote session reopened",
+  "acceptance_floor": {
+    "case_id": "case:P18",
+    "c_open": 295173.23,
+    "c_best": 222651.27,
+    "minimum_score": 0.0,
+    "maximum_unit_price": 5.1
+  },
+  "action": {
+    "supplier_id": "sup:70740",
+    "message": {
+      "action": {
+        "type": "accept",
+        "term_sheet_id": "offer:70740-3"
+      }
+    }
+  },
+  "source": "policy:accept",
+  "model_requests": []
+}

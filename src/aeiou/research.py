@@ -7,14 +7,28 @@ from datetime import date
 from arena_kit.data import DataPackage
 
 from .config import data_root
+from .forecast_evidence import latest_forecasts
+from .p10_evidence import enrich_p10
+from .p18_evidence import enrich_p18
+from .research_collection import collect_tables, reconcile_collection
 
 
 class ResearchPackage(DataPackage):
     """Serialize a package connection and lazy ID index across parallel case workers."""
 
-    def __init__(self, root):
+    def __init__(self, root, *, include_release=True):
         self._read_lock = threading.RLock()
-        super().__init__(root)
+        self._base_view = None
+        super().__init__(root, include_release=include_release)
+
+    def for_case(self, case):
+        # Official practice/sandbox cases stay on package v1 after Sunday's release.
+        if self.release and case.get("set") in {"practice", "sandbox"}:
+            with self._read_lock:
+                if self._base_view is None:
+                    self._base_view = ResearchPackage(self.root, include_release=False)
+                return self._base_view
+        return self
 
     def tables(self):
         with self._read_lock:
@@ -38,34 +52,27 @@ def package():
 
 
 def research(case, pkg):
+    if isinstance(pkg, ResearchPackage):
+        pkg = pkg.for_case(case)
     suppliers, parts = case["suppliers"], case["parts"]
     facts = dict(case.get("facts", {}))
-    docs, rows, indices, estimates = [], {}, [], {}
+    docs, indices, estimates, issues = [], [], {}, []
+    rows, collection = collect_tables(case, pkg)
     for ref in [*suppliers, *parts, *case.get("refs", [])]:
         if value := pkg.lookup(ref):
             facts[ref] = value
-    # Bound retrieval to relevant supplier / part rows. SQL is parameterized and read-only.
-    for table, column, values in [
-        ("supplier_intel", "supplier_id", suppliers),
-        ("negotiation_history", "supplier_id", suppliers),
-        ("should_cost", "part_id", parts),
-        ("quotes", "part_id", parts),
-        ("news", "supplier_id", suppliers),
-        ("scorecards", "supplier_id", suppliers),
-    ]:
-        if values and table in pkg.tables():
-            marks = ",".join("?" for _ in values)
-            rows[table] = pkg.query(f'SELECT * FROM "{table}" WHERE "{column}" IN ({marks})', values, limit=40)
-            for row in rows[table]:
-                if row.get("id") and (fact := pkg.lookup(row["id"])):
-                    facts[row["id"]] = fact
+        elif ref not in facts:
+            issues.append({"source_ref": ref, "status": "unavailable", "error": "MissingReference"})
+    for table in ("should_cost", "quotes", "news", "scorecards", "contracts", "contract_clauses"):
+        for row in rows.get(table, []):
+            if row.get("id") and (fact := pkg.lookup(row["id"])):
+                facts[row["id"]] = fact
+                if table == "contract_clauses":
+                    facts[row["id"]] = {**fact, "text": row["text"]}
     doc_refs = [case.get("trigger_doc")]
-    if "documents" in pkg.tables():
-        for sid in suppliers:
-            doc_refs.extend(
-                r["id"]
-                for r in pkg.query("SELECT id FROM documents WHERE supplier_id=? ORDER BY date DESC LIMIT 8", [sid])
-            )
+    doc_refs.extend(r["id"] for r in rows.get("documents", []))
+    doc_refs.extend(r["id"] for r in rows.get("contracts", []))
+    doc_refs.extend(ref for ref in case.get("refs", []) if ref.startswith(("doc:", "ctr:")) and "#" not in ref)
     # Sunday facts are not in the original SQLite database; retrieve them too.
     for ref, fact in pkg.facts.items():
         if ref.startswith(("doc:", "news:")) and any(s in json.dumps(fact) for s in suppliers):
@@ -74,10 +81,11 @@ def research(case, pkg):
                 doc_refs.append(ref)
     for ref in dict.fromkeys(r for r in doc_refs if r):
         try:
-            docs.append({"id": ref, "text": pkg.document(ref)[:4500]})
+            docs.append({"id": ref, "text": pkg.document(ref)})
             if fact := pkg.lookup(ref):
                 facts[ref] = fact
-        except (FileNotFoundError, ValueError, TypeError):
+        except (FileNotFoundError, ValueError, TypeError) as exc:
+            issues.append({"source_ref": ref, "error": type(exc).__name__, "status": "unavailable"})
             continue
     for part in parts:
         costs = [r for r in rows.get("should_cost", []) if r["part_id"] == part]
@@ -89,9 +97,7 @@ def research(case, pkg):
                     "confidence_pct": match.get("confidence_pct", 15),
                     "source": match["id"],
                 }
-        if "cost_drivers" not in pkg.tables():
-            continue
-        for driver in pkg.query("SELECT * FROM cost_drivers WHERE part_id=?", [part]):
+        for driver in (r for r in rows.get("cost_drivers", []) if r["part_id"] == part):
             series = driver["series_id"]
             points = sorted(
                 [
@@ -126,4 +132,11 @@ def research(case, pkg):
                 }
             )
             facts[start_ref], facts[end_ref] = start, end
-    return {"facts": facts, "documents": docs, "tables": rows, "indices": indices, "estimates": estimates}
+    intelligence = {"facts": facts, "documents": docs, "tables": rows, "indices": indices, "estimates": estimates}
+    intelligence["latest_forecasts"] = latest_forecasts(case, rows)
+    intelligence["retrieval_issues"] = issues
+    intelligence["collection"] = collection
+    enrich_p10(case, pkg, intelligence)
+    enrich_p18(case, pkg, intelligence)
+    reconcile_collection(intelligence)
+    return intelligence

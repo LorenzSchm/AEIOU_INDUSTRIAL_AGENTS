@@ -1,0 +1,17 @@
+{
+  "offline_validation": "passed: complete opening, valid evidence refs, exact cost boundary, live EUR 4.70 acceptance, EUR 4.71 rejection",
+  "maximum_unit_price": 4.7,
+  "maximum_total_cost": 225057.31,
+  "minimum_score": 96.68232,
+  "reference_package": {
+    "unit_price": 4.7,
+    "payment_days": 14,
+    "contract_months": 36,
+    "index_clause": null
+  },
+  "required_null_field_preserved": true,
+  "index_arguments_removed": true,
+  "hosted_tests_launched": 0,
+  "paid_model_calls": 0,
+  "limitation": "Supplier acceptance and response to warmer wording are not tested by the offline backend."
+}

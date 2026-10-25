@@ -1,0 +1,227 @@
+{
+  "source_run_id": "f201c6e6e8804c73acb6c36468cc74aa",
+  "source_session_id": "b3a3237fd298e3af",
+  "latest_quotes": [
+    {
+      "terms": {
+        "unit_price": 5.2,
+        "payment_days": 60,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      },
+      "cost": 248698.32,
+      "calculated_points": 64.08391334155887
+    },
+    {
+      "terms": {
+        "unit_price": 5.1,
+        "payment_days": 30,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      },
+      "cost": 245527.26,
+      "calculated_points": 68.45646477287704
+    }
+  ],
+  "candidate_options": [
+    {
+      "terms": {
+        "unit_price": 5.07,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5,
+          "base_month": "2026-08"
+        },
+        "payment_days": 30,
+        "contract_months": 36
+      },
+      "cost": 244082.98,
+      "calculated_points": 70.44797189706398
+    },
+    {
+      "terms": {
+        "unit_price": 5.0,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 3,
+          "base_month": "2026-08"
+        },
+        "payment_days": 14,
+        "contract_months": 36
+      },
+      "cost": 243688.67,
+      "calculated_points": 70.99168307089326
+    },
+    {
+      "terms": {
+        "unit_price": 5.1,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5,
+          "base_month": "2026-08"
+        },
+        "payment_days": 60,
+        "contract_months": 36
+      },
+      "cost": 243915.66,
+      "calculated_points": 70.67868822078167
+    }
+  ],
+  "price_envelopes": [
+    {
+      "deadband_pct": null,
+      "clause": "fixed",
+      "payment_days": 14,
+      "maximum_qualifying_cent_price": 5.1
+    },
+    {
+      "deadband_pct": null,
+      "clause": "fixed",
+      "payment_days": 30,
+      "maximum_qualifying_cent_price": 5.1
+    },
+    {
+      "deadband_pct": null,
+      "clause": "fixed",
+      "payment_days": 45,
+      "maximum_qualifying_cent_price": 5.1
+    },
+    {
+      "deadband_pct": null,
+      "clause": "fixed",
+      "payment_days": 60,
+      "maximum_qualifying_cent_price": 5.1
+    },
+    {
+      "deadband_pct": null,
+      "clause": "fixed",
+      "payment_days": 90,
+      "maximum_qualifying_cent_price": 5.1
+    },
+    {
+      "deadband_pct": 0,
+      "clause": "AS-14404",
+      "payment_days": 14,
+      "maximum_qualifying_cent_price": 4.94
+    },
+    {
+      "deadband_pct": 0,
+      "clause": "AS-14404",
+      "payment_days": 30,
+      "maximum_qualifying_cent_price": 4.96
+    },
+    {
+      "deadband_pct": 0,
+      "clause": "AS-14404",
+      "payment_days": 45,
+      "maximum_qualifying_cent_price": 4.98
+    },
+    {
+      "deadband_pct": 0,
+      "clause": "AS-14404",
+      "payment_days": 60,
+      "maximum_qualifying_cent_price": 4.99
+    },
+    {
+      "deadband_pct": 0,
+      "clause": "AS-14404",
+      "payment_days": 90,
+      "maximum_qualifying_cent_price": 5.03
+    },
+    {
+      "deadband_pct": 3,
+      "clause": "AS-14404",
+      "payment_days": 14,
+      "maximum_qualifying_cent_price": 5.01
+    },
+    {
+      "deadband_pct": 3,
+      "clause": "AS-14404",
+      "payment_days": 30,
+      "maximum_qualifying_cent_price": 5.03
+    },
+    {
+      "deadband_pct": 3,
+      "clause": "AS-14404",
+      "payment_days": 45,
+      "maximum_qualifying_cent_price": 5.04
+    },
+    {
+      "deadband_pct": 3,
+      "clause": "AS-14404",
+      "payment_days": 60,
+      "maximum_qualifying_cent_price": 5.06
+    },
+    {
+      "deadband_pct": 3,
+      "clause": "AS-14404",
+      "payment_days": 90,
+      "maximum_qualifying_cent_price": 5.09
+    },
+    {
+      "deadband_pct": 5,
+      "clause": "AS-14404",
+      "payment_days": 14,
+      "maximum_qualifying_cent_price": 5.05
+    },
+    {
+      "deadband_pct": 5,
+      "clause": "AS-14404",
+      "payment_days": 30,
+      "maximum_qualifying_cent_price": 5.07
+    },
+    {
+      "deadband_pct": 5,
+      "clause": "AS-14404",
+      "payment_days": 45,
+      "maximum_qualifying_cent_price": 5.09
+    },
+    {
+      "deadband_pct": 5,
+      "clause": "AS-14404",
+      "payment_days": 60,
+      "maximum_qualifying_cent_price": 5.1
+    },
+    {
+      "deadband_pct": 5,
+      "clause": "AS-14404",
+      "payment_days": 90,
+      "maximum_qualifying_cent_price": 5.1
+    }
+  ],
+  "actual_replayed_decision_source": "policy:package-alternatives",
+  "evidence": {
+    "argument_id": "ppi_recent_change_pct",
+    "source_refs": [
+      "idx:PPI-C2431@2026-06",
+      "idx:PPI-C2431@2026-08"
+    ],
+    "calculation_id": "p18:ppi_recent_change_pct",
+    "status": "included",
+    "value": -2.27,
+    "quote": "changed by -2.27%"
+  },
+  "competitor_result": "User-reported 71 on P18, terms unknown; not independently verified",
+  "prior_nearby_attempt": {
+    "run_id": "6fd08b2bc3734637b2d815e25b8e4a90",
+    "price": 5.01,
+    "payment_days": 14,
+    "deadband_pct": 3,
+    "contract_months": 36,
+    "context": "After a final offer, combined with private-cost request; supplier withdrew. Does not isolate the open-phase trade."
+  },
+  "limitations": "Computed affordability and evidence delivery do not prove supplier acceptance. No hosted session started."
+}

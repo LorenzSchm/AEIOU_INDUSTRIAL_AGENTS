@@ -1,0 +1,23 @@
+{
+  "kind": "recorded-path-regression",
+  "source_run_id": "084f0066f9af421192b75260b290774e",
+  "case_id": "case:P10",
+  "exchanges": 2,
+  "arena_sessions_used": 0,
+  "model_calls": 0,
+  "recorded_result": {
+    "ended": true,
+    "deal": false,
+    "supplier_id": null,
+    "offer_id": null,
+    "terms": null,
+    "c_open": 1932492.18,
+    "c_deal": null,
+    "c_alt": null,
+    "c_best": 1328926.89,
+    "score": 0.0,
+    "must_haves_ok": null,
+    "cost_breakdown": null
+  },
+  "limitation": "Identical recorded requests only; no new negotiation or counterfactual performance estimate."
+}

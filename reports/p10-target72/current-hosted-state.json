@@ -1,0 +1,43 @@
+{
+  "checked_at": "2026-10-25T02:03:38.887031+00:00",
+  "team_best_p10": 0.7020804327564958,
+  "quota": {
+    "used": 206,
+    "left": 194,
+    "limit": 400,
+    "resets_at": "2026-10-25T11:19:44.936916+00:00"
+  },
+  "mode": "unknown",
+  "mode_evidence": "No mode field or mode-related header in documented session responses; prior public notice and user answer do not establish the current mode.",
+  "status": "target_not_met",
+  "remaining_requirement": "An accepted hosted package scoring at least 0.72 with all must-haves.",
+  "known_gap": "Current best 31.30 at 54 days; public-cost target needs 31.07 or lower at identical terms.",
+  "available_levers_reviewed": [
+    "price anchors and size of buyer concessions",
+    "24- and 36-month firm commitments; 12-month staging",
+    "listed delivery choices and supplier quoted 54-day standard",
+    "buyer cost estimate and cost breakdown; uncertainty and modeled margin",
+    "historical orders, forecasts, service records and rising cost indices",
+    "contract delivery standard and allocation correspondence",
+    "pricing authority requests",
+    "structured and email transports",
+    "one factual answer requested in final offer; supplier withdrew",
+    "Explicit committee request after the first counter, before finality",
+    "Exact historical approval note delivered and verified in the remote thread",
+    "Best strategy repeated on the current source-attachment pipeline"
+  ],
+  "limitations": [
+    "No proof of a private supplier price floor or current fallback mode.",
+    "The latest tests found no qualifying acceptance; this does not prove the target is impossible."
+  ],
+  "latest_run": {
+    "variant": "v40",
+    "session_id": "97ab7583112e4169",
+    "status": "ended",
+    "result": {
+      "score": 0.6942748149085908,
+      "c_deal": 1513452.0,
+      "must_haves_ok": true
+    }
+  }
+}

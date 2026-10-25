@@ -1,0 +1,22 @@
+[
+  {
+    "message_number": 1,
+    "attachment_id": "att:70740-0-quote",
+    "name": "quote-offer-70740-0.pdf",
+    "bytes": 2664,
+    "sha256": "0f0908426801d7a7b4f710e2c79ebfee41aefa72270931521347ca55dba7ddb8",
+    "parsed_chars": 562,
+    "matches_saved_text": true,
+    "text": "Blankstahl Werdenfels GmbH\nTo: Hollerau Pumpenwerke GmbH\nAngebot / Quote offer:70740-0\nOffered terms\nUnit price (EUR) 6.10\nPayment terms (days net) 30\nIndex clause none\nContract term (months) 12\nOur standard terms (apply to everything not stated above)\nQuality commitment (ppm) 70\nChargeback per complaint (EUR) 0.00\nTerms fixed by your enquiry\nLead time (days) 14\nVolume per year (pcs) 23700\nPrice valid from 2027-01-01\nIncoterm DAP\nTooling (EUR) 0.00\nPart(s): part:370010. Enquiry: Alloy surcharge and base price for 1.4404 bar (Werdenfels).\nValidity: 30 days."
+  },
+  {
+    "message_number": 7,
+    "attachment_id": "att:70740-3-quote",
+    "name": "quote-offer-70740-3.pdf",
+    "bytes": 2711,
+    "sha256": "34d78f266d877a5575e3e3118619ad5fd8120ff539df478ad8df601ce2f6074e",
+    "parsed_chars": 609,
+    "matches_saved_text": true,
+    "text": "Blankstahl Werdenfels GmbH\nTo: Hollerau Pumpenwerke GmbH\nAngebot / Quote offer:70740-3\nOffered terms\nUnit price (EUR) 5.10\nPayment terms (days net) 30\nIndex clause AS-14404, 45% material, deadband 5.0 %, base 2026-08\nContract term (months) 36\nOur standard terms (apply to everything not stated above)\nQuality commitment (ppm) 70\nChargeback per complaint (EUR) 0.00\nTerms fixed by your enquiry\nLead time (days) 14\nVolume per year (pcs) 23700\nPrice valid from 2027-01-01\nIncoterm DAP\nTooling (EUR) 0.00\nPart(s): part:370010. Enquiry: Alloy surcharge and base price for 1.4404 bar (Werdenfels).\nValidity: 7 days."
+  }
+]

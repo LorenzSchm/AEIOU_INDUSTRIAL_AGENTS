@@ -1,0 +1,38 @@
+P18 V29 — first diagnostic passed; follow-up failed; V25 restored
+
+Follow-up run a4742b43b2c34045bd5bbf1462a432c2 used the same V29 prompt,
+policy, model, effort and public case, but ended at EUR 5.20/30 days/5%.
+The cap correctly stopped acceptance. All three evidence groups were verified.
+V29 has one deal in two recorded runs; this does not establish improvement.
+V25 policy has been restored. Use prompts/p18-diagnostic-v25.txt for a new run.
+See v29-followup-failure.json and v29-rollback.json. No further hosted session
+or model call was used for this diagnosis and rollback.
+
+Original single-run result, retained for provenance:
+
+Evaluation 25980bae7a3a4948b1e751bed12df1c5; run 9c825f8215cf47289d0376441a7acd8e; session f48f459c8299a22e.
+Opus High / Fast. One hosted P18 session was used; no further batch started.
+Official deal: EUR 5.10/kg, 30-day payment, 36 months, AS-14404 45%,
+5% deadband, base 2026-08. Fixed scope retained.
+Official total cost EUR 245527.26; official points 68.4565.
+Public formula matched the server's deal cost and score exactly.
+The buyer accepted the exact live offer using policy:accept.
+
+V28 failed after switching late from the quoted 14-day/3% branch to a new
+30-day/5% package; the supplier returned 5.20. V29 undoes that forced switch.
+It keeps the full early menu, but restores the historical B at 5.05/14 days/5%
+in place of 5.00/14 days/3%. A 5.07/30/5% and C 5.10/60/5% stay unchanged.
+The AS closing proposal retains the supplier's actual priced structure.
+In this run, the supplier quoted the 30-day/5% alternative, and we closed it.
+
+This result matches the previous 68.4565 best. It does not prove consistency or
+isolate the effect of the early B change; this single run followed the A branch.
+The earlier exact 5.10 acceptance authority remains in effect across allowed
+clauses/payment terms. No new score floor or higher unit-price ceiling was set.
+The common-price comparison tool is retained as arithmetic information, without
+using its ranking as proof that a new structure is supplier-acceptable.
+
+Policy at the time of this original test: config/p18-five-percent-menu.json.
+Prompt at the time: prompts/p18-diagnostic-v29.txt.
+The latest historical run still stores V29; Restore last run's prompt would
+restore that experiment. Load the V25 file explicitly after the rollback.

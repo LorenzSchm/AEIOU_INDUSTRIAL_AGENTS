@@ -55,12 +55,19 @@ def test_dashboard_model_choice_persists(tmp_path, monkeypatch):
 
 def test_hosted_comparison_falls_back_to_committed_report(tmp_path, monkeypatch):
     monkeypatch.setenv("AEIOU_STATE", str(tmp_path))
+    import json
+
+    import aeiou.service as service
+
+    monkeypatch.setattr(service, "ROOT", tmp_path)
+    (tmp_path / "reports").mkdir()
+    (tmp_path / "reports/hosted-practice.json").write_text(json.dumps({"paired_cases": 10}))
     report = client.get("/api/hosted-evaluation").json()
     assert report["source"] == "snapshot"
     assert report["paired_cases"] == 10
 
 
-def test_pipeline_lists_local_runs(tmp_path, monkeypatch):
+def test_pipeline_lists_local_runs(tmp_path, monkeypatch, model_supplier):
     monkeypatch.setenv("AEIOU_STATE", str(tmp_path))
     from aeiou.simulation import local_play
 

@@ -1,0 +1,291 @@
+[
+  {
+    "message": "[P01 / sup:70110 / M02]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      1082625.16,
+      1064376.29
+    ]
+  },
+  {
+    "message": "[P01 / sup:70110 / M04]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      1093596.89,
+      1085024.73
+    ]
+  },
+  {
+    "message": "[P01 / sup:70110 / M06]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      1102511.43,
+      1095274.53
+    ]
+  },
+  {
+    "message": "[P01 / sup:70110 / M08]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      1111425.96,
+      1111674.21
+    ]
+  },
+  {
+    "message": "[P02 / sup:70510 / M02]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      2190852.52,
+      2192754.76,
+      2186241.5
+    ]
+  },
+  {
+    "message": "[P03 / sup:70530 / M02]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      3869094.84,
+      3796072.54
+    ]
+  },
+  {
+    "message": "[P03 / sup:70530 / M04]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      3897781.11,
+      3824468.54
+    ]
+  },
+  {
+    "message": "[P03 / sup:70530 / M06]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      3930168.84,
+      3930174.94
+    ]
+  },
+  {
+    "message": "[P04 / sup:70620 / M02]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      172711.87,
+      172570.0,
+      172615.33
+    ]
+  },
+  {
+    "message": "[P04 / sup:70620 / M04]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      175540.49,
+      175370.0,
+      175396.67
+    ]
+  },
+  {
+    "message": "[P04 / sup:70620 / M06]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      177560.93,
+      177370.0,
+      176570.0
+    ]
+  },
+  {
+    "message": "[P05 / sup:70210 / M02]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      248928.96,
+      248889.76,
+      248916.27
+    ]
+  },
+  {
+    "message": "[P05 / sup:70210 / M04]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      262493.65,
+      262419.36,
+      262368.96
+    ]
+  },
+  {
+    "message": "[P05 / sup:70240 / M02]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      231197.12,
+      231029.12,
+      231477.12
+    ]
+  },
+  {
+    "message": "[P05 / sup:70250 / M02]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      260232.0,
+      260163.68,
+      260124.48
+    ]
+  },
+  {
+    "message": "[P05 / sup:70250 / M04]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      264474.93,
+      264391.68,
+      264324.48
+    ]
+  },
+  {
+    "message": "[P05 / sup:70250 / M06]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      265747.81,
+      265660.08,
+      265164.48
+    ]
+  },
+  {
+    "message": "[P07 / sup:70610 / M02]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      275976.8,
+      276028.8,
+      275819.47
+    ]
+  },
+  {
+    "message": "[P07 / sup:70610 / M04]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      281936.8,
+      281880.8,
+      278956.8
+    ]
+  },
+  {
+    "message": "[P08 / sup:70710 / M02]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      966960.0,
+      965771.84,
+      966163.68
+    ]
+  },
+  {
+    "message": "[P08 / sup:70710 / M04]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      989712.0,
+      990584.16,
+      985920.0
+    ]
+  },
+  {
+    "message": "[P08 / sup:70710 / M06]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      1004880.0,
+      1004358.6,
+      1005596.69
+    ]
+  },
+  {
+    "message": "[P08 / sup:70710 / M08]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      1014360.0,
+      1015020.76,
+      1013065.03
+    ]
+  },
+  {
+    "message": "[P10 / sup:70410 / M02]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      1286781.6,
+      1300915.2
+    ]
+  },
+  {
+    "message": "[P11 / sup:70140 / M02]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      729174.0,
+      729253.5,
+      728856.0
+    ]
+  },
+  {
+    "message": "[P11 / sup:70140 / M04]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      735216.0,
+      734739.0,
+      735057.0
+    ]
+  },
+  {
+    "message": "[P11 / sup:70140 / M06]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      739986.0,
+      739588.5,
+      739827.0
+    ]
+  },
+  {
+    "message": "[P11 / sup:70140 / M08]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      743563.5,
+      743166.0,
+      743007.0
+    ]
+  },
+  {
+    "message": "[P11 / sup:70140 / M10]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      746743.5,
+      746505.0,
+      746346.0
+    ]
+  },
+  {
+    "message": "[P11 / sup:70140 / M12]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      749685.0,
+      749287.5,
+      749923.5
+    ]
+  },
+  {
+    "message": "[P18 / sup:70740 / M02]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      263070.0,
+      262915.16,
+      258637.15
+    ]
+  },
+  {
+    "message": "[P18 / sup:70740 / M04]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      260176.7,
+      259970.04,
+      260700.0
+    ]
+  },
+  {
+    "message": "[P18 / sup:70740 / M06]",
+    "method": "kit total_cost; quoted standard terms; no hidden supplier relationship estimate",
+    "package_costs_eur": [
+      263046.3,
+      262979.94,
+      261133.24
+    ]
+  }
+]

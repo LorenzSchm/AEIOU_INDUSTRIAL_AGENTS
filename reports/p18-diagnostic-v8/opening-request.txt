@@ -1,0 +1,14 @@
+Dear Mr Seidl,
+
+Thank you for your quotation. We propose a complete package at EUR 4.80/kg, payment 14 days net, contract 36 months, with AS-14404 on a 45% material share, 0% deadband and base month 2026-08. Annual quantity is 23,700 kg, delivery DAP, lead time 14 days, effective 2027-01-01, no tooling.
+
+Our purchase orders with you for part:370010 on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10), compared with EUR 5.84/kg on 1 and 18 September 2026 (po:4500014355-10, po:4500014427-10).
+AS-14404 changed by -5.49% from 2026-06 to 2026-09 (idx:AS-14404@2026-06, idx:AS-14404@2026-09).
+PPI-C2431 changed by -2.27% from 2026-06 to 2026-08 (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08).
+
+We recognize the annual increases you cited. These recent readings and our actual purchases support reviewing the base together with the faster payment and longer commitment. Our historical framework already had PPI indexation; this proposal defines the new package together.
+
+Please have the authorized pricing committee review these complete terms. What binding package price can you approve?
+
+Kind regards,
+Purchasing, Hollerau Pumpenwerke

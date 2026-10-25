@@ -1,0 +1,137 @@
+{
+  "batch_id": "318c7dd1510744eb81a6700d8326a92f",
+  "messages": 98,
+  "attachment_occurrences": 51,
+  "threads": [
+    {
+      "case": "P01",
+      "supplier": "sup:70110",
+      "events": 11
+    },
+    {
+      "case": "P02",
+      "supplier": "sup:70510",
+      "events": 5
+    },
+    {
+      "case": "P03",
+      "supplier": "sup:70530",
+      "events": 9
+    },
+    {
+      "case": "P04",
+      "supplier": "sup:70620",
+      "events": 9
+    },
+    {
+      "case": "P05",
+      "supplier": "sup:70210",
+      "events": 5
+    },
+    {
+      "case": "P05",
+      "supplier": "sup:70240",
+      "events": 3
+    },
+    {
+      "case": "P05",
+      "supplier": "sup:70250",
+      "events": 9
+    },
+    {
+      "case": "P07",
+      "supplier": "sup:70610",
+      "events": 7
+    },
+    {
+      "case": "P08",
+      "supplier": "sup:70710",
+      "events": 11
+    },
+    {
+      "case": "P10",
+      "supplier": "sup:70410",
+      "events": 5
+    },
+    {
+      "case": "P11",
+      "supplier": "sup:70140",
+      "events": 15
+    },
+    {
+      "case": "P18",
+      "supplier": "sup:70740",
+      "events": 9
+    }
+  ],
+  "files": {
+    "prompt-b.txt": {
+      "bytes": 13947,
+      "sha256": "c5bb6461abe8c47fb8312ca0c55baf3dcca829fabd8ee265d2eaf55dfba54f20"
+    },
+    "package-comparisons.json": {
+      "bytes": 7474,
+      "sha256": "84ff7f1172e7bb0232855f6b670463c81726aceedec3e056b83a5956c3dff4d8"
+    },
+    "arena-transport.txt": {
+      "bytes": 3539,
+      "sha256": "0f05f49a2f1228aa9af7d8187cb6124d5b65f967f11658de6c51ee34430f34eb"
+    },
+    "findings.txt": {
+      "bytes": 13665,
+      "sha256": "f13fdd192ae780e14cfdc3ec77771ac6c30f58804cee4fb0d0eb11f3bf6d1be9"
+    },
+    "opus-review-pack.txt": {
+      "bytes": 301869,
+      "sha256": "a3f1b101d27a8a3541a683d77be4ca4d95841d433fdd6ac38ae463e5aeaef56b"
+    },
+    "raw-records.json": {
+      "bytes": 372695,
+      "sha256": "cf9dc3934ab66d9c9b46a73baaa3b8c1be04f7137af42e19c8264c955536cbc4"
+    },
+    "all-messages.txt": {
+      "bytes": 272637,
+      "sha256": "4cb18ce900d4dc0ef315d07cc1c591bd8e9abece1c70e82b2472762f39d7542e"
+    },
+    "cases/P07.txt": {
+      "bytes": 19487,
+      "sha256": "cbff2f8f70d042552d0c8dadd695a8dc4a6e56bb3f8ad5740e067f94ac2d9ecc"
+    },
+    "cases/P04.txt": {
+      "bytes": 27006,
+      "sha256": "81174c4d639967eaf69b6834d3f6802d9830b435ce01c0197adf3b3d06e0ab7e"
+    },
+    "cases/P10.txt": {
+      "bytes": 17103,
+      "sha256": "3e3f245d39c068d47c4f042e6d22d3b8e76f779f727cd6d29519bc071c465014"
+    },
+    "cases/P11.txt": {
+      "bytes": 40622,
+      "sha256": "9abf15f758167bef1b2f9fbad110bf82888b485caf34655e598f683ec6c671d1"
+    },
+    "cases/P05.txt": {
+      "bytes": 36199,
+      "sha256": "c697eb3816cb3c321d1530f09dd31ab7564e2d30a9b517d42623239034d44237"
+    },
+    "cases/P01.txt": {
+      "bytes": 29896,
+      "sha256": "ac65d747455f9fea27fcccfcd3e905a4ad2bac3804f581c907061a4006bc3e48"
+    },
+    "cases/P02.txt": {
+      "bytes": 15171,
+      "sha256": "06068978e5a0707671c10de0df6bb01dc7409a210de4827269a3387f0f897879"
+    },
+    "cases/P03.txt": {
+      "bytes": 28193,
+      "sha256": "b6a3d87898f0a71d64337ef0eb49ed6298fe6e8177a9ff9d2b228f93583b63d4"
+    },
+    "cases/P18.txt": {
+      "bytes": 26271,
+      "sha256": "a997ad4ed4eff6e00e666cff1873b1e429692c66ee115634fd746d9dc5a3545c"
+    },
+    "cases/P08.txt": {
+      "bytes": 30632,
+      "sha256": "17f17b923471741bdf54a1010a3dcba6868a6bf0937665b7525808e8a1f3fe0c"
+    }
+  }
+}

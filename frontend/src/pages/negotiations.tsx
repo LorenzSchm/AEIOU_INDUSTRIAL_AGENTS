@@ -19,7 +19,7 @@ export function Negotiations() {
         muted="A clear audit trail."
         sub="Follow the agent from the opening quote to a complete agreement."
         actions={
-          <Button onClick={() => openLaunch({ mode: scope })}>
+          <Button onClick={() => openLaunch({ mode: "local" })}>
             New negotiation <Plus />
           </Button>
         }

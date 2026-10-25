@@ -1,0 +1,11 @@
+{
+  "case:P18": {
+    "case_id": "case:P18",
+    "accept_eligible_offers": true,
+    "closing_price": 5.09,
+    "maximum_unit_price": 5.10,
+    "maximum_total_cost": 251825.93,
+    "minimum_contract_months": 24,
+    "one_final_counter": true
+  }
+}

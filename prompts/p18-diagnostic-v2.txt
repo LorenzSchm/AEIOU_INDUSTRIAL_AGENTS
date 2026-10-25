@@ -1,0 +1,6 @@
+SUPERSEDED — DO NOT USE FOR A NEW RUN
+
+This version was tested in run 724457830daa47e6bb9d29c177796866 and scored 33.6. It recommended a rival quote outside P18's eligible case references.
+
+Use prompts/p18-diagnostic-v3.txt for the isolated correction.
+The exact tested v2 is retained in reports/p18-diagnostic-v2/prompt-used-in-724457830daa47e6bb9d29c177796866.txt.

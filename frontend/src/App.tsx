@@ -23,7 +23,7 @@ const titles: Record<Route["page"], string> = {
   negotiations: "Negotiations",
   evidence: "Evidence library",
   evaluations: "Evaluations",
-  replay: "Negotiation replay",
+  replay: "Conversation",
 }
 
 function Page({ route }: { route: Route }) {
@@ -48,9 +48,9 @@ function Page({ route }: { route: Route }) {
     case "evidence":
       return <Evidence />
     case "evaluations":
-      return <Evaluations tab={route.tab} />
+      return <Evaluations />
     case "replay":
-      return <Replay runId={route.runId} />
+      return <Replay key={route.runId} runId={route.runId} from={route.from} />
     default:
       return <Overview />
   }
@@ -75,7 +75,9 @@ function Shell() {
                 <>
                   <BreadcrumbSeparator />
                   <BreadcrumbItem>
-                    <BreadcrumbLink href="#negotiations">Negotiations</BreadcrumbLink>
+                    <BreadcrumbLink href={route.from === "evaluations" ? "#evaluations" : "#negotiations"}>
+                      {route.from === "evaluations" ? "Evaluations" : "Negotiations"}
+                    </BreadcrumbLink>
                   </BreadcrumbItem>
                 </>
               )}
@@ -94,7 +96,7 @@ function Shell() {
         </main>
         <footer className="mx-6 flex justify-between border-t py-4 text-xs text-muted-foreground">
           <span>AEIOU · Evidence-led industrial agents</span>
-          <span className="hidden sm:inline">Powered by Claude · Built for Tacto Arena</span>
+          <span className="hidden sm:inline">Claude & OpenAI · Built for Tacto Arena</span>
         </footer>
       </SidebarInset>
       <LaunchDialog />

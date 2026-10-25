@@ -1,0 +1,255 @@
+{
+  "case_id": "case:P18",
+  "supplier_id": "sup:70740",
+  "status": "analysis_only_not_loaded_by_runtime",
+  "source_audit": "observations.json",
+  "sample": {
+    "hosted_runs": 30,
+    "official_deals": 10,
+    "official_no_deals": 20,
+    "supplier_withdrawals": 15,
+    "buyer_api_closures": 5,
+    "negotiated_quoted_packages": 112,
+    "off_ten_cent_grid": 0,
+    "first_final_round_counts": {
+      "2": 9,
+      "3": 14,
+      "4": 3
+    },
+    "first_final_validity_days": {
+      "7": 26
+    },
+    "post_final_email_count": 15,
+    "post_final_email_withdrawals": 15
+  },
+  "limitations": [
+    "Observational comparisons do not isolate the effect of one argument.",
+    "No private supplier rules or floor are known.",
+    "Historical quotations are not current binding offers.",
+    "A higher historical score does not prove an offer above 70 is feasible."
+  ],
+  "evidence_protocol": {
+    "separate_states": [
+      "not_sent",
+      "sent",
+      "verified",
+      "duplicate",
+      "irrelevant"
+    ],
+    "separate_pricing_interpretation": [
+      "supplier_says_taken_into_account",
+      "supplier_says_no_calculation_change",
+      "unspecified"
+    ],
+    "pricing_interpretation_note": "Preserve message source and quote. Do not equate verification with commercial acceptance or assign causal discount credit.",
+    "preferred_sequence": [
+      "june_september_po_history",
+      "ppi_june_august",
+      "as_june_september"
+    ],
+    "sequence_note": "Retains the best observed quoted-score sequence; not proven optimal.",
+    "core_evidence": [
+      {
+        "id": "june_september_po_history",
+        "refs": [
+          "po:4500014022-10",
+          "po:4500014078-10",
+          "po:4500014355-10",
+          "po:4500014427-10"
+        ],
+        "literal_prices": [
+          5.26,
+          5.26,
+          5.84,
+          5.84
+        ],
+        "latest_result": "verified",
+        "supplier_says_taken_into_account": true,
+        "source": {
+          "run_id": "835ad45899e34ee588343a6696ea42a1",
+          "supplier_round": 1,
+          "snapshot": "sessions/835ad45899e34ee588343a6696ea42a1.json"
+        }
+      },
+      {
+        "id": "ppi_june_august",
+        "calculation_id": "p18:ppi_recent_change_pct",
+        "refs": [
+          "idx:PPI-C2431@2026-06",
+          "idx:PPI-C2431@2026-08"
+        ],
+        "change_pct_rounded": -2.27,
+        "latest_result": "verified",
+        "supplier_says_taken_into_account": true,
+        "source": {
+          "run_id": "835ad45899e34ee588343a6696ea42a1",
+          "supplier_round": 2,
+          "snapshot": "sessions/835ad45899e34ee588343a6696ea42a1.json"
+        }
+      },
+      {
+        "id": "as_june_september",
+        "calculation_id": "p18:as_recent_change_pct",
+        "refs": [
+          "idx:AS-14404@2026-06",
+          "idx:AS-14404@2026-09"
+        ],
+        "change_pct_rounded": -5.49,
+        "latest_result": "verified",
+        "supplier_says_taken_into_account": true,
+        "source": {
+          "run_id": "835ad45899e34ee588343a6696ea42a1",
+          "supplier_round": 3,
+          "snapshot": "sessions/835ad45899e34ee588343a6696ea42a1.json"
+        }
+      }
+    ],
+    "verified_without_stated_pricing_effect": [
+      {
+        "argument": "LCI-C April-June flat",
+        "source": {
+          "run_id": "54747c61df044ac09c5e084e596da97f",
+          "supplier_round": 2,
+          "snapshot": "sessions/54747c61df044ac09c5e084e596da97f.json"
+        }
+      },
+      {
+        "argument": "Supplier-wide 81 percent OTD",
+        "source": {
+          "run_id": "54747c61df044ac09c5e084e596da97f",
+          "supplier_round": 2,
+          "snapshot": "sessions/54747c61df044ac09c5e084e596da97f.json"
+        }
+      },
+      {
+        "argument": "Forecast +1.9 percent",
+        "source": {
+          "run_id": "0fb5e14c8e7b408480f8e4dc51aae482",
+          "supplier_round": 3,
+          "snapshot": "sessions/0fb5e14c8e7b408480f8e4dc51aae482.json"
+        }
+      }
+    ]
+  },
+  "behaviour": [
+    {
+      "observation": "All negotiated quoted packages use 0.10 EUR/kg increments.",
+      "count": 112,
+      "exceptions": 0,
+      "classification": "observed_pattern_not_hard_rule",
+      "action": "Plan packages that still qualify at 5.10; accept any exact eligible qualifying off-grid offer too."
+    },
+    {
+      "observation": "All post-final emails were followed by supplier withdrawal.",
+      "count": 15,
+      "exceptions": 0,
+      "classification": "observed_pattern_and_existing_buyer_stop_policy",
+      "action": "On final, accept an exact eligible qualifying offer or stop under the strict floor."
+    },
+    {
+      "observation": "Supplier explicitly confirmed full authority in latest reply 1.",
+      "source": {
+        "run_id": "835ad45899e34ee588343a6696ea42a1",
+        "supplier_round": 1,
+        "snapshot": "sessions/835ad45899e34ee588343a6696ea42a1.json"
+      },
+      "classification": "supplier_statement",
+      "action": "Do not treat authority language alone as an approval blocker."
+    },
+    {
+      "observation": "Supplier accepted 45-day payment but countered the price at 5.20.",
+      "source": {
+        "run_id": "835ad45899e34ee588343a6696ea42a1",
+        "supplier_round": 3,
+        "snapshot": "sessions/835ad45899e34ee588343a6696ea42a1.json"
+      },
+      "classification": "observed_partial_term_acceptance",
+      "action": "Evaluate the complete offer; partial agreement is not a deal."
+    }
+  ],
+  "economics": {
+    "c_open": 295173.23,
+    "c_best": 222651.27,
+    "maximum_total_cost": 244400.6,
+    "nominal_cap": 5.1,
+    "minimum_score": 70.01,
+    "contract_months": [
+      24,
+      36
+    ],
+    "index_clause": {
+      "series": "AS-14404",
+      "material_share": 0.45,
+      "deadband_pct": 5,
+      "base_month": "2026-08"
+    },
+    "units_scored": 47400,
+    "tenth_grid_note": "Observed historical pattern, not a documented hard restriction."
+  },
+  "candidate_experiment": {
+    "status": "tested_once_failed_and_disabled",
+    "hypothesis": "Establish 60-day payment and the 5 percent deadband from the opening and retain them through the evidence sequence.",
+    "packages": [
+      {
+        "stage": "opening",
+        "unit_price": 4.6,
+        "payment_days": 60,
+        "contract_months": 36,
+        "evidence": "june_september_po_history"
+      },
+      {
+        "stage": "first_open_counter",
+        "unit_price": 5.0,
+        "payment_days": 60,
+        "contract_months": 36,
+        "evidence": "ppi_june_august"
+      },
+      {
+        "stage": "next_open_counter_if_available",
+        "unit_price": 5.1,
+        "payment_days": 60,
+        "contract_months": 36,
+        "evidence": "as_june_september"
+      }
+    ],
+    "shared_index_clause": {
+      "series": "AS-14404",
+      "material_share": 0.45,
+      "deadband_pct": 5,
+      "base_month": "2026-08"
+    },
+    "fixed_terms": "Unchanged case fixed terms; no increased volume or additional commitments.",
+    "guards": [
+      "Accept any exact eligible qualifying offer first.",
+      "Respect explicit supplier restrictions.",
+      "No late counter after finality.",
+      "Use each evidence group once.",
+      "Do not promise a third counter; finality has occurred after two."
+    ],
+    "requires_before_testing": "Historical pre-test requirement; V22 was implemented and tested once. Disabled after the result recorded above.",
+    "success_definition": "Supplier issues an eligible complete package passing all current limits, buyer accepts, server records a deal above 70.",
+    "failure_definition": "Final above budget, refusal of target structure, or withdrawal; log evidence acceptance separately.",
+    "observed_result": {
+      "run_id": "5e19ec6b5f1a425f8e3d4adaf99f5b14",
+      "session_id": "fc83e041c9cd6321",
+      "supplier_prices": [
+        5.6,
+        5.4,
+        5.3
+      ],
+      "payment_days": 60,
+      "contract_months": 36,
+      "deadband_pct": 5,
+      "quoted_cost": 253480.98,
+      "quoted_score": 57.489138462336065,
+      "official_score": 0,
+      "deal": false,
+      "all_three_claim_groups_verified": true,
+      "buyer_model_calls": 0,
+      "stop": "FINAL_OFFER_OUTSIDE_LIMITS",
+      "interpretation": "Worse than the previous best quoted package. Single observational run; does not isolate a causal surcharge or prove a floor.",
+      "recovery_policy": "config/p18-baseline-recovery.json"
+    }
+  },
+  "sample_note": "The sample and evidence counts above remain the original 30-run audit; candidate_experiment.observed_result is one subsequent run."
+}

@@ -1,0 +1,71 @@
+{
+  "baseline_run_id": "293f76b2ed574de6856f509031ae1569",
+  "new_run_id": "b6c2e2bb636d4b668e2b82ebd74691bf",
+  "evaluation_id": "7ebf7243d5c5446a8e3c922a4007b29a",
+  "baseline_score": 53.12395946426939,
+  "new_score": 65.50995999123805,
+  "score_point_gain": 12.386000526968655,
+  "baseline_cost": 1611854.4,
+  "new_cost": 1537096.8,
+  "two_year_cost_reduction": 74757.6,
+  "gap_to_best_attainable": 208169.91,
+  "terms": {
+    "payment_days": 30,
+    "lead_time_days": 56,
+    "volume_per_year": 23400,
+    "contract_months": 36,
+    "effective_date": "2027-01-01",
+    "index_clause": null,
+    "incoterm": "DAP",
+    "tooling_eur": 0.0,
+    "ppm_commitment": 300,
+    "chargeback_eur_per_complaint": 0.0,
+    "unit_price": 31.8
+  },
+  "must_haves_ok": true,
+  "claim_results": [
+    {
+      "index": 0,
+      "result": "verified"
+    },
+    {
+      "index": 1,
+      "result": "verified"
+    },
+    {
+      "index": 2,
+      "result": "verified"
+    }
+  ],
+  "metrics": {
+    "elapsed_s": 37.96,
+    "fallbacks": 0,
+    "calls": 2,
+    "errors": 0,
+    "input_tokens": 46497,
+    "output_tokens": 3482,
+    "refusals": 0,
+    "empty_responses": 0,
+    "reasoning_tokens": 0,
+    "cached_input_tokens": 0,
+    "resolved_model": null,
+    "stop_reasons": {
+      "end_turn": 2
+    },
+    "refusal_details": []
+  },
+  "new_practice_sessions": 1,
+  "validation": {
+    "tests_passed": 85,
+    "ruff": "passed",
+    "recorded_path_replay": "passed"
+  },
+  "limitations": [
+    "One hosted trial, not a controlled causal comparison.",
+    "Contract duration increased from 24 to 36 months. The scorer only prices the first two years.",
+    "Lead time increased from 42 to 56 days; quoted cost includes the EUR 33600 penalty.",
+    "The supplier issued a final offer after the first buyer message. No further counter was sent.",
+    "All three evidence claims were verified, but positive index changes also supported the supplier's cost narrative.",
+    "No global default prompt or P18 execution policy was changed. Select the P10-specific prompt for another trial."
+  ]
+}

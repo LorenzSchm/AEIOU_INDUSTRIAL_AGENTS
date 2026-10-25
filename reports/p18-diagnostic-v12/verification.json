@@ -1,0 +1,78 @@
+{
+  "offline_validation": "passed",
+  "accepted_fixed_price_packages": [
+    {
+      "unit_price": 4.5,
+      "months": 24,
+      "cost": 215480.4
+    },
+    {
+      "unit_price": 4.5,
+      "months": 36,
+      "cost": 215480.4
+    },
+    {
+      "unit_price": 4.6,
+      "months": 24,
+      "cost": 220268.85
+    },
+    {
+      "unit_price": 4.6,
+      "months": 36,
+      "cost": 220268.85
+    },
+    {
+      "unit_price": 4.72,
+      "months": 24,
+      "cost": 226015.0
+    },
+    {
+      "unit_price": 4.72,
+      "months": 36,
+      "cost": 226015.0
+    },
+    {
+      "unit_price": 4.83,
+      "months": 24,
+      "cost": 231282.3
+    },
+    {
+      "unit_price": 4.83,
+      "months": 36,
+      "cost": 231282.3
+    },
+    {
+      "unit_price": 4.93,
+      "months": 24,
+      "cost": 236070.75
+    },
+    {
+      "unit_price": 4.93,
+      "months": 36,
+      "cost": 236070.75
+    },
+    {
+      "unit_price": 5.0,
+      "months": 24,
+      "cost": 239422.67
+    },
+    {
+      "unit_price": 5.0,
+      "months": 36,
+      "cost": 239422.67
+    }
+  ],
+  "checks": [
+    "Opening EUR 4.60 passes actual decision adapter",
+    "Eligible prices below opening and up to EUR 5.00 accepted",
+    "EUR 5.01 rejected even with better payment",
+    "Complete cost boundary updated",
+    "Final Offer still permits replies",
+    "Concession increments stay below EUR 0.12 and shrink",
+    "No index discussion added"
+  ],
+  "hosted_tests_launched": 0,
+  "paid_model_calls": 0,
+  "production_code_changed": false,
+  "limitation": "Offline validation verifies adapter behavior, not model adherence to concession steps or supplier acceptance. Use this complete prompt in a new run."
+}

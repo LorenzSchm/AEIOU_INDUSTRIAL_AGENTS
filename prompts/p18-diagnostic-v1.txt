@@ -1,0 +1,6 @@
+SUPERSEDED — DO NOT USE FOR A NEW RUN
+
+The user requires the original 15% opening and shrinking 2% concession rules. This version did not preserve them.
+
+Use prompts/p18-diagnostic-v2.txt instead.
+The superseded text is retained in reports/p18-diagnostic-v1/prompt-superseded.txt for audit only.

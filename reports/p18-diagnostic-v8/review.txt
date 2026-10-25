@@ -1,0 +1,28 @@
+P18 V8: user-authorized EUR 4.90/kg acceptance limit
+
+Can the withdrawn run continue?
+The official read-only session and thread endpoints were checked for session eb6e2bc2d9fe34da (local run 54747c61df044ac09c5e084e596da97f).
+Session status: ended. End reason: no_deal. Thread status and closed reason: walked_away. Standing offer ID: null.
+The API documents HTTP 409 for messages to ended threads/sessions. There is no documented reopen action. The email's general 14-day offer-validity wording does not reopen this ended thread or restore a binding offer.
+Final Offer is different: the thread may still accept messages while live, but a further counter can cause withdrawal. A question without a term sheet is legal while live; it does not extend the session or guarantee continued willingness.
+No message was sent to the closed session and no new session was started. Full read-only responses are in closed-session.json.
+
+Latest user authorization
+The user explicitly relaxed the prior 80-point requirement and authorized EUR 4.90/kg. V8 replaces the 80-point policy with a literal unit-price cap AND a complete-cost cap. It does not retrospectively change any completed run or authorize the latest EUR 5.20 / EUR 5.30 offers.
+Maximum unit price: EUR 4.90/kg.
+Maximum complete cost: EUR 241950.40.
+Reference package: 14 days payment, 36 months, AS-14404 on 45% share, 0% deadband, base 2026-08; all case fixed terms retained.
+This package scores 73.38857085495206 points using the displayed cent-rounded public costs. The configured score floor 73.38857 generates exactly the required cost ceiling. Rounding the configured floor up to 73.39 would incorrectly reject EUR 4.90.
+At EUR 4.90 with a 5% deadband, the same 14-day/36-month package costs EUR 236724.55 and scores about 80.59; it is allowed if the supplier actually offers it and the offer is eligible. This arithmetic does not establish supplier acceptance.
+EUR 4.91 remains disallowed even if different payment/index terms make its total cost lower. A price at or below 4.90 still must pass the complete-cost cap, so a short contract leaving expensive uncovered demand is not automatically acceptable.
+
+Negotiation change
+V8 opens at EUR 4.80 on the same 14-day/36-month/0%-deadband structure. If the supplier makes a meaningful complete-package concession but remains above our limits, the agent can move to EUR 4.90. This EUR 0.10 move stays below the original EUR 0.12 per-step ceiling. If smaller steps are chosen, later positive steps must shrink.
+A qualifying eligible supplier offer is accepted promptly; no repeated-confirmation loop or additional evidence round is required. The latest supplier counterprices 5.20 and 5.30 both still fail the new limits. Negotiation can still end without agreement; lowering our limit does not compel the supplier to accept 4.90.
+The strongest previously verified opening evidence is retained. The longer OTD/wage/cost-accounting exchanges are no longer mandatory closing rounds because the supplier verified them but said they did not change its calculation.
+
+Implementation
+The acceptance_floor policy supports an optional maximum_unit_price. Both the model's legal-offer view and the last check before network submission enforce it. Older prompts without this field keep their original policy; V5–V7 still carry an 80-point floor. Use V8 as a complete replacement for the next P18 run.
+Completed or withdrawn threads remain terminal. Tests cover accepting 4.90 on Open/Final/Agreed, blocking 4.91 despite better total cost, blocking excessive uncovered-need cost, malformed limits, the network boundary, and terminal-thread behavior.
+
+No new hosted test or paid model call was made. Offline fixtures validate policy and transport, not the next supplier response.

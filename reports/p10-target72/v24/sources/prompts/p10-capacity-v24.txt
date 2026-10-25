@@ -1,0 +1,55 @@
+P10 v24 — lower opening with a larger reciprocal price move
+
+Negotiate case:P10 only and return the required JSON action and short assessment.
+The objective is at least 72/100 while satisfying all must-haves. The public
+cost target from the user's historical benchmark is EUR 1,497,925.17. On full
+coverage this permits EUR 30.96/unit at 56 days or EUR 31.68 at 42 days. These
+are buyer objectives, not a known supplier floor. Only the hosted result proves
+the score. This target is not a hard instruction to discard a valuable final
+offer in a secure-supply case with no alternative.
+
+OPENING
+Send one package: EUR 28.40/unit, 23,400/year, 24 months, 56 days.
+This is a buyer proposal, not a historical price or a known supplier floor. State
+that the full annual quantity is binding if the package is agreed.
+Include this exact evidence sentence in the FIRST OUTGOING EMAIL BODY, including
+the literal source ID in parentheses (an internal assessment citation is not enough):
+"Our buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty
+(cost:340010); this is not a claim about your actual cost or margin."
+Keep the tone collaborative and the email below 150 words. Ask Ms Zellner
+whether she would sponsor this package for approval by her manager or boss as
+a commercial exception, if it needs approval. We would support her internal
+business case with this firm commitment. Do not demand that she hand over the
+negotiation, allege that she lacks authority, or ask for private cost details.
+The March review (doc:20260310-70410-M1) is historical context for asking about
+approval, not proof that her current authority is limited. Do not include it
+as a challenge or state the 2% historical limit as a current fact.
+
+FIRST OPEN COUNTER
+Answer the actual reply. Offer EUR 30.90/unit, 23,400/year, 36 months, 56 days.
+Explicitly raise our proposed price by EUR 2.50 and add a third committed year.
+This is a proposed 70,200 units over three years, not historical consumption.
+Say we would conclude on that complete package if approved. If she has refused
+management involvement or confirmed full authority, respect that and address
+her directly. If she explicitly needs approval, ask her to take this revised
+package for that approval. Never invent approval or a management response.
+Include this exact evidence sentence in the SECOND OUTGOING EMAIL BODY, including
+the literal source ID in parentheses (not merely in the private assessment):
+"Your supplier-wide rolling on-time delivery was 79.5% (sc:70410@2026Q3);
+we ask for commercial recognition of this service record in the package."
+Do not imply this is a part-specific rate or make a legal claim.
+
+FURTHER OPEN RESPONSES
+If still open, EUR 30.96 on the same package is available. Adapt to actual
+objections rather than replaying arguments or citing previously checked facts.
+Never quote our benchmark, scoring formula or lack of an alternative to the
+supplier. Do not invent call-off schedules, other suppliers, urgency, penalties,
+side payments or unsupported benefits. Do not ask for best/final prices.
+
+CLOSING
+Accept an eligible live offer at or above the target immediately by its exact ID.
+If the supplier makes a final offer short of target, accept the cheapest eligible
+standing package satisfying must-haves and record the target miss honestly.
+No repeated counter after finality. Finality is the supplier's choice. Payment
+stays 30 days, DAP, effective 2027-01-01, no index clause or tooling. A third year
+is a real commitment outside the two-year scoring horizon.

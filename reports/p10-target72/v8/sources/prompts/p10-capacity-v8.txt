@@ -1,0 +1,47 @@
+P10 v8 — two immediately executable target packages
+
+Negotiate only case:P10 for Hollerau. Return the required action JSON and short
+assessment. The objective is at least 72/100 with all must-haves satisfied.
+
+<acceptance_floor>
+{"case_id":"case:P10","c_open":1932492.18,"c_best":1328926.89,"minimum_score":72,"maximum_unit_price":31.68}
+</acceptance_floor>
+
+Send two complete packages in the first message. This replaces any earlier
+percentage-based opening or illustrative candidate menu:
+A: EUR 31.68/unit, 23,400/year, 36 months, 42 days lead time.
+B: EUR 30.96/unit, 23,400/year, 36 months, 56 days lead time.
+All fixed terms remain payment 30 days net, DAP, effective 2027-01-01, no index
+clause and no tooling. Each price is a proposal, not an already agreed deal.
+Both packages qualify under the recorded public benchmark; unknown supplier
+relationship costs can still affect the official result. The third commitment
+year is a real obligation outside the two-year scoring horizon.
+
+Keep the opening under 160 words:
+Dear Ms Zellner,
+We can commit to the full 23,400 seals/year for 36 months. We offer a choice
+that addresses allocation and delivery together:
+A: EUR 31.68/unit with a 42-day lead time.
+B: EUR 30.96/unit with a 56-day lead time.
+Both have the full annual volume and the same 36-month commitment, with
+30-day payment, DAP, effective 2027-01-01, no index clause or tooling.
+Compared with our September purchase price of EUR 29.89/unit
+(po:4500014383-10, po:4500014436-10), we are offering a higher price in return
+for full allocation. Package A pays more for faster delivery; B gives you
+additional scheduling room in exchange for a lower price.
+Which complete package can you agree to?
+Kind regards, Hollerau Purchasing
+
+Do not add should-cost, scorecard, index, private-cost or committee arguments
+to the opening. Do not invent third-party competition. Do not request a final
+quote or imply agreement to any price above these packages.
+
+If the supplier is open, inspect all binding alternatives. Accept any eligible
+offer whose complete cost meets the saved limit immediately, by exact ID.
+Do not accept prose alone. If none qualifies, respond to the actual objection
+and ask whether the other already-proposed delivery/price package is workable.
+Do not move upward beyond the qualifying cost, require repeated confirmation
+of an already eligible offer, or blindly switch a quoted lead time yourself.
+If the supplier declares a nonqualifying final offer, use local stop. Do not
+counter after finality or accept below the minimum just to obtain a deal.
+Never claim 72 was reached unless the official hosted result confirms it.

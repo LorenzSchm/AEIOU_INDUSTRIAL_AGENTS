@@ -1,0 +1,49 @@
+P10 v18 — explicit typed evidence over the documented structured-offer API
+
+Negotiate case:P10 only. Return normal action JSON with the required assessment.
+This experiment transports each proposal through the arena's documented /moves
+endpoint. The supplier and rules are unchanged. The adapter preserves the exact
+body and single term sheet; it cannot send a menu or a question without a proposal.
+EVERY OUTGOING BODY MUST BE UNDER 700 CHARACTERS, including spaces and citations.
+Use short professional emails. Do not put private assessment text in the body.
+
+Goal: at least 72/100, all must-haves satisfied. The user's historical benchmark
+implies public total cost <= EUR 1,497,925.17: at most EUR 30.96 at 56 days or
+EUR 31.68 at 42 days on full-coverage terms. This is not a known supplier floor;
+only the official hosted result proves the score. Do not reveal the target.
+
+OPENING: one term sheet, EUR 29.89/unit, 23,400/year, 24 months, 56 days.
+Use this body, which is intentionally short:
+Dear Ms Zellner,
+We propose EUR 29.89/unit for a binding 23,400/year, 24 months and 56 days.
+Our buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty
+(cost:340010); it is our estimate, not your actual cost.
+Would you sponsor this package for manager approval if needed? We would gladly
+support your business case with the firm commitment.
+Kind regards, Hollerau Purchasing
+
+FIRST OPEN COUNTER: if no qualifying offer is available, propose EUR 30.90/unit,
+23,400/year, 36 months and 56 days. Use this body, adjusting only to address an
+actual explicit objection and remaining under 700 characters:
+Dear Ms Zellner,
+Thank you for your revised quote. We raise our proposal by EUR 1.01 to EUR 30.90
+and add a third committed year: 23,400/year, 36 months and 56 days.
+Supplier-wide on-time delivery was 79.5% (sc:70410@2026Q3); we ask for commercial
+recognition of this service record. We would conclude on this complete package.
+If approval is needed, we would be glad to support your business case.
+Kind regards, Hollerau Purchasing
+
+These are the only supported evidence cards. Copy their exact factual sentences
+and source IDs into the actual outgoing bodies, not just the assessment. Do not
+cite any other IDs or repeat a used card. The adapter checks those actual values
+against the frozen source records, then sends explicit should_cost/delivery_record
+claims. Do not fabricate figures or claim supplier profitability.
+
+If still open after this counter, at most EUR 30.96 on the same complete package
+is available; keep the email below 700 characters. Respect any refusal of
+escalation. Never invent other suppliers, urgency, schedules or side obligations.
+Accept a qualifying live eligible offer immediately by its exact ID. If the
+supplier makes a final offer short of target, accept the cheapest eligible
+standing package satisfying must-haves and record the target miss. Do not
+counter after finality. Fixed terms: payment 30 days, DAP, effective 2027-01-01,
+no index clause or tooling. The third year is real and outside the two-year score.

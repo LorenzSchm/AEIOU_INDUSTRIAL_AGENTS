@@ -15,32 +15,43 @@ def main():
     serve = sub.add_parser("serve")
     serve.add_argument("--port", type=int, default=8765)
     bench = sub.add_parser("benchmark")
-    bench.add_argument("--agent", choices=["adaptive", "guarded", "claude"], default="adaptive")
-    bench.add_argument("--seeds", type=int, default=3)
+    bench.add_argument("--agent", choices=["adaptive", "guarded", "claude", "original"], default="original")
+    bench.add_argument("--seeds", type=int, default=1)
     bench.add_argument("--label", default="local")
-    bench.add_argument("--seed-start", type=int, default=0)
+    bench.add_argument("--seed-start", type=int, default=1101)
     bench.add_argument("--parallel", type=int, default=1)
     compare = sub.add_parser("compare-prompts", help="Local only; uses model API credits, zero arena sessions")
     compare.add_argument("--model", help="Buyer model override; does not edit .env")
-    compare.add_argument("--supplier", choices=["scripted", "language"], default="scripted")
+    compare.add_argument("--supplier", choices=["language"], default="language")
     compare.add_argument("--supplier-model", help="Hold fixed when comparing buyer models")
     compare.add_argument("--seed", type=int, default=71)
     compare.add_argument("--label", default="prompt-screen")
     compare.add_argument("--parallel", type=int, default=2)
     play = sub.add_parser("play")
     play.add_argument("case_id")
-    play.add_argument("--mode", choices=["local", "hosted"], default="hosted")
-    play.add_argument("--agent", choices=["baseline", "guarded", "adaptive", "claude"], default="claude")
-    play.add_argument("--opponent", default="scripted")
+    play.add_argument("--mode", choices=["local", "hosted"], default="local")
+    play.add_argument("--agent", choices=["baseline", "guarded", "adaptive", "claude", "original"], default="original")
+    play.add_argument("--opponent", default="relationship")
     play.add_argument("--tactic", choices=["prepared", "voss"], default="prepared")
     practice = sub.add_parser("practice")
     practice.add_argument("--parallel", type=int, default=3)
-    practice.add_argument("--agent", choices=["baseline", "adaptive", "claude"], default="claude")
+    practice.add_argument("--agent", choices=["baseline", "adaptive", "claude", "original"],
+                          help="Explicitly opt into a legacy agent instead of an eval prompt")
+    practice_prompt = practice.add_mutually_exclusive_group()
+    practice_prompt.add_argument("--prompt-file", help="UTF-8 prompt, using the eval suite's neutral controller")
+    practice_prompt.add_argument("--eval-batch", help="Use the exact prompt and model saved in this eval batch")
+    practice.add_argument("--repeats", type=int, choices=[1, 2, 3], default=1)
+    practice.add_argument("--max-sessions", type=int, default=2, help="Hard cap on new hosted attempts (default: 2)")
     final = sub.add_parser("final")
     final.add_argument("--parallel", type=int, default=10)
     final.add_argument("--waves", type=int, default=5)
+    final.add_argument("--agent", choices=["original", "claude"], default="original")
     sub.add_parser("doctor")
     sub.add_parser("report")
+    replay = sub.add_parser(
+        "verify-replay", help="Verify an identical recorded hosted path offline; zero arena/model calls"
+    )
+    replay.add_argument("run_id")
     a = p.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     if a.command == "serve":
@@ -48,10 +59,10 @@ def main():
 
         uvicorn.run("aeiou.service:app", host="127.0.0.1", port=a.port)
     elif a.command == "doctor":
-        from .agent import ClaudeBackend
+        from .agent import make_backend
         from .research import package
 
-        backend = ClaudeBackend()
+        backend = make_backend()
         response = backend.complete("Reply with the word ready.", "Connection test.")
         print(
             json.dumps(
@@ -73,6 +84,11 @@ def main():
 
         report = compare_prompts(a.model, a.supplier, a.supplier_model, a.seed, a.label, a.parallel)
         print(json.dumps({k: report[k] for k in ("status", "arena_sessions_used", "summary", "report_path")}, indent=2))
+    elif a.command == "verify-replay":
+        from .hosted_replay import verify_replay
+        from .store import get_run
+
+        print(json.dumps(verify_replay(get_run(a.run_id)), indent=2))
     elif a.command == "report":
         from .hosted_evaluation import hosted_evaluation
 
@@ -104,11 +120,45 @@ def main():
     elif a.command == "practice":
         from .runner import hosted_play
 
+        if not 1 <= a.max_sessions <= 200:
+            p.error("--max-sessions must be between 1 and 200")
+        if a.prompt_file or a.eval_batch:
+            from pathlib import Path
+
+            from .eval_suite import prepare_evaluation, refresh_practice_catalog, run_evaluation
+
+            if a.agent:
+                p.error("Choose an eval prompt or an explicit legacy --agent, not both")
+            saved = None
+            if a.eval_batch:
+                if not a.eval_batch.isalnum():
+                    p.error("Invalid evaluation batch ID")
+                saved = json.loads((config.state_root() / "eval-suite" / f"{a.eval_batch}.json").read_text())
+                prompt = saved["prompt_text"]
+            else:
+                prompt = Path(a.prompt_file).read_text(encoding="utf-8")
+            catalog = refresh_practice_catalog()
+            limit = min(a.max_sessions, (catalog.get("quota") or {}).get("left", 0)) // a.repeats
+            selected = [case["case_id"] for case in catalog["cases"][:limit]]
+            if not selected:
+                p.error("Not enough quota or --max-sessions for the requested repeats")
+            report = prepare_evaluation(prompt, saved["model"] if saved else None, "practice",
+                                        case_ids=selected, repeats=a.repeats, catalog=catalog)
+            if saved:
+                report.update({key: saved[key] for key in ("effort", "speed") if key in saved})
+            report["parallel_runs"] = min(6, max(1, a.parallel))
+            result = run_evaluation(report)
+            print(json.dumps({k: result[k] for k in ("id", "status", "completed", "mean_score")}))
+            return
+        if not a.agent:
+            p.error("Choose --eval-batch or --prompt-file to use your tested prompt (or explicitly choose --agent)")
         c = ArenaClient()
         cases = hosted(c.cases("practice"))
         left = c.me().get("practice", {}).get("left", 0)
         with ThreadPoolExecutor(max_workers=min(10, max(1, a.parallel))) as pool:
-            for r in pool.map(lambda case: hosted_play(case["case_id"], a.agent, client=c), cases[:left]):
+            for r in pool.map(
+                lambda case: hosted_play(case["case_id"], a.agent, client=c), cases[: min(left, a.max_sessions)]
+            ):
                 print(
                     json.dumps(
                         {
@@ -129,13 +179,13 @@ def main():
         # Wrap tables for durable replay without adding prohibited live-feed endpoints.
         class FinalTable(RecordingTable):
             def __init__(self, client, case=None):
-                super().__init__(client, new_run(case["case_id"], "final", "claude"), case)
+                super().__init__(client, new_run(case["case_id"], "final", a.agent), case)
 
         # The kit owns polling / resume; the wrapper only adds local audit persistence.
         started = time.monotonic()
         results = play_waves(
             ArenaClient(),
-            lambda: make_agent("claude"),
+            lambda: make_agent(a.agent),
             table_factory=FinalTable,
             waves=a.waves,
             parallel=min(10, max(1, a.parallel)),

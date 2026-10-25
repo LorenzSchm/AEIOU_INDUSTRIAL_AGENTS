@@ -1,0 +1,153 @@
+{
+  "id": "4405606391b44d8598f0486b83fc35be",
+  "suite_id": "tacto-hosted-practice-v1",
+  "variant_id": "practice",
+  "comparison_id": null,
+  "arena_url": "https://arena.tacto.ai",
+  "case_set": "practice",
+  "created_at": "2026-10-25T01:04:49.634668+00:00",
+  "status": "completed",
+  "prompt_text": "P10 v26 \u2014 autonomous package design from observed evidence\n\nNegotiate only case:P10, returning the required JSON actions and concise assessments.\nChoose your own opening and subsequent proposals from the actual case data and\nsupplier responses. Optimize the complete accepted package, not the discount\nalone. The objective is a hosted score of at least 72 while satisfying all\nmust-haves. From the user's historical benchmark, the public total-cost ceiling\nis EUR 1,497,925.17. With full coverage at the standard terms this permits EUR\n30.96/unit at 56 days, or EUR 31.68 at 42 days, for at least 24 months. These are\nprivate buyer targets, not known supplier floors. Only the actual hosted result\nproves the score. Never reveal the scoring target or lack of another supplier.\n\nUse the supplied research: documents, canonical facts, scoped tables, purchase\nhistory and complete-package costs. Only information actually delivered in the\ninput is evidence you have read. Cite used factual evidence in the outgoing\nbody with its actual canonical source IDs, not merely the private assessment.\nKeep proposals, buyer estimates, historical records and supplier assertions\ndistinct. A buyer cost estimate is not the supplier's disclosed cost or margin.\nUse at most three evidence groups in an email. Do not repeat already checked\nIDs as new leverage. Never cite the recipient's own offer IDs in email prose.\n\nPrior practice observations, for private planning only:\n- Several complete packages closed at EUR 31.40/unit, 23,400/year, 36 months,\n  56 days. That is 68.63, so repeating that sequence does not achieve the goal.\n- Starting at EUR 25.04 provoked an early final offer around EUR 32.00.\n- Starting at EUR 28.40, 29.89 or 30.50 has each led to the same EUR 31.40\n  outcome. Lower anchoring alone has not solved the problem.\n- The cost estimate was verified and sometimes influenced the quote. Service\n  and forecast records were verified but explicitly dismissed as pricing reasons.\n- Asking for 42 days led to EUR 33.50 with a stated overtime/reprioritization\n  premium. Do not assume a faster lead time is available cheaply.\n- A direct demand for committee escalation was refused: Ms Zellner said she\n  was authorized. Soft requests for sponsorship did not produce a recorded\n  approval event. The March authority note is historical, not current proof.\n- The supplier has usually made its second response final. Pressing after\n  finality, even by adding another contract year, caused withdrawal.\nThese are observations from ended practice sessions, not hidden supplier state,\nguaranteed future behaviour or quotations that can be accepted in this session.\n\nUse a commercially coherent argument that addresses the current objection and\nthe supplier's actual incentives. Choose an opening that leaves room for a real\nreciprocal exchange. You may use a meaningful alternative-package menu if it\nhelps; do not offer the same terms at several prices. Do not follow a predetermined\ntwo-email script. Questions should resolve a decision that affects the next\nproposal. If the supplier asks for the basis of a figure, answer with the relevant\nrecord instead of changing the subject. If asked about demand, distinguish the\nSeptember forecast of 21,310 from the proposed binding 23,400/year requirement\nand from the 19,880 units ordered in the preceding twelve months.\n\nNo threats, invented facts, fake competitors, urgency, manipulation of the\nsupplier's software, unscored obligations, new payment terms or call-off promises.\nAll four negotiable fields must use allowed values in a complete term sheet.\nDo not change any fixed term. A third committed year is a real obligation beyond\nthe scoring horizon. Be warm, assertive and brief: at most 170 words per email.\n\nAccept a live eligible offer reaching the objective immediately by its exact\nstructured ID. If the supplier makes a final eligible offer below the target,\naccept the cheapest valid standing package for secure supply and report the\nmiss honestly. Do not counter after finality or equate a verified claim with a\nsuccessful commercial concession. Respect live offer IDs and status.\n",
+  "prompt": {
+    "variant": "eval",
+    "strategy_revision": "eval-prompt-v2",
+    "strategy_sha256": "d78812aaf48733723e1b4362aab96d620c3d9c4f96e3d26a161b078c6926112b",
+    "transport_sha256": "af6cb84f489f4492123db56ae5af25057be580dbb7c745473286503f0bd10a3c",
+    "system_sha256": "e7817a9e22a37238d7fecdb858c77a36ad42f1821aa203ae503ed11649bfaff0",
+    "protocol_version": "faithful-v18-closing-cost-comparison",
+    "required_repeats": 0,
+    "enforce_reference_tactics": false,
+    "assessment_version": "supplier-assessment-v2-source-labels"
+  },
+  "execution_policies": {},
+  "model": "claude-opus-5-5",
+  "provider": "anthropic",
+  "effort": "high",
+  "speed": "fast",
+  "kit_revision": "75eecd19bf42c4f4b5a93f01139fa2a757ec5c07",
+  "arena_sessions_used": 1,
+  "practice_sessions_used": 1,
+  "parallel_runs": 1,
+  "decision_budget_s": 50,
+  "repeats": 1,
+  "quota_at_start": {
+    "used": 186,
+    "left": 214,
+    "limit": 400,
+    "resets_at": "2026-10-25T11:19:44.936916+00:00"
+  },
+  "rows": [
+    {
+      "case_id": "case:P10",
+      "title": "Ravensteiner cuts the seal allocation",
+      "repeat": 1,
+      "status": "completed",
+      "score": 0.6863220713040008,
+      "run_id": "ebbf017aeb314ce196cf06b83bf1b666",
+      "session_id": "e182a449519d0e67"
+    }
+  ],
+  "completed": 1,
+  "mean_score": 0.6863220713040008,
+  "experiment": {
+    "label": "p10-adaptive-high-reasoning",
+    "target_score": 72,
+    "source_hashes": {
+      "prompts/p10-capacity-v26.txt": "d78812aaf48733723e1b4362aab96d620c3d9c4f96e3d26a161b078c6926112b",
+      "src/aeiou/p10_evidence.py": "742d581af7239c926723a3af55f687ab8be6e8f4cca809e5b6fe380d431edb6b",
+      "src/aeiou/price_planner.py": "51d75600a82e8423a40aa9049f11a2387e223b7f8431944009cfaaf6d5996cdd",
+      "src/aeiou/evidence_transport.py": "c8a1a7a17e561e27b6e42947323e69f4a9e04c0db9f558372e32829ed0fc0ba8",
+      "src/aeiou/prompt_protocol.py": "ae8ae421e79480381df258e0f9750dff7be82df73e4c67566cb5e4d5f390fae1",
+      "src/aeiou/research.py": "1b7b99c730ee3d7fc5f9d31f92b2c0cdb931bd33131c5fa1c3fd3640748a54b2"
+    }
+  },
+  "cases": [
+    {
+      "case_id": "case:P10",
+      "set": "practice",
+      "type": "capacity",
+      "title": "Ravensteiner cuts the seal allocation",
+      "briefing": "You negotiate for Hollerau Pumpenwerke with Dichtungswerk Ravensteiner GmbH. Ravensteiner cuts the seal allocation. Need: 23400 pc a year. Category goal: secure supply of a bottleneck part: coverage of the full need and a supplier that stays healthy come first. Score: the lowest total cost C as defined in the rules, valued with this case's rates (need lead time 42 days). There is no fallback supplier: without a deal the demand is bought at the fallback price. Must-haves: volume_per_year >= 22230. Prepare from the data package.",
+      "trigger_doc": "doc:20260918-70410-P10",
+      "parts": [
+        "part:340010"
+      ],
+      "suppliers": [
+        "sup:70410"
+      ],
+      "negotiable": [
+        "unit_price",
+        "volume_per_year",
+        "contract_months",
+        "lead_time_days"
+      ],
+      "fixed_terms": {
+        "payment_days": 30,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0
+      },
+      "term_options": {
+        "volume_per_year": [
+          16379,
+          19890,
+          23400
+        ],
+        "contract_months": [
+          12,
+          24,
+          36
+        ],
+        "lead_time_days": [
+          35,
+          42,
+          56
+        ]
+      },
+      "buyer": {
+        "need_per_year": 23400,
+        "horizon_years": 2,
+        "current_unit_price": 29.89,
+        "fallback_unit_price": 37.36,
+        "interest_rate": 0.08,
+        "reference_payment_days": 60,
+        "need_lead_time_days": 42,
+        "category_goal": "secure_supply",
+        "fallback_risk_pct": 25,
+        "index_risk_pct": 3,
+        "late_cost_per_day": 2400,
+        "cost_per_defect": 380,
+        "sustainable_margin_pct": 10,
+        "relationship_eur_per_point": 13990,
+        "freight_eur_per_unit": {
+          "EXW": 0.01,
+          "FCA": 0.01,
+          "DAP": 0.0
+        },
+        "index_paths": {},
+        "must_haves": [
+          {
+            "field": "volume_per_year",
+            "op": ">=",
+            "value": 22230
+          }
+        ],
+        "alternative": {
+          "kind": "none",
+          "ref": null,
+          "terms": {}
+        }
+      },
+      "round_limit": 10,
+      "refs": [
+        "doc:20260918-70410-P10",
+        "ctr:4600070410",
+        "sc:70410@2026Q3",
+        "fc:340010@2026-09"
+      ],
+      "hosted": true
+    }
+  ],
+  "completed_at": "2026-10-25T01:06:25.293265+00:00"
+}

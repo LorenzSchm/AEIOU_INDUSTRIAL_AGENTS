@@ -1,0 +1,346 @@
+{
+  "strategy": {
+    "variant": "p18-diagnostic-v2",
+    "strategy_revision": "p18-rules-preserved-v2",
+    "strategy_sha256": "477c1403c2129a537721cc23e409bd2df4fe61010401a618c265972f50ccb521",
+    "transport_sha256": "94b30217c8bfc917f77da5f41b83033862aa011e7523fe953a21ab75e67ceaba",
+    "system_sha256": "8284e51fcdc3723dce310e2323dde61154e748f8c572d11ffda85036b98ab6d6",
+    "protocol_version": "faithful-v8-shared-decision-budget",
+    "required_repeats": 0,
+    "enforce_reference_tactics": false,
+    "assessment_version": "supplier-assessment-v1"
+  },
+  "prompt_file": "reports/p18-diagnostic-v2/prompt-used-in-724457830daa47e6bb9d29c177796866.txt",
+  "preserved_rules_sha256": "25b86bde6d7a8ce65e3f8dcef69200fb5e4b0e38288ccd9a81b7c97e864edca6",
+  "preserved_rules_verbatim": true,
+  "user_run_budget_max": 3,
+  "latest_reference_run": {
+    "id": "9330b8cbf23347f687a68f0ec80d802c",
+    "model": "claude-opus-5-5",
+    "effort": "medium",
+    "result": {
+      "ended": true,
+      "deal": true,
+      "supplier_id": "sup:70740",
+      "offer_id": "offer:70740-4",
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 14,
+        "volume_per_year": 23700,
+        "contract_months": 24,
+        "effective_date": "2027-01-01",
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 70,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 5.5
+      },
+      "c_open": 295173.23,
+      "c_deal": 264784.3,
+      "c_alt": 301087.96,
+      "c_best": 222651.27,
+      "score": 0.41903073220856135,
+      "must_haves_ok": true,
+      "cost_breakdown": {
+        "price": 260700.0,
+        "uncovered_need": 0.0,
+        "fallback_risk": 0.0,
+        "payment_terms": 1738.0,
+        "freight": 0.0,
+        "late_delivery": 0.0,
+        "quality": 0.0,
+        "tooling": 0.0,
+        "index_clause": 1173.15,
+        "index_risk": 1173.15,
+        "relationship": 0.0
+      }
+    },
+    "contract_rejections": [
+      "Evidence kind must match its sources; supplier assertions are supplier_claim"
+    ]
+  },
+  "menus": [
+    {
+      "stage": "opening",
+      "packages": [
+        {
+          "package": "A",
+          "terms": {
+            "unit_price": 5.18,
+            "payment_days": 90,
+            "contract_months": 24,
+            "index_clause": null
+          },
+          "cost_eur": 243895.12,
+          "hypothetical_score_if_accepted": 70.707
+        },
+        {
+          "package": "B",
+          "terms": {
+            "unit_price": 5.13,
+            "payment_days": 90,
+            "contract_months": 24,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 5,
+              "base_month": "2026-08"
+            }
+          },
+          "cost_eur": 243729.38,
+          "hypothetical_score_if_accepted": 70.936
+        },
+        {
+          "package": "C",
+          "terms": {
+            "unit_price": 4.94,
+            "payment_days": 14,
+            "contract_months": 24,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 0,
+              "base_month": "2026-08"
+            }
+          },
+          "cost_eur": 243925.51,
+          "hypothetical_score_if_accepted": 70.665
+        }
+      ],
+      "cost_spread_eur": 196.13
+    },
+    {
+      "stage": "reciprocal_1",
+      "packages": [
+        {
+          "package": "A",
+          "terms": {
+            "unit_price": 5.25,
+            "payment_days": 90,
+            "contract_months": 36,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 5,
+              "base_month": "2026-08"
+            }
+          },
+          "cost_eur": 249430.65,
+          "hypothetical_score_if_accepted": 63.074
+        },
+        {
+          "package": "B",
+          "terms": {
+            "unit_price": 5.18,
+            "payment_days": 30,
+            "contract_months": 36,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 5,
+              "base_month": "2026-08"
+            }
+          },
+          "cost_eur": 249378.67,
+          "hypothetical_score_if_accepted": 63.146
+        },
+        {
+          "package": "C",
+          "terms": {
+            "unit_price": 5.05,
+            "payment_days": 14,
+            "contract_months": 36,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 0,
+              "base_month": "2026-08"
+            }
+          },
+          "cost_eur": 249357.05,
+          "hypothetical_score_if_accepted": 63.176
+        }
+      ],
+      "cost_spread_eur": 73.6
+    },
+    {
+      "stage": "reciprocal_2",
+      "packages": [
+        {
+          "package": "A",
+          "terms": {
+            "unit_price": 5.31,
+            "payment_days": 90,
+            "contract_months": 36,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 5,
+              "base_month": "2026-08"
+            }
+          },
+          "cost_eur": 252281.29,
+          "hypothetical_score_if_accepted": 59.143
+        },
+        {
+          "package": "B",
+          "terms": {
+            "unit_price": 5.24,
+            "payment_days": 30,
+            "contract_months": 36,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 5,
+              "base_month": "2026-08"
+            }
+          },
+          "cost_eur": 252267.22,
+          "hypothetical_score_if_accepted": 59.163
+        },
+        {
+          "package": "C",
+          "terms": {
+            "unit_price": 5.11,
+            "payment_days": 14,
+            "contract_months": 36,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 0,
+              "base_month": "2026-08"
+            }
+          },
+          "cost_eur": 252319.71,
+          "hypothetical_score_if_accepted": 59.09
+        }
+      ],
+      "cost_spread_eur": 52.49
+    },
+    {
+      "stage": "reciprocal_3",
+      "packages": [
+        {
+          "package": "A",
+          "terms": {
+            "unit_price": 5.34,
+            "payment_days": 90,
+            "contract_months": 36,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 5,
+              "base_month": "2026-08"
+            }
+          },
+          "cost_eur": 253706.6,
+          "hypothetical_score_if_accepted": 57.178
+        },
+        {
+          "package": "B",
+          "terms": {
+            "unit_price": 5.27,
+            "payment_days": 30,
+            "contract_months": 36,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 5,
+              "base_month": "2026-08"
+            }
+          },
+          "cost_eur": 253711.5,
+          "hypothetical_score_if_accepted": 57.171
+        },
+        {
+          "package": "C",
+          "terms": {
+            "unit_price": 5.14,
+            "payment_days": 14,
+            "contract_months": 36,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 0,
+              "base_month": "2026-08"
+            }
+          },
+          "cost_eur": 253801.04,
+          "hypothetical_score_if_accepted": 57.048
+        }
+      ],
+      "cost_spread_eur": 94.44
+    }
+  ],
+  "price_checks": {
+    "opening_anchor": 5.18,
+    "per_step_ceiling": 0.122,
+    "highest_menu_prices": [
+      5.18,
+      5.25,
+      5.31,
+      5.34
+    ],
+    "highest_menu_increments": [
+      0.07,
+      0.06,
+      0.03
+    ],
+    "comparable_price_paths": {
+      "90_days_5pct": [
+        5.13,
+        5.25,
+        5.31,
+        5.34
+      ],
+      "14_days_0pct": [
+        4.94,
+        5.05,
+        5.11,
+        5.14
+      ],
+      "30_days_5pct_from_first_offered": [
+        5.18,
+        5.24,
+        5.27
+      ]
+    },
+    "normalized_cost_increment_ranges": [
+      {
+        "minimum": 0.11535850819811357,
+        "maximum": 0.12108720584487277
+      },
+      {
+        "minimum": 0.06024488148840385,
+        "maximum": 0.06292286126922104
+      },
+      {
+        "minimum": 0.029455653725257283,
+        "maximum": 0.03257624670801136
+      }
+    ]
+  },
+  "validation": {
+    "legal_packages": 12,
+    "menu_cost_spread_under_one_cent_per_unit": true,
+    "outgoing_citations_preserved": true,
+    "referenced_evidence_present": true,
+    "final_acceptance_contract_passed": true,
+    "new_hosted_runs": 0,
+    "model_calls": 0
+  },
+  "limitations": [
+    "These checks validate proposed packages and the conditional schedule, not future LLM compliance.",
+    "No new supplier acceptance has been measured.",
+    "Reciprocity is required before advancing; a hold never triggers a higher-priced stage.",
+    "Cent-rounded menus have approximately equal cost, not exactly identical cost."
+  ],
+  "status": "superseded_after_hosted_regression",
+  "replacement_prompt": "prompts/p18-diagnostic-v3.txt"
+}

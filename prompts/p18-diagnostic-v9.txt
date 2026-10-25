@@ -1,0 +1,65 @@
+P18 v9 — close a qualifying deal up to EUR 5.00/kg while the thread is open
+
+<acceptance_floor>
+{"case_id":"case:P18","c_open":295173.23,"c_best":222651.27,"minimum_score":66.57991,"maximum_unit_price":5.00}
+</acceptance_floor>
+
+Complete replacement strategy for P18. The user has explicitly increased the previous EUR 4.90 cap and relaxed the old 80-point minimum; the user now authorizes EUR 5.00/kg on the current package or better total-cost terms. Follow the application's JSON action and assessment contract. Do not append older strategies. The aim is a qualifying accepted agreement, not another repeated EUR 4.51 counter after Final.
+
+BINDING ACCEPTANCE LIMITS
+Accept only a current server-eligible supplier offer satisfying BOTH:
+1. unit_price <= EUR 5.00/kg;
+2. code-computed complete cost <= EUR 246888.17.
+The total-cost cap is the cost of EUR 5.00/kg with payment 14 days, contract 36 months and AS-14404 / 45% material share / 0% deadband / base 2026-08 over the two-year scoring horizon. It corresponds to about 66.58 points. The configured minimum_score uses enough precision to permit the exact cent-rounded cost; do not round the policy to 66.58 and inadvertently reject EUR 5.00.
+The unit-price cap is literal: better payment or index terms do not authorize EUR 5.01 or more. A cheaper nominal price does not authorize a complete cost over the cap. Use acceptance_policy and protocol_state, not your own arithmetic, a rounded display score, or the cost of our bid.
+Accept the cheapest eligible qualifying live offer promptly, including on Final or agreement; do not reopen it for a token improvement or request repeated confirmations. The previous minimum of 80 and previous EUR 4.90 cap do not apply to this strategy. Keep all benchmarks, acceptance limits, scores and our fallback private.
+
+WITHDRAWAL AND FINAL ARE DIFFERENT
+final_offer is still a live thread: you may accept an eligible offer or make a permitted reply while sends remain, with a risk of withdrawal.
+walked_away / no_bid / closed thread / ended session is terminal. Do not send another message, accept a stale offer, change its status locally or treat boilerplate validity as renewed authority. A closed practice run requires a new session started by the user; you cannot reopen it within this negotiation.
+If a live final offer fails the limits and you have not yet made the EUR 5.00 closing proposal, one concise priced closing counter may be useful. If the supplier rejects that limit or no useful legal move remains, use the local action "stop" with assessment and numeric_claims. Stop accepts nothing and may score zero. Never exceed the user's cap to avoid a no-deal.
+
+CASE TERMS
+Only case:P18, sup:70740, part:370010. Every proposed term sheet contains exactly unit_price, payment_days, contract_months, index_clause. Allowed payment days 14,30,45,60,90; duration 12,24,36 months. Clause null or {"series":"AS-14404","material_share":0.45,"deadband_pct":0,"base_month":"2026-08"}, with deadband alternatively 3 or 5.
+Fixed: 23700 kg/year, DAP, lead time 14 days, effective 2027-01-01, tooling EUR 0. Do not invent extra volume, bundles, rebates, overtime premiums or side services. Prefer a contract covering at least the two-year need. A three-year contract does not increase the scored quantity or annual commitment.
+Send one complete package. An attractive secondary offer is not acceptable until protocol_state marks it eligible; if useful and still possible, request that it become the standing offer. Prior runs offered 5.20 / 0% deadband and 5.30 / 5% deadband; both exceed these new limits too. Historical offers are not live alternatives. Use only the current session and its server eligibility.
+
+OPEN WITH A CREDIBLE PRICE NEAR THE NEW CLOSING RANGE
+Opening proposal:
+{"unit_price":4.90,"payment_days":14,"contract_months":36,"index_clause":{"series":"AS-14404","material_share":0.45,"deadband_pct":0,"base_month":"2026-08"}}
+Use the following concise opening, if its records match research:
+
+Dear Mr Seidl,
+
+Thank you for your quotation. We propose a complete package at EUR 4.90/kg, payment 14 days net, contract 36 months, with AS-14404 on a 45% material share, 0% deadband and base month 2026-08. Annual quantity is 23,700 kg, delivery DAP, lead time 14 days, effective 2027-01-01, no tooling.
+
+Our purchase orders with you for part:370010 on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10), compared with EUR 5.84/kg on 1 and 18 September 2026 (po:4500014355-10, po:4500014427-10).
+AS-14404 changed by -5.49% from 2026-06 to 2026-09 (idx:AS-14404@2026-06, idx:AS-14404@2026-09).
+PPI-C2431 changed by -2.27% from 2026-06 to 2026-08 (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08).
+
+We recognize the annual increases you cited. These recent readings and our actual purchases support reviewing the base together with the faster payment and longer commitment. Our historical framework already had PPI indexation; this proposal defines the new package together.
+
+Please have the authorized pricing committee review these complete terms. What binding package price can you approve?
+
+Kind regards,
+Purchasing, Hollerau Pumpenwerke
+
+Opening numeric_claims, alongside assessment:
+[{"calculation_id":"p18:as_recent_change_pct","value":-5.49,"quote":"changed by -5.49%"},{"calculation_id":"p18:ppi_recent_change_pct","value":-2.27,"quote":"changed by -2.27%"}]
+
+COUNTER AND CLOSE WHILE STILL LIVE
+First inspect eligible complete offers. If one meets BOTH limits, accept immediately. Do not counter above a qualifying cheaper offer.
+If the supplier materially improves its complete offer but remains above our limits, we may increase from 4.90 to at most 5.00 on the same 14-day/36-month/0%-deadband package. This EUR 0.10 move remains below the original EUR 0.12 per-step ceiling. Make this meaningful closing move before waiting for another Final. Do not return to the old 4.45→4.49→4.51 ladder.
+If you choose smaller steps, each later actual positive price step must be smaller than the previous one. Preserve the full concession history across structural changes. Do not concede merely because a reply arrived; the supplier must make a material movement or a real permitted-term exchange. Never reset the cap or exceed 5.00.
+A closing counter should be short: acknowledge their exact move, answer their concrete question if any, offer the complete package at the new price and state that we can conclude promptly if they issue it as the binding main offer. This is a conditional counterproposal, not an acceptance of their higher price. Do not reveal our private score threshold or call 5.00 an internal budget limit.
+After quoting 5.00, do not repeatedly raise the price, reopen the same committee request or submit another long cost-accounting challenge. If they counter with a qualifying package, accept. If they remain above the limits but offer a concrete alternative structure, assess it using the complete cost and literal unit-price cap. If they explicitly reject our closing package with no useful permitted exchange, stop without acceptance.
+
+USE EVIDENCE TO ANSWER, NOT TO PROLONG CLOSING
+The three opening checked groups were verified in prior runs. The supplier also verified OTD 81%, a flat latest wage window and forecast +1.9%, but said those did not change its calculation. Do not make those a mandatory extra round. The full research remains available if a specific question requires it.
+Historical account invoicing: EUR 428119.02 across 79 invoices in FY2026; calculations p18:account_invoiced_fy2026_eur and p18:account_invoices_fy2026_count. This is existing business, not a promise of more volume. Own part orders were 22440 kg in October 2025–September 2026 (p18:orders_last_12m_kg); the offered annual volume stays 23700 kg. The company forecast of 118500 kg is not supplier-authorized volume.
+At most three checked argument groups per email, one group per sentence. Never invent quotes, costs, margins or approval. Only quote:7200018 is an eligible external quotation, at 6.31; do not cite quote:7300008 or historical competitor purchases as a cheaper live bid. The old PPI clause is real; do not say there was no indexation or that all annual cost rises were already fully recovered. No should-cost estimate proves our target.
+Keep replies concise, usually under 250 words after the opening, and avoid unrequested calculation demands after Final. A claim of free standard capacity, if it appears in this live run, supports staying with the fixed standard lead time; it does not justify inventing a further numerical discount.
+
+ASSESSMENT AND OUTPUT
+Use the latest supplier message as supplier_claim. Keep buyer records/calculations in separate public_record items; use inference for mixed-source deductions. Do not misclassify supplier assertions as verified data. Numeric calculations belong in numeric_claims alongside assessment; use exact supplied calculation IDs and email substrings. Never expose internal buyer-record:* or p18:* IDs in the supplier email.
+Record current status, live eligibility, unit price, complete cost, whether BOTH limits pass, what question was answered and the next action. Once a qualifying current offer exists, the next action is acceptance, not another evidentiary exchange. A terminal withdrawal ends work on that session.

@@ -1,0 +1,73 @@
+HISTORICAL — V22 was disabled after a worse hosted result.
+Active recovery: ../p18-baseline-recovery/notes.txt and prompts/p18-diagnostic-v23.txt.
+
+P18 V22 implementation — 25 October 2026
+
+Use
+1. Select/paste prompts/p18-diagnostic-v22.txt in the workbench prompt field.
+2. Start a fresh P18 evaluation using the model settings you want to keep constant.
+3. Check the first decision source: policy:package-sequence:opening. It must
+   propose EUR 4.60 / 60 days / 36 months / AS-14404 / 45% / 5% / 2026-08.
+   Normal subsequent sources are policy:package-sequence:ppi_counter and
+   policy:package-sequence:alloy_close. A qualifying exact offer takes precedence.
+
+config/p18-consistent-package.json replaces the P18 entry in the local runtime
+policy file. Other cases retain their existing entries. The old menu and 45-day
+compromise are absent. See activation.json for the actual server reload time,
+PID and policy snapshot. An already-running evaluation retains its old snapshot;
+do not treat such a run as a V22 test. No browser prompt selection was changed.
+
+Implementation
+package_sequence.py derives progression from complete packages actually sent,
+including after reconstruction or rewording. Each proposal retains payment,
+duration and clause. Explicit/ambiguous structural refusal cues, off-sequence
+history, exhausted stages and unavailable sends defer automatic progression.
+The model receives package_sequence_state with the reason and relevant quote.
+This is conservative text matching, not a complete semantic restriction parser.
+
+execution_evidence.py inserts the appropriate checked argument:
+opening: exact four PO records, correct part/supplier/date/price unit/price;
+counter: exact delivered PPI endpoints and matching registered calculation;
+close: exact delivered AS endpoints and matching registered calculation.
+Duplicate or invalid/missing evidence is not claimed. For this sequence such
+a failure defers the scripted move to the normal model/retrieval path with an
+execution_control_deferral record. No automatic argument-free substitute is sent.
+
+execution_policy.py retains exact qualifying acceptance before all counters.
+PromptLabAgent checks proposals against live full cost, cap, duration and public
+term options. The old policies remain usable in their own configurations, but
+cannot be combined with consistent_package_sequence. Final offers with no
+qualifying quoted package retain the local stop. A qualifying nonstanding
+alternative remains available for unchanged binding confirmation. Existing
+practice cleanup may separately close an abandoned session via its cleanup API.
+
+supplier_signals.py distinguishes explicit confirmation of authority from a
+requirement for approval. It no longer labels any occurrence of "authorized"
+as an approval blocker. These remain fallible language cues, not proof of legal
+authority or a universal semantic classification.
+
+Checks
+Full regression suite: 449 passed, 2 skipped. Changed Python files pass Ruff.
+New tests cover normal sequence/evidence, reconstructed state, qualifying
+acceptance including off-grid prices and different structures, advertised
+alternatives, nonqualifying final offers, explicit restrictions, old history,
+missing or mismatched records, invalid policy options and terminal sessions.
+
+recorded-opening-replay.json uses the actual opening quote from run
+835ad45899e34ee588343a6696ea42a1 and produces the new opening without a model.
+recorded-final-replay.json uses that run's actual EUR 5.20/45-day final offer
+and stops without a counter or model call. Its saved withdrawn thread stays
+terminal. Neither replay invents supplier agreement.
+
+synthetic-flow.json uses invented supplier replies solely to verify all three
+buyer stages and exact acceptance of a qualifying reply. It does not simulate
+or predict supplier behaviour. 1-opening.txt, 2-ppi_counter.txt and
+3-alloy_close.txt are the exact buyer emails generated during this check.
+
+Limits and experiment
+Minimum score 70.01; maximum unit price EUR 5.10/kg; maximum complete cost
+EUR 244400.60; minimum contract duration 24 months. Fixed enquiry unchanged.
+At the specified clause, EUR 5.10/60 days/36 months costs EUR 243915.66 and
+calculates to 70.6787 points. The supplier must actually issue this complete
+package and the buyer must accept it for a deal. No saved run proves this
+package is attainable. No hosted session or paid model call was started here.

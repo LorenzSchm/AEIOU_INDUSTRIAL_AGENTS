@@ -1,0 +1,149 @@
+{
+  "evaluation_id": "0a1d51acebdc4bd4bf89300321ef59c8",
+  "rows": [
+    {
+      "repeat": 1,
+      "run_id": "28e31cf928424ac596ee9b1c24381f23",
+      "session_id": "af0f8f48ac22ebb2",
+      "status": "failed",
+      "error": "NegotiationBlocked: FINAL_OFFER_OUTSIDE_LIMITS",
+      "deal": false,
+      "official_score": 0.0,
+      "last_quote": [
+        {
+          "unit_price": 5.2,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ],
+      "menu_reply": [
+        {
+          "unit_price": 5.4,
+          "payment_days": 60,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.3,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "repeat": 2,
+      "run_id": "a95dfd61ab8a445eb2b2be873362df03",
+      "session_id": "c501ef6a75a4ff34",
+      "status": "failed",
+      "error": "NegotiationBlocked: FINAL_OFFER_OUTSIDE_LIMITS",
+      "deal": false,
+      "official_score": 0.0,
+      "last_quote": [
+        {
+          "unit_price": 5.2,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ],
+      "menu_reply": [
+        {
+          "unit_price": 5.4,
+          "payment_days": 60,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.3,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    },
+    {
+      "repeat": 3,
+      "run_id": "2e9ef8510ac644afa58cd2e0e16acd29",
+      "session_id": "318588f2eed71e95",
+      "status": "completed",
+      "error": null,
+      "deal": true,
+      "official_score": 0.6845646477287703,
+      "last_quote": [
+        {
+          "unit_price": 5.1,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ],
+      "menu_reply": [
+        {
+          "unit_price": 5.3,
+          "payment_days": 60,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        },
+        {
+          "unit_price": 5.2,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5.0,
+            "base_month": "2026-08"
+          },
+          "contract_months": 36
+        }
+      ]
+    }
+  ],
+  "deals": 1,
+  "attempts": 3,
+  "baseline_official_points": 68.45646477287703,
+  "candidate_rejected": true,
+  "runtime_policy_restored_to": "config/p18-accept-510.json",
+  "inference": "Removing the 14-day menu option coincided with higher price responses in two of three runs. Small sample; cannot isolate a private causal rule. Keep the demonstrated baseline."
+}

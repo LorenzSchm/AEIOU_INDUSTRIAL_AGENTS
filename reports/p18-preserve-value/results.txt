@@ -1,0 +1,22 @@
+P18 V26 trial — rejected; V25 restored
+
+Three P18 hosted sessions, same Opus High / Fast settings as the achieved baseline.
+Run 1: final 5.20 / 30 days / 5%, local stop; remote cleanup records no deal.
+Run 2: final 5.20 / 30 days / 5%, local stop; remote cleanup records no deal.
+Run 3: accepted 5.10 / 30 days / 5%, official score 68.4565.
+The dashboard's completed-run mean includes only run 3. It is not a 3/3 success.
+
+Removing the 14-day/3% menu option did not improve performance. V25's full menu
+and active policy were restored; no additional runs were launched. The three
+sessions and all outcomes are recorded in results.json. No user price cap or
+acceptance rule was relaxed to rescue the failed variant.
+
+The data suggest retaining the early option as bargaining currency rather than
+assuming that its absence improves the outcome. This small sample does not
+establish a universal supplier rule or a causal price premium.
+
+The next prompt-only candidate is V27. It retains V25's entire early menu and
+adds an explicit instruction against equal-price faster-payment alternatives
+in later counters. No new controller, strict score floor or term restriction is
+introduced. Actual qualifying supplier counteroffers remain acceptable unchanged.
+V27 has not been tested against the hosted supplier in this turn.

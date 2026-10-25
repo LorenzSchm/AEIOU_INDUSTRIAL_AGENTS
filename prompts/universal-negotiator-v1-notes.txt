@@ -1,0 +1,81 @@
+Universal negotiator v1 — provenance and integration notes
+Prepared 25 October 2026, Europe/Berlin.
+
+The strategy is a new candidate, not a measured performance improvement. No paid
+model calls, new hosted sessions, active prompt changes or runtime policy changes
+were made to prepare it. It contains no supplier identity, practice-case price,
+fixed evidence sequence or historical benchmark ceiling.
+
+Reviewed evidence and resulting general rules
+
+reports/practice-prompt-b-2026-10-24/findings.txt
+The ten-case review supports full-cost package comparisons, correct payment/price
+trade direction, adaptation to the case goal, consistent closing, explicit RFQ
+exploration, numerical checks and messages that do something new. All ten cases
+closed and met must-haves, so useful agreement discipline is preserved. One run
+per case does not establish the causal effect of alternative tactics.
+
+reports/p18-deep-review/findings.txt
+docs/p18-data-pipeline.txt
+reports/evidence-pipeline/audit.json
+Distinguish collected, delivered, partially read and fully read evidence; scope
+claims correctly; retrieve only relevant missing material; separate verification
+from persuasion; distinguish calculated proposals from live acceptance-eligible
+offers. Historical approval notes do not establish current authority. Late
+requests can trigger withdrawal despite courteous wording.
+
+P18 recent chat and reports/p18-five-percent-menu/v29-followup-failure.json
+Removing a payment option or improving several requested terms simultaneously
+did not consistently improve outcomes. The observed difference between similar
+runs does not identify its cause. Retain useful reciprocal options and avoid
+case-specific scripted menus in a universal prompt.
+
+reports/p10-capacity-v1/notes.txt
+reports/p10-target72/completion-audit.json
+prompts/p10-capacity-v39.txt
+Value capacity and delivery flexibility; retain permitted supplier defaults;
+recognize obligations beyond the scoring horizon. Exact source delivery fixes
+an information path but does not guarantee commercial movement. The verified
+70.21 best and unmet 72 goal are observations, not evidence of a private floor.
+
+README.md (local planning evaluation)
+Additional lookahead did not pass the declared promotion criteria. The prompt
+therefore asks for compact state and concrete useful next moves, without making
+expensive search or elaborate nine-section preparation mandatory.
+
+Current runtime integration
+
+Use universal-negotiator-v1.txt as strategy text with the editable eval/neutral
+adapter. Let the adapter supply its actual action schema, current protocol state,
+case data, calculation results and evidence interface. This strategy does not
+require a new action schema or the original five-confirmation controller.
+
+The eval runner loads saved case execution controls before starting:
+src/aeiou/eval_suite.py: prepare_evaluation.
+src/aeiou/execution_policy.py: validate_policy.
+The integration now derives case-scoped absolute acceptance limits from the saved
+controls when the strategy contains no acceptance_floor block. The shared text
+stays unchanged across cases. Each run snapshots and enforces its own price and
+complete-cost caps, plus the existing duration and execution rules. Cases without
+saved controls do not inherit another case's limits. No benchmark score is
+invented from absolute cost limits. An explicit prompt floor must still match
+the saved controls; a conflicting floor fails before a hosted session starts.
+Those controls can also force menus and acceptance, so a run retaining them is
+not a pure universal-strategy evaluation.
+
+SYSTEM_PROMPT.md and saved controls were not replaced. The same strategy can be
+reused across cases, but correct evidence delivery, numerical validation and
+case-specific authorization remain controller responsibilities. Offline tests
+cover mixed-case launch, snapshots, exact acceptance, cap enforcement at transport,
+conflicting limits and the browser's launch API. These are correctness checks,
+not evidence of negotiation performance.
+
+Suggested evaluation, not executed
+
+Compare the saved baseline and this candidate across the same available case
+families with repeated runs and matched provider/model/effort/controller/data
+settings. Preserve failures and all attempts. Report mean and per-case results,
+agreement and must-have rates, timeouts, repairs, costs and sample size. Keep
+replay/contract checks distinct from fresh supplier tests. Use unseen cases or
+fresh seeds where available and disclose which are actually held out. A local
+simulator, a single success or a peak score does not establish generalization.

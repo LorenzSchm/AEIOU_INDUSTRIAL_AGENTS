@@ -1,0 +1,112 @@
+{
+  "status": "completed",
+  "started_at": "2026-10-24T14:20:15.665592+00:00",
+  "prior_attempts": 8,
+  "new_attempt_limit": 12,
+  "total_attempt_cap": 20,
+  "arena_sessions_used": 0,
+  "run_ids": [
+    "b3b02cad362742f3ac0ce94ed60f59d0",
+    "174ff983fa43499a99011b6266d3b17e",
+    "7cf7bfc755aa4764a1737a04b5ad96a1",
+    "6aa922204c7c4310bd9c3e5947146fe6",
+    "3813b9489b86400c82f60a87697621ce",
+    "7c72ee30c8f64b1da3a0b981711c6fc9",
+    "ca485a760b7f400cba58beda31330d66",
+    "282064dd65f64cf48c477856245d60f4",
+    "bbc140426171430f8213e8a25461c937",
+    "4671a027a2914879b75d6d06c08d0dd9",
+    "ece73f8ca94d4ffb97f7ae945accc481",
+    "0b83dc6c859241749a3df22cecd5c992"
+  ],
+  "plan": [
+    [
+      "case:P01",
+      "relationship",
+      701
+    ],
+    [
+      "case:P02",
+      "cashflow",
+      702
+    ],
+    [
+      "case:P03",
+      "hardliner",
+      703
+    ],
+    [
+      "case:P04",
+      "index_skeptic",
+      704
+    ],
+    [
+      "case:P05",
+      "adversarial",
+      705
+    ],
+    [
+      "case:P07",
+      "relationship",
+      706
+    ],
+    [
+      "case:P08",
+      "cashflow",
+      707
+    ],
+    [
+      "case:P10",
+      "hardliner",
+      708
+    ],
+    [
+      "case:P11",
+      "index_skeptic",
+      709
+    ],
+    [
+      "case:P18",
+      "adversarial",
+      710
+    ],
+    [
+      "case:P05",
+      "adversarial",
+      805
+    ],
+    [
+      "case:P11",
+      "index_skeptic",
+      809
+    ]
+  ],
+  "report_path": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/reports/local-evaluations/20261024T142015677437-current-prompt-12/report.json",
+  "summary": {
+    "runs": 12,
+    "completed": 0,
+    "failures": 12,
+    "scored_runs": 12,
+    "mean_score": 0,
+    "completed_mean_score": null,
+    "deals": 0,
+    "must_have_violations": 0,
+    "calls": 15,
+    "provider_errors": 12,
+    "provider_refusals": 12,
+    "output_tokens": 3787,
+    "format_repairs": 0,
+    "fallbacks": 0,
+    "verbatim_request_runs": 2,
+    "verbatim_ignoring_whitespace_runs": 2,
+    "calibrated_question_messages": 0,
+    "confirmation_messages": 0,
+    "walk_away_reasons": {},
+    "accepts_before_five_repeats": 0,
+    "decisions_over_60s": 0,
+    "mean_runtime_s": 5.6049999999999995,
+    "supplier_failures": 0,
+    "supplier_calls": 3
+  },
+  "finished_at": "2026-10-24T14:20:49.068589+00:00"
+}

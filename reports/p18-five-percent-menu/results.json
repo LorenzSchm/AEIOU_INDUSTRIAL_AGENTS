@@ -1,0 +1,73 @@
+{
+  "evaluation_id": "25980bae7a3a4948b1e751bed12df1c5",
+  "run_id": "9c825f8215cf47289d0376441a7acd8e",
+  "session_id": "f48f459c8299a22e",
+  "official_result": {
+    "ended": true,
+    "deal": true,
+    "supplier_id": "sup:70740",
+    "offer_id": "offer:70740-3",
+    "terms": {
+      "payment_days": 30,
+      "lead_time_days": 14,
+      "volume_per_year": 23700,
+      "contract_months": 36,
+      "effective_date": "2027-01-01",
+      "index_clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5.0,
+        "base_month": "2026-08"
+      },
+      "incoterm": "DAP",
+      "tooling_eur": 0.0,
+      "ppm_commitment": 70,
+      "chargeback_eur_per_complaint": 0.0,
+      "unit_price": 5.1
+    },
+    "c_open": 295173.23,
+    "c_deal": 245527.26,
+    "c_alt": 301087.96,
+    "c_best": 222651.27,
+    "score": 0.6845646477287703,
+    "must_haves_ok": true,
+    "cost_breakdown": {
+      "price": 241740.0,
+      "uncovered_need": 0.0,
+      "fallback_risk": 0.0,
+      "payment_terms": 1611.6,
+      "freight": 0.0,
+      "late_delivery": 0.0,
+      "quality": 0.0,
+      "tooling": 0.0,
+      "index_clause": 1087.83,
+      "index_risk": 1087.83,
+      "relationship": 0.0
+    }
+  },
+  "official_points": 68.45646477287704,
+  "sessions_used": 1,
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "speed": "fast",
+  "metrics": {
+    "elapsed_s": 84.16,
+    "fallbacks": 0,
+    "calls": 2,
+    "errors": 0,
+    "input_tokens": 91890,
+    "output_tokens": 4295,
+    "refusals": 0,
+    "empty_responses": 0,
+    "reasoning_tokens": 0,
+    "cached_input_tokens": 0,
+    "resolved_model": null,
+    "stop_reasons": {
+      "end_turn": 2
+    },
+    "refusal_details": []
+  },
+  "verified_cost_and_score": true,
+  "baseline_best_points": 68.45646477287703,
+  "interpretation": "Matches the achieved V25 best. One successful diagnostic, not proof of a reliability improvement or an above-70 deal."
+}

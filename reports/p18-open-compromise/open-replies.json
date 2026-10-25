@@ -1,0 +1,1938 @@
+{
+  "created_at": "2026-10-24T23:01:36.623157+00:00",
+  "mode": "offline_counterfactual",
+  "limitations": "Verifies what the buyer code would choose on recorded live states. Does not simulate supplier acceptance or predict the score of a new run.",
+  "hosted_sessions_used": 0,
+  "model_calls": 0,
+  "execution_policy": {
+    "case_id": "case:P18",
+    "accept_eligible_offers": true,
+    "closing_price": 5.09,
+    "maximum_unit_price": 5.1,
+    "maximum_total_cost": 244400.6,
+    "minimum_contract_months": 24,
+    "one_final_counter": false,
+    "adapt_closing_price_to_budget": true,
+    "early_package_alternatives": {
+      "after_buyer_proposals": 1,
+      "packages": [
+        {
+          "unit_price": 5.07,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        },
+        {
+          "unit_price": 5.05,
+          "payment_days": 14,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        },
+        {
+          "unit_price": 5.1,
+          "payment_days": 60,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        }
+      ]
+    },
+    "menu_evidence_argument": "ppi_recent_change_pct",
+    "open_payment_compromise": {
+      "unit_price": 5.09,
+      "payment_days": 45,
+      "index_clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5,
+        "base_month": "2026-08"
+      }
+    },
+    "compromise_evidence_argument": "as_recent_change_pct",
+    "stop_after_nonqualifying_final": true
+  },
+  "strategy_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/prompts/p18-diagnostic-v21.txt",
+  "policy_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/config/p18-open-compromise.json",
+  "replays": [
+    {
+      "source_run": "c206a1d4b53944e285756a588c445bda",
+      "source_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/data/local/runs/c206a1d4b53944e285756a588c445bda.json",
+      "replay_through_message": 5,
+      "then_live_offer_ids": [],
+      "counterfactual_action": {
+        "supplier_id": "sup:70740",
+        "message": {
+          "subject": "Alloy surcharge and base price for 1.4404 bar (Werdenfels)",
+          "body": "Thank you for reviewing the price and payment options with us. We appreciate your team's review.\n\nFor your review, AS-14404 changed by -5.49% from 2026-06 to 2026-09 (idx:AS-14404@2026-06, idx:AS-14404@2026-09). We recognise that this recent movement can coexist with the annual increase you described. Could you take it into account when reviewing the starting price?\n\nCould we agree the following complete compromise? EUR 5.09/kg, payment within 45 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\n\nThe price is conditional on this payment term and the complete package. This is a new proposal for your approval. The fixed terms of our enquiry remain unchanged. Could your authorised colleague issue this package as your binding offer?\n\nKind regards,\nPurchasing, Hollerau Pumpenwerke",
+          "term_sheets": [
+            {
+              "terms": {
+                "unit_price": 5.09,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                },
+                "payment_days": 45,
+                "contract_months": 36
+              }
+            }
+          ]
+        }
+      },
+      "decision": {
+        "supplier_id": "sup:70740",
+        "source": "policy:payment-compromise",
+        "action": "send",
+        "elapsed_s": 0.014,
+        "protocol_version": "faithful-v16-open-payment-compromise",
+        "rejections": [],
+        "message_index": 5,
+        "evidence_transport": {
+          "version": "evidence-transport-v3-delivery-audit",
+          "max_local_reads": 2,
+          "complete_source_count": 197,
+          "raw_payload_chars": 221803,
+          "selected_fact_count": 41,
+          "availability_note": "Deferred records remain accessible through retrieve_evidence. No arbitrary queries.",
+          "collection_issues": [],
+          "delivery_counts": {
+            "full": 100,
+            "partial": 0,
+            "deferred": 129
+          },
+          "partial_refs": [],
+          "unretrievable_refs": [],
+          "retained_pages": 0,
+          "delivered_payload_chars": 111898
+        },
+        "evidence_reads": [],
+        "model_requests": [],
+        "assessment_label_repairs": [],
+        "supplier_signals": {
+          "live": true,
+          "status": "open",
+          "tone": "unspecified",
+          "stance": "negotiating",
+          "withdrawal_risk_signal": "unknown",
+          "risk_basis": "Explicit finality or terminal status; qualitative signal, not a calibrated probability.",
+          "rounds_left": 8,
+          "rounds_note": "Remaining API sends are not a promise that the supplier will continue.",
+          "evidence": [
+            {
+              "signal": "adjustment_required",
+              "source_ref": "message:sup:70740:4",
+              "quote": "ed to build on your Option A, maintaining the 36-month contract, the AS-14404 index clause, and the 30-day payment terms. Based on these terms and the verified index data, we can offe"
+            }
+          ],
+          "primary_price_history": [
+            {
+              "unit_price": 6.1,
+              "source_ref": "message:sup:70740:0"
+            },
+            {
+              "unit_price": 5.4,
+              "source_ref": "message:sup:70740:2"
+            },
+            {
+              "unit_price": 5.3,
+              "source_ref": "message:sup:70740:4"
+            }
+          ],
+          "latest_primary_price_movement": -0.1,
+          "live_objections": [
+            "adjustment_required"
+          ],
+          "latest_stated_cost_drivers": [
+            {
+              "series": "AS-14404",
+              "annual_change_pct": 5.9,
+              "stated_cost_share_pct": 45.0,
+              "conditional_contribution_pp": 2.655
+            },
+            {
+              "series": "LCI-C",
+              "annual_change_pct": 2.7,
+              "stated_cost_share_pct": 5.0,
+              "conditional_contribution_pp": 0.135
+            },
+            {
+              "series": "PPI-C2431",
+              "annual_change_pct": 12.3,
+              "stated_cost_share_pct": 38.0,
+              "conditional_contribution_pp": 4.674
+            }
+          ],
+          "previously_cited_refs": [
+            "idx:PPI-C2431@2026-06",
+            "idx:PPI-C2431@2026-08",
+            "po:4500014022-10",
+            "po:4500014078-10",
+            "po:4500014355-10",
+            "po:4500014427-10"
+          ],
+          "supplier_questions": []
+        },
+        "price_plan": {
+          "offers": [
+            {
+              "offer_id": "offer:70740-2",
+              "unit_price": 5.3,
+              "complete_cost": 253480.98,
+              "acceptance_eligible": false,
+              "estimated_score": 57.4891,
+              "maximum_affordable_unit_price": 5.1,
+              "cost_gap_to_acceptance": 9080.38,
+              "qualifying_payment_tradeoffs": [
+                {
+                  "terms": {
+                    "unit_price": 5.05,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 14,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 243971.22,
+                  "estimated_score": 70.6021,
+                  "price_change": -0.25,
+                  "payment_days_change": -46,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                },
+                {
+                  "terms": {
+                    "unit_price": 5.07,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 30,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 244082.98,
+                  "estimated_score": 70.448,
+                  "price_change": -0.23,
+                  "payment_days_change": -30,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                },
+                {
+                  "terms": {
+                    "unit_price": 5.09,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 45,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 244241.61,
+                  "estimated_score": 70.2292,
+                  "price_change": -0.21,
+                  "payment_days_change": -15,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                },
+                {
+                  "terms": {
+                    "unit_price": 5.1,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 60,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 243915.66,
+                  "estimated_score": 70.6787,
+                  "price_change": -0.2,
+                  "payment_days_change": 0,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                },
+                {
+                  "terms": {
+                    "unit_price": 5.1,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 90,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 242304.06,
+                  "estimated_score": 72.9009,
+                  "price_change": -0.2,
+                  "payment_days_change": 30,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                }
+              ],
+              "benchmark_price_limits": [
+                {
+                  "score": 70,
+                  "unit_price_at_or_below": 5.1,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                },
+                {
+                  "score": 70.01,
+                  "unit_price_at_or_below": 5.1,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                },
+                {
+                  "score": 80,
+                  "unit_price_at_or_below": 4.95,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                },
+                {
+                  "score": 100,
+                  "unit_price_at_or_below": 4.65,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                }
+              ],
+              "budget_ceiling_package": {
+                "terms": {
+                  "unit_price": 5.1,
+                  "index_clause": {
+                    "series": "AS-14404",
+                    "material_share": 0.45,
+                    "deadband_pct": 5.0,
+                    "base_month": "2026-08"
+                  },
+                  "payment_days": 60,
+                  "contract_months": 36
+                },
+                "complete_cost": 243915.66,
+                "estimated_score": 70.6787,
+                "status": "Buyer calculation only; supplier has not offered this price."
+              },
+              "preferred_package": {
+                "terms": {
+                  "unit_price": 5.09,
+                  "index_clause": {
+                    "series": "AS-14404",
+                    "material_share": 0.45,
+                    "deadband_pct": 5.0,
+                    "base_month": "2026-08"
+                  },
+                  "payment_days": 60,
+                  "contract_months": 36
+                },
+                "complete_cost": 243437.39,
+                "within_buyer_limits": true
+              }
+            },
+            {
+              "offer_id": "offer:70740-2-a",
+              "unit_price": 5.2,
+              "complete_cost": 250341.52,
+              "acceptance_eligible": false,
+              "estimated_score": 61.8181,
+              "maximum_affordable_unit_price": 5.07,
+              "cost_gap_to_acceptance": 5940.92,
+              "qualifying_payment_tradeoffs": [
+                {
+                  "terms": {
+                    "unit_price": 5.05,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 14,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 243971.22,
+                  "estimated_score": 70.6021,
+                  "price_change": -0.15,
+                  "payment_days_change": -16,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                },
+                {
+                  "terms": {
+                    "unit_price": 5.07,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 30,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 244082.98,
+                  "estimated_score": 70.448,
+                  "price_change": -0.13,
+                  "payment_days_change": 0,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                },
+                {
+                  "terms": {
+                    "unit_price": 5.09,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 45,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 244241.61,
+                  "estimated_score": 70.2292,
+                  "price_change": -0.11,
+                  "payment_days_change": 15,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                },
+                {
+                  "terms": {
+                    "unit_price": 5.1,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 60,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 243915.66,
+                  "estimated_score": 70.6787,
+                  "price_change": -0.1,
+                  "payment_days_change": 30,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                },
+                {
+                  "terms": {
+                    "unit_price": 5.1,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 90,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 242304.06,
+                  "estimated_score": 72.9009,
+                  "price_change": -0.1,
+                  "payment_days_change": 60,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                }
+              ],
+              "benchmark_price_limits": [
+                {
+                  "score": 70,
+                  "unit_price_at_or_below": 5.07,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                },
+                {
+                  "score": 70.01,
+                  "unit_price_at_or_below": 5.07,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                },
+                {
+                  "score": 80,
+                  "unit_price_at_or_below": 4.92,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                },
+                {
+                  "score": 100,
+                  "unit_price_at_or_below": 4.62,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                }
+              ],
+              "budget_ceiling_package": {
+                "terms": {
+                  "unit_price": 5.07,
+                  "index_clause": {
+                    "series": "AS-14404",
+                    "material_share": 0.45,
+                    "deadband_pct": 5.0,
+                    "base_month": "2026-08"
+                  },
+                  "payment_days": 30,
+                  "contract_months": 36
+                },
+                "complete_cost": 244082.98,
+                "estimated_score": 70.448,
+                "status": "Buyer calculation only; supplier has not offered this price."
+              },
+              "preferred_package": {
+                "terms": {
+                  "unit_price": 5.09,
+                  "index_clause": {
+                    "series": "AS-14404",
+                    "material_share": 0.45,
+                    "deadband_pct": 5.0,
+                    "base_month": "2026-08"
+                  },
+                  "payment_days": 30,
+                  "contract_months": 36
+                },
+                "complete_cost": 245045.83,
+                "within_buyer_limits": false
+              }
+            }
+          ],
+          "best_eligible_offer_id": null
+        },
+        "assessment": {
+          "observed_message": "message:sup:70740:4",
+          "changes": [
+            "Reviewed the current offer against the explicit execution controls."
+          ],
+          "open_questions": [
+            "Will the supplier issue the authorized closing package?"
+          ],
+          "response_to_last_move": "Current structured terms and live eligibility determine the available action.",
+          "adaptation": "Send the new payment compromise while the supplier remains open and add the checked, unused AS window; do not reserve it for a final offer or treat it as proof of the supplier's minimum price.",
+          "next_move": "Send the qualifying payment compromise with checked AS evidence once.",
+          "evidence": [
+            {
+              "claim": "The supplier supplied the current offer being evaluated.",
+              "kind": "supplier_claim",
+              "source_refs": [
+                "message:sup:70740:4"
+              ],
+              "confidence": "high"
+            },
+            {
+              "claim": "AS-14404 changed by -5.49% from 2026-06 to 2026-09 (idx:AS-14404@2026-06, idx:AS-14404@2026-09).",
+              "kind": "public_record",
+              "source_refs": [
+                "idx:AS-14404@2026-06",
+                "idx:AS-14404@2026-09"
+              ],
+              "confidence": "high"
+            }
+          ]
+        },
+        "assessment_version": "supplier-assessment-v2-source-labels",
+        "numeric_checks": [
+          {
+            "calculation_id": "p18:as_recent_change_pct",
+            "value": -5.4945,
+            "quote": "changed by -5.49%",
+            "description": "AS-14404 percentage change 2026-06 to 2026-09; not an annual change",
+            "source_refs": [
+              "idx:AS-14404@2026-06",
+              "idx:AS-14404@2026-09"
+            ]
+          }
+        ],
+        "economics": {
+          "supplier_change": {
+            "from_ref": "message:sup:70740:2",
+            "to_ref": "message:sup:70740:4",
+            "cost_delta": -15387.62,
+            "term_changes": [
+              {
+                "term": "unit_price",
+                "before": 5.4,
+                "after": 5.2
+              },
+              {
+                "term": "index_clause",
+                "before": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 0.0,
+                  "base_month": "2026-08"
+                },
+                "after": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5.0,
+                  "base_month": "2026-08"
+                }
+              }
+            ]
+          },
+          "buyer_change": {
+            "from_ref": "message:sup:70740:1",
+            "to_ref": "message:sup:70740:3",
+            "cost_delta": 17553.8,
+            "term_changes": [
+              {
+                "term": "payment_days",
+                "before": 30,
+                "after": 60
+              },
+              {
+                "term": "unit_price",
+                "before": 4.6,
+                "after": 5.1
+              },
+              {
+                "term": "index_clause",
+                "before": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 0,
+                  "base_month": "2026-08"
+                },
+                "after": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                }
+              }
+            ]
+          },
+          "current_best_valid_offer": {
+            "terms": {
+              "volume_per_year": 23700,
+              "contract_months": 36,
+              "payment_days": 30,
+              "lead_time_days": 14,
+              "incoterm": "DAP",
+              "ppm_commitment": 70,
+              "chargeback_eur_per_complaint": 0.0,
+              "effective_date": "2027-01-01",
+              "tooling_eur": 0,
+              "unit_price": 5.2,
+              "index_clause": {
+                "series": "AS-14404",
+                "material_share": 0.45,
+                "deadband_pct": 5.0,
+                "base_month": "2026-08"
+              }
+            },
+            "cost": 250341.52,
+            "must_haves_ok": true,
+            "term_sheet_id": "offer:70740-2-a",
+            "breakdown": {
+              "price": 246480.0,
+              "uncovered_need": 0.0,
+              "fallback_risk": 0.0,
+              "payment_terms": 1643.2,
+              "freight": 0.0,
+              "late_delivery": 0,
+              "quality": 0.0,
+              "tooling": 0.0,
+              "index_clause": 1109.16,
+              "index_risk": 1109.16,
+              "relationship": 0.0
+            }
+          },
+          "cost_basis": "Public case formula; excludes unknown private supplier relationship costs."
+        },
+        "execution_evidence": {
+          "argument_id": "as_recent_change_pct",
+          "source_refs": [
+            "idx:AS-14404@2026-06",
+            "idx:AS-14404@2026-09"
+          ],
+          "calculation_id": "p18:as_recent_change_pct",
+          "status": "included",
+          "value": -5.49,
+          "quote": "changed by -5.49%"
+        }
+      },
+      "local_stop": null,
+      "price_plan": {
+        "basis": "Public total-cost formula and explicit buyer limits; no private supplier costs or reservation price.",
+        "needed_quantity": 47400,
+        "horizon_years": 2,
+        "preferred_closing_price": 5.09,
+        "ideal_price": null,
+        "ideal_price_status": "Not identifiable from public data: the supplier's feasible minimum is unknown.",
+        "suppliers": {
+          "sup:70740": {
+            "offers": [
+              {
+                "offer_id": "offer:70740-2",
+                "unit_price": 5.3,
+                "complete_cost": 253480.98,
+                "acceptance_eligible": false,
+                "estimated_score": 57.4891,
+                "maximum_affordable_unit_price": 5.1,
+                "cost_gap_to_acceptance": 9080.38,
+                "qualifying_payment_tradeoffs": [
+                  {
+                    "terms": {
+                      "unit_price": 5.05,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 14,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 243971.22,
+                    "estimated_score": 70.6021,
+                    "price_change": -0.25,
+                    "payment_days_change": -46,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  },
+                  {
+                    "terms": {
+                      "unit_price": 5.07,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 30,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 244082.98,
+                    "estimated_score": 70.448,
+                    "price_change": -0.23,
+                    "payment_days_change": -30,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  },
+                  {
+                    "terms": {
+                      "unit_price": 5.09,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 45,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 244241.61,
+                    "estimated_score": 70.2292,
+                    "price_change": -0.21,
+                    "payment_days_change": -15,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  },
+                  {
+                    "terms": {
+                      "unit_price": 5.1,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 60,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 243915.66,
+                    "estimated_score": 70.6787,
+                    "price_change": -0.2,
+                    "payment_days_change": 0,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  },
+                  {
+                    "terms": {
+                      "unit_price": 5.1,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 90,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 242304.06,
+                    "estimated_score": 72.9009,
+                    "price_change": -0.2,
+                    "payment_days_change": 30,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  }
+                ],
+                "benchmark_price_limits": [
+                  {
+                    "score": 70,
+                    "unit_price_at_or_below": 5.1,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  },
+                  {
+                    "score": 70.01,
+                    "unit_price_at_or_below": 5.1,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  },
+                  {
+                    "score": 80,
+                    "unit_price_at_or_below": 4.95,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  },
+                  {
+                    "score": 100,
+                    "unit_price_at_or_below": 4.65,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  }
+                ],
+                "budget_ceiling_package": {
+                  "terms": {
+                    "unit_price": 5.1,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 60,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 243915.66,
+                  "estimated_score": 70.6787,
+                  "status": "Buyer calculation only; supplier has not offered this price."
+                },
+                "preferred_package": {
+                  "terms": {
+                    "unit_price": 5.09,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 60,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 243437.39,
+                  "within_buyer_limits": true
+                }
+              },
+              {
+                "offer_id": "offer:70740-2-a",
+                "unit_price": 5.2,
+                "complete_cost": 250341.52,
+                "acceptance_eligible": false,
+                "estimated_score": 61.8181,
+                "maximum_affordable_unit_price": 5.07,
+                "cost_gap_to_acceptance": 5940.92,
+                "qualifying_payment_tradeoffs": [
+                  {
+                    "terms": {
+                      "unit_price": 5.05,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 14,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 243971.22,
+                    "estimated_score": 70.6021,
+                    "price_change": -0.15,
+                    "payment_days_change": -16,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  },
+                  {
+                    "terms": {
+                      "unit_price": 5.07,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 30,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 244082.98,
+                    "estimated_score": 70.448,
+                    "price_change": -0.13,
+                    "payment_days_change": 0,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  },
+                  {
+                    "terms": {
+                      "unit_price": 5.09,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 45,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 244241.61,
+                    "estimated_score": 70.2292,
+                    "price_change": -0.11,
+                    "payment_days_change": 15,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  },
+                  {
+                    "terms": {
+                      "unit_price": 5.1,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 60,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 243915.66,
+                    "estimated_score": 70.6787,
+                    "price_change": -0.1,
+                    "payment_days_change": 30,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  },
+                  {
+                    "terms": {
+                      "unit_price": 5.1,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 90,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 242304.06,
+                    "estimated_score": 72.9009,
+                    "price_change": -0.1,
+                    "payment_days_change": 60,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  }
+                ],
+                "benchmark_price_limits": [
+                  {
+                    "score": 70,
+                    "unit_price_at_or_below": 5.07,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  },
+                  {
+                    "score": 70.01,
+                    "unit_price_at_or_below": 5.07,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  },
+                  {
+                    "score": 80,
+                    "unit_price_at_or_below": 4.92,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  },
+                  {
+                    "score": 100,
+                    "unit_price_at_or_below": 4.62,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  }
+                ],
+                "budget_ceiling_package": {
+                  "terms": {
+                    "unit_price": 5.07,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 30,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 244082.98,
+                  "estimated_score": 70.448,
+                  "status": "Buyer calculation only; supplier has not offered this price."
+                },
+                "preferred_package": {
+                  "terms": {
+                    "unit_price": 5.09,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 30,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 245045.83,
+                  "within_buyer_limits": false
+                }
+              }
+            ],
+            "best_eligible_offer_id": null
+          }
+        },
+        "minimum_score": 70.01,
+        "maximum_total_cost": 244400.6,
+        "score_basis": "Arithmetic estimate from the configured benchmarks; official result is server-issued."
+      },
+      "payload": {
+        "version": "evidence-transport-v3-delivery-audit",
+        "max_local_reads": 2,
+        "complete_source_count": 197,
+        "raw_payload_chars": 221803,
+        "selected_fact_count": 41,
+        "availability_note": "Deferred records remain accessible through retrieve_evidence. No arbitrary queries.",
+        "collection_issues": [],
+        "delivery_counts": {
+          "full": 100,
+          "partial": 0,
+          "deferred": 129
+        },
+        "partial_refs": [],
+        "unretrievable_refs": [],
+        "retained_pages": 0,
+        "delivered_payload_chars": 111898,
+        "reduction_pct": 49.55,
+        "measurement": "Initial JSON characters, not tokens, latency or billing. Raw size precedes new signals."
+      },
+      "terminal_replay": "No live supplier remains"
+    },
+    {
+      "source_run": "1672fff1b6a94835986cb320f8d26da3",
+      "source_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/data/local/runs/1672fff1b6a94835986cb320f8d26da3.json",
+      "replay_through_message": 5,
+      "then_live_offer_ids": [],
+      "counterfactual_action": {
+        "supplier_id": "sup:70740",
+        "message": {
+          "subject": "Alloy surcharge and base price for 1.4404 bar (Werdenfels)",
+          "body": "Thank you for reviewing the price and payment options with us. We appreciate your team's review.\n\nFor your review, AS-14404 changed by -5.49% from 2026-06 to 2026-09 (idx:AS-14404@2026-06, idx:AS-14404@2026-09). We recognise that this recent movement can coexist with the annual increase you described. Could you take it into account when reviewing the starting price?\n\nCould we agree the following complete compromise? EUR 5.09/kg, payment within 45 days net, a 36-month contract, AS-14404 on a 45% material share, 5% deadband and base month 2026-08.\n\nThe price is conditional on this payment term and the complete package. This is a new proposal for your approval. The fixed terms of our enquiry remain unchanged. Could your authorised colleague issue this package as your binding offer?\n\nKind regards,\nPurchasing, Hollerau Pumpenwerke",
+          "term_sheets": [
+            {
+              "terms": {
+                "unit_price": 5.09,
+                "index_clause": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                },
+                "payment_days": 45,
+                "contract_months": 36
+              }
+            }
+          ]
+        }
+      },
+      "decision": {
+        "supplier_id": "sup:70740",
+        "source": "policy:payment-compromise",
+        "action": "send",
+        "elapsed_s": 0.014,
+        "protocol_version": "faithful-v16-open-payment-compromise",
+        "rejections": [],
+        "message_index": 5,
+        "evidence_transport": {
+          "version": "evidence-transport-v3-delivery-audit",
+          "max_local_reads": 2,
+          "complete_source_count": 197,
+          "raw_payload_chars": 221952,
+          "selected_fact_count": 41,
+          "availability_note": "Deferred records remain accessible through retrieve_evidence. No arbitrary queries.",
+          "collection_issues": [],
+          "delivery_counts": {
+            "full": 100,
+            "partial": 0,
+            "deferred": 129
+          },
+          "partial_refs": [],
+          "unretrievable_refs": [],
+          "retained_pages": 0,
+          "delivered_payload_chars": 111758
+        },
+        "evidence_reads": [],
+        "model_requests": [],
+        "assessment_label_repairs": [],
+        "supplier_signals": {
+          "live": true,
+          "status": "open",
+          "tone": "unspecified",
+          "stance": "negotiating",
+          "withdrawal_risk_signal": "unknown",
+          "risk_basis": "Explicit finality or terminal status; qualitative signal, not a calibrated probability.",
+          "rounds_left": 8,
+          "rounds_note": "Remaining API sends are not a promise that the supplier will continue.",
+          "evidence": [],
+          "primary_price_history": [
+            {
+              "unit_price": 6.1,
+              "source_ref": "message:sup:70740:0"
+            },
+            {
+              "unit_price": 5.4,
+              "source_ref": "message:sup:70740:2"
+            },
+            {
+              "unit_price": 5.3,
+              "source_ref": "message:sup:70740:4"
+            }
+          ],
+          "latest_primary_price_movement": -0.1,
+          "live_objections": [],
+          "latest_stated_cost_drivers": [
+            {
+              "series": "AS-14404",
+              "annual_change_pct": 5.9,
+              "stated_cost_share_pct": 45.0,
+              "conditional_contribution_pp": 2.655
+            },
+            {
+              "series": "LCI-C",
+              "annual_change_pct": 2.7,
+              "stated_cost_share_pct": 5.0,
+              "conditional_contribution_pp": 0.135
+            },
+            {
+              "series": "PPI-C2431",
+              "annual_change_pct": 12.3,
+              "stated_cost_share_pct": 38.0,
+              "conditional_contribution_pp": 4.674
+            }
+          ],
+          "previously_cited_refs": [
+            "idx:PPI-C2431@2026-06",
+            "idx:PPI-C2431@2026-08",
+            "po:4500014022-10",
+            "po:4500014078-10",
+            "po:4500014355-10",
+            "po:4500014427-10"
+          ],
+          "supplier_questions": []
+        },
+        "price_plan": {
+          "offers": [
+            {
+              "offer_id": "offer:70740-2",
+              "unit_price": 5.3,
+              "complete_cost": 253480.98,
+              "acceptance_eligible": false,
+              "estimated_score": 57.4891,
+              "maximum_affordable_unit_price": 5.1,
+              "cost_gap_to_acceptance": 9080.38,
+              "qualifying_payment_tradeoffs": [
+                {
+                  "terms": {
+                    "unit_price": 5.05,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 14,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 243971.22,
+                  "estimated_score": 70.6021,
+                  "price_change": -0.25,
+                  "payment_days_change": -46,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                },
+                {
+                  "terms": {
+                    "unit_price": 5.07,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 30,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 244082.98,
+                  "estimated_score": 70.448,
+                  "price_change": -0.23,
+                  "payment_days_change": -30,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                },
+                {
+                  "terms": {
+                    "unit_price": 5.09,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 45,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 244241.61,
+                  "estimated_score": 70.2292,
+                  "price_change": -0.21,
+                  "payment_days_change": -15,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                },
+                {
+                  "terms": {
+                    "unit_price": 5.1,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 60,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 243915.66,
+                  "estimated_score": 70.6787,
+                  "price_change": -0.2,
+                  "payment_days_change": 0,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                },
+                {
+                  "terms": {
+                    "unit_price": 5.1,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 90,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 242304.06,
+                  "estimated_score": 72.9009,
+                  "price_change": -0.2,
+                  "payment_days_change": 30,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                }
+              ],
+              "benchmark_price_limits": [
+                {
+                  "score": 70,
+                  "unit_price_at_or_below": 5.1,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                },
+                {
+                  "score": 70.01,
+                  "unit_price_at_or_below": 5.1,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                },
+                {
+                  "score": 80,
+                  "unit_price_at_or_below": 4.95,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                },
+                {
+                  "score": 100,
+                  "unit_price_at_or_below": 4.65,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                }
+              ],
+              "budget_ceiling_package": {
+                "terms": {
+                  "unit_price": 5.1,
+                  "index_clause": {
+                    "series": "AS-14404",
+                    "material_share": 0.45,
+                    "deadband_pct": 5.0,
+                    "base_month": "2026-08"
+                  },
+                  "payment_days": 60,
+                  "contract_months": 36
+                },
+                "complete_cost": 243915.66,
+                "estimated_score": 70.6787,
+                "status": "Buyer calculation only; supplier has not offered this price."
+              },
+              "preferred_package": {
+                "terms": {
+                  "unit_price": 5.09,
+                  "index_clause": {
+                    "series": "AS-14404",
+                    "material_share": 0.45,
+                    "deadband_pct": 5.0,
+                    "base_month": "2026-08"
+                  },
+                  "payment_days": 60,
+                  "contract_months": 36
+                },
+                "complete_cost": 243437.39,
+                "within_buyer_limits": true
+              }
+            },
+            {
+              "offer_id": "offer:70740-2-a",
+              "unit_price": 5.2,
+              "complete_cost": 251217.89,
+              "acceptance_eligible": false,
+              "estimated_score": 60.6097,
+              "maximum_affordable_unit_price": 5.05,
+              "cost_gap_to_acceptance": 6817.29,
+              "qualifying_payment_tradeoffs": [
+                {
+                  "terms": {
+                    "unit_price": 5.05,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 14,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 243971.22,
+                  "estimated_score": 70.6021,
+                  "price_change": -0.15,
+                  "payment_days_change": 0,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                },
+                {
+                  "terms": {
+                    "unit_price": 5.07,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 30,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 244082.98,
+                  "estimated_score": 70.448,
+                  "price_change": -0.13,
+                  "payment_days_change": 16,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                },
+                {
+                  "terms": {
+                    "unit_price": 5.09,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 45,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 244241.61,
+                  "estimated_score": 70.2292,
+                  "price_change": -0.11,
+                  "payment_days_change": 31,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                },
+                {
+                  "terms": {
+                    "unit_price": 5.1,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 60,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 243915.66,
+                  "estimated_score": 70.6787,
+                  "price_change": -0.1,
+                  "payment_days_change": 46,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                },
+                {
+                  "terms": {
+                    "unit_price": 5.1,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 90,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 242304.06,
+                  "estimated_score": 72.9009,
+                  "price_change": -0.1,
+                  "payment_days_change": 76,
+                  "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                }
+              ],
+              "benchmark_price_limits": [
+                {
+                  "score": 70,
+                  "unit_price_at_or_below": 5.05,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                },
+                {
+                  "score": 70.01,
+                  "unit_price_at_or_below": 5.05,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                },
+                {
+                  "score": 80,
+                  "unit_price_at_or_below": 4.9,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                },
+                {
+                  "score": 100,
+                  "unit_price_at_or_below": 4.6,
+                  "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                }
+              ],
+              "budget_ceiling_package": {
+                "terms": {
+                  "unit_price": 5.05,
+                  "index_clause": {
+                    "series": "AS-14404",
+                    "material_share": 0.45,
+                    "deadband_pct": 5.0,
+                    "base_month": "2026-08"
+                  },
+                  "payment_days": 14,
+                  "contract_months": 36
+                },
+                "complete_cost": 243971.22,
+                "estimated_score": 70.6021,
+                "status": "Buyer calculation only; supplier has not offered this price."
+              },
+              "preferred_package": {
+                "terms": {
+                  "unit_price": 5.09,
+                  "index_clause": {
+                    "series": "AS-14404",
+                    "material_share": 0.45,
+                    "deadband_pct": 5.0,
+                    "base_month": "2026-08"
+                  },
+                  "payment_days": 14,
+                  "contract_months": 36
+                },
+                "complete_cost": 245903.67,
+                "within_buyer_limits": false
+              }
+            }
+          ],
+          "best_eligible_offer_id": null
+        },
+        "assessment": {
+          "observed_message": "message:sup:70740:4",
+          "changes": [
+            "Reviewed the current offer against the explicit execution controls."
+          ],
+          "open_questions": [
+            "Will the supplier issue the authorized closing package?"
+          ],
+          "response_to_last_move": "Current structured terms and live eligibility determine the available action.",
+          "adaptation": "Send the new payment compromise while the supplier remains open and add the checked, unused AS window; do not reserve it for a final offer or treat it as proof of the supplier's minimum price.",
+          "next_move": "Send the qualifying payment compromise with checked AS evidence once.",
+          "evidence": [
+            {
+              "claim": "The supplier supplied the current offer being evaluated.",
+              "kind": "supplier_claim",
+              "source_refs": [
+                "message:sup:70740:4"
+              ],
+              "confidence": "high"
+            },
+            {
+              "claim": "AS-14404 changed by -5.49% from 2026-06 to 2026-09 (idx:AS-14404@2026-06, idx:AS-14404@2026-09).",
+              "kind": "public_record",
+              "source_refs": [
+                "idx:AS-14404@2026-06",
+                "idx:AS-14404@2026-09"
+              ],
+              "confidence": "high"
+            }
+          ]
+        },
+        "assessment_version": "supplier-assessment-v2-source-labels",
+        "numeric_checks": [
+          {
+            "calculation_id": "p18:as_recent_change_pct",
+            "value": -5.4945,
+            "quote": "changed by -5.49%",
+            "description": "AS-14404 percentage change 2026-06 to 2026-09; not an annual change",
+            "source_refs": [
+              "idx:AS-14404@2026-06",
+              "idx:AS-14404@2026-09"
+            ]
+          }
+        ],
+        "economics": {
+          "supplier_change": {
+            "from_ref": "message:sup:70740:2",
+            "to_ref": "message:sup:70740:4",
+            "cost_delta": -14511.25,
+            "term_changes": [
+              {
+                "term": "payment_days",
+                "before": 30,
+                "after": 14
+              },
+              {
+                "term": "unit_price",
+                "before": 5.4,
+                "after": 5.2
+              },
+              {
+                "term": "index_clause",
+                "before": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 0.0,
+                  "base_month": "2026-08"
+                },
+                "after": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5.0,
+                  "base_month": "2026-08"
+                }
+              }
+            ]
+          },
+          "buyer_change": {
+            "from_ref": "message:sup:70740:1",
+            "to_ref": "message:sup:70740:3",
+            "cost_delta": 17553.8,
+            "term_changes": [
+              {
+                "term": "payment_days",
+                "before": 30,
+                "after": 60
+              },
+              {
+                "term": "unit_price",
+                "before": 4.6,
+                "after": 5.1
+              },
+              {
+                "term": "index_clause",
+                "before": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 0,
+                  "base_month": "2026-08"
+                },
+                "after": {
+                  "series": "AS-14404",
+                  "material_share": 0.45,
+                  "deadband_pct": 5,
+                  "base_month": "2026-08"
+                }
+              }
+            ]
+          },
+          "current_best_valid_offer": {
+            "terms": {
+              "volume_per_year": 23700,
+              "contract_months": 36,
+              "payment_days": 14,
+              "lead_time_days": 14,
+              "incoterm": "DAP",
+              "ppm_commitment": 70,
+              "chargeback_eur_per_complaint": 0.0,
+              "effective_date": "2027-01-01",
+              "tooling_eur": 0,
+              "unit_price": 5.2,
+              "index_clause": {
+                "series": "AS-14404",
+                "material_share": 0.45,
+                "deadband_pct": 5.0,
+                "base_month": "2026-08"
+              }
+            },
+            "cost": 251217.89,
+            "must_haves_ok": true,
+            "term_sheet_id": "offer:70740-2-a",
+            "breakdown": {
+              "price": 246480.0,
+              "uncovered_need": 0.0,
+              "fallback_risk": 0.0,
+              "payment_terms": 2519.57,
+              "freight": 0.0,
+              "late_delivery": 0,
+              "quality": 0.0,
+              "tooling": 0.0,
+              "index_clause": 1109.16,
+              "index_risk": 1109.16,
+              "relationship": 0.0
+            }
+          },
+          "cost_basis": "Public case formula; excludes unknown private supplier relationship costs."
+        },
+        "execution_evidence": {
+          "argument_id": "as_recent_change_pct",
+          "source_refs": [
+            "idx:AS-14404@2026-06",
+            "idx:AS-14404@2026-09"
+          ],
+          "calculation_id": "p18:as_recent_change_pct",
+          "status": "included",
+          "value": -5.49,
+          "quote": "changed by -5.49%"
+        }
+      },
+      "local_stop": null,
+      "price_plan": {
+        "basis": "Public total-cost formula and explicit buyer limits; no private supplier costs or reservation price.",
+        "needed_quantity": 47400,
+        "horizon_years": 2,
+        "preferred_closing_price": 5.09,
+        "ideal_price": null,
+        "ideal_price_status": "Not identifiable from public data: the supplier's feasible minimum is unknown.",
+        "suppliers": {
+          "sup:70740": {
+            "offers": [
+              {
+                "offer_id": "offer:70740-2",
+                "unit_price": 5.3,
+                "complete_cost": 253480.98,
+                "acceptance_eligible": false,
+                "estimated_score": 57.4891,
+                "maximum_affordable_unit_price": 5.1,
+                "cost_gap_to_acceptance": 9080.38,
+                "qualifying_payment_tradeoffs": [
+                  {
+                    "terms": {
+                      "unit_price": 5.05,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 14,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 243971.22,
+                    "estimated_score": 70.6021,
+                    "price_change": -0.25,
+                    "payment_days_change": -46,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  },
+                  {
+                    "terms": {
+                      "unit_price": 5.07,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 30,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 244082.98,
+                    "estimated_score": 70.448,
+                    "price_change": -0.23,
+                    "payment_days_change": -30,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  },
+                  {
+                    "terms": {
+                      "unit_price": 5.09,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 45,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 244241.61,
+                    "estimated_score": 70.2292,
+                    "price_change": -0.21,
+                    "payment_days_change": -15,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  },
+                  {
+                    "terms": {
+                      "unit_price": 5.1,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 60,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 243915.66,
+                    "estimated_score": 70.6787,
+                    "price_change": -0.2,
+                    "payment_days_change": 0,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  },
+                  {
+                    "terms": {
+                      "unit_price": 5.1,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 90,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 242304.06,
+                    "estimated_score": 72.9009,
+                    "price_change": -0.2,
+                    "payment_days_change": 30,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  }
+                ],
+                "benchmark_price_limits": [
+                  {
+                    "score": 70,
+                    "unit_price_at_or_below": 5.1,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  },
+                  {
+                    "score": 70.01,
+                    "unit_price_at_or_below": 5.1,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  },
+                  {
+                    "score": 80,
+                    "unit_price_at_or_below": 4.95,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  },
+                  {
+                    "score": 100,
+                    "unit_price_at_or_below": 4.65,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  }
+                ],
+                "budget_ceiling_package": {
+                  "terms": {
+                    "unit_price": 5.1,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 60,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 243915.66,
+                  "estimated_score": 70.6787,
+                  "status": "Buyer calculation only; supplier has not offered this price."
+                },
+                "preferred_package": {
+                  "terms": {
+                    "unit_price": 5.09,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 60,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 243437.39,
+                  "within_buyer_limits": true
+                }
+              },
+              {
+                "offer_id": "offer:70740-2-a",
+                "unit_price": 5.2,
+                "complete_cost": 251217.89,
+                "acceptance_eligible": false,
+                "estimated_score": 60.6097,
+                "maximum_affordable_unit_price": 5.05,
+                "cost_gap_to_acceptance": 6817.29,
+                "qualifying_payment_tradeoffs": [
+                  {
+                    "terms": {
+                      "unit_price": 5.05,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 14,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 243971.22,
+                    "estimated_score": 70.6021,
+                    "price_change": -0.15,
+                    "payment_days_change": 0,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  },
+                  {
+                    "terms": {
+                      "unit_price": 5.07,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 30,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 244082.98,
+                    "estimated_score": 70.448,
+                    "price_change": -0.13,
+                    "payment_days_change": 16,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  },
+                  {
+                    "terms": {
+                      "unit_price": 5.09,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 45,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 244241.61,
+                    "estimated_score": 70.2292,
+                    "price_change": -0.11,
+                    "payment_days_change": 31,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  },
+                  {
+                    "terms": {
+                      "unit_price": 5.1,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 60,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 243915.66,
+                    "estimated_score": 70.6787,
+                    "price_change": -0.1,
+                    "payment_days_change": 46,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  },
+                  {
+                    "terms": {
+                      "unit_price": 5.1,
+                      "index_clause": {
+                        "series": "AS-14404",
+                        "material_share": 0.45,
+                        "deadband_pct": 5.0,
+                        "base_month": "2026-08"
+                      },
+                      "payment_days": 90,
+                      "contract_months": 36
+                    },
+                    "complete_cost": 242304.06,
+                    "estimated_score": 72.9009,
+                    "price_change": -0.1,
+                    "payment_days_change": 76,
+                    "status": "New buyer proposal only; requires supplier approval as a live binding offer."
+                  }
+                ],
+                "benchmark_price_limits": [
+                  {
+                    "score": 70,
+                    "unit_price_at_or_below": 5.05,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  },
+                  {
+                    "score": 70.01,
+                    "unit_price_at_or_below": 5.05,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  },
+                  {
+                    "score": 80,
+                    "unit_price_at_or_below": 4.9,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  },
+                  {
+                    "score": 100,
+                    "unit_price_at_or_below": 4.6,
+                    "meaning": "Arithmetic threshold for these terms, not evidence the supplier will accept it."
+                  }
+                ],
+                "budget_ceiling_package": {
+                  "terms": {
+                    "unit_price": 5.05,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 14,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 243971.22,
+                  "estimated_score": 70.6021,
+                  "status": "Buyer calculation only; supplier has not offered this price."
+                },
+                "preferred_package": {
+                  "terms": {
+                    "unit_price": 5.09,
+                    "index_clause": {
+                      "series": "AS-14404",
+                      "material_share": 0.45,
+                      "deadband_pct": 5.0,
+                      "base_month": "2026-08"
+                    },
+                    "payment_days": 14,
+                    "contract_months": 36
+                  },
+                  "complete_cost": 245903.67,
+                  "within_buyer_limits": false
+                }
+              }
+            ],
+            "best_eligible_offer_id": null
+          }
+        },
+        "minimum_score": 70.01,
+        "maximum_total_cost": 244400.6,
+        "score_basis": "Arithmetic estimate from the configured benchmarks; official result is server-issued."
+      },
+      "payload": {
+        "version": "evidence-transport-v3-delivery-audit",
+        "max_local_reads": 2,
+        "complete_source_count": 197,
+        "raw_payload_chars": 221952,
+        "selected_fact_count": 41,
+        "availability_note": "Deferred records remain accessible through retrieve_evidence. No arbitrary queries.",
+        "collection_issues": [],
+        "delivery_counts": {
+          "full": 100,
+          "partial": 0,
+          "deferred": 129
+        },
+        "partial_refs": [],
+        "unretrievable_refs": [],
+        "retained_pages": 0,
+        "delivered_payload_chars": 111758,
+        "reduction_pct": 49.65,
+        "measurement": "Initial JSON characters, not tokens, latency or billing. Raw size precedes new signals."
+      },
+      "terminal_replay": "No live supplier remains"
+    }
+  ]
+}

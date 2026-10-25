@@ -1,0 +1,14 @@
+{
+  "launched_at": "2026-10-24T23:41:52.666629+00:00",
+  "response": {
+    "id": "bc32fc95994f45edbf7044a2e4a2da19",
+    "variant_id": "practice"
+  },
+  "case_ids": [
+    "case:P18"
+  ],
+  "repeats": 3,
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "speed": "fast"
+}

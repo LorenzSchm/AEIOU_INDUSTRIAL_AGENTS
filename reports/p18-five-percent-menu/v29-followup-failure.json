@@ -1,0 +1,322 @@
+{
+  "created_at": "2026-10-25T00:21:57.853148+00:00",
+  "success_run": "9c825f8215cf47289d0376441a7acd8e",
+  "failed_run": "a4742b43b2c34045bd5bbf1462a432c2",
+  "same_inputs": {
+    "case": true,
+    "prompt": true,
+    "model": true,
+    "provider": true,
+    "effort": true,
+    "speed": true,
+    "decision_budget_s": true
+  },
+  "opening_body_identical": true,
+  "opening_subjects": [
+    "part:370010 \u2013 Alloy surcharge and base price for 1.4404 bar: our proposal",
+    "part:370010 \u2013 proposal for the coming contract period"
+  ],
+  "menu_body_identical": true,
+  "menu_term_sheets_identical": true,
+  "observations": [
+    {
+      "run_id": "9c825f8215cf47289d0376441a7acd8e",
+      "session_id": "f48f459c8299a22e",
+      "session_snapshot_sha256": "4033d34f609e9a8676f987bcd2f867bc39c2a1b5333e17b58f9b9fdb16e21ee6",
+      "official_deal": true,
+      "official_points": 68.45646477287704,
+      "end_reason": "accepted",
+      "verified_claims": [
+        {
+          "round": 1,
+          "claim": {
+            "type": "price_history",
+            "refs": [
+              "po:4500014022-10",
+              "po:4500014078-10",
+              "po:4500014355-10",
+              "po:4500014427-10"
+            ],
+            "asserted": {
+              "prices": [
+                5.26,
+                5.26,
+                5.84,
+                5.84
+              ]
+            }
+          },
+          "result": "verified"
+        },
+        {
+          "round": 2,
+          "claim": {
+            "type": "index_change",
+            "refs": [
+              "idx:PPI-C2431@2026-06",
+              "idx:PPI-C2431@2026-08"
+            ],
+            "asserted": {
+              "change_pct": -2.27
+            }
+          },
+          "result": "verified"
+        },
+        {
+          "round": 3,
+          "claim": {
+            "type": "index_change",
+            "refs": [
+              "idx:AS-14404@2026-06",
+              "idx:AS-14404@2026-09"
+            ],
+            "asserted": {
+              "change_pct": -5.49
+            }
+          },
+          "result": "verified"
+        }
+      ],
+      "supplier_packages": [
+        {
+          "message": 1,
+          "status": "open",
+          "terms": [
+            {
+              "unit_price": 6.1,
+              "payment_days": 30,
+              "index_clause": null,
+              "contract_months": 12
+            }
+          ]
+        },
+        {
+          "message": 3,
+          "status": "open",
+          "terms": [
+            {
+              "unit_price": 5.4,
+              "payment_days": 30,
+              "index_clause": {
+                "series": "AS-14404",
+                "material_share": 0.45,
+                "deadband_pct": 0.0,
+                "base_month": "2026-08"
+              },
+              "contract_months": 36
+            }
+          ]
+        },
+        {
+          "message": 5,
+          "status": "open",
+          "terms": [
+            {
+              "unit_price": 5.3,
+              "payment_days": 60,
+              "index_clause": {
+                "series": "AS-14404",
+                "material_share": 0.45,
+                "deadband_pct": 5.0,
+                "base_month": "2026-08"
+              },
+              "contract_months": 36
+            },
+            {
+              "unit_price": 5.2,
+              "payment_days": 30,
+              "index_clause": {
+                "series": "AS-14404",
+                "material_share": 0.45,
+                "deadband_pct": 5.0,
+                "base_month": "2026-08"
+              },
+              "contract_months": 36
+            }
+          ]
+        },
+        {
+          "message": 7,
+          "status": "agreed",
+          "terms": [
+            {
+              "unit_price": 5.1,
+              "payment_days": 30,
+              "index_clause": {
+                "series": "AS-14404",
+                "material_share": 0.45,
+                "deadband_pct": 5.0,
+                "base_month": "2026-08"
+              },
+              "contract_months": 36
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run_id": "a4742b43b2c34045bd5bbf1462a432c2",
+      "session_id": "691db6e1fac373a7",
+      "session_snapshot_sha256": "5357980639302841a1863c74f6137e87fb065b9b044e35bdfdc2ce02bd13fa9e",
+      "official_deal": false,
+      "official_points": 0.0,
+      "end_reason": "walked_away",
+      "verified_claims": [
+        {
+          "round": 1,
+          "claim": {
+            "type": "price_history",
+            "refs": [
+              "po:4500014022-10",
+              "po:4500014078-10",
+              "po:4500014355-10",
+              "po:4500014427-10"
+            ],
+            "asserted": {
+              "prices": [
+                5.26,
+                5.26,
+                5.84,
+                5.84
+              ]
+            }
+          },
+          "result": "verified"
+        },
+        {
+          "round": 2,
+          "claim": {
+            "type": "index_change",
+            "refs": [
+              "idx:PPI-C2431@2026-06",
+              "idx:PPI-C2431@2026-08"
+            ],
+            "asserted": {
+              "change_pct": -2.27
+            }
+          },
+          "result": "verified"
+        },
+        {
+          "round": 3,
+          "claim": {
+            "type": "index_change",
+            "refs": [
+              "idx:AS-14404@2026-06",
+              "idx:AS-14404@2026-09"
+            ],
+            "asserted": {
+              "change_pct": -5.49
+            }
+          },
+          "result": "verified"
+        }
+      ],
+      "supplier_packages": [
+        {
+          "message": 1,
+          "status": "open",
+          "terms": [
+            {
+              "unit_price": 6.1,
+              "payment_days": 30,
+              "index_clause": null,
+              "contract_months": 12
+            }
+          ]
+        },
+        {
+          "message": 3,
+          "status": "open",
+          "terms": [
+            {
+              "unit_price": 5.4,
+              "payment_days": 30,
+              "index_clause": {
+                "series": "AS-14404",
+                "material_share": 0.45,
+                "deadband_pct": 0.0,
+                "base_month": "2026-08"
+              },
+              "contract_months": 36
+            },
+            {
+              "unit_price": 5.4,
+              "payment_days": 30,
+              "index_clause": {
+                "series": "AS-14404",
+                "material_share": 0.45,
+                "deadband_pct": 0.0,
+                "base_month": "2026-08"
+              },
+              "contract_months": 24
+            }
+          ]
+        },
+        {
+          "message": 5,
+          "status": "open",
+          "terms": [
+            {
+              "unit_price": 5.4,
+              "payment_days": 60,
+              "index_clause": {
+                "series": "AS-14404",
+                "material_share": 0.45,
+                "deadband_pct": 5.0,
+                "base_month": "2026-08"
+              },
+              "contract_months": 36
+            },
+            {
+              "unit_price": 5.3,
+              "payment_days": 30,
+              "index_clause": {
+                "series": "AS-14404",
+                "material_share": 0.45,
+                "deadband_pct": 5.0,
+                "base_month": "2026-08"
+              },
+              "contract_months": 36
+            }
+          ]
+        },
+        {
+          "message": 7,
+          "status": "final_offer",
+          "terms": [
+            {
+              "unit_price": 5.2,
+              "payment_days": 30,
+              "index_clause": {
+                "series": "AS-14404",
+                "material_share": 0.45,
+                "deadband_pct": 5.0,
+                "base_month": "2026-08"
+              },
+              "contract_months": 36
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "interpretation": "All three evidence groups verified in both sessions. Price paths differ after the same menu. Generated opening subjects, first supplier response and duration alternatives differ; not an exact controlled replay. Variability is supported, but a specific hidden supplier rule or cause is not established.",
+  "rollback_preflight": {
+    "checked_PPI_menu_replay": true,
+    "restored_B": {
+      "unit_price": 5.0,
+      "payment_days": 14,
+      "index_clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 3,
+        "base_month": "2026-08"
+      }
+    },
+    "actual_510_exact_acceptance": true,
+    "actual_520_cap_stop": true
+  },
+  "new_hosted_sessions": 0,
+  "paid_model_calls": 0
+}

@@ -1,0 +1,66 @@
+{
+  "mode": "offline_validation_fixture",
+  "source_run": "7f03ab8efe6440528470cc540af77438",
+  "limitation": "Original rejected model responses were not retained. A constructed response exercises the logged failure classes on the saved live thread; this is not a supplier simulation.",
+  "original_failure_reasons": [
+    "Evidence is deferred: use retrieve_evidence before citing that source",
+    "Evidence kind must match its sources; supplier assertions are supplier_claim"
+  ],
+  "hosted_sessions_used": 0,
+  "real_model_calls": 0,
+  "fixture_backend_calls": 1,
+  "supplier_action": {
+    "supplier_id": "sup:70740",
+    "message": {
+      "subject": "Alloy surcharge and base price for 1.4404 bar (Werdenfels)",
+      "body": "Thank you, Mr Seidl. Would you kindly consider EUR 4.72/kg on the same terms? AS-14404 changed by -5.49% from June to September 2026. We recognise that the annual increase remains relevant.",
+      "term_sheets": [
+        {
+          "terms": {
+            "unit_price": 4.72,
+            "index_clause": {
+              "series": "AS-14404",
+              "material_share": 0.45,
+              "deadband_pct": 0,
+              "base_month": "2026-08"
+            },
+            "payment_days": 14,
+            "contract_months": 36
+          }
+        }
+      ]
+    }
+  },
+  "complete_cost": 233062.43,
+  "minimum_score": 70.01,
+  "normalizations": [
+    {
+      "evidence_index": 0,
+      "source_refs": [
+        "message:sup:70740:2"
+      ],
+      "declared_kind": "public_record",
+      "normalized_kind": "supplier_claim",
+      "reason": "Source-registry classification only; claim wording is not verified."
+    },
+    {
+      "evidence_index": 1,
+      "source_refs": [
+        "weighted-claims:sup:70740:0"
+      ],
+      "declared_kind": "public_record",
+      "normalized_kind": "inference",
+      "reason": "Source-registry classification only; claim wording is not verified."
+    }
+  ],
+  "evidence_transport": {
+    "version": "evidence-transport-v2-calculation-sources",
+    "max_local_reads": 2,
+    "complete_source_count": 183,
+    "raw_payload_chars": 112187,
+    "selected_fact_count": 41,
+    "availability_note": "Deferred records remain accessible through retrieve_evidence. No arbitrary queries.",
+    "delivered_payload_chars": 66348
+  },
+  "original_session_already_closed": true
+}

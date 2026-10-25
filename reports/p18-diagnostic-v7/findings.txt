@@ -1,0 +1,54 @@
+P18: additional evidence after the V6 withdrawal
+
+Evidence from the latest run
+Run: 0fb5e14c8e7b408480f8e4dc51aae482; session: cedad72e4713bf80.
+Opening order-price and two index-change groups were all verified. Counteroffers were EUR 5.30 and EUR 5.20 on 14-day payment, 36 months and AS-14404 / 0% deadband. The later order-price group and forecast change were also verified. The supplier expressly said the forecast did not change its calculation, then withdrew. There is no proof that adding further correct citations alone reaches 80.
+The team-visible backoffice shows Inside Sales countering and withdrawing. It contains no visible owner/committee approval event; absence from this view does not establish that no internal review happened. Its responses remain saved in backoffice.json.
+
+NEW ARGUMENT TO USE BEFORE FINAL: EXISTING ACCOUNT VALUE
+FY2026, 2025-10-01 through 2026-09-30: EUR 428,119.02 invoiced with Werdenfels, 79 invoices. Reconciles exactly to spend_cube FY2026. Of this, EUR 126,823.30 is part 370010; EUR 230,160.00 is part 370011; EUR 71,135.72 is part 370012.
+Sources: invoices joined to po_lines by po_line_id; supplier sup:70740; invoice_date fiscal-year window. Every contributing invoice ID and amount is retained in evidence.json, research.facts[buyer-record:p18:fy2026-account-invoices].
+Use: ask for owner/committee/account-tier review in the context of the established relationship, responding to the supplier's small-account/volume-focus notes.
+Limits: historical invoicing, not a new purchase promise, not additional P18 volume, not authority to bundle other parts. This is ERP context; the arena does not document an aggregate-account-spend check. Declare p18:account_invoiced_fy2026_eur and p18:account_invoices_fy2026_count when quoting the aggregate in email.
+
+UNUSED CHECKED-CLAIM CANDIDATE: DELIVERY PERFORMANCE
+sc:70740@2026Q3: OTD 81.0%, confirmed-date OTD 83.5%, quality 32 ppm, A/green.
+The scorecard covers the rolling twelve months from October 2025 through September 2026; it is supplier-wide, not just Q3 or this part. Contract ctr:4600070740#6.1 sets the existing OTD target at 95%.
+Use: one checked sentence containing the 81.0% and scorecard ID, followed by a separate sentence about the existing 95% target and its contract source. Ask for a competitive commercial package; do not introduce penalties, service changes or a new compensation claim.
+The documented scorecard check supports this claim type. Its negotiating effect is untested. Do not call an A/green supplier red or describe 19% as all late: the scorecard includes deliveries outside an early/late tolerance window.
+
+SECONDARY CHECKED-CLAIM CANDIDATE: LATEST WAGE READINGS
+idx:LCI-C@2026-04 = 119.6; idx:LCI-C@2026-06 = 119.6; change +0.00%.
+The last available quarter is flat. The twelve-month June-to-June change is still +2.6609%. Use the flat quarter only to answer a current escalation/timing objection, never as falling wages or a rebuttal of the annual increase. Calculation p18:lci_latest_quarter_change_pct.
+The existing AS June–September -5.49% and PPI June–August -2.27% are already the strongest declines in the examined recent windows. Alternative overlapping dates mostly repeat the same economic information.
+
+ADDITIONAL CORROBORATION: ACTUAL INVOICES AND PAYMENT
+inv:5105005073: PO 4500014022-10, 1,100 kg, EUR 5,786.00, invoiced 2026-06-17, paid in full 2026-07-24.
+inv:5105005125: PO 4500014078-10, 940 kg, EUR 4,944.40, invoiced 2026-07-03, paid in full 2026-08-05.
+Both support EUR 5.26/kg; calculation p18:june_invoiced_and_paid_unit_price.
+Use only if asked whether the historical order prices were invoiced/paid. This corroborates the existing price argument rather than adding a new lower price. Invoice IDs are not a documented standalone hosted check type; do not claim they were verified by a new run.
+
+RECEIPT CROSS-CHECK AND DATE SCOPE
+FY2026 part-specific receipts: 23,340 kg over 26 receipt lines; 22 of 26 lie between five days before and two days after the requested delivery date, giving 84.6154% OTD. Includes receipts for orders placed before the fiscal year. Raw joined rows are in evidence.json under buyer-record:p18:fy2026-part-receipts.
+This is not the supplier-wide 81.0% scorecard and not the 22,440 kg ordered in the same fiscal year. Neither ordered nor received volume is measured consumption. Fixed commitment stays 23,700 kg/year.
+
+COMPARISON FOUND, NOT A LIVE CHEAPER OFFER
+Same-part historical purchases from approved supplier sup:70710: January 2026 EUR 5.24/kg (po:4500013392-10, po:4500013482-10); September EUR 5.45/kg (po:4500014391-10, po:4500014455-10). Different volume allocation and contract.
+Neither undercuts Werdenfels's latest EUR 5.20 counter. Hosted relevance of cross-supplier PO claims has not been tested. Keep as internal context; do not relabel these as a fresh competitive quote or bypass the case's quotation restrictions. Eligible quote:7200018 remains EUR 6.31/kg.
+
+CORRECTIONS TO THE LAST BUYER EMAILS
+The historical contract DID have PPI-C2431 indexation: 80% share, lag m-2, quarterly adjustment and 3% threshold. The statement that the EUR 5.26 historical price came with no clause was false. The incoming new-year opening quote had no clause; those are different records.
+The July price condition says index_adjustment, but does not prove that every annual cost increase has already been recovered. Remove blanket double-counting/risk-removal assertions.
+The supplier's owner offered a calculation discussion; this is a reason to seek review, not proof of approval. The prior run also required one extra model call because a buyer record was mixed with supplier_claim evidence; V7 explicitly separates source kinds.
+
+OTHER SEARCH RESULTS
+Read all eight supplier correspondence records, supplier master/intel, same-part prices at both suppliers, all own historical PO records, forecast records, scorecards, exact-part quality notifications, contract/clauses, negotiation history, indices, invoice/receipt data and supplier spend. The trade-fair news and stable credit data do not establish extra pricing leverage. No part/supplier should-cost estimate exists.
+The public downloads endpoint reports the Sunday release is not yet public. The published API documentation also says hosted practice remains on package v1; a future release is not a reason to invent new P18 facts.
+
+PRIVATE COST-MODEL NOTE — NOT EVIDENCE FOR THE SUPPLIER
+See package-arithmetic.json. EUR 4.65 / 14 days / 36 months / no index would cost EUR 222,663.08, about 99.9837 points if accepted. EUR 4.51 with the 0% AS deadband costs EUR 222,693.13, about 99.9423 points. Both are arithmetic examples; neither was accepted and neither proves the hidden best-attainable package. No cent-priced option in the tested payment/duration/index grid exactly reproduced EUR 222,651.27. Do not assert a discovered reservation price. V7 preserves the current price experiment; it does not silently turn this cost observation into a new concession ladder.
+
+DELIVERABLE AND VALIDATION
+prompts/p18-diagnostic-v7.txt is a complete replacement. It retains the 80-point hard gate and existing reciprocal price steps, adds invoice-backed account value to the opening, brings delivery evidence into the first counter, and removes unsupported historical-clause claims. Internal aggregate/calculation IDs never go in supplier prose.
+At most three checked groups per email; private ERP context is labelled separately. The exact V7 opening with its four declared calculations passes the offline decision/transport fixture. Tests cover account reconciliation, receipt/order distinctions, source groups, comparative-quote limits and the 80-point gate.
+No new hosted negotiation or paid model call was made. Read-only backoffice and download-metadata GETs do not test supplier acceptance. A further no-deal remains possible.

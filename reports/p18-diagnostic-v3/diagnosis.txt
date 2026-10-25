@@ -1,0 +1,80 @@
+P18: Warum v2 schlechter abschnitt, und die gezielte Korrektur
+
+ERGEBNIS
+Vorher: Run 9330b8cbf23347f687a68f0ec80d802c, 41,903 Punkte,
+264.784,30 EUR, Opus / Medium.
+v2: Run 724457830daa47e6bb9d29c177796866, 33,594 Punkte,
+270.810,42 EUR, Opus / High.
+Verschlechterung: 8,309 Punkte und 6.026,12 EUR.
+Der gespeicherte Prompt-Hash stimmt mit der ausgegebenen v2 überein.
+
+BESTÄTIGTER FEHLER IM VORSCHLAG
+v2 empfahl quote:7300008 als Konkurrenzargument und seine erneute Erläuterung
+bei Rückfragen. Der lokale Datensatz enthält diese Quote tatsächlich für dasselbe
+Teil. Das genügt jedoch nicht für die Relevanzprüfung der Arena.
+
+docs/arena/api.md, Abschnitt „What counts“, erlaubt für geprüfte Preisargumente:
+eine Quote in den Referenzen oder der Alternative des aktuellen Falls oder das
+Angebot eines anderen Lieferanten in derselben Session. P18 enthält quote:7200018,
+nicht quote:7300008. Die bloße Existenz im Recherchekontext ist nicht ausreichend.
+Der Lieferant markierte den empfohlenen Konkurrenzbeleg in beiden Runden als
+irrelevant. Diese Regelprüfung hätte vor der Empfehlung erfolgen müssen.
+
+Folge im beobachteten Verlauf: Zwei Käufernachrichten gingen in die Diskussion
+des ausgeschlossenen Belegs; anschließend kam bereits Final. Im Referenzlauf
+kam Final erst nach vier Käufernachrichten. Die gespeicherten API-Reasons und
+Backoffice-Einträge bestätigen diese Abfolge, aber nicht, dass der Beleg allein
+das frühe Final verursachte. Der Wechsel von Medium auf High ist ein weiterer
+Unterschied; eine einzelne Paarung erlaubt keine isolierte Kausalaussage.
+
+WEITERE BEFUNDE
+Die 36 Monate wurden übernommen, ohne den Basispreis unter 5,60 EUR zu senken.
+Ein Vorteil der frühen Laufzeitverlängerung ist damit weiterhin nicht nachgewiesen.
+Die zurückgegebenen Backoffice-Einträge zeigen nur Inside Sales; eine Freigabe
+des Pricing Committee ist daraus nicht bestätigt. Die eingeschränkte Sicht
+beweist nicht, dass intern niemals eine Freigabe stattfand.
+Die 14-Tage-/0%-Kombination wurde zuerst zum Lieferantenpreis übernommen.
+Der Käufer nahm diese Bedingungen im Folgeangebot zurück, wie vorgegeben.
+
+WARUM NICHT DAS SICHTBARE 5,60-EURO-PAKET ANGENOMMEN WURDE
+Das finale Menü enthielt:
+- 5,70 / 90 Tage / 36 Monate / 5%: 270.810,42 EUR; 33,594 Punkte.
+- 5,60 / 30 Tage / 36 Monate / 5%: 269.598,56 EUR; hypothetisch 35,265 Punkte.
+Der abgefragte Serverzustand registrierte ausschließlich offer:70740-2 als
+standing_offer_id. Die günstigere Position offer:70740-2-a wurde im Controller
+deshalb als nicht direkt annehmbar markiert. Die Abschlussentscheidung erkannte
+den Kostenunterschied. Eine weitere Bestätigungsnachricht nach Final wäre mit
+der beibehaltenen Final-Regel unvereinbar gewesen.
+Der Unterschied zwischen den Menüpositionen beträgt 1.211,86 EUR bzw. 1,671 Punkte.
+Selbst mit dem günstigeren Paket blieben 4.814,26 EUR Rückstand zum Referenzlauf.
+Die Annahmebeschränkung erklärt also nicht die gesamte Verschlechterung.
+
+V3: EINE STRATEGISCHE ÄNDERUNG
+Datei: prompts/p18-diagnostic-v3.txt.
+Entfernt werden Konkurrenzpreisargumente aus dieser P18-Diagnose, einschließlich
+des Wiederholens eines ausgeschlossenen Belegs ohne seine ID. Die Zulässigkeit
+von Referenzen wird ausdrücklich vom bloßen Vorhandensein unterschieden.
+Buyer-Regeln, komplette Paketfolge, Preise, Laufzeiten, Deadbands,
+Gegenleistungsanforderungen und Abschlussverhalten bleiben erhalten.
+Ein Textvergleich bestätigt: Ab „FIRST SEND“ ist der gesamte Prompt unverändert.
+Die Titel und der Abschnitt zu zulässigen Quellen bilden den gespeicherten Diff.
+
+NÄCHSTER EINZELTEST
+Nur P18, Repeats = 1, Opus / High wie im tatsächlich ausgeführten v2-Lauf.
+High bleibt konstant, um diesmal nicht zugleich die Modelleinstellung zu ändern.
+Die drei Läufe bleiben die Budgetobergrenze; keine automatische Testserie starten.
+Prüfen, ob der Agent wirklich keinen Konkurrenzbeleg nennt, ob erneut eine
+Irrelevanzmeldung erscheint, wann Final kommt und welche bindenden Konditionen
+erreicht werden. Mehr Runden allein sind kein Erfolg; entscheidend ist C_deal.
+Wenn v3 erneut schlechter bleibt, ist dieser Ansatz nicht zu fördern. Dann zur
+bisher stärkeren Strategie zurückkehren und anhand des neuen Verlaufs entscheiden,
+ob eine verbleibende Iteration sachlich begründet ist.
+
+VALIDIERUNG UND GRENZEN
+Zwölf Paketkosten und die Send-/Accept-Verträge erneut lokal geprüft.
+Ursprüngliche Buyer-Regeln unverändert enthalten. Quelle für die Relevanzprüfung:
+docs/arena/api.md:248 und die tatsächlichen refs/alternative in case:P18.
+Die exakte getestete v2 bleibt archiviert; der alte Promptpfad warnt vor erneutem Einsatz.
+Vier rein lesende API-Abfragen zu zwei abgeschlossenen Sessions durchgeführt.
+Keine neue Session, kein Modellaufruf, keine gemessene v3-Verbesserung.
+validation.json enthält Kennzahlen und Hash; v2-to-v3.diff die genauen Textänderungen.

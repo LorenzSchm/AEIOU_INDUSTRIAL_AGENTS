@@ -1,0 +1,370 @@
+P18 data pipeline and authorized closing controls
+
+Purpose
+Keep evidence available without sending duplicate ERP ledgers on every model call.
+Use explicit supplier status, validated package economics and the user's latest
+price limits to prevent avoidable missed acceptances or tiny final counters.
+
+Data path
+1. research.py and research_collection.py read the local frozen buyer package using
+   scoped, parameterized queries, across all cases. SELECT pages are checked against
+   database row counts; the old 40-row and eight-document limits are removed. The
+   collection includes part and supplier masters, contracts, history, orders,
+   invoices, receipts, quality records, forecasts, index histories and account
+   context. Related records are joined through their actual keys. Part-master
+   lookup cannot be overwritten by a sourcing table's non-unique foreign key.
+   This fix is in the shared kit DataPackage index, including the optional MCP
+   code path. Practice and sandbox research use a base-only package view even
+   after a Sunday release is installed; hidden cases retain release access.
+   Full documents and relevant records stay in memory; missing documents and
+   explicit references produce retrieval_issues instead of silently disappearing.
+   P18's unauthorized rival quotes remain explicitly excluded and counted.
+2. decision_memory.py computes sourced quantities, costs and commercial history.
+   Repeated raw rows are replaced in the initial model input by selected evidence,
+   table counts and source references. Small calculation inputs and argument-card
+   sources are delivered together, including both recent-index endpoints. Large
+   ERP ledgers remain locally retrievable. Small history, supplier-intelligence, account spend,
+   news and contract tables are also delivered up front within a bounded allowance.
+   Document metadata is preserved alongside its text, even when both share one ID.
+3. evidence_transport.py provides retrieve_evidence(source_ref, offset). Only an
+   exact catalog reference is accepted. A read returns up to 12,000 characters,
+   a SHA-256 content hash and a continuation offset. Two reads maximum share the
+   original 50-second decision budget; they consume no supplier round. Citing an
+   unread deferred record fails validation. Partial pages support only visible
+   facts; source text cannot override instructions. Documents and attachments have
+   explicit full/partial/deferred states. Attachment refs retain their actual party
+   (buyer or supplier); older messages outside the display window remain retrievable.
+   An optional find field locates a literal ID or phrase anywhere in a large source
+   without traversing every preceding page. A tail match never counts as reading the
+   whole record. Contiguous retrieved pages are reconciled before complete_record
+   becomes true. Up to four hash-checked pages carry forward within the same run;
+   changed sources, other cases and fresh runs cannot inherit stale evidence.
+4. supplier_signals.py extracts quoted language and authoritative protocol status.
+   A courteous final offer is still high risk. These are qualitative language
+   signals, not inferred emotions or calibrated withdrawal probabilities.
+5. price_planner.py uses the kit's exact public total_cost function to solve the
+   maximum affordable cent price for each actual package. Payment, duration,
+   index clauses and uncovered demand affect the result. It also calculates
+   price thresholds for benchmark scores 80 and 100. These thresholds do not
+   establish the supplier's feasible minimum. ideal_price remains unknown.
+   Each actual offer also carries qualifying_payment_tradeoffs: every permitted
+   payment term priced at the highest affordable cent, preserving its clause,
+   duration and other terms. The nominal cap and current offered price both bound
+   the price. These are proposals requiring agreement, not eligible supplier
+   offers. The configured minimum duration applies to the calculation.
+5a. V28 adds closing_package_comparison per supplier in price_plan. Current
+    quoted structures and the last buyer menu are compared at the same preferred
+    closing price, deduplicated with numeric equality and sorted by full cost.
+    Origins distinguish supplier quotes from prior buyer proposals. A comparison
+    never makes a package eligible or predicts approval. The model and saved
+    decision audit receive the same rows. Existing limits and acceptance remain.
+
+6. execution_policy.py accepts an authorized exact live offer first. Active V25
+   follows the user's later instruction to accept EUR 5.10/kg even below 70 points.
+   The explicit minimum_score is now 0 with maximum_unit_price 5.10; the opening
+   cost ceiling is EUR 295173.23. Zero requires an explicit price cap. Offers still
+   need at least 24 months, valid case terms, exact live eligibility and all fixed
+   enquiry terms. The 5.10 cap and duration are checked in code before acceptance.
+   All allowed 5.10 / 24-or-36-month payment/clause combinations pass this ceiling.
+   The lowest-cost eligible whole package is accepted immediately, before a counter.
+   A final with no authorized package still stops locally; ended threads stay ended.
+
+P18 settings — V25 restored after the V29 follow-up failed
+Runtime: data/local/negotiation-policies.json (or AEIOU_STATE).
+Fresh evaluations: config/p18-accept-510.json and prompts/p18-diagnostic-v25.txt.
+Load that prompt in the browser; changing the saved policy does not replace an
+existing prompt draft. V25 closed all four recorded exact-prompt runs at
+64.2713–68.4565 points, with medium/high effort mixed. This small observational
+sample is a fallback basis, not proof of future reliability.
+V29 remains archived in config/p18-five-percent-menu.json and its matching prompt.
+Its two recorded runs used the same prompt, policy, case, model and effort, but
+generated different email subjects and supplier replies. All PO/PPI/AS claims
+were interpreted and verified in both. After the identical menu, the successful
+run quoted 5.20/30/5%, then accepted 5.10; the follow-up quoted 5.30/30/5%, then
+made a final 5.20 offer. The latter correctly failed the authorized 5.10 cap.
+No late payment/clause switch occurred in that failure. The specific cause of
+the supplier's different price paths is not established. One of two V29 runs
+closed, so the candidate was not retained. See reports/p18-five-percent-menu/
+v29-followup-failure.json and v29-rollback.json for the comparison and activation.
+The former 70.01 floor is historical and does not apply to V25.
+The restored negotiation tactics are: opening 4.60 / 30 days / 36 months / 0%,
+then menu A 5.07/30/5%, B 5.00/14/3%, C 5.10/60/5%, retaining a supplier-quoted
+24/36-month duration. PO -> PPI -> AS evidence order is unchanged.
+Complete cost and score still rank packages; they are not promised outcomes.
+At 5.10/14/3%, calculated score is 64.2713; at 5.10/30/5%, 68.4565; at
+5.10/60/5%, 70.6787. All now qualify if issued as exact eligible offers.
+See reports/p18-accept-510/ for the historical V25 acceptance replay and three-run batch. Policies and prompts are snapshotted per evaluation.
+
+V24 narrower-deadband experiment (historical)
+config/p18-deadband-trade.json and prompts/p18-diagnostic-v24.txt retain the old
+strict-70 variation. In run 17867ead358c49f9b3c8b7157c034dcc the supplier issued
+5.10 / 14 days / 36 months / 3% deadband. Its 64.2713 calculated score failed the
+old floor and the remote session ended. Offline replay with V25 accepts that
+exact quote; the old remote session is not reopened.
+
+V23 baseline recovery (historical)
+config/p18-baseline-recovery.json and prompts/p18-diagnostic-v23.txt retain the
+recovery baseline. Its run f201c6e6e8804c73acb6c36468cc74aa returned 5.20/60/5%
+and 5.10/30/5%; calculated scores 64.0839 and 68.4565. Both correctly failed the
+70.01 floor. All PO/PPI/AS arguments were verified. Official result was no deal.
+
+V22 experiment outcome (historical, disabled)
+Run 5e19ec6b5f1a425f8e3d4adaf99f5b14 returned 5.60 -> 5.40 -> 5.30, all
+60 days / 36 months / 5% deadband. All three evidence groups were verified.
+Final quoted cost 253480.98, calculated score 57.4891; official no-deal score 0.
+The fixed sequence made zero buyer model calls. The changed opening requested
+both longer credit and a wider deadband; observational data cannot isolate
+how much of the regression each change caused. V23 restores the best observed
+baseline, not a demonstrated above-70 solution. Even the best prior quoted
+5.10 / 30-day / 5% package scored only 68.4565 and cannot be accepted at our floor.
+
+Historical policies and tests (not instructions for active V23)
+config/p18-open-compromise.json retains the V21 policy snapshot.
+It added one open_payment_compromise, compromise_evidence_argument and
+stop_after_nonqualifying_final to the V20 policy; config/p18-approval-opening.json
+retains the V20 snapshot. The original menu preserves all
+prices, payment choices, timing and acceptance limits from
+config/p18-early-payment-menu.json (V18), and adds the explicit
+menu_evidence_argument: ppi_recent_change_pct. The earlier
+config/p18-package-alternatives.json preserves the V16/V17 two-package menu.
+config/p18-above-70.json preserves the V15 final-counter policy, and
+config/negotiation-policies.example.json preserves the V14 / 59.77-point policy,
+solely for reproducing earlier offline regressions.
+New workbench hosted evaluations snapshot the selected case's settings into the
+evaluation and run reports. Other cases receive no P18 closing controls.
+
+The historical prompts/p18-diagnostic-v21.txt menu includes the
+supplier's preferred 30-day payment structure and is sent after one buyer proposal,
+normally message 4, instead of message 6. The intermediate EUR 4.72 counter is
+removed. EUR 5.07 at 30 days is the first listed package; the existing EUR 5.05
+at 14 days and EUR 5.10 at 60 days remain available. All use a 5% deadband.
+
+Run c57a073a73f3406a863beac1eb2366e2 followed the V17 opening at 30 days and
+sent its two-option menu correctly. The supplier offered EUR 5.30/60 days/5%
+and EUR 5.10/30 days/0%, scoring approximately 57.49 and 60.96 respectively.
+The buyer then proposed EUR 5.07/30 days/5% after the final label. The supplier
+explicitly withdrew over further reductions. There was no private-cost request
+in that last buyer message, so the prior disclosure objection was not the sole
+obstacle. The new policy moves the 30-day proposal earlier; it does not prove
+that this package or a score above 70 will be accepted.
+
+V18-V21 started at 30-day payment and retained the fixed enquiry terms. Fourteen days is the
+earliest permitted payment; never invent prepayment or seven-day options. The historical V18/V19 strategy asked a short unpriced commercial clarification
+after a non-qualifying final offer. The latest run shows that an approval request
+for previously discussed better terms can still trigger withdrawal. V20 moves
+the new compromise to the open reply and treats any late request as a further
+negotiation, with withdrawal risk. It retains the restriction on private-cost
+questions. Sending remains subject to the live protocol.
+
+V21 keeps the same acceptance_floor:
+- Strictly above 70 points; enforced minimum 70.01 and no lower-score fallback.
+- Complete package cost must be at most EUR 244,400.60 over the buying horizon.
+- Nominal price must also be at most EUR 5.10/kg. Accept only when both pass.
+- Option A: EUR 5.07/kg, 30-day payment, 5% deadband. Complete cost EUR 244082.98,
+  calculated score 70.4480. Option B: EUR 5.05/kg, 14-day payment, 5% deadband.
+  Complete cost EUR 243971.22, calculated score 70.6021. Option C: EUR 5.10/kg,
+  60-day payment, 5% deadband. Complete cost EUR 243915.66, calculated score
+  70.6787. All use AS-14404, 45% material share, base month 2026-08, a currently
+  quoted 24/36-month duration and fixed enquiry terms. Recheck costs on live data.
+- These are new buyer proposals: payment and deadband are conditional on approval,
+  not silently substituted when accepting. The chosen package must become
+  acceptance-eligible before the buyer accepts it.
+- A EUR 5.10 offer with 14-day payment and 0% deadband still fails the threshold.
+- Contract duration must cover at least 24 months. The scored demand remains
+  23,700 kg/year over two years = 47,400 kg.
+- Nominal price and total cost must BOTH pass. A cheaper complete cost does not
+  authorize a nominal price above EUR 5.10. A 12-month offer is not auto-accepted.
+- Policy and prompt acceptance limits must match before a run can be scheduled.
+  Change both together when changing the limits. Removing the case's policy
+  entry disables these deterministic controls for future evaluations. Both
+  adaptive final-counter and early-menu modes validate outgoing priced packages
+  against the cost and duration limits. Invalid menu options are rejected during
+  preparation, before opening a hosted session, and rechecked before delivery.
+
+The early menu overrides the old small-step concession rule after the EUR 4.60
+opening. The 30-day package is presented before spending another round on the
+old EUR 4.72 counter. A qualifying binding reply is always accepted first. The
+menu is not automatically repeated; the model addresses the actual remaining
+issue. Transcript inspection works across reconstructed agents and records a
+menu as delivered only when a matching buyer message appears in the thread.
+The default early-menu controller still requires an authoritative open status.
+
+Evidence in the deterministic menu (V19)
+execution_evidence.py reads the delivered June and August PPI-C2431 records from
+the actual decision payload: 132.1 and 129.1. It recomputes (129.1/132.1-1)*100,
+checks the registered p18:ppi_recent_change_pct calculation and both source refs,
+then inserts the -2.27% claim into the outgoing package email. The email names
+2026-06 and 2026-08 and acknowledges that this recent decline can coexist with
+the supplier's annual rise. PPI is supporting evidence; the contractual clause
+remains AS-14404. The claim does not establish total costs or a supplier floor.
+
+Normal assessment and numeric-claim validation run before the send. No model
+call, extra supplier round or confidential source is used for this insertion.
+An acceptance still takes priority over presenting evidence. The sent transcript
+prevents reuse of an already cited window. Missing/unread sources, wrong dates or
+series, malformed values, inconsistent calculations and a non-declining window
+omit the argument instead of sending an unsupported claim. The decision records
+execution_evidence with included/skipped status and the source/calculation refs;
+skipped arguments record the reason. Numeric checks and assessment evidence are
+visible in the usual decision details. Old policies remain evidence-free unless
+they explicitly enable this new setting; this preserves historical replay.
+
+What the data supports
+The supplier's annual claims imply 5.9% * 45% + 2.7% * 5% + 12.3% * 38%
+= 7.464 percentage points, only if the stated shares are non-overlapping base
+weights. They cover 88% of costs. Remaining components, timing and prior recovery
+are unknown. The calculation is explicitly marked as an inference from supplier
+claims, not a verified total cost increase or a proven supplier reservation price.
+
+Diagnostics
+The general delivery audit is independent of P18's strategy. research.collection
+records expected/loaded/retained rows, explicit case exclusions, missing inputs and
+whether the Sunday release is installed. evidence_transport records full, partial
+and deferred source counts. Every deferred source must have a local retrieval path;
+an unexplained collection shortfall or an inaccessible catalog entry raises an error.
+Partial means visible excerpts only; available=true does not mean the entire source
+has been read. Code-calculated aggregates can be present while their raw ledgers
+remain deferred. The catalog does not prove the model attended to each fact.
+
+Each actual model-backend request records its exact JSON SHA-256, character count,
+delivery counts, partial refs and retrieved page count in audit.model_requests and
+the decision's model_requests. Counts are refreshed after reads and repair attempts;
+failed validation also records the corresponding request receipt. This proves what
+was submitted locally, not model comprehension or supplier agreement. These receipts
+and the interactive retrieval protocol apply to assessment-enabled editable runs;
+the shared research collection and master-data fix apply to all buyer variants.
+
+Internal evidence labels can be conservatively normalized from the source
+registry: supplier-only references become supplier_claim, while mixed sources or
+conditional calculations become inference. Inferences are never promoted to
+verified facts. Email text, commercial terms and numeric claims are not rewritten.
+Unread sources, invented references, stale assessments and incorrect arithmetic
+still fail validation. Repairs are logged as assessment_label_repairs; rejected
+attempts persist bounded source IDs, availability and label diagnostics in
+audit.validation_failures. The original two-output and 50-second limits remain.
+
+Decision JSON records supplier_signals, price_plan, evidence_transport,
+evidence_reads and the source policy:accept, policy:package-alternatives or the
+historical policy:closing-counter. The full
+initial payload size counts JSON characters; it is not a measured token saving.
+Bounded retrieval or validation repairs can add model calls within the same
+deadline. No local code can prevent a supplier-side withdrawal.
+
+Offline verification (from the repository root)
+.venv/bin/pytest -q
+.venv/bin/python scripts/audit_evidence_pipeline.py
+.venv/bin/python scripts/replay_p18_pipeline.py --strategy prompts/p18-diagnostic-v19.txt --policy config/p18-evidence-menu.json --through-message 3 --run data/local/runs/ca3625c14ff14f09b082d8e86b30d174.json --run data/local/runs/0bf9a703c393406986acd3be92bc6a9f.json --run data/local/runs/cf03d2c849224651bf1671cb6426b518.json --output reports/p18-evidence-menu/offline-replay.json
+
+The general audit covers every locally installed public case by default. It checks
+collection counts, source-catalog coverage and lossless reconstruction of every
+source across all pages, with matching hashes. Output: reports/evidence-pipeline/audit.json.
+Use --case case:P18 to narrow it. This offline audit is allowed to traverse all
+pages; it does not change the live decision's two-read / 50-second budget. It uses
+no hosted sessions or model calls and does not download a missing Sunday release.
+
+This replay checks the three zero-score V18 runs through supplier message 3,
+while their EUR 5.40 offers were still open. The next action is the same
+three-package menu, now with the checked PPI argument and numeric claim. No later supplier response is simulated or treated as
+evidence of how the supplier would respond to the new menu. The saved full thread
+remains terminal. No model calls or hosted quota are used. With no arguments, the
+script still reproduces the V14 regression using its original policy and prompt.
+
+The validation regression in tests/test_evidence_validation_recovery.py covers
+the failure classes from run 7f03ab8efe6440528470cc540af77438. That run stopped
+after citing a deferred source and then mismatching an evidence label. The old
+logging did not retain the exact rejected sources or responses. A constructed
+response on its recorded live thread is checked in
+reports/p18-evidence-fix/offline-check.json; it is not a supplier simulation.
+The failed run's remote session was closed during cleanup. The replay page now
+shows that status and the validation reasons instead of implying the session
+remains available. V20 retains that evidence validation fix.
+
+The historical reports/p18-payment-trade/offline-check.json validates V17 against
+its original two-option policy and six proposed packages. It includes the permitted
+5% deadband compromises EUR 5.07/30 days and EUR 5.09/45 days, with at least a
+24-month duration. They are optional proposals for responding to payment
+objections, not additional automatic menus or currently available supplier offers.
+That report is retained as history. V18 uses config/p18-early-payment-menu.json
+and a corresponding runtime policy snapshot for each new evaluation.
+
+V20 deep review and opening (25 October 2026)
+The current hosted run c206a1d4b53944e285756a588c445bda reached a final supplier
+package of EUR 5.10/30 days/36 months/5% deadband: calculated score 68.4565.
+The buyer's PO history, PPI and AS claims were verified. No collection or action
+contract error explains this run. The strict floor rejected the package; a
+further approval request was followed by withdrawal. The official result is zero.
+
+Two older runs already put PO, PPI and AS evidence together in their openings
+and asked for committee/owner approval without reaching a qualifying agreement.
+V20 therefore preserves the latest best-offer run's PO -> PPI -> AS sequence.
+Its opening is shorter and asks for binding package approval through the proper
+contact immediately. It keeps EUR 4.60/30 days/36 months/0% deadband as the anchor.
+After the unchanged three-option menu, V20 directs the model to propose the
+previously unused EUR 5.09/45-day compromise on the next open reply where relevant,
+with unused AS evidence, rather than repeat EUR 5.07/30 days. It must respect an
+explicit payment refusal and recheck the exact clause and duration. This is a
+strategy instruction supported by the price plan, not an automatic closing send.
+
+With AS-14404/45%/5%/2026-08 and at least 24 months, EUR 5.09/45 days costs
+EUR 244241.61 and scores 70.2292. EUR 5.10/45 days scores only 69.5676 and fails.
+The strict minimum 70.01, nominal cap EUR 5.10 and no-reopening rule remain.
+Neither an offline contract check nor price arithmetic proves supplier acceptance.
+
+The new official download has 286 files: 285 byte-identical, one SQLite binary
+with identical rows in all 24 tables. The remote P18 case also matches. Two fresh
+quote-PDF extractions match cached text exactly; no additional cost annex exists
+in that saved thread. The Sunday release was not public when checked and official
+API documentation says practice/sandbox continue to use the base package after
+its release. The optional arena-data MCP dependency is not installed; the current
+buyer uses the Python research collector, not a live MCP connection. Its shared
+DataPackage lookup logic is nevertheless covered by the master-data regression.
+
+Reports are in reports/p18-deep-review/: findings.txt, package-comparison.json,
+database-comparison.json, attachment-audit.json, historical-offers.json,
+data-integrity.json, v20-menu-replay.json and v20-open-reply-input.json.
+The new all-case audit verifies 1,279 local source records across 19 cases with
+zero collection issues. A recorded P18 open-reply payload has 100 full sources,
+0 partial and 129 deferred sources; every deferred source is locally retrievable.
+Availability does not mean all records are read in one model call or understood.
+The exact input is saved for inspection. All checks used no hosted sessions or
+paid model calls. See activation.json for the restarted server and final checks.
+
+V21 correction after the 14-day counter (25 October 2026)
+The V20 hosted run 1672fff1b6a94835986cb320f8d26da3 selected the 14-day branch.
+Its recorded assessment explicitly held the 45-day compromise back because the
+strategy only triggered it for a 30-day counter. The supplier reached EUR 5.10
+at 14 days (67.2713 calculated points), declared final, and withdrew after our
+request to change payment to 60 days. Four of ten buyer rounds were used; the
+server reported no timeout. This was not an exhausted message limit.
+
+V21 fixes the missing branch in code. After the existing menu, the controller
+can propose EUR 5.09/45 days once while open, including after a 14-day or 30-day
+counter. It uses an actually offered matching index clause and 24/36-month term,
+checks the live cost and all limits, and never raises the price above the offer
+it uses. Transcript matching prevents duplicate proposals after reconstruction.
+A conservative text cue defers explicit or ambiguous payment restrictions to
+the model instead of forcing 45 days. The cue is not a complete language parser;
+the strategy also instructs the model to respect the actual refusal. A 14-day
+quote without a restriction does not disable the new control.
+
+The compromise carries the unused June-September AS-14404 calculation only if
+its actual delivered endpoint records and calculation registry agree. It uses
+the same assessment/numeric-claim validation and repeat detection as the PPI menu.
+Unavailable, invalid, inconsistent, non-declining or already used evidence is
+omitted with an audit reason. A qualifying eligible offer is accepted first.
+
+If a final offer contains no qualifying quoted package, V21 removes further
+send/confirm actions and stops locally without another model call or counter.
+The terminal audit records FINAL_OFFER_OUTSIDE_LIMITS and remaining API rounds;
+it must not be described as supplier withdrawal, agreement or a message-limit
+error. A qualifying advertised alternative remains available for exact binding
+confirmation; it is not silently accepted without server eligibility. The normal
+practice evaluation runner may separately close an abandoned session through
+its existing cleanup API. That cleanup is not a negotiated result. Strict
+70.01, EUR 5.10 and the cost/duration limits are unchanged; no deal remains possible.
+
+Tests and offline replays cover both actual counter branches, qualifying exact
+acceptance, no post-final renegotiation, restrictions, idempotency, source checks
+and the already-withdrawn terminal states. The offline replays do not simulate
+supplier replies or establish that the compromise will be accepted. See
+reports/p18-open-compromise/ for input snapshots, replays and activation details.

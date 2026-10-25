@@ -1,0 +1,70 @@
+{
+  "checks": [
+    {
+      "command": "uv run pytest -q tests/test_capacity_tradeoffs.py tests/test_p10_evidence.py tests/test_p18_evidence.py tests/test_evidence_delivery.py tests/test_evidence_validation_recovery.py tests/test_prompt_comparison.py tests/test_practice_suite.py tests/test_single_agent_evaluation.py",
+      "result": "80 passed"
+    },
+    {
+      "command": "uv run pytest -q tests/test_p10_evidence.py",
+      "result": "11 passed after replacing the report-file fixture with a self-contained opening fixture"
+    },
+    {
+      "command": "uv run ruff check src/aeiou/p10_evidence.py src/aeiou/price_planner.py src/aeiou/research.py src/aeiou/evidence_transport.py src/aeiou/prompt_protocol.py tests/test_p10_evidence.py tests/test_capacity_tradeoffs.py",
+      "result": "All checks passed"
+    },
+    {
+      "command": "uv run pytest -q tests/test_p10_evidence.py tests/test_protocol_execution.py tests/test_prompt_comparison.py tests/test_evidence_validation_recovery.py tests/test_p18_evidence.py tests/test_capacity_tradeoffs.py tests/test_evidence_delivery.py tests/test_practice_suite.py tests/test_single_agent_evaluation.py",
+      "result": "100 passed in 5.30s after adding the outbound citation guard"
+    },
+    {
+      "command": "uv run pytest -q tests/test_structured_p10.py tests/test_eval_suite.py tests/test_single_agent_evaluation.py",
+      "result": "46 passed in 3.68s after correcting the documented structured-response mapping; Ruff passed for the adapter and tests"
+    },
+    {
+      "command": "uv run pytest -q tests/test_p10_evidence.py tests/test_evidence_delivery.py tests/test_decision_memory.py tests/test_evidence_validation_recovery.py tests/test_protocol_execution.py tests/test_p18_evidence.py tests/test_single_agent_evaluation.py",
+      "result": "88 passed in 3.03s after guarding private calculation/retrieval IDs; Ruff passed for changed modules and tests"
+    },
+    {
+      "command": "uv run pytest -q tests/test_supplier_term_options.py tests/test_capacity_tradeoffs.py tests/test_p10_evidence.py tests/test_agent.py tests/test_protocol_execution.py tests/test_p18_evidence.py tests/test_evidence_delivery.py tests/test_single_agent_evaluation.py tests/test_p18_payment_tradeoffs.py",
+      "result": "116 passed in 2.75s; Ruff passed after correcting validation, candidate selection and term completion for observed supplier defaults"
+    },
+    {
+      "command": "uv run pytest -q tests/test_outgoing_source_attachments.py tests/test_evidence_delivery.py tests/test_p10_evidence.py tests/test_protocol_execution.py tests/test_supplier_term_options.py tests/test_single_agent_evaluation.py",
+      "result": "83 passed in 3.44s after adding exact-source attachments"
+    },
+    {
+      "command": "uv run pytest -q tests/test_p18_evidence.py tests/test_evidence_validation_recovery.py tests/test_prompt_comparison.py tests/test_structured_p10.py tests/test_hosted_replay.py tests/test_capacity_tradeoffs.py",
+      "result": "60 passed in 1.57s shared transport regressions"
+    },
+    {
+      "command": "uv run pytest -q tests/test_outgoing_source_attachments.py tests/test_service.py",
+      "result": "21 passed in 2.32s after adding workbench attachment preview; Ruff passed for all changed source/test files"
+    }
+  ],
+  "regression_scope": [
+    "Canonical PO facts reach the actual compact model input",
+    "Annual PO quantity differs from forecast and case need",
+    "Lower opening fraction is explicit and case scoped",
+    "Opening candidates respect hard delivery must-haves",
+    "Missing sources do not create aggregate evidence",
+    "P18 and general evidence transport regressions",
+    "Own current and historical quote IDs are rejected in email bodies and subjects without silently rewriting text",
+    "Exact structured acceptance and distinct rival offer IDs remain available",
+    "The existing model repair loop replaces a rejected email before transmission",
+    "Typed claims retain exact canonical source values and scope",
+    "Transport never truncates text or silently picks a menu alternative",
+    "Session inventory remains callable for admission control",
+    "Structured replies use current standing IDs even when email history remains stale",
+    "Known local calculation IDs and private table/message/attachment handles are rejected in outgoing email, while underlying canonical references remain valid",
+    "Private numeric_claims and assessments retain local audit references; the existing repair loop corrects outgoing prose without silent rewriting",
+    "Supplier-specific numeric defaults from the opening structured quote augment listed case choices without mutating the shared case",
+    "Buyer proposals, unstructured prose, malformed values and other supplier threads cannot add a standard option",
+    "A quoted default never overrides must-haves or fixed terms",
+    "The model menu, candidate-ID resolver and outgoing payload retain the same quoted 54-day lead time instead of snapping it to 56",
+    "The actual HTTP request receives exact source-document bytes, with a private SHA-256 receipt",
+    "Unknown, oversized, private, unread and other-recipient source attachments are rejected through the existing repair loop",
+    "Full local retrieval enables a previously partial document; a stale cached read cannot authorize a changed partial document",
+    "Sent source text remains visible to later model decisions",
+    "Workbench exposes the exact text without modifying stored wire requests used by recorded replay"
+  ]
+}

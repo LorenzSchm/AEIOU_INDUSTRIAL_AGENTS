@@ -1,0 +1,30 @@
+{
+  "activated_at": "2026-10-25T00:10:12.602328+00:00",
+  "previous_pid": 78610,
+  "server_pid": 86384,
+  "protocol_version": "faithful-v18-closing-cost-comparison",
+  "prompt_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/prompts/p18-diagnostic-v28.txt",
+  "prompt_sha256": "b5be19ccc168cf4d7015aa327ff846330a00a4fcc5b7fda73b36a0b83547de83",
+  "policy_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/config/p18-accept-510.json",
+  "policy_unchanged": true,
+  "acceptance_floor": {
+    "case_id": "case:P18",
+    "c_open": 295173.23,
+    "c_best": 222651.27,
+    "minimum_score": 0.0,
+    "maximum_unit_price": 5.1
+  },
+  "checks": {
+    "core_tests_passed": 132,
+    "ruff": "passed",
+    "recorded_message_5_comparison": "passed",
+    "actual_final_acceptance_replay": "passed",
+    "server_health": "passed",
+    "live_protocol_version": "passed",
+    "no_active_jobs_interrupted": true
+  },
+  "hosted_sessions_started": 0,
+  "paid_model_calls": 0,
+  "prompt_selection": "V28 file prepared for a fresh test; the existing browser draft was not replaced.",
+  "strategy_status": "V28 unsuccessful in fef6cf692e524910bccd2465a58d5ef3; forced closing branch superseded. Arithmetic comparison remains available."
+}

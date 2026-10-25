@@ -1,0 +1,1725 @@
+{
+  "case_id": "case:P10",
+  "target_score": 72,
+  "baseline": {
+    "run_id": "c842436fe9b34fc88555d4db8df05ae0",
+    "evaluation_id": "123b7ac5b0c6438baae9f2f33e50cdc1",
+    "score": 64.7293982,
+    "total_cost": 1541808
+  },
+  "trials": [
+    {
+      "variant": "v2",
+      "evaluation_id": "a4e2ca9f9bf44f41a487ae325f36e604",
+      "run_id": "37ee57d7be69477eb74bd2a5af8f34ce",
+      "session_id": "ac23f1c4467d002a",
+      "run_status": "completed",
+      "official_score": 63.94883642165704,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 32.0
+      },
+      "total_cost": 1546519.2,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-1",
+          "terms": {
+            "unit_price": 32.0,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 1,
+          "result": "verified"
+        },
+        {
+          "index": 2,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v3",
+      "evaluation_id": "d4918e1cb15d4c04b1b92bf2307e0e31",
+      "run_id": "35c94f62700043fba5f5b6af3b3ddf3f",
+      "session_id": "ed737e51824d5be2",
+      "run_status": "completed",
+      "official_score": 67.07108356081908,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.6
+      },
+      "total_cost": 1527674.4,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.6,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v4",
+      "evaluation_id": "2671f8342b9b43548bb0ea7adc406066",
+      "run_id": "f7945373a92041a5af9f98e1bd2311e8",
+      "session_id": "b75995e7ee098d4c",
+      "run_status": "completed",
+      "official_score": 63.16827463686654,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 32.1
+      },
+      "total_cost": 1551230.4,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-1",
+          "terms": {
+            "unit_price": 32.1,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v5",
+      "evaluation_id": "786589b093e04cfaadef4a310ba44236",
+      "run_id": "eb8facfc020c464fb59cc73902332432",
+      "session_id": "0bc49dd8a6851c81",
+      "run_status": "completed",
+      "official_score": 67.07108356081908,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.6
+      },
+      "total_cost": 1527674.4,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.6,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v6",
+      "evaluation_id": "8ea3c2add26e4754b2115b2fd1adaa26",
+      "run_id": "82bc3f8de1d84e8d9036537b4b55e70a",
+      "session_id": "7305a9318ab8ba8d",
+      "run_status": "completed",
+      "official_score": 0.0,
+      "accepted": false,
+      "terms": null,
+      "total_cost": null,
+      "must_haves_ok": null,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.8,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v7",
+      "evaluation_id": "942f86af02c14b7f8a5b173ab3018f24",
+      "run_id": "a92a0da89a044bf6a20cdaafd90b20f4",
+      "session_id": "0892e74f2d21c2ea",
+      "run_status": "failed",
+      "official_score": 0.0,
+      "accepted": false,
+      "terms": null,
+      "total_cost": null,
+      "must_haves_ok": null,
+      "error": "NegotiationBlocked: ACCEPTANCE_SCORE_FLOOR_NOT_MET",
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.7,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 0,
+          "result": "duplicate"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v8",
+      "evaluation_id": "81d97f34d29849d4ba1c58a14294a6e1",
+      "run_id": "084f0066f9af421192b75260b290774e",
+      "session_id": "8acfe54006c64e0a",
+      "run_status": "completed",
+      "official_score": 0.0,
+      "accepted": false,
+      "terms": null,
+      "total_cost": null,
+      "must_haves_ok": null,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-1",
+          "terms": {
+            "unit_price": 31.8,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v9",
+      "evaluation_id": "40c95068b54d47ebbfc1f25effb97f64",
+      "run_id": "0620aeb6a4e3457b9da0379a4ea32dde",
+      "session_id": "0be8c8799a379364",
+      "run_status": "failed",
+      "official_score": 0.0,
+      "accepted": false,
+      "terms": null,
+      "total_cost": null,
+      "must_haves_ok": null,
+      "error": "NegotiationBlocked: ACCEPTANCE_SCORE_FLOOR_NOT_MET",
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.9,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 24
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v10",
+      "evaluation_id": "42e4eb8e57e1409e8d60602a148f89f3",
+      "run_id": "0a3d0b2bacd44b659b12089e1b08daa0",
+      "session_id": "7b52f15f5efd2d92",
+      "run_status": "failed",
+      "official_score": 0.0,
+      "accepted": false,
+      "terms": null,
+      "total_cost": null,
+      "must_haves_ok": null,
+      "error": "NegotiationBlocked: ACCEPTANCE_SCORE_FLOOR_NOT_MET",
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.6,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 1,
+          "result": "verified"
+        },
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v11",
+      "evaluation_id": "173c72360c1343199bce190dffe1744f",
+      "run_id": "de648920e2fa4ef691166ab259783043",
+      "session_id": "3f0d5defb151aa31",
+      "run_status": "failed",
+      "official_score": 0.0,
+      "accepted": false,
+      "terms": null,
+      "total_cost": null,
+      "must_haves_ok": null,
+      "error": "NegotiationBlocked: ACCEPTANCE_SCORE_FLOOR_NOT_MET",
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.9,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v12",
+      "evaluation_id": "7c0891bbacbd4cd9b7e477adb0cca3a4",
+      "run_id": "998d697df2bf4ed8a93654e140f9b5df",
+      "session_id": "16352978cb8499e7",
+      "run_status": "failed",
+      "official_score": 0.0,
+      "accepted": false,
+      "terms": null,
+      "total_cost": null,
+      "must_haves_ok": null,
+      "error": "NegotiationBlocked: ACCEPTANCE_SCORE_FLOOR_NOT_MET",
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-1",
+          "terms": {
+            "unit_price": 31.9,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 24
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 1,
+          "result": "verified"
+        },
+        {
+          "index": 2,
+          "result": "irrelevant"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v13",
+      "evaluation_id": "79513ed696f34f239fa181f0c06b6a33",
+      "run_id": "ebf9903311524423ad627162b233b30e",
+      "session_id": "1c4283985ba41054",
+      "run_status": "failed",
+      "official_score": 0.0,
+      "accepted": false,
+      "terms": null,
+      "total_cost": null,
+      "must_haves_ok": null,
+      "error": "NegotiationBlocked: ACCEPTANCE_SCORE_FLOOR_NOT_MET",
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.6,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 1,
+          "result": "verified"
+        },
+        {
+          "index": 2,
+          "result": "verified"
+        },
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 1,
+          "result": "verified"
+        },
+        {
+          "index": 2,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v14",
+      "evaluation_id": "8f8b573ee161427194937284f1c9f925",
+      "run_id": "2dc0b56ad8e041ccbcd9254c859e85ee",
+      "session_id": "4dfaf07151252891",
+      "run_status": "completed",
+      "official_score": 68.63220713040008,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.4
+      },
+      "total_cost": 1518252.0,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.4,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v15",
+      "evaluation_id": "99f07daceb0e4be4901c1fecfe1d6a34",
+      "run_id": "c719716c1f744df396cc475a9a0ca87d",
+      "session_id": "eef89235ca2dc0aa",
+      "run_status": "completed",
+      "official_score": 68.63220713040008,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.4
+      },
+      "total_cost": 1518252.0,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.4,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v16",
+      "evaluation_id": "0d2daa68f22844c295b699f4a3bacf94",
+      "run_id": "47df687227ae4c4b84209cae193e3bae",
+      "session_id": "1ae49284e114ee7c",
+      "run_status": "completed",
+      "official_score": 67.85164534560958,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.5
+      },
+      "total_cost": 1522963.2,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.5,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v17",
+      "evaluation_id": "100913330a5149ff915651a671924677",
+      "run_id": "ad4d7143be294da4a487649d540048bd",
+      "session_id": "882264e0fc712efe",
+      "run_status": "completed",
+      "official_score": 67.85164534560958,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.5
+      },
+      "total_cost": 1522963.2,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.5,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v18",
+      "evaluation_id": "4486f7407d0440fe92bcba7668ee2b66",
+      "run_id": "c3e19532eaf74f52bcb836fc2db02109",
+      "session_id": null,
+      "run_status": "failed",
+      "official_score": null,
+      "accepted": false,
+      "terms": null,
+      "total_cost": null,
+      "must_haves_ok": null,
+      "error": "TypeError: 'dict' object is not callable",
+      "last_supplier_offer": [],
+      "claim_results": [],
+      "transport": "documented /moves for offers; /messages for acceptance",
+      "target_met": false
+    },
+    {
+      "variant": "v19",
+      "evaluation_id": "203446493ffd48b8a7e306d4e60480f8",
+      "run_id": "2e8ad7d39c714791a4b6c39200919515",
+      "session_id": "0fdc690f59c8281f",
+      "run_status": "failed",
+      "official_score": 0.0,
+      "accepted": false,
+      "terms": null,
+      "total_cost": null,
+      "must_haves_ok": null,
+      "error": "ValueError: Structured reply ID is not present in the authoritative supplier message",
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-0",
+          "terms": {
+            "unit_price": 32.2,
+            "lead_time_days": 54,
+            "volume_per_year": 19890,
+            "contract_months": 12
+          }
+        }
+      ],
+      "claim_results": [],
+      "transport": "documented /moves for offers; /messages for acceptance",
+      "target_met": false
+    },
+    {
+      "variant": "v20",
+      "evaluation_id": "2e0b4b0754dd4ba496f1448dc24dc6db",
+      "run_id": "d1426696812e488eb392700726a22094",
+      "session_id": "9c6fb1daad222564",
+      "run_status": "completed",
+      "official_score": 67.07108356081908,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.6
+      },
+      "total_cost": 1527674.4,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.6,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "documented /moves for offers; /messages for acceptance",
+      "target_met": false
+    },
+    {
+      "variant": "v21",
+      "evaluation_id": "80cfacc9e9f94fcf8819fe44c99820e5",
+      "run_id": "2fc993728d49416fb7dd610afb3d0b06",
+      "session_id": "35a5770e82579d48",
+      "run_status": "completed",
+      "official_score": 0.0,
+      "accepted": false,
+      "terms": null,
+      "total_cost": null,
+      "must_haves_ok": null,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.6,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 24
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v22",
+      "evaluation_id": "2d3a4d156df44d74acaa2b474a2558cd",
+      "run_id": "e189903cedda44b8af30197d8f0cc5d9",
+      "session_id": "bbd284bb74d8c053",
+      "run_status": "completed",
+      "official_score": 57.80733017301243,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 42,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 33.5
+      },
+      "total_cost": 1583587.2,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 33.5,
+            "lead_time_days": 42,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v23",
+      "evaluation_id": "2db3f47a485f4a19859629598afc56ba",
+      "run_id": "7d72c04d713641878f77556d4bc7178d",
+      "session_id": "575b0de0ec8a3c22",
+      "run_status": "completed",
+      "official_score": 68.63220713040008,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.4
+      },
+      "total_cost": 1518252.0,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.4,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v24",
+      "evaluation_id": "cf41d6c5d93d42548db9c403de7104bd",
+      "run_id": "181eb2eea90f4fa292393c1c58dc824f",
+      "session_id": "3aa13dd024a89e04",
+      "run_status": "completed",
+      "official_score": 68.63220713040008,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.4
+      },
+      "total_cost": 1518252.0,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.4,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v25",
+      "evaluation_id": "833add662cd242078faef3ae5065fcea",
+      "run_id": "4410908e08b9471f8fc1b3f9cbab4c33",
+      "session_id": "3bbad38d3d2f5527",
+      "run_status": "completed",
+      "official_score": 68.63220713040008,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.4
+      },
+      "total_cost": 1518252.0,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.4,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v26",
+      "evaluation_id": "4405606391b44d8598f0486b83fc35be",
+      "run_id": "ebbf017aeb314ce196cf06b83bf1b666",
+      "session_id": "e182a449519d0e67",
+      "run_status": "completed",
+      "official_score": 68.63220713040008,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 24,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.4
+      },
+      "total_cost": 1518252.0,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.4,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 24
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 1,
+          "result": "verified"
+        },
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v27",
+      "evaluation_id": "ad6bb62e38d44f2c98975a29ddd08cd5",
+      "run_id": "d6e6332ef8fa41b2889ac1d0dd1b659f",
+      "session_id": "8f452543e2f6112a",
+      "run_status": "completed",
+      "official_score": 68.63220713040008,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.4
+      },
+      "total_cost": 1518252.0,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.4,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 1,
+          "result": "verified"
+        },
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v28",
+      "evaluation_id": "e47fbcdf67b54d48b085aacbf6eaee21",
+      "run_id": "083a436655014e548ea568883397f8c5",
+      "session_id": "b272369f18093a54",
+      "run_status": "completed",
+      "official_score": 68.63220713040008,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.4
+      },
+      "total_cost": 1518252.0,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.4,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v29",
+      "evaluation_id": "81f862558ffa412ab8700fd9330d9691",
+      "run_id": "8c9204fd16d644489365c4f67168ccc8",
+      "session_id": "46a813081be7af08",
+      "run_status": "completed",
+      "official_score": 69.42748149085908,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.4
+      },
+      "total_cost": 1513452.0,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.4,
+            "lead_time_days": 54,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v30",
+      "evaluation_id": "3e3591de8877408e86abf5ec9e958a1a",
+      "run_id": "268a4ed565134e96b2736653b2bd4c89",
+      "session_id": "e768e89ccadd59f2",
+      "run_status": "completed",
+      "official_score": 69.42748149085908,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.4
+      },
+      "total_cost": 1513452.0,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.4,
+            "lead_time_days": 54,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 1,
+          "result": "verified"
+        },
+        {
+          "index": 2,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v31",
+      "evaluation_id": "3e3ad76e86ba4ff0b83d5c1627da3fa4",
+      "run_id": "f8a5d86dfd4745ea9c02edbdbb5b3d70",
+      "session_id": "c305fe3adb6ca87a",
+      "run_status": "completed",
+      "official_score": 69.42748149085908,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.4
+      },
+      "total_cost": 1513452.0,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.4,
+            "lead_time_days": 54,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v32",
+      "evaluation_id": "e1851ca7f4514858a827315bb0936916",
+      "run_id": "05e7feccda504f0f94ba044d9c9a616d",
+      "session_id": "2ace6b53471c4a62",
+      "run_status": "completed",
+      "official_score": 70.20804327564957,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.3
+      },
+      "total_cost": 1508740.8,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.3,
+            "lead_time_days": 54,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v33",
+      "evaluation_id": "29cb38b2339548f9b3c5c791528abfbc",
+      "run_id": "f2290d53ab4f41debad0cd0edc9a0a7a",
+      "session_id": "4dcdd3a15d00f456",
+      "run_status": "completed",
+      "official_score": 68.64691970606857,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.5
+      },
+      "total_cost": 1518163.2,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.5,
+            "lead_time_days": 54,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v34",
+      "evaluation_id": "fa66e4bb204141cc80e6b218cee7679f",
+      "run_id": "f7e5d7eee32146ee8eca21c61cbed054",
+      "session_id": "246d2761779ccacf",
+      "run_status": "completed",
+      "official_score": 69.42748149085908,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.4
+      },
+      "total_cost": 1513452.0,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.4,
+            "lead_time_days": 54,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v35",
+      "evaluation_id": "9af0b5011fe14feeaee8b660259f2998",
+      "run_id": "e65d999440694901981ecf351baa6d2c",
+      "session_id": "2fae1510f0f20ff1",
+      "run_status": "completed",
+      "official_score": 68.64691970606857,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.5
+      },
+      "total_cost": 1518163.2,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.5,
+            "lead_time_days": 54,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        },
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v36",
+      "evaluation_id": "bbe25439bc8444fb8b5b6600f8a7f7e6",
+      "run_id": "d82ef355afb04cc0bd8761a2fe53592f",
+      "session_id": "d366345e9f20e479",
+      "run_status": "completed",
+      "official_score": 0.0,
+      "accepted": false,
+      "terms": null,
+      "total_cost": null,
+      "must_haves_ok": null,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.5,
+            "lead_time_days": 54,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v37",
+      "evaluation_id": "19eeab831e4b4f63b41a4bdddb7d6815",
+      "run_id": "7671bf3f0dfc409bbb20a45723560f4e",
+      "session_id": "a55aa7ae9a426aef",
+      "run_status": "completed",
+      "official_score": 69.42748149085908,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.4
+      },
+      "total_cost": 1513452.0,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.4,
+            "lead_time_days": 54,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v38",
+      "evaluation_id": "3b1c0a63e97744428df0d09b15bfcd4c",
+      "run_id": "8f1ffbf72839451f8dbb2ad4d1878207",
+      "session_id": "bff984abf4cf2299",
+      "run_status": "completed",
+      "official_score": 69.42748149085908,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.4
+      },
+      "total_cost": 1513452.0,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.4,
+            "lead_time_days": 54,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v39",
+      "evaluation_id": "5cc9af23586c4b0ba05c66aad203b112",
+      "run_id": "3abe36e4bd494d678d7a3d540f4539f4",
+      "session_id": "f4bb9e63e89efb06",
+      "run_status": "completed",
+      "official_score": 68.64691970606857,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.5
+      },
+      "total_cost": 1518163.2,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.5,
+            "lead_time_days": 54,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    },
+    {
+      "variant": "v40",
+      "evaluation_id": "eb458cf239ed4d57847d5401065a2202",
+      "run_id": "9723b539d5f64886b8fa7a9aa6b144a9",
+      "session_id": "97ab7583112e4169",
+      "run_status": "completed",
+      "official_score": 69.42748149085908,
+      "accepted": true,
+      "terms": {
+        "payment_days": 30,
+        "lead_time_days": 54,
+        "volume_per_year": 23400,
+        "contract_months": 36,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "DAP",
+        "tooling_eur": 0.0,
+        "ppm_commitment": 300,
+        "chargeback_eur_per_complaint": 0.0,
+        "unit_price": 31.4
+      },
+      "total_cost": 1513452.0,
+      "must_haves_ok": true,
+      "error": null,
+      "last_supplier_offer": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.4,
+            "lead_time_days": 54,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "transport": "email",
+      "target_met": false
+    }
+  ],
+  "best_accepted": {
+    "variant": "v32",
+    "evaluation_id": "e1851ca7f4514858a827315bb0936916",
+    "run_id": "05e7feccda504f0f94ba044d9c9a616d",
+    "session_id": "2ace6b53471c4a62",
+    "run_status": "completed",
+    "official_score": 70.20804327564957,
+    "accepted": true,
+    "terms": {
+      "payment_days": 30,
+      "lead_time_days": 54,
+      "volume_per_year": 23400,
+      "contract_months": 36,
+      "effective_date": "2027-01-01",
+      "index_clause": null,
+      "incoterm": "DAP",
+      "tooling_eur": 0.0,
+      "ppm_commitment": 300,
+      "chargeback_eur_per_complaint": 0.0,
+      "unit_price": 31.3
+    },
+    "total_cost": 1508740.8,
+    "must_haves_ok": true,
+    "error": null,
+    "last_supplier_offer": [
+      {
+        "term_sheet_id": "offer:70410-2",
+        "terms": {
+          "unit_price": 31.3,
+          "lead_time_days": 54,
+          "volume_per_year": 23400,
+          "contract_months": 36
+        }
+      }
+    ],
+    "claim_results": [
+      {
+        "index": 0,
+        "result": "verified"
+      }
+    ],
+    "transport": "email",
+    "target_met": false
+  },
+  "target_met": false,
+  "best_selection": "Highest official accepted score; ties prefer fewer committed months beyond the two-year horizon, then more verified outgoing claims.",
+  "best_score_observed_in": [
+    "v32"
+  ],
+  "limitations": [
+    "Single hosted attempts: exploratory comparisons, not controlled estimates of prompt effects.",
+    "The score covers two years. A 36-month commitment includes a real third year outside this cost.",
+    "A local score-floor stop is not an accepted deal; its cleanup score is zero. A hard target guard is not a recommended fallback in a secure-supply case with no alternative."
+  ]
+}

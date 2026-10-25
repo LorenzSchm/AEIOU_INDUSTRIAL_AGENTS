@@ -1,0 +1,49 @@
+{
+  "menu_terms": [
+    {
+      "unit_price": 5.07,
+      "index_clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5,
+        "base_month": "2026-08"
+      },
+      "payment_days": 30,
+      "contract_months": 36
+    },
+    {
+      "unit_price": 5.05,
+      "index_clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5,
+        "base_month": "2026-08"
+      },
+      "payment_days": 14,
+      "contract_months": 36
+    },
+    {
+      "unit_price": 5.1,
+      "index_clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5,
+        "base_month": "2026-08"
+      },
+      "payment_days": 60,
+      "contract_months": 36
+    }
+  ],
+  "costs": [
+    244082.98,
+    243971.22,
+    243915.66
+  ],
+  "checked_ppi_included": true,
+  "exact_510_acceptance_preserved": [
+    0,
+    3,
+    5
+  ],
+  "hosted_sessions_started": 0
+}

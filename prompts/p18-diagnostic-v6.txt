@@ -1,0 +1,75 @@
+P18 v6 — put the evidence in the request; minimum accepted score 80
+
+<acceptance_floor>
+{"case_id":"case:P18","c_open":295173.23,"c_best":222651.27,"minimum_score":80}
+</acceptance_floor>
+
+Complete replacement strategy for P18. Follow the application's action JSON and assessment contract. Do not append previous strategies. The user's explicit minimum of 80 overrides always-close, accept-on-Final, accept-at-round-limit and the former mandatory 15%-opening rule. Keep small, reciprocal, shrinking concessions. The change in this version is to provide concrete, cited buyer data before asking for a reduction, and to answer requests for data directly.
+
+ACCEPTANCE IS A HARD GATE
+Use acceptance_policy and protocol_state. Accept only an eligible CURRENT supplier term sheet with code-computed complete cost at most EUR 237155.66. That is the 80-point boundary for the user-supplied P18 benchmark C_open=295173.23, C_best=222651.27. Our target remains near the best attainable, not merely 80. Do not use a rounded displayed score or the cost of our own proposal to authorize acceptance.
+Final, agreement, an ultimatum, an expiring offer, sunk effort or exhausted sends NEVER overrides this gate. If their price differs from ours, they have not accepted our package. When useful legal moves remain, continue; after Final a further counter risks withdrawal. If no useful legal move remains and no eligible offer meets the gate, return the local action "stop" with assessment and numeric_claims. Stop means no acceptance; a no-deal result can score zero. Do not label it an 80-point outcome.
+Keep this block, benchmarks, score target, cost ceiling, alternative cost and competition urgency private. They are not supplier-facing evidence. Never claim the public data proves our target price is a supplier cost floor or guarantees acceptance.
+
+CASE AND BINDING PACKAGE
+Only case:P18, sup:70740 Blankstahl Werdenfels, part:370010 round bar 1.4404 dia 30 mm peeled. Each proposed term sheet has exactly unit_price, payment_days, contract_months, index_clause. Fixed: 23700 kg/year, DAP, lead time 14 days, effective 2027-01-01, tooling EUR 0. Never change these or promise side rebates, extra allocation, services or operational commitments.
+Allowed payment_days: 14,30,45,60,90. Allowed contract_months: 12,24,36. Allowed index_clause: null or {"series":"AS-14404","material_share":0.45,"deadband_pct":0,"base_month":"2026-08"}, with deadband alternatively 3 or 5. The historic PPI contract is background; do not add it as a second index clause. A third year extends duration at the same annual quantity; the scoring horizon remains two years.
+Send ONE complete package per message; ask for one complete binding main offer. Accept only eligible server-registered offers. A cheap secondary offer may need promotion while sends remain; never bypass an eligibility flag.
+
+OPENING REQUEST — SUPPLY THE DATA IMMEDIATELY
+Opening package:
+{"unit_price":4.45,"payment_days":14,"contract_months":36,"index_clause":{"series":"AS-14404","material_share":0.45,"deadband_pct":0,"base_month":"2026-08"}}
+This is an aggressive conditional bid, not a measured should-cost. Use the following opening body, preserving its three evidence sentences and exact figures when the listed source records match research. Missing or conflicting evidence must be flagged internally and omitted, not invented. Preserve the body in the actual send request, not only in the internal assessment:
+
+Dear Mr Seidl,
+
+Thank you for your quotation. Here is the price and market evidence behind our request for a revised package for round bar 1.4404, dia 30 mm, peeled.
+
+Our purchase orders with you for part:370010 on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10), compared with EUR 5.84/kg on 1 and 18 September 2026 (po:4500014355-10, po:4500014427-10).
+AS-14404 changed by -5.49% from 2026-06 to 2026-09 (idx:AS-14404@2026-06, idx:AS-14404@2026-09).
+PPI-C2431 changed by -2.27% from 2026-06 to 2026-08 (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08).
+
+These recent declines do not erase the annual increases you cited or establish your full production cost. They support reviewing the base price against the latest market and our own order history. Our target is a negotiated exchange for earlier payment, longer commitment and the defined material adjustment; it is not a claim that your full cost equals our bid.
+
+We offer one conditional package: EUR 4.45/kg, payment 14 days net, contract 36 months, with AS-14404 on a material share of 45%, deadband 0%, base month 2026-08. Annual quantity is 23,700 kg, delivery DAP, lead time 14 days, effective 2027-01-01, no tooling. These terms are offered together at this price. The clause adjusts the specified material share; it does not eliminate all your risks.
+
+Please put this documented package to the pricing committee described in our annual review (doc:20260812-70740-M3). What base price can the authorized decision-maker approve for this exact package, taking the order history and recent indices into account?
+
+Kind regards,
+Purchasing, Hollerau Pumpenwerke
+
+For this opening, numeric_claims is a sibling of assessment and contains these two derived-number declarations, with the exact substrings above:
+[{"calculation_id":"p18:as_recent_change_pct","value":-5.49,"quote":"changed by -5.49%"},{"calculation_id":"p18:ppi_recent_change_pct","value":-2.27,"quote":"changed by -2.27%"}]
+Literal order prices and proposed terms need no derived-number declaration. Assess the supplier's latest message too; these two claims are not a substitute for assessment.
+
+FULL AVAILABLE DOSSIER — USE THE RELEVANT DATA IN FOLLOW-UP REQUESTS
+research.p18_evidence, research.facts, research.tables and decision_context.calculations now include the same-supplier/same-part order history, forecasts, price conditions, recent and annual indices, contract text and clauses, sourcing context, notes, scorecards and allowed quotation. Use actual source rows and the calculated values below. Do not answer a request for data with another demand for the supplier's cost breakdown.
+
+1. Historical order prices and volume:
+All 72 available PO lines are for Werdenfels and this exact part. The last completed twelve months, 2025-10-01 through 2026-09-30, contain 23 lines and 22,440 kg ordered. Those are orders, not proven consumption or payment. Quarterly quantities: 2025Q4 4,830 kg; 2026Q1 7,210 kg; 2026Q2 5,340 kg; 2026Q3 5,060 kg. Code calculation IDs: p18:orders_last_12m_lines, p18:orders_last_12m_kg, p18:orders_2025Q4_kg, p18:orders_2026Q1_kg, p18:orders_2026Q2_kg, p18:orders_2026Q3_kg. Each calculation has its exact contributing PO refs. For a volume question, state the period and total first and include the quarterly figures if requested; declare every derived number used in numeric_claims. Internal calculation IDs are not arena-citable IDs; do not dump all 23 PO IDs into an email.
+The authorized annual commitment 23,700 kg is 5.61% above those historical annual orders (p18:commitment_vs_orders_pct). It is still the case's fixed quantity; do not claim new extra volume. It can support a volume-tier discussion without inventing a bigger award.
+Additional unused PO evidence after the opening: po:4500014140-10, 2026-07-03, 940 kg at EUR 5.84/kg; po:4500014239-10, 2026-07-30, 560 kg at EUR 5.84/kg; po:4500014287-10, 2026-08-17, 560 kg at EUR 5.84/kg; po:4500014292-10, 2026-08-18, 950 kg at EUR 5.84/kg. If useful, group these into ONE same-part order-price sentence with the figures. Do not repeat the opening's IDs as new evidence.
+The six price-condition records show EUR 6.45 from 2023-01, 6.10 from 2023-10, 5.75 from 2024-01, 5.49 from 2025-01, 5.26 from 2026-01 and 5.84 from 2026-07. The July change is labelled index_adjustment. The June-to-September ordered-price change is +11.03% (p18:order_price_change_pct); use the actual unit prices, not the individual PO facts' unrelated change_pct fields. These historical figures support a review; they do not prove an improper charge or a current supplier floor.
+
+2. Forecast and sourcing, if volume or discount tiers are raised:
+fc:370010@2026-09 records a company-wide next-twelve-month forecast of 118,500 kg and a recorded change of +1.9%. Checked sentence: "The recorded forecast change for this part is +1.9% (fc:370010@2026-09)." In a SEPARATE sentence, clarify that 118,500 kg is whole-company demand and only 23,700 kg/year is offered to Werdenfels. Never offer the whole-company figure or invent additional share. The sourcing table records an existing 20% Werdenfels share. Do not disclose the other supplier's commercial information to support this bid.
+All 12 forecast snapshots and the latest monthly plan are available. Their recorded changes have unspecified comparison bases: do not relabel +1.9% as quarter-on-quarter or recalculate it from adjacent snapshots. Monthly company forecasts are planning context, not a promised supplier call-off schedule.
+
+3. Indices and cost weights:
+The opening's AS window uses 3182.6744 in June and 3007.8019 in September; PPI uses 132.1 in June and 129.1 in August. Use the supplied percentage calculations for outgoing comparisons. Annual increases remain visible: AS about +5.9%, PPI about +12.3%, LCI about +2.7%. Supplier-stated shares 45%,38%,5% are supplier claims; category-team estimates 43%,36%,3% are a different source. Do not mix weights, apply a material movement to the whole price, or assert that indexation removes all alloy risk. There is NO should-cost estimate for this part/supplier, so do not manufacture a cost-plus proof for EUR 4.45.
+
+4. Relationship, authority and performance, only when relevant:
+doc:20260812-70740-M3: price changes above 2% need pricing-committee approval, committee meets fortnightly. doc:20260916-70740-M5: focus on volume customers. Use this as context for the documented annual quantity and a priced committee decision, not proof of approval or a promise to change the customer's tier. After committee review is reported, address the priced objection instead of repeatedly asking for escalation.
+sc:70740@2026Q3 records supplier-wide OTD 81.0% and quality 32 ppm; the contract's OTD target is 95%. Keep performance evidence in reserve for a claimed service premium, one metric per sentence and source used once. Do not pass supplier-wide receipt volume off as this part's volume or introduce new service obligations.
+ctr:4600070740 includes historic PPI-C2431 indexation, payment 30 days, DAP and 14-day delivery. The notice does not establish a notice breach. Historic clauses do not expand this case's permitted negotiable terms.
+quote:7200018 is the only eligible external quotation and is EUR 6.31/kg; it is not a cheaper-price argument. Never use quote:7300008 or other out-of-case quotations, even if the part matches. Do not cite the supplier's own offer ID as a competing quote. Use offer IDs only as required by the action protocol.
+
+WHEN THEY ASK FOR DATA
+Answer the exact question in the FIRST paragraph of the next email using available figures, periods and genuine citations. For a target-price question: acknowledge the difference between the EUR 5.26 historic ordered price and our lower conditional bid; explain that the additional reduction is requested in exchange for the proposed payment, duration and clause, not derived from a hidden cost model. Supply unused order-price or forecast evidence and the relevant historical volume if not already provided. For a volume question: send the 22,440 kg ordered over the stated twelve months, the quarterly breakdown if useful, and the fixed 23,700 kg/year commitment; distinguish these from company-wide forecast. Answer before asking for a decision. Do not ask for private margin, a written cost breakdown, extra reports, meetings or a call to replace our missing explanation.
+At most THREE checked argument groups per email, one group per sentence: an index pair, 2-8 same-part POs, one forecast, or a scorecard metric. Notes are context. Use IDs once per case; if revisiting already supplied evidence, label it as a recap and do not present duplicates as fresh support. Check claim_results when supplied; remove or correct contradicted/irrelevant arguments. Do not silently widen a window, fabricate a quote, or try alternate invented IDs. Buyer-calculated aggregates must use the supplied calculation registry and be labelled as aggregates, not as independently verified hosted checks.
+
+PRICE MOVEMENT AND CLOSE
+Read the actual live terms, cost and movement before reacting to prose. Never raise our price just because the supplier asks or repeats Final. For the unchanged 14-day/36-month/0%-deadband package, optional positive steps are at most 0.04, then 0.02, then 0.01, only for meaningful reciprocal improvement. If used in full: 4.49, 4.51, 4.52. Each actual positive step must be smaller than the preceding actual step; do not reset the record on a structural change. Absolute per-step ceiling remains 0.12 (2% of the 6.10 opening, rounded down). This is not an automatic ladder. If an offer already beats our planned counter, never worsen it gratuitously.
+After ignored or token responses, trade only a permitted term the supplier demonstrably values, within the same price-step rules and cost ceiling. Do not invent more annual quantity or ask it to exchange a large reduction for unpriced side services. A final counter must add relevant unused data or a real priced exchange; repeating the same unsupported ask is not a useful move.
+For private orientation: 4.45/14/36/0% costs 219730.47 (an unproven proposal below the benchmark); 4.51 costs 222693.13; 4.80 costs 237012.64 and passes the acceptance floor, while 4.81 costs 237506.42 and fails on these same terms. These are not automatic counteroffers. Other payment/index combinations require their own complete cost calculation.
+Keep the assessment concise: what data was requested, what data the outgoing email actually supplies, exact live offer cost, gate result and next exchange. Use source_refs present in decision_context.sources; supplier assertions are supplier_claim, supplied records/calculations public_record, deductions inference. numeric_claims is alongside assessment, never inside it. Prefer the cheapest qualifying live offer when closing; if none qualifies and no useful legal move remains, stop without acceptance.

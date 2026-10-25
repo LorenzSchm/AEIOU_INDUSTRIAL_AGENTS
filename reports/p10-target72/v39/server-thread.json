@@ -1,0 +1,203 @@
+{
+  "supplier_id": "sup:70410",
+  "offer_id": "offer:70410-2",
+  "status": "agreed",
+  "closed": null,
+  "messages": [
+    {
+      "thread_id": "thread:P10:70410",
+      "message_id": "msg:70410-0-0",
+      "in_reply_to": null,
+      "from": "sales@70410",
+      "from_name": "Segment Manager, Dichtungswerk Ravensteiner GmbH",
+      "to": "Hollerau Pumpenwerke GmbH",
+      "subject": "Quote from Dichtungswerk Ravensteiner GmbH: Ravensteiner cuts the seal allocation",
+      "body": "Dear Sir or Madam,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe offer a price of \u20ac32.20 per unit for a volume of 19890 pcs per year. Our Lieferzeit is 54 days, and the contract term is 12 months. \n\nPlease note that this offer remains valid for 30 days. All deliveries and services are strictly subject to our standard procedure and standard conditions.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH",
+      "attachments": [
+        {
+          "attachment_id": "att:70410-0-quote",
+          "name": "quote-offer-70410-0.pdf",
+          "type": "pdf",
+          "content_b64": null
+        }
+      ],
+      "term_sheets": [
+        {
+          "term_sheet_id": "offer:70410-0",
+          "terms": {
+            "unit_price": 32.2,
+            "lead_time_days": 54,
+            "volume_per_year": 19890,
+            "contract_months": 12
+          }
+        }
+      ],
+      "refs": [],
+      "action": null,
+      "status": "open",
+      "signals": {
+        "reply_delay_days": 2,
+        "validity_days": 30
+      },
+      "missing_fields": [],
+      "claim_results": []
+    },
+    {
+      "from": "buyer",
+      "subject": "Seal 24 mm: full allocation against a firm two-year commitment",
+      "body": "Dear Ms Zellner,\n\nThank you for your quotation. We would like to propose a reciprocal trade.\n\nOn delivery, we can agree to 54 days instead of the 42-day standard lead time recorded in our framework agreement (ctr:4600070410#5.1). Your capacity letter of 18 September says you will prioritise firm, long-term commitments (doc:20260918-70410-P10). We therefore offer a binding commitment of 23,400 pieces in each year of a 24-month contract. In return, we ask for full allocation of that volume at EUR 29.89/unit, DAP, 30 days net, effective 2027-01-01.\n\nOur buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty (cost:340010); it is a buyer benchmark, not your disclosed cost.\n\nDoes this trade work for you?\n\nKind regards,\nPurchasing, Hollerau Pumpenwerke GmbH",
+      "term_sheets": [
+        {
+          "terms": {
+            "unit_price": 29.89,
+            "volume_per_year": 23400,
+            "contract_months": 24,
+            "lead_time_days": 54
+          }
+        }
+      ]
+    },
+    {
+      "thread_id": "thread:P10:70410",
+      "message_id": "msg:70410-1-2",
+      "in_reply_to": null,
+      "from": "sales@70410",
+      "from_name": "Segment Manager, Dichtungswerk Ravensteiner GmbH",
+      "to": "Hollerau Pumpenwerke GmbH",
+      "subject": "Re: Seal 24 mm: full allocation against a firm two-year commitment",
+      "body": "Dear Sir or Madam,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the should cost data you cited; it holds and we took it into account. We note your proposal for a 24-month commitment at 23,400 units per year. \n\nAccordingly, we can offer EUR 31.70 per unit under these revised terms. The full details of our offer are a price of \u20ac31.70 per unit, Lieferzeit 54 days, a volume of 23400 pcs per year, a contract term of 24 months.\n\nThis offer is valid for 30 days.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH",
+      "attachments": [],
+      "term_sheets": [
+        {
+          "term_sheet_id": "offer:70410-1",
+          "terms": {
+            "unit_price": 31.7,
+            "lead_time_days": 54,
+            "volume_per_year": 23400,
+            "contract_months": 24
+          }
+        }
+      ],
+      "refs": [],
+      "action": null,
+      "status": "open",
+      "signals": {
+        "reply_delay_days": 2,
+        "validity_days": 30
+      },
+      "missing_fields": [],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ]
+    },
+    {
+      "from": "buyer",
+      "subject": "Three-year package for the 24 mm mechanical seal",
+      "body": "Dear Ms Zellner,\n\nThank you for moving to EUR 31.70 and offering the full 23,400 pieces per year.\n\nWe would like to answer with a larger package: EUR 31.00/unit, 23,400 pieces binding in each year, now over 36 months, with 54 days' lead time rather than the 42-day standard in our framework agreement (ctr:4600070410#5.1). DAP, 30 days net and effective 2027-01-01 remain unchanged. We move up from EUR 29.89 and add a third committed year, which is the firm, long-term commitment your capacity letter of 18 September describes (doc:20260918-70410-P10).\n\nOur March annual-review note records that price changes above 2% required pricing-committee approval (doc:20260310-70410-M1). The complete historical meeting note is attached for your review.\n\nPlease present this complete three-year package to the pricing committee for approval at EUR 31.00, with you remaining our lead. If that process has changed, please confirm who can approve this complete package.\n\nKind regards,\nPurchasing, Hollerau Pumpenwerke GmbH",
+      "term_sheets": [
+        {
+          "terms": {
+            "unit_price": 31.0,
+            "volume_per_year": 23400,
+            "contract_months": 36,
+            "lead_time_days": 54
+          }
+        }
+      ],
+      "attachments": [
+        {
+          "name": "doc-20260310-70410-M1.md",
+          "type": "md",
+          "content_b64": "IyBBbm51YWwgcmV2aWV3CgptZWV0aW5nIG5vdGUgLSAyMDI2LTAzLTEwIC0gSG9sbGVyYXUgUHVtcGVud2Vya2UsIFB1cmNoYXNpbmcKCkFubnVhbCByZXZpZXcgd2l0aCBEaWNodHVuZ3N3ZXJrIFJhdmVuc3RlaW5lciBHbWJILiBUaGVpciBrZXkgYWNjb3VudCBtYW5hZ2VyIGV4cGxhaW5lZCB0aGF0IHByaWNlIGNoYW5nZXMgYWJvdmUgMiAlIG5lZWQgdGhlIGFwcHJvdmFsIG9mIHRoZWlyIHByaWNpbmcgY29tbWl0dGVlLCB3aGljaCBtZWV0cyBldmVyeSB0d28gd2Vla3MuCg=="
+        }
+      ]
+    },
+    {
+      "thread_id": "thread:P10:70410",
+      "message_id": "msg:70410-2-4",
+      "in_reply_to": null,
+      "from": "sales@70410",
+      "from_name": "Segment Manager, Dichtungswerk Ravensteiner GmbH",
+      "to": "Hollerau Pumpenwerke GmbH",
+      "subject": "Re: Three-year package for the 24 mm mechanical seal",
+      "body": "Dear Sir or Madam,\n\nWe note your proposal for a 36-month term and confirm that I hold the authority to approve this agreement. In exchange for the extended contract duration, we can offer a revised price of EUR 31.50 per unit.\n\nOur current offer comprises a price of \u20ac31.50 per unit, Lieferzeit 54 days, a volume of 23400 pcs per year, and a contract term of 36 months. This offer remains valid for 7 days. This is our final offer (letztes Angebot). Please decide.\n\nPlease provide the exact figures supporting your claims regarding approval thresholds, as we require verified data. Our price reflects our costs; our calculation stays internal. We are happy to discuss this in a call; until then our offer stands.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH\n\nLegal Department: Please be advised that our general terms and conditions apply exclusively, and the quote lists our standard terms.",
+      "attachments": [
+        {
+          "attachment_id": "att:70410-2-quote",
+          "name": "quote-offer-70410-2.pdf",
+          "type": "pdf",
+          "content_b64": null
+        }
+      ],
+      "term_sheets": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.5,
+            "lead_time_days": 54,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "refs": [],
+      "action": null,
+      "status": "final_offer",
+      "signals": {
+        "reply_delay_days": 3,
+        "validity_days": 7
+      },
+      "missing_fields": [],
+      "claim_results": []
+    },
+    {
+      "from": "buyer",
+      "action": {
+        "type": "accept",
+        "term_sheet_id": "offer:70410-2"
+      }
+    },
+    {
+      "thread_id": "thread:P10:70410",
+      "message_id": "msg:70410-2-6",
+      "in_reply_to": null,
+      "from": "sales@70410",
+      "from_name": "Segment Manager, Dichtungswerk Ravensteiner GmbH",
+      "to": "Hollerau Pumpenwerke GmbH",
+      "subject": "Re: Three-year package for the 24 mm mechanical seal",
+      "body": "Dear Sir or Madam,\n\nThank you for your order. Our order confirmation is attached.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH\n\nLegal Department: Please be advised that our general terms and conditions apply exclusively, and the quote lists our standard terms.",
+      "attachments": [
+        {
+          "attachment_id": "att:70410-2-order_confirmation",
+          "name": "order-confirmation-offer-70410-2.pdf",
+          "type": "pdf",
+          "content_b64": null
+        }
+      ],
+      "term_sheets": [
+        {
+          "term_sheet_id": "offer:70410-2",
+          "terms": {
+            "unit_price": 31.5,
+            "lead_time_days": 54,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          }
+        }
+      ],
+      "refs": [],
+      "action": null,
+      "status": "agreed",
+      "signals": {
+        "reply_delay_days": 3,
+        "validity_days": 7
+      },
+      "missing_fields": [],
+      "claim_results": []
+    }
+  ],
+  "timeouts": []
+}

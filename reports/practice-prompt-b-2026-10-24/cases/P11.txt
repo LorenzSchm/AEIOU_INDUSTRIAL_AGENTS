@@ -1,0 +1,1399 @@
+
+================================================================================
+P11 — Kalwisz: bearing brackets in red
+================================================================================
+
+Run ID: f759b0e16b2f428c9902febba800cfc6
+Session ID: d314beb56796bd31
+Status: completed
+
+BUYER CASE CONTEXT
+{
+  "case_id": "case:P11",
+  "set": "practice",
+  "type": "quality",
+  "title": "Kalwisz: bearing brackets in red",
+  "briefing": "You negotiate for Hollerau Pumpenwerke with Odlewnia Kalwisz Sp. z o.o.. Kalwisz: bearing brackets in red. Need: 15900 pc a year. Category goal: quality first: defects and late deliveries cost more than a few cents of price. Score: the lowest total cost C as defined in the rules, valued with this case's rates (need lead time 58 days). Fallback if you walk away: the second-source quote quote:7200011. Must-haves: ppm_commitment <= 1500. Prepare from the data package.",
+  "trigger_doc": "doc:20260921-70140-P11",
+  "parts": [
+    "part:310020"
+  ],
+  "suppliers": [
+    "sup:70140"
+  ],
+  "negotiable": [
+    "ppm_commitment",
+    "chargeback_eur_per_complaint",
+    "unit_price"
+  ],
+  "fixed_terms": {
+    "payment_days": 60,
+    "lead_time_days": 56,
+    "volume_per_year": 15900,
+    "contract_months": 12,
+    "effective_date": "2027-01-01",
+    "index_clause": null,
+    "incoterm": "FCA",
+    "tooling_eur": 0
+  },
+  "term_options": {
+    "ppm_commitment": [
+      300,
+      800,
+      1500,
+      2500
+    ],
+    "chargeback_eur_per_complaint": [
+      0,
+      150,
+      300,
+      500
+    ]
+  },
+  "buyer": {
+    "need_per_year": 15900,
+    "horizon_years": 1.0,
+    "current_unit_price": 45.15,
+    "fallback_unit_price": 47.86,
+    "interest_rate": 0.08,
+    "reference_payment_days": 60,
+    "need_lead_time_days": 58,
+    "category_goal": "quality_first",
+    "fallback_risk_pct": 8,
+    "index_risk_pct": 2,
+    "late_cost_per_day": 300,
+    "cost_per_defect": 450,
+    "freight_eur_per_unit": {
+      "EXW": 1.77,
+      "FCA": 1.54,
+      "DAP": 0.0
+    },
+    "index_paths": {},
+    "must_haves": [
+      {
+        "field": "ppm_commitment",
+        "op": "<=",
+        "value": 1500
+      }
+    ],
+    "alternative": {
+      "kind": "quote",
+      "ref": "quote:7200011",
+      "terms": {
+        "unit_price": 53.56,
+        "payment_days": 30,
+        "lead_time_days": 56,
+        "volume_per_year": 15900,
+        "contract_months": 12,
+        "effective_date": "2027-01-01",
+        "index_clause": null,
+        "incoterm": "FCA",
+        "tooling_eur": 7500,
+        "ppm_commitment": 715
+      }
+    }
+  },
+  "round_limit": 10,
+  "refs": [
+    "doc:20260921-70140-P11",
+    "ctr:4600070140",
+    "sc:70140@2026Q3",
+    "quote:7200011"
+  ]
+}
+
+OFFICIAL POST-RUN RESULT
+{
+  "ended": true,
+  "deal": true,
+  "supplier_id": "sup:70140",
+  "offer_id": "offer:70140-6",
+  "terms": {
+    "payment_days": 60,
+    "lead_time_days": 56,
+    "volume_per_year": 15900,
+    "contract_months": 12,
+    "effective_date": "2027-01-01",
+    "index_clause": null,
+    "incoterm": "FCA",
+    "tooling_eur": 0.0,
+    "ppm_commitment": 800,
+    "chargeback_eur_per_complaint": 0.0,
+    "unit_price": 46.0
+  },
+  "c_open": 817578.0,
+  "c_deal": 761610.0,
+  "c_alt": 894383.19,
+  "c_best": 722500.02,
+  "score": 0.5886536504035952,
+  "must_haves_ok": true,
+  "cost_breakdown": {
+    "price": 731400.0,
+    "uncovered_need": 0.0,
+    "fallback_risk": 0.0,
+    "payment_terms": 0.0,
+    "freight": 24486.0,
+    "late_delivery": 0.0,
+    "quality": 5724.0,
+    "tooling": 0.0,
+    "index_clause": 0.0,
+    "index_risk": 0.0,
+    "relationship": 0.0
+  }
+}
+
+
+SUPPLIER THREAD: sup:70140 — 15 events
+
+
+[P11 / sup:70140 / M01]
+Sender: sales@70140
+Subject: Quote from Odlewnia Kalwisz Sp. z o.o.: Kalwisz: bearing brackets in red
+
+BEGIN VERBATIM BODY
+
+Hello,
+
+Thank you for your enquiry. Please find our Angebot below. We are very eager to work with you and to prove ourselves as a great long-term partner for your business!
+
+We are happy to present our offer for a price of €47.00 per unit, along with a quality commitment of 6400 ppm. 
+
+Please note that this offer stays valid for 30 days. We remain flexible and look forward to hearing from you soon so we can start building a strong partnership together.
+
+Kind regards
+Marek Lis
+Export Manager, Odlewnia Kalwisz Sp. z o.o.
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70140-0",
+    "terms": {
+      "unit_price": 47.0,
+      "ppm_commitment": 6400
+    }
+  }
+]
+
+ATTACHMENT 1: quote-offer-70140-0.pdf
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+Odlewnia Kalwisz Sp. z o.o.
+To: Hollerau Pumpenwerke GmbH
+Angebot / Quote offer:70140-0
+Offered terms
+Unit price (EUR) 47.00
+Quality commitment (ppm) 6400
+Our standard terms (apply to everything not stated above)
+Chargeback per complaint (EUR) 0.00
+Terms fixed by your enquiry
+Payment terms (days net) 60
+Lead time (days) 56
+Volume per year (pcs) 15900
+Contract term (months) 12
+Price valid from 2027-01-01
+Index clause none
+Incoterm FCA
+Tooling (EUR) 0.00
+Part(s): part:310020. Enquiry: Kalwisz: bearing brackets in red.
+Validity: 30 days.
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70140-0-quote",
+  "name": "quote-offer-70140-0.pdf",
+  "type": "pdf",
+  "content_b64": null
+}
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P11:70140",
+  "message_id": "msg:70140-0-0",
+  "in_reply_to": null,
+  "from_name": "Export Manager, Odlewnia Kalwisz Sp. z o.o.",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "open",
+  "signals": {
+    "reply_delay_days": 4,
+    "validity_days": 30
+  },
+  "missing_fields": [
+    "chargeback_eur_per_complaint"
+  ],
+  "claim_results": []
+}
+
+
+[P11 / sup:70140 / M02]
+Sender: buyer
+Subject: Re: Angebot bearing bracket HN (part:310020) – quality commitment and price
+
+BEGIN VERBATIM BODY
+
+Dear Mr Lis,
+
+Thank you for your Angebot and for your clear interest in a long-term partnership. We share that goal for bearing bracket HN, with 15,900 pcs over 12 months from 1 January 2027.
+
+For this award, quality and delivery reliability come first. Our rolling scorecard for Kalwisz is currently red, with 63.5% on-time delivery and 2,376 ppm, as set out in our letter of 21 September. A commitment of 6,400 ppm would be well below today's actual performance, and we cannot award on that basis. We need a binding commitment of 1,500 ppm or better, together with a fair recovery of complaint costs.
+
+On price, your quote of 13 September for this part was €45.15. We also have a quote from a qualified second source. We understand that cash and margin matter to you right now. For that reason we are proposing packages that let you choose where you are strongest, rather than pushing every term at once. Payment terms (60 days net), lead time (56 days) and FCA remain as stated in our enquiry.
+
+Please choose the package that suits you best:
+
+A) €44.20 per unit | 800 ppm | €300 chargeback per complaint
+B) €44.10 per unit | 1,500 ppm | €300 chargeback per complaint
+C) €44.30 per unit | 1,500 ppm | €500 chargeback per complaint
+
+All three are of equal value to us. If you can commit to a lower ppm level, we have room on price. If a lower chargeback is important for your cash planning, we would need that reflected in the price or in the ppm commitment.
+
+Could you let us know which package works for you? If none does, please tell us which element is the obstacle, so we can find a balanced solution together.
+
+Kind regards
+Purchasing
+Hollerau Pumpenwerke GmbH
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "terms": {
+      "ppm_commitment": 800,
+      "chargeback_eur_per_complaint": 300,
+      "unit_price": 44.2
+    }
+  },
+  {
+    "terms": {
+      "ppm_commitment": 1500,
+      "chargeback_eur_per_complaint": 300,
+      "unit_price": 44.1
+    }
+  },
+  {
+    "terms": {
+      "ppm_commitment": 1500,
+      "chargeback_eur_per_complaint": 500,
+      "unit_price": 44.3
+    }
+  }
+]
+
+
+[P11 / sup:70140 / M03]
+Sender: sales@70140
+Subject: Re: Angebot bearing bracket HN (part:310020) – quality commitment and price
+
+BEGIN VERBATIM BODY
+
+Hello,
+
+We have reviewed your offer and can adjust our Angebot as follows. Our current proposal is a price of €49.00 per unit, a quality commitment of 800 ppm, a chargeback of €300.00 per complaint. 
+
+Alternatively, with a quality commitment of 1500 ppm and a chargeback of €150.00 per complaint: €47.50 per unit. Hi, we agree to the 1500 ppm target to show we are a solid partner. Our price follows our main cost drivers: LCI-C, PPI-C241, PPI-D351. This offer stays valid for 30 days.
+
+Kind regards
+Marek Lis
+Export Manager, Odlewnia Kalwisz Sp. z o.o.
+
+Quality: We take the complaints seriously; our 8D report is attached.
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70140-1",
+    "terms": {
+      "unit_price": 49.0,
+      "ppm_commitment": 800,
+      "chargeback_eur_per_complaint": 300.0
+    }
+  },
+  {
+    "term_sheet_id": "offer:70140-1-a",
+    "terms": {
+      "unit_price": 47.5,
+      "ppm_commitment": 1500,
+      "chargeback_eur_per_complaint": 150.0
+    }
+  }
+]
+
+ATTACHMENT 1: 8d-report.pdf
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+Odlewnia Kalwisz Sp. z o.o.
+To: Hollerau Pumpenwerke GmbH
+8D report - part:310020
+Scorecards
+2024Q3 3037 ppm, on time 67.4 %
+2024Q4 3118 ppm, on time 64.2 %
+2025Q1 3131 ppm, on time 68.5 %
+2025Q2 3434 ppm, on time 65.5 %
+2025Q3 3075 ppm, on time 71.7 %
+2025Q4 3079 ppm, on time 78.8 %
+2026Q1 2714 ppm, on time 74.5 %
+2026Q2 2379 ppm, on time 78.0 %
+2026Q3 2376 ppm, on time 63.5 %
+D1 Team: quality manager, production lead, sales.
+D2 Problem: defect rate above the agreed target (see scorecards).
+D3 Containment: 100 % inspection of outgoing lots until closure.
+D4 Root cause: under analysis; first findings within 10 working days.
+D5-D6 Corrective actions: process and gauge review, verified on 3 lots.
+D7 Prevention: control plan and FMEA updated.
+D8 Closure: after 3 months below the agreed ppm.
+Commitment: 800 ppm.
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70140-1-eight_d",
+  "name": "8d-report.pdf",
+  "type": "pdf",
+  "content_b64": null
+}
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P11:70140",
+  "message_id": "msg:70140-1-2",
+  "in_reply_to": null,
+  "from_name": "Export Manager, Odlewnia Kalwisz Sp. z o.o.",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "open",
+  "signals": {
+    "reply_delay_days": 4,
+    "validity_days": 30
+  },
+  "missing_fields": [],
+  "claim_results": [],
+  "standing_offer_id": "offer:70140-1"
+}
+
+
+[P11 / sup:70140 / M04]
+Sender: buyer
+Subject: Re: Angebot bearing bracket HN (part:310020) – revised packages
+
+BEGIN VERBATIM BODY
+
+Dear Mr Lis,
+
+Thank you for your revised Angebot and for the 8D report. We appreciate your agreement to a binding 1,500 ppm target. We also note that your 8D report states a commitment of 800 ppm. Could you send us the D4 root-cause findings as soon as they are available (you mention within 10 working days)?
+
+On price, we see a gap. Your quote of 13 September 2026 for this same part was €45.15. You refer to LCI-C, PPI-C241 and PPI-D351. However, the index movements to August 2026 were already known when you issued that quote, so they do not explain €47.50 or €49.00. We do recognise that the 13 September quote assumed faster payment than the 60 days fixed in this enquiry. We also understand that complaint chargebacks weigh on your cash planning. That is why we are moving up on price and offering lower chargeback options.
+
+Payment 60 days net, lead time 56 days and FCA remain as in our enquiry. Please choose the package that suits you best:
+
+A) €44.25 per unit | 1,500 ppm | €150 chargeback per complaint
+B) €44.55 per unit | 800 ppm | €300 chargeback per complaint
+C) €44.45 per unit | 800 ppm | €150 chargeback per complaint
+
+All three are of equal value to us. Package A keeps your chargeback exposure at the level you proposed. Packages B and C reward the 800 ppm stated in your 8D with a higher price.
+
+If one of these packages works for you, please confirm it. If not, please tell us which element is the obstacle, and we will look for a balanced solution together.
+
+Kind regards
+Purchasing
+Hollerau Pumpenwerke GmbH
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "terms": {
+      "ppm_commitment": 1500,
+      "chargeback_eur_per_complaint": 150,
+      "unit_price": 44.25
+    }
+  },
+  {
+    "terms": {
+      "ppm_commitment": 800,
+      "chargeback_eur_per_complaint": 300,
+      "unit_price": 44.55
+    }
+  },
+  {
+    "terms": {
+      "ppm_commitment": 800,
+      "chargeback_eur_per_complaint": 150,
+      "unit_price": 44.45
+    }
+  }
+]
+
+
+[P11 / sup:70140 / M05]
+Sender: sales@70140
+Subject: Re: Angebot bearing bracket HN (part:310020) – revised packages
+
+BEGIN VERBATIM BODY
+
+Hello,
+
+We have reviewed your offer and can adjust our Angebot as follows. We can provide a price of €47.50 per unit, a quality commitment of 800 ppm, a chargeback of €150.00 per complaint. 
+
+Beside this, we have another option: a price of €47.00 per unit, a quality commitment of 1500 ppm, a chargeback of €150.00 per complaint. Hi, we can do the 1500 ppm and 150 EUR chargeback, but with 60 days payment we need 47.00 EUR per piece. We dropped our price to meet you, but we really need this price to make the long payment terms work for us. 
+
+Our standard Zahlungsziel is 60 days net. Faster payment is welcome; we can reflect it in the price. This offer stays valid for 30 days.
+
+Kind regards
+Marek Lis
+Export Manager, Odlewnia Kalwisz Sp. z o.o.
+
+Quality: We take the complaints seriously; our 8D report is attached.
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70140-2",
+    "terms": {
+      "unit_price": 47.5,
+      "ppm_commitment": 800,
+      "chargeback_eur_per_complaint": 150.0
+    }
+  },
+  {
+    "term_sheet_id": "offer:70140-2-a",
+    "terms": {
+      "unit_price": 47.0,
+      "ppm_commitment": 1500,
+      "chargeback_eur_per_complaint": 150.0
+    }
+  }
+]
+
+ATTACHMENT 1: 8d-report.pdf
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+Odlewnia Kalwisz Sp. z o.o.
+To: Hollerau Pumpenwerke GmbH
+8D report - part:310020
+Scorecards
+2024Q3 3037 ppm, on time 67.4 %
+2024Q4 3118 ppm, on time 64.2 %
+2025Q1 3131 ppm, on time 68.5 %
+2025Q2 3434 ppm, on time 65.5 %
+2025Q3 3075 ppm, on time 71.7 %
+2025Q4 3079 ppm, on time 78.8 %
+2026Q1 2714 ppm, on time 74.5 %
+2026Q2 2379 ppm, on time 78.0 %
+2026Q3 2376 ppm, on time 63.5 %
+D1 Team: quality manager, production lead, sales.
+D2 Problem: defect rate above the agreed target (see scorecards).
+D3 Containment: 100 % inspection of outgoing lots until closure.
+D4 Root cause: under analysis; first findings within 10 working days.
+D5-D6 Corrective actions: process and gauge review, verified on 3 lots.
+D7 Prevention: control plan and FMEA updated.
+D8 Closure: after 3 months below the agreed ppm.
+Commitment: 800 ppm.
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70140-2-eight_d",
+  "name": "8d-report.pdf",
+  "type": "pdf",
+  "content_b64": null
+}
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P11:70140",
+  "message_id": "msg:70140-2-4",
+  "in_reply_to": null,
+  "from_name": "Export Manager, Odlewnia Kalwisz Sp. z o.o.",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "open",
+  "signals": {
+    "reply_delay_days": 4,
+    "validity_days": 30
+  },
+  "missing_fields": [],
+  "claim_results": [],
+  "standing_offer_id": "offer:70140-2"
+}
+
+
+[P11 / sup:70140 / M06]
+Sender: buyer
+Subject: Bearing bracket HN (part:310020) – revised packages for 2027
+
+BEGIN VERBATIM BODY
+
+Dear Mr Lis,
+
+Thank you for your revised Angebot and for moving to €47.00 with 1,500 ppm and €150 per complaint. We appreciate the step and your clear commitment to the 1,500 ppm target.
+
+We hear your point about the 60-day payment term. Payment terms, lead time and Incoterm are fixed in this enquiry (60 days net, 56 days, FCA), so we cannot trade on them here. What we can do is ease your cash exposure through lower complaint chargebacks, including a package with no chargeback at all, and move up on price again.
+
+On price, the gap is still large. Your own quote for this part, dated 13 September 2026, was €45.15, and the cost indices you refer to were already known at that date. €47.00 is well above that level for an unchanged part and volume.
+
+Payment 60 days net, lead time 56 days and FCA apply to all packages below. Please choose the one that suits you best:
+
+A) €44.55 per unit | 1,500 ppm | €150 chargeback per complaint
+B) €44.30 per unit | 1,500 ppm | €0 chargeback per complaint
+C) €44.75 per unit | 800 ppm | €150 chargeback per complaint
+
+All three are of equal value to us. Package B removes chargeback payments entirely, which may help your liquidity planning. Package C rewards the 800 ppm stated in your 8D report.
+
+We would also still welcome the D4 root-cause findings from your 8D as soon as they are available.
+
+Please let us know which package you can confirm. If one element is still the obstacle, tell us which one, and we will work on it with you.
+
+Kind regards
+Purchasing
+Hollerau Pumpenwerke GmbH
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "terms": {
+      "ppm_commitment": 1500,
+      "chargeback_eur_per_complaint": 150,
+      "unit_price": 44.55
+    }
+  },
+  {
+    "terms": {
+      "ppm_commitment": 1500,
+      "chargeback_eur_per_complaint": 0,
+      "unit_price": 44.3
+    }
+  },
+  {
+    "terms": {
+      "ppm_commitment": 800,
+      "chargeback_eur_per_complaint": 150,
+      "unit_price": 44.75
+    }
+  }
+]
+
+
+[P11 / sup:70140 / M07]
+Sender: sales@70140
+Subject: Re: Bearing bracket HN (part:310020) – revised packages for 2027
+
+BEGIN VERBATIM BODY
+
+Hello,
+
+We have reviewed your offer and can adjust our Angebot as follows. 
+
+Hi, we like the 0 EUR chargeback option because it helps our cash, so we can do 46.50 EUR for that package. Our current offer is a price of €46.50 per unit, a quality commitment of 1500 ppm, a chargeback of €0.00 per complaint. This offer stays valid for 30 days.
+
+You mentioned a September quote and some indices, please send us the exact figures and documents so we can check what you mean. Our price follows our main cost drivers: LCI-C, PPI-C241, PPI-D351.
+
+We are really excited to work with you and build a great long-term partnership together!
+
+Kind regards
+Marek Lis
+Export Manager, Odlewnia Kalwisz Sp. z o.o.
+
+Quality: We take the complaints seriously; our 8D report is attached.
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70140-3",
+    "terms": {
+      "unit_price": 46.5,
+      "ppm_commitment": 1500,
+      "chargeback_eur_per_complaint": 0.0
+    }
+  }
+]
+
+ATTACHMENT 1: 8d-report.pdf
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+Odlewnia Kalwisz Sp. z o.o.
+To: Hollerau Pumpenwerke GmbH
+8D report - part:310020
+Scorecards
+2024Q3 3037 ppm, on time 67.4 %
+2024Q4 3118 ppm, on time 64.2 %
+2025Q1 3131 ppm, on time 68.5 %
+2025Q2 3434 ppm, on time 65.5 %
+2025Q3 3075 ppm, on time 71.7 %
+2025Q4 3079 ppm, on time 78.8 %
+2026Q1 2714 ppm, on time 74.5 %
+2026Q2 2379 ppm, on time 78.0 %
+2026Q3 2376 ppm, on time 63.5 %
+D1 Team: quality manager, production lead, sales.
+D2 Problem: defect rate above the agreed target (see scorecards).
+D3 Containment: 100 % inspection of outgoing lots until closure.
+D4 Root cause: under analysis; first findings within 10 working days.
+D5-D6 Corrective actions: process and gauge review, verified on 3 lots.
+D7 Prevention: control plan and FMEA updated.
+D8 Closure: after 3 months below the agreed ppm.
+Commitment: 1500 ppm.
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70140-3-eight_d",
+  "name": "8d-report.pdf",
+  "type": "pdf",
+  "content_b64": null
+}
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P11:70140",
+  "message_id": "msg:70140-3-6",
+  "in_reply_to": null,
+  "from_name": "Export Manager, Odlewnia Kalwisz Sp. z o.o.",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "open",
+  "signals": {
+    "reply_delay_days": 4,
+    "validity_days": 30
+  },
+  "missing_fields": [],
+  "claim_results": []
+}
+
+
+[P11 / sup:70140 / M08]
+Sender: buyer
+Subject: Re: Angebot bearing bracket HN (part:310020) – figures as requested and revised packages
+
+BEGIN VERBATIM BODY
+
+Dear Mr Lis,
+
+Thank you for your revised Angebot. We welcome your choice of the €0 chargeback option and your step to €46.50.
+
+You asked for the exact figures we referred to. Here they are.
+
+1) Your quote 7300011 dated 13 September 2026, for part:310020 (bearing bracket HN):
+- Unit price €45.15
+- Incoterm FCA
+- Lead time 56 days
+- Payment within 10 days (remark: "Payment within 10 days requested")
+- Validity 14 days
+- Tooling €0
+
+2) The cost indices you named, from published values:
+- PPI-C241: 99.4 (Aug 2025) → 105.9 (Aug 2026), +6.5%
+- PPI-D351: 137.0 (Aug 2025) → 131.9 (Aug 2026), −3.7%
+- LCI-C: 116.5 (Jun 2025) → 119.6 (Jun 2026), +2.7%
+
+All of these index periods ended before your 13 September quote, so they were already reflected in €45.15. We fully accept that the 13 September quote was based on 10-day payment, while this enquiry is fixed at 60 days. That is a fair point, and it is why we keep moving up on price. However, the payment difference does not bridge the gap to €46.50.
+
+Payment 60 days net, lead time 56 days and FCA apply to all packages below. Please choose the one that suits you best:
+
+A) €44.55 per unit | 1,500 ppm | €0 chargeback per complaint
+B) €44.75 per unit | 1,500 ppm | €150 chargeback per complaint
+C) €44.95 per unit | 800 ppm | €150 chargeback per complaint
+
+All three are of equal value to us. Package A keeps the zero-chargeback structure you prefer for your cash planning. Package C rewards a stronger 800 ppm commitment with the highest price.
+
+We would also still welcome the D4 root-cause findings from your 8D report as soon as they are available.
+
+Please confirm the package that works for you. If one element is still the obstacle, tell us which one, and we will work on it with you.
+
+Kind regards
+Purchasing
+Hollerau Pumpenwerke GmbH
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "terms": {
+      "ppm_commitment": 1500,
+      "chargeback_eur_per_complaint": 0,
+      "unit_price": 44.55
+    }
+  },
+  {
+    "terms": {
+      "ppm_commitment": 1500,
+      "chargeback_eur_per_complaint": 150,
+      "unit_price": 44.75
+    }
+  },
+  {
+    "terms": {
+      "ppm_commitment": 800,
+      "chargeback_eur_per_complaint": 150,
+      "unit_price": 44.95
+    }
+  }
+]
+
+
+[P11 / sup:70140 / M09]
+Sender: sales@70140
+Subject: Re: Angebot bearing bracket HN (part:310020) – figures as requested and revised packages
+
+BEGIN VERBATIM BODY
+
+Hello,
+
+We have reviewed your offer and can adjust our Angebot as follows. We really want to make this work, so we can drop to 46.00 EUR for the 0 EUR chargeback package. 
+
+So our current proposal stands at a price of €46.00 per unit, a quality commitment of 1500 ppm, a chargeback of €0.00 per complaint.
+
+Please note that our price follows our main cost drivers: LCI-C, PPI-C241, PPI-D351. Regarding payment, our standard Zahlungsziel is 60 days net. Faster payment is welcome; we can reflect it in the price.
+
+This offer stays valid for 30 days. We hope this works for you and look forward to building a great partnership!
+
+Kind regards
+Marek Lis
+Export Manager, Odlewnia Kalwisz Sp. z o.o.
+
+Quality: We take the complaints seriously; our 8D report is attached.
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70140-4",
+    "terms": {
+      "unit_price": 46.0,
+      "ppm_commitment": 1500,
+      "chargeback_eur_per_complaint": 0.0
+    }
+  }
+]
+
+ATTACHMENT 1: 8d-report.pdf
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+Odlewnia Kalwisz Sp. z o.o.
+To: Hollerau Pumpenwerke GmbH
+8D report - part:310020
+Scorecards
+2024Q3 3037 ppm, on time 67.4 %
+2024Q4 3118 ppm, on time 64.2 %
+2025Q1 3131 ppm, on time 68.5 %
+2025Q2 3434 ppm, on time 65.5 %
+2025Q3 3075 ppm, on time 71.7 %
+2025Q4 3079 ppm, on time 78.8 %
+2026Q1 2714 ppm, on time 74.5 %
+2026Q2 2379 ppm, on time 78.0 %
+2026Q3 2376 ppm, on time 63.5 %
+D1 Team: quality manager, production lead, sales.
+D2 Problem: defect rate above the agreed target (see scorecards).
+D3 Containment: 100 % inspection of outgoing lots until closure.
+D4 Root cause: under analysis; first findings within 10 working days.
+D5-D6 Corrective actions: process and gauge review, verified on 3 lots.
+D7 Prevention: control plan and FMEA updated.
+D8 Closure: after 3 months below the agreed ppm.
+Commitment: 1500 ppm.
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70140-4-eight_d",
+  "name": "8d-report.pdf",
+  "type": "pdf",
+  "content_b64": null
+}
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P11:70140",
+  "message_id": "msg:70140-4-8",
+  "in_reply_to": null,
+  "from_name": "Export Manager, Odlewnia Kalwisz Sp. z o.o.",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "open",
+  "signals": {
+    "reply_delay_days": 4,
+    "validity_days": 30
+  },
+  "missing_fields": [],
+  "claim_results": []
+}
+
+
+[P11 / sup:70140 / M10]
+Sender: buyer
+Subject: Re: Angebot bearing bracket HN (part:310020) – revised packages
+
+BEGIN VERBATIM BODY
+
+Dear Mr Lis,
+
+Thank you for your revised Angebot and for the step to €46.00 with 1,500 ppm and no chargeback. We see the effort, and we are moving again as well.
+
+On payment: we appreciate your offer to reflect faster payment in the price. In this enquiry, however, payment (60 days net), lead time (56 days) and Incoterm (FCA) are fixed, so we cannot trade on them here. What we can offer is to keep your cash exposure low through the chargeback structure. We have therefore added a second zero-chargeback option.
+
+On price, the figures we sent last time remain our reference point. Your quote of 13 September 2026 for this part was €45.15, and the index periods you mention ended before that date. We accept that the longer payment term justifies a higher price than €45.15. €46.00, however, is still above what that difference explains.
+
+Payment 60 days net, lead time 56 days and FCA apply to all packages below:
+
+A) €44.75 per unit | 1,500 ppm | €0 chargeback per complaint
+B) €45.05 per unit | 800 ppm | €0 chargeback per complaint
+C) €44.95 per unit | 1,500 ppm | €150 chargeback per complaint
+
+All three are of equal value to us. Packages A and B both keep the zero-chargeback structure you prefer. Package B rewards the stronger 800 ppm target with a higher price, which your 8D corrective actions and 100% outgoing inspection should support.
+
+We would also still welcome the D4 root-cause findings from your 8D report as soon as they are available.
+
+Please confirm the package that works for you. If one element is still the obstacle, let us know which one, so we can close this together.
+
+Kind regards
+Purchasing
+Hollerau Pumpenwerke GmbH
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "terms": {
+      "ppm_commitment": 1500,
+      "chargeback_eur_per_complaint": 0,
+      "unit_price": 44.75
+    }
+  },
+  {
+    "terms": {
+      "ppm_commitment": 800,
+      "chargeback_eur_per_complaint": 0,
+      "unit_price": 45.05
+    }
+  },
+  {
+    "terms": {
+      "ppm_commitment": 1500,
+      "chargeback_eur_per_complaint": 150,
+      "unit_price": 44.95
+    }
+  }
+]
+
+
+[P11 / sup:70140 / M11]
+Sender: sales@70140
+Subject: Re: Angebot bearing bracket HN (part:310020) – revised packages
+
+BEGIN VERBATIM BODY
+
+Hello,
+
+We have reviewed your offer and can adjust our Angebot as follows. Our offer is a price of €46.00 per unit, a quality commitment of 800 ppm, a chargeback of €0.00 per complaint. This offer stays valid for 30 days.
+
+We can agree to the 800 ppm target with 0 EUR chargeback to show we are serious about quality. But with the 60 days payment, 46.00 EUR is our limit, we can't go lower. Our standard Zahlungsziel is 60 days net. Faster payment is welcome; we can reflect it in the price. We are very eager to work with Hollerau Pumpenwerke GmbH and build a strong partnership!
+
+Kind regards
+Marek Lis
+Export Manager, Odlewnia Kalwisz Sp. z o.o.
+
+Quality: We take the complaints seriously; our 8D report is attached.
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70140-5",
+    "terms": {
+      "unit_price": 46.0,
+      "ppm_commitment": 800,
+      "chargeback_eur_per_complaint": 0.0
+    }
+  }
+]
+
+ATTACHMENT 1: 8d-report.pdf
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+Odlewnia Kalwisz Sp. z o.o.
+To: Hollerau Pumpenwerke GmbH
+8D report - part:310020
+Scorecards
+2024Q3 3037 ppm, on time 67.4 %
+2024Q4 3118 ppm, on time 64.2 %
+2025Q1 3131 ppm, on time 68.5 %
+2025Q2 3434 ppm, on time 65.5 %
+2025Q3 3075 ppm, on time 71.7 %
+2025Q4 3079 ppm, on time 78.8 %
+2026Q1 2714 ppm, on time 74.5 %
+2026Q2 2379 ppm, on time 78.0 %
+2026Q3 2376 ppm, on time 63.5 %
+D1 Team: quality manager, production lead, sales.
+D2 Problem: defect rate above the agreed target (see scorecards).
+D3 Containment: 100 % inspection of outgoing lots until closure.
+D4 Root cause: under analysis; first findings within 10 working days.
+D5-D6 Corrective actions: process and gauge review, verified on 3 lots.
+D7 Prevention: control plan and FMEA updated.
+D8 Closure: after 3 months below the agreed ppm.
+Commitment: 800 ppm.
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70140-5-eight_d",
+  "name": "8d-report.pdf",
+  "type": "pdf",
+  "content_b64": null
+}
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P11:70140",
+  "message_id": "msg:70140-5-10",
+  "in_reply_to": null,
+  "from_name": "Export Manager, Odlewnia Kalwisz Sp. z o.o.",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "open",
+  "signals": {
+    "reply_delay_days": 4,
+    "validity_days": 30
+  },
+  "missing_fields": [],
+  "claim_results": []
+}
+
+
+[P11 / sup:70140 / M12]
+Sender: buyer
+Subject: Re: Angebot bearing bracket HN (part:310020) – packages to close
+
+BEGIN VERBATIM BODY
+
+Dear Mr Lis,
+
+Thank you for your revised Angebot. Your move to a binding 800 ppm commitment with no chargeback is a real step, and we value it. It fits exactly what matters most to us on this part.
+
+On payment: as explained, payment (60 days net), lead time (56 days) and Incoterm (FCA) are fixed in this enquiry, so we cannot trade on them. We have already reflected the move from 10-day to 60-day payment in our price steps. Measured against your 13 September quote of €45.15, the extra 50 days of financing explains roughly €0.50 per unit at usual financing rates, not €0.85.
+
+To close this, we are moving again. All packages below have no chargeback, as you prefer. Payment 60 days net, lead time 56 days and FCA apply to all of them:
+
+A) €45.25 per unit | 800 ppm | €0 chargeback per complaint
+B) €45.45 per unit | 300 ppm | €0 chargeback per complaint
+C) €44.95 per unit | 1,500 ppm | €0 chargeback per complaint
+
+All three are of equal value to us. Package B gives you the highest price in return for a 300 ppm commitment. Your 100% outgoing inspection and the corrective actions in your 8D should put that within reach.
+
+We would also still welcome the D4 root-cause findings from your 8D report.
+
+Please confirm the package that works for you, so we can finalise the award for 2027.
+
+Kind regards
+Purchasing
+Hollerau Pumpenwerke GmbH
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "terms": {
+      "ppm_commitment": 800,
+      "chargeback_eur_per_complaint": 0,
+      "unit_price": 45.25
+    }
+  },
+  {
+    "terms": {
+      "ppm_commitment": 300,
+      "chargeback_eur_per_complaint": 0,
+      "unit_price": 45.45
+    }
+  },
+  {
+    "terms": {
+      "ppm_commitment": 1500,
+      "chargeback_eur_per_complaint": 0,
+      "unit_price": 44.95
+    }
+  }
+]
+
+
+[P11 / sup:70140 / M13]
+Sender: sales@70140
+Subject: Re: Angebot bearing bracket HN (part:310020) – packages to close
+
+BEGIN VERBATIM BODY
+
+Hello,
+
+We have reviewed your offer and can adjust our Angebot as follows.
+
+Hi, thanks for the new options, but we must stick to 46.00 EUR for the 800 ppm and 0 EUR chargeback package. Our Angebot includes a price of €46.00 per unit, a quality commitment of 800 ppm, a chargeback of €0.00 per complaint.
+
+Waiting 60 days for payment hits our cash flow hard, so your financing estimate doesn't cover our real costs. Our standard Zahlungsziel is 60 days net. Faster payment is welcome; we can reflect it in the price.
+
+Please note that our offer stays valid for 30 days. We are very eager to work together and look forward to your reply!
+
+Kind regards
+Marek Lis
+Export Manager, Odlewnia Kalwisz Sp. z o.o.
+
+Quality: We take the complaints seriously; our 8D report is attached.
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70140-6",
+    "terms": {
+      "unit_price": 46.0,
+      "ppm_commitment": 800,
+      "chargeback_eur_per_complaint": 0.0
+    }
+  }
+]
+
+ATTACHMENT 1: 8d-report.pdf
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+Odlewnia Kalwisz Sp. z o.o.
+To: Hollerau Pumpenwerke GmbH
+8D report - part:310020
+Scorecards
+2024Q3 3037 ppm, on time 67.4 %
+2024Q4 3118 ppm, on time 64.2 %
+2025Q1 3131 ppm, on time 68.5 %
+2025Q2 3434 ppm, on time 65.5 %
+2025Q3 3075 ppm, on time 71.7 %
+2025Q4 3079 ppm, on time 78.8 %
+2026Q1 2714 ppm, on time 74.5 %
+2026Q2 2379 ppm, on time 78.0 %
+2026Q3 2376 ppm, on time 63.5 %
+D1 Team: quality manager, production lead, sales.
+D2 Problem: defect rate above the agreed target (see scorecards).
+D3 Containment: 100 % inspection of outgoing lots until closure.
+D4 Root cause: under analysis; first findings within 10 working days.
+D5-D6 Corrective actions: process and gauge review, verified on 3 lots.
+D7 Prevention: control plan and FMEA updated.
+D8 Closure: after 3 months below the agreed ppm.
+Commitment: 800 ppm.
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70140-6-eight_d",
+  "name": "8d-report.pdf",
+  "type": "pdf",
+  "content_b64": null
+}
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P11:70140",
+  "message_id": "msg:70140-6-12",
+  "in_reply_to": null,
+  "from_name": "Export Manager, Odlewnia Kalwisz Sp. z o.o.",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "open",
+  "signals": {
+    "reply_delay_days": 4,
+    "validity_days": 30
+  },
+  "missing_fields": [],
+  "claim_results": []
+}
+
+
+[P11 / sup:70140 / M14]
+Sender: buyer
+Subject: (none recorded)
+
+(No email body recorded.)
+
+API ACTION
+{
+  "type": "accept",
+  "term_sheet_id": "offer:70140-6"
+}
+
+
+[P11 / sup:70140 / M15]
+Sender: sales@70140
+Subject: Re: Angebot bearing bracket HN (part:310020) – packages to close
+
+BEGIN VERBATIM BODY
+
+Hello,
+
+Thank you for your order. Our order confirmation is attached. We are very glad to work together with you and are looking forward to being a strong long-term partner for your company.
+
+Kind regards
+Marek Lis
+Export Manager, Odlewnia Kalwisz Sp. z o.o.
+
+Quality: We take the complaints seriously; our 8D report is attached.
+
+END VERBATIM BODY
+
+STRUCTURED OFFERS
+[
+  {
+    "term_sheet_id": "offer:70140-6",
+    "terms": {
+      "unit_price": 46.0,
+      "ppm_commitment": 800,
+      "chargeback_eur_per_complaint": 0.0
+    }
+  }
+]
+
+ATTACHMENT 1: order-confirmation-offer-70140-6.pdf
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+Odlewnia Kalwisz Sp. z o.o.
+To: Hollerau Pumpenwerke GmbH
+Auftragsbestätigung / Order confirmation offer:70140-6
+Agreed terms
+Payment terms (days net) 60
+Lead time (days) 56
+Volume per year (pcs) 15900
+Contract term (months) 12
+Price valid from 2027-01-01
+Index clause none
+Incoterm FCA
+Tooling (EUR) 0.00
+Quality commitment (ppm) 800
+Chargeback per complaint (EUR) 0.00
+Unit price (EUR) 46.00
+Part(s): part:310020. We confirm your order on the terms above.
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70140-6-order_confirmation",
+  "name": "order-confirmation-offer-70140-6.pdf",
+  "type": "pdf",
+  "content_b64": null
+}
+
+ATTACHMENT 2: 8d-report.pdf
+
+BEGIN VERBATIM ATTACHMENT TEXT
+
+Odlewnia Kalwisz Sp. z o.o.
+To: Hollerau Pumpenwerke GmbH
+8D report - part:310020
+Scorecards
+2024Q3 3037 ppm, on time 67.4 %
+2024Q4 3118 ppm, on time 64.2 %
+2025Q1 3131 ppm, on time 68.5 %
+2025Q2 3434 ppm, on time 65.5 %
+2025Q3 3075 ppm, on time 71.7 %
+2025Q4 3079 ppm, on time 78.8 %
+2026Q1 2714 ppm, on time 74.5 %
+2026Q2 2379 ppm, on time 78.0 %
+2026Q3 2376 ppm, on time 63.5 %
+D1 Team: quality manager, production lead, sales.
+D2 Problem: defect rate above the agreed target (see scorecards).
+D3 Containment: 100 % inspection of outgoing lots until closure.
+D4 Root cause: under analysis; first findings within 10 working days.
+D5-D6 Corrective actions: process and gauge review, verified on 3 lots.
+D7 Prevention: control plan and FMEA updated.
+D8 Closure: after 3 months below the agreed ppm.
+Commitment: 800 ppm.
+
+END VERBATIM ATTACHMENT TEXT
+
+ATTACHMENT METADATA
+{
+  "attachment_id": "att:70140-6-eight_d",
+  "name": "8d-report.pdf",
+  "type": "pdf",
+  "content_b64": null
+}
+
+OTHER SAVED MESSAGE METADATA
+{
+  "thread_id": "thread:P11:70140",
+  "message_id": "msg:70140-6-14",
+  "in_reply_to": null,
+  "from_name": "Export Manager, Odlewnia Kalwisz Sp. z o.o.",
+  "to": "Hollerau Pumpenwerke GmbH",
+  "refs": [],
+  "status": "agreed",
+  "signals": {
+    "reply_delay_days": 4,
+    "validity_days": 30
+  },
+  "missing_fields": [],
+  "claim_results": [],
+  "result": {
+    "ended": true,
+    "deal": true,
+    "supplier_id": "sup:70140",
+    "offer_id": "offer:70140-6",
+    "terms": {
+      "payment_days": 60,
+      "lead_time_days": 56,
+      "volume_per_year": 15900,
+      "contract_months": 12,
+      "effective_date": "2027-01-01",
+      "index_clause": null,
+      "incoterm": "FCA",
+      "tooling_eur": 0.0,
+      "ppm_commitment": 800,
+      "chargeback_eur_per_complaint": 0.0,
+      "unit_price": 46.0
+    },
+    "c_open": 817578.0,
+    "c_deal": 761610.0,
+    "c_alt": 894383.19,
+    "c_best": 722500.02,
+    "score": 0.5886536504035952,
+    "must_haves_ok": true,
+    "cost_breakdown": {
+      "price": 731400.0,
+      "uncovered_need": 0.0,
+      "fallback_risk": 0.0,
+      "payment_terms": 0.0,
+      "freight": 24486.0,
+      "late_delivery": 0.0,
+      "quality": 5724.0,
+      "tooling": 0.0,
+      "index_clause": 0.0,
+      "index_risk": 0.0,
+      "relationship": 0.0
+    }
+  }
+}
+
+
+RECORDED DECISION ORDER AND VALIDATION (NOT MODEL REASONING)
+[
+  {
+    "supplier_id": "sup:70140",
+    "source": "claude:eval",
+    "action": "send",
+    "elapsed_s": 22.687,
+    "protocol_version": "faithful-v7-confirm-every-offer-menu",
+    "rejections": []
+  },
+  {
+    "supplier_id": "sup:70140",
+    "source": "claude:eval",
+    "action": "send",
+    "elapsed_s": 14.749,
+    "protocol_version": "faithful-v7-confirm-every-offer-menu",
+    "rejections": []
+  },
+  {
+    "supplier_id": "sup:70140",
+    "source": "claude:eval",
+    "action": "send",
+    "elapsed_s": 10.983,
+    "protocol_version": "faithful-v7-confirm-every-offer-menu",
+    "rejections": []
+  },
+  {
+    "supplier_id": "sup:70140",
+    "source": "claude:eval",
+    "action": "send",
+    "elapsed_s": 9.03,
+    "protocol_version": "faithful-v7-confirm-every-offer-menu",
+    "rejections": []
+  },
+  {
+    "supplier_id": "sup:70140",
+    "source": "claude:eval",
+    "action": "send",
+    "elapsed_s": 8.504,
+    "protocol_version": "faithful-v7-confirm-every-offer-menu",
+    "rejections": []
+  },
+  {
+    "supplier_id": "sup:70140",
+    "source": "claude:eval",
+    "action": "send",
+    "elapsed_s": 11.479,
+    "protocol_version": "faithful-v7-confirm-every-offer-menu",
+    "rejections": []
+  },
+  {
+    "supplier_id": "sup:70140",
+    "source": "claude:eval",
+    "action": "accept",
+    "elapsed_s": 6.293,
+    "protocol_version": "faithful-v7-confirm-every-offer-menu",
+    "rejections": []
+  }
+]
+
+EXECUTION METRICS
+{
+  "elapsed_s": 288.89,
+  "fallbacks": 0,
+  "calls": 7,
+  "errors": 0,
+  "input_tokens": 110812,
+  "output_tokens": 21467,
+  "refusals": 0,
+  "empty_responses": 0,
+  "stop_reasons": {
+    "end_turn": 7
+  },
+  "refusal_details": []
+}
+
+CONTROLLER AUDIT
+{
+  "contract_rejections": [],
+  "forced_stops": 0,
+  "verbatim_request_sent": false,
+  "verbatim_request_ignoring_whitespace": false,
+  "calibrated_question_messages": 0,
+  "accepts_before_five_repeats": 0,
+  "accepted_offer_position": 1,
+  "preparation_tags_present": true,
+  "strategy_tags_present": true,
+  "preparation_sections_present": [
+    "Role and Objectives",
+    "Strategy Identification",
+    "Compromise Exploration",
+    "Creative Solutions"
+  ],
+  "verbatim_insertions": 0,
+  "verbatim_format_restorations": 0,
+  "confirmation_messages": 0,
+  "walk_aways": [],
+  "terminal_limits": []
+}

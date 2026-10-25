@@ -1,0 +1,2555 @@
+{
+  "case": {
+    "case_id": "case:P18",
+    "set": "practice",
+    "type": "raw_material",
+    "title": "Alloy surcharge and base price for 1.4404 bar (Werdenfels)",
+    "briefing": "You negotiate for Hollerau Pumpenwerke with Blankstahl Werdenfels GmbH. Alloy surcharge and base price for 1.4404 bar (Werdenfels). Need: 23700 kg a year. Category goal: leverage: competition and data should bring the price down. Score: the lowest total cost C as defined in the rules, valued with this case's rates (need lead time 14 days). Fallback if you walk away: the second-source quote quote:7200018. Must-haves: none. Prepare from the data package.",
+    "trigger_doc": "doc:20260922-70740-P18",
+    "parts": [
+      "part:370010"
+    ],
+    "suppliers": [
+      "sup:70740"
+    ],
+    "negotiable": [
+      "unit_price",
+      "index_clause",
+      "payment_days",
+      "contract_months"
+    ],
+    "fixed_terms": {
+      "lead_time_days": 14,
+      "volume_per_year": 23700,
+      "effective_date": "2027-01-01",
+      "incoterm": "DAP",
+      "tooling_eur": 0
+    },
+    "term_options": {
+      "index_clause": [
+        null,
+        {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 0,
+          "base_month": "2026-08"
+        },
+        {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 3,
+          "base_month": "2026-08"
+        },
+        {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5,
+          "base_month": "2026-08"
+        }
+      ],
+      "payment_days": [
+        14,
+        30,
+        45,
+        60,
+        90
+      ],
+      "contract_months": [
+        12,
+        24,
+        36
+      ]
+    },
+    "buyer": {
+      "need_per_year": 23700,
+      "horizon_years": 2,
+      "current_unit_price": 5.84,
+      "fallback_unit_price": 6.13,
+      "interest_rate": 0.08,
+      "reference_payment_days": 60,
+      "need_lead_time_days": 14,
+      "category_goal": "leverage",
+      "fallback_risk_pct": 3,
+      "index_risk_pct": 1,
+      "late_cost_per_day": 96,
+      "cost_per_defect": 0,
+      "freight_eur_per_unit": {
+        "EXW": 0.06,
+        "FCA": 0.05,
+        "DAP": 0.0
+      },
+      "index_paths": {
+        "AS-14404": 0.06
+      },
+      "must_haves": [],
+      "alternative": {
+        "kind": "quote",
+        "ref": "quote:7200018",
+        "terms": {
+          "unit_price": 6.31,
+          "payment_days": 30,
+          "lead_time_days": 10,
+          "volume_per_year": 23700,
+          "contract_months": 24,
+          "effective_date": "2027-01-01",
+          "index_clause": null,
+          "incoterm": "DAP",
+          "tooling_eur": 0,
+          "ppm_commitment": 75
+        }
+      }
+    },
+    "round_limit": 10,
+    "refs": [
+      "doc:20260922-70740-P18",
+      "ctr:4600070740",
+      "sc:70740@2026Q3",
+      "quote:7200018"
+    ],
+    "hosted": true
+  },
+  "research": {
+    "facts": {
+      "sup:70740": {
+        "table": "suppliers",
+        "id": "sup:70740",
+        "name": "Blankstahl Werdenfels GmbH",
+        "country": "DE",
+        "currency": "EUR",
+        "payment_days": 30,
+        "skonto_days": null,
+        "skonto_pct": null,
+        "incoterm": "DAP",
+        "created": "1996-01-01",
+        "category": "raw material",
+        "detail": "full",
+        "blocked": 0,
+        "contract_id": "ctr:4600070740",
+        "standard_lead_time_days": 14,
+        "abc_class": "A"
+      },
+      "part:370010": {
+        "table": "sourcing",
+        "part_id": "part:370010",
+        "supplier_id": "sup:70740",
+        "status": "active",
+        "quota_pct": 20,
+        "approved_since": "2021-01-01",
+        "tooling_owner": "n/a"
+      },
+      "doc:20260922-70740-P18": {
+        "asked_pct": null,
+        "asked_price": null,
+        "date": "2026-09-22",
+        "days": null,
+        "effective_date": null,
+        "supplier": "sup:70740",
+        "title": "Price basis and surcharge clause for the coming period",
+        "type": "letter"
+      },
+      "ctr:4600070740": {
+        "days": 60,
+        "supplier": "sup:70740",
+        "valid_from": "2024-01-01",
+        "valid_to": "2026-12-31"
+      },
+      "sc:70740@2026Q3": {
+        "colour": "green",
+        "otd_confirmed_pct": 83.5,
+        "otd_pct": 81.0,
+        "ppm": 32,
+        "quarter": "2026Q3",
+        "supplier": "sup:70740"
+      },
+      "quote:7200018": {
+        "date": "2026-09-19",
+        "incoterm": "DAP",
+        "lead_time_days": 10,
+        "part": "part:370010",
+        "payment_days": 30,
+        "price_unit": 1,
+        "supplier": "sup:70710",
+        "unit_price": 6.31
+      },
+      "news:20260619-14": {
+        "date": "2026-06-19",
+        "headline": "Blankstahl Werdenfels GmbH at the trade fair",
+        "supplier": "sup:70740",
+        "topic": "noise"
+      },
+      "sc:70740@2024Q3": {
+        "colour": "green",
+        "otd_confirmed_pct": 90.5,
+        "otd_pct": 86.5,
+        "ppm": 82,
+        "quarter": "2024Q3",
+        "supplier": "sup:70740"
+      },
+      "sc:70740@2024Q4": {
+        "colour": "green",
+        "otd_confirmed_pct": 93.2,
+        "otd_pct": 86.5,
+        "ppm": 92,
+        "quarter": "2024Q4",
+        "supplier": "sup:70740"
+      },
+      "sc:70740@2025Q1": {
+        "colour": "green",
+        "otd_confirmed_pct": 89.6,
+        "otd_pct": 81.8,
+        "ppm": 111,
+        "quarter": "2025Q1",
+        "supplier": "sup:70740"
+      },
+      "sc:70740@2025Q2": {
+        "colour": "green",
+        "otd_confirmed_pct": 88.5,
+        "otd_pct": 82.1,
+        "ppm": 83,
+        "quarter": "2025Q2",
+        "supplier": "sup:70740"
+      },
+      "sc:70740@2025Q3": {
+        "colour": "green",
+        "otd_confirmed_pct": 86.1,
+        "otd_pct": 81.0,
+        "ppm": 71,
+        "quarter": "2025Q3",
+        "supplier": "sup:70740"
+      },
+      "sc:70740@2025Q4": {
+        "colour": "green",
+        "otd_confirmed_pct": 85.2,
+        "otd_pct": 82.7,
+        "ppm": 58,
+        "quarter": "2025Q4",
+        "supplier": "sup:70740"
+      },
+      "sc:70740@2026Q1": {
+        "colour": "green",
+        "otd_confirmed_pct": 86.2,
+        "otd_pct": 83.8,
+        "ppm": 26,
+        "quarter": "2026Q1",
+        "supplier": "sup:70740"
+      },
+      "sc:70740@2026Q2": {
+        "colour": "green",
+        "otd_confirmed_pct": 85.0,
+        "otd_pct": 82.5,
+        "ppm": 38,
+        "quarter": "2026Q2",
+        "supplier": "sup:70740"
+      },
+      "doc:20251009-70740-N": {
+        "asked_pct": null,
+        "asked_price": null,
+        "date": "2025-10-09",
+        "days": null,
+        "effective_date": null,
+        "supplier": "sup:70740",
+        "title": "New contact person",
+        "type": "email"
+      },
+      "doc:20260514-70740-M6": {
+        "asked_pct": null,
+        "asked_price": null,
+        "date": "2026-05-14",
+        "days": null,
+        "effective_date": null,
+        "supplier": "sup:70740",
+        "title": "Price discussion",
+        "type": "call_note"
+      },
+      "doc:20260601-70740-M4": {
+        "asked_pct": null,
+        "asked_price": null,
+        "date": "2026-06-01",
+        "days": null,
+        "effective_date": null,
+        "supplier": "sup:70740",
+        "title": "Customer portfolio",
+        "type": "meeting_note"
+      },
+      "doc:20260812-70740-M3": {
+        "asked_pct": null,
+        "asked_price": null,
+        "date": "2026-08-12",
+        "days": null,
+        "effective_date": null,
+        "supplier": "sup:70740",
+        "title": "Annual review",
+        "type": "meeting_note"
+      },
+      "doc:20260813-70740-M2": {
+        "asked_pct": null,
+        "asked_price": null,
+        "date": "2026-08-13",
+        "days": null,
+        "effective_date": null,
+        "supplier": "sup:70740",
+        "title": "Customer portfolio",
+        "type": "meeting_note"
+      },
+      "doc:20260904-70740-M1": {
+        "asked_pct": null,
+        "asked_price": null,
+        "date": "2026-09-04",
+        "days": null,
+        "effective_date": null,
+        "supplier": "sup:70740",
+        "title": "Price discussion",
+        "type": "call_note"
+      },
+      "doc:20260916-70740-M5": {
+        "asked_pct": null,
+        "asked_price": null,
+        "date": "2026-09-16",
+        "days": null,
+        "effective_date": null,
+        "supplier": "sup:70740",
+        "title": "Customer portfolio",
+        "type": "meeting_note"
+      },
+      "idx:AS-14404@2025-09": {
+        "month": "2025-09",
+        "series": "AS-14404",
+        "value": 2839.7103
+      },
+      "idx:AS-14404@2026-09": {
+        "month": "2026-09",
+        "series": "AS-14404",
+        "value": 3007.8019
+      },
+      "idx:PPI-C2431@2025-08": {
+        "month": "2025-08",
+        "series": "PPI-C2431",
+        "value": 115.0
+      },
+      "idx:PPI-C2431@2026-08": {
+        "month": "2026-08",
+        "series": "PPI-C2431",
+        "value": 129.1
+      },
+      "idx:LCI-C@2025-06": {
+        "month": "2025-06",
+        "series": "LCI-C",
+        "value": 116.5
+      },
+      "idx:LCI-C@2026-06": {
+        "month": "2026-06",
+        "series": "LCI-C",
+        "value": 119.6
+      },
+      "po:4500010012-10": {
+        "change_pct": 0.0,
+        "date": "2023-10-02",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1100,
+        "supplier": "sup:70740",
+        "unit_price": 6.1
+      },
+      "po:4500010072-10": {
+        "change_pct": -9.1,
+        "date": "2023-10-17",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 6.1
+      },
+      "po:4500010141-10": {
+        "change_pct": -4.8,
+        "date": "2023-11-02",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 6.1
+      },
+      "po:4500010223-10": {
+        "change_pct": -23.5,
+        "date": "2023-11-20",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 790,
+        "supplier": "sup:70740",
+        "unit_price": 6.1
+      },
+      "po:4500010278-10": {
+        "change_pct": -18.8,
+        "date": "2023-12-04",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 790,
+        "supplier": "sup:70740",
+        "unit_price": 6.1
+      },
+      "po:4500010338-10": {
+        "change_pct": -2.8,
+        "date": "2023-12-19",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 910,
+        "supplier": "sup:70740",
+        "unit_price": 6.1
+      },
+      "po:4500010394-10": {
+        "change_pct": -2.3,
+        "date": "2024-01-02",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 910,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500010472-10": {
+        "change_pct": 7.7,
+        "date": "2024-01-19",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500010546-10": {
+        "change_pct": 6.7,
+        "date": "2024-02-05",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500010603-10": {
+        "change_pct": 5.9,
+        "date": "2024-02-19",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 6.1
+      },
+      "po:4500010697-10": {
+        "change_pct": 5.3,
+        "date": "2024-03-11",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500010719-10": {
+        "change_pct": 15.2,
+        "date": "2024-03-18",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1100,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500010783-10": {
+        "change_pct": 13.8,
+        "date": "2024-04-02",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1100,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500010846-10": {
+        "change_pct": 2.4,
+        "date": "2024-04-16",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500010910-10": {
+        "change_pct": 2.2,
+        "date": "2024-05-02",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500010974-10": {
+        "change_pct": 12.2,
+        "date": "2024-05-17",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1100,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500011045-10": {
+        "change_pct": 11.4,
+        "date": "2024-06-03",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1100,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500011107-10": {
+        "change_pct": 20.7,
+        "date": "2024-06-19",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1200,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500011150-10": {
+        "change_pct": 19.3,
+        "date": "2024-07-03",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1200,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500011255-10": {
+        "change_pct": -47.8,
+        "date": "2024-08-01",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 530,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500011304-10": {
+        "change_pct": -46.5,
+        "date": "2024-08-19",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 530,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500011304-20": {
+        "change_pct": 3.1,
+        "date": "2024-08-19",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500011369-10": {
+        "change_pct": 3.0,
+        "date": "2024-09-03",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500011429-10": {
+        "change_pct": -3.3,
+        "date": "2024-09-17",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 940,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500011489-10": {
+        "change_pct": -3.2,
+        "date": "2024-09-30",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 940,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500011569-10": {
+        "change_pct": 14.3,
+        "date": "2024-10-18",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1100,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500011657-10": {
+        "change_pct": 13.8,
+        "date": "2024-11-08",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1100,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500011700-10": {
+        "change_pct": -12.6,
+        "date": "2024-11-19",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 850,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500011743-10": {
+        "change_pct": -12.8,
+        "date": "2024-11-29",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 850,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500011873-10": {
+        "change_pct": -3.1,
+        "date": "2024-12-27",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 950,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500011888-10": {
+        "change_pct": -3.0,
+        "date": "2024-12-31",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 950,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500011978-10": {
+        "change_pct": -3.1,
+        "date": "2025-01-20",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 950,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500012017-10": {
+        "change_pct": -2.9,
+        "date": "2025-01-30",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 950,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500012076-10": {
+        "change_pct": 2.4,
+        "date": "2025-02-13",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500012151-10": {
+        "change_pct": 2.4,
+        "date": "2025-03-03",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500012214-10": {
+        "change_pct": -3.8,
+        "date": "2025-03-18",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 940,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500012284-10": {
+        "change_pct": -2.5,
+        "date": "2025-04-03",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 940,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500012369-10": {
+        "change_pct": 4.0,
+        "date": "2025-04-22",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500012419-10": {
+        "change_pct": 4.0,
+        "date": "2025-05-05",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500012475-10": {
+        "change_pct": 14.9,
+        "date": "2025-05-19",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1100,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500012546-10": {
+        "change_pct": 14.2,
+        "date": "2025-06-03",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1100,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500012591-10": {
+        "change_pct": 3.8,
+        "date": "2025-06-16",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500012638-10": {
+        "change_pct": 4.7,
+        "date": "2025-06-30",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500012803-10": {
+        "change_pct": -43.0,
+        "date": "2025-08-18",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 550,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500012803-20": {
+        "change_pct": -42.0,
+        "date": "2025-08-18",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 550,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500012808-10": {
+        "change_pct": 7.3,
+        "date": "2025-08-19",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500012863-10": {
+        "change_pct": 5.4,
+        "date": "2025-09-01",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500012947-10": {
+        "change_pct": 5.4,
+        "date": "2025-09-19",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500012994-10": {
+        "change_pct": 5.2,
+        "date": "2025-09-30",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1000,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500013112-10": {
+        "change_pct": 26.7,
+        "date": "2025-10-27",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1200,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500013136-10": {
+        "change_pct": 25.3,
+        "date": "2025-11-03",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1200,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500013189-10": {
+        "change_pct": -25.1,
+        "date": "2025-11-17",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 720,
+        "supplier": "sup:70740",
+        "unit_price": 5.75
+      },
+      "po:4500013280-10": {
+        "change_pct": -25.1,
+        "date": "2025-12-08",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 720,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500013336-10": {
+        "change_pct": 4.1,
+        "date": "2025-12-22",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 990,
+        "supplier": "sup:70740",
+        "unit_price": 5.49
+      },
+      "po:4500013373-10": {
+        "change_pct": 3.9,
+        "date": "2026-01-02",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 990,
+        "supplier": "sup:70740",
+        "unit_price": 5.26
+      },
+      "po:4500013456-10": {
+        "change_pct": -3.6,
+        "date": "2026-01-19",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 920,
+        "supplier": "sup:70740",
+        "unit_price": 5.26
+      },
+      "po:4500013520-10": {
+        "change_pct": -3.5,
+        "date": "2026-02-02",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 920,
+        "supplier": "sup:70740",
+        "unit_price": 5.26
+      },
+      "po:4500013617-10": {
+        "change_pct": 26.4,
+        "date": "2026-02-24",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1200,
+        "supplier": "sup:70740",
+        "unit_price": 5.26
+      },
+      "po:4500013638-10": {
+        "change_pct": 25.0,
+        "date": "2026-03-03",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1200,
+        "supplier": "sup:70740",
+        "unit_price": 5.26
+      },
+      "po:4500013730-10": {
+        "change_pct": 2.1,
+        "date": "2026-03-23",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 990,
+        "supplier": "sup:70740",
+        "unit_price": 5.26
+      },
+      "po:4500013762-10": {
+        "change_pct": 2.0,
+        "date": "2026-03-31",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 990,
+        "supplier": "sup:70740",
+        "unit_price": 5.26
+      },
+      "po:4500013829-10": {
+        "change_pct": 13.1,
+        "date": "2026-04-17",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1100,
+        "supplier": "sup:70740",
+        "unit_price": 5.26
+      },
+      "po:4500013900-10": {
+        "change_pct": 12.6,
+        "date": "2026-05-04",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1100,
+        "supplier": "sup:70740",
+        "unit_price": 5.26
+      },
+      "po:4500013967-10": {
+        "change_pct": 12.7,
+        "date": "2026-05-20",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1100,
+        "supplier": "sup:70740",
+        "unit_price": 5.26
+      },
+      "po:4500014022-10": {
+        "change_pct": 12.1,
+        "date": "2026-06-02",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1100,
+        "supplier": "sup:70740",
+        "unit_price": 5.26
+      },
+      "po:4500014078-10": {
+        "change_pct": -4.1,
+        "date": "2026-06-17",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 940,
+        "supplier": "sup:70740",
+        "unit_price": 5.26
+      },
+      "po:4500014140-10": {
+        "change_pct": -3.8,
+        "date": "2026-07-03",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 940,
+        "supplier": "sup:70740",
+        "unit_price": 5.84
+      },
+      "po:4500014239-10": {
+        "change_pct": -42.6,
+        "date": "2026-07-30",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 560,
+        "supplier": "sup:70740",
+        "unit_price": 5.84
+      },
+      "po:4500014287-10": {
+        "change_pct": -41.6,
+        "date": "2026-08-17",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 560,
+        "supplier": "sup:70740",
+        "unit_price": 5.84
+      },
+      "po:4500014292-10": {
+        "change_pct": 0.7,
+        "date": "2026-08-18",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 950,
+        "supplier": "sup:70740",
+        "unit_price": 5.84
+      },
+      "po:4500014355-10": {
+        "change_pct": -2.5,
+        "date": "2026-09-01",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 950,
+        "supplier": "sup:70740",
+        "unit_price": 5.84
+      },
+      "po:4500014427-10": {
+        "change_pct": 13.1,
+        "date": "2026-09-18",
+        "part": "part:370010",
+        "price_unit": 1,
+        "qty": 1100,
+        "supplier": "sup:70740",
+        "unit_price": 5.84
+      },
+      "fc:370010@2026-09": {
+        "change_pct": 1.9,
+        "part": "part:370010",
+        "volume_per_year": 118500
+      },
+      "fc:370010@2026-06": {
+        "change_pct": 4.0,
+        "part": "part:370010",
+        "volume_per_year": 122600
+      },
+      "fc:370010@2026-03": {
+        "change_pct": 6.0,
+        "part": "part:370010",
+        "volume_per_year": 123200
+      },
+      "fc:370010@2025-12": {
+        "change_pct": 5.4,
+        "part": "part:370010",
+        "volume_per_year": 121000
+      },
+      "fc:370010@2025-09": {
+        "change_pct": 1.2,
+        "part": "part:370010",
+        "volume_per_year": 116100
+      },
+      "fc:370010@2025-06": {
+        "change_pct": 0.3,
+        "part": "part:370010",
+        "volume_per_year": 116300
+      },
+      "fc:370010@2025-03": {
+        "change_pct": 5.4,
+        "part": "part:370010",
+        "volume_per_year": 123800
+      },
+      "fc:370010@2024-12": {
+        "change_pct": -0.4,
+        "part": "part:370010",
+        "volume_per_year": 117000
+      },
+      "fc:370010@2024-09": {
+        "change_pct": 3.8,
+        "part": "part:370010",
+        "volume_per_year": 116100
+      },
+      "fc:370010@2024-06": {
+        "table": "forecasts",
+        "id": "fc:370010@2024-06",
+        "part_id": "part:370010",
+        "snapshot_month": "2024-06",
+        "horizon_months": 12,
+        "qty_next_12m": 119000,
+        "uom": "kg",
+        "shared_with_suppliers": 1
+      },
+      "fc:370010@2024-03": {
+        "table": "forecasts",
+        "id": "fc:370010@2024-03",
+        "part_id": "part:370010",
+        "snapshot_month": "2024-03",
+        "horizon_months": 12,
+        "qty_next_12m": 124200,
+        "uom": "kg",
+        "shared_with_suppliers": 1
+      },
+      "fc:370010@2023-12": {
+        "table": "forecasts",
+        "id": "fc:370010@2023-12",
+        "part_id": "part:370010",
+        "snapshot_month": "2023-12",
+        "horizon_months": 12,
+        "qty_next_12m": 117100,
+        "uom": "kg",
+        "shared_with_suppliers": 1
+      },
+      "idx:AS-14404@2025-06": {
+        "month": "2025-06",
+        "series": "AS-14404",
+        "value": 2919.1542
+      },
+      "idx:AS-14404@2025-07": {
+        "month": "2025-07",
+        "series": "AS-14404",
+        "value": 2858.1837
+      },
+      "idx:AS-14404@2025-08": {
+        "month": "2025-08",
+        "series": "AS-14404",
+        "value": 2842.108
+      },
+      "idx:AS-14404@2025-10": {
+        "month": "2025-10",
+        "series": "AS-14404",
+        "value": 2842.1732
+      },
+      "idx:AS-14404@2025-11": {
+        "month": "2025-11",
+        "series": "AS-14404",
+        "value": 2852.7683
+      },
+      "idx:AS-14404@2025-12": {
+        "month": "2025-12",
+        "series": "AS-14404",
+        "value": 2822.7323
+      },
+      "idx:AS-14404@2026-01": {
+        "month": "2026-01",
+        "series": "AS-14404",
+        "value": 2824.9368
+      },
+      "idx:AS-14404@2026-02": {
+        "month": "2026-02",
+        "series": "AS-14404",
+        "value": 3080.2849
+      },
+      "idx:AS-14404@2026-03": {
+        "month": "2026-03",
+        "series": "AS-14404",
+        "value": 3015.6749
+      },
+      "idx:AS-14404@2026-04": {
+        "month": "2026-04",
+        "series": "AS-14404",
+        "value": 3041.9764
+      },
+      "idx:AS-14404@2026-05": {
+        "month": "2026-05",
+        "series": "AS-14404",
+        "value": 3101.973
+      },
+      "idx:AS-14404@2026-06": {
+        "month": "2026-06",
+        "series": "AS-14404",
+        "value": 3182.6744
+      },
+      "idx:AS-14404@2026-07": {
+        "month": "2026-07",
+        "series": "AS-14404",
+        "value": 3094.2118
+      },
+      "idx:AS-14404@2026-08": {
+        "month": "2026-08",
+        "series": "AS-14404",
+        "value": 3021.9769
+      },
+      "idx:PPI-C2431@2025-06": {
+        "month": "2025-06",
+        "series": "PPI-C2431",
+        "value": 114.7
+      },
+      "idx:PPI-C2431@2025-07": {
+        "month": "2025-07",
+        "series": "PPI-C2431",
+        "value": 116.0
+      },
+      "idx:PPI-C2431@2025-09": {
+        "month": "2025-09",
+        "series": "PPI-C2431",
+        "value": 115.0
+      },
+      "idx:PPI-C2431@2025-10": {
+        "month": "2025-10",
+        "series": "PPI-C2431",
+        "value": 116.0
+      },
+      "idx:PPI-C2431@2025-11": {
+        "month": "2025-11",
+        "series": "PPI-C2431",
+        "value": 115.9
+      },
+      "idx:PPI-C2431@2025-12": {
+        "month": "2025-12",
+        "series": "PPI-C2431",
+        "value": 115.8
+      },
+      "idx:PPI-C2431@2026-01": {
+        "month": "2026-01",
+        "series": "PPI-C2431",
+        "value": 119.6
+      },
+      "idx:PPI-C2431@2026-02": {
+        "month": "2026-02",
+        "series": "PPI-C2431",
+        "value": 117.7
+      },
+      "idx:PPI-C2431@2026-03": {
+        "month": "2026-03",
+        "series": "PPI-C2431",
+        "value": 118.6
+      },
+      "idx:PPI-C2431@2026-04": {
+        "month": "2026-04",
+        "series": "PPI-C2431",
+        "value": 120.2
+      },
+      "idx:PPI-C2431@2026-05": {
+        "month": "2026-05",
+        "series": "PPI-C2431",
+        "value": 131.9
+      },
+      "idx:PPI-C2431@2026-06": {
+        "month": "2026-06",
+        "series": "PPI-C2431",
+        "value": 132.1
+      },
+      "idx:PPI-C2431@2026-07": {
+        "month": "2026-07",
+        "series": "PPI-C2431",
+        "value": 129.4
+      },
+      "idx:LCI-C@2025-07": {
+        "month": "2025-07",
+        "series": "LCI-C",
+        "value": 117.0
+      },
+      "idx:LCI-C@2025-08": {
+        "month": "2025-08",
+        "series": "LCI-C",
+        "value": 117.0
+      },
+      "idx:LCI-C@2025-09": {
+        "month": "2025-09",
+        "series": "LCI-C",
+        "value": 117.0
+      },
+      "idx:LCI-C@2025-10": {
+        "month": "2025-10",
+        "series": "LCI-C",
+        "value": 117.6
+      },
+      "idx:LCI-C@2025-11": {
+        "month": "2025-11",
+        "series": "LCI-C",
+        "value": 117.6
+      },
+      "idx:LCI-C@2025-12": {
+        "month": "2025-12",
+        "series": "LCI-C",
+        "value": 117.6
+      },
+      "idx:LCI-C@2026-01": {
+        "month": "2026-01",
+        "series": "LCI-C",
+        "value": 117.3
+      },
+      "idx:LCI-C@2026-02": {
+        "month": "2026-02",
+        "series": "LCI-C",
+        "value": 117.3
+      },
+      "idx:LCI-C@2026-03": {
+        "month": "2026-03",
+        "series": "LCI-C",
+        "value": 117.3
+      },
+      "idx:LCI-C@2026-04": {
+        "month": "2026-04",
+        "series": "LCI-C",
+        "value": 119.6
+      },
+      "idx:LCI-C@2026-05": {
+        "month": "2026-05",
+        "series": "LCI-C",
+        "value": 119.6
+      },
+      "ctr:4600070740#2.1": {
+        "days": null,
+        "material_share": null,
+        "series": null,
+        "supplier": "sup:70740",
+        "type": "scope"
+      },
+      "ctr:4600070740#3.1": {
+        "days": 60,
+        "material_share": null,
+        "series": null,
+        "supplier": "sup:70740",
+        "type": "price"
+      },
+      "ctr:4600070740#3.2": {
+        "days": null,
+        "material_share": 0.8,
+        "series": "PPI-C2431",
+        "supplier": "sup:70740",
+        "type": "index"
+      },
+      "ctr:4600070740#4.1": {
+        "days": 30,
+        "material_share": null,
+        "series": null,
+        "supplier": "sup:70740",
+        "type": "payment"
+      },
+      "ctr:4600070740#5.1": {
+        "days": 14,
+        "material_share": null,
+        "series": null,
+        "supplier": "sup:70740",
+        "type": "delivery"
+      },
+      "ctr:4600070740#6.1": {
+        "days": null,
+        "material_share": null,
+        "series": null,
+        "supplier": "sup:70740",
+        "type": "quality"
+      },
+      "ctr:4600070740#8.1": {
+        "days": 60,
+        "material_share": null,
+        "series": null,
+        "supplier": "sup:70740",
+        "type": "term"
+      }
+    },
+    "documents": [
+      {
+        "id": "doc:20260922-70740-P18",
+        "text": "# Price basis and surcharge clause for the coming period\n\nletter - 2026-09-22 - Blankstahl Werdenfels GmbH\n\nDear Sir or Madam,\n\nfor Round bar 1.4404 dia 30 mm, peeled (part:370010) we propose to agree the price basis for the coming period, including a price adjustment clause based on AS-14404. Please let us know your view.\n\nYours faithfully,\nBlankstahl Werdenfels GmbH\n"
+      },
+      {
+        "id": "doc:20260916-70740-M5",
+        "text": "# Customer portfolio\n\nmeeting note - 2026-09-16 - Hollerau Pumpenwerke, Purchasing\n\nThe sales director of Blankstahl Werdenfels GmbH said they are reviewing small accounts and will focus on customers with volume.\n"
+      },
+      {
+        "id": "doc:20260904-70740-M1",
+        "text": "# Price discussion\n\ncall note - 2026-09-04 - Hollerau Pumpenwerke, Purchasing\n\nCall with the owner of Blankstahl Werdenfels GmbH: he offered to walk us through their calculation (hourly rates and material) if that helps to settle prices.\n"
+      },
+      {
+        "id": "doc:20260813-70740-M2",
+        "text": "# Customer portfolio\n\nmeeting note - 2026-08-13 - Hollerau Pumpenwerke, Purchasing\n\nThe sales director of Blankstahl Werdenfels GmbH said they are reviewing small accounts and will focus on customers with volume.\n"
+      },
+      {
+        "id": "doc:20260812-70740-M3",
+        "text": "# Annual review\n\nmeeting note - 2026-08-12 - Hollerau Pumpenwerke, Purchasing\n\nAnnual review with Blankstahl Werdenfels GmbH. Their key account manager explained that price changes above 2 % need the approval of their pricing committee, which meets every two weeks.\n"
+      },
+      {
+        "id": "doc:20260601-70740-M4",
+        "text": "# Customer portfolio\n\nmeeting note - 2026-06-01 - Hollerau Pumpenwerke, Purchasing\n\nThe sales director of Blankstahl Werdenfels GmbH said they are reviewing small accounts and will focus on customers with volume.\n"
+      },
+      {
+        "id": "doc:20260514-70740-M6",
+        "text": "# Price discussion\n\ncall note - 2026-05-14 - Hollerau Pumpenwerke, Purchasing\n\nCall with the owner of Blankstahl Werdenfels GmbH: he offered to walk us through their calculation (hourly rates and material) if that helps to settle prices.\n"
+      },
+      {
+        "id": "doc:20251009-70740-N",
+        "text": "# New contact person\n\nemail - 2025-10-09 - Blankstahl Werdenfels GmbH\n\nFrom 1 October your contact in sales is our new colleague in inside sales; all other contacts stay the same.\n"
+      },
+      {
+        "id": "ctr:4600070740",
+        "text": "# Framework agreement 4600070740\n\nBetween Hollerau Pumpenwerke GmbH and Blankstahl Werdenfels GmbH.\n\n**§ 2.1** Subject: supply of Round bar 1.4404 dia 30 mm, peeled, Round bar 1.4021 dia 40 mm, peeled, Round bar C45 dia 50 mm, cold drawn.\n\n**§ 3.1** Prices as per the price annex, fixed for each calendar year. Changes require written notice of at least 60 days before the end of the calendar year.\n\n**§ 3.2** The price follows index PPI-C2431: P = P0 x (1 - 0.8 + 0.8 x I(m-2) / I(base)), base = the index two months before the price year starts, adjusted quarterly on the 1st of January, April, July and October if the change exceeds 3 %.\n\n**§ 4.1** Payment: 30 days net.\n\n**§ 5.1** Delivery DAP; standard lead time 14 days from order.\n\n**§ 6.1** The quality agreement applies: on-time delivery target 95 %, flat fee of EUR 150 per supplier-caused complaint.\n\n**§ 8.1** Valid from 2024-01-01 to 2026-12-31; extends by 12 months unless terminated with 60 days' notice.\n\nParts: part:370010, part:370011, part:370012\n"
+      }
+    ],
+    "tables": {
+      "supplier_intel": [
+        {
+          "supplier_id": "sup:70740",
+          "legal_form": "GmbH",
+          "founded": 1961,
+          "owner_type": "family",
+          "group_parent": null,
+          "staff": 200,
+          "filed_fy": 2025,
+          "turnover_eur": 98200000,
+          "turnover_band": "50-100 M EUR",
+          "equity_ratio_pct": 39.3,
+          "credit_index": 148,
+          "credit_index_12m_ago": 148,
+          "vda63_grade": "A",
+          "certifications": "ISO 9001; ISO 14001"
+        }
+      ],
+      "negotiation_history": [
+        {
+          "event_id": "EV-2023-70740-370010",
+          "date": "2022-11-21",
+          "supplier_id": "sup:70740",
+          "part_id": "part:370010",
+          "type": "initial price",
+          "asked_pct": null,
+          "settled_pct": null,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2024-70740-370010",
+          "date": "2023-12-02",
+          "supplier_id": "sup:70740",
+          "part_id": "part:370010",
+          "type": "annual renewal",
+          "asked_pct": -2.4,
+          "settled_pct": -5.7,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2025-70740-370010",
+          "date": "2024-11-17",
+          "supplier_id": "sup:70740",
+          "part_id": "part:370010",
+          "type": "annual renewal",
+          "asked_pct": -2.6,
+          "settled_pct": -4.5,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2026-70740-370010",
+          "date": "2025-11-15",
+          "supplier_id": "sup:70740",
+          "part_id": "part:370010",
+          "type": "annual renewal",
+          "asked_pct": -0.6,
+          "settled_pct": -4.2,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2023-70740-370011",
+          "date": "2022-11-13",
+          "supplier_id": "sup:70740",
+          "part_id": "part:370011",
+          "type": "initial price",
+          "asked_pct": null,
+          "settled_pct": null,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2024-70740-370011",
+          "date": "2023-11-20",
+          "supplier_id": "sup:70740",
+          "part_id": "part:370011",
+          "type": "annual renewal",
+          "asked_pct": 1.8,
+          "settled_pct": -1.7,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2025-70740-370011",
+          "date": "2024-12-07",
+          "supplier_id": "sup:70740",
+          "part_id": "part:370011",
+          "type": "annual renewal",
+          "asked_pct": -0.5,
+          "settled_pct": -4.0,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2026-70740-370011",
+          "date": "2025-12-05",
+          "supplier_id": "sup:70740",
+          "part_id": "part:370011",
+          "type": "annual renewal",
+          "asked_pct": 2.5,
+          "settled_pct": 0.7,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2023-70740-370012",
+          "date": "2022-11-17",
+          "supplier_id": "sup:70740",
+          "part_id": "part:370012",
+          "type": "initial price",
+          "asked_pct": null,
+          "settled_pct": null,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2024-70740-370012",
+          "date": "2023-11-22",
+          "supplier_id": "sup:70740",
+          "part_id": "part:370012",
+          "type": "annual renewal",
+          "asked_pct": -0.3,
+          "settled_pct": -3.7,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2025-70740-370012",
+          "date": "2024-11-17",
+          "supplier_id": "sup:70740",
+          "part_id": "part:370012",
+          "type": "annual renewal",
+          "asked_pct": -1.0,
+          "settled_pct": -2.4,
+          "note": ""
+        },
+        {
+          "event_id": "EV-2026-70740-370012",
+          "date": "2025-11-27",
+          "supplier_id": "sup:70740",
+          "part_id": "part:370012",
+          "type": "annual renewal",
+          "asked_pct": 3.0,
+          "settled_pct": -0.3,
+          "note": ""
+        }
+      ],
+      "should_cost": [],
+      "quotes": [
+        {
+          "id": "quote:7200018",
+          "rfq_id": "rfq:6000000218",
+          "supplier_id": "sup:70710",
+          "part_id": "part:370010",
+          "quote_date": "2026-09-19",
+          "unit_price": 6.31,
+          "price_unit": 1,
+          "currency": "EUR",
+          "lead_time_days": 10,
+          "incoterm": "DAP",
+          "payment_days": 30,
+          "validity_days": 90,
+          "tooling_eur": 0,
+          "awarded": 0,
+          "missing_fields": "",
+          "remarks": ""
+        }
+      ],
+      "news": [
+        {
+          "id": "news:20260619-14",
+          "date": "2026-06-19",
+          "supplier_id": "sup:70740",
+          "topic": "noise",
+          "headline": "Blankstahl Werdenfels GmbH at the trade fair",
+          "body": "Blankstahl Werdenfels GmbH presents its products at a regional supplier fair.",
+          "source": "Metall-Kurier"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "sc:70740@2024Q3",
+          "supplier_id": "sup:70740",
+          "quarter": "2024Q3",
+          "period_start": "2023-10-01",
+          "period_end": "2024-09-30",
+          "gr_lines": 74,
+          "otd_pct": 86.5,
+          "otd_confirmed_pct": 90.5,
+          "received_qty": 159407,
+          "complaint_qty": 13,
+          "ppm": 82,
+          "qn_count": 13,
+          "open_8d_overdue": 0,
+          "score": 92.8,
+          "class": "A",
+          "colour": "green"
+        },
+        {
+          "id": "sc:70740@2024Q4",
+          "supplier_id": "sup:70740",
+          "quarter": "2024Q4",
+          "period_start": "2024-01-01",
+          "period_end": "2024-12-31",
+          "gr_lines": 74,
+          "otd_pct": 86.5,
+          "otd_confirmed_pct": 93.2,
+          "received_qty": 163482,
+          "complaint_qty": 15,
+          "ppm": 92,
+          "qn_count": 15,
+          "open_8d_overdue": 0,
+          "score": 92.8,
+          "class": "A",
+          "colour": "green"
+        },
+        {
+          "id": "sc:70740@2025Q1",
+          "supplier_id": "sup:70740",
+          "quarter": "2025Q1",
+          "period_start": "2024-04-01",
+          "period_end": "2025-03-31",
+          "gr_lines": 77,
+          "otd_pct": 81.8,
+          "otd_confirmed_pct": 89.6,
+          "received_qty": 162862,
+          "complaint_qty": 18,
+          "ppm": 111,
+          "qn_count": 18,
+          "open_8d_overdue": 0,
+          "score": 90.4,
+          "class": "A",
+          "colour": "green"
+        },
+        {
+          "id": "sc:70740@2025Q2",
+          "supplier_id": "sup:70740",
+          "quarter": "2025Q2",
+          "period_start": "2024-07-01",
+          "period_end": "2025-06-30",
+          "gr_lines": 78,
+          "otd_pct": 82.1,
+          "otd_confirmed_pct": 88.5,
+          "received_qty": 157542,
+          "complaint_qty": 13,
+          "ppm": 83,
+          "qn_count": 13,
+          "open_8d_overdue": 0,
+          "score": 90.6,
+          "class": "A",
+          "colour": "green"
+        },
+        {
+          "id": "sc:70740@2025Q3",
+          "supplier_id": "sup:70740",
+          "quarter": "2025Q3",
+          "period_start": "2024-10-01",
+          "period_end": "2025-09-30",
+          "gr_lines": 79,
+          "otd_pct": 81.0,
+          "otd_confirmed_pct": 86.1,
+          "received_qty": 155349,
+          "complaint_qty": 11,
+          "ppm": 71,
+          "qn_count": 11,
+          "open_8d_overdue": 0,
+          "score": 90.2,
+          "class": "A",
+          "colour": "green"
+        },
+        {
+          "id": "sc:70740@2025Q4",
+          "supplier_id": "sup:70740",
+          "quarter": "2025Q4",
+          "period_start": "2025-01-01",
+          "period_end": "2025-12-31",
+          "gr_lines": 81,
+          "otd_pct": 82.7,
+          "otd_confirmed_pct": 85.2,
+          "received_qty": 154734,
+          "complaint_qty": 9,
+          "ppm": 58,
+          "qn_count": 9,
+          "open_8d_overdue": 0,
+          "score": 91.1,
+          "class": "A",
+          "colour": "green"
+        },
+        {
+          "id": "sc:70740@2026Q1",
+          "supplier_id": "sup:70740",
+          "quarter": "2026Q1",
+          "period_start": "2025-04-01",
+          "period_end": "2026-03-31",
+          "gr_lines": 80,
+          "otd_pct": 83.8,
+          "otd_confirmed_pct": 86.2,
+          "received_qty": 154754,
+          "complaint_qty": 4,
+          "ppm": 26,
+          "qn_count": 4,
+          "open_8d_overdue": 0,
+          "score": 91.7,
+          "class": "A",
+          "colour": "green"
+        },
+        {
+          "id": "sc:70740@2026Q2",
+          "supplier_id": "sup:70740",
+          "quarter": "2026Q2",
+          "period_start": "2025-07-01",
+          "period_end": "2026-06-30",
+          "gr_lines": 80,
+          "otd_pct": 82.5,
+          "otd_confirmed_pct": 85.0,
+          "received_qty": 156654,
+          "complaint_qty": 6,
+          "ppm": 38,
+          "qn_count": 6,
+          "open_8d_overdue": 0,
+          "score": 91.1,
+          "class": "A",
+          "colour": "green"
+        },
+        {
+          "id": "sc:70740@2026Q3",
+          "supplier_id": "sup:70740",
+          "quarter": "2026Q3",
+          "period_start": "2025-10-01",
+          "period_end": "2026-09-30",
+          "gr_lines": 79,
+          "otd_pct": 81.0,
+          "otd_confirmed_pct": 83.5,
+          "received_qty": 155740,
+          "complaint_qty": 5,
+          "ppm": 32,
+          "qn_count": 5,
+          "open_8d_overdue": 0,
+          "score": 90.3,
+          "class": "A",
+          "colour": "green"
+        }
+      ],
+      "forecasts": [
+        {
+          "id": "fc:370010@2026-09",
+          "part_id": "part:370010",
+          "snapshot_month": "2026-09",
+          "horizon_months": 12,
+          "qty_next_12m": 118500,
+          "uom": "kg",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:370010@2026-06",
+          "part_id": "part:370010",
+          "snapshot_month": "2026-06",
+          "horizon_months": 12,
+          "qty_next_12m": 122600,
+          "uom": "kg",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:370010@2026-03",
+          "part_id": "part:370010",
+          "snapshot_month": "2026-03",
+          "horizon_months": 12,
+          "qty_next_12m": 123200,
+          "uom": "kg",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:370010@2025-12",
+          "part_id": "part:370010",
+          "snapshot_month": "2025-12",
+          "horizon_months": 12,
+          "qty_next_12m": 121000,
+          "uom": "kg",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:370010@2025-09",
+          "part_id": "part:370010",
+          "snapshot_month": "2025-09",
+          "horizon_months": 12,
+          "qty_next_12m": 116100,
+          "uom": "kg",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:370010@2025-06",
+          "part_id": "part:370010",
+          "snapshot_month": "2025-06",
+          "horizon_months": 12,
+          "qty_next_12m": 116300,
+          "uom": "kg",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:370010@2025-03",
+          "part_id": "part:370010",
+          "snapshot_month": "2025-03",
+          "horizon_months": 12,
+          "qty_next_12m": 123800,
+          "uom": "kg",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:370010@2024-12",
+          "part_id": "part:370010",
+          "snapshot_month": "2024-12",
+          "horizon_months": 12,
+          "qty_next_12m": 117000,
+          "uom": "kg",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:370010@2024-09",
+          "part_id": "part:370010",
+          "snapshot_month": "2024-09",
+          "horizon_months": 12,
+          "qty_next_12m": 116100,
+          "uom": "kg",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:370010@2024-06",
+          "part_id": "part:370010",
+          "snapshot_month": "2024-06",
+          "horizon_months": 12,
+          "qty_next_12m": 119000,
+          "uom": "kg",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:370010@2024-03",
+          "part_id": "part:370010",
+          "snapshot_month": "2024-03",
+          "horizon_months": 12,
+          "qty_next_12m": 124200,
+          "uom": "kg",
+          "shared_with_suppliers": 1
+        },
+        {
+          "id": "fc:370010@2023-12",
+          "part_id": "part:370010",
+          "snapshot_month": "2023-12",
+          "horizon_months": 12,
+          "qty_next_12m": 117100,
+          "uom": "kg",
+          "shared_with_suppliers": 1
+        }
+      ],
+      "forecast_lines": [
+        {
+          "fc_id": "fc:370010@2026-09",
+          "target_month": "2026-10",
+          "qty": 12000
+        },
+        {
+          "fc_id": "fc:370010@2026-09",
+          "target_month": "2026-11",
+          "qty": 12000
+        },
+        {
+          "fc_id": "fc:370010@2026-09",
+          "target_month": "2026-12",
+          "qty": 6900
+        },
+        {
+          "fc_id": "fc:370010@2026-09",
+          "target_month": "2027-01",
+          "qty": 11000
+        },
+        {
+          "fc_id": "fc:370010@2026-09",
+          "target_month": "2027-02",
+          "qty": 11000
+        },
+        {
+          "fc_id": "fc:370010@2026-09",
+          "target_month": "2027-03",
+          "qty": 11000
+        },
+        {
+          "fc_id": "fc:370010@2026-09",
+          "target_month": "2027-04",
+          "qty": 11000
+        },
+        {
+          "fc_id": "fc:370010@2026-09",
+          "target_month": "2027-05",
+          "qty": 9200
+        },
+        {
+          "fc_id": "fc:370010@2026-09",
+          "target_month": "2027-06",
+          "qty": 8200
+        },
+        {
+          "fc_id": "fc:370010@2026-09",
+          "target_month": "2027-07",
+          "qty": 11000
+        },
+        {
+          "fc_id": "fc:370010@2026-09",
+          "target_month": "2027-08",
+          "qty": 6000
+        },
+        {
+          "fc_id": "fc:370010@2026-09",
+          "target_month": "2027-09",
+          "qty": 9200
+        }
+      ],
+      "price_conditions": [
+        {
+          "part_id": "part:370010",
+          "supplier_id": "sup:70740",
+          "valid_from": "2023-01-01",
+          "price": 6.45,
+          "basis": "contract",
+          "event_id": "EV-2023-70740-370010",
+          "valid_to": "2023-09-30",
+          "price_unit": 1,
+          "currency": "EUR"
+        },
+        {
+          "part_id": "part:370010",
+          "supplier_id": "sup:70740",
+          "valid_from": "2023-10-01",
+          "price": 6.1,
+          "basis": "index_adjustment",
+          "event_id": "EV-2023-70740-370010-Q4",
+          "valid_to": "2023-12-31",
+          "price_unit": 1,
+          "currency": "EUR"
+        },
+        {
+          "part_id": "part:370010",
+          "supplier_id": "sup:70740",
+          "valid_from": "2024-01-01",
+          "price": 5.75,
+          "basis": "renewal",
+          "event_id": "EV-2024-70740-370010",
+          "valid_to": "2024-12-31",
+          "price_unit": 1,
+          "currency": "EUR"
+        },
+        {
+          "part_id": "part:370010",
+          "supplier_id": "sup:70740",
+          "valid_from": "2025-01-01",
+          "price": 5.49,
+          "basis": "renewal",
+          "event_id": "EV-2025-70740-370010",
+          "valid_to": "2025-12-31",
+          "price_unit": 1,
+          "currency": "EUR"
+        },
+        {
+          "part_id": "part:370010",
+          "supplier_id": "sup:70740",
+          "valid_from": "2026-01-01",
+          "price": 5.26,
+          "basis": "renewal",
+          "event_id": "EV-2026-70740-370010",
+          "valid_to": "2026-06-30",
+          "price_unit": 1,
+          "currency": "EUR"
+        },
+        {
+          "part_id": "part:370010",
+          "supplier_id": "sup:70740",
+          "valid_from": "2026-07-01",
+          "price": 5.84,
+          "basis": "index_adjustment",
+          "event_id": "EV-2026-70740-370010-Q3",
+          "valid_to": null,
+          "price_unit": 1,
+          "currency": "EUR"
+        }
+      ],
+      "sourcing": [
+        {
+          "part_id": "part:370010",
+          "supplier_id": "sup:70710",
+          "status": "active",
+          "quota_pct": 80,
+          "approved_since": "2017-07-01",
+          "tooling_owner": "n/a"
+        },
+        {
+          "part_id": "part:370010",
+          "supplier_id": "sup:70740",
+          "status": "active",
+          "quota_pct": 20,
+          "approved_since": "2021-01-01",
+          "tooling_owner": "n/a"
+        }
+      ],
+      "cost_drivers": [
+        {
+          "part_id": "part:370010",
+          "series_id": "AS-14404",
+          "weight": 0.43,
+          "source": "category team estimate 2026-06"
+        },
+        {
+          "part_id": "part:370010",
+          "series_id": "PPI-C2431",
+          "weight": 0.36,
+          "source": "category team estimate 2026-06"
+        },
+        {
+          "part_id": "part:370010",
+          "series_id": "LCI-C",
+          "weight": 0.03,
+          "source": "category team estimate 2026-06"
+        }
+      ]
+    },
+    "indices": [
+      {
+        "series": "AS-14404",
+        "weight": 0.43,
+        "change_pct": 5.9193,
+        "weighted_change_pct": 2.5453,
+        "claim": "AS-14404 changed +5.92% from 2025-09 to 2026-09 (idx:AS-14404@2025-09, idx:AS-14404@2026-09).",
+        "refs": [
+          "idx:AS-14404@2025-09",
+          "idx:AS-14404@2026-09"
+        ]
+      },
+      {
+        "series": "PPI-C2431",
+        "weight": 0.36,
+        "change_pct": 12.2609,
+        "weighted_change_pct": 4.4139,
+        "claim": "PPI-C2431 changed +12.26% from 2025-08 to 2026-08 (idx:PPI-C2431@2025-08, idx:PPI-C2431@2026-08).",
+        "refs": [
+          "idx:PPI-C2431@2025-08",
+          "idx:PPI-C2431@2026-08"
+        ]
+      },
+      {
+        "series": "LCI-C",
+        "weight": 0.03,
+        "change_pct": 2.6609,
+        "weighted_change_pct": 0.0798,
+        "claim": "LCI-C changed +2.66% from 2025-06 to 2026-06 (idx:LCI-C@2025-06, idx:LCI-C@2026-06).",
+        "refs": [
+          "idx:LCI-C@2025-06",
+          "idx:LCI-C@2026-06"
+        ]
+      }
+    ],
+    "estimates": {},
+    "calculations": [
+      {
+        "id": "p18:orders_last_12m_kg",
+        "value": 22440,
+        "description": "Ordered kg, Werdenfels / part 370010, 2025-10-01 through 2026-09-30; not consumption",
+        "source_refs": [
+          "po:4500013112-10",
+          "po:4500013136-10",
+          "po:4500013189-10",
+          "po:4500013280-10",
+          "po:4500013336-10",
+          "po:4500013373-10",
+          "po:4500013456-10",
+          "po:4500013520-10",
+          "po:4500013617-10",
+          "po:4500013638-10",
+          "po:4500013730-10",
+          "po:4500013762-10",
+          "po:4500013829-10",
+          "po:4500013900-10",
+          "po:4500013967-10",
+          "po:4500014022-10",
+          "po:4500014078-10",
+          "po:4500014140-10",
+          "po:4500014239-10",
+          "po:4500014287-10",
+          "po:4500014292-10",
+          "po:4500014355-10",
+          "po:4500014427-10"
+        ]
+      },
+      {
+        "id": "p18:orders_last_12m_lines",
+        "value": 23,
+        "description": "Number of PO lines in that same period",
+        "source_refs": [
+          "po:4500013112-10",
+          "po:4500013136-10",
+          "po:4500013189-10",
+          "po:4500013280-10",
+          "po:4500013336-10",
+          "po:4500013373-10",
+          "po:4500013456-10",
+          "po:4500013520-10",
+          "po:4500013617-10",
+          "po:4500013638-10",
+          "po:4500013730-10",
+          "po:4500013762-10",
+          "po:4500013829-10",
+          "po:4500013900-10",
+          "po:4500013967-10",
+          "po:4500014022-10",
+          "po:4500014078-10",
+          "po:4500014140-10",
+          "po:4500014239-10",
+          "po:4500014287-10",
+          "po:4500014292-10",
+          "po:4500014355-10",
+          "po:4500014427-10"
+        ]
+      },
+      {
+        "id": "p18:commitment_vs_orders_pct",
+        "value": 5.615,
+        "description": "Fixed annual case commitment versus preceding 12 months of orders; not forecast growth",
+        "source_refs": [
+          "case",
+          "po:4500013112-10",
+          "po:4500013136-10",
+          "po:4500013189-10",
+          "po:4500013280-10",
+          "po:4500013336-10",
+          "po:4500013373-10",
+          "po:4500013456-10",
+          "po:4500013520-10",
+          "po:4500013617-10",
+          "po:4500013638-10",
+          "po:4500013730-10",
+          "po:4500013762-10",
+          "po:4500013829-10",
+          "po:4500013900-10",
+          "po:4500013967-10",
+          "po:4500014022-10",
+          "po:4500014078-10",
+          "po:4500014140-10",
+          "po:4500014239-10",
+          "po:4500014287-10",
+          "po:4500014292-10",
+          "po:4500014355-10",
+          "po:4500014427-10"
+        ]
+      },
+      {
+        "id": "p18:orders_2025Q4_kg",
+        "value": 4830,
+        "description": "Ordered kg in 2025Q4, same supplier and part",
+        "source_refs": [
+          "po:4500013112-10",
+          "po:4500013136-10",
+          "po:4500013189-10",
+          "po:4500013280-10",
+          "po:4500013336-10"
+        ]
+      },
+      {
+        "id": "p18:orders_2026Q1_kg",
+        "value": 7210,
+        "description": "Ordered kg in 2026Q1, same supplier and part",
+        "source_refs": [
+          "po:4500013373-10",
+          "po:4500013456-10",
+          "po:4500013520-10",
+          "po:4500013617-10",
+          "po:4500013638-10",
+          "po:4500013730-10",
+          "po:4500013762-10"
+        ]
+      },
+      {
+        "id": "p18:orders_2026Q2_kg",
+        "value": 5340,
+        "description": "Ordered kg in 2026Q2, same supplier and part",
+        "source_refs": [
+          "po:4500013829-10",
+          "po:4500013900-10",
+          "po:4500013967-10",
+          "po:4500014022-10",
+          "po:4500014078-10"
+        ]
+      },
+      {
+        "id": "p18:orders_2026Q3_kg",
+        "value": 5060,
+        "description": "Ordered kg in 2026Q3, same supplier and part",
+        "source_refs": [
+          "po:4500014140-10",
+          "po:4500014239-10",
+          "po:4500014287-10",
+          "po:4500014292-10",
+          "po:4500014355-10",
+          "po:4500014427-10"
+        ]
+      },
+      {
+        "id": "p18:order_price_change_pct",
+        "value": 11.0266,
+        "description": "Change in normalized ordered price, June to September 2026; not PO change_pct",
+        "source_refs": [
+          "po:4500014022-10",
+          "po:4500014078-10",
+          "po:4500014355-10",
+          "po:4500014427-10"
+        ]
+      },
+      {
+        "id": "p18:as_recent_change_pct",
+        "value": -5.4945,
+        "description": "AS-14404 percentage change 2026-06 to 2026-09; not an annual change",
+        "source_refs": [
+          "idx:AS-14404@2026-06",
+          "idx:AS-14404@2026-09"
+        ]
+      },
+      {
+        "id": "p18:ppi_recent_change_pct",
+        "value": -2.271,
+        "description": "PPI-C2431 percentage change 2026-06 to 2026-08; not an annual change",
+        "source_refs": [
+          "idx:PPI-C2431@2026-06",
+          "idx:PPI-C2431@2026-08"
+        ]
+      }
+    ],
+    "p18_evidence": {
+      "scope": "Public buyer records for sup:70740 / part:370010; company forecasts labelled separately",
+      "order_refs": [
+        "po:4500010012-10",
+        "po:4500010072-10",
+        "po:4500010141-10",
+        "po:4500010223-10",
+        "po:4500010278-10",
+        "po:4500010338-10",
+        "po:4500010394-10",
+        "po:4500010472-10",
+        "po:4500010546-10",
+        "po:4500010603-10",
+        "po:4500010697-10",
+        "po:4500010719-10",
+        "po:4500010783-10",
+        "po:4500010846-10",
+        "po:4500010910-10",
+        "po:4500010974-10",
+        "po:4500011045-10",
+        "po:4500011107-10",
+        "po:4500011150-10",
+        "po:4500011255-10",
+        "po:4500011304-10",
+        "po:4500011304-20",
+        "po:4500011369-10",
+        "po:4500011429-10",
+        "po:4500011489-10",
+        "po:4500011569-10",
+        "po:4500011657-10",
+        "po:4500011700-10",
+        "po:4500011743-10",
+        "po:4500011873-10",
+        "po:4500011888-10",
+        "po:4500011978-10",
+        "po:4500012017-10",
+        "po:4500012076-10",
+        "po:4500012151-10",
+        "po:4500012214-10",
+        "po:4500012284-10",
+        "po:4500012369-10",
+        "po:4500012419-10",
+        "po:4500012475-10",
+        "po:4500012546-10",
+        "po:4500012591-10",
+        "po:4500012638-10",
+        "po:4500012803-10",
+        "po:4500012803-20",
+        "po:4500012808-10",
+        "po:4500012863-10",
+        "po:4500012947-10",
+        "po:4500012994-10",
+        "po:4500013112-10",
+        "po:4500013136-10",
+        "po:4500013189-10",
+        "po:4500013280-10",
+        "po:4500013336-10",
+        "po:4500013373-10",
+        "po:4500013456-10",
+        "po:4500013520-10",
+        "po:4500013617-10",
+        "po:4500013638-10",
+        "po:4500013730-10",
+        "po:4500013762-10",
+        "po:4500013829-10",
+        "po:4500013900-10",
+        "po:4500013967-10",
+        "po:4500014022-10",
+        "po:4500014078-10",
+        "po:4500014140-10",
+        "po:4500014239-10",
+        "po:4500014287-10",
+        "po:4500014292-10",
+        "po:4500014355-10",
+        "po:4500014427-10"
+      ],
+      "opening_arguments": [
+        {
+          "id": "order_prices",
+          "source_refs": [
+            "po:4500014022-10",
+            "po:4500014078-10",
+            "po:4500014355-10",
+            "po:4500014427-10"
+          ],
+          "sentence": "Our purchase orders with you for part:370010 on 2 and 17 June 2026 were at EUR 5.26/kg (po:4500014022-10, po:4500014078-10), compared with EUR 5.84/kg on 1 and 18 September 2026 (po:4500014355-10, po:4500014427-10).",
+          "numeric_claims": []
+        },
+        {
+          "id": "as_recent_change_pct",
+          "source_refs": [
+            "idx:AS-14404@2026-06",
+            "idx:AS-14404@2026-09"
+          ],
+          "sentence": "AS-14404 changed by -5.49% from 2026-06 to 2026-09 (idx:AS-14404@2026-06, idx:AS-14404@2026-09).",
+          "numeric_claims": [
+            {
+              "calculation_id": "p18:as_recent_change_pct",
+              "value": -5.49,
+              "quote": "changed by -5.49%"
+            }
+          ]
+        },
+        {
+          "id": "ppi_recent_change_pct",
+          "source_refs": [
+            "idx:PPI-C2431@2026-06",
+            "idx:PPI-C2431@2026-08"
+          ],
+          "sentence": "PPI-C2431 changed by -2.27% from 2026-06 to 2026-08 (idx:PPI-C2431@2026-06, idx:PPI-C2431@2026-08).",
+          "numeric_claims": [
+            {
+              "calculation_id": "p18:ppi_recent_change_pct",
+              "value": -2.27,
+              "quote": "changed by -2.27%"
+            }
+          ]
+        }
+      ],
+      "volume_window": {
+        "from": "2025-10-01",
+        "through": "2026-09-30",
+        "source_refs": [
+          "po:4500013112-10",
+          "po:4500013136-10",
+          "po:4500013189-10",
+          "po:4500013280-10",
+          "po:4500013336-10",
+          "po:4500013373-10",
+          "po:4500013456-10",
+          "po:4500013520-10",
+          "po:4500013617-10",
+          "po:4500013638-10",
+          "po:4500013730-10",
+          "po:4500013762-10",
+          "po:4500013829-10",
+          "po:4500013900-10",
+          "po:4500013967-10",
+          "po:4500014022-10",
+          "po:4500014078-10",
+          "po:4500014140-10",
+          "po:4500014239-10",
+          "po:4500014287-10",
+          "po:4500014292-10",
+          "po:4500014355-10",
+          "po:4500014427-10"
+        ]
+      },
+      "eligible_quote_refs": [
+        "quote:7200018"
+      ],
+      "excluded_quote_refs": [
+        "quote:7100064",
+        "quote:7100065",
+        "quote:7300008",
+        "quote:7200008"
+      ],
+      "interpretation": [
+        "Use at most three checked argument groups per email; one group per sentence. Track used IDs.",
+        "PO quantities are ordered kg, not proven consumption or payments; do not use each PO's change_pct as the change between its price and another order's price.",
+        "The September forecast is company-wide: 118500 kg, recorded change +1.9%; only 23700 kg/year is authorized for this negotiation. The forecast is not a binding supplier call-off schedule.",
+        "Short-window index declines coexist with annual increases. Category-team cost weights are estimates and differ from the supplier's stated weights.",
+        "No should-cost estimate for this part/supplier is present. Historical prices and market data support repricing but do not prove the proposed price is supplier-acceptable.",
+        "The July price condition is labelled index_adjustment. The historic contract uses PPI-C2431; the current case permits only the specified AS-14404 clause or none. Do not stack clauses or assert a proven double charge or notice breach.",
+        "Supplier-wide scorecard receipt quantity is not this part's volume. Do not disclose unrelated part prices or use out-of-scope quotations as competitor evidence."
+      ]
+    }
+  },
+  "calculations": {
+    "index:0:change_pct": {
+      "value": 5.9193,
+      "description": "AS-14404: change_pct; weight 0.43",
+      "source_refs": [
+        "idx:AS-14404@2025-09",
+        "idx:AS-14404@2026-09"
+      ]
+    },
+    "index:0:weighted_change_pct": {
+      "value": 2.5453,
+      "description": "AS-14404: weighted_change_pct; weight 0.43",
+      "source_refs": [
+        "idx:AS-14404@2025-09",
+        "idx:AS-14404@2026-09"
+      ]
+    },
+    "index:1:change_pct": {
+      "value": 12.2609,
+      "description": "PPI-C2431: change_pct; weight 0.36",
+      "source_refs": [
+        "idx:PPI-C2431@2025-08",
+        "idx:PPI-C2431@2026-08"
+      ]
+    },
+    "index:1:weighted_change_pct": {
+      "value": 4.4139,
+      "description": "PPI-C2431: weighted_change_pct; weight 0.36",
+      "source_refs": [
+        "idx:PPI-C2431@2025-08",
+        "idx:PPI-C2431@2026-08"
+      ]
+    },
+    "index:2:change_pct": {
+      "value": 2.6609,
+      "description": "LCI-C: change_pct; weight 0.03",
+      "source_refs": [
+        "idx:LCI-C@2025-06",
+        "idx:LCI-C@2026-06"
+      ]
+    },
+    "index:2:weighted_change_pct": {
+      "value": 0.0798,
+      "description": "LCI-C: weighted_change_pct; weight 0.03",
+      "source_refs": [
+        "idx:LCI-C@2025-06",
+        "idx:LCI-C@2026-06"
+      ]
+    },
+    "p18:orders_last_12m_kg": {
+      "value": 22440,
+      "description": "Ordered kg, Werdenfels / part 370010, 2025-10-01 through 2026-09-30; not consumption",
+      "source_refs": [
+        "po:4500013112-10",
+        "po:4500013136-10",
+        "po:4500013189-10",
+        "po:4500013280-10",
+        "po:4500013336-10",
+        "po:4500013373-10",
+        "po:4500013456-10",
+        "po:4500013520-10",
+        "po:4500013617-10",
+        "po:4500013638-10",
+        "po:4500013730-10",
+        "po:4500013762-10",
+        "po:4500013829-10",
+        "po:4500013900-10",
+        "po:4500013967-10",
+        "po:4500014022-10",
+        "po:4500014078-10",
+        "po:4500014140-10",
+        "po:4500014239-10",
+        "po:4500014287-10",
+        "po:4500014292-10",
+        "po:4500014355-10",
+        "po:4500014427-10"
+      ]
+    },
+    "p18:orders_last_12m_lines": {
+      "value": 23,
+      "description": "Number of PO lines in that same period",
+      "source_refs": [
+        "po:4500013112-10",
+        "po:4500013136-10",
+        "po:4500013189-10",
+        "po:4500013280-10",
+        "po:4500013336-10",
+        "po:4500013373-10",
+        "po:4500013456-10",
+        "po:4500013520-10",
+        "po:4500013617-10",
+        "po:4500013638-10",
+        "po:4500013730-10",
+        "po:4500013762-10",
+        "po:4500013829-10",
+        "po:4500013900-10",
+        "po:4500013967-10",
+        "po:4500014022-10",
+        "po:4500014078-10",
+        "po:4500014140-10",
+        "po:4500014239-10",
+        "po:4500014287-10",
+        "po:4500014292-10",
+        "po:4500014355-10",
+        "po:4500014427-10"
+      ]
+    },
+    "p18:commitment_vs_orders_pct": {
+      "value": 5.615,
+      "description": "Fixed annual case commitment versus preceding 12 months of orders; not forecast growth",
+      "source_refs": [
+        "case",
+        "po:4500013112-10",
+        "po:4500013136-10",
+        "po:4500013189-10",
+        "po:4500013280-10",
+        "po:4500013336-10",
+        "po:4500013373-10",
+        "po:4500013456-10",
+        "po:4500013520-10",
+        "po:4500013617-10",
+        "po:4500013638-10",
+        "po:4500013730-10",
+        "po:4500013762-10",
+        "po:4500013829-10",
+        "po:4500013900-10",
+        "po:4500013967-10",
+        "po:4500014022-10",
+        "po:4500014078-10",
+        "po:4500014140-10",
+        "po:4500014239-10",
+        "po:4500014287-10",
+        "po:4500014292-10",
+        "po:4500014355-10",
+        "po:4500014427-10"
+      ]
+    },
+    "p18:orders_2025Q4_kg": {
+      "value": 4830,
+      "description": "Ordered kg in 2025Q4, same supplier and part",
+      "source_refs": [
+        "po:4500013112-10",
+        "po:4500013136-10",
+        "po:4500013189-10",
+        "po:4500013280-10",
+        "po:4500013336-10"
+      ]
+    },
+    "p18:orders_2026Q1_kg": {
+      "value": 7210,
+      "description": "Ordered kg in 2026Q1, same supplier and part",
+      "source_refs": [
+        "po:4500013373-10",
+        "po:4500013456-10",
+        "po:4500013520-10",
+        "po:4500013617-10",
+        "po:4500013638-10",
+        "po:4500013730-10",
+        "po:4500013762-10"
+      ]
+    },
+    "p18:orders_2026Q2_kg": {
+      "value": 5340,
+      "description": "Ordered kg in 2026Q2, same supplier and part",
+      "source_refs": [
+        "po:4500013829-10",
+        "po:4500013900-10",
+        "po:4500013967-10",
+        "po:4500014022-10",
+        "po:4500014078-10"
+      ]
+    },
+    "p18:orders_2026Q3_kg": {
+      "value": 5060,
+      "description": "Ordered kg in 2026Q3, same supplier and part",
+      "source_refs": [
+        "po:4500014140-10",
+        "po:4500014239-10",
+        "po:4500014287-10",
+        "po:4500014292-10",
+        "po:4500014355-10",
+        "po:4500014427-10"
+      ]
+    },
+    "p18:order_price_change_pct": {
+      "value": 11.0266,
+      "description": "Change in normalized ordered price, June to September 2026; not PO change_pct",
+      "source_refs": [
+        "po:4500014022-10",
+        "po:4500014078-10",
+        "po:4500014355-10",
+        "po:4500014427-10"
+      ]
+    },
+    "p18:as_recent_change_pct": {
+      "value": -5.4945,
+      "description": "AS-14404 percentage change 2026-06 to 2026-09; not an annual change",
+      "source_refs": [
+        "idx:AS-14404@2026-06",
+        "idx:AS-14404@2026-09"
+      ]
+    },
+    "p18:ppi_recent_change_pct": {
+      "value": -2.271,
+      "description": "PPI-C2431 percentage change 2026-06 to 2026-08; not an annual change",
+      "source_refs": [
+        "idx:PPI-C2431@2026-06",
+        "idx:PPI-C2431@2026-08"
+      ]
+    }
+  },
+  "acceptance_policy": {
+    "case_id": "case:P18",
+    "c_open": 295173.23,
+    "c_best": 222651.27,
+    "minimum_score": 80.0
+  }
+}

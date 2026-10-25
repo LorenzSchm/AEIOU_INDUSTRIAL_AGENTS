@@ -1,0 +1,53 @@
+[
+  {
+    "session_id": "0fdc690f59c8281f",
+    "supplier_id": "sup:70410",
+    "move": {
+      "type": "offer",
+      "offer_id": "offer:70410-0",
+      "terms": {
+        "unit_price": 29.89,
+        "volume_per_year": 23400,
+        "contract_months": 24,
+        "lead_time_days": 56
+      },
+      "claims": [
+        {
+          "type": "should_cost",
+          "refs": [
+            "cost:340010"
+          ],
+          "asserted": {
+            "unit_cost": 24.31
+          }
+        }
+      ],
+      "text": "Dear Ms Zellner,\n\nWe propose EUR 29.89/unit for a binding 23,400/year, 24 months and 56 days.\n\nOur buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty (cost:340010); it is our estimate, not your actual cost.\n\nWould you sponsor this package for manager approval if needed? We would gladly support your business case with the firm commitment.\n\nKind regards,\nHollerau Purchasing"
+    },
+    "reply": {
+      "offer_id": "offer:70410-1",
+      "round": 1,
+      "status": "open",
+      "terms": {
+        "unit_price": 31.8,
+        "lead_time_days": 56,
+        "volume_per_year": 23400,
+        "contract_months": 24
+      },
+      "alternatives": [],
+      "missing_fields": [],
+      "claims": [],
+      "claim_results": [
+        {
+          "index": 0,
+          "result": "verified"
+        }
+      ],
+      "signals": {
+        "reply_delay_days": 2,
+        "validity_days": 30
+      },
+      "text": "Dear Sir or Madam,\n\nWe have reviewed your offer and can adjust our Angebot as follows. We checked the should cost data you cited; it holds and we took it into account. We acknowledge your request for an increased volume of 23,400 units over a 24-month contract term. \n\nIn consideration of these parameters and the 56-day lead time, we can offer a revised price of \u20ac31.80 per unit. For clarity, our offer comprises a price of \u20ac31.80 per unit, Lieferzeit 56 days, a volume of 23400 pcs per year, and a contract term of 24 months. This offer remains valid for 30 days.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH"
+    }
+  }
+]

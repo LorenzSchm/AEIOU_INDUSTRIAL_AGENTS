@@ -1,0 +1,15 @@
+{
+  "status": "refused",
+  "details": {
+    "category": "reasoning_extraction",
+    "explanation": "This request was blocked as it seems to violate Anthropic's Terms of Service restrictions on reverse engineering or duplicating model outputs. To learn more, visit https://www.anthropic.com/legal/commercial-terms. API integrators: you can reduce refusals for your users by configuring a fallback model \u2014 see https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback",
+    "type": "refusal",
+    "model": "claude-sonnet-5-5",
+    "request_id": "req_011CgMDL6JLQqbfMkaLBUQ7S"
+  },
+  "calls": 1,
+  "model": "claude-sonnet-5-5",
+  "arena_sessions_used": 0,
+  "source_run": "b3b02cad362742f3ac0ce94ed60f59d0",
+  "kind": "diagnostic_only_no_actions"
+}

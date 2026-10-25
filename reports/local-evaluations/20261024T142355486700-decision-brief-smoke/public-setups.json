@@ -1,0 +1,153 @@
+{
+  "case:P01": {
+    "schema_version": 1,
+    "kind": "hosted-public-setup",
+    "source_run_id": "472c499ff0ac4aa59a9337557c0ae6ee",
+    "sha256": "c5fa739feb5713a825df8cd6e823b47532e7d8dab26f19a89d3a37ded57aea15",
+    "case": {
+      "case_id": "case:P01",
+      "set": "practice",
+      "type": "price_increase",
+      "title": "Brandlhuber announces +9.5 % on HN volute casings",
+      "briefing": "You negotiate for Hollerau Pumpenwerke with Gie\u00dferei Brandlhuber GmbH & Co. KG. Brandlhuber announces +9.5 % on HN volute casings. Need: 8150 pc a year. Category goal: stabilise a strategic supply: a healthy supplier and stable prices count, not only the lowest price. Score: the lowest total cost C as defined in the rules, valued with this case's rates (need lead time 45 days). Fallback if you walk away: the second-source quote quote:7200001. Must-haves: none. Prepare from the data package.",
+      "trigger_doc": "doc:20260911-70110-P01",
+      "parts": [
+        "part:310010"
+      ],
+      "suppliers": [
+        "sup:70110"
+      ],
+      "negotiable": [
+        "unit_price",
+        "effective_date",
+        "payment_days"
+      ],
+      "fixed_terms": {
+        "lead_time_days": 42,
+        "volume_per_year": 8150,
+        "contract_months": 12,
+        "index_clause": null,
+        "incoterm": "FCA",
+        "tooling_eur": 0
+      },
+      "term_options": {
+        "effective_date": [
+          "2026-11-01",
+          "2027-01-01",
+          "2027-04-01"
+        ],
+        "payment_days": [
+          14,
+          30,
+          45,
+          60,
+          90
+        ]
+      },
+      "buyer": {
+        "need_per_year": 8150,
+        "horizon_years": 1.0,
+        "current_unit_price": 126.53,
+        "fallback_unit_price": 136.65,
+        "interest_rate": 0.08,
+        "reference_payment_days": 60,
+        "need_lead_time_days": 45,
+        "category_goal": "stabilise",
+        "fallback_risk_pct": 10,
+        "index_risk_pct": 4,
+        "late_cost_per_day": 420,
+        "cost_per_defect": 216,
+        "sustainable_margin_pct": 3,
+        "relationship_eur_per_point": 15470,
+        "freight_eur_per_unit": {
+          "EXW": 2.19,
+          "FCA": 1.9,
+          "DAP": 0.0
+        },
+        "index_paths": {},
+        "must_haves": [],
+        "alternative": {
+          "kind": "quote",
+          "ref": "quote:7200001",
+          "terms": {
+            "unit_price": 143.22,
+            "payment_days": 60,
+            "lead_time_days": 70,
+            "volume_per_year": 8150,
+            "contract_months": 12,
+            "effective_date": "2027-01-01",
+            "index_clause": null,
+            "incoterm": "FCA",
+            "tooling_eur": 1500,
+            "ppm_commitment": 2376
+          }
+        }
+      },
+      "round_limit": 10,
+      "refs": [
+        "doc:20260911-70110-P01",
+        "ctr:4600070110",
+        "sc:70110@2026Q3",
+        "quote:7200001"
+      ]
+    },
+    "threads": {
+      "sup:70110": [
+        {
+          "thread_id": "thread:P01:70110",
+          "message_id": "msg:70110-0-0",
+          "in_reply_to": null,
+          "from": "sales@70110",
+          "from_name": "Owner, Gie\u00dferei Brandlhuber GmbH & Co. KG",
+          "to": "Hollerau Pumpenwerke GmbH",
+          "subject": "Quote from Gie\u00dferei Brandlhuber GmbH & Co. KG: Brandlhuber announces +9.5 % on HN volute casings",
+          "body": "Guten Tag,\n\nThank you for your enquiry. Please find our Angebot below. For many years, our family foundry has taken great pride in supplying your respected company with high-quality castings from our region, and we value our long standing relationship very much.\n\nOur team has prepared our offer carefully. We can offer you a price of \u20ac138.55 per unit, valid from 1 November 2026. This Angebot remains valid for 30 days.\n\nTo remain transparent about our situation, LCI-C rose 2.7 % in twelve months and is 30 % of our cost. Furthermore, PPI-C241 rose 6.5 % in twelve months and is 24 % of our cost. We trust that you understand the necessity of these figures for our ongoing operation and quality standards.\n\nViele Gr\u00fc\u00dfe aus der Gie\u00dferei\nThomas Brandlhuber\nOwner, Gie\u00dferei Brandlhuber GmbH & Co. KG",
+          "attachments": [
+            {
+              "attachment_id": "att:70110-0-quote",
+              "name": "quote-offer-70110-0.pdf",
+              "type": "pdf",
+              "content_b64": null,
+              "text": "Gie\u00dferei Brandlhuber GmbH & Co. KG\nTo: Hollerau Pumpenwerke GmbH\nAngebot / Quote offer:70110-0\nOffered terms\nUnit price (EUR) 138.55\nPrice valid from 2026-11-01\nOur standard terms (apply to everything not stated above)\nPayment terms (days net) 30\nQuality commitment (ppm) 900\nChargeback per complaint (EUR) 0.00\nTerms fixed by your enquiry\nLead time (days) 42\nVolume per year (pcs) 8150\nContract term (months) 12\nIndex clause none\nIncoterm FCA\nTooling (EUR) 0.00\nPart(s): part:310010. Enquiry: Brandlhuber announces +9.5 % on HN volute casings.\nValidity: 30 days."
+            }
+          ],
+          "term_sheets": [
+            {
+              "term_sheet_id": "offer:70110-0",
+              "terms": {
+                "unit_price": 138.55,
+                "effective_date": "2026-11-01"
+              }
+            }
+          ],
+          "refs": [],
+          "action": null,
+          "status": "open",
+          "signals": {
+            "reply_delay_days": 2,
+            "validity_days": 30
+          },
+          "missing_fields": [
+            "payment_days"
+          ],
+          "claim_results": []
+        }
+      ]
+    },
+    "parity": {
+      "exact": [
+        "public case",
+        "opening messages",
+        "opening binding offers",
+        "captured attachment text"
+      ],
+      "not_available": [
+        "hidden seller policy",
+        "private constraints",
+        "future counterfactual responses"
+      ],
+      "clock": "Recorded replay does not reproduce wall-clock deadlines or supplier latency.",
+      "score": "The public cost formula can be reused; private supplier economics and the true best attainable cost are not opening inputs."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "launched_at": "2026-10-25T00:00:34.315094+00:00",
+  "response": {
+    "id": "0a1d51acebdc4bd4bf89300321ef59c8",
+    "variant_id": "practice"
+  },
+  "repeats": 3,
+  "model": "claude-opus-5-5",
+  "effort": "high"
+}

@@ -11,7 +11,6 @@ const config = {
 
 // Axis labels stay short so six profiles fit side by side; the tooltip has the full figures.
 const short: Record<string, string> = {
-  scripted: "Contract",
   hardliner: "Hardliner",
   cashflow: "Cash flow",
   relationship: "Family",

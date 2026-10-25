@@ -1,0 +1,15 @@
+{
+  "offline_tests": "69 passed",
+  "ruff": "passed",
+  "live_research_http_status": 200,
+  "workbench_pid": 31453,
+  "source_calculations": 17,
+  "minimum_accepted_score": 80,
+  "hosted_tests_launched": 0,
+  "paid_model_calls": 0,
+  "read_only_arena_gets": [
+    "backoffice of completed session cedad72e4713bf80",
+    "data download metadata"
+  ],
+  "limitation": "New supplier behavior, effect of new arguments and real model adherence have not been tested."
+}

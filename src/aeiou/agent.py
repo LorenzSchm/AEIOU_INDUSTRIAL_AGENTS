@@ -10,7 +10,8 @@ from arena_kit.cost import complete_offer, total_cost
 from arena_kit.docs import standard_terms
 from arena_kit.play import latest, live_threads, moves_left, standing
 
-from .config import model_name
+from .config import model_provider, model_settings, provider_key
+from .negotiation_state import walk_away_diagnostic
 from .optimizer import alternative_cost, candidate_packages, estimate, evaluate, safe_close, valid_terms
 from .prompts import SYSTEM, VOSS
 from .research import research
@@ -18,31 +19,120 @@ from .research import research
 log = logging.getLogger("aeiou")
 
 
+class ProviderRefusalError(RuntimeError):
+    def __init__(self, message, details=None):
+        super().__init__(message)
+        self.details = details or {}
+
+
+class EmptyModelResponseError(RuntimeError):
+    pass
+
+
+class BuyerDecisionTimeout(TimeoutError):
+    pass
+
+
+# Leave time for validation and delivery within the arena's 60-second reply window.
+BUYER_DECISION_BUDGET_S = 50
+
+
 class ClaudeBackend:
-    def __init__(self, model=None, max_tokens=None, timeout=None):
-        self.client = anthropic.Anthropic(
-            timeout=timeout if timeout is not None else float(os.environ.get("LLM_TIMEOUT", "35")), max_retries=0
-        )
+    provider = "anthropic"
+
+    def __init__(self, model=None, max_tokens=None, timeout=None, *, effort=None, speed=None):
+        settings = model_settings(model)
+        self.model = settings["model"]
+        self.effort = effort or settings["effort"]
+        self.speed = speed or settings["speed"]
+        if self.speed not in {"standard", "fast"}:
+            raise ValueError("Choose standard or fast model speed")
+        if self.speed == "fast" and self.model != "claude-opus-5-5":
+            raise ValueError("Fast mode is configured only for Claude Opus 5.5")
+        self.timeout_s = timeout if timeout is not None else float(os.environ.get("LLM_TIMEOUT", "35"))
+        self.client = anthropic.Anthropic(api_key=provider_key("anthropic"), timeout=self.timeout_s, max_retries=0)
         self.calls, self.errors, self.input_tokens, self.output_tokens = 0, 0, 0, 0
-        self.model = model or model_name()
+        self.refusals, self.empty_responses, self.stop_reasons = 0, 0, {}
+        self.refusal_details = []
         self.max_tokens = max_tokens if max_tokens is not None else int(os.environ.get("LLM_MAX_TOKENS", "1800"))
 
-    def complete(self, system, user):
+    def complete_json(self, system, user, schema):
+        return self.complete(system, user, output_schema=schema)
+
+    def complete_before(self, system, user, deadline):
+        return self.complete(system, user, deadline=deadline)
+
+    def complete(self, system, user, *, output_schema=None, deadline=None):
+        request_options = {}
+        if deadline is not None:
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                raise BuyerDecisionTimeout("Buyer decision time budget exhausted; no further model request was sent")
+            request_options["timeout"] = min(self.timeout_s, remaining)
         self.calls += 1
         try:
+            output_config = {"effort": self.effort}
+            if output_schema is not None:
+                output_config["format"] = {"type": "json_schema", "schema": output_schema}
             r = self.client.messages.create(
                 model=self.model,
                 max_tokens=self.max_tokens,
                 system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
                 messages=[{"role": "user", "content": user}],
-                output_config={"effort": "low"},
+                output_config=output_config,
+                **({"speed": "fast"} if self.speed == "fast" else {}),
+                **request_options,
             )
             self.input_tokens += r.usage.input_tokens
             self.output_tokens += r.usage.output_tokens
-            return "".join(b.text for b in r.content if b.type == "text")
+            if deadline is not None and time.monotonic() >= deadline:
+                raise BuyerDecisionTimeout("Buyer model exceeded the decision time budget; its action was not sent")
+            reason = r.stop_reason or "unknown"
+            self.stop_reasons[reason] = self.stop_reasons.get(reason, 0) + 1
+            if reason == "refusal":
+                self.refusals += 1
+                details = getattr(r, "stop_details", None)
+                if hasattr(details, "model_dump"):
+                    details = details.model_dump()
+                # Whitelist diagnostic fields; never retain fallback credentials or model reasoning.
+                safe = {
+                    k: str(v)[:1000]
+                    for k, v in (details or {}).items()
+                    if k in {"type", "category", "explanation"} and v is not None
+                }
+                safe.update(model=self.model, request_id=getattr(r, "_request_id", None))
+                self.refusal_details.append(safe)
+                category = safe.get("category", "unspecified")
+                raise ProviderRefusalError(
+                    f"Claude declined this decision ({category}, stop_reason=refusal); "
+                    "no action from this response was sent",
+                    safe,
+                )
+            response = "".join(b.text for b in r.content if b.type == "text")
+            if not response.strip():
+                self.empty_responses += 1
+                raise EmptyModelResponseError(f"Provider returned no text (stop_reason={reason})")
+            return response
+        except anthropic.APITimeoutError as exc:
+            self.errors += 1
+            if deadline is not None:
+                raise BuyerDecisionTimeout(
+                    f"Buyer model timed out with {request_options['timeout']:.1f}s available for this call. "
+                    "No action was sent; the arena reply window is 60s."
+                ) from exc
+            raise
         except Exception:
             self.errors += 1
             raise
+
+
+def make_backend(model=None, **kwargs):
+    settings = model_settings(model)
+    if model_provider(settings["model"]) == "openai":
+        from .openai_backend import OpenAIBackend
+
+        return OpenAIBackend(model=settings["model"], **kwargs)
+    return ClaudeBackend(model=settings["model"], **kwargs)
 
 
 class Negotiator:
@@ -60,7 +150,19 @@ class Negotiator:
     def close(self, case, threads):
         if case["case_id"] != self.case_id:
             self.prepare(case)
-        return safe_close(case, threads, self.intelligence)
+        move = safe_close(case, threads, self.intelligence)
+        decision = {
+            "supplier_id": move["supplier_id"],
+            "source": "economic deadline close",
+            "action": move["message"]["action"]["type"],
+            "elapsed_s": 0,
+        }
+        if decision["action"] == "walk_away":
+            decision["walk_away"] = walk_away_diagnostic(
+                case, threads, move["supplier_id"], source="economic deadline close", intelligence=self.intelligence
+            )
+        self.decisions.append(decision)
+        return move
 
     def decide(self, case, threads):
         if case["case_id"] != self.case_id:
@@ -139,6 +241,10 @@ class Negotiator:
                 "action": move["message"].get("action", {}).get("type", "send"),
             }
         )
+        if self.decisions[-1]["action"] == "walk_away":
+            self.decisions[-1]["walk_away"] = walk_away_diagnostic(
+                case, threads, move["supplier_id"], source=source, intelligence=self.intelligence
+            )
         return move
 
     def render(self, case, threads, offers, best):
@@ -186,12 +292,7 @@ class Negotiator:
                 return safe_close(case, threads, self.intelligence)
             return None
         if kind == "walk_away":
-            # A malformed model response must not throw away a safe standing deal.
-            if any(r["acceptable"] for r in evaluate(case, threads, self.intelligence)):
-                return None
-            if moves_left(case, events) > 1 and latest(events).get("status") not in {"final_offer", "agreed"}:
-                return None
-            return safe_close(case, threads, self.intelligence)
+            return None
         if kind != "send" or moves_left(case, events) <= 0:
             return None
         if latest(events).get("status") in {"agreed", "final_offer"}:

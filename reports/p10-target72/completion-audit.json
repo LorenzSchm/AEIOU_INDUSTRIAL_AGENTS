@@ -1,0 +1,45 @@
+{
+  "checked_at": "2026-10-25T02:03:38.887229+00:00",
+  "goal_complete": false,
+  "requirements": [
+    {
+      "requirement": "Improve P10 data pipeline",
+      "status": "implemented_and_verified",
+      "evidence": [
+        "pipeline-audit.json",
+        "validation.json",
+        "workbench-reload.json",
+        "v39/attachment-verification.json"
+      ],
+      "scope": "Canonical evidence delivery, supplier defaults, exact source attachments, faithful outgoing terms and workbench preview"
+    },
+    {
+      "requirement": "Improve and test lower opening strategy",
+      "status": "tested",
+      "evidence": [
+        "v32/run.json",
+        "v37/run.json",
+        "v40/run.json"
+      ],
+      "scope": "Moderate EUR 29.89 opening produced the best accepted score; the supported EUR 28.40 opening did not improve it"
+    },
+    {
+      "requirement": "Accepted hosted score at least 72 with all must-haves",
+      "status": "not_achieved",
+      "actual_best_score": 70.20804327564957,
+      "must_haves_ok": true,
+      "evidence": [
+        "v32/server-verification.json",
+        "current-hosted-state.json"
+      ],
+      "remaining_gap": "At 54 days and otherwise identical terms, EUR 31.07 or less is required; best accepted price is EUR 31.30"
+    }
+  ],
+  "limitations": [
+    "No claim that the observed EUR 31.30 is the private supplier floor.",
+    "No proof of the current practice supplier engine mode.",
+    "The exact source attachment reached the remote thread but did not change approval authority or produce a qualifying quote."
+  ],
+  "last_revalidated_at": "2026-10-25T02:05:23.752169+00:00",
+  "current_evidence": "final-impasse-revalidation.json"
+}

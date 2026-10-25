@@ -1,0 +1,47 @@
+{
+  "kind": "recorded-path-regression",
+  "source_run_id": "293f76b2ed574de6856f509031ae1569",
+  "case_id": "case:P10",
+  "exchanges": 2,
+  "arena_sessions_used": 0,
+  "model_calls": 0,
+  "recorded_result": {
+    "ended": true,
+    "deal": true,
+    "supplier_id": "sup:70410",
+    "offer_id": "offer:70410-1",
+    "terms": {
+      "payment_days": 30,
+      "lead_time_days": 42,
+      "volume_per_year": 23400,
+      "contract_months": 24,
+      "effective_date": "2027-01-01",
+      "index_clause": null,
+      "incoterm": "DAP",
+      "tooling_eur": 0.0,
+      "ppm_commitment": 300,
+      "chargeback_eur_per_complaint": 0.0,
+      "unit_price": 34.1
+    },
+    "c_open": 1932492.18,
+    "c_deal": 1611854.4,
+    "c_alt": null,
+    "c_best": 1328926.89,
+    "score": 0.5312395946426939,
+    "must_haves_ok": true,
+    "cost_breakdown": {
+      "price": 1595880.0,
+      "uncovered_need": 0.0,
+      "fallback_risk": 0.0,
+      "payment_terms": 10639.2,
+      "freight": 0.0,
+      "late_delivery": 0.0,
+      "quality": 5335.2,
+      "tooling": 0.0,
+      "index_clause": 0.0,
+      "index_risk": 0.0,
+      "relationship": 0.0
+    }
+  },
+  "limitation": "Identical recorded requests only; no new negotiation or counterfactual performance estimate."
+}

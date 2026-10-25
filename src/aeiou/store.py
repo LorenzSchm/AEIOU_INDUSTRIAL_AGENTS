@@ -4,6 +4,7 @@ import os
 import threading
 import uuid
 from datetime import UTC, datetime
+from pathlib import Path
 
 from .config import state_root
 
@@ -46,7 +47,19 @@ def save_run(run):
 def get_run(run_id):
     if not run_id.isalnum():
         raise FileNotFoundError(run_id)
-    return json.loads((state_root() / "runs" / f"{run_id}.json").read_text())
+    path = state_root() / "runs" / f"{run_id}.json"
+    if path.exists():
+        return json.loads(path.read_text())
+    # Only cached hosted replays are available from the original reset archive.
+    marker = state_root() / "history-reset.json"
+    if marker.exists():
+        folder = state_root() / "history-archive" / Path(json.loads(marker.read_text())["archive"]).name
+        archived = folder / "runs" / f"{run_id}.json"
+        if archived.exists():
+            run = json.loads(archived.read_text())
+            if run.get("mode") == "hosted":
+                return {**run, "history": {"retired": True, "reason": "Hosted history before the local reset"}}
+    raise FileNotFoundError(run_id)
 
 
 def list_runs(limit=200):
@@ -73,8 +86,16 @@ def list_runs(limit=200):
                     "error",
                     "metrics",
                     "opponent",
+                    "model",
+                    "prompt",
+                    "seed",
+                    "supplier_version",
+                    "supplier_model",
+                    "supplier_metrics",
+                    "failure_origin",
+                    "history",
                 )
                 if k in r
             }
         )
-    return out
+    return sorted(out, key=lambda r: (r["created_at"], r["id"]), reverse=True)

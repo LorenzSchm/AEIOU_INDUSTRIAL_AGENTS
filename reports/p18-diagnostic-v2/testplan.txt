@@ -1,0 +1,95 @@
+SUPERSEDED AFTER THE 33.6-POINT HOSTED RESULT — see reports/p18-diagnostic-v3/diagnosis.txt.
+
+P18 Diagnose v2 — ursprüngliche Buyer-Regeln erhalten
+
+EINSETZEN
+prompts/p18-diagnostic-v2.txt vollständig in „Practice prompt“ einsetzen.
+Nur P18 auswählen, Repeats = 1, Claude Opus 5.5 / Medium.
+Das entspricht der Modelleinstellung des zuletzt eingefügten 41,9-Punkte-Laufs.
+v1 ist verworfen und ausdrücklich als überholt markiert.
+
+VORGABEN
+Maximal drei P18-Läufe als Budgetobergrenze, einzeln mit Auswertung dazwischen.
+Hier wurden keine neuen Hosted-Läufe gestartet. Die nachfolgenden Versuche
+werden erst aus den Antworten des jeweils vorangehenden Laufs konkretisiert.
+Die Buyer-Regeln des ursprünglichen Anhangs stehen unverändert im v2-Prompt.
+Aggressiver Diagnoseansatz innerhalb dieser Regeln; kein neuer 4,70-Euro-Anker.
+
+BEFUND AUS DEM EINGEFÜGTEN LAUF
+Referenz: data/local/runs/9330b8cbf23347f687a68f0ec80d802c.json
+Opus / Medium, alter Prompt-Hash 3e9845f1cc0b22f2c631f72d99b7859b959449df2cae3d6d85223be03f500da6.
+Abschluss: 5,50 EUR, 30 Tage, 24 Monate, 5 % Deadband.
+Gesamtkosten 264.784,30 EUR; Score 41,903.
+Gegenüber dem zuvor diskutierten 31,910-Punkte-Lauf: 7.247,46 EUR günstiger,
+plus 9,993 Punkte. Modell-Effort und Prompt waren unterschiedlich; die Änderung
+beweist daher keinen isolierten Strategie- oder Modelleffekt.
+Gegenüber dem älteren 44,300-Punkte-Lauf: 1.738,00 EUR teurer, vollständig durch
+30 statt 60 Tage Zahlung bei ansonsten denselben bewerteten Bedingungen.
+
+Die 36 Monate und 14-Tage-Zahlung kamen erst in Käufernachricht vier.
+Es gab keine explizite frühe Freigabeanforderung mit einer Quellen-ID.
+Eine 5%-Klausel wurde mehrfach angeboten. Das belegt ihre Machbarkeit,
+aber keine nachgewiesene Präferenz gegen 3 % Deadband.
+Die Forderung nach Entfernung einer Materialrisikoprämie wurde wiederholt;
+der Verkäufer bestritt, dass seine verbleibende Basis diese Prämie enthält.
+Ein weiterer Modellaufruf reparierte eine falsche Klassifizierung von
+Assessment-Quellen. Das war kein abgebrochener Lauf oder Supplier-Fallback.
+
+WAS V2 ÄNDERT
+- Erste Nachricht verlangt ausdrücklich Freigabe der vollständigen Pakete;
+  doc:20260812-70740-M3 und doc:20260916-70740-M5 stehen im E-Mail-Text.
+- Einstieg: 5,18 / 90 Tage / fest; 5,13 / 90 Tage / 5%;
+  4,94 / 14 Tage / 0%; alle zunächst 24 Monate.
+- Die höchsten Einstiegspreise entsprechen exakt der 85%-Regel.
+- 36 Monate werden schon in der zweiten Nachricht konditional angeboten.
+- Nach einer Pflicht zur Indexierung entfällt der feste Preis als Dauerthema.
+- Keine Preisbewegung auf ein bloßes Halten oder Übernehmen günstiger Einzelterms.
+- Höhere Angebote müssen durch echte Gegenleistung verdient werden.
+- Größte Menüpreise: 5,18 → 5,25 → 5,31 → 5,34.
+  Positive Schritte: 0,07 → 0,06 → 0,03 EUR.
+- Vergleichbare 90-Tage-/5%-Pakete: 5,13 → 5,25 → 5,31 → 5,34;
+  Schritte 0,12 → 0,06 → 0,03 EUR, jeweils höchstens 0,122 EUR.
+- Kein Sprung auf 5,49 oder 5,50 als neues Gegenangebot. Ein finales Live-Angebot
+  wird nach der unveränderten Abschlussregel angenommen.
+
+Die Einstiegspakete entsprächen bei Annahme etwa 70,7 bis 70,9 Punkten.
+Die alten 99-Punkte-Einstiegspakete sind verworfen. Der offizielle C_best von
+222.651,27 EUR bleibt bekannt; mit dem vorgeschriebenen Einstieg und gleichwertigen
+Menüs ist er in diesem ersten Angebot nicht unmittelbar als Zielpaket abgebildet.
+Alle Scoreangaben zu neuen Paketen sind hypothetisch, keine Vorhersagen.
+
+AUSWERTUNG DES NÄCHSTEN EINZELLAUFS
+1. Prompt-Hash und Modell/Effort prüfen, damit tatsächlich v2 getestet wurde.
+2. Wurden die erste Freigabeanforderung und Quellen im E-Mail-Text gesendet?
+3. Antwortet der Lieferant auf die Zuständigkeitsfrage? Enthalten claim_results
+   verwertbare Bestätigungen, Widersprüche oder Irrelevanzhinweise?
+4. Welcher Preis wird tatsächlich für 90, 30 oder 14 Tage angeboten?
+5. Gibt es bei 36 Monaten einen besseren Preis oder bessere Bedingungen?
+6. Wurden die Kostendifferenzen, kleiner werdenden Schritte und das Verbot
+   kostenloser Term-Konzessionen auch im tatsächlichen Modelloutput eingehalten?
+7. Offizieller Score, Gesamtkosten, Angebot-ID und Status vor Annahme sichern.
+
+WEITERE VERSUCHE INNERHALB DES DREI-LAUF-BUDGETS
+Keine Dreier-Serie des identischen Prompts automatisch starten.
+Wenn das Menü ignoriert wird: im Folgeversuch nur das beste signalgestützte
+Paket senden. Die 15%-Regel bleibt im ersten Gegenangebot auch dann bestehen;
+ein einzelnes Einstiegspaket muss daher 5,18 EUR kosten. Seine Bedingungen
+und dadurch seine Gesamtkosten müssen neu bewertet werden.
+Wenn 36 Monate nicht vergütet werden: diesen Befund als Unsicherheit festhalten;
+im Folgeversuch Zahlungsziel oder Zuständigkeit isoliert untersuchen.
+Wenn ein vielversprechendes Paket angenommen wird: einen verbleibenden Versuch
+zur Replikation nutzen. Keine neue Eröffnungsformel oder größere Preisschritte
+ohne eine neue ausdrückliche Vorgabe des Nutzers einführen.
+
+VALIDIERUNG
+Zwölf vorbereitete Pakete sind nach dem aktuellen P18-Schema legal und mit
+arena_kit.total_cost gerechnet. Gleichwertigkeit gilt bis auf Cent-Rundung:
+die Kostenstreuung innerhalb jedes Menüs beträgt weniger als 0,01 EUR/kg.
+Die Prüfung umfasst höchste Menüpreise, vergleichbare Paketpreise und zusätzlich
+auf Gesamtkosten normalisierte Schritte; alle Schritte bleiben unter der 2%-Grenze
+und werden kleiner. Die ursprünglichen Buyer-Regeln sind bytegetreu enthalten.
+Quellenverfügbarkeit, Zitaterhalt im Transport und Annahme eines gespeicherten
+finalen Angebots gegen den dazugehörigen Zustand sind geprüft.
+Keine neuen Modellaufrufe, keine Hosted-Läufe. Die Prüfungen belegen weder
+Akzeptanz durch den Supplier noch die tatsächliche Befolgung durch ein LLM.
+Details und Prompt-Hash: validation.json.

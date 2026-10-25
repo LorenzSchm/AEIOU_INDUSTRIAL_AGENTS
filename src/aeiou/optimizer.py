@@ -1,10 +1,36 @@
 """Complete, validate and price every package using the arena's published cost function."""
 
+import copy
 import math
 
 from arena_kit.cost import closing_terms, complete_offer, cost_breakdown, must_haves_ok, total_cost
 from arena_kit.docs import standard_terms
 from arena_kit.play import latest, live_threads, standing
+
+
+def case_with_supplier_defaults(case, events):
+    """Admit quoted numeric defaults in addition to case options, as API v1 permits.
+
+    The opening structured offer supplies defaults that the quote PDF omits from
+    its 'unstated standard terms' section. Never learn options from buyer proposals
+    or free text. Keep these observations local to this supplier and leave fixed
+    terms and must-haves untouched. The server still validates every proposal.
+    """
+    opening = next(((i, m) for i, m in enumerate(events)
+                    if m.get("from") != "buyer" and m.get("term_sheets")), None)
+    if opening is None:
+        return case
+    index, message = opening
+    defaults = {**message["term_sheets"][0].get("terms", {}),
+                **standard_terms(events[:index + 1])}
+    options = copy.deepcopy(case.get("term_options", {}))
+    for field in ("payment_days", "lead_time_days", "volume_per_year", "contract_months", "ppm_commitment"):
+        value = defaults.get(field)
+        if (field in case["negotiable"] and field in options
+                and type(value) is int and value >= 0 and value not in options[field]):
+            options[field].append(value)
+            options[field].sort()
+    return {**case, "term_options": options}
 
 
 def estimate(case, sid, std, intelligence):
@@ -82,7 +108,9 @@ def safe_close(case, threads, intelligence):
                 "supplier_id": row["supplier_id"],
                 "message": {"action": {"type": "accept", "term_sheet_id": row["sheet_id"]}},
             }
-    return {"supplier_id": live_threads(threads)[0], "message": {"action": {"type": "walk_away"}}}
+    from .action_policy import NegotiationBlocked
+
+    raise NegotiationBlocked("NO_ELIGIBLE_OFFER")
 
 
 def candidate_packages(case, events, sid, intelligence, anchor=0.18):

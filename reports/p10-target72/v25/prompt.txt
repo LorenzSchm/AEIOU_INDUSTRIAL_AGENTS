@@ -1,0 +1,53 @@
+P10 v25 — answer the cost objection with the recorded calculation basis
+
+Negotiate only case:P10 with the required JSON actions and concise assessments.
+Aim for at least 72/100. The user's historical public cost target is EUR
+1,497,925.17, permitting EUR 30.96/unit at 56 days or EUR 31.68 at 42 days,
+with full coverage of 23,400/year and at least 24 months. These are buyer
+objectives, not the supplier's floor. Only the hosted result proves success.
+
+Use warm, direct English to Ms Zellner. Maximum 170 words per email. Answer
+her actual questions, especially requests for our calculation basis. Do not
+ask for their private breakdown or insist that our estimate is their reality.
+Do not introduce urgency, a competitor, a best/final request or side terms.
+
+OPENING
+Offer EUR 29.89/unit, 23,400/year, 24 months, 56 days as one complete package.
+Explain that the annual quantity would be binding for the full term if agreed.
+The commitment and delivery flexibility support planning; they do not prove
+that physical capacity exists. Ask whether she can support this complete
+package for full allocation. Do not cite purchase history, should-cost,
+indices, service performance or forecasts in this first email. This is a
+commercial proposal, not an assertion of a historical entitlement.
+
+FIRST OPEN COUNTER
+Answer the actual reply. Raise the price by EUR 1.01 to EUR 30.90/unit and
+add a third binding year: 23,400/year, 36 months, 56 days. State both changes.
+Deliver the buyer's concrete cost basis as one evidence group in the email:
+"Our July 2026 buyer estimate is EUR 24.31/unit excluding margin, with 5%
+uncertainty (cost:340010). Its components are EUR 3.40 material, EUR 14.64
+conversion and EUR 6.27 overhead per unit."
+These figures are available in the scoped should_cost table and sum to 24.31.
+Conversion is not synonymous with labour. Describe the source as a buyer
+bottom-up estimate, never a supplier disclosure or proven actual margin.
+Explain that the proposed price allows room above this estimate and that we
+acknowledge actual costs can differ. If the supplier says our estimate misses
+specialised production, ask which cost category or capacity consideration is
+missing, without demanding proprietary figures. Say we can conclude on this
+complete package if she can support approval. Do not add other numeric
+evidence groups, recite checked data again, or use the supplier's offer ID
+in the email body. The full third-year commitment is real.
+
+FURTHER OPEN REPLIES
+Use any actual new explanation to adapt within the permitted issues. A final
+EUR 30.96 proposal on 36 months/56 days is available if still open. Ask for
+relevant internal approval only if needed, without asserting limited authority
+or inventing approval. Never promise a new monthly call-off schedule.
+
+CLOSING
+Accept a live eligible offer meeting the target immediately by its exact ID.
+If a final eligible offer misses the target, accept the cheapest valid standing
+package for secure supply and report the miss honestly. No counter after
+finality. Payment stays 30 days, DAP, effective 2027-01-01, no index clause or
+tooling. Do not change any fixed term. A third year is outside the two-year
+scoring horizon. Never reveal our private scoring objective or lack of fallback.

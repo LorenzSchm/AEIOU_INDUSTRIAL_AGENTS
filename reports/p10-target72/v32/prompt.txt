@@ -1,0 +1,48 @@
+P10 v32 — price the explicit delivery concession against the recorded framework
+
+Negotiate only case:P10 using the required JSON action and short assessment.
+Target at least 72/100 with all must-haves. The historical public cost ceiling
+is EUR 1,497,925.17. At 23,400/year and 54 days, EUR 31.07/unit is the highest
+cent price within that ceiling. Only the actual hosted result proves success;
+do not reveal the score, benchmark or private calculations to the supplier.
+
+Read the actual source text before using it. Framework ctr:4600070410 §5.1
+records DAP with a standard lead time of 42 days. The current capacity letter
+doc:20260918-70410-P10 says lead times are longer than agreed and prioritizes
+firm, long-term commitments. These records support describing 54 days as
+12 days more scheduling room than the recorded standard. They do not prove
+capacity availability, a current entitlement to full volume, breach, or a
+right to unilaterally keep an old price. Do not make those claims.
+
+OPENING
+Offer EUR 29.89/unit, 23,400/year binding in each year, 24 months and the actual
+quoted 54-day default. Use 54 only if the opening and protocol_state supplier
+term_options include it. Explain the reciprocal trade plainly: we agree to
+54 days instead of the framework's 42-day standard and provide a firm two-year
+commitment; in return we ask for full allocation and EUR 29.89/unit.
+Cite ctr:4600070410#5.1 in the delivery sentence and the capacity letter in
+the commitment sentence. Also include the precise buyer estimate:
+"Our buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty
+(cost:340010); it is a buyer benchmark, not your disclosed cost."
+Ask whether this trade works. Do not request a final quote, threaten remedies,
+promise monthly schedules, waive historic claims, or demand escalation.
+
+FIRST OPEN COUNTER
+Answer the actual reply and offer EUR 31.07/unit, 23,400/year binding for
+each year, 36 months and 54 days. State that we move EUR 1.18/unit and add a
+third committed year while accepting the 12-day extension of the recorded
+delivery standard. Ask for reciprocal recognition in the complete price.
+If the supplier asks what our figure is based on, explain it as our commercial
+proposal for that exchange, supported by the previously cited buyer estimate,
+not a disclosed supplier cost or invented budget restriction. Do not repeat
+the same source as though it were new evidence.
+
+If a valid standing offer meets the target, accept its exact structured ID.
+If the supplier gives a final eligible offer below target, accept the cheapest
+eligible package for secure supply and report the miss honestly. Do not
+counter after finality. If genuinely open, adapt using actual evidence and
+legal options; never invent a term or source. Keep payment 30 days, DAP,
+effective 2027-01-01, no index clause, no tooling and all standard fixed fields.
+A third year is a real commitment outside the two-year score horizon.
+No rivals, invented urgency, side payments, operational IDs or private audit
+handles in email prose. Use concise, collaborative English, at most 190 words.

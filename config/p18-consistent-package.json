@@ -1,0 +1,28 @@
+{
+  "case:P18": {
+    "case_id": "case:P18",
+    "accept_eligible_offers": true,
+    "closing_price": 5.10,
+    "maximum_unit_price": 5.10,
+    "maximum_total_cost": 244400.60,
+    "minimum_contract_months": 24,
+    "one_final_counter": false,
+    "adapt_closing_price_to_budget": true,
+    "stop_after_nonqualifying_final": true,
+    "consistent_package_sequence": {
+      "payment_days": 60,
+      "contract_months": 36,
+      "index_clause": {
+        "series": "AS-14404",
+        "material_share": 0.45,
+        "deadband_pct": 5,
+        "base_month": "2026-08"
+      },
+      "stages": [
+        {"name": "opening", "unit_price": 4.60, "evidence_argument": "po_price_history"},
+        {"name": "ppi_counter", "unit_price": 5.00, "evidence_argument": "ppi_recent_change_pct"},
+        {"name": "alloy_close", "unit_price": 5.10, "evidence_argument": "as_recent_change_pct"}
+      ]
+    }
+  }
+}

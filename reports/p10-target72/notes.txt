@@ -1,0 +1,101 @@
+P10 / Ravensteiner: target 72 experiment ledger
+
+Target achieved: False. Saved attempts: 39. Hosted sessions started: 38.
+Best accepted score: 70.2080 (v32).
+Total cost: EUR 1,508,740.80. Savings against the user's baseline: EUR 33,067.20.
+Accepted terms: {'payment_days': 30, 'lead_time_days': 54, 'volume_per_year': 23400, 'contract_months': 36, 'effective_date': '2027-01-01', 'index_clause': None, 'incoterm': 'DAP', 'tooling_eur': 0.0, 'ppm_commitment': 300, 'chargeback_eur_per_complaint': 0.0, 'unit_price': 31.3}. Must-haves: True.
+Evidence: v32/run.json, v32/evaluation.json, v32/recorded-replay.json.
+
+Pipeline changes:
+- Register 72 scoped purchase-order facts and deliver the chosen canonical sources to the actual model input.
+- Distinguish 19,880 ordered units, a 21,310-unit forecast, and the authorized 23,400-unit annual need.
+- Allow an explicit case-scoped opening fraction with complete-cost and must-have checks.
+- Reject recipient-owned offer IDs in email prose before sending; use the existing model repair loop. Structured acceptance and real rival citations remain available.
+- Keep local calculation/retrieval handles in private audits. Outgoing emails must use appropriate canonical source references or clearly identify a figure as the buyer's calculation.
+- Include numeric supplier defaults observed in its opening quote alongside the case options. Candidate selection and term completion now preserve Ravensteiner's 54 days instead of forcing 56.
+- Send exact, fully read source documents selected by canonical ID as Markdown attachments, restricted to the intended supplier. Preserve source bytes, record hashes, and show the sent text in later model inputs and the workbench without changing the stored wire request.
+- The idle local workbench was reloaded and its live source-attachment transport and preview verified.
+
+Validation: see validation.json for the focused attachment tests, shared transport regressions, workbench checks and Ruff. Test groups overlap and are not an aggregate test count.
+Completed recorded paths are replayed locally when this ledger is rebuilt; no API/model calls are used.
+
+Target arithmetic:
+C <= EUR 1,497,925.17. Full-coverage ceilings are EUR 30.96/unit at 56 days, EUR 31.07 at the quoted 54-day default, or EUR 31.68 at 42 days.
+
+Key findings:
+- Lower EUR 25.04 openings scored 63.95 and 63.17; lower anchoring did not help in those trials.
+- EUR 29.89 openings led to the strongest accepted outcomes so far.
+- Direct committee escalation and a 42-day delivery trade were refused in their respective trials.
+- v12 cited the recipient's own offer ID, generating an irrelevant rival-quote result. v13 used the same strategy after the guard and received six verified claim results, but still quoted EUR 31.60.
+- v14 reached EUR 31.40 after a collaborative sponsored-exception request. Its estimate and service figures lacked outgoing source IDs, so neither became a checked claim.
+- v15 repeated EUR 31.40 with both cost and service claims explicitly cited and verified.
+- v16's EUR 29.00 opening and v17's reserved delivery flexibility each finished at EUR 31.50.
+- v18 failed before starting a session. v19 exposed that /moves updates the standing offer without updating the email-history array. The opt-in adapter now uses the actual structured reply and checks its ID against current server state. It is not the workbench's default transport.
+- v20 completed on the corrected typed transport at EUR 31.60 (67.07); explicit claim typing did not improve on the best email result.
+- v21 held back the third contract year until after a final offer. That fresh commitment still caused withdrawal; do not counter after finality.
+- v22 explicitly requested production-planning assessment of 42-day delivery. The supplier cited reprioritization and overtime and closed at EUR 33.50/42 days (57.81).
+- v23 committed all three years upfront and used fresh forecast evidence: EUR 31.40 (68.63). The forecast was verified but the supplier said it did not affect pricing.
+- v24 opened at EUR 28.40 and made a larger EUR 2.50 reciprocal price move: again EUR 31.40 (68.63). This is evidence against lower anchoring alone as the next improvement.
+- v25 supplied the recorded material/conversion/overhead breakdown with the later cost claim; it also closed at EUR 31.40 (68.63). The estimate remains buyer evidence, not disclosed supplier cost.
+- v26's adaptive, high-reasoning run achieved EUR 31.40 with only 24 months at 56 days (68.63). Its unaccepted 42-day alternative promised a level monthly schedule; that wording is not a recommended tactic. It also exposed a private calculation ID in email prose, now guarded.
+- v27 added a third year to the delivery-flexibility trade and asked for manager approval, but again closed at EUR 31.40/36 months/56 days. The ended backoffice showed Legal involvement, not an approval by a pricing manager.
+- v28 explicitly requested the boss's price approval. Ms Zellner stated pricing authority resided with her; the result remained EUR 31.40/56 days.
+- v29 demonstrated that the hosted API accepts the quoted 54-day default. At EUR 31.40 this saved EUR 4,800 and improved the official score to 69.43, with all must-haves satisfied.
+- v30 combined three fresh, verified evidence groups with the moderate opening and 54 days. It also closed at EUR 31.40 (69.43); verified delivery and forecast facts were dismissed as pricing reasons.
+- v31 offered the exact EUR 31.07 public-cost ceiling in the second exchange, before finality. The supplier again offered EUR 31.40 at 54 days (69.43). Independent server verification confirms an accepted deal with all must-haves, below the target.
+- v32 explicitly exchanged the recorded 42-day delivery standard for the quoted 54 days, alongside the binding term extension. It closed at EUR 31.30 (70.21), independently verified by the server with all must-haves. This exploratory result does not establish a causal effect.
+- v33 added historical forecast evidence and the proposed 70,200-unit three-year total before finality. It closed at EUR 31.50/54 days (68.65), below v32. The added explanation is not promoted; this single comparison cannot isolate whether wording or supplier variability caused the change.
+- v34 repeated the exact v32 strategy and model settings, but closed at EUR 31.40 (69.43). The best v32 outcome is not yet a reliably reproduced result. Neither run had local deadline failures.
+- v35 supplied the recent EUR 29.89 order prices with the second offer to substantiate the proposed EUR 1.18 increase. The supplier verified the order history but said it did not change the calculation, closing at EUR 31.50/54 days (68.65).
+- v36 answered an explicit volume question in the final quote with no term sheet or price request. The supplier verified the new fact but withdrew, scoring zero. Even a requested factual answer after finality is unsafe in the observed P10 behavior. Contradictory prose saying the offer remains valid does not override the authoritative walked_away status.
+- v37 opened at EUR 28.40 using the buyer estimate plus its 5% uncertainty and a modeled 10% gross margin. The supplier verified the source, rejected the modeled economics as a pricing basis, and closed at EUR 31.40/54 days (69.43). This lower opening did not beat v32.
+- v38 explicitly requested committee price approval after the first counter at EUR 31.00. The supplier stated Ms Zellner was authorized directly, requested the actual historical note, and closed at EUR 31.40 (69.43).
+- v39 delivered the exact March note as a Markdown attachment before finality. The server stored it and the workbench displayed the exact source text. Ms Zellner again stated she held approval authority and closed at EUR 31.50 (68.65). Document delivery is fixed; a scoring benefit from that historical note is not established.
+- v40 reran the best v32 strategy on the updated source-attachment pipeline and closed at EUR 31.40/54 days (69.43). Current pipeline correctness does not establish attainment of 72.
+
+Trials:
+v2: accepted; official score 63.94883642165704; last quote {'unit_price': 32.0, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation a4e2ca9f9bf44f41a487ae325f36e604; transport email
+v3: accepted; official score 67.07108356081908; last quote {'unit_price': 31.6, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation d4918e1cb15d4c04b1b92bf2307e0e31; transport email
+v4: accepted; official score 63.16827463686654; last quote {'unit_price': 32.1, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 2671f8342b9b43548bb0ea7adc406066; transport email
+v5: accepted; official score 67.07108356081908; last quote {'unit_price': 31.6, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 786589b093e04cfaadef4a310ba44236; transport email
+v6: supplier withdrawal; official score 0.0; last quote {'unit_price': 31.8, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 8ea3c2add26e4754b2115b2fd1adaa26; transport email
+v7: local stop/failure; see error and cleanup; official score 0.0; last quote {'unit_price': 31.7, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 942f86af02c14b7f8a5b173ab3018f24; transport email
+v8: supplier withdrawal; official score 0.0; last quote {'unit_price': 31.8, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 81d97f34d29849d4ba1c58a14294a6e1; transport email
+v9: local stop/failure; see error and cleanup; official score 0.0; last quote {'unit_price': 31.9, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 24}; evaluation 40c95068b54d47ebbfc1f25effb97f64; transport email
+v10: local stop/failure; see error and cleanup; official score 0.0; last quote {'unit_price': 31.6, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 42e4eb8e57e1409e8d60602a148f89f3; transport email
+v11: local stop/failure; see error and cleanup; official score 0.0; last quote {'unit_price': 31.9, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 173c72360c1343199bce190dffe1744f; transport email
+v12: local stop/failure; see error and cleanup; official score 0.0; last quote {'unit_price': 31.9, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 24}; evaluation 7c0891bbacbd4cd9b7e477adb0cca3a4; transport email
+v13: local stop/failure; see error and cleanup; official score 0.0; last quote {'unit_price': 31.6, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 79513ed696f34f239fa181f0c06b6a33; transport email
+v14: accepted; official score 68.63220713040008; last quote {'unit_price': 31.4, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 8f8b573ee161427194937284f1c9f925; transport email
+v15: accepted; official score 68.63220713040008; last quote {'unit_price': 31.4, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 99f07daceb0e4be4901c1fecfe1d6a34; transport email
+v16: accepted; official score 67.85164534560958; last quote {'unit_price': 31.5, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 0d2daa68f22844c295b699f4a3bacf94; transport email
+v17: accepted; official score 67.85164534560958; last quote {'unit_price': 31.5, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 100913330a5149ff915651a671924677; transport email
+v18: failed before session start; official score None; last quote {}; evaluation 4486f7407d0440fe92bcba7668ee2b66; transport documented /moves for offers; /messages for acceptance
+v19: local stop/failure; see error and cleanup; official score 0.0; last quote {'unit_price': 32.2, 'lead_time_days': 54, 'volume_per_year': 19890, 'contract_months': 12}; evaluation 203446493ffd48b8a7e306d4e60480f8; transport documented /moves for offers; /messages for acceptance
+v20: accepted; official score 67.07108356081908; last quote {'unit_price': 31.6, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 2e0b4b0754dd4ba496f1448dc24dc6db; transport documented /moves for offers; /messages for acceptance
+v21: supplier withdrawal; official score 0.0; last quote {'unit_price': 31.6, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 24}; evaluation 80cfacc9e9f94fcf8819fe44c99820e5; transport email
+v22: accepted; official score 57.80733017301243; last quote {'unit_price': 33.5, 'lead_time_days': 42, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 2d3a4d156df44d74acaa2b474a2558cd; transport email
+v23: accepted; official score 68.63220713040008; last quote {'unit_price': 31.4, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 2db3f47a485f4a19859629598afc56ba; transport email
+v24: accepted; official score 68.63220713040008; last quote {'unit_price': 31.4, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation cf41d6c5d93d42548db9c403de7104bd; transport email
+v25: accepted; official score 68.63220713040008; last quote {'unit_price': 31.4, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 833add662cd242078faef3ae5065fcea; transport email
+v26: accepted; official score 68.63220713040008; last quote {'unit_price': 31.4, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 24}; evaluation 4405606391b44d8598f0486b83fc35be; transport email
+v27: accepted; official score 68.63220713040008; last quote {'unit_price': 31.4, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation ad6bb62e38d44f2c98975a29ddd08cd5; transport email
+v28: accepted; official score 68.63220713040008; last quote {'unit_price': 31.4, 'lead_time_days': 56, 'volume_per_year': 23400, 'contract_months': 36}; evaluation e47fbcdf67b54d48b085aacbf6eaee21; transport email
+v29: accepted; official score 69.42748149085908; last quote {'unit_price': 31.4, 'lead_time_days': 54, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 81f862558ffa412ab8700fd9330d9691; transport email
+v30: accepted; official score 69.42748149085908; last quote {'unit_price': 31.4, 'lead_time_days': 54, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 3e3591de8877408e86abf5ec9e958a1a; transport email
+v31: accepted; official score 69.42748149085908; last quote {'unit_price': 31.4, 'lead_time_days': 54, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 3e3ad76e86ba4ff0b83d5c1627da3fa4; transport email
+v32: accepted; official score 70.20804327564957; last quote {'unit_price': 31.3, 'lead_time_days': 54, 'volume_per_year': 23400, 'contract_months': 36}; evaluation e1851ca7f4514858a827315bb0936916; transport email
+v33: accepted; official score 68.64691970606857; last quote {'unit_price': 31.5, 'lead_time_days': 54, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 29cb38b2339548f9b3c5c791528abfbc; transport email
+v34: accepted; official score 69.42748149085908; last quote {'unit_price': 31.4, 'lead_time_days': 54, 'volume_per_year': 23400, 'contract_months': 36}; evaluation fa66e4bb204141cc80e6b218cee7679f; transport email
+v35: accepted; official score 68.64691970606857; last quote {'unit_price': 31.5, 'lead_time_days': 54, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 9af0b5011fe14feeaee8b660259f2998; transport email
+v36: supplier withdrawal; official score 0.0; last quote {'unit_price': 31.5, 'lead_time_days': 54, 'volume_per_year': 23400, 'contract_months': 36}; evaluation bbe25439bc8444fb8b5b6600f8a7f7e6; transport email
+v37: accepted; official score 69.42748149085908; last quote {'unit_price': 31.4, 'lead_time_days': 54, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 19eeab831e4b4f63b41a4bdddb7d6815; transport email
+v38: accepted; official score 69.42748149085908; last quote {'unit_price': 31.4, 'lead_time_days': 54, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 3b1c0a63e97744428df0d09b15bfcd4c; transport email
+v39: accepted; official score 68.64691970606857; last quote {'unit_price': 31.5, 'lead_time_days': 54, 'volume_per_year': 23400, 'contract_months': 36}; evaluation 5cc9af23586c4b0ba05c66aad203b112; transport email
+v40: accepted; official score 69.42748149085908; last quote {'unit_price': 31.4, 'lead_time_days': 54, 'volume_per_year': 23400, 'contract_months': 36}; evaluation eb458cf239ed4d57847d5401065a2202; transport email
+
+Single hosted attempts: exploratory comparisons, not controlled estimates of prompt effects.
+The score covers two years. A 36-month commitment includes a real third year outside this cost.
+A local score-floor stop is not an accepted deal; its cleanup score is zero. A hard target guard is not a recommended fallback in a secure-supply case with no alternative.
+
+No unsuccessful experimental strategy was installed as the global default. The source/transport fixes are active. Each folder preserves its actual prompt and run.

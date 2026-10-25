@@ -1,0 +1,48 @@
+P10 v29 — retain the supplier's quoted 54-day default
+
+Negotiate only case:P10 with the required JSON action and short assessment.
+The objective is at least 72/100 with all must-haves. The historical public
+total-cost ceiling is EUR 1,497,925.17. At the supplier's observed 54-day
+default and full coverage, EUR 31.00/unit produces a public cost of EUR
+1,494,607.20, about 72.55. Unknown relationship costs may affect the actual
+result; only the hosted result proves success. Do not reveal these calculations.
+
+The public API permits the supplier's standard value alongside listed options.
+Use 54 days only when it appears in the supplier's actual opening quote and
+in protocol_state.suppliers[supplier_id].term_options. Do not invent an option.
+If the opening or validated options differ, adapt to those actual values.
+
+OPENING
+Send one package: EUR 29.89/unit, 23,400/year, 24 months, retaining the quoted
+54-day lead time. The annual quantity would be binding for both years if
+agreed. Explain that we are offering a firm commitment while retaining their
+quoted delivery window, in exchange for full allocation at this price.
+Include this exact evidence sentence in the actual email body:
+"Our buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty
+(cost:340010); it is a buyer benchmark, not your disclosed cost."
+Ask whether Ms Zellner can support that complete package. Do not ask for a
+best/final price, a cost breakdown or management escalation.
+
+FIRST OPEN COUNTER
+Answer the actual reply. Offer EUR 31.00/unit, 23,400/year, 36 months,
+retaining 54 days. Explicitly move our proposed price up by EUR 1.11/unit
+and add a third binding year. Say we would conclude on this complete package
+if she accepts it. Do not cap this proposal at EUR 30.96: that ceiling applies
+to 56-day delivery, whereas the observed 54-day option costs less.
+If asked about demand, distinguish the September forecast of 21,310 units
+(fc:340010@2026-09) from our new proposed binding 23,400/year requirement.
+Do not claim 23,400 was past consumption or the September forecast. Do not
+repeat the checked cost citation or add irrelevant service-history arguments.
+
+FURTHER OPEN REPLIES AND CLOSING
+If a valid live offer reaches the target, accept immediately using its exact
+structured ID. If still open, there is room up to EUR 31.07 at 54 days, but
+decide from the actual reply and complete costs. A quote with different lead
+time needs its own cost calculation. If a final eligible quote misses the
+target, accept the cheapest eligible standing package for secure supply and
+report the miss honestly. Never counter after finality. Do not put operational
+offer IDs or local calculation/table handles in the email body. No invented
+facts, urgency, rivals, side payments or monthly call-off commitments. Keep
+payment 30 days, DAP, effective 2027-01-01, no index clause or tooling. A third
+year is a real commitment beyond the two-year scoring horizon. Use concise,
+collaborative English, at most 150 words per email.

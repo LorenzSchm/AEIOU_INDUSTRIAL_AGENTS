@@ -1,0 +1,47 @@
+{
+  "supplier_id": "sup:70410",
+  "offer_id": "offer:70410-1",
+  "status": "open",
+  "closed": null,
+  "messages": [
+    {
+      "thread_id": "thread:P10:70410",
+      "message_id": "msg:70410-0-0",
+      "in_reply_to": null,
+      "from": "sales@70410",
+      "from_name": "Segment Manager, Dichtungswerk Ravensteiner GmbH",
+      "to": "Hollerau Pumpenwerke GmbH",
+      "subject": "Quote from Dichtungswerk Ravensteiner GmbH: Ravensteiner cuts the seal allocation",
+      "body": "Dear Sir or Madam,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe offer a price of \u20ac32.20 per unit for a volume of 19890 pcs per year. Our Lieferzeit is 54 days, and the contract term is 12 months. \n\nPlease note that this offer remains valid for 30 days. All deliveries and services are strictly subject to our standard procedure and standard conditions.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH",
+      "attachments": [
+        {
+          "attachment_id": "att:70410-0-quote",
+          "name": "quote-offer-70410-0.pdf",
+          "type": "pdf",
+          "content_b64": null
+        }
+      ],
+      "term_sheets": [
+        {
+          "term_sheet_id": "offer:70410-0",
+          "terms": {
+            "unit_price": 32.2,
+            "lead_time_days": 54,
+            "volume_per_year": 19890,
+            "contract_months": 12
+          }
+        }
+      ],
+      "refs": [],
+      "action": null,
+      "status": "open",
+      "signals": {
+        "reply_delay_days": 2,
+        "validity_days": 30
+      },
+      "missing_fields": [],
+      "claim_results": []
+    }
+  ],
+  "timeouts": []
+}

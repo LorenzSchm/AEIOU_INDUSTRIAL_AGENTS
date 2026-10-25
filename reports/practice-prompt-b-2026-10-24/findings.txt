@@ -1,0 +1,97 @@
+REVIEW OF PROMPT B — TEN HOSTED PRACTICE CASES
+24 October 2026, Europe/Berlin
+Batch 318c7dd1510744eb81a6700d8326a92f
+
+All 98 transcript events were reviewed: 33 buyer emails, 10 buyer acceptance actions, and 55 supplier messages, across 12 supplier threads. The review includes the 51 recorded attachment occurrences, structured offers, case rules, official outcomes, and decision audit. These runs already used Claude Opus 5.5, medium effort, fast mode.
+
+Ten of ten runs completed with agreements and satisfied the recorded must-haves. The official mean was 60.8529/100. No model errors or fallbacks were recorded. P04 had one locally rejected draft with too many term sheets; it was corrected before sending. Thus the weaknesses below principally concern commercial decisions, not the earlier timeout or HTTP 422 failures.
+
+Case scores: P01 70.6; P02 54.5; P03 83.0; P04 81.0; P05 45.9; P07 66.3; P08 51.0; P10 53.1; P11 58.9; P18 44.3.
+
+References below use case / supplier / message number. They match the labels in all-messages.txt and the per-case files. A low score alone does not establish a tactical mistake. There is only one observed run per case, and hidden best-attainable costs are post-run diagnostics, not prices known to the buyer or guaranteed achievable through a particular email.
+
+1. PACKAGE TRADE-OFFS SOMETIMES RUN IN THE WRONG DIRECTION
+Confidence: high; directly demonstrable arithmetic/offer-construction error.
+
+P03 / sup:70530 / M02 offers A at EUR 417.90 with payment in 14 days and B at EUR 414.20 with payment in 60 days, all other terms equal. It tells the supplier: "Both options are equivalent for us". A both pays a higher price and pays sooner. It costs the buyer more on both dimensions. At the published case rates, excluding the hidden supplier-health term, A costs EUR 3,869,094.84 and B EUR 3,796,072.54 over the horizon: a EUR 73,022.30 difference. M04 repeats the same direction error, with a EUR 73,312.57 difference. M06 finally constructs nearly equivalent packages, differing by only EUR 6.10.
+
+P01 / sup:70110 / M02 similarly offers EUR 130.00 / 14 days against EUR 128.90 / 60 days. The first package makes two concessions to the supplier. The observable buyer-cost difference is EUR 18,248.87. M04 and M06 retain the direction problem; M08 finally reverses it to a sensible price/payment trade. P01 does not explicitly call its first menu equivalent, but it still offers a more generous branch without showing why the extra supplier benefit is needed.
+
+The suppliers immediately prefer the early-payment branches (P01 M03; P03 M03). These calculated differences are differences between our proposed packages, NOT recoverable savings or achievable score improvements. In strategic cases an intentional premium could help supplier health, but that requires an explicit health calculation; it does not make these packages arithmetically equivalent.
+
+Fix: calculate complete package costs in code before sending. Flag a package that is worse for the buyer on every traded dimension; require an explicit justification such as quantified supplier-health benefit. Label a menu equivalent only within a defined monetary tolerance. Faster payment should normally buy a lower unit price, not a higher one.
+
+2. THE AGENT DOES NOT CONSISTENTLY OPTIMIZE THE CASE'S ACTUAL GOAL
+Confidence: high on the observed cost/behaviour; causal improvement remains a hypothesis.
+
+P02 is a strategic-supply/stabilisation case, not simply a price-cutting contest. Its official result contains EUR 64,313.34 of supplier-health/relationship cost. The buyer mentions a healthy relationship in M02, but immediately proposes a steep price step and then closes after the supplier accepts option B. The relationship component alone is larger than the final result's EUR 21,554.05 gap to C_best. This is evidence that invoice-price improvement can be outweighed by supplier economics; it is not evidence that this penalty could simply be removed without paying more elsewhere.
+
+P10 is explicitly a bottleneck/secure-supply case. In M02 the buyer requests full volume, a shorter lead time and a longer commitment, while cutting price to EUR 27.20/27.50 from the supplier's EUR 32.20 opening and even below the EUR 29.89 existing price. The supplier responds with an immediate EUR 34.10 final offer for the full-volume, 36-month package. The buyer secures supply, which is good, but never develops a priced capacity trade before the negotiation closes. The transcript does not prove that its aggressive opening caused the early final offer.
+
+Fix: make the case goal an explicit decision input. For strategic/bottleneck cases, evaluate sustainable supplier economics and the cost of missing volume alongside purchase price. Use a range of supplier-cost estimates and distinguish uncertain estimates from known figures. For quality cases, value ppm and chargebacks explicitly. Do not use a uniform percentage discount anchor across categories.
+
+3. CLOSING AND CONCESSIONS ARE NOT TIED TO A CONSISTENT RULE
+Confidence: high for the observed sequence; medium for whether another exchange would help.
+
+P01 sends four counter-emails and then accepts in M10. The preceding supplier reply M09 is marked open and does not call the offer final. The buyer itself introduces urgency in M08 ("close this in this round") and then accepts EUR 134.50 rather than its own EUR 134.20 proposal. Several email opportunities remain under the case limit. Its prompt's specific closing section says final offer or last round, while an earlier section also describes a target-based acceptance rule; these competing instructions leave room for inconsistent behaviour.
+
+P03 accepts after three counter-emails when M07 says price reductions are frozen, but M07 also invites a binding higher-volume offer. That invitation may or may not be worth pursuing: extra volume must be purchased even if not needed, so blindly increasing volume would be another mistake. P11 closes after six counter-emails once the supplier repeats its limit; this is more defensible than treating any open status as a reason to continue indefinitely.
+
+P02 closes after its first counteroffer is accepted; P18 closes after its third is accepted. Those acceptances should not automatically be called errors: the agent offered those terms, and renegotiating its own accepted proposal could damage credibility. The important issue is choosing the economics of a binding proposal before sending it.
+
+Concession sizing also drifts. In P03 the 14-day package rises from EUR 417.90 to 421.00 (+3.10), then 424.50 (+3.50), despite the instruction to concede in shrinking steps. In P01, that branch rises +1.60, +1.30, +1.30. Repeated concession language does not always correspond to smaller or newly compensated concessions.
+
+Fix: use one unambiguous closing rule that distinguishes a supplier's acceptance of our own proposal, an explicit final offer, a tactical hold, a target met, and the last legal round. Keep a numerical concession ledger and check what new value each move receives. Do not equate using all ten emails with negotiating well, and do not require five repetitions for this prompt.
+
+4. USEFUL LEVERS ARE OFTEN NOT FULLY EXPLORED
+Confidence: high on what was not attempted; medium on the value of attempting it.
+
+P01 keeps January 2027 in every buyer package even though April 2027 is also an allowed effective date. It trades price and payment but never tests price versus delayed implementation. The best later date cannot simply be assumed: it changes supplier economics too.
+
+P05 is a three-supplier competition, but the buyer sends two emails to Dralveck, only one to Hrvelec, and three to Fuchsreiter before accepting Fuchsreiter. Hrvelec's M03 cures the disqualifying lead time to 42 days but raises price to EUR 33.00; that now-feasible supplier is never revisited after asking for competitive evidence. It may still be uncompetitive, but the buyer never tests a second trade with it. Fuchsreiter repeatedly signals the value of punctual payment, and the final award follows the best observed live terms; the transcript does not establish that another supplier would beat it.
+
+Fix: for each case, track which negotiable dimensions have actually been tested and why an available dimension is being left alone. For multi-supplier RFQs, allocate an explicit discovery and closing budget across suppliers, with comparable packages and truthful competitive evidence. Stop exploring a supplier for an economic reason, not just because another thread has more momentum.
+
+5. LONG, REPETITIVE EMAILS SOMETIMES SUBSTITUTE FOR A NEW TRADE
+Confidence: high on the communication pattern; medium on its impact on score.
+
+The 33 buyer emails average 305 words (median 299; range 229–407). The pattern is often: long thanks, repeat index/old-quote argument, give three packages, then ask which package works. This happens even after the supplier has already identified its constraint.
+
+P11 M06/M08/M10/M12 repeatedly returns to the September quote, financing and the same D4 report request. Some rounds do create real value—especially removing chargebacks and gaining 800 ppm—so the whole sequence is not wasted. The remaining boilerplate does not add leverage.
+
+P08 M04/M06/M08 and P18 M04/M06 discuss management meetings, calls and dates, but this runner can only send emails and accept offers. A promised future call is not evidence or a completed negotiation step within this test. P07 M04 declines the requested consumption history without explaining a concrete confidentiality constraint or offering a quantified historical summary; that leaves part of its volume argument unsupported in the exchange.
+
+Fix: make each follow-up do one new thing: answer a request, test a newly identified trade, present evidence, or close. Ask for the exact cost split or approval needed in the next email rather than arranging a call the runner cannot attend. Reuse prior evidence by reference instead of reciting it at length. A shorter email is a hypothesis to test, not a guaranteed score improvement.
+
+6. SMALL NUMERICAL AND RISK CLAIMS UNDERMINE OTHERWISE GOOD ARGUMENTS
+Confidence: high for the examples below.
+
+P01 M04/M06 says moving from standard 30-day payment to 14 days gives cash "about a month earlier". It is 16 days. P01 M02 says both proposals are above the roughly 2.3% index increase, but EUR 128.90 versus EUR 126.53 is only about +1.87%.
+
+P18 M04 says that with the index clause "all future alloy movement is passed through" while discussing a 5% deadband. M06 says the supplier carries "no further alloy risk" while offering 3% or 5% deadbands. A deadband leaves some movement unpassed, and the clause covers only the specified 45% share. This overstates what the buyer is giving up and weakens the base-price argument. P08's framing should likewise distinguish historical indexed cost, future expected movement, and the explicit risk charge.
+
+Fix: use the same structured calculation for numbers in the email as for package selection. Check percentages, date differences, payment-day differences and index-clause descriptions mechanically. Treat a supplier's cost of capital as an estimate unless it was actually provided.
+
+WHAT WORKED AND SHOULD BE PRESERVED
+
+- Every case ended with an official agreement; all recorded must-haves passed. P05 rejects the initial 52-day lead time, P10 obtains full coverage, and P11 improves 6,400 ppm to 800 ppm.
+- The agent uses attachments and data. P03/P04 explicitly challenge overtime surcharges on the already-fixed lead time. P11 adapts to the supplier's cash concerns using a legal negotiable term, chargebacks, rather than trying to change fixed payment terms.
+- Several final choices correctly account for payment/coverage rather than unit price alone. Do not replace total-cost evaluation with a lowest-price rule.
+- The unwanted hidden-offer request did not reappear. These were the neutral-controller, current-Prompt-B runs, not the old five-confirmation experiment.
+- All accept decisions are recorded as claude:eval. The transport adapter explicitly says a final_offer or agreed status does not itself force acceptance; the saved strategy still strongly influences those decisions.
+
+PRIORITY FOR THE NEXT VERSION
+
+1. Runner: validate package economics and numerical claims before transmission; surface quantified cost/goal trade-offs to the model.
+2. Prompt: replace the generic cost-first emphasis with the case-specific objective and one coherent closing rule.
+3. Prompt/state: record concessions, newly tested dimensions and remaining message budget; require a reason for each additional message.
+4. RFQ policy: explicit comparable-offer exploration across suppliers, while preserving honest claims and the user's no-walk-away requirement.
+5. Retest the same ten cases with repeats to establish whether changes improve mean performance; this review does not launch any new run or modify the saved prompt.
+
+EXPORTS
+
+opus-review-pack.txt is the single file to give Opus. It contains a neutral review request, exact tested Prompt B, hash-verified transport adapter, all ten case contexts, every saved message/offer/attachment, official results, decision audit and the local kit cost function. It deliberately excludes this interpretation so Opus can review independently.
+all-messages.txt is the complete transcript without the prompt/cost-function appendix.
+raw-records.json is the lossless batch and run export.
+cases/Pxx.txt contains each case separately.
+package-comparisons.json contains reproducible visible-cost comparisons, excluding hidden supplier-health estimates. These are not new official scores or promised savings.

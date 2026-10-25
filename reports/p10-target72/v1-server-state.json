@@ -1,0 +1,229 @@
+{
+  "session_id": "1bf2abced055b579",
+  "case_id": "case:P10",
+  "status": "ended",
+  "end_reason": "accepted",
+  "rounds": 2,
+  "set": "practice",
+  "opening": {
+    "sup:70410": {
+      "offer_id": "offer:70410-0",
+      "round": 0,
+      "status": "open",
+      "terms": {
+        "unit_price": 32.2,
+        "lead_time_days": 54,
+        "volume_per_year": 19890,
+        "contract_months": 12
+      },
+      "alternatives": [],
+      "missing_fields": [],
+      "claims": [],
+      "claim_results": [],
+      "signals": {
+        "reply_delay_days": 2,
+        "validity_days": 30
+      },
+      "text": "Dear Sir or Madam,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe offer a price of \u20ac32.20 per unit for a volume of 19890 pcs per year. Our Lieferzeit is 54 days, and the contract term is 12 months. \n\nPlease note that this offer remains valid for 30 days. All deliveries and services are strictly subject to our standard procedure and standard conditions.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH"
+    }
+  },
+  "threads": {
+    "sup:70410": {
+      "offer_id": "offer:70410-1",
+      "status": "agreed",
+      "offers": 2,
+      "closed": null,
+      "seconds_left": null
+    }
+  },
+  "moves": [],
+  "result": {
+    "ended": true,
+    "deal": true,
+    "supplier_id": "sup:70410",
+    "offer_id": "offer:70410-1",
+    "terms": {
+      "payment_days": 30,
+      "lead_time_days": 56,
+      "volume_per_year": 23400,
+      "contract_months": 36,
+      "effective_date": "2027-01-01",
+      "index_clause": null,
+      "incoterm": "DAP",
+      "tooling_eur": 0.0,
+      "ppm_commitment": 300,
+      "chargeback_eur_per_complaint": 0.0,
+      "unit_price": 31.8
+    },
+    "c_open": 1932492.18,
+    "c_deal": 1537096.8,
+    "c_alt": null,
+    "c_best": 1328926.89,
+    "score": 0.6550995999123804,
+    "must_haves_ok": true,
+    "cost_breakdown": {
+      "price": 1488240.0,
+      "uncovered_need": 0.0,
+      "fallback_risk": 0.0,
+      "payment_terms": 9921.6,
+      "freight": 0.0,
+      "late_delivery": 33600.0,
+      "quality": 5335.2,
+      "tooling": 0.0,
+      "index_clause": 0.0,
+      "index_risk": 0.0,
+      "relationship": 0.0
+    },
+    "trace": [
+      {
+        "round": 0,
+        "actor": "sup:70410",
+        "move": {
+          "offer_id": "offer:70410-0",
+          "round": 0,
+          "status": "open",
+          "terms": {
+            "unit_price": 32.2,
+            "lead_time_days": 54,
+            "volume_per_year": 19890,
+            "contract_months": 12
+          },
+          "alternatives": [],
+          "missing_fields": [],
+          "claims": [],
+          "claim_results": [],
+          "signals": {
+            "reply_delay_days": 2,
+            "validity_days": 30
+          },
+          "text": "Dear Sir or Madam,\n\nThank you for your enquiry. Please find our Angebot below.\n\nWe offer a price of \u20ac32.20 per unit for a volume of 19890 pcs per year. Our Lieferzeit is 54 days, and the contract term is 12 months. \n\nPlease note that this offer remains valid for 30 days. All deliveries and services are strictly subject to our standard procedure and standard conditions.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH"
+        },
+        "reasons": []
+      },
+      {
+        "round": 1,
+        "actor": "buyer",
+        "move": {
+          "type": "message",
+          "message_id": null,
+          "subject": "Part 340010 \u2013 two binding full-allocation packages from 2027-01-01",
+          "body": "Dear Ms Zellner,\n\nThank you for your quotation for the mechanical seal 24 mm (part:340010). We understand from your letter of 18 September 2026 that capacity is tight and that you will prioritise customers with firm, long-term commitments. We are prepared to make that commitment, and we propose two complete packages.\n\nThe exchange is straightforward. Hollerau commits bindingly to its full annual volume, and in package B also to a longer term and more scheduling time. In return, Ravensteiner confirms the full allocation at a lower unit price. Your quotation covers only 19,890 pcs/year at 54 days, which does not secure our need.\n\nPackage A: 23,400 pcs/year, 24-month contract, 42-day lead time (the framework standard), EUR 27.37 per unit.\nPackage B: 23,400 pcs/year, 36-month contract, 56-day lead time, EUR 26.65 per unit.\n\nBoth packages are on fixed terms: payment 30 days net, DAP, effective 2027-01-01, no index clause and no tooling charge. In package B, the extra 14 days of lead time and the third year of commitment give you planning room in a tight capacity situation. In exchange, we ask for a lower price that compensates us for the longer delivery time.\n\nOur reasons for this price level:\n- LCI-C moved from 116.5 to 119.6 between June 2025 and June 2026, a change of +2.66% (idx:LCI-C@2025-06, idx:LCI-C@2026-06).\n- PPI-C2219 moved from 117.8 to 122.4 between August 2025 and August 2026, a change of +3.90% (idx:PPI-C2219@2025-08, idx:PPI-C2219@2026-08).\n- These indices are only partial cost drivers for this part. They do not show the change in your total cost and they do not prove your minimum price.\n- Our internal bottom-up estimate (cost:340010) puts the cost of this part at about EUR 24.31 per unit, excluding margin, with roughly 5% uncertainty. It is an estimate, not proof of your cost position, and we do not ask you to disclose your own calculation. We would appreciate it if you took it into account.\n\nPlease return your best binding, structured quotation for whichever package you can support, with the full 23,400 pcs/year allocation confirmed.\n\nOur notes from the March annual review mention that price changes above 2% go to your pricing committee. If any approval is needed for these complete packages, could you secure it on your side for your reply?\n\nKind regards,\nPurchasing, Hollerau Pumpenwerke GmbH",
+          "refs": [],
+          "term_sheets": [
+            {
+              "term_sheet_id": null,
+              "terms": {
+                "unit_price": 27.37,
+                "volume_per_year": 23400,
+                "contract_months": 24,
+                "lead_time_days": 42
+              }
+            },
+            {
+              "term_sheet_id": null,
+              "terms": {
+                "unit_price": 26.65,
+                "volume_per_year": 23400,
+                "contract_months": 36,
+                "lead_time_days": 56
+              }
+            }
+          ],
+          "interpreted": {
+            "claims": [
+              {
+                "type": "index_change",
+                "refs": [
+                  "idx:LCI-C@2025-06",
+                  "idx:LCI-C@2026-06"
+                ],
+                "asserted": {
+                  "change_pct": 2.66
+                }
+              },
+              {
+                "type": "index_change",
+                "refs": [
+                  "idx:PPI-C2219@2025-08",
+                  "idx:PPI-C2219@2026-08"
+                ],
+                "asserted": {
+                  "change_pct": 3.9
+                }
+              },
+              {
+                "type": "should_cost",
+                "refs": [
+                  "cost:340010"
+                ],
+                "asserted": {
+                  "unit_cost": 24.31
+                }
+              }
+            ]
+          },
+          "supplier_id": "sup:70410"
+        },
+        "reasons": []
+      },
+      {
+        "round": 1,
+        "actor": "sup:70410",
+        "move": {
+          "offer_id": "offer:70410-1",
+          "round": 1,
+          "status": "final_offer",
+          "terms": {
+            "unit_price": 31.8,
+            "lead_time_days": 56,
+            "volume_per_year": 23400,
+            "contract_months": 36
+          },
+          "alternatives": [],
+          "missing_fields": [],
+          "claims": [],
+          "claim_results": [
+            {
+              "index": 0,
+              "result": "verified"
+            },
+            {
+              "index": 1,
+              "result": "verified"
+            },
+            {
+              "index": 2,
+              "result": "verified"
+            }
+          ],
+          "signals": {
+            "reply_delay_days": 3,
+            "validity_days": 7
+          },
+          "text": "Dear Sir or Madam,\n\nWe received a lot of material; we looked at what bears on this part. Your figures confirm our case: that driver rose. We checked the should cost data you cited; it holds and we took it into account. Your internal cost estimates do not reflect the realities of our specialized manufacturing environment. Our calculation is our property; we do not share a breakdown.\n\nWe acknowledge your proposal for a 36-month contract and a 56-day lead time, which assists our capacity planning. In exchange for these extended terms and the full allocation of 23,400 units, we offer a revised price of EUR 31.80 per unit. \n\nThis is our final offer (letztes Angebot). Please decide.\n\nOurangebot contains a price of \u20ac31.80 per unit, Lieferzeit 56 days, a volume of 23400 pcs per year, a contract term of 36 months. Our Lieferzeit is 56 days. This Angebot remains valid for 7 days.\n\nMit freundlichen Gr\u00fc\u00dfen\nMonika Zellner\nSegment Manager, Dichtungswerk Ravensteiner GmbH"
+        },
+        "reasons": [
+          "We received a lot of material; we looked at what bears on this part.",
+          "Your figures confirm our case: that driver rose.",
+          "We checked the should cost data you cited; it holds and we took it into account.",
+          "We acknowledge your proposal for a 36-month contract and a 56-day lead time, which assists our capacity planning.",
+          "In exchange for these extended terms and the full allocation of \u2026 units, we offer a revised price of EUR \u2026 per unit.",
+          "Your internal cost estimates do not reflect the realities of our specialized manufacturing environment.",
+          "Our Lieferzeit is \u2026 days.",
+          "Our calculation is our property; we do not share a breakdown."
+        ]
+      },
+      {
+        "round": 1,
+        "actor": "buyer",
+        "move": {
+          "type": "accept",
+          "offer_id": "offer:70410-1",
+          "supplier_id": "sup:70410"
+        },
+        "reasons": []
+      }
+    ]
+  },
+  "replay_url": "/replay/1bf2abced055b579"
+}

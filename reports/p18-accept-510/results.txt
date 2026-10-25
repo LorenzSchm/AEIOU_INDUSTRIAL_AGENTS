@@ -1,0 +1,27 @@
+P18 — three authorized EUR 5.10 acceptance runs
+
+Evaluation bc32fc95994f45edbf7044a2e4a2da19
+Model claude-opus-5-5, effort medium, speed fast.
+Strategy V25; V24 negotiation tactics retained, former 70.01 acceptance minimum removed.
+Explicit minimum_score 0, maximum unit price EUR 5.10, at least 24 months.
+
+All three hosted sessions completed with an official deal at EUR 5.10/kg.
+Run 1: 14-day payment, 36 months, AS-14404 45%, 3% deadband, base 2026-08; cost EUR 248562.44; official points 64.2713; run 6fa991d08f334a1f855cee180fa7292e.
+Run 2: 14-day payment, 36 months, AS-14404 45%, 5% deadband, base 2026-08; cost EUR 246386.78; official points 67.2713; run 8ba1e1200eae4cb9b76daf4b6ea13bd0.
+Run 3: 14-day payment, 36 months, AS-14404 45%, 3% deadband, base 2026-08; cost EUR 248562.44; official points 64.2713; run c5bca437a0c04d9685589361ad7d707a.
+
+Mean 65.2713/100; best 67.2713/100.
+Three sessions used; no additional runs started. Every acceptance used the exact eligible live offer.
+The actual costs and official scores were recomputed from the public formula and matched.
+All runs retained DAP, 14-day lead time, 23700 kg/year, 2027-01-01 effective date and zero tooling.
+
+132 targeted checks and Ruff passed before launch. An offline replay of the previously blocked
+5.10 / 14-day / 3% final produced exact acceptance. The literal price cap and duration still apply.
+
+These are achieved official results. None exceeds 70. The observed difference here is the
+clause: the 5% deadband deal scored 67.2713 versus 64.2713 at 3%, both at 14 days.
+In run 2 the buyer proposed both 30 days and 14 days at the same EUR 5.10 price
+and 5% clause. The supplier selected the 14-day package; the agent accepted it
+unchanged under the later authorization. Offering faster payment at the same
+price gave the supplier a choice that cost us points compared with 30 days.
+This small repeated batch does not isolate causality or prove an attainable supplier floor.

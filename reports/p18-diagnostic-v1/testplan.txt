@@ -1,0 +1,104 @@
+SUPERSEDED — use reports/p18-diagnostic-v2/testplan.txt.
+The following is an archived plan, not the current instruction.
+
+P18: Diagnose-Lauf v1
+
+EINSETZEN
+Datei prompts/p18-diagnostic-v1.txt vollständig in das Feld „Practice prompt“ kopieren.
+Den bisherigen Prompt ersetzen, nicht ergänzen.
+Hosted practice: nur case:P18 auswählen, Repeats per case = 1.
+Für den Vergleich zum jüngsten Lauf: Claude Opus 5.5 / High beibehalten.
+Keine globale Strategie- oder Codeänderung ist erforderlich.
+
+WAS BISHER BELEGT IST
+Jüngster Hosted-Lauf 072207627ec847878ad0e439e124efb6:
+5,60 EUR; 90 Tage; 24 Monate; 0 % Deadband.
+Gesamtkosten 272.031,76 EUR; Score 31,91.
+
+Besserer älterer Hosted-Lauf 0ddca8e06c51464da58931cfa16b7126:
+5,50 EUR; 60 Tage; 24 Monate; 5 % Deadband.
+Gesamtkosten 263.046,30 EUR; Score 44,30; Opus / Medium.
+Dieser Lauf erwähnte das Committee und bot spät auch 36 Monate an.
+Er beweist weder den Effekt der Eskalation noch einen Vorteil von Medium.
+
+Offizieller Bestwert in beiden Resultaten: 222.651,27 EUR.
+Er zeigt die Gesamtkosten des Benchmarks, aber weder die eindeutige optimale
+Kombination noch die garantierte Akzeptanz eines daraus errechneten Preises.
+Lokale Simulator-Scores sind keine Hosted-Vergleichswerte: Ihre C_best-Werte
+weichen erheblich vom offiziellen P18-Benchmark ab.
+
+WARUM DER BISHERIGE VERLAUF SCHWACH WAR
+- Einstieg ohne Index trotz dokumentiertem Bedarf an Materialabsicherung.
+- Spätere unbedingte Formulierung „we accept“ zur Indexklausel; der Lieferant
+  konnte sich darauf beziehen, obwohl er den dazugehörigen Preis nicht annahm.
+- Langsame Preisbewegungen ohne erfolgreiche Änderung des Angebotsaufbaus.
+- Kein ausdrücklicher früher Freigabeauftrag mit zitierter Committee-Quelle.
+- Keine prüfbaren Daten-IDs in den E-Mail-Texten; claim_results blieben leer.
+- Ablenkung durch OTD-Diskussion, Kalkulationsanforderungen und Meetingangebote.
+- Unbelegtes Argument zur Doppelzählung von PPI und Legierungsindex.
+- Im jüngsten Lauf keine 36-Monats-Option; im älteren besseren Lauf erst spät.
+
+NEUER DIAGNOSEANSATZ
+Alle drei Einstiegspakete enthalten 36 Monate und die Indexklausel. Unterschiede
+bei Zahlungsziel und Deadband zeigen, welche Kombination der Lieferant aufgreift.
+Die erste E-Mail bittet ausdrücklich um Freigabe der vollständigen Pakete und
+nennt doc:20260812-70740-M3 sowie doc:20260916-70740-M5.
+Der Einstieg liegt bewusst nahe am bekannten Kostenziel. Das kann eine Ablehnung
+oder ein frühes finales Angebot auslösen; die Akzeptanz ist noch ungetestet.
+Faster payment und schwächerer Indexschutz gelten stets nur mit dem Paketpreis.
+Spätere Preisbewegungen richten sich nach der Antwort; bei einem hohen Plateau
+gibt es vor dem erwarteten Final einen konkreten Abschlussversuch.
+
+RECHNERISCHE ZIELE, KEINE GEMESSENEN ERGEBNISSE
+Stufe       Paket  EUR/kg  Zahlung  Monate  Deadband  Gesamtkosten EUR  Score bei Annahme
+Einstieg    A       4,70      90      36      5 %        223.299,82         99,11
+Einstieg    B       4,62      14      36      5 %        223.197,44         99,25
+Einstieg    C       4,52      14      36      0 %        223.186,90         99,26
+Zweite      A       4,90      90      36      5 %        232.801,94         86,00
+Zweite      B       4,82      14      36      5 %        232.859,66         85,92
+Zweite      C       4,72      14      36      0 %        233.062,43         85,64
+Plateau     A       5,49      90      36      5 %        260.833,19         47,35
+Plateau     B       5,40      14      36      5 %        260.880,12         47,29
+Plateau     C       5,28      14      36      0 %        260.713,90         47,52
+Alle Klauseln: AS-14404, 45 % Materialanteil, Basismonat 2026-08.
+Die Kosten pro Menü sind wegen Cent-Rundung ungefähr, nicht exakt gleich.
+Bei einem bereits günstigeren Live-Angebot darf der Agent die späteren, teureren
+Stufen nicht anbieten. Bei Final wird das günstigste berechtigte Live-Angebot angenommen.
+
+NACH DEM LAUF AUSWERTEN
+1. Offizieller Score, C_deal und vollständiges angenommenes Paket.
+2. Erste Käufernachricht: richtige Preise, vier Felder, Quellen im E-Mail-Text,
+   ausdrückliche Freigabeanforderung und konditionale Formulierungen?
+3. Erste Lieferantenantwort: Preissprung, Deadband, Laufzeit, Zahlungsziel,
+   Aussage zur Freigabe, claim_results und Status.
+4. Wurden frühe Zahlung und Indexschutz tatsächlich vergütet oder nur übernommen?
+5. Reagiert er auf 36 Monate? Lehnt er bestimmte Optionen explizit ab?
+6. Anzahl Käufernachrichten vor Final, Laufzeit, Modellfehler und Validierungsfehler.
+
+NÄCHSTE ITERATION AUS DER BEOBACHTUNG ABLEITEN
+- Nahe Einstiegsziel akzeptiert: identischen Prompt zunächst einmal wiederholen;
+  anschließend nur den relevanten Preis in kleinen Schritten absenken.
+- Deutlich unter 5,50 EUR mit guten Gesamtkosten: erfolgreiche Struktur beibehalten
+  und nur den Preis eingrenzen. Eine Ablehnung ist keine sichere harte Preisgrenze.
+- Wieder 5,60 EUR: prüfen, ob die Freigabe überhaupt beantwortet und die Quellen
+  erkannt wurden. Nächster Versuch mit EINEM Paket und derselben Freigabequelle,
+  um Ignorieren des Menüs von einer wirtschaftlichen Grenze besser zu unterscheiden.
+- Nur 36 Monate bestätigt, kein Preisvorteil: Laufzeit als bisher unvergütet markieren;
+  nicht behaupten, sie habe die Preisbewegung verursacht.
+- Aggressiver Einstieg führt sofort zu Final: nächsten Lauf höher ansetzen und
+  die übrigen Bedingungen möglichst unverändert lassen.
+- Technischer Fehler oder fehlende Pflichtfelder: zuerst Ausführung reparieren,
+  den Lauf nicht als Beleg gegen die Verhandlungsstrategie interpretieren.
+
+VALIDIERUNG
+Neun Pakete mit arena_kit.total_cost berechnet und mit valid_terms geprüft.
+24 und 36 Monate haben für diese Pakete dieselben bewerteten Gesamtkosten.
+Der bestehende PromptLabAgent akzeptiert alle drei Menüs als legale Send-Aktionen.
+Quellen sind im gerenderten decision_context vorhanden; E-Mail-Zitate bleiben erhalten.
+Annahme einer gespeicherten finalen Angebots-ID gegen den zugehörigen gespeicherten
+Zustand geprüft. Kein LLM-Aufruf, kein neuer Hosted-Lauf, keine nachgewiesene
+Lieferantenakzeptanz. Details: validation.json.
+
+Dies ist ein P18-Experiment. Der Live Final verwendet andere Fälle. Die übertragbare
+Strategie wäre: Autorität erkennen, belegte Interessen bedienen, vollständige Pakete
+bepreisen und nur gegen echten Gegenwert nachgeben. Top 5 sind damit nicht belegt.

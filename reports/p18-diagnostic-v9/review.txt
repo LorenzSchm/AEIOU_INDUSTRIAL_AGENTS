@@ -1,0 +1,8 @@
+P18 v9: user now permits EUR 5.00/kg; P18 remains denominated in EUR.
+Use the complete replacement prompt. Opening EUR 4.90, one EUR 0.10 closing move to EUR 5.00.
+Reference terms: 14 days / 36 months / AS-14404 share 45%, deadband 0%, base 2026-08.
+Cost ceiling: EUR 246888.17; reference score: 66.57991593.
+Latest inspected run 3a56bcd477404c448324b40a305067c1 stopped at the V8 limits; latest supplier quote remained EUR 5.20.
+That existing supplier price also exceeds the V9 limit. No agreement at EUR 5.00 has been observed.
+This updates the prompt for a future user-started run, not a closed session or existing draft.
+No production-code changes, server restart, hosted test, paid model call, or supplier message.

@@ -1,0 +1,67 @@
+{
+  "run_id": "fef6cf692e524910bccd2465a58d5ef3",
+  "evaluation_id": "acda87d20b6f42d6ae3fb6d9246e7ffb",
+  "quoted_before": [
+    {
+      "term_sheet_id": "offer:70740-2",
+      "terms": {
+        "unit_price": 5.3,
+        "payment_days": 60,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      }
+    },
+    {
+      "term_sheet_id": "offer:70740-2-a",
+      "terms": {
+        "unit_price": 5.2,
+        "payment_days": 14,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 3.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      }
+    }
+  ],
+  "buyer_changed_to": [
+    {
+      "terms": {
+        "unit_price": 5.1,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5,
+          "base_month": "2026-08"
+        },
+        "payment_days": 30,
+        "contract_months": 36
+      }
+    }
+  ],
+  "final_quote": [
+    {
+      "term_sheet_id": "offer:70740-3",
+      "terms": {
+        "unit_price": 5.2,
+        "payment_days": 30,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "contract_months": 36
+      }
+    }
+  ],
+  "reason": "NegotiationBlocked: FINAL_OFFER_OUTSIDE_LIMITS",
+  "interpretation": "The late counter changed both payment and deadband from the preferred quoted branch; the final exceeded the nominal cap. This does not isolate a causal surcharge."
+}

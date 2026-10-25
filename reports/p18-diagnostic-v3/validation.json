@@ -1,0 +1,59 @@
+{
+  "strategy": {
+    "variant": "p18-diagnostic-v3",
+    "strategy_revision": "p18-no-rival-claims-v3",
+    "strategy_sha256": "8180b9828a8c7a272246d9fb5fe6891eb0afd986efd71a0c545f1db6b9ffa37e",
+    "transport_sha256": "94b30217c8bfc917f77da5f41b83033862aa011e7523fe953a21ab75e67ceaba",
+    "system_sha256": "5ad9293bc8a1bf83c6db7144481fe7b2c7c84aca430dea73840d58fbcc68f7ef",
+    "protocol_version": "faithful-v8-shared-decision-budget",
+    "required_repeats": 0,
+    "enforce_reference_tactics": false,
+    "assessment_version": "supplier-assessment-v1"
+  },
+  "prompt_file": "prompts/p18-diagnostic-v3.txt",
+  "change": "Remove ineligible rival-price claims only; commercial schedule and buyer rules unchanged.",
+  "comparison_settings": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "case_ids": [
+      "case:P18"
+    ],
+    "repeats": 1
+  },
+  "diagnosis": {
+    "v2_run_id": "724457830daa47e6bb9d29c177796866",
+    "baseline_run_id": "9330b8cbf23347f687a68f0ec80d802c",
+    "v2_score": 33.5937004460442,
+    "baseline_score": 41.903073220856136,
+    "extra_cost_eur": 6026.12,
+    "score_drop_points": 8.3094,
+    "valid_case_quote_ids": [
+      "quote:7200018"
+    ],
+    "excluded_quote": "quote:7300008",
+    "excluded_quote_same_part": true,
+    "final_after_buyer_sends": 2,
+    "baseline_final_after_buyer_sends": 4,
+    "cheaper_visible_final_cost": 269598.56,
+    "cheaper_visible_final_score": 35.26472533285089,
+    "primary_only_cost_difference": 1211.86,
+    "primary_only_score_difference": 1.6710248868066824,
+    "remaining_cost_difference_even_if_cheaper_menu_accepted": 4814.26,
+    "committee_approval_confirmed_in_returned_backoffice": false
+  },
+  "validation": {
+    "original_buyer_rules_verbatim": true,
+    "all_text_from_first_send_onward_unchanged": true,
+    "twelve_package_costs_rechecked": true,
+    "send_and_final_acceptance_contracts_passed": true,
+    "new_hosted_runs": 0,
+    "new_model_calls": 0,
+    "read_only_completed_session_requests": 4
+  },
+  "limitations": [
+    "The ineligible quote is a confirmed mistake; its exact causal contribution to the final score is unmeasured.",
+    "Baseline used Medium; v2 used High. A single pair cannot isolate prompt and model effort effects.",
+    "No live v3 result is available.",
+    "No lower supplier reservation price is inferred."
+  ]
+}

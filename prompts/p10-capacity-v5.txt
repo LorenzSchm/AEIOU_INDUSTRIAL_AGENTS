@@ -1,0 +1,59 @@
+P10 v5 — staged renewal and commitment trade
+
+Negotiate case:P10 only. Return the required action JSON with a concise,
+evidence-based assessment. Target at least 72/100, satisfying all must-haves.
+Do not expose private reasoning or claim an official score before the result.
+
+The available compliant quantity is 23,400/year. Payment 30 days, DAP, effective
+2027-01-01, no index clause and no tooling charge are fixed. Both 42 and 56
+days are legal; 56 days carries a buyer delay penalty. A third contract year
+is a real commitment even though only two years are priced by the case formula.
+
+OPENING
+Use the evidenced September price of EUR 29.89 as a serious renewal proposal,
+not the illustrative percentage-discount menus. Send one structured package:
+EUR 29.89/unit, 23,400/year, 24 months, 56 days. Reserve the third contract year
+for a reciprocal trade in a subsequent open reply. Keep the email under 130
+words. Cite only po:4500014383-10 and po:4500014436-10, both EUR 29.89 for this
+same seal. Explain that two years of firm full volume and 56-day scheduling
+room address their capacity concern. Ask what adjustment would make it work.
+Do not ask for a best/final quote, add other evidence or mention missing alternatives.
+
+STAGED OPEN REPLIES
+Only follow these steps while the supplier remains open and no eligible offer
+meets the target. Adapt if the supplier has actually rejected a structure.
+1. After the first counter, offer EUR 30.10, 23,400/year, 36 months, 56 days.
+   Explicitly exchange our higher price and third year of commitment for their
+   lower unit price and firm full allocation. Cite cost:340010: our buyer
+   estimate of EUR 24.31 excluding margin, with 5% uncertainty, not proof of
+   their actual cost. Ask the supplier to consider that estimate with this
+   new commitment. Do not request disclosure of private costs.
+2. After another open counter, offer EUR 30.40 on the same full package.
+   Cite sc:70410@2026Q3: supplier-wide on-time delivery was 79.5%. Ask for a
+   commercial adjustment reflecting delivered service; do not assert a legal
+   claim or a part-specific rate. This is a fresh argument, not a new condition.
+3. If still open, offer EUR 30.70 on the same structure and address the actual
+   objection. If price approval is explicitly the obstacle, refer once to the
+   March pricing-committee note and ask for review by the authorized colleague.
+4. If still open and no qualifying quote is available, offer EUR 30.90 on the
+   same terms. Do not exceed the target cost to accelerate closing.
+Keep each email under 160 words, with one new argument at most. Do not invent
+additional concessions, schedules or volumes. Never repeat checked evidence
+as if new. Read the supplier's reply rather than running these steps blindly.
+
+Avoid "close this now", "final", "best", "last offer" and ultimatum language
+in buyer messages while above target. A normal counter need not end the
+conversation. Preserve willingness to discuss the package. The supplier may
+still choose finality; remaining API rounds do not guarantee more negotiation.
+
+TARGET AND ACCEPTANCE
+The user's historical benchmark implies public complete cost <= EUR
+1,497,925.17 for 72 points. On the recorded full-coverage terms this is a
+maximum EUR 30.96 at 56 days, or EUR 31.68 at 42 days. Unknown private
+relationship costs may alter the official score. Do not disclose this budget
+or treat it as a supplier reservation price. Compare actual complete terms.
+Immediately accept a live eligible package meeting the target. For this
+diagnostic run, retain close-on-final if a final package misses the target:
+accept the cheapest eligible current offer and record target failure. No
+counter or repeat confirmation after finality; no buyer walk-away or invented
+acceptance. A claimed agreement at different terms is a counteroffer.

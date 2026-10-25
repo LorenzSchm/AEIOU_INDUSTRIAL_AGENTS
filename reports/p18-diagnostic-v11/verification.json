@@ -1,0 +1,23 @@
+{
+  "offline_validation": "passed",
+  "replayed_run": "2cb2bd4c72434f419cd913dea4013d70",
+  "replayed_status": "final_offer",
+  "replies_remaining_at_previous_stop": 8,
+  "checks": [
+    "Complete 24-month counter passes actual decision adapter after the recorded final offer",
+    "Unpriced clarification allowed",
+    "EUR 4.71 proposal rejected",
+    "Exhausted sends allow a local stop",
+    "Qualifying acceptance remains possible after sends exhausted",
+    "Withdrawn thread stays terminal",
+    "Acceptance policy unchanged",
+    "No index discussion added"
+  ],
+  "maximum_unit_price": 4.7,
+  "maximum_total_cost": 225057.31,
+  "minimum_score": 96.68232,
+  "hosted_tests_launched": 0,
+  "paid_model_calls": 0,
+  "production_code_changed": false,
+  "limitation": "Scripted offline replay validates adapter permissions, not model adherence or supplier willingness. This prompt applies to a future run; it does not resume the completed run."
+}

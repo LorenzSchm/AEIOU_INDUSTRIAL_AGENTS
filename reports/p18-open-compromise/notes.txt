@@ -1,0 +1,51 @@
+P18 V21 correction — 25 October 2026
+
+The recorded V20 run 1672fff1b6a94835986cb320f8d26da3 received a 14-day counter.
+Its assessment explicitly skipped the proposed 45-day compromise because the
+V20 trigger required a 30-day counter. It then requested 60 days after the final
+EUR 5.10/14-day offer. The supplier withdrew after four of ten buyer rounds;
+there was no timeout or message-limit exhaustion.
+
+Changes
+- config/p18-open-compromise.json retains the early A/B/C menu and all limits.
+  It enables a one-time EUR 5.09/45-day proposal on an open reply after the menu,
+  including 14-day and 30-day counters. The exact offered matching clause and
+  24/36-month duration are retained; cost, cap and valid options are rechecked.
+- A conservative payment-restriction text cue defers to the model when the
+  supplier appears to restrict payment. It is not a full semantic classifier.
+  The strategy instructs the model to respect the actual restriction. The
+  controller never sends on final/withdrawn states or repeats the compromise.
+- The AS-14404 June-September decline is inserted only when its actual delivered
+  source records and registered calculation agree and the buyer has not used it.
+  Normal assessment and numeric-claim validation still run before delivery.
+- Final offers with no qualifying quoted package now produce the local policy
+  stop FINAL_OFFER_OUTSIDE_LIMITS. No further counter or model call is made.
+  The audit retains remaining API rounds, so this is distinguishable from a
+  message limit. Exact eligible qualifying offers are accepted first. Qualifying
+  advertised alternatives may still need binding confirmation.
+- Existing practice-evaluation cleanup may separately close the abandoned
+  session via its cleanup API. A local policy stop/cleanup is not a supplier
+  withdrawal, accepted deal, or proof of a higher score.
+- prompts/p18-diagnostic-v21.txt removes the narrow 30-day condition and the
+  late payment-switch instruction. The opening is unchanged from V20.
+
+Limits retained
+Minimum score 70.01; nominal cap EUR 5.10/kg; complete cost <= EUR 244400.60;
+contract >=24 months; fixed enquiry and authorized quantities unchanged.
+At the specified AS-14404/45%/5%/2026-08 clause, EUR 5.09/45 days costs
+EUR 244241.61 and calculates to 70.2292. It requires supplier acceptance.
+
+Verification
+open-replies.json: real V19 (30-day) and V20 (14-day) threads through message 5
+both yield policy:payment-compromise with validated AS evidence and no model.
+final-offers.json: the same recorded threads through message 7 both yield a
+local policy stop; no counter, supplier response or agreement is simulated.
+Full saved withdrawn threads remain terminal. The 14-day input snapshot
+shows exactly which records and price plan were available to the controller.
+Automated tests cover both branches, acceptance priority, restrictions, malformed
+settings, cost/duration/round limits, duplicate prevention and evidence integrity.
+See activation.json for final test counts and active server/policy details.
+
+No hosted session or paid model call was started by this correction. Historical
+prompts/policies remain available for replay; the new behavior is opt-in through
+the V21 policy. V21 must be selected/pasted for the next fresh hosted test.

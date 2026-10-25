@@ -1,0 +1,20 @@
+{
+  "reviewed": [
+    "docs/arena/api.md",
+    "https://arena.tacto.ai/faq",
+    "https://github.com/tacto-playground/negotiation-arena-kit/blob/main/brief/api.md",
+    "vendor/arena-kit/arena_kit/client.py",
+    "vendor/arena-kit/arena_kit/sim.py (public structured-path contract only)"
+  ],
+  "schema_probe": {
+    "url": "https://arena.tacto.ai/openapi.json",
+    "status": 404
+  },
+  "finding": "The current official public contract documents supplier-thread messages and typed offer moves, and says questions go to the responsible role. It documents no explicit pricing-committee or manager-routing parameter. Approval and production-planning requests remain negotiation content; no unsupported API fields were sent.",
+  "structured_observation": {
+    "session_id": "0fdc690f59c8281f",
+    "standing_offer_updated": true,
+    "email_history_updated": false,
+    "evidence": "v19/server-thread.json and v19/wire.json"
+  }
+}

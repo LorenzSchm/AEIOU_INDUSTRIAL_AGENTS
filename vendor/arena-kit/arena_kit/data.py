@@ -13,7 +13,7 @@ RELEASE = "release-sunday"
 
 
 class DataPackage:
-    def __init__(self, root, release=None):
+    def __init__(self, root, release=None, *, include_release=True):
         """`root`: the unpacked package. `release`: the unpacked Sunday release (default: a
         `release-sunday` folder inside or next to the package, or ARENA_RELEASE), if present."""
         self.root = Path(root).expanduser().resolve()
@@ -22,7 +22,9 @@ class DataPackage:
         facts = [own] if own.is_file() else [p for p in sorted(self.root.rglob("facts.json")) if RELEASE not in p.parts]
         self.facts = json.loads(facts[0].read_text(encoding="utf-8")) if facts else {}
         release = release or os.environ.get("ARENA_RELEASE")
-        candidates = [Path(release).expanduser()] if release else [self.root / RELEASE, self.root.parent / RELEASE]
+        candidates = ([Path(release).expanduser()] if release else [self.root / RELEASE, self.root.parent / RELEASE])
+        if not include_release:
+            candidates = []
         self.release = next((p.resolve() for p in candidates if (p / "facts.json").is_file()), None)
         if self.release:  # new IDs only: nothing in the package changes
             self.facts |= json.loads((self.release / "facts.json").read_text(encoding="utf-8"))
@@ -65,7 +67,10 @@ class DataPackage:
             key = "id" if "id" in cols else cols[0]
             for row in self.db.execute(f'SELECT * FROM "{t}"'):
                 value = row[key]
-                if isinstance(value, str) and ":" in value:
+                # A non-unique foreign key (e.g. sourcing.part_id) must not replace
+                # an entity's own id row. The same index backs lookup, documents
+                # and the optional MCP connector.
+                if isinstance(value, str) and ":" in value and (key == "id" or value not in index):
                     index[value] = {"table": t, **dict(row)}
         for path in sorted(self.release.glob("data/*.csv")) if self.release else []:  # not in the SQLite
             with path.open(encoding="utf-8", newline="") as f:

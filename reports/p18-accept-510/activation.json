@@ -1,0 +1,69 @@
+{
+  "activated_at": "2026-10-24T23:41:52.446640+00:00",
+  "server_pid": 78610,
+  "previous_pid": 76631,
+  "policy_source": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/config/p18-accept-510.json",
+  "prompt_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/prompts/p18-diagnostic-v25.txt",
+  "prompt_sha256": "59f13f054b0aef7ec6c132b8767c76aeccd8b6eb3c2f147cb1c901ca3aeaa4b4",
+  "acceptance_floor": {
+    "case_id": "case:P18",
+    "c_open": 295173.23,
+    "c_best": 222651.27,
+    "minimum_score": 0.0,
+    "maximum_unit_price": 5.1
+  },
+  "policy": {
+    "case_id": "case:P18",
+    "accept_eligible_offers": true,
+    "closing_price": 5.1,
+    "maximum_unit_price": 5.1,
+    "maximum_total_cost": 295173.23,
+    "minimum_contract_months": 24,
+    "one_final_counter": false,
+    "adapt_closing_price_to_budget": true,
+    "early_package_alternatives": {
+      "after_buyer_proposals": 1,
+      "packages": [
+        {
+          "unit_price": 5.07,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        },
+        {
+          "unit_price": 5.0,
+          "payment_days": 14,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 3,
+            "base_month": "2026-08"
+          }
+        },
+        {
+          "unit_price": 5.1,
+          "payment_days": 60,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        }
+      ]
+    },
+    "menu_evidence_argument": "ppi_recent_change_pct",
+    "stop_after_nonqualifying_final": true
+  },
+  "checks": {
+    "targeted_tests_passed": 132,
+    "ruff": "passed",
+    "recorded_final_replay": "exact acceptance",
+    "other_case_policies_preserved": true,
+    "server_health": "passed"
+  }
+}

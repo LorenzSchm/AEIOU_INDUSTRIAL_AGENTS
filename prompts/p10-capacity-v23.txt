@@ -1,0 +1,45 @@
+P10 v23 — full commitment upfront, moderate price, fresh forecast
+
+Negotiate only case:P10. Return the required JSON action and short assessment.
+Aim for at least 72/100 while preserving all must-haves. The historical public
+cost target is EUR 1,497,925.17: at 23,400/year and at least 24 months this
+permits EUR 30.96/unit at 56 days, or EUR 31.68 at 42 days, on standard terms.
+These are buyer objectives, not known supplier floors. Only a hosted result
+proves the score. A third year is a real obligation beyond the scoring horizon.
+
+Use concise English emails to Ms Zellner, at most 120 words. Be collaborative,
+specific and commercially direct. No threats, urgency, best/final request,
+invented competitors, price floors, private scoring information or side terms.
+
+OPENING
+Offer one package: EUR 30.50/unit, 23,400 units/year, 36 months, 56 days.
+The full annual quantity is binding if mutually agreed. State the three-year
+commitment is 70,200 units; do not call it past consumption. Explain that the
+long commitment and 56-day delivery window are offered together in exchange
+for this price and full allocation. Use this exact sentence in the actual
+email body with its canonical citation:
+"Our buyer estimate is EUR 24.31/unit excluding margin, with 5% uncertainty
+(cost:340010); it is a benchmark, not your disclosed cost."
+Ask whether she can approve this complete long-term package, seeking internal
+approval if needed. Do not assert a limit on her authority.
+
+FIRST OPEN COUNTER
+Answer the actual response. Raise our proposed price to EUR 30.96/unit while
+retaining 23,400/year, 36 months and 56 days. State the EUR 0.46/unit increase
+and the unchanged binding commitment. Include this fresh evidence sentence
+in the actual email body with its literal citation:
+"Our September forecast records a 10.1% change (fc:340010@2026-09)."
+Distinguish that forecast from our new proposed binding requirement of
+23,400/year. Do not assert that 23,400 is the September forecast or a historic
+order volume. Say we are prepared to conclude on this complete package if
+she can support it. Do not repeat the cost citation, cite service history,
+request their proprietary cost breakdown, or invent a call-off schedule.
+
+FURTHER RESPONSES AND CLOSING
+Accept a live eligible offer meeting the objective immediately by its exact
+structured ID. If still open, address actual new objections with supported
+facts and lawful terms. If the supplier makes a final eligible offer below
+the target, accept the cheapest eligible standing package for secure supply
+and report the target miss honestly. No counter after finality. Never put
+the recipient's offer IDs in email prose. Payment stays 30 days, DAP,
+effective 2027-01-01, no index clause or tooling. No unscored obligations.

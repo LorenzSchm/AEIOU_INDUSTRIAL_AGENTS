@@ -1,0 +1,69 @@
+{
+  "activated_at": "2026-10-24T23:34:53.841000+00:00",
+  "previous_pid": 72572,
+  "server_pid": 76631,
+  "protocol_version": "faithful-v17-consistent-package-sequence",
+  "policy_source": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/config/p18-deadband-trade.json",
+  "policy_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/data/local/negotiation-policies.json",
+  "prompt_file": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/prompts/p18-diagnostic-v24.txt",
+  "policy": {
+    "case_id": "case:P18",
+    "accept_eligible_offers": true,
+    "closing_price": 5.09,
+    "maximum_unit_price": 5.1,
+    "maximum_total_cost": 244400.6,
+    "minimum_contract_months": 24,
+    "one_final_counter": false,
+    "adapt_closing_price_to_budget": true,
+    "early_package_alternatives": {
+      "after_buyer_proposals": 1,
+      "packages": [
+        {
+          "unit_price": 5.07,
+          "payment_days": 30,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        },
+        {
+          "unit_price": 5.0,
+          "payment_days": 14,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 3,
+            "base_month": "2026-08"
+          }
+        },
+        {
+          "unit_price": 5.1,
+          "payment_days": 60,
+          "index_clause": {
+            "series": "AS-14404",
+            "material_share": 0.45,
+            "deadband_pct": 5,
+            "base_month": "2026-08"
+          }
+        }
+      ]
+    },
+    "menu_evidence_argument": "ppi_recent_change_pct",
+    "stop_after_nonqualifying_final": true
+  },
+  "prompt_sha256": "9757a676ac7e3cef1082948d6388d0363df2b4910c3937f23dde11a4d473baaa",
+  "checks": {
+    "targeted_tests_passed": 133,
+    "ruff": "passed",
+    "real_recorded_open_reply_menu_replayed": true,
+    "checked_ppi_included": true,
+    "other_cases_preserved": true,
+    "no_active_jobs_interrupted": true,
+    "server_health": "passed"
+  },
+  "hosted_sessions_started": 0,
+  "paid_model_calls": 0,
+  "prompt_selection": "User must paste/select V24 for a fresh evaluation; browser prompt selection was not changed."
+}

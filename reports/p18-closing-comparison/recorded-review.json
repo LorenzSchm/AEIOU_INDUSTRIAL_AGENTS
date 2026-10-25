@@ -1,0 +1,117 @@
+{
+  "source_run_id": "a5fe624cdda045be9e16dbdfb3ce2968",
+  "source_evaluation_id": "af64e99368c94e0bb9c3fb9d1e8aa405",
+  "actual_prompt_version": "V27",
+  "official_score": 0.6427127727932337,
+  "actual_deal_terms": {
+    "payment_days": 14,
+    "lead_time_days": 14,
+    "volume_per_year": 23700,
+    "contract_months": 36,
+    "effective_date": "2027-01-01",
+    "index_clause": {
+      "series": "AS-14404",
+      "material_share": 0.45,
+      "deadband_pct": 3.0,
+      "base_month": "2026-08"
+    },
+    "incoterm": "DAP",
+    "tooling_eur": 0.0,
+    "ppm_commitment": 70,
+    "chargeback_eur_per_complaint": 0.0,
+    "unit_price": 5.1
+  },
+  "comparison_after_message_5": [
+    {
+      "terms": {
+        "unit_price": 5.1,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5.0,
+          "base_month": "2026-08"
+        },
+        "payment_days": 60,
+        "contract_months": 36
+      },
+      "complete_cost": 243915.66,
+      "estimated_score": 70.6787,
+      "within_buyer_limits": true,
+      "origins": [
+        {
+          "kind": "supplier_quote",
+          "offer_id": "offer:70740-2"
+        },
+        {
+          "kind": "buyer_proposal",
+          "message_index": 3
+        }
+      ],
+      "status": "Buyer calculation only; requires supplier approval and a live eligible offer.",
+      "cost_above_lowest_comparison": 0.0
+    },
+    {
+      "terms": {
+        "unit_price": 5.1,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 5,
+          "base_month": "2026-08"
+        },
+        "payment_days": 30,
+        "contract_months": 36
+      },
+      "complete_cost": 245527.26,
+      "estimated_score": 68.4565,
+      "within_buyer_limits": true,
+      "origins": [
+        {
+          "kind": "buyer_proposal",
+          "message_index": 3
+        }
+      ],
+      "status": "Buyer calculation only; requires supplier approval and a live eligible offer.",
+      "cost_above_lowest_comparison": 1611.6
+    },
+    {
+      "terms": {
+        "unit_price": 5.1,
+        "index_clause": {
+          "series": "AS-14404",
+          "material_share": 0.45,
+          "deadband_pct": 3.0,
+          "base_month": "2026-08"
+        },
+        "payment_days": 14,
+        "contract_months": 36
+      },
+      "complete_cost": 248562.44,
+      "estimated_score": 64.2713,
+      "within_buyer_limits": true,
+      "origins": [
+        {
+          "kind": "supplier_quote",
+          "offer_id": "offer:70740-2-a"
+        },
+        {
+          "kind": "buyer_proposal",
+          "message_index": 3
+        }
+      ],
+      "status": "Buyer calculation only; requires supplier approval and a live eligible offer.",
+      "cost_above_lowest_comparison": 4646.78
+    }
+  ],
+  "actual_final_replay": {
+    "supplier_id": "sup:70740",
+    "message": {
+      "action": {
+        "type": "accept",
+        "term_sheet_id": "offer:70740-3"
+      }
+    }
+  },
+  "offline_only": true,
+  "hosted_sessions_started": 0
+}

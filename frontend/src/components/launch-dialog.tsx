@@ -4,20 +4,42 @@ import { toast } from "sonner"
 
 import { api } from "@/api"
 import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
 import { go } from "@/hooks/use-hash-route"
 import { useWorkbench, type Scope } from "@/store"
 
 const agents = [
-  { value: "claude", label: "AEIOU · Claude + economic guards" },
+  { value: "original", label: "Your prompt · buyer walk-aways disabled" },
+  { value: "claude", label: "Earlier rewrite · Claude + economic guards" },
   { value: "adaptive", label: "AEIOU · deterministic adaptive policy" },
   { value: "baseline", label: "Upstream naive baseline" },
 ]
 
-function Field({ id, label, children }: { id: string; label: string; children: React.ReactNode }) {
+function Field({
+  id,
+  label,
+  children,
+}: {
+  id: string
+  label: string
+  children: React.ReactNode
+}) {
   return (
     <div className="grid gap-1.5">
       <Label htmlFor={id}>{label}</Label>
@@ -27,32 +49,42 @@ function Field({ id, label, children }: { id: string; label: string; children: R
 }
 
 export function LaunchDialog() {
-  const { launch, closeLaunch, cases, status, setScope, refresh } = useWorkbench()
-  const [mode, setMode] = useState<Scope>("hosted")
+  const { launch, closeLaunch, cases, status, setScope, refresh } =
+    useWorkbench()
+  const [mode, setMode] = useState<Scope>("local")
   const [caseId, setCaseId] = useState("")
-  const [agent, setAgent] = useState("claude")
-  const [opponent, setOpponent] = useState("scripted")
+  const [agent, setAgent] = useState("original")
+  const [opponent, setOpponent] = useState("auto")
   const [live, setLive] = useState(false)
   const [error, setError] = useState("")
   const [submitting, setSubmitting] = useState(false)
 
-  const choices = mode === "local" ? cases.local : cases.hosted.filter(c => c.hosted)
+  const choices =
+    mode === "local" ? cases.local : cases.hosted.filter((c) => c.hosted)
 
   // Reset the form from the preset each time the dialog opens.
   useEffect(() => {
     if (!launch.open) return
-    const m = launch.preset.mode ?? "hosted"
-    const list = m === "local" ? cases.local : cases.hosted.filter(c => c.hosted)
+    const m = launch.preset.mode ?? "local"
+    const list =
+      m === "local" ? cases.local : cases.hosted.filter((c) => c.hosted)
     setMode(m)
-    setCaseId(launch.preset.caseId && list.some(c => c.case_id === launch.preset.caseId) ? launch.preset.caseId : (list[0]?.case_id ?? ""))
-    setAgent(status?.claude_configured ? "claude" : "adaptive")
+    setCaseId(
+      launch.preset.caseId &&
+        list.some((c) => c.case_id === launch.preset.caseId)
+        ? launch.preset.caseId
+        : (list[0]?.case_id ?? ""),
+    )
+    setAgent(status?.llm_configured ? "original" : "adaptive")
+    setOpponent("auto")
     setLive(!!launch.preset.live)
     setError("")
-  }, [launch, cases, status?.claude_configured])
+  }, [launch, cases, status?.llm_configured])
 
   const changeMode = (m: Scope) => {
     setMode(m)
-    const list = m === "local" ? cases.local : cases.hosted.filter(c => c.hosted)
+    const list =
+      m === "local" ? cases.local : cases.hosted.filter((c) => c.hosted)
     setCaseId(list[0]?.case_id ?? "")
   }
 
@@ -62,8 +94,18 @@ export function LaunchDialog() {
     setError("")
     try {
       // Live pacing slows local exchanges so a demo audience can watch the deal move through the pipeline.
-      const body = { mode, case_id: caseId, agent, opponent, pace: live && mode === "local" ? 1.2 : 0 }
-      const r = await api<{ id: string }>("/api/play", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
+      const body = {
+        mode,
+        case_id: caseId,
+        agent,
+        opponent,
+        pace: live && mode === "local" ? 1.2 : 0,
+      }
+      const r = await api<{ id: string }>("/api/play", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      })
       closeLaunch()
       setScope(mode)
       await refresh()
@@ -73,7 +115,9 @@ export function LaunchDialog() {
           action: { label: "Open replay", onClick: () => go(`run/${r.id}`) },
         })
       } else {
-        toast.success("Negotiation launched", { description: "The agent is preparing its first move." })
+        toast.success("Negotiation launched", {
+          description: "The agent is preparing its first move.",
+        })
         go(`run/${r.id}`)
       }
     } catch (err) {
@@ -85,40 +129,56 @@ export function LaunchDialog() {
 
   const note =
     mode === "local"
-      ? "Local opponents are simulations. Claude uses your Anthropic account; the adaptive policy runs without API calls."
-      : "Claude calls use your configured Anthropic account. Hosted sessions count against your practice quota."
+      ? "Every local supplier uses Claude and consumes Anthropic credits, including tests with a policy buyer. No arena sessions are used."
+      : "Buyer calls use your selected model provider. Hosted sessions count against your practice quota."
 
   return (
-    <Dialog open={launch.open} onOpenChange={o => !o && closeLaunch()}>
+    <Dialog open={launch.open} onOpenChange={(o) => !o && closeLaunch()}>
       <DialogContent className="sm:max-w-lg">
         <form onSubmit={submit} className="grid gap-4">
           <DialogHeader>
-            <p className="text-xs font-semibold text-orange-700">Start a negotiation</p>
-            <DialogTitle className="text-xl">Put your agent to work.</DialogTitle>
-            <DialogDescription>Choose a case and a test environment.</DialogDescription>
+            <p className="text-xs font-semibold text-orange-700">
+              Start a negotiation
+            </p>
+            <DialogTitle className="text-xl">
+              Put your agent to work.
+            </DialogTitle>
+            <DialogDescription>
+              Choose a case and a test environment.
+            </DialogDescription>
           </DialogHeader>
 
           <Field id="launch-mode" label="Environment">
-            <Select value={mode} onValueChange={v => changeMode(v as Scope)}>
+            <Select value={mode} onValueChange={(v) => changeMode(v as Scope)}>
               <SelectTrigger id="launch-mode" className="w-full">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="hosted">Hosted practice · uses arena quota</SelectItem>
-                <SelectItem value="local">Local simulator · no arena quota</SelectItem>
+                <SelectItem value="hosted">
+                  Hosted practice · uses arena quota
+                </SelectItem>
+                <SelectItem value="local">
+                  Local simulator · no arena quota
+                </SelectItem>
               </SelectContent>
             </Select>
           </Field>
 
           <Field id="launch-case" label="Negotiation case">
             <Select value={caseId} onValueChange={setCaseId}>
-              <SelectTrigger id="launch-case" className="w-full [&>span]:truncate">
+              <SelectTrigger
+                id="launch-case"
+                className="w-full [&>span]:truncate"
+              >
                 <SelectValue placeholder="No cases available" />
               </SelectTrigger>
               <SelectContent className="max-h-72">
-                {choices.map(c => (
+                {choices.map((c) => (
                   <SelectItem key={c.case_id} value={c.case_id}>
-                    <span className="font-mono text-xs text-muted-foreground">{c.case_id}</span> {c.title}
+                    <span className="font-mono text-xs text-muted-foreground">
+                      {c.case_id}
+                    </span>{" "}
+                    {c.title}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -131,7 +191,7 @@ export function LaunchDialog() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                {agents.map(a => (
+                {agents.map((a) => (
                   <SelectItem key={a.value} value={a.value}>
                     {a.label}
                   </SelectItem>
@@ -147,6 +207,7 @@ export function LaunchDialog() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="auto">Match the case’s supplier company</SelectItem>
                   {Object.entries(cases.opponents).map(([k, v]) => (
                     <SelectItem key={k} value={k}>
                       {v.name}
@@ -158,16 +219,27 @@ export function LaunchDialog() {
           )}
 
           {mode === "local" && (
-            <label htmlFor="launch-live" className="flex cursor-pointer items-center justify-between gap-4 rounded-lg border px-3 py-2.5">
+            <label
+              htmlFor="launch-live"
+              className="flex cursor-pointer items-center justify-between gap-4 rounded-lg border px-3 py-2.5"
+            >
               <span className="text-sm">
                 <span className="font-medium">Live pacing</span>
-                <span className="block text-muted-foreground">About 1 s per exchange, so you can watch the deal move.</span>
+                <span className="block text-muted-foreground">
+                  About 1 s per exchange, so you can watch the deal move.
+                </span>
               </span>
-              <Switch id="launch-live" checked={live} onCheckedChange={setLive} />
+              <Switch
+                id="launch-live"
+                checked={live}
+                onCheckedChange={setLive}
+              />
             </label>
           )}
 
-          <p className="rounded-lg border bg-muted/50 px-3 py-2.5 text-sm text-muted-foreground">{note}</p>
+          <p className="rounded-lg border bg-muted/50 px-3 py-2.5 text-sm text-muted-foreground">
+            {note}
+          </p>
           {error && (
             <p role="alert" className="text-sm text-destructive">
               {error}

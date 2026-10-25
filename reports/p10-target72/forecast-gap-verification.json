@@ -1,0 +1,316 @@
+{
+  "checked_at": "2026-10-25T02:25:05.897015+00:00",
+  "case_id": "case:P10",
+  "verification": "Offline rendering of saved v32 opening with current pipeline; no new hosted negotiation.",
+  "evidence_transport": {
+    "version": "evidence-transport-v6-latest-forecasts",
+    "max_local_reads": 2,
+    "complete_source_count": 127,
+    "raw_payload_chars": 156633,
+    "selected_fact_count": 28,
+    "availability_note": "Deferred records remain accessible through retrieve_evidence. No arbitrary queries.",
+    "collection_issues": [],
+    "delivery_counts": {
+      "full": 52,
+      "partial": 1,
+      "deferred": 81
+    },
+    "partial_refs": [
+      "table:forecast_history_lines"
+    ],
+    "unretrievable_refs": [],
+    "retained_pages": 0,
+    "delivered_payload_chars": 67259
+  },
+  "rendered_payload_sha256": "e9e0dc0242189cbda5e1afd68be6b8a39cb0f8ad680ec583187c191df27d66cd",
+  "latest_forecasts": [
+    {
+      "part_id": "part:340010",
+      "forecast": {
+        "id": "fc:340010@2026-09",
+        "part_id": "part:340010",
+        "snapshot_month": "2026-09",
+        "horizon_months": 12,
+        "qty_next_12m": 21310,
+        "uom": "pc",
+        "shared_with_suppliers": 1
+      },
+      "monthly_rows": [
+        {
+          "fc_id": "fc:340010@2026-09",
+          "target_month": "2026-10",
+          "qty": 2100
+        },
+        {
+          "fc_id": "fc:340010@2026-09",
+          "target_month": "2026-11",
+          "qty": 1900
+        },
+        {
+          "fc_id": "fc:340010@2026-09",
+          "target_month": "2026-12",
+          "qty": 1200
+        },
+        {
+          "fc_id": "fc:340010@2026-09",
+          "target_month": "2027-01",
+          "qty": 1700
+        },
+        {
+          "fc_id": "fc:340010@2026-09",
+          "target_month": "2027-02",
+          "qty": 1800
+        },
+        {
+          "fc_id": "fc:340010@2026-09",
+          "target_month": "2027-03",
+          "qty": 1700
+        },
+        {
+          "fc_id": "fc:340010@2026-09",
+          "target_month": "2027-04",
+          "qty": 2100
+        },
+        {
+          "fc_id": "fc:340010@2026-09",
+          "target_month": "2027-05",
+          "qty": 1900
+        },
+        {
+          "fc_id": "fc:340010@2026-09",
+          "target_month": "2027-06",
+          "qty": 2000
+        },
+        {
+          "fc_id": "fc:340010@2026-09",
+          "target_month": "2027-07",
+          "qty": 1600
+        },
+        {
+          "fc_id": "fc:340010@2026-09",
+          "target_month": "2027-08",
+          "qty": 910
+        },
+        {
+          "fc_id": "fc:340010@2026-09",
+          "target_month": "2027-09",
+          "qty": 2400
+        }
+      ],
+      "source_refs": [
+        "table:forecasts",
+        "table:forecast_history_lines"
+      ],
+      "coverage": {
+        "expected_months": [
+          "2026-10",
+          "2026-11",
+          "2026-12",
+          "2027-01",
+          "2027-02",
+          "2027-03",
+          "2027-04",
+          "2027-05",
+          "2027-06",
+          "2027-07",
+          "2027-08",
+          "2027-09"
+        ],
+        "missing_months": [],
+        "unexpected_months": [],
+        "duplicate_months": [],
+        "monthly_total": 21310,
+        "matches_reported_total": true,
+        "complete": true
+      }
+    }
+  ],
+  "demand_preparation": {
+    "forecast_ref": "fc:340010@2026-09",
+    "source_refs": [
+      "case",
+      "table:forecasts",
+      "table:forecast_history_lines"
+    ],
+    "forecast_rows_complete": true,
+    "authorized_need_per_year": 23400,
+    "forecast_total": 21310,
+    "forecast_horizon_months": 12,
+    "forecast_start_month": "2026-10",
+    "forecast_end_month": "2027-09",
+    "contract_start_month": "2027-01",
+    "need_minus_forecast_units": 2090,
+    "same_first_year_window": false,
+    "forecast_months_before_contract": [
+      "2026-10",
+      "2026-11",
+      "2026-12"
+    ],
+    "full_need_contract_scenarios": [
+      {
+        "contract_months": 12,
+        "start_month": "2027-01",
+        "end_month": "2027-12",
+        "annual_volume": 23400,
+        "total_committed_units": 23400.0,
+        "months_with_forecast": 9,
+        "months_without_forecast": [
+          "2027-10",
+          "2027-11",
+          "2027-12"
+        ],
+        "months_beyond_scoring_horizon": 0
+      },
+      {
+        "contract_months": 24,
+        "start_month": "2027-01",
+        "end_month": "2028-12",
+        "annual_volume": 23400,
+        "total_committed_units": 46800.0,
+        "months_with_forecast": 9,
+        "months_without_forecast": [
+          "2027-10",
+          "2027-11",
+          "2027-12",
+          "2028-01",
+          "2028-02",
+          "2028-03",
+          "2028-04",
+          "2028-05",
+          "2028-06",
+          "2028-07",
+          "2028-08",
+          "2028-09",
+          "2028-10",
+          "2028-11",
+          "2028-12"
+        ],
+        "months_beyond_scoring_horizon": 0
+      },
+      {
+        "contract_months": 36,
+        "start_month": "2027-01",
+        "end_month": "2029-12",
+        "annual_volume": 23400,
+        "total_committed_units": 70200.0,
+        "months_with_forecast": 9,
+        "months_without_forecast": [
+          "2027-10",
+          "2027-11",
+          "2027-12",
+          "2028-01",
+          "2028-02",
+          "2028-03",
+          "2028-04",
+          "2028-05",
+          "2028-06",
+          "2028-07",
+          "2028-08",
+          "2028-09",
+          "2028-10",
+          "2028-11",
+          "2028-12",
+          "2029-01",
+          "2029-02",
+          "2029-03",
+          "2029-04",
+          "2029-05",
+          "2029-06",
+          "2029-07",
+          "2029-08",
+          "2029-09",
+          "2029-10",
+          "2029-11",
+          "2029-12"
+        ],
+        "months_beyond_scoring_horizon": 12
+      }
+    ],
+    "interpretation": [
+      "The annual case need is authorized; the forecast is planning evidence, not a binding call-off schedule.",
+      "Different forecast and contract windows are not a measured demand shortfall or proof of growth.",
+      "Missing months are unknown, not zero demand. Do not extrapolate or scale monthly rows to the annual need.",
+      "Do not promise level monthly call-offs without a supported plan. Reconcile the periods before using a schedule as a concession; preserve the case's authorized volume and must-haves.",
+      "Contract scenarios show full-need commitments, not accepted supplier offers. Months beyond the scoring horizon remain a real commitment."
+    ]
+  },
+  "unresolved_from_buyer_records": [
+    {
+      "topic": "capacity_tradeoff",
+      "source_refs": [
+        "doc:20260918-70410-P10"
+      ],
+      "gap": "The supplied records do not quantify available capacity or the allocation/price concession for a longer commitment. Reconcile with current supplier replies; priority is not guaranteed capacity."
+    },
+    {
+      "topic": "current_approval_authority",
+      "source_refs": [
+        "doc:20260310-70410-M1"
+      ],
+      "gap": "The March approval process is historical. Current authority is not confirmed by these buyer records; use current supplier replies and do not assume committee escalation is available."
+    }
+  ],
+  "forecast_history_delivery": {
+    "kind": "public_record",
+    "available": true,
+    "delivery": "partial",
+    "complete_record": false,
+    "retrievable": true,
+    "total_chars": 10362
+  },
+  "historical_rows_retained": 144,
+  "collection_issues": [],
+  "tests": [
+    {
+      "files": [
+        "test_forecast_evidence.py",
+        "test_p10_evidence.py",
+        "test_evidence_delivery.py",
+        "test_p18_evidence.py"
+      ],
+      "passed": 62
+    },
+    {
+      "files": [
+        "test_outgoing_source_attachments.py",
+        "test_protocol_execution.py",
+        "test_supplier_term_options.py",
+        "test_single_agent_evaluation.py",
+        "test_evidence_validation_recovery.py",
+        "test_prompt_comparison.py",
+        "test_service.py",
+        "test_negotiation_data_pipeline.py"
+      ],
+      "passed": 101
+    }
+  ],
+  "ruff": "passed",
+  "source_sha256": {
+    "src/aeiou/forecast_evidence.py": "0f7f20b20a07e61efc5ec7f4efe3cee2b571b963935735a62ddc65f15bf259d8",
+    "src/aeiou/research.py": "9214a247f91a1da015ba84191bbe1c16edf3dda561ff76bc0ce95a30789cae70",
+    "src/aeiou/p10_evidence.py": "ee805d15be97851003a8540984b8a0fc697c7b8847a3d3f3a4ab01aa3548b537",
+    "src/aeiou/evidence_transport.py": "30c201ad1da4ffcd4c1bda59f644a2c9934570c0029d94b30eac233525cb4921",
+    "tests/test_forecast_evidence.py": "b634e69efc1fbda89ad8a141855fc1a9e67c0da88c1d756a67b631936f987c10",
+    "reports/p10-target72/run_trial.py": "d403028fd1c39dd0d0ebf26e30ca45707343d1eb70e4029f61c641ac762e45e0"
+  },
+  "workbench": {
+    "reloaded": true,
+    "old_pid": 16847,
+    "new_pid": 24160,
+    "checked_at": "2026-10-25T02:24:52.813738+00:00",
+    "api_status": "healthy",
+    "latest_forecast_preparation_loaded": true,
+    "reason": "Load latest monthly forecast delivery and explicit demand/commitment gaps after checking UI jobs idle.",
+    "source_sha256": {
+      "src/aeiou/forecast_evidence.py": "0f7f20b20a07e61efc5ec7f4efe3cee2b571b963935735a62ddc65f15bf259d8",
+      "src/aeiou/research.py": "9214a247f91a1da015ba84191bbe1c16edf3dda561ff76bc0ce95a30789cae70",
+      "src/aeiou/p10_evidence.py": "ee805d15be97851003a8540984b8a0fc697c7b8847a3d3f3a4ab01aa3548b537",
+      "src/aeiou/evidence_transport.py": "30c201ad1da4ffcd4c1bda59f644a2c9934570c0029d94b30eac233525cb4921",
+      "src/aeiou/prompt_protocol.py": "3a97fe1d32c91bbd7e4de61aa460691eaed81de882acfa43f1abebf71635ef2b",
+      "src/aeiou/service.py": "a76cbf85ae8cedf9925b35fcea4a452ea0fca39efe42275b4f3e7551500bddd7",
+      "src/aeiou/optimizer.py": "28be5aca98924ef8ed49aeee930dcef5674e9230005545f69fa94d40d48e872f",
+      "src/aeiou/price_planner.py": "47c7c5e8781a26dc1319e4466c72090f8096f5398235d3af2f0a254740d41095"
+    }
+  },
+  "performance": "No new score measured. Best prior verified hosted score remains 70.20804327564957; 72 is not established."
+}

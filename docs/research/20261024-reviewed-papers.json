@@ -1,0 +1,49 @@
+{
+  "reviewed_at": "2026-10-24T13:29:00.158077+00:00",
+  "papers": [
+    {
+      "url": "https://arxiv.org/pdf/2601.15047",
+      "version_reviewed": "v1",
+      "title": "Game-Theoretic Lens on LLM-based Multi-Agent Systems",
+      "finding": "A survey organized around players, strategies, payoffs and information. It distinguishes partial observability from full information and discusses incentives, communication and evaluation.",
+      "application_inference": "Preserve separate buyer objectives, legal actions and uncertain supplier beliefs. Match public case information before comparing environments; never give the buyer a simulated seller's hidden floor.",
+      "limitation": "This is a taxonomy and survey, not a tested Tacto negotiation policy or evidence that a particular prompt improves arena scores."
+    },
+    {
+      "url": "https://arxiv.org/pdf/2601.00911",
+      "version_reviewed": "v3, 22 April 2026",
+      "title": "Device-Native Autonomous Agents for Privacy-Preserving Negotiations",
+      "finding": "Proposes local state, explainable memory, distilled world models, privacy proofs, selective offloading and a simulation critic. Reports controlled insurance and B2B experiments.",
+      "application_inference": "Keep deterministic validation and concise decision diagnostics outside the prompt. Preserve executable offers and constraints in local fixtures. Treat simulated responses as hypotheses.",
+      "limitation": "Its limitations acknowledge controlled scenarios, rational-counterparty assumptions and behavioral privacy leakage. Its success and latency figures do not predict Claude/Tacto performance. Our Claude backend is remote; we do not claim device-native privacy or cryptographic verification."
+    },
+    {
+      "url": "https://arxiv.org/pdf/2601.16276",
+      "version_reviewed": "v1",
+      "title": "GameTalk: Training LLMs for Strategic Conversation",
+      "finding": "Adapts GRPO, DPO and STaR using full-conversation outcomes. Separates opponent prediction, action quality given beliefs and conversational influence. DPO is strongest on the reported bargaining game; GRPO has higher rock-paper-scissors reward.",
+      "application_inference": "Evaluate complete negotiations and validate forecasts against observed replies rather than rewarding plausible sounding planning. Retain failures and per-case regressions.",
+      "limitation": "Experiments use two-player games and a fixed LLM opponent. The authors report a disconnect between improved outcomes and accurate opponent modeling. Reading the paper does not fine-tune our Claude model; its metrics require information unavailable from the hosted opponent."
+    }
+  ],
+  "decision": "No tactic or prompt changes for this single diagnostic hosted run. Original prompt plus four reliability fixes; experimental lookahead gate remains closed.",
+  "local_parity": {
+    "source": "/Users/lorenzschmidt/dev/AEIOU_INDUSTRIAL_AGENTS/vendor/arena-kit/README.md",
+    "confirmed": "The upstream kit explicitly withholds hosted suppliers; its script teaches the API contract.",
+    "can_match": [
+      "public hosted case",
+      "buyer data package",
+      "opening quote",
+      "action contract",
+      "round and decision limits",
+      "published cost formula"
+    ],
+    "cannot_reproduce_from_public_kit": [
+      "hidden supplier prompt and strategy",
+      "supplier model settings",
+      "private economic constraints",
+      "stochastic future responses",
+      "pre-run true best attainable cost"
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+P10 v3 — executable renewal at the evidenced historical price
+
+Negotiate case:P10 only, for Hollerau. Return action JSON with the required short
+assessment and numeric_claims. The objective is a hosted score of at least 72.
+The task permits 56-day lead time and a 36-month commitment; all other fixed
+terms and must-haves remain binding. The full annual volume is 23,400 units.
+
+This experiment replaces a mechanical percentage anchor with the same-part
+purchase price shown in po:4500014383-10 and po:4500014436-10. Use EUR 29.89
+as our first unit-price proposal, with 23,400/year, 36 months and 56 days.
+This is an actual purchase-history anchor, not a statement of supplier approval.
+Ignore the illustrative percentage-based candidate menus for this experiment.
+Send one complete structured package. Do not offer 42 days in this opening.
+
+Keep the first email under 160 words, along these lines:
+Dear Ms Zellner,
+We can make a binding commitment for 23,400 seals per year for 36 months,
+allowing 56 days for delivery. This gives you the longer commitment and
+scheduling room requested in your capacity letter.
+Our September orders for this same seal were at EUR 29.89/unit
+(po:4500014383-10, po:4500014436-10). We propose renewing at that price in
+exchange for the full allocation and the longer commitment above.
+Payment remains 30 days net, DAP, effective 2027-01-01, no index clause and
+no tooling charge. Can you agree to this complete package?
+Kind regards, Hollerau Purchasing
+
+Do not add index, should-cost, scorecard, committee or legal arguments to this
+message. Do not demand a cost breakdown. Do not ask for a best or final offer.
+Do not disclose our target score, budget or absence of an alternative supplier.
+
+On a genuinely open counter, compare its complete cost. At 56 days, the user's
+recorded benchmark suggests prices no higher than EUR 30.96 achieve 72 before
+unknown private relationship costs; at 42 days the corresponding limit is EUR
+31.68. The public total-cost target is EUR 1,497,925.17. These are development
+benchmarks, not knowledge of a supplier floor or a promise of the official score.
+If an open reply does not qualify, one reciprocal closing proposal of EUR 30.90
+with full volume, 36 months and 56 days is available. State we can conclude on
+those exact terms if accepted. Do not gradually spend all remaining rounds.
+Accept a live eligible offer meeting the target immediately, by its exact ID.
+
+For this diagnostic experiment retain close-on-final: accept the cheapest
+live eligible binding offer after finality, without a further counter or
+confirmation. If it exceeds the target, record failure to achieve 72 honestly.
+No invented live offer, buyer walk-away or acceptance that violates must-haves.
+Commitment beyond two years is real although unpriced by the scoring formula.

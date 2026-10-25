@@ -1,0 +1,20 @@
+{
+  "source": "doc:20260310-70410-M1",
+  "source_sha256": "571c326806c2cf12c36e7d42e31e1cab9ee9377656139c78a165c05691bdbcc1",
+  "source_bytes": 271,
+  "wire_sha256": "571c326806c2cf12c36e7d42e31e1cab9ee9377656139c78a165c05691bdbcc1",
+  "workbench_preview_exact": true,
+  "remote_attachments": [
+    {
+      "name": "doc-20260310-70410-M1.md",
+      "type": "md",
+      "attachment_id": null
+    }
+  ],
+  "official_score": 0.6864691970606858,
+  "must_haves_ok": true,
+  "remote_content_hashes": [
+    "571c326806c2cf12c36e7d42e31e1cab9ee9377656139c78a165c05691bdbcc1"
+  ],
+  "remote_bytes_match_source": true
+}

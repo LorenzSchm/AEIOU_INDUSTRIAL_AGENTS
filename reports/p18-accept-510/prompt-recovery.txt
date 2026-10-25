@@ -1,0 +1,18 @@
+Practice prompt recovery
+
+Cause: the browser Practice prompt draft contained results.txt, the three-run
+outcome report, rather than the actual V25 negotiation strategy. It had no
+<acceptance_floor> block, so the server correctly rejected it before scheduling.
+
+Fix: added Restore last run's prompt to the practice editor. It restores the
+exact saved prompt_text through the existing editor/localStorage update path.
+Built frontend successfully; lint completed with existing unrelated warnings.
+Used the new button in the user's Safari workbench. Accessibility state shows
+P18 v25 and its explicit minimum_score 0 / maximum_unit_price 5.10 block in the
+editor, and the edited-prompt warning disappeared. Selected P18 only, with one
+repeat. The user's Opus / High buyer setting was retained. No new run started.
+
+The restoration source matches prompts/p18-diagnostic-v25.txt byte for byte.
+AcceptanceFloor.from_prompt and validate_policy confirm it matches the active
+P18 execution controls. No acceptance protection was removed to hide the error.
+Screenshot: prompt-restored.png.
