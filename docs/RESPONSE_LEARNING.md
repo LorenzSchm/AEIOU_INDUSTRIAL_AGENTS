@@ -554,3 +554,34 @@ No P10 attempt or further P11 attempt was started. Artifacts and HTML report:
 `data/local/practice-p11-observed-v2/`. The smaller marginal gain and final-offer
 response support prioritizing the P10 price/delivery trade next, rather than
 repeatedly increasing this discount request.
+
+## P10: complete-cost delivery response
+
+Revision `789ff5f` adds a response to actual supplier service packages for
+secure-supply cases. A faster option is not automatically preferred: both current
+quotes must cover full demand, and the slower complete package must cost less
+after delay and other buyer costs. The policy then preserves a bounded counter
+on the cheaper schedule, optionally with a longer commitment already admitted
+in its existing portfolio. The requested discount is two percent, with prior
+concessions, valid terms, full-horizon coverage and buyer ceiling respected.
+It does not infer that a bundled price difference measures delivery alone.
+
+48 focused tests passed. Archived replay changed P10's second message to include
+EUR31.16, full volume,36months,56-day lead time. The opening and checked P2/P5/P11
+decisions remained unchanged. No training or model change occurred; the trial
+used the existing progress selector rather than the earlier P10 value selector.
+
+Exactly one hosted attempt on session `7e1dfe42025de534`, run
+`7be56e84c932463d9bce8584a74f80df`, produced **67.0711**, below the standing personal
+record **70.2080** by **3.1370 points**. The new package was actually sent. Supplier
+countered at EUR31.60,23,400units/year,36months,56days and declared a final offer;
+the agent accepted. Buyer cost EUR1,527,674.40, including EUR33,600 delay cost.
+The previous progress-selector run scored56.2462 and the value-selector run
+64.7294, but these are unpaired observations and do not establish causal uplift.
+
+Two Claude calls,11,950input/172output tokens,40.97seconds, no errors or fallbacks.
+Quota227 to228 used; one exclusive creation marker and one new session in audit.
+No further attempt was made. Artifacts: `data/local/practice-p10-delivery-v1/`.
+The result confirms use of the intended trade but does not establish superior
+overall policy performance or eliminate delivery penalties. Keep the historical
+record baseline; do not label this revision a record-beating P10 solution.
