@@ -1443,3 +1443,30 @@ Ruff clean; all 57 protected P01-P05 replay decisions identical. Mock-planner P0
 replay demonstrates exact dated quote plus cover evidence without guard fallback,
 and subsequent single indexed offers at unchanged scheduled prices. Final-offer
 acceptance is unchanged. One hosted P08 attempt is authorized; no creation retry.
+
+
+Outcome (a9213ac): one P08 session d8a10403d9bb23dc scored **41.89**, versus
+57.04 for the retained strategy and the unchanged 59.15 team record. Final terms
+were 5.59/payment90/duration24/deadband5%, total cost 1062337.02. The supplier
+classified the dated own-supplier quote as irrelevant rival evidence. There is
+no local conversion to a rival-claim payload; the hosted interpretation remains
+unverified. Focused offer selection did not activate for the actual wording.
+
+A concrete local defect did activate: evidence_requested matched `provide`
+inside `provided we implement the AS-14404 index clause`. This released rising
+index evidence despite there being no request for index data. The supplier then
+explicitly used the rising driver to support its position. Add word boundaries
+to request verbs, including regression examples for `provided` and `supported`.
+Actual archived response now correctly returns no index-data request. This does
+not establish how many score points the defect caused.
+
+Remove the unsuccessful own-quote/focused-approval runtime and tests. Restore
+717a4c5 strategy with only the request-verb boundary correction retained.
+81 focused tests pass; Ruff clean; all 57 archived protected P01-P05 decisions
+are byte-equivalent as parsed JSON to the existing baseline. First sandboxed
+pytest attempt hit Windows temp-directory permissions; the approved local rerun
+passed. No hosted validation of the corrected retained runtime has been made.
+
+Exactly one creation/session, quota 152 -> 153, team best map unchanged. Two
+model calls, 12982 input/204 output tokens, no errors/fallbacks, 63.62 seconds.
+Report: data/local/evaluations/practice-p08-a9213ac/report.json. No further run.

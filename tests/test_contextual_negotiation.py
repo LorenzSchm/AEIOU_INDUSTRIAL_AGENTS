@@ -81,6 +81,8 @@ def test_rising_indices_remain_available_for_requested_evidence_but_not_unsolici
         "Please provide the data underlying your target price.",
         "Please share forecast data. Our indices rose last year.",
         "Do not provide index data.",
+        "We can offer 14-day payment, provided we implement the AS-14404 index clause.",
+        "Our price is supported by the index increase.",
     ],
 )
 def test_generic_or_negated_requests_do_not_release_positive_indices(reply):
