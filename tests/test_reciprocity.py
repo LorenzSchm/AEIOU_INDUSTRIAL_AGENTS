@@ -35,6 +35,19 @@ def test_does_not_bid_up_a_productive_early_negotiation():
     assert responsive_packages(case, events, packages, {}, lambda t: total_cost(case, t), float("inf")) == packages
 
 
+@pytest.mark.parametrize("planned_price", [17.5, 18.0])
+def test_reciprocity_cannot_undo_the_current_controller_concession(planned_price):
+    case, buyer, seller, packages = scenario()
+    packages[0]["terms"] = {**packages[0]["terms"], "unit_price": planned_price}
+    packages[0]["cost"] = total_cost(case, packages[0]["terms"])
+    events = [seller, buyer, seller, buyer, seller]
+    # The old quarter-gap calculation was 17.50, even when the controller had
+    # already advanced to 18.00. That reset applied to every non-indexed package.
+    result = responsive_packages(case, events, packages, {}, lambda t: total_cost(case, t), float("inf"))
+    assert result[0]["terms"] == packages[0]["terms"]
+    assert result[0]["cost"] == packages[0]["cost"]
+
+
 def test_explicit_impasse_asks_for_one_term_instead_of_everything_at_once():
     case, buyer, seller, packages = scenario()
     seller["body"] = "This is our best possible pricing and firm position."

@@ -35,6 +35,7 @@ from .optimizer import alternative_cost, estimate, evaluate, safe_close
 from .reciprocity import responsive_packages
 from .retrieval import evidence_cards, evidence_cutoff
 from .scenario_planner import plan_packages
+from .settlement import settlement_review
 from .strategic_planner import admit_proposals, proposal_limits
 from .strategy_policy import StrategicFeatures, adaptive_packages, plan_next_action
 from .supplier_signals import observed_signals, validated_interpretation
@@ -500,6 +501,9 @@ class StrategicNegotiator(Negotiator):
             )
             if safe_cost > min(target * 1.005, continuation * 1.0005):
                 self.controller.update(action="send", reason="Preserve a better legal counter or supplier continuation")
+        settlement = settlement_review(case, threads, sid, self.intelligence)
+        if settlement:
+            self.controller.update(action="accept", reason=settlement["reason"], settlement=settlement)
         ids = self.controller.get("candidate_ids", [p["id"] for p in offers.get(sid, [])])
         self.controller["candidate_ids"] = ids
         self._cards = evidence_cards([], self.intelligence)
@@ -523,7 +527,13 @@ class StrategicNegotiator(Negotiator):
         self._cards = rival_quote_cards(case, threads, self.intelligence, sid) + self._cards
         self.support[sid]["evidence_available"] = any(c.get("shareable") for c in self._cards)
         move, source = None, "controller policy"
-        if self.controller["action"] in {"accept", "walk_away"} or not offers.get(sid):
+        if settlement:
+            move = {
+                "supplier_id": sid,
+                "message": {"action": {"type": "accept", "term_sheet_id": settlement["sheet_id"]}},
+            }
+            source = "observed settlement"
+        elif self.controller["action"] in {"accept", "walk_away"} or not offers.get(sid):
             move, source = safe_close(case, threads, self.intelligence), "controller close"
         if move is None and self.backend and not self.runtime_context.get("policy_only"):
             try:

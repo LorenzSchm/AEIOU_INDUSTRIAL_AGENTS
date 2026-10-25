@@ -650,3 +650,69 @@ Three Claude calls,15,921input/355output tokens,35.28seconds; zero errors/fallba
 Quota229 to230 used, one exclusive creation marker and one new session. No repeat
 attempt was made. Full failed transcript, model/source snapshot, preflight and
 HTML report: `data/local/practice-p04-financing-v1/`.
+
+## Cross-track archive review and observed settlement control
+
+Reviewed the locally available archive after the failed P4 financing attempt:
+245 distinct sessions, with 174 duplicate files removed. This is an inventory of
+mixed historical policies, not 245 independent challenges or a fresh evaluation.
+P18 remains the teammate's track and is excluded from policy replays. Outside
+P18, 616 eligible response examples form only 11 connected case/supplier groups;
+just 3 eligible replies are walkaways. This is insufficient evidence to claim a
+well-calibrated learned exit probability. No new training or hosted calls occurred.
+
+Two implementation changes:
+
+- `settlement.py` can accept the sole live supplier's primary quote after two
+  exchanges when it matches the latest buyer proposal on every non-price term,
+  improves on the opening, passes the existing cost/alternative checks, and is
+  within 0.5% of the buyer's last proposed complete cost. Any positive premium
+  additionally requires explicit closing resistance. Both modeled complete cost
+  and public direct cost must pass. General price freezes and conditional refusals
+  do not qualify. Neither a cheap generated anchor nor an LLM menu can override
+  this observed closing decision. The 0.5% threshold is a policy assumption,
+  not a learned acceptance threshold or supplier floor.
+- `responsive_packages` no longer replaces a higher currently planned price
+  with a lower quarter-gap bid on the same structure. The previous comparison
+  protected indexed offers only, despite its general no-reset comment. Existing
+  validity, coverage, ceiling and past-concession checks still apply. This fixes
+  inconsistent controller scheduling; a higher bid is not inherently a better
+  scored deal.
+
+Local validation against baseline `c596a42`:
+
+- 484 open historical prefixes across 167 single-supplier sessions replayed without
+  errors. 27 multi-supplier sessions were excluded from this broad replay because
+  their chronological interleaving cannot be inferred from separate threads.
+- The settlement rule triggered once: the latest P4 EUR 4.90/45-day/36-month quote,
+  immediately before the real run lost the supplier. Its public complete cost is
+  EUR 197,223.33 versus EUR 196,420.67 for our EUR 4.88 bid. Acceptance was not actually
+  tested, and that quote would still be worse than the existing EUR 196,852.67
+  record deal. Do not describe this safeguard as a new record.
+- The reciprocity correction changed 8 historical controller inputs: 4 on P3, 3 on P1,
+  1 on an older P2 run. Replay diagnoses behavior; it does not measure resulting
+  supplier responses or score improvement.
+- 17 reconstructed decision prefixes from the P1/P2/P5/P11 personal-best runs
+  produced identical deterministic base-controller before/after actions. This
+  includes the actual multi-supplier ordering recorded in the P5 decisions.
+  The language model was not rerun, so this is not a live non-regression guarantee.
+- 72 focused tests passed. Expanding to the strategy integration tests yielded
+  89 passed and one existing S03 score assertion failure: 0.977067 versus 1.0.
+  Isolating both changes and restoring both baseline behaviors reproduced that
+  exact same failure; the expected score was not weakened to make it pass.
+
+For the next record-seeking experiment, prioritize the **P3 payment exchange**.
+Its archived best is 86.2062 with EUR 431.61/60 days; EUR 428.40/14 days scores 83.0349
+despite the lower unit price. Current proposals should therefore price a legal
+payment extension from observed comparable quotes instead of repeating an
+unsupported price discount. The observed 30-to-60-day pair EUR 430.15→431.61 gives
+an illustrative 90-day price of EUR 433.07 under a linear extrapolation. That would
+reduce published direct cost by EUR 13,072.54 versus EUR 431.61/60 days, but neither
+acceptance nor relationship cost at those new terms is established. This is a
+candidate for a bounded experiment, not a forecast or an implemented pricing rule.
+Preserve P2/P5 baselines and leave P18 untouched.
+
+Detailed local artifacts: `data/local/all-runs-review-v1/` contains the manifest,
+aggregate audit, prefix replays, record-path checks, data-quality counts and HTML
+report. Archived outcomes are used only after replay decisions for comparison;
+the runtime policy does not consume session results, benchmark costs or case IDs.

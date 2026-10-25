@@ -130,7 +130,11 @@ def responsive_packages(case, events, packages, standard, cost, ceiling):
                     (p["terms"]["unit_price"] for p in packages if same_structure(p["terms"], terms)),
                     default=last_price,
                 )
-                if allowed(terms) and (counter not in indexed_quotes or terms["unit_price"] > current):
+                if (
+                    allowed(terms)
+                    and terms["unit_price"] >= current
+                    and (counter not in indexed_quotes or terms["unit_price"] > current)
+                ):
                     insert(
                         terms,
                         "Reciprocal step on observed supplier terms",
