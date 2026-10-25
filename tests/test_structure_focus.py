@@ -70,3 +70,19 @@ def test_expensive_structure_cannot_replace_a_cheaper_live_quote():
     c, e, p = scenario()
     e[-1]["term_sheets"][0]["terms"]["unit_price"] = 20
     assert apply(c, e, p) == p
+
+
+def test_reciprocal_move_uses_live_comparable_quote_and_never_future_prices():
+    c, e, p = scenario()
+    q = {"unit_price": 46, "ppm_commitment": 1500, "chargeback_eur_per_complaint": 0}
+    e += [
+        {"from": "buyer", "term_sheets": [{"terms": {**q, "unit_price": 38}}]},
+        {"from": "seller", "status": "open", "term_sheets": [{"terms": q}]},
+    ]
+    focus = {"ppm_commitment": 1500, "chargeback_eur_per_complaint": 0}
+    result = focused_structure(c, e, p, {}, None, focus, 0.5)
+    assert result[0]["terms"]["unit_price"] == 42
+    assert result[0]["observed_tradeoff"]
+    assert result[0]["response_fraction"] == 0.5
+    e[-1]["status"] = "final_offer"
+    assert focused_structure(c, e, p, {}, None, focus, 0.5) == p
