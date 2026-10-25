@@ -2,7 +2,7 @@ import copy
 import json
 
 from aeiou.config import data_root
-from aeiou.memory_opening import memory_opening
+from aeiou.memory_opening import memory_cost_evidence, memory_opening
 
 
 def example():
@@ -39,6 +39,21 @@ def test_changed_context_or_non_deal_does_not_transfer():
     c, t, m = example()
     m["result"]["deal"] = False
     assert memory_opening(c, t, m, {}, 0.002) is None
+
+
+def test_cost_evidence_requires_visible_matching_unit_basis_and_states_uncertainty():
+    case = {"parts": ["part:new"]}
+    fact = {"part": "part:new", "unit_cost": 24.31, "confidence_pct": 5, "price_unit": 1}
+    intel = {"estimates": {"sup:new": {"source": "cost:new"}}, "facts": {"cost:new": fact}}
+    evidence = memory_cost_evidence(case, intel, "sup:new")
+    assert evidence["ref"] == "cost:new"
+    assert "24.31" in evidence["text"] and "5% uncertainty" in evidence["text"]
+    assert "not your disclosed cost" in evidence["text"]
+    fact["part"] = "part:other"
+    assert memory_cost_evidence(case, intel, "sup:new") is None
+    fact["part"] = "part:new"
+    fact["price_unit"] = 100
+    assert memory_cost_evidence(case, intel, "sup:new") is None
 
 
 def test_only_opening_and_no_terminal_or_illegal_terms():

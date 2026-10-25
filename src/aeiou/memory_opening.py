@@ -18,6 +18,33 @@ from .learned_portfolio import LearnedPortfolioNegotiator
 from .optimizer import alternative_cost, estimate, valid_terms
 
 
+def memory_cost_evidence(case, intelligence, sid):
+    source = intelligence.get("estimates", {}).get(sid, {}).get("source")
+    fact = intelligence.get("facts", {}).get(source, {})
+    value, confidence = fact.get("unit_cost"), fact.get("confidence_pct")
+    if (
+        not isinstance(source, str)
+        or not source.startswith("cost:")
+        or fact.get("part") not in case["parts"]
+        or fact.get("price_unit") != 1
+        or type(value) not in (int, float)
+        or not math.isfinite(value)
+        or value <= 0
+        or type(confidence) not in (int, float)
+        or not 0 < confidence < 100
+    ):
+        return None
+    return {
+        "ref": source,
+        "text": (
+            f"Our buyer should-cost estimate is EUR {value:.2f} per unit excluding margin "
+            f"({source}), with {confidence:g}% uncertainty. This is a buyer benchmark, "
+            "not your disclosed cost. Could you take this evidence and the complete "
+            "contractual commitment into account when reviewing the price?"
+        ),
+    }
+
+
 def memory_opening(case, threads, memory, intelligence, discount):
     if not 0 <= discount <= 0.02:
         return None
@@ -87,12 +114,13 @@ def memory_opening(case, threads, memory, intelligence, discount):
 
 
 class MemoryOpeningNegotiator(LearnedPortfolioNegotiator):
-    def __init__(self, *args, memory_run, memory_discount=0.002, **kwargs):
+    def __init__(self, *args, memory_run, memory_discount=0.002, include_cost_evidence=False, **kwargs):
         super().__init__(*args, **kwargs)
         if not 0 <= memory_discount <= 0.02:
             raise ValueError("Memory opening discount must be between zero and two percent")
         self.memory_run = copy.deepcopy(memory_run)
         self.memory_discount = memory_discount
+        self.include_cost_evidence = include_cost_evidence
 
     def decide(self, case, threads):
         if self.case_id != case["case_id"]:
@@ -114,6 +142,12 @@ class MemoryOpeningNegotiator(LearnedPortfolioNegotiator):
                 "term_sheets": [{"terms": terms}],
             },
         }
+        if self.include_cost_evidence:
+            evidence = memory_cost_evidence(case, self.intelligence, offer["supplier_id"])
+            if evidence:
+                move["message"]["body"] += "\n\n" + evidence["text"]
+                move["message"]["refs"] = [evidence["ref"]]
+                offer["cost_evidence"] = evidence
         self.decisions.append(
             {
                 "supplier_id": offer["supplier_id"],
