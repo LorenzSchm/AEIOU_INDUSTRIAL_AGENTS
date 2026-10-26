@@ -4,7 +4,7 @@ import logging
 from concurrent.futures import ThreadPoolExecutor
 
 from arena_kit import ArenaClient
-from arena_kit.play import hosted, play_waves
+from arena_kit.play import hosted
 
 from . import config
 
@@ -71,9 +71,13 @@ def main():
     practice.add_argument("--parallel", type=int, default=3)
     practice.add_argument("--agent", choices=agents, default="claude")
     final = sub.add_parser("final")
-    final.add_argument("--agent", choices=agents[1:], default="claude")
+    final.add_argument("--agent", choices=agents[1:], default="strategic")
     final.add_argument("--parallel", type=int, default=10)
     final.add_argument("--waves", type=int, default=5)
+    final.add_argument("--rehearsal", action="store_true", help="Require loopback URL and two waves")
+    final_action = final.add_mutually_exclusive_group()
+    final_action.add_argument("--start", action="store_true", help="Explicitly start autonomous final execution")
+    final_action.add_argument("--check", action="store_true", help="Offline inspection only (the default)")
     sub.add_parser("doctor")
     sub.add_parser("report")
     a = p.parse_args()
@@ -213,26 +217,12 @@ def main():
                     )
                 )
     elif a.command == "final":
-        import time
+        from .final_runtime import inspect_setup, run_final
 
-        from .runner import RecordingTable, make_agent
-        from .store import new_run
-
-        # play_waves handles 403 waiting, 409 resume, cap extensions and supplier latency.
-        # Wrap tables for durable replay without adding prohibited live-feed endpoints.
-        class FinalTable(RecordingTable):
-            def __init__(self, client, case=None):
-                super().__init__(client, new_run(case["case_id"], "final", a.agent), case)
-
-        # The kit owns polling / resume; the wrapper only adds local audit persistence.
-        started = time.monotonic()
-        results = play_waves(
-            ArenaClient(),
-            lambda: make_agent(a.agent),
-            table_factory=FinalTable,
-            waves=a.waves,
-            parallel=min(10, max(1, a.parallel)),
-        )
-        path = config.state_root() / "final-results.json"
-        path.write_text(json.dumps(results, default=str, indent=2))
-        print(f"Final completed in {time.monotonic() - started:.0f}s; results: {path}")
+        if a.start:
+            print(f"Final results: {run_final(a.agent, a.parallel, a.waves, a.rehearsal)}")
+        else:
+            report = inspect_setup(a.agent, a.parallel, a.waves, a.rehearsal)
+            print(json.dumps(report, indent=2))
+            if report["errors"]:
+                raise SystemExit(1)

@@ -168,24 +168,34 @@ hidden final suppliers or every other team's agent.
 
 ## Final runner
 
-After the Sunday release becomes public, refresh data and start the autonomous runner:
+Prepared entry point (Windows PowerShell):
 
-```bash
-uv run arena data
-uv run aeiou doctor
-uv run aeiou final --parallel 10 --waves 5
+```powershell
+.\scripts\final.ps1          # offline checks only; no API requests or sessions
+.\scripts\final.ps1 -Start   # explicitly start the autonomous final later
 ```
 
-It waits on pre-final `403`, resumes existing sessions on `409`, follows cap extensions and
-closes before the cap with a latency margin. It reads your cases and sessions only, without
-live feeds, leaderboards or results. A two-wave test covers waiting, parallel cases, resume
-and audit persistence. The actual final has not been started during development.
+The setup script is not executed as part of preparing it. `-Start` is required to run.
+The default is the general `strategic` agent, five API-discovered waves, up to ten
+parallel cases, a 180-second HTTP read timeout and a 90-second closing reserve.
+It does not select P1/P18 practice-specific experimental strategies.
 
-For an HTTP rehearsal, run `uv run arena-sim serve --final-rehearsal --data data/package`,
-register a simulator key with `ARENA_URL=http://127.0.0.1:8000 uv run arena register AEIOU sim`,
-then run `aeiou final --waves 2` with the simulator URL and key in the environment.
-Confirm event times with organizers: the upstream README and live FAQ have differed.
-The runner follows API wave state, not hard-coded event times.
+A second local final runner is blocked with an OS-held lock. At actual start, open
+practice sessions block startup rather than being closed automatically. Stop all
+practice loops before starting. The kit handles pre-wave `403`, duplicate-session
+`409` recovery and wave deadlines. HTTP retries preserve move IDs and respect
+`Retry-After`. The final client rejects leaderboard/feed/result endpoints.
+
+Portable equivalents after installing the environment:
+
+```bash
+uv run aeiou final --check
+uv run aeiou final --start --agent strategic --parallel 10 --waves 5
+```
+
+Detailed rehearsal, pre-flight, logs, restart and freeze instructions:
+[Final setup](docs/FINAL_SETUP.md). These commands do not submit code on the
+organisers' platform. Submission remains a separate step.
 
 ## Source map
 
